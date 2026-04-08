@@ -1533,6 +1533,7 @@ cultivation_ai.2270 = {
                     is_alive = yes
                     is_adult = yes
                     is_landed = yes
+                    has_trait = ambitious
                     OR = {
                         highest_held_title_tier = tier_county
                         highest_held_title_tier = tier_duchy

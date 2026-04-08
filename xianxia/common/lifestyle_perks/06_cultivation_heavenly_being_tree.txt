@@ -1,0 +1,206 @@
+﻿##################################################
+# HEAVENLY BEING REALM (Y: 31-35) +70 years
+# Tree: heavenly_being_tree
+##################################################
+
+heavenly_being_1_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 0 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 48
+		learning = 8
+		health = 4.5
+		advantage = 40
+	}
+}
+
+heavenly_being_early_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 2 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_1_perk
+	
+	character_modifier = {
+		prowess = 48
+		learning = 8
+		health = 4.5
+		advantage = 40
+	}
+}
+
+heavenly_being_2_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 2 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_early_perk
+	
+	character_modifier = {
+		prowess = 48
+		learning = 8
+		health = 4.5
+		advantage = 40
+	}
+}
+
+heavenly_being_mid_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_2_perk
+	
+	character_modifier = {
+		prowess = 48
+		learning = 9
+		health = 5.0
+		advantage = 40
+		dread_baseline_add = 10
+	}
+}
+
+heavenly_being_3_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 0 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_mid_perk
+	
+	character_modifier = {
+		prowess = 48
+		learning = 8
+		health = 4.5
+		advantage = 40
+	}
+}
+
+heavenly_being_late_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 2 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_3_perk
+	
+	character_modifier = {
+		prowess = 57
+		learning = 9
+		health = 5.0
+		advantage = 45
+		dread_baseline_add = 10
+	}
+}
+
+heavenly_being_4_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 2 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_late_perk
+	
+	character_modifier = {
+		prowess = 48
+		learning = 8
+		health = 4.5
+		advantage = 40
+	}
+}
+
+heavenly_being_peak_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 0 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_4_perk
+	
+	character_modifier = {
+		prowess = 57
+		learning = 10
+		health = 5.5
+		advantage = 50
+		dread_baseline_add = 15
+		monthly_prestige = 2.0
+	}
+}
+
+heavenly_being_5_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 0 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = node_cultivation
+	parent = heavenly_being_peak_perk
+	
+	character_modifier = {
+		prowess = 48
+		learning = 8
+		health = 4.5
+		advantage = 40
+	}
+}
+
+heavenly_being_four_axis_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = heavenly_being_tree
+	position = { 2 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_heavenly_being
+	}
+	icon = cultivation_four_axis_f
+	parent = heavenly_being_5_perk
+	
+	trait = cultivation_four_axis
+	
+	effect = {
+		add_character_flag = can_attempt_four_axis_breakthrough
+		trigger_event = cultivation_breakthrough.1600
+	}
+	
+	character_modifier = {
+		prowess = 63
+		learning = 10
+		health = 6.0
+		advantage = 50
+		monthly_prestige = 2.0
+	}
+}

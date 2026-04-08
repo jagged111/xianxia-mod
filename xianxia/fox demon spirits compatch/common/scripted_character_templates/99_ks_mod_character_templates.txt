@@ -1,0 +1,205 @@
+﻿fox_template = {
+	age = { 14 27 }
+		
+	# They should be vaguely good at what they do
+	
+	random_traits = no
+	
+	random_traits_list = {
+		count = 3
+		# Personality traits
+		lustful = {}
+		brave = {}
+		gregarious = {}
+		ambitious = {}
+		diligent = {}
+		calm = {}
+		patient = {}
+		honest = {}
+		just = {}
+		stubborn = {}
+		fickle = {}
+	}
+	
+	random_traits_list = {
+		count = { 0 1 }
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		beauty_good_3 = {}
+	}
+	
+	random_traits_list = {
+		count = { 0 1 }
+		huxian_cultivation = {}
+	}
+	
+	random_traits_list = {
+		count = 1
+		education_learning_3 = {}
+		education_learning_4 = {}
+		education_intrigue_3 = {}
+		education_intrigue_4 = {}
+		education_diplomacy_3 = {}
+		education_diplomacy_4 = {}
+		education_stewardship_3 = {}
+		education_stewardship_4 = {}
+		education_martial_3 = {}
+		education_martial_4 = {}
+	}
+	trait = huxian_blood
+	
+	# Lowborn from the local populace
+	dynasty = none
+	faith = faith:zhengyi#root.capital_province.faith
+	culture = culture:huxian
+
+	# Some chance of non-dominant gender, but small
+	gender_female_chance = 80
+
+
+	intrigue = {
+		12
+		33
+	}
+
+	after_creation = {
+		if = { # If the character does not speak the ruler's language, learn it
+			limit = {
+				NOT = {
+					knows_language_of_culture = root.culture
+				}
+			}
+			learn_language_of_culture = root.culture
+		}
+
+		if = {
+			limit = {
+				has_trait = huxian_cultivation
+			}
+			add_trait_xp = {
+				trait = huxian_cultivation
+				value = {
+					integer_range = {
+						min = 0
+						max = 40
+					}
+				}
+			}
+		}		
+	}
+}
+
+ks_cultivation_teacher_template= {
+	age = { 45 70 }
+	
+	random_traits_list = {
+		count = 1
+		education_learning_3 = {}
+		education_learning_4 = {}
+		education_learning_5 = {}
+	}
+	
+	random_traits_list = {
+		count = { 0 1 }
+		lifestyle_herbalist = {}
+		lifestyle_mystic = {}
+	}
+	
+	trait=huxian_blood
+	trait=huxian_cultivation
+	random_traits = yes
+	
+	# Lowborn from the local populace
+	dynasty = none
+	faith = root.capital_province.faith
+	culture = culture:huxian
+
+	# Some chance of non-dominant gender, but small
+	gender_female_chance = 50
+
+	intrigue = {
+		22
+		33
+	}
+
+	after_creation = {
+		if = { # If the character does not speak the ruler's language, learn it
+			limit = {
+				NOT = {
+					knows_language_of_culture = root.culture
+				}
+			}
+			learn_language_of_culture = root.culture
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = huxian_cultivation }
+			}
+			add_trait = huxian_cultivation
+		}
+		add_trait_xp = {
+			trait = huxian_cultivation
+			value = {
+				integer_range = {
+					min = 50
+					max = 70
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_trait = lifestyle_mystic
+			}
+			add_trait_xp = {
+				trait = lifestyle_mystic
+				value = {
+					integer_range = {
+						min = 50
+						max = 70
+					}
+				}
+			}
+		}	
+	}
+}
+
+ks_cultivation_student_template= {
+	age = { 16 36 }
+	
+	trait=huxian_blood
+	trait=huxian_cultivation
+	random_traits = yes
+	
+	dynasty = none
+	faith = root.capital_province.faith
+	culture = culture:huxian
+
+	# Some chance of non-dominant gender, but small
+	gender_female_chance = 50
+
+	intrigue = {
+		12
+		23
+	}
+
+	after_creation = {
+		if = {
+			limit = {
+				NOT = { has_trait = huxian_cultivation }
+			}
+			add_trait = huxian_cultivation
+		}
+		add_trait_xp = {
+			trait = huxian_cultivation
+			value = {
+				integer_range = {
+					min = 0
+					max = 30
+				}
+			}
+		}
+	
+	}
+}

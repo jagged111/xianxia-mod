@@ -1,0 +1,307 @@
+﻿### NEW EFFECTS ###
+dragatus_prisoner_marriage_interaction_effect = {
+	scope:recipient = {
+		trigger_event = marriage_interaction.0010
+		if = {
+			limit = {
+				is_imprisoned = yes
+			}
+			release_from_prison = yes
+			if = {
+				limit = {
+					NOR = {
+						has_relation_lover = scope:actor
+						has_relation_soulmate = scope:actor
+						is_courtier_of = scope:actor
+					}
+				}
+				add_opinion = {
+					target = scope:actor
+					modifier = demanded_recruitment
+				}
+			}
+			if = {
+				limit = {
+					is_married = yes
+				}
+				every_spouse = {
+					#trigger_event = marriage_interaction.0041
+					divorce = scope:recipient # no opinion hit, no scripted effect
+					add_opinion = {
+						target = scope:recipient
+						modifier = dragatus_rightful_spouse_opinion
+					}
+					progress_towards_rival_effect = { CHARACTER = scope:actor }
+					if = {
+						limit = { scope:recipient = { is_female = yes } }
+						add_opinion = {
+							target = scope:actor
+							modifier = dragatus_stole_my_wife_opinion
+						}
+					}
+					else = {
+						add_opinion = {
+							target = scope:actor
+							modifier = dragatus_stole_my_husband_opinion
+						}
+					}
+				}
+			}
+			if = {
+				limit = { exists = betrothed }
+				#trigger_event = marriage_interaction.0041 # opinion event
+				break_betrothal = betrothed
+			}
+		}
+	}
+	scope:secondary_actor = {
+		if = {
+            limit = { is_female = yes }
+            marry_matrilineal = scope:secondary_recipient
+        }
+        else = {
+            marry = scope:secondary_recipient
+        }
+	}
+
+	###MANAGEMENT SCRIPT FOR VARIOUS EVENTS/CONTENT###
+	
+	#If your spouse councillor had boosted the chance of marriage, remove modifier
+	if = {
+		limit = {
+			scope:secondary_actor = {
+				has_character_modifier = heir_easier_to_marry_off_modifier
+			}
+			scope:actor = { player_heir = scope:secondary_actor }
+		}
+		scope:secondary_actor = {
+			remove_character_modifier = heir_easier_to_marry_off_modifier
+		}
+	}
+	if = {
+		limit = {
+			scope:secondary_actor = {
+				is_child_of = scope:actor
+				has_character_modifier = child_easier_to_marry_off_modifier
+			}
+		}
+		scope:secondary_actor = {
+			remove_character_modifier = child_easier_to_marry_off_modifier
+		}
+	}
+}
+
+dragatus_PM_imprison_and_reclaim_wife_effect = {
+	if = {
+		limit = {
+			OR = {
+				reverse_has_opinion_modifier = {
+					target = scope:attacker
+					modifier = dragatus_stole_my_wife_opinion
+				}
+				reverse_has_opinion_modifier = {
+					target = scope:attacker
+					modifier = dragatus_stole_my_husband_opinion
+				}
+				reverse_has_opinion_modifier = {
+					target = scope:attacker
+					modifier = forced_spouse_concubine_marriage_opinion
+				}
+			}
+		}
+		save_temporary_scope_as = dragatus_PM_imprison_target
+		scope:attacker = {
+			imprison = { target = scope:dragatus_PM_imprison_target }
+		}
+	}
+	every_courtier = {
+		if = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					target = scope:attacker
+					modifier = dragatus_rightful_spouse_opinion
+				}
+			}
+			save_temporary_scope_as = dragatus_prisoner_marriage_rightful_spouse
+			every_spouse = {
+				divorce = scope:dragatus_prisoner_marriage_rightful_spouse # no opinion hit, no scripted effect
+				progress_towards_rival_effect = { CHARACTER = scope:attacker }
+			}
+			if = {
+	            limit = { is_male = yes }
+	            marry_matrilineal = scope:attacker
+	        }
+	        else = {
+	            marry = scope:attacker
+	        }
+		}
+	}
+	every_courtier_away = {
+		if = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					target = scope:attacker
+					modifier = dragatus_rightful_spouse_opinion
+				}
+				is_imprisoned_by = scope:attacker
+			}
+			save_temporary_scope_as = dragatus_prisoner_marriage_rightful_spouse
+			every_spouse = {
+				divorce = scope:dragatus_prisoner_marriage_rightful_spouse # no opinion hit, no scripted effect
+				progress_towards_rival_effect = { CHARACTER = scope:attacker }
+			}
+			if = {
+	            limit = { is_male = yes }
+	            marry_matrilineal = scope:attacker
+	        }
+	        else = {
+	            marry = scope:attacker
+	        }
+		}
+	}	
+}
+
+### MODIFIED EFFECTS ###
+
+concubine_on_accept_effect = {
+	scope:recipient = {
+		trigger_event = marriage_interaction.0040
+		# If the new concubine was your prisoner ...
+		if = {
+			# Victim is angry for being forced into concubinage (unless they wanted to marry you or were already your property).
+			limit = {
+				is_imprisoned = yes
+			}
+			release_from_prison = yes
+			if = {
+				limit = {
+					NOR = {
+						has_relation_lover = scope:actor
+						has_relation_soulmate = scope:actor
+						is_courtier_of = scope:actor
+					}
+				}
+				add_opinion = {
+					target = scope:actor
+					# modifier = demanded_recruitment
+					modifier = forced_me_concubine_marriage_opinion
+				}
+			}
+
+			# Family members of victim are also angry that you've forced them into concubinage.
+			every_close_family_member = {
+				if = {
+					limit = { 
+						NOT = { this = scope:actor } # Don't hate yourself.
+					}
+					add_opinion = {
+						target = scope:actor
+						modifier = forced_family_concubine_marriage_opinion
+					}
+					hidden_effect = {
+						send_interface_message = {
+							type = event_generic_neutral
+							title = msg_close_family_member_taken_as_concubine_title
+							right_icon = scope:recipient
+							left_icon = scope:secondary_actor
+							show_as_tooltip = { scope:secondary_actor = { make_concubine = scope:recipient } }
+						}
+					}
+
+					# Family members are even *more* angry if they don't believe in concubines/polyamory (different from polygamy). Also if they don't accept same-sex relationships
+					if = {
+						limit = { 
+							OR = {
+								NOT = { faith = { has_doctrine = doctrine_concubines } }
+								NOT = { faith = { has_doctrine = tenet_polyamory } }
+								AND = {
+									allowed_to_marry_same_sex_trigger = no
+									scope:recipient = { sex_same_as = scope:secondary_actor }
+								}
+							}
+						}
+						add_opinion = {
+							target = scope:actor
+							modifier = relative_in_blasphemous_union_opinion
+						}
+					}
+				}
+			}
+
+			# Spouses, if any exist, are also furious.
+			if = {
+				limit = {
+					is_married = yes
+				}
+				every_spouse = {
+					add_opinion = {
+						target = scope:recipient
+						modifier = dragatus_rightful_spouse_opinion
+					}
+					progress_towards_rival_effect = { CHARACTER = scope:actor }
+					add_opinion = {
+						target = scope:actor
+						modifier = forced_spouse_concubine_marriage_opinion
+					}
+				#	if = {
+				#		limit = { scope:recipient = { is_female = yes } }
+				#		add_opinion = {
+				#			target = scope:actor
+				#			modifier = dragatus_stole_my_wife_opinion
+				#		}
+				#	}
+				#	else = {
+				#		add_opinion = {
+				#			target = scope:actor
+				#			modifier = dragatus_stole_my_husband_opinion
+				#		}
+				#	}
+					divorce = scope:recipient # no additional opinion hit, no scripted effect
+				}
+				# trigger_event = marriage_interaction.0041 #just adds opinion
+			}
+					
+			# Stealing concubines pisses the former concubinist off.
+			if = {
+				limit = {
+					is_concubine = yes
+				}
+				this.concubinist = {
+					add_opinion = {
+						target = scope:secondary_actor
+						modifier = stole_concubine_opinion
+					}
+					remove_concubine = scope:recipient # no additional opinion hit, no scripted effect
+				}
+			}
+
+			# Break any betrothals which may exist (without additional opinion penalties).
+			if = {
+				limit = { exists = betrothed }
+				betrothed = { trigger_event = marriage_interaction.0041 }
+				break_betrothal = betrothed
+			}
+
+			# Target loses all of their own concubines.
+			if = {
+				limit = { number_of_concubines > 0	}
+				every_concubine = {
+					scope:recipient = {
+						remove_concubine = prev
+					}
+				}
+			}
+		}
+	}
+	scope:actor = {
+		hidden_effect = {
+			send_interface_toast = {
+				type = event_generic_neutral
+				title = msg_concubine_taken_title
+				right_icon = scope:recipient
+				make_concubine = scope:recipient
+				#custom_tooltip = msg_concubine_taken_desc
+			}
+		}
+	}
+}

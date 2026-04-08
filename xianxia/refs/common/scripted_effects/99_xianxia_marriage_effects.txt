@@ -1,0 +1,39 @@
+﻿# ===================================================================
+# AI MARRIAGE PREFERENCE — Prioritize Good Meridians & Above
+# ===================================================================
+
+xianxia_marriage_preference_effect = {
+    # Boost AI marriage score for partners with good+ meridians
+    if = {
+        limit = { has_trait = heavenly_meridians }
+        add_marriage_ai_value = 200   # Highest priority
+    }
+    else_if = {
+        limit = { has_trait = excellent_meridians }
+        add_marriage_ai_value = 150
+    }
+    else_if = {
+        limit = { has_trait = good_meridians }
+        add_marriage_ai_value = 100
+    }
+    else_if = {
+        limit = { has_trait = normal_meridians }
+        add_marriage_ai_value = 30    # Slight preference over poor
+    }
+    else_if = {
+        limit = { has_trait = poor_meridians }
+        add_marriage_ai_value = -20   # Minor penalty
+    }
+
+    # Extra boost if partner is already cultivating
+    if = {
+        limit = { has_trait = qi_gathering OR = { has_trait = foundation_establishment has_trait = core_formation has_trait = nascent_soul } }
+        add_marriage_ai_value = 80
+    }
+
+    # Ambitious/zealous/greedy rulers prioritize even more
+    if = {
+        limit = { OR = { has_trait = ambitious has_trait = greedy has_trait = zealous } }
+        add_marriage_ai_value = 50
+    }
+}

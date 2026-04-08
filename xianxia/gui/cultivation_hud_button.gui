@@ -1,0 +1,49 @@
+﻿######################################################
+############# CULTIVATION HUD BUTTON #################
+######################################################
+
+# This file adds a button to the top bar HUD
+
+widget = {
+	visible = "[And( Not( IsGameViewOpen('barbershop') ), And( Not( IsPauseMenuShown ), And(Not(IsRightWindowOpen), IsDefaultGUIMode)))]"
+	layer = hud_layer
+	
+	name = "cultivation_hud_button"
+	size = { 100% 100% }
+	using = Animation_ShowHide_Quick
+
+	button_round = {
+		name = "open_cultivation_window"
+		size = { 61 61 }
+		position = { 340 -60 }
+		parentanchor = bottom|left
+		
+		# Icon for the button
+		#texture = "gfx/interface/icons/dynasty/cultivation_legacy_track.dds"
+		
+		icon = {
+			size = { 61 61 }
+			texture = "gfx/interface/icons/lifestyles_perks/cultivation_qi_gathering_f.dds"
+		}
+		
+		# Click opens the window
+		onclick = "[GetVariableSystem.Toggle('cultivation_window_visible')]"
+		
+		tooltip = CULTIVATION_WINDOW_TOOLTIP
+		
+		state = {
+			name = _mouse_enter
+			alpha = 1
+			duration = 0.7
+			using = Animation_Curve_Default
+		}
+
+		state = {
+			name = _mouse_leave
+			alpha = 0.7
+			duration = 0.2
+			using = Animation_Curve_Default
+		}
+		
+	}
+}

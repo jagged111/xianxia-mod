@@ -1,0 +1,31 @@
+﻿#cultivation_has_martial_arts
+
+cultivation_has_martial_arts_5 = {
+	dynasty ?= {
+		has_dynasty_perk = cultivation_legacy_5
+	}
+}
+
+cultivation_has_martial_arts_4 = {
+	dynasty ?= {
+		has_dynasty_perk = cultivation_legacy_4
+	}
+}
+
+cultivation_has_martial_arts_3 = {
+	dynasty ?= {
+		has_dynasty_perk = cultivation_legacy_3
+	}
+}
+
+cultivation_has_martial_arts_2 = {
+	dynasty ?= {
+		has_dynasty_perk = cultivation_legacy_2
+	}
+}
+
+cultivation_has_martial_arts_1 = {
+	dynasty ?= {
+		has_dynasty_perk = cultivation_legacy_1
+	}
+}

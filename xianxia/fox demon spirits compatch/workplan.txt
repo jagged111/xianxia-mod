@@ -1,0 +1,57 @@
+Done:
+	create culture
+	3D model of ears
+	add 3D model of ears to game
+	culture related headgear(ears)
+	decision to search for a huxian
+	culture related headgear(ears) and gens
+	HUxian trait狐仙特质，特质也和装饰（耳朵）绑定
+	狐仙文化自动触发特质决议
+	
+	
+To Do Next:	
+	endless localization
+	3D model of a big fuwafuwa tail
+	swinable tail
+	决议事件链（而非单个事件）		
+	发起对宫廷中狐仙文化人物的勾引/求爱阴谋
+	当拥有狐仙文化的灵魂伴侣/情人后出现的转变文化/增加特质事件
+	独立的狐仙基因库
+	（拟）狐仙转化交互选项
+	属于狐仙文化的特殊修炼路线
+	中国DLC更新后检查所有和文化相关的设定
+
+Debug List:	
+	[21:10:19][E][culture_template.cpp:90]: Gfx culture mongol_clothing_gfx in huxian doesn't match existing sequence in han
+	文本：来听一个...重复了两次（在第二个界面）	
+
+
+
+_____________________________________________________________________
+Dairy & Notes:
+	Hope i can finish it
+	Look at the thumbnail.png may be helpful, if u want to give up (whatever things
+	The male name Hu Da means the first born of Hu family, but (Huda) also means allah in Northwest china，just a funny fact
+	
+	If u want to make paradox 3D models, use blender (ver<4.4.2), it's small and compatible, (it cost me a lot of time to find this
+	
+	A 3d model is added through the following levels of files: 
+		.mesh(\gfx\models\portraits, the model)
+		<->.asset(same place, create an entity)
+		<->name ur accessories under \gfx\portraits\accessories
+		<->log ur accessories in genelist at \common\genes
+		<->add the logged models into the game (barbershop/characters) at gfx\portraits\portrait_modifiers
+		
+	一个活动的实现方式
+		common\activities\activity_types中定义活动的类型，为主文件
+		主文件的on_action句柄调用活动中出现的事件，调用表定义在common\on_action，事件定义在events
+		主文件中定义意图选项，意图定义在common\activities\intents
+		主文件中定义pulse_actions脉冲事件（NPC的活动）表，具体脉冲事件定义在common\activities\pulse_actions
+		使用scripted_effects/00_activity_effects.txt中的activity_setup_special_type_progression_effect来设置进度条，使用activity_special_type_progression_来控制进度
+	
+
+	******
+	I make a maintenance list in the dir of this file, if one day I‘m too busy to update it, anyone can update the mod
+		YOU CAN DO IT   I'M SURE
+		
+	

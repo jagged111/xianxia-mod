@@ -1,0 +1,42 @@
+﻿l_english:
+
+ ttk_travel_event_duel.0001.t: "Cultivator Duel on the Spirit Roads"
+ ttk_travel_event_duel.0001.nemesis: "While traveling along a spirit road, my gaze locks onto a familiar aura in the distance: my [nemesis|E], [ttk_duel_target.GetFirstName].\n\nHeaven has placed [ttk_duel_target.GetHerHim] within sword-reach. I may let [ttk_duel_target.GetHerHim] pass... or seize this chance to settle karmic debt.\n\nDo I issue a challenge now, or let this opportunity slip away?"
+ ttk_travel_event_duel.0001.rival: "While traveling along a spirit road, my gaze locks onto a familiar aura in the distance: my [rival|E], [ttk_duel_target.GetFirstName].\n\nHeaven has placed [ttk_duel_target.GetHerHim] within sword-reach. I may let [ttk_duel_target.GetHerHim] pass... or seize this chance to settle karmic debt.\n\nDo I issue a challenge now, or let this opportunity slip away?"
+ ttk_travel_event_duel.0001.a: "Draw blades and settle this now"
+ ttk_travel_event_duel.0001.a.ct.beware:0 "Beware, this may end in death @death_icon!"
+ ttk_travel_event_duel.0001.b: "I will let [ttk_duel_target.GetHerHim] pass"
+ 
+ ttk_travel_event_duel.0004.t: "Cultivator Duel: Victory"
+ ttk_travel_event_duel.0004.desc: "After a fierce exchange of techniques, I finally overwhelm [ttk_duel_target.GetFirstName].\n\nNow [ttk_duel_target.GetSheHe] kneels and begs for mercy.\n\nWill I end [ttk_duel_target.GetHerHis] path here, or spare [ttk_duel_target.GetHerHim] and let [ttk_duel_target.GetHerHim] live with this humiliation?"
+ ttk_travel_event_duel.0004.a: "This debt is paid in blood"
+ ttk_travel_event_duel.0004.b: "Leave alive and remember this defeat"
+  
+ ttk_travel_event_duel.0006.t: "Cultivator Duel: Defeat"
+ ttk_travel_event_duel.0006.desc: "After a fierce exchange of techniques, I am overwhelmed by [ttk_duel_target.GetFirstName].\n\n[ttk_duel_target.GetSheHe|U] approaches me in silence and raises [ttk_duel_target.GetHerHis] weapon..."
+ ttk_travel_event_duel.0006.a: "My fate ends here"
+ 
+ ttk_travel_event_duel.0007.t: "Cultivator Duel: Defeat"
+ ttk_travel_event_duel.0007.desc: "After a fierce exchange of techniques, I am overwhelmed by [ttk_duel_target.GetFirstName].\n\n[ttk_duel_target.GetSheHe|U] says, \"Leave now, and never cross my path again.\""
+ ttk_travel_event_duel.0007.a: "I should leave at once"
+ 
+ ttk_travel_event_duel.0009.t: "Cultivator Duel: A Coward's Retreat"
+ ttk_travel_event_duel.0009.desc: "[ttk_duel_target.GetFirstName] refuses to answer my challenge.\n\n[ttk_duel_target.GetSheHe|U] claims urgent matters call [ttk_duel_target.GetHerHim] away, but every cultivator here can sense cowardice in [ttk_duel_target.GetHerHis] heart."
+ ttk_travel_event_duel.0009.a: "You cannot hide forever"
+
+ ttk_travel_event_duel.0100.t: "Opening Duel of the War"
+ ttk_travel_event_duel.0100.desc: "War banners rise, and before armies clash, I can challenge [ttk_war_duel_target.GetFirstName] to a cultivator's opening duel.\n\nIf accepted, this duel will set the tone of the entire campaign."
+ ttk_travel_event_duel.0100.a: "Challenge [ttk_war_duel_target.GetFirstName] before both armies"
+ ttk_travel_event_duel.0100.b: "No, we begin with full battle"
+
+ ttk_travel_event_duel.0102.t: "Opening Duel Refused"
+ ttk_travel_event_duel.0102.desc: "[ttk_war_duel_target.GetFirstName] declines the opening duel, citing caution and strategy. Among cultivators, everyone knows this as the path of the fearful."
+ ttk_travel_event_duel.0102.a: "Their spirit already falters"
+
+ ttk_travel_event_duel.0111.t: "Opening Duel: My Triumph"
+ ttk_travel_event_duel.0111.desc: "My techniques prevail before the gathered armies. [ttk_war_duel_target.GetFirstName]'s aura scatters, and my warriors roar with renewed conviction."
+ ttk_travel_event_duel.0111.a: "Heaven favors my path"
+
+ ttk_travel_event_duel.0112.t: "Opening Duel: My Fall"
+ ttk_travel_event_duel.0112.desc: "Before both armies, [ttk_war_duel_target.GetFirstName] shatters my defense and claims victory. The momentum of war now shifts to [ttk_war_duel_target.GetHerHim]."
+ ttk_travel_event_duel.0112.a: "The war is not over yet"

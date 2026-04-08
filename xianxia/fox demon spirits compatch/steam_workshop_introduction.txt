@@ -1,0 +1,270 @@
+狐仙 (ver. 1.0.0)
+
+[h1]为CK3的世界引入了一种新的幻想种族——狐仙/狐狸精[/h1]
+
+
+[h1]V1.0更新——狐仙修炼：[/h1]
+
+[h2]V1.0.0 update[/h2]
+此版本引入了狐仙修炼相关机制，为狐仙及其融合文化的角色增加了新的活动、交互和事件。
+
+对于想成为强大狐仙的野心勃勃的玩家，可以通过修炼活动、狐仙间的双修提升经验，获得能力、声誉、健康等方面的巨大增益；
+
+对于喜爱角色扮演的安于现状的玩家，新的文化设置将允许更容易地创建狐仙融合文化，保持狐仙文化的所有特色，拓展了自由度；
+
+此外还允许对任何符合性取向的角色发动”狐仙双修“交互，允许附身特定的角色并与之开展床上战斗（小游戏）。
+
+对于仅像保留狐仙血脉特质而不想转变文化的玩家，增加了决议，可以部分抵消狐仙血脉的负面影响。
+
+
+[h2]特色：[/h2]
+（1）为CK3添加狐仙这一中国/东亚神话中的传说物种，加入了狐仙文化和专有特质
+
+（2）新的活动、人物交互、数个决议、数十个事件，涉及获得狐仙廷臣、进行修炼、像狐仙一样附身异性角色并吸取精气等
+
+（3）加入了新的头饰——狐狸耳朵，和狐仙文化/特质的人物绑定，其它正常角色也可在理发器中佩戴
+
+[h2]Q&A[/h2]
+[h3]1.我该如何获得一个狐仙[/h3]
+在决议栏可以找到一个“听一个故事”的决议，点击进入相关事件即可
+
+[h3]2.我该如何让后代成为狐仙[/h3]
+当前版本最快捷的办法是和一位有“狐仙血脉”特质的角色（通常是一个狐仙）生育，子女有概率继承特质，有“狐仙血脉”的子女可以点击决议转变文化
+
+[h3]3.我有狐仙特质，但没有转变为狐仙文化，可以进行修炼吗[/h3]
+可以！只有你有“狐仙修炼”特质就可进行狐仙相关的所有活动和交互，尽管对于你的情况这不太容易。
+当一位狐仙对你使用“双修”交互，在小游戏的结束你会得到“狐仙修炼”这一特质的奖励；
+此外，进行“尝试消除狐仙血脉影响”决议，选择什么都不做，有小概率触发后续事件得到“狐仙修炼”特质
+
+[h3]4.关于融合狐仙文化[/h3]
+务必融合了“狐仙认同”的文化传统，以保证融合后的文化拥有狐仙文化的所有特色（例：狐耳、修炼活动）。“狐仙认同”只能通过融合有该传统的文化获得
+
+[h3]5.为什么狐仙修炼特质最高是“八尾”[/h3]
+因为“九尾”代表着极为强大的狐仙，在未来版本中将允许你踏上更为艰巨的成为九尾狐仙之路
+
+[h3]S1.MOD还会继续更新新内容吗[/h3]
+MOD将持续增添新的内容，至少包含两次大的更新
+1.1.0版本将细化你（包括作为人类的情况）与狐仙的关系等级，并允许通过约会等活动实现人妖之恋
+1.2.0版本将允许你成为“最伟大的狐”——九尾狐，以及引入一位狐仙伟大征服者（在传说中？她活跃于CK3的时期）
+此外将持续进行内容增加和细化，美化调整等工作，美化包括引入多种狐耳、狐狸尾巴和狐仙文化专属基因库等
+
+[h3]S2.我遇到了问题，并希望帮助MOD改进，但不知道该怎么做/在评论区难以准确描述问题[/h3]
+感谢！如果评论区难以描述你遇到的问题，您可以发送：报错的详细描述，图片，同时启用的MOD，以及~\Documents\Paradox Interactive\Crusader Kings III\logs下的相关文件（最后一项非常推荐）
+
+[h3]S3.联系作者和讨论[/h3]
+邮箱：1748143691@qq.com
+论坛：https://tieba.baidu.com/p/10089548149?pid=152690624513&cid=0#152690624513
+
+[h2]兼容性[/h2]
+和其它服饰MOD，特别是增加了附属头饰的MOD会出现附属头饰的覆盖（例：狐耳不能显示）
+若与其它MOD出现兼容性问题，请尝试调整MOD顺序
+
+
+[h2]翻译[/h2]
+目前包括汉语、英语、俄语、法语、日语和韩语（汉语外均为AI翻译），希望募集更好的人工翻译
+
+[h2]致谢[/h2]
+狐狸耳朵的模型是基于他人制作的猫耳模型修改得到，猫耳模组直接来自创意工坊的Catnip Kings: Elder Kings 2 Edition (Outdated)，该模组来自loverslab的stalindlrp，猫耳模型由AmishCyborg制作
+感谢stalindlrp和AmishCyborg的工作！
+
+[h2]更新内容(v1.0.0)[/h2]
+“狐仙修炼”活动及事件链
+“狐仙双修”交互及事件链
+“狐仙修炼”特质
+“消除狐仙血脉的影响”决议
+狐仙文化调整，修改了传统，新增“狐仙认同”传统，现在狐仙文化可以剥夺继承权、成为冒险者了
+修改了狐仙文化的基因池
+新增波斯狐仙文化，用于调试
+“狐仙血脉”现在是正面特质
+“听故事”决议额外产生一位符合性取向的狐仙可供招募，优化了人物生成机制
+优化MOD内存占用
+
+
+Fox Spirit (ver. 1.0.0)
+
+[h1]Introduces a New Fantasy Race to CK3 — Fox Spirits / Kitsune[/h1]
+
+[h1]V1.0 Update — Fox Spirit Cultivation:[/h1]
+
+[h2]V1.0.0 update[/h2]
+This version introduces fox spirit cultivation mechanics, adding new activities, interactions, and events for fox spirits and characters with hybrid cultures.
+
+For ambitious players aiming to become powerful fox spirits, you can gain massive benefits to abilities, reputation, and health through cultivation activities and dual cultivation with other fox spirits.
+
+For roleplay-focused players who prefer a stable experience, the new cultural settings make it easier to create a hybrid fox spirit culture, preserving all fox spirit cultural traits while expanding freedom.
+
+Additionally, the “Fox Spirit Dual Cultivation” interaction can be used on any character of a compatible orientation, allowing possession of specific characters and engaging in a mini-game battle in bed.
+
+For players who only wish to retain fox spirit bloodline traits without changing culture, new resolutions are available to partially offset the negative effects of fox spirit lineage.
+
+[h2]Features:[/h2]
+
+Adds the fox spirit, a legendary creature from Chinese/East Asian mythology, including fox spirit culture and unique traits.
+
+New activities, character interactions, several decisions, and dozens of events covering recruitment of fox spirit courtiers, cultivation, and possession of opposite-sex characters to absorb vital energy.
+
+Adds a new head accessory — fox ears — bound to characters with fox spirit culture/traits, but also wearable by normal characters via the barber interface.
+
+[h2]Q&A[/h2]
+
+[h3]1. How do I obtain a fox spirit?[/h3]
+Look for the “Listen to a Story” decision; clicking it will trigger the relevant event.
+
+[h3]2. How do I make my offspring fox spirits?[/h3]
+The fastest method in the current version is to have children with a character who has the “Fox Spirit Bloodline” trait (usually a fox spirit). Offspring have a chance to inherit the trait, and children with “Fox Spirit Bloodline” can use a decision to convert their culture.
+
+[h3]3. I have the fox spirit trait but haven’t converted to fox spirit culture. Can I cultivate?[/h3]
+Yes! As long as you have the “Fox Spirit Cultivation” trait, you can engage in all fox spirit activities and interactions, though it may be more challenging for your situation.
+When a fox spirit uses the “Dual Cultivation” interaction on you, completing the mini-game grants the “Fox Spirit Cultivation” trait.
+Additionally, using the “Attempt to Remove Fox Spirit Bloodline Effects” decision and choosing to do nothing has a small chance to trigger a follow-up event granting the “Fox Spirit Cultivation” trait.
+
+[h3]4. About hybrid fox spirit cultures[/h3]
+Make sure to incorporate the “Fox Spirit Identity” cultural tradition to ensure the hybrid culture retains all features of fox spirit culture (e.g., fox ears, cultivation activities). “Fox Spirit Identity” can only be obtained by merging cultures that include this tradition.
+
+[h3]5. Why is “Eight Tails” the maximum for the fox spirit cultivation trait?[/h3]
+Because “Nine Tails” represents an extremely powerful fox spirit. Future versions will allow players to pursue the more challenging path to become a Nine-Tailed Fox Spirit.
+
+[h3]S1. Will the MOD continue to receive updates?[/h3]
+The MOD will continue to add new content, including at least two major updates:
+
+Version 1.1.0 will refine relationships between you (including as a human) and fox spirits, allowing for human-demon romance through dating and other activities.
+
+Version 1.2.0 will allow you to become the “Greatest Fox” — the Nine-Tailed Fox — and introduce a legendary fox spirit conqueror active during the CK3 era.
+Additionally, the MOD will continue content expansions, fine-tuning, and aesthetic improvements, including multiple fox ears, fox tails, and a fox spirit-exclusive gene pool.
+
+[h3]S2. I encountered an issue and want to help improve the MOD, but don’t know how to describe it properly[/h3]
+Thank you! If the issue is hard to describe in comments, you can send: a detailed description of the error, screenshots, active MODs, and relevant files from ~\Documents\Paradox Interactive\Crusader Kings III\logs (highly recommended).
+
+[h3]S3. Contact and Discussion[/h3]
+Email: 1748143691@qq.com
+
+Forum: https://tieba.baidu.com/p/10089548149?pid=152690624513&cid=0#152690624513
+
+[h2]Compatibility[/h2]
+Conflicts may occur with other outfit MODs, especially those adding accessory headwear (e.g., fox ears may not display).
+If issues arise, try adjusting the MOD load order.
+
+[h2]Translations[/h2]
+Currently available in Chinese, English, Russian, French, Japanese, and Korean (all non-Chinese versions are AI translations). Better human translations are welcome.
+
+[h2]Acknowledgements[/h2]
+The fox ear model is adapted from a cat ear model originally created by others. The original Catnip Kings: Elder Kings 2 Edition (Outdated) MOD is from loverslab (stalindlrp), and the cat ear model was made by AmishCyborg.
+Thanks to stalindlrp and AmishCyborg for their work!
+
+[h2]Changelog (v1.0.0)[/h2]
+
+“Fox Spirit Cultivation” activities and event chain
+
+“Fox Spirit Dual Cultivation” interaction and event chain
+
+“Fox Spirit Cultivation” trait
+
+“Remove Fox Spirit Bloodline Effects” decision
+
+Fox Spirit culture adjustments, added “Fox Spirit Identity” tradition; fox spirit culture can now disinherit heirs and become adventurers
+
+Fox spirit gene pool updated
+
+Added Persian fox spirit culture for testing
+
+“Fox Spirit Bloodline” is now a positive trait
+
+“Listen to a Story” decision can recruit an orientation-compatible fox spirit; character generation optimized
+
+Improved MOD memory usage and removed unnecessary content
+
+
+
+
+
+Лисий Дух (ver. 1.0.0) — Перевод ChatGPT
+[h1]Вводит новую фантастическую расу в CK3 — Лисьи духи / Кицунэ[/h1]
+
+[h1]Обновление V1.0 — Культивация лисьего духа:[/h1]
+
+[h2]Обновление V1.0.0[/h2]
+В этой версии введена механика культивации лисьего духа, добавлены новые действия, взаимодействия и события для лисьих духов и персонажей с гибридными культурами.
+
+Амбициозные игроки, стремящиеся стать могущественными лисьими духами, могут получать значительные бонусы к способностям, репутации и здоровью через культивацию и совместную культивацию с другими лисьими духами.
+
+Игроки, ориентированные на ролевую игру и стабильный опыт, смогут легче создавать гибридную культуру лисьего духа, сохраняя все культурные особенности лисьего духа и расширяя свободу действий.
+
+Кроме того, взаимодействие «Совместная культивация лисьего духа» может быть применено к любому персонажу с совместимой ориентацией, позволяя овладеть конкретными персонажами и участвовать в мини-игре в кровати.
+
+Для игроков, которые хотят лишь сохранить черты лисьей крови без изменения культуры, доступны новые решения, частично компенсирующие негативные эффекты наследия лисьей крови.
+
+[h2]Особенности:[/h2]
+
+Добавлена раса лисьих духов, легендарное существо из китайской/восточноазиатской мифологии, с культурой лисьего духа и уникальными чертами.
+
+Новые действия, взаимодействия с персонажами, несколько решений и десятки событий, включая набор придворных лисьих духов, культивацию и овладение персонажами противоположного пола для поглощения жизненной энергии.
+
+Добавлен новый аксессуар для головы — лисьи уши, привязанный к персонажам с культурой/чертой лисьего духа, также доступный для обычных персонажей через интерфейс парикмахера.
+
+[h2]Вопросы и ответы:[/h2]
+
+[h3]1. Как получить лисьего духа?[/h3]
+Найдите решение «Послушать историю»; нажатие на него запускает соответствующее событие.
+
+[h3]2. Как сделать моих потомков лисьими духами?[/h3]
+В текущей версии самый быстрый способ — иметь детей с персонажем, обладающим чертой «Наследие лисьего духа» (обычно это лисьий дух). Потомки могут унаследовать черту, а дети с «Наследием лисьего духа» могут использовать решение для смены культуры.
+
+[h3]3. У меня есть черта лисьего духа, но я не сменил культуру. Могу ли я культивировать?[/h3]
+Да! Если у вас есть черта «Культивация лисьего духа», вы можете участвовать во всех соответствующих действиях и взаимодействиях, хотя это может быть сложнее для вашей ситуации.
+Если лисьий дух использует на вас взаимодействие «Совместная культивация», завершение мини-игры дает черту «Культивация лисьего духа».
+Кроме того, использование решения «Попытка убрать влияние наследия лисьей крови» и выбор «ничего не делать» имеет небольшой шанс запустить последующее событие с наградой чертой «Культивация лисьего духа».
+
+[h3]4. О гибридных культурах лисьих духов[/h3]
+Обязательно включите культурную традицию «Идентичность лисьего духа», чтобы гибридная культура сохранила все особенности лисьей культуры (например, лисьи уши, действия по культивации). «Идентичность лисьего духа» можно получить только путем слияния культур с этой традицией.
+
+[h3]5. Почему максимальное значение черты культивации — «Восемь хвостов»?[/h3]
+Потому что «Девять хвостов» представляет крайне могущественного лисьего духа. В будущих версиях будет доступен более сложный путь, чтобы стать Девятихвостым лисьим духом.
+
+[h3]S1. Будет ли MOD продолжать обновляться?[/h3]
+MOD продолжит добавлять новый контент, включая как минимум два крупных обновления:
+
+Версия 1.1.0 уточнит отношения между вами (в том числе как человеком) и лисьими духами, позволяя романтические отношения между людьми и демонами через свидания и другие активности.
+
+Версия 1.2.0 позволит вам стать «Величайшим лисом» — Девятихвостым лисом, а также представит легендарного завоевателя-лисьего духа, активного во времена CK3.
+Кроме того, MOD продолжит расширение контента, тонкую настройку и эстетические улучшения, включая множество лисьих ушей, хвостов и эксклюзивный генетический пул лисьего духа.
+
+[h3]S2. Я столкнулся с проблемой и хочу помочь улучшить MOD, но не знаю, как точно её описать[/h3]
+Спасибо! Если проблему сложно описать в комментариях, вы можете отправить: подробное описание ошибки, скриншоты, активные MODы и соответствующие файлы из ~\Documents\Paradox Interactive\Crusader Kings III\logs (очень рекомендуется).
+
+[h3]S3. Контакты и обсуждение[/h3]
+Эл. почта: 1748143691@qq.com
+
+Форум: https://tieba.baidu.com/p/10089548149?pid=152690624513&cid=0#152690624513
+
+[h2]Совместимость[/h2]
+Могут возникнуть конфликты с другими MODами костюмов, особенно с теми, которые добавляют аксессуары для головы (например, лисьи уши могут не отображаться).
+Если возникают проблемы, попробуйте изменить порядок загрузки MODов.
+
+[h2]Переводы[/h2]
+В настоящее время доступны на китайском, английском, русском, французском, японском и корейском (все версии, кроме китайской, являются переводами AI). Любые улучшенные человеческие переводы приветствуются.
+
+[h2]Благодарности[/h2]
+Модель лисьих ушей адаптирована из модели кошачьих ушей, созданной другими. Оригинальный мод Catnip Kings: Elder Kings 2 Edition (Outdated) предоставлен loverslab (stalindlrp), модель кошачьих ушей создана AmishCyborg.
+Спасибо stalindlrp и AmishCyborg за их работу!
+
+[h2]Список изменений (v1.0.0)[/h2]
+
+Деятельности и цепочка событий «Культивация лисьего духа»
+
+Взаимодействие и цепочка событий «Совместная культивация лисьего духа»
+
+Черта «Культивация лисьего духа»
+
+Решение «Убрать влияние наследия лисьей крови»
+
+Настройка культуры лисьего духа, добавление традиции «Идентичность лисьего духа», возможность лишения наследников и становления авантюристом
+
+Обновлен генетический пул лисьего духа
+
+Добавлена персидская культура лисьего духа для тестирования
+
+«Наследие лисьего духа» теперь является положительной чертой
+
+Решение «Послушать историю» позволяет набрать персонажа-лисьего духа с подходящей ориентацией; оптимизирован генератор персонажей
+
+Оптимизировано использование памяти MOD и удалены ненужные элементы

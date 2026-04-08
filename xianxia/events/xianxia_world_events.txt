@@ -1,0 +1,587 @@
+﻿namespace = xianxia_world
+
+xianxia_world.1000 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_landed = yes
+                is_adult = yes
+            }
+            xianxia_apply_government_adaptation_effect = yes
+        }
+
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+            }
+
+            if = {
+                limit = {
+                    OR = {
+                        has_trait = cultivation_nascent_soul
+                        has_trait = cultivation_heavenly_being
+                        has_trait = cultivation_four_axis
+                        has_trait = cultivation_integration
+                        has_trait = cultivation_star_shattering
+                        has_trait = cultivation_sacred_vessel
+                        has_trait = cultivation_entering_nirvana
+                        has_trait = cultivation_true_immortal
+                    }
+                }
+                add_character_modifier = {
+                    modifier = high_realm_longevity
+                    days = 365
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+xianxia_world.1100 = {
+    type = character_event
+    title = xianxia_world.1100.t
+    desc = xianxia_world.1100.desc
+
+    option = {
+        name = xianxia_world.1100.a
+        if = {
+            limit = { can_host_activity = activity_tournament }
+            ai_attempt_to_host_activity = activity_tournament
+        }
+        add_character_modifier = { modifier = sect_resource_surplus days = 730 }
+        add_prestige = 250
+        trigger_event = { id = xianxia_world.1110 days = 15 }
+    }
+}
+
+xianxia_world.1200 = {
+    type = character_event
+    title = xianxia_world.1200.t
+    desc = xianxia_world.1200.desc
+
+    option = {
+        name = xianxia_world.1200.a
+        xianxia_assign_sect_hierarchy_effect = yes
+        add_character_modifier = { modifier = sect_headquarters_realm days = 1825 }
+    }
+}
+
+xianxia_world.1300 = {
+    type = character_event
+    title = xianxia_world.1300.t
+    desc = xianxia_world.1300.desc
+
+    option = {
+        name = xianxia_world.1300.a
+        trigger_event = xianxia_world.1310
+    }
+}
+
+xianxia_world.1400 = {
+    type = character_event
+    title = xianxia_world.1400.t
+    desc = xianxia_world.1400.desc
+
+    option = {
+        name = xianxia_world.1400.a
+        xianxia_pick_weapon_path_effect = yes
+        add_character_modifier = { modifier = manual_comprehension days = 1095 }
+    }
+}
+
+xianxia_world.1500 = {
+    type = character_event
+    title = xianxia_world.1500.t
+    desc = xianxia_world.1500.desc
+
+    option = {
+        name = xianxia_world.1500.a
+        trigger_event = xianxia_world.1510
+    }
+}
+
+xianxia_world.1600 = {
+    type = character_event
+    title = xianxia_world.1600.t
+    desc = xianxia_world.1600.desc
+
+    option = {
+        name = xianxia_world.1600.a
+        random_list = {
+            45 = {
+                add_character_modifier = { modifier = tribulation_survivor days = 3650 }
+                add_prestige = 500
+                add_trait = jianghu_righteous
+            }
+            35 = {
+                add_character_modifier = { modifier = cultivation_deviation days = 1095 }
+                add_stress = 120
+            }
+            20 = {
+                death = { death_reason = death_cultivation_failure }
+            }
+        }
+    }
+}
+
+# Sect institutions and internal governance maintenance.
+xianxia_world.1700 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_landed = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+
+            if = {
+                limit = { NOT = { has_trait = sect_leader } }
+                add_trait = sect_leader
+            }
+
+            every_courtier = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    faith = prev.faith
+                    NOT = { has_trait = sect_leader }
+                }
+                if = {
+                    limit = {
+                        OR = {
+                            has_trait = cultivation_core_formation
+                            has_trait = cultivation_nascent_soul
+                            has_trait = cultivation_heavenly_being
+                            has_trait = cultivation_four_axis
+                            has_trait = cultivation_integration
+                            has_trait = cultivation_star_shattering
+                            has_trait = cultivation_sacred_vessel
+                            has_trait = cultivation_entering_nirvana
+                            has_trait = cultivation_true_immortal
+                        }
+                    }
+                    random_list = {
+                        35 = {
+                            remove_trait = sect_outer_hall_elder
+                            remove_trait = sect_enforcement_elder
+                            remove_trait = sect_disciple
+                            add_trait = sect_inner_hall_elder
+                        }
+                        40 = {
+                            remove_trait = sect_inner_hall_elder
+                            remove_trait = sect_enforcement_elder
+                            remove_trait = sect_disciple
+                            add_trait = sect_outer_hall_elder
+                        }
+                        25 = {
+                            remove_trait = sect_inner_hall_elder
+                            remove_trait = sect_outer_hall_elder
+                            remove_trait = sect_disciple
+                            add_trait = sect_enforcement_elder
+                        }
+                    }
+                }
+                else = {
+                    remove_trait = sect_inner_hall_elder
+                    remove_trait = sect_outer_hall_elder
+                    remove_trait = sect_enforcement_elder
+                    add_trait = sect_disciple
+                }
+            }
+
+            random = {
+                chance = 28
+                add_character_modifier = { modifier = sect_resource_stockpile days = 365 }
+            }
+            random = {
+                chance = 20
+                add_character_modifier = { modifier = sect_resource_obligations days = 365 }
+            }
+        }
+    }
+    option = { name = OK }
+}
+
+# Sect factional disputes and discipline crises.
+xianxia_world.1710 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_landed = yes
+                has_cultivation_sect_faith = yes
+            }
+            random = {
+                chance = 18
+                random_list = {
+                    45 = { add_character_modifier = { modifier = sect_internal_dispute days = 365 } }
+                    35 = { add_character_modifier = { modifier = sect_power_struggle days = 365 } }
+                    20 = {
+                        add_character_modifier = { modifier = sect_resource_obligations days = 365 }
+                        add_stress = 35
+                    }
+                }
+            }
+        }
+    }
+    option = { name = OK }
+}
+
+# Multi-stage Jianghu tournament chain.
+xianxia_world.1110 = {
+    type = character_event
+    title = xianxia_world.1110.t
+    desc = xianxia_world.1110.desc
+
+    option = {
+        name = xianxia_world.1110.a
+        add_character_modifier = { modifier = tournament_chain_momentum days = 365 }
+        add_prestige = 120
+        trigger_event = { id = xianxia_world.1120 days = 20 }
+    }
+
+    option = {
+        name = xianxia_world.1110.b
+        add_character_modifier = { modifier = tournament_chain_momentum days = 240 }
+        random = {
+            chance = 55
+            add_character_modifier = { modifier = tournament_chain_injury days = 240 }
+        }
+        random = {
+            chance = 65
+            random_living_character = {
+                limit = { is_adult = yes is_alive = yes NOT = { this = root } has_cultivation_sect_faith = yes }
+                add_stress = 20
+            }
+        }
+        add_prestige = 220
+        trigger_event = { id = xianxia_world.1120 days = 20 }
+    }
+}
+
+xianxia_world.1120 = {
+    type = character_event
+    title = xianxia_world.1120.t
+    desc = xianxia_world.1120.desc
+
+    option = {
+        name = xianxia_world.1120.a
+        add_prestige = 350
+        add_character_modifier = { modifier = sect_resource_surplus days = 730 }
+        add_dynasty_prestige = 120
+    }
+}
+
+# Multi-stage expedition/trial chain.
+xianxia_world.1510 = {
+    type = character_event
+    title = xianxia_world.1510.t
+    desc = xianxia_world.1510.desc
+
+    option = {
+        name = xianxia_world.1510.a
+        add_character_modifier = { modifier = expedition_progress days = 365 }
+        add_piety = 80
+        trigger_event = { id = xianxia_world.1520 days = 25 }
+    }
+
+    option = {
+        name = xianxia_world.1510.b
+        add_character_modifier = { modifier = expedition_progress days = 365 }
+        add_character_modifier = { modifier = expedition_setback days = 240 }
+        add_stress = 35
+        add_piety = 140
+        trigger_event = { id = xianxia_world.1520 days = 25 }
+    }
+}
+
+xianxia_world.1520 = {
+    type = character_event
+    title = xianxia_world.1520.t
+    desc = xianxia_world.1520.desc
+
+    option = {
+        name = xianxia_world.1520.a
+        random_list = {
+            50 = { add_character_modifier = { modifier = secret_realm_inheritance days = 1825 } add_gold = 120 }
+            35 = { add_learning_lifestyle_xp = major_lifestyle_xp add_piety = 150 }
+            15 = { add_character_modifier = { modifier = cultivation_deviation days = 730 } add_stress = 80 }
+        }
+    }
+}
+
+# Alchemy pipeline with tier + furnace quality and failure states.
+xianxia_world.1310 = {
+    type = character_event
+    title = xianxia_world.1310.t
+    desc = xianxia_world.1310.desc
+
+    option = {
+        name = xianxia_world.1310.a
+        if = {
+            limit = { learning >= 16 }
+            add_character_modifier = { modifier = alchemy_furnace_masterwork days = 1095 }
+            trigger_event = { id = xianxia_world.1320 days = 10 }
+        }
+        else = {
+            trigger_event = { id = xianxia_world.1320 days = 10 }
+        }
+    }
+}
+
+xianxia_world.1320 = {
+    type = character_event
+    title = xianxia_world.1320.t
+    desc = xianxia_world.1320.desc
+
+    option = {
+        name = xianxia_world.1320.a
+        change_variable = { name = alchemy_lifestyle_xp add = 1 }
+        xianxia_update_alchemy_lifestyle_trait_effect = yes
+
+        if = {
+            limit = {
+                has_trait = alchemy_lifestyle_tier_3
+                random = { chance = 10 }
+            }
+            add_character_modifier = { modifier = perfected_spirit_pill days = 730 }
+        }
+        else_if = {
+            limit = {
+                has_trait = alchemy_lifestyle_tier_2
+                random = { chance = 6 }
+            }
+            add_character_modifier = { modifier = perfected_spirit_pill days = 365 }
+        }
+        else_if = {
+            limit = {
+                has_trait = alchemy_lifestyle_tier_1
+                random = { chance = 3 }
+            }
+            add_character_modifier = { modifier = perfected_spirit_pill days = 180 }
+        }
+
+        if = {
+            limit = { has_trait = alchemy_body_tier_3 }
+            random_list = {
+                82 = {
+                    add_character_modifier = { modifier = perfected_spirit_pill days = 1825 }
+                    add_gold = 40
+                    random = {
+                        chance = 20
+                        add_character_modifier = { modifier = alchemy_enlightenment_pill days = 365 }
+                    }
+                    if = { limit = { has_character_flag = has_herb_stock } add_character_modifier = { modifier = alchemy_herb_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_ore_stock } add_character_modifier = { modifier = alchemy_ore_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_core_stock } add_character_modifier = { modifier = alchemy_core_stockpile days = 365 } }
+                }
+                13 = { add_character_modifier = { modifier = alchemy_backlash days = 365 } }
+                5 = { add_character_modifier = { modifier = alchemy_qi_deviation_wound days = 730 } add_stress = 60 }
+            }
+        }
+        else_if = {
+            limit = { has_trait = alchemy_body_tier_2 }
+            random_list = {
+                74 = {
+                    add_character_modifier = { modifier = perfected_spirit_pill days = 1825 }
+                    add_gold = 40
+                    random = {
+                        chance = 20
+                        add_character_modifier = { modifier = alchemy_enlightenment_pill days = 365 }
+                    }
+                    if = { limit = { has_character_flag = has_herb_stock } add_character_modifier = { modifier = alchemy_herb_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_ore_stock } add_character_modifier = { modifier = alchemy_ore_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_core_stock } add_character_modifier = { modifier = alchemy_core_stockpile days = 365 } }
+                }
+                18 = { add_character_modifier = { modifier = alchemy_backlash days = 365 } }
+                8 = { add_character_modifier = { modifier = alchemy_qi_deviation_wound days = 730 } add_stress = 60 }
+            }
+        }
+        else_if = {
+            limit = { has_trait = alchemy_body_tier_1 }
+            random_list = {
+                67 = {
+                    add_character_modifier = { modifier = perfected_spirit_pill days = 1825 }
+                    add_gold = 40
+                    random = {
+                        chance = 20
+                        add_character_modifier = { modifier = alchemy_enlightenment_pill days = 365 }
+                    }
+                    if = { limit = { has_character_flag = has_herb_stock } add_character_modifier = { modifier = alchemy_herb_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_ore_stock } add_character_modifier = { modifier = alchemy_ore_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_core_stock } add_character_modifier = { modifier = alchemy_core_stockpile days = 365 } }
+                }
+                22 = { add_character_modifier = { modifier = alchemy_backlash days = 365 } }
+                11 = { add_character_modifier = { modifier = alchemy_qi_deviation_wound days = 730 } add_stress = 60 }
+            }
+        }
+        else = {
+            random_list = {
+                60 = {
+                    add_character_modifier = { modifier = perfected_spirit_pill days = 1825 }
+                    add_gold = 40
+                    random = {
+                        chance = 20
+                        add_character_modifier = { modifier = alchemy_enlightenment_pill days = 365 }
+                    }
+                    if = { limit = { has_character_flag = has_herb_stock } add_character_modifier = { modifier = alchemy_herb_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_ore_stock } add_character_modifier = { modifier = alchemy_ore_stockpile days = 365 } }
+                    if = { limit = { has_character_flag = has_core_stock } add_character_modifier = { modifier = alchemy_core_stockpile days = 365 } }
+                }
+                25 = { add_character_modifier = { modifier = alchemy_backlash days = 365 } }
+                15 = { add_character_modifier = { modifier = alchemy_qi_deviation_wound days = 730 } add_stress = 60 }
+            }
+        }
+        remove_character_flag = has_herb_stock
+        remove_character_flag = has_ore_stock
+        remove_character_flag = has_core_stock
+    }
+}
+
+# Debug visibility toolkit.
+xianxia_world.1900 = {
+    type = character_event
+    title = xianxia_world.1900.t
+    desc = xianxia_world.1900.desc
+
+    option = {
+        name = xianxia_world.1900.a
+        if = { limit = { has_trait = cultivation_qi_gathering } custom_tooltip = xianxia_debug_stage_qi_gathering_tt }
+        if = { limit = { has_trait = cultivation_qi_refining } custom_tooltip = xianxia_debug_stage_qi_refining_tt }
+        if = { limit = { has_trait = cultivation_core_formation } custom_tooltip = xianxia_debug_stage_core_formation_tt }
+        if = { limit = { has_trait = cultivation_nascent_soul } custom_tooltip = xianxia_debug_stage_nascent_soul_tt }
+        if = { limit = { has_trait = sect_disciple } custom_tooltip = xianxia_debug_role_disciple_tt }
+        if = { limit = { has_trait = sect_inner_hall_elder } custom_tooltip = xianxia_debug_role_inner_hall_tt }
+        if = { limit = { has_trait = sect_outer_hall_elder } custom_tooltip = xianxia_debug_role_outer_hall_tt }
+        if = { limit = { has_trait = sect_enforcement_elder } custom_tooltip = xianxia_debug_role_enforcement_tt }
+        if = { limit = { has_trait = sect_leader } custom_tooltip = xianxia_debug_role_leader_tt }
+        if = { limit = { has_character_flag = heavenly_tribulation_cooldown } custom_tooltip = xianxia_debug_has_tribulation_cd_tt }
+        if = { limit = { has_character_flag = spirit_pill_refining_cooldown } custom_tooltip = xianxia_debug_has_alchemy_cd_tt }
+        if = { limit = { has_character_flag = secret_realm_expedition_cooldown } custom_tooltip = xianxia_debug_has_expedition_cd_tt }
+        if = { limit = { has_character_flag = sect_council_cooldown } custom_tooltip = xianxia_debug_has_council_cd_tt }
+        custom_tooltip = xianxia_debug_modifiers_tt
+    }
+}
+
+
+# Sect council governance and faction agenda outcomes.
+xianxia_world.1720 = {
+    type = character_event
+    title = xianxia_world.1720.t
+    desc = xianxia_world.1720.desc
+
+    option = {
+        name = xianxia_world.1720.a
+        add_character_modifier = { modifier = sect_council_consensus days = 730 }
+        add_character_modifier = { modifier = sect_resource_stockpile days = 365 }
+        add_prestige = 180
+    }
+
+    option = {
+        name = xianxia_world.1720.b
+        add_character_modifier = { modifier = sect_council_deadlock days = 730 }
+        add_character_modifier = { modifier = sect_internal_dispute days = 365 }
+        add_stress = 60
+        trigger_event = { id = xianxia_world.1730 days = 30 }
+    }
+}
+
+xianxia_world.1730 = {
+    type = character_event
+    title = xianxia_world.1730.t
+    desc = xianxia_world.1730.desc
+
+    option = {
+        name = xianxia_world.1730.a
+        add_character_modifier = { modifier = sect_power_struggle days = 1095 }
+        add_dread = 10
+    }
+
+    option = {
+        name = xianxia_world.1730.b
+        add_character_modifier = { modifier = sect_council_consensus days = 365 }
+        add_piety = 120
+    }
+}
+
+# Alchemy resource acquisition pre-step.
+xianxia_world.1330 = {
+    type = character_event
+    title = xianxia_world.1330.t
+    desc = xianxia_world.1330.desc
+
+    option = {
+        name = xianxia_world.1330.a
+        add_character_flag = has_herb_stock
+        add_character_flag = has_ore_stock
+        add_gold = { add = 25 multiply = -1 }
+    }
+
+    option = {
+        name = xianxia_world.1330.b
+        add_character_flag = has_core_stock
+        add_gold = { add = 45 multiply = -1 }
+        add_stress = 20
+    }
+}
+
+# Fox-spirit predation path: willingly embrace mortal-flesh feeding.
+xianxia_world.2260 = {
+    type = character_event
+    title = xianxia_world.2260.t
+    desc = xianxia_world.2260.desc
+
+    option = {
+        name = xianxia_world.2260.a
+        add_prestige = 100
+        add_character_modifier = { modifier = fox_spirit_awakened days = 365 }
+    }
+}
+
+# Cannibal fox spirits hunt mortals for power and social risk.
+xianxia_world.2261 = {
+    type = character_event
+    title = xianxia_world.2261.t
+    desc = xianxia_world.2261.desc
+
+    option = {
+        name = xianxia_world.2261.a
+        add_character_modifier = { modifier = fox_spirit_mortal_hunt_frenzy days = 730 }
+        add_dread = 20
+        add_stress = -35
+
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                NOT = { this = root }
+                NOT = { has_character_flag = fox_spirit_awakening_complete }
+                NOR = {
+                    faith = { has_doctrine_parameter = demonic_cultivation }
+                    faith = { has_doctrine_parameter = unorthodox_cultivation }
+                }
+            }
+            add_opinion = { target = root modifier = opinion_fox_spirit_mortal_hunter years = 20 }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+﻿l_english:
+#Getting d bloodline from eating heart
+  cultivation_constitutions_events.002.t:0 "Dragon heart"
+  cultivation_constitutions_events.002.desc:0 "You found a dragon heart. It fills you with power and tempts you to consume it, but there might be hidden risks that come with its consumption. What will you do?"
+  cultivation_constitutions_events.002.a:0 "Test your luck"
+  cultivation_constitutions_events.002.b:0 "Pass the opportunity"
+
+  cultivation_constitutions_events.003.t:0 "Prepare and take the dragon pill"
+  cultivation_constitutions_events.003.desc:0 "You now have all the required materials for the pill. While you know the process, there is always a chance for it to fail, but if you wait any longer the materials will start to rot. What will you do? (WIP questline, the idea is you eventually have to go for multiple steps to upgrade your bloodline into a dragon constitution, but for now I will leave it like this)"
+  cultivation_constitutions_events.003.a:0 "Give it a try"
+  cultivation_constitutions_events.003.b:0 "Let the materials rot"

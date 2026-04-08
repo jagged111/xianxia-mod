@@ -1,0 +1,31 @@
+﻿# Orthodox Cultivation Family - Righteous sects that follow the heavenly dao
+rf_cultivation_orthodox = {
+    graphical_faith = "pagan_gfx"
+	piety_icon_group = eastern
+	hostility_doctrine = eastern_hostility_doctrine
+	doctrine_background_icon = core_tenet_banner_eastern.dds
+}
+
+# Unorthodox Cultivation Family - Grey area sects, not evil but not purely righteous
+rf_cultivation_unorthodox = {
+    graphical_faith = "pagan_gfx"
+	piety_icon_group = eastern
+	hostility_doctrine = eastern_hostility_doctrine
+	doctrine_background_icon = core_tenet_banner_eastern.dds
+}
+
+# Demonic Cultivation Family - Evil sects that practice forbidden techniques
+rf_cultivation_demonic = {
+    graphical_faith = "pagan_gfx"
+	piety_icon_group = eastern
+	hostility_doctrine = abrahamic_hostility_doctrine
+	doctrine_background_icon = core_tenet_banner_eastern.dds
+}
+
+# Vagrant Cultivation Family - Wandering cultivators without fixed allegiance
+rf_cultivation_vagrant = {
+    graphical_faith = "pagan_gfx"
+	piety_icon_group = eastern
+	hostility_doctrine = pagan_hostility_doctrine
+	doctrine_background_icon = core_tenet_banner_eastern.dds
+}

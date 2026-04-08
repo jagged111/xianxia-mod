@@ -1,0 +1,502 @@
+﻿visit_cultivation_sect_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/visit_sect_decision.dds"
+    }    
+    #title = visit_cultivation_sect_decision
+    #desc = visit_cultivation_sect_desc
+    #selection_tooltip = visit_cultivation_sect_tooltip
+    #confirm_text = visit_cultivation_sect_confirm
+
+    decision_group_type = major
+    sort_order = 100
+
+    ai_check_interval = 0
+    ai_potential = { always = no }
+
+    is_shown = {
+        is_adult = yes
+        has_active_meridians = yes
+    }
+   
+    widget = {
+        gui = "decision_view_widget_option_list_generic"
+        controller = decision_option_list_controller
+        decision_to_second_step_button = "SELECT_ACTION"
+		show_from_start = yes
+        
+        # ===================================================================
+        # ORTHODOX FAMILY SECTS (20 total) - Event IDs 1000-1999
+        # ===================================================================
+        
+        # --- Orthodox Sword Dao (5 sects) - Event IDs 1000-1049 ---
+        item = {
+            value = visit_mount_hua_sect
+            current_description = visit_mount_hua_sect_decision_tooltip
+            localization = visit_mount_hua_sect
+            icon = "faith/mount_hua_sect.dds"
+            is_valid = { not = { has_character_flag = banished_mount_hua_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_heavenly_sword_pavilion
+            current_description = visit_heavenly_sword_pavilion_decision_tooltip
+            localization = visit_heavenly_sword_pavilion
+            icon = "faith/mount_hua_sect.dds"
+            is_valid = { not = { has_character_flag = banished_heavenly_sword_pavilion } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_ten_thousand_swords_valley
+            current_description = visit_ten_thousand_swords_valley_decision_tooltip
+            localization = visit_ten_thousand_swords_valley
+            icon = "faith/mount_hua_sect.dds"
+            is_valid = { not = { has_character_flag = banished_ten_thousand_swords_valley } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_violet_thunder_blade_sect
+            current_description = visit_violet_thunder_blade_sect_decision_tooltip
+            localization = visit_violet_thunder_blade_sect
+            icon = "faith/tang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_violet_thunder_blade_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_nine_star_formation_sect
+            localization = visit_nine_star_formation_sect
+            icon = "faith/zhongnan_sect.dds"
+            is_valid = { not = { has_character_flag = banished_nine_star_formation_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_mystic_seal_pavilion
+            localization = visit_mystic_seal_pavilion
+            icon = "faith/kongtong_sect.dds"
+            is_valid = { not = { has_character_flag = banished_mystic_seal_pavilion } }
+            ai_chance = { value = 0 }
+        }
+
+        # --- Orthodox Unity Dao (5 sects) - Event IDs 1100-1149 ---
+        item = {
+            value = visit_wudang_sect
+            current_description = visit_wudang_sect_decision_tooltip
+            localization = visit_wudang_sect
+            icon = "faith/wudang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_wudang_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_shaolin_temple
+            localization = visit_shaolin_temple
+            icon = "faith/shaolin_sect.dds"
+            is_valid = { not = { has_character_flag = banished_shaolin_temple } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_eternal_harmony_pavilion
+            localization = visit_eternal_harmony_pavilion
+            icon = "faith/wudang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_eternal_harmony_pavilion } }
+            ai_chance = { value = 0 }
+        }
+
+        # --- Orthodox Spirit Contract Dao (5 sects) - Event IDs 1150-1199 ---
+        item = {
+            value = visit_divine_beast_mountain
+            localization = visit_divine_beast_mountain
+            icon = "faith/hainan_sect.dds"
+            is_valid = { not = { has_character_flag = banished_divine_beast_mountain } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_thousand_beast_valley
+            localization = visit_thousand_beast_valley
+            icon = "faith/hainan_sect.dds"
+            is_valid = { not = { has_character_flag = banished_thousand_beast_valley } }
+            ai_chance = { value = 0 }
+        }
+
+        # ===================================================================
+        # UNORTHODOX FAMILY SECTS (20 total) - Event IDs 2000-2999
+        # ===================================================================
+        
+        # --- Unorthodox Saber Dao (5 sects) - Event IDs 2000-2049 ---
+        item = {
+            value = visit_crimson_moon_blade_hall
+            localization = visit_crimson_moon_blade_hall
+            icon = "faith/tang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_crimson_moon_blade_hall } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_tyrant_saber_palace
+            localization = visit_tyrant_saber_palace
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_tyrant_saber_palace } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_demon_suppressing_blade_clan
+            localization = visit_demon_suppressing_blade_clan
+            icon = "faith/tang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_demon_suppressing_blade_clan } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_medicine_king_valley
+            localization = visit_medicine_king_valley
+            icon = "faith/qingcheng_sect.dds"
+            is_valid = { not = { has_character_flag = banished_medicine_king_valley } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_hundred_herbs_pavilion
+            localization = visit_hundred_herbs_pavilion
+            icon = "faith/qingcheng_sect.dds"
+            is_valid = { not = { has_character_flag = banished_hundred_herbs_pavilion } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_jade_chamber_sect
+            localization = visit_jade_chamber_sect
+            icon = "faith/diancang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_jade_chamber_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_eternal_pleasure_hall
+            localization = visit_eternal_pleasure_hall
+            icon = "faith/diancang_sect.dds"
+            is_valid = { not = { has_character_flag = banished_eternal_pleasure_hall } }
+            ai_chance = { value = 0 }
+        }
+
+        # --- Unorthodox Jiang-shi Dao (5 sects) - Event IDs 2150-2199 ---
+        item = {
+            value = visit_moonless_night_pavilion
+            localization = visit_moonless_night_pavilion
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_moonless_night_pavilion } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_pale_bone_hall
+            localization = visit_pale_bone_hall
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_pale_bone_hall } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_eternal_rest_clan
+            localization = visit_eternal_rest_clan
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_eternal_rest_clan } }
+            ai_chance = { value = 0 }
+        }
+
+        # ===================================================================
+        # DEMONIC FAMILY SECTS (11 total) - Event IDs 3000-3999
+        # ===================================================================
+    
+        item = {
+            value = visit_ten_thousand_corpse_valley
+            localization = visit_ten_thousand_corpse_valley
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_ten_thousand_corpse_valley } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_venomous_serpent_valley
+            localization = visit_venomous_serpent_valley
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_venomous_serpent_valley } }
+            ai_chance = { value = 0 }
+        }
+
+        # --- Demonic Blood Dao (3 sects) - Event IDs 3100-3149 ---
+        item = {
+            value = visit_blood_yin_cult
+            localization = visit_blood_yin_cult
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_blood_yin_cult } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_blood_moon_demonic_sect
+            localization = visit_blood_moon_demonic_sect
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_blood_moon_demonic_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        # --- Demonic Lust Dao (2 sects) - Event IDs 3150-3199 ---
+        item = {
+            value = visit_succubus_palace
+            localization = visit_succubus_palace
+            icon = "faith/demonic_sect.dds"
+            is_valid = { not = { has_character_flag = banished_succubus_palace } }
+            ai_chance = { value = 0 }
+        }
+
+        # ===================================================================
+        # VAGRANT FAMILY SECTS (9 total) - Event IDs 4000-4999
+        # ===================================================================
+        
+        # --- Vagrant Wandering Blade Dao (3 sects) - Event IDs 4000-4049 ---
+        item = {
+            value = visit_lone_wolf_wanderers
+            localization = visit_lone_wolf_wanderers
+            icon = "faith/kunlun_sect.dds"
+            is_valid = { not = { has_character_flag = banished_lone_wolf_wanderers } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_vagrant_blade_brotherhood
+            localization = visit_vagrant_blade_brotherhood
+            icon = "faith/kunlun_sect.dds"
+            is_valid = { not = { has_character_flag = banished_vagrant_blade_brotherhood } }
+            ai_chance = { value = 0 }
+        }
+
+        # --- Vagrant Artifact Dao (3 sects) - Event IDs 4050-4099 ---
+        item = {
+            value = visit_thousand_treasures_pavilion
+            localization = visit_thousand_treasures_pavilion
+            icon = "faith/kunlun_sect.dds"
+            is_valid = { not = { has_character_flag = banished_thousand_treasures_pavilion } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_mystic_forge_hall
+            localization = visit_mystic_forge_hall
+            icon = "faith/kunlun_sect.dds"
+            is_valid = { not = { has_character_flag = banished_mystic_forge_hall } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_ancient_relic_sect
+            localization = visit_ancient_relic_sect
+            icon = "faith/kunlun_sect.dds"
+            is_valid = { not = { has_character_flag = banished_ancient_relic_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_primal_beast_sect
+            localization = visit_primal_beast_sect
+            icon = "faith/hainan_sect.dds"
+            is_valid = { not = { has_character_flag = banished_primal_beast_sect } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_primordial_chaos_hall
+            localization = visit_primordial_chaos_hall
+            icon = "faith/kunlun_sect.dds"
+            is_valid = { not = { has_character_flag = banished_primordial_chaos_hall } }
+            ai_chance = { value = 0 }
+        }
+
+        item = {
+            value = visit_feral_bond_sect
+            localization = visit_feral_bond_sect
+            icon = "faith/hainan_sect.dds"
+            is_valid = { not = { has_character_flag = banished_feral_bond_sect } }
+            ai_chance = { value = 0 }
+        }
+    }    
+
+    # ========================================================================
+    # EFFECTS - Event triggers for all 67 sects
+    # ========================================================================
+    effect = {
+        hidden_effect = {
+            
+            # ================================================================
+            # ORTHODOX FAMILY - Event IDs 1000-1999
+            # ================================================================
+            
+            # Orthodox Sword Dao - Event IDs 1000-1049
+            if = {
+                limit = { scope:visit_mount_hua_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.1000 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_heavenly_sword_pavilion = yes }
+                trigger_event = { id = cultivation_sect_visit.1001 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_ten_thousand_swords_valley = yes }
+                trigger_event = { id = cultivation_sect_visit.1003 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_violet_thunder_blade_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.1004 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_nine_star_formation_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.1052 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_mystic_seal_pavilion = yes }
+                trigger_event = { id = cultivation_sect_visit.1053 days = { 1 3 } }
+            }            
+            # Orthodox Unity Dao - Event IDs 1100-1149
+            if = {
+                limit = { scope:visit_wudang_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.1100 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_shaolin_temple = yes }
+                trigger_event = { id = cultivation_sect_visit.1101 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_eternal_harmony_pavilion = yes }
+                trigger_event = { id = cultivation_sect_visit.1102 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_divine_beast_mountain = yes }
+                trigger_event = { id = cultivation_sect_visit.1150 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_thousand_beast_valley = yes }
+                trigger_event = { id = cultivation_sect_visit.1154 days = { 1 3 } }
+            }
+            
+            # ================================================================
+            # UNORTHODOX FAMILY - Event IDs 2000-2999
+            # ================================================================
+            
+            # Unorthodox Saber Dao - Event IDs 2000-2049
+            if = {
+                limit = { scope:visit_crimson_moon_blade_hall = yes }
+                trigger_event = { id = cultivation_sect_visit.2000 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_tyrant_saber_palace = yes }
+                trigger_event = { id = cultivation_sect_visit.2001 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_demon_suppressing_blade_clan = yes }
+                trigger_event = { id = cultivation_sect_visit.2003 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_medicine_king_valley = yes }
+                trigger_event = { id = cultivation_sect_visit.2051 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_hundred_herbs_pavilion = yes }
+                trigger_event = { id = cultivation_sect_visit.2052 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_jade_chamber_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.2103 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_eternal_pleasure_hall = yes }
+                trigger_event = { id = cultivation_sect_visit.2104 days = { 1 3 } }
+            }
+            
+            # Unorthodox Jiang-shi Dao - Event IDs 2150-2199
+            if = {
+                limit = { scope:visit_moonless_night_pavilion = yes }
+                trigger_event = { id = cultivation_sect_visit.2150 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_pale_bone_hall = yes }
+                trigger_event = { id = cultivation_sect_visit.2151 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_eternal_rest_clan = yes }
+                trigger_event = { id = cultivation_sect_visit.2152 days = { 1 3 } }
+            }
+            
+            # ================================================================
+            # DEMONIC FAMILY - Event IDs 3000-3999
+            # ================================================================
+            
+            # Demonic Slaughter Dao - Event IDs 3000-3049
+            if = {
+                limit = { scope:visit_ten_thousand_corpse_valley = yes }
+                trigger_event = { id = cultivation_sect_visit.3001 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_venomous_serpent_valley = yes }
+                trigger_event = { id = cultivation_sect_visit.3051 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_blood_yin_cult = yes }
+                trigger_event = { id = cultivation_sect_visit.3100 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_blood_moon_demonic_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.3101 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_succubus_palace = yes }
+                trigger_event = { id = cultivation_sect_visit.3150 days = { 1 3 } }
+            }
+            
+            # ================================================================
+            # VAGRANT FAMILY - Event IDs 4000-4999
+            # ================================================================
+            
+            # Vagrant Wandering Blade Dao - Event IDs 4000-4049
+            if = {
+                limit = { scope:visit_lone_wolf_wanderers = yes }
+                trigger_event = { id = cultivation_sect_visit.4000 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_vagrant_blade_brotherhood = yes }
+                trigger_event = { id = cultivation_sect_visit.4002 days = { 1 3 } }
+            }
+            
+            # Vagrant Artifact Dao - Event IDs 4050-4099
+            if = {
+                limit = { scope:visit_thousand_treasures_pavilion = yes }
+                trigger_event = { id = cultivation_sect_visit.4050 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_mystic_forge_hall = yes }
+                trigger_event = { id = cultivation_sect_visit.4051 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_ancient_relic_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.4052 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_primal_beast_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.4101 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_primordial_chaos_hall = yes }
+                trigger_event = { id = cultivation_sect_visit.4102 days = { 1 3 } }
+            }
+            if = {
+                limit = { scope:visit_feral_bond_sect = yes }
+                trigger_event = { id = cultivation_sect_visit.4152 days = { 1 3 } }
+            }
+        }
+    }
+}

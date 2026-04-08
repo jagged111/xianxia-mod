@@ -1,0 +1,488 @@
+﻿# Cultivation Character Initialization Events
+# Path: events/cultivation_character_initialization_events.txt
+# Based on ACTUAL Carnalitas implementation
+
+namespace = cultivation_character_initialization
+
+# Initialize all living characters (game start)
+cultivation_character_initialization.0001 = {
+	type = character_event
+	scope = none
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			trigger_event = cultivation_character_initialization.0002
+			trigger_event = cultivation_character_initialization.0003
+			trigger_event = cultivation_character_initialization.0004
+			trigger_event = cultivation_character_initialization.0005
+			trigger_event = cultivation_character_initialization.0006
+		}
+	}
+}
+
+# Ensure character has one active meridian trait
+cultivation_character_initialization.0002 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		NOT = { has_active_meridians = yes }
+		NOT = { has_trait = crippled_meridians }
+	}
+
+	immediate = {
+		# Child inheritance pass: parent meridians influence newborn/child outcomes.
+		if = {
+			limit = {
+				is_adult = no
+				exists = mother
+				exists = father
+				mother = { has_active_meridians = yes }
+				father = { has_active_meridians = yes }
+			}
+			if = {
+				# Two normal parents: mostly normal, rare upside, rare poor/blocked.
+				limit = {
+					mother = { has_trait = normal_meridians }
+					father = { has_trait = normal_meridians }
+				}
+				random_list = {
+					820 = { add_trait = normal_meridians }
+					130 = { add_trait = good_meridians }
+					35 = { add_trait = excellent_meridians }
+					5 = { add_trait = heavenly_meridians }
+					8 = { add_trait = poor_meridians }
+					2 = { add_trait = crippled_meridians }
+				}
+			}
+			else_if = {
+				# Two strong parents (good+): mostly good/excellent with tiny low-roll risk.
+				limit = {
+					mother = { OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians } }
+					father = { OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians } }
+				}
+				random_list = {
+					540 = { add_trait = good_meridians }
+					320 = { add_trait = excellent_meridians }
+					120 = { add_trait = heavenly_meridians }
+					18 = { add_trait = normal_meridians }
+					1 = { add_trait = poor_meridians }
+					1 = { add_trait = crippled_meridians }
+				}
+			}
+			else_if = {
+				# One normal + one strong parent.
+				limit = {
+					OR = {
+						AND = {
+							mother = { has_trait = normal_meridians }
+							father = { OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians } }
+						}
+						AND = {
+							father = { has_trait = normal_meridians }
+							mother = { OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians } }
+						}
+					}
+				}
+				random_list = {
+					460 = { add_trait = normal_meridians }
+					360 = { add_trait = good_meridians }
+					145 = { add_trait = excellent_meridians }
+					25 = { add_trait = heavenly_meridians }
+					9 = { add_trait = poor_meridians }
+					1 = { add_trait = crippled_meridians }
+				}
+			}
+			else_if = {
+				# Two poor parents: still mostly poor/normal.
+				limit = {
+					mother = { has_trait = poor_meridians }
+					father = { has_trait = poor_meridians }
+				}
+				random_list = {
+					760 = { add_trait = poor_meridians }
+					220 = { add_trait = normal_meridians }
+					18 = { add_trait = good_meridians }
+					1 = { add_trait = excellent_meridians }
+					1 = { add_trait = crippled_meridians }
+				}
+			}
+			else = {
+				# Mixed-parent fallback.
+				random_list = {
+					520 = { add_trait = normal_meridians }
+					300 = { add_trait = good_meridians }
+					120 = { add_trait = excellent_meridians }
+					25 = { add_trait = heavenly_meridians }
+					30 = { add_trait = poor_meridians }
+					5 = { add_trait = crippled_meridians }
+				}
+			}
+		}
+		else_if = {
+			# For already-existing nobles generated without meridians (not newborn assignment),
+			# bias to normal+ so higher-realm cultivators appear in the world more often.
+			limit = {
+				is_lowborn = no
+				NOT = { is_adult = no }
+			}
+			random_list = {
+				# Noble fallback curve: normal-heavy with chances for high talent.
+				700000 = { add_trait = normal_meridians }
+				230000 = { add_trait = good_meridians }
+				68000 = { add_trait = excellent_meridians }
+				2000 = { add_trait = heavenly_meridians }
+			}
+		}
+		else = {
+			random_list = {
+				# Baseline rarity curve:
+				# poor ~85%, normal ~12%, good ~2.8%, excellent ~0.19%, heavenly ~0.0001%
+				850000 = { add_trait = poor_meridians }
+				120000 = { add_trait = normal_meridians }
+				28000 = { add_trait = good_meridians }
+				1900 = { add_trait = excellent_meridians }
+				1 = { add_trait = heavenly_meridians }
+			}
+		}
+	}
+}
+
+# Ensure every character age 14+ with meridians has a cultivation realm (qi gathering+) like education traits.
+cultivation_character_initialization.0003 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		age >= 14
+		has_active_meridians = yes
+		NOT = { is_cultivator = yes }
+	}
+
+	immediate = {
+		add_trait = cultivation_qi_gathering
+		cultivation_ai_grant_mortal_foundation_perks_effect = yes
+		if = {
+			limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+			add_perk = qi_gathering_meridian_1_perk
+		}
+	}
+}
+
+# Ensure AI adults with realms join a cultivation sect automatically.
+cultivation_character_initialization.0004 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		is_ai = yes
+		is_adult = yes
+		has_active_meridians = yes
+		is_cultivator = yes
+		NOT = { government_has_flag = government_is_theocracy }
+		NOT = { has_cultivation_sect_faith = yes }
+	}
+
+	immediate = {
+		cultivation_ai_join_any_sect_by_meridian_effect = yes
+	}
+}
+
+
+# Ensure children inherit sect affiliation from living parent when possible.
+cultivation_character_initialization.0005 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		is_adult = no
+		NOT = { has_cultivation_sect_faith = yes }
+		OR = {
+			AND = {
+				exists = mother
+				mother = {
+					is_alive = yes
+					has_cultivation_sect_faith = yes
+				}
+			}
+			AND = {
+				exists = father
+				father = {
+					is_alive = yes
+					has_cultivation_sect_faith = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_trait = huxian_blood }
+			cultivation_ai_join_fox_spirit_sect_effect = yes
+		}
+		else_if = {
+			limit = {
+				exists = mother
+				mother = { is_alive = yes has_cultivation_sect_faith = yes }
+			}
+			set_character_faith = mother.faith
+		}
+		else_if = {
+			limit = {
+				exists = father
+				father = { is_alive = yes has_cultivation_sect_faith = yes }
+			}
+			set_character_faith = father.faith
+		}
+	}
+}
+
+# Extremely rare bloodline lottery for world generation and newborns.
+cultivation_character_initialization.0006 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		NOT = { has_character_flag = bloodline_lottery_checked }
+		NOT = {
+			OR = {
+				has_trait = yin_bloodline_1
+				has_trait = yin_bloodline_2
+				has_trait = yin_bloodline_3
+				has_trait = yang_bloodline_1
+				has_trait = yang_bloodline_2
+				has_trait = yang_bloodline_3
+				has_trait = dragon_bloodline_1
+				has_trait = dragon_bloodline_2
+				has_trait = dragon_bloodline_3
+				has_trait = phoenix_bloodline_1
+				has_trait = phoenix_bloodline_2
+				has_trait = phoenix_bloodline_3
+				has_trait = anchestor_bloodline_1
+				has_trait = anchestor_bloodline_2
+				has_trait = anchestor_bloodline_3
+				has_trait = poison_bloodline_1
+				has_trait = poison_bloodline_2
+				has_trait = poison_bloodline_3
+				has_trait = cursed_bloodline_1
+				has_trait = cursed_bloodline_2
+				has_trait = cursed_bloodline_3
+				has_trait = demon_bloodline_1
+				has_trait = demon_bloodline_2
+				has_trait = demon_bloodline_3
+				has_trait = primal_bloodline_1
+				has_trait = primal_bloodline_2
+				has_trait = primal_bloodline_3
+				has_trait = spirit_bloodline_1
+				has_trait = spirit_bloodline_2
+				has_trait = spirit_bloodline_3
+				has_trait = sun_bloodline_1
+				has_trait = sun_bloodline_2
+				has_trait = sun_bloodline_3
+			}
+		}
+	}
+
+	immediate = {
+		add_character_flag = bloodline_lottery_checked
+		# World seeding: ensure each foundation bloodline appears at least once.
+		# This runs before the normal lottery and will fill any missing lineages
+		# across the world one by one as unawakened characters are initialized.
+		if = {
+			limit = { NOT = { any_living_character = { has_trait = yin_bloodline_1 } } }
+			add_trait = yin_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = yang_bloodline_1 } } }
+			add_trait = yang_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = dragon_bloodline_1 } } }
+			add_trait = dragon_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = phoenix_bloodline_1 } } }
+			add_trait = phoenix_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = anchestor_bloodline_1 } } }
+			add_trait = anchestor_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = poison_bloodline_1 } } }
+			add_trait = poison_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = cursed_bloodline_1 } } }
+			add_trait = cursed_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = demon_bloodline_1 } } }
+			add_trait = demon_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = primal_bloodline_1 } } }
+			add_trait = primal_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = spirit_bloodline_1 } } }
+			add_trait = spirit_bloodline_1
+		}
+		else_if = {
+			limit = { NOT = { any_living_character = { has_trait = sun_bloodline_1 } } }
+			add_trait = sun_bloodline_1
+		}
+		else_if = {
+			limit = { is_adult = no }
+			# Children of destiny: tiny odds for one, or very rarely multiple,
+			# bloodline awakenings.
+			random_list = {
+				99784 = { }
+				15 = { add_trait = yin_bloodline_1 }
+				15 = { add_trait = yang_bloodline_1 }
+				15 = { add_trait = dragon_bloodline_1 }
+				15 = { add_trait = phoenix_bloodline_1 }
+				15 = { add_trait = anchestor_bloodline_1 }
+				15 = { add_trait = poison_bloodline_1 }
+				15 = { add_trait = cursed_bloodline_1 }
+				15 = { add_trait = demon_bloodline_1 }
+				15 = { add_trait = primal_bloodline_1 }
+				15 = { add_trait = spirit_bloodline_1 }
+				15 = { add_trait = sun_bloodline_1 }
+				10 = { add_trait = alchemy_body_tier_1 }
+				4 = { add_trait = alchemy_body_tier_2 }
+				2 = { add_trait = alchemy_body_tier_3 }
+				8 = { add_trait = formation_body_tier_1 }
+				3 = { add_trait = formation_body_tier_2 }
+				1 = { add_trait = formation_body_tier_3 }
+				4 = {
+					random_list = {
+						1 = { add_trait = yin_bloodline_1 }
+						1 = { add_trait = yang_bloodline_1 }
+						1 = { add_trait = dragon_bloodline_1 }
+						1 = { add_trait = phoenix_bloodline_1 }
+						1 = { add_trait = anchestor_bloodline_1 }
+						1 = { add_trait = poison_bloodline_1 }
+						1 = { add_trait = cursed_bloodline_1 }
+						1 = { add_trait = demon_bloodline_1 }
+						1 = { add_trait = primal_bloodline_1 }
+						1 = { add_trait = spirit_bloodline_1 }
+						1 = { add_trait = sun_bloodline_1 }
+						1 = { add_trait = alchemy_body_tier_1 }
+						1 = { add_trait = alchemy_body_tier_2 }
+						1 = { add_trait = alchemy_body_tier_3 }
+						1 = { add_trait = formation_body_tier_1 }
+						1 = { add_trait = formation_body_tier_2 }
+						1 = { add_trait = formation_body_tier_3 }
+					}
+					random_list = {
+						1 = { add_trait = yin_bloodline_1 }
+						1 = { add_trait = yang_bloodline_1 }
+						1 = { add_trait = dragon_bloodline_1 }
+						1 = { add_trait = phoenix_bloodline_1 }
+						1 = { add_trait = anchestor_bloodline_1 }
+						1 = { add_trait = poison_bloodline_1 }
+						1 = { add_trait = cursed_bloodline_1 }
+						1 = { add_trait = demon_bloodline_1 }
+						1 = { add_trait = primal_bloodline_1 }
+						1 = { add_trait = spirit_bloodline_1 }
+						1 = { add_trait = sun_bloodline_1 }
+						1 = { add_trait = alchemy_body_tier_1 }
+						1 = { add_trait = alchemy_body_tier_2 }
+						1 = { add_trait = alchemy_body_tier_3 }
+						1 = { add_trait = formation_body_tier_1 }
+						1 = { add_trait = formation_body_tier_2 }
+						1 = { add_trait = formation_body_tier_3 }
+					}
+				}
+				1 = {
+					random_list = {
+						1 = { add_trait = yin_bloodline_1 }
+						1 = { add_trait = yang_bloodline_1 }
+						1 = { add_trait = dragon_bloodline_1 }
+						1 = { add_trait = phoenix_bloodline_1 }
+						1 = { add_trait = anchestor_bloodline_1 }
+						1 = { add_trait = poison_bloodline_1 }
+						1 = { add_trait = cursed_bloodline_1 }
+						1 = { add_trait = demon_bloodline_1 }
+						1 = { add_trait = primal_bloodline_1 }
+						1 = { add_trait = spirit_bloodline_1 }
+						1 = { add_trait = sun_bloodline_1 }
+						1 = { add_trait = alchemy_body_tier_1 }
+						1 = { add_trait = alchemy_body_tier_2 }
+						1 = { add_trait = alchemy_body_tier_3 }
+						1 = { add_trait = formation_body_tier_1 }
+						1 = { add_trait = formation_body_tier_2 }
+						1 = { add_trait = formation_body_tier_3 }
+					}
+					random_list = {
+						1 = { add_trait = yin_bloodline_1 }
+						1 = { add_trait = yang_bloodline_1 }
+						1 = { add_trait = dragon_bloodline_1 }
+						1 = { add_trait = phoenix_bloodline_1 }
+						1 = { add_trait = anchestor_bloodline_1 }
+						1 = { add_trait = poison_bloodline_1 }
+						1 = { add_trait = cursed_bloodline_1 }
+						1 = { add_trait = demon_bloodline_1 }
+						1 = { add_trait = primal_bloodline_1 }
+						1 = { add_trait = spirit_bloodline_1 }
+						1 = { add_trait = sun_bloodline_1 }
+						1 = { add_trait = alchemy_body_tier_1 }
+						1 = { add_trait = alchemy_body_tier_2 }
+						1 = { add_trait = alchemy_body_tier_3 }
+						1 = { add_trait = formation_body_tier_1 }
+						1 = { add_trait = formation_body_tier_2 }
+						1 = { add_trait = formation_body_tier_3 }
+					}
+					random_list = {
+						1 = { add_trait = yin_bloodline_1 }
+						1 = { add_trait = yang_bloodline_1 }
+						1 = { add_trait = dragon_bloodline_1 }
+						1 = { add_trait = phoenix_bloodline_1 }
+						1 = { add_trait = anchestor_bloodline_1 }
+						1 = { add_trait = poison_bloodline_1 }
+						1 = { add_trait = cursed_bloodline_1 }
+						1 = { add_trait = demon_bloodline_1 }
+						1 = { add_trait = primal_bloodline_1 }
+						1 = { add_trait = spirit_bloodline_1 }
+						1 = { add_trait = sun_bloodline_1 }
+						1 = { add_trait = alchemy_body_tier_1 }
+						1 = { add_trait = alchemy_body_tier_2 }
+						1 = { add_trait = alchemy_body_tier_3 }
+						1 = { add_trait = formation_body_tier_1 }
+						1 = { add_trait = formation_body_tier_2 }
+						1 = { add_trait = formation_body_tier_3 }
+					}
+				}
+			}
+		}
+		else = {
+			random_list = {
+				99835 = { }
+				15 = { add_trait = yin_bloodline_1 }
+				15 = { add_trait = yang_bloodline_1 }
+				15 = { add_trait = dragon_bloodline_1 }
+				15 = { add_trait = phoenix_bloodline_1 }
+				15 = { add_trait = anchestor_bloodline_1 }
+				15 = { add_trait = poison_bloodline_1 }
+				15 = { add_trait = cursed_bloodline_1 }
+				15 = { add_trait = demon_bloodline_1 }
+				15 = { add_trait = primal_bloodline_1 }
+				15 = { add_trait = spirit_bloodline_1 }
+				15 = { add_trait = sun_bloodline_1 }
+				10 = { add_trait = alchemy_body_tier_1 }
+				4 = { add_trait = alchemy_body_tier_2 }
+				2 = { add_trait = alchemy_body_tier_3 }
+				8 = { add_trait = formation_body_tier_1 }
+				3 = { add_trait = formation_body_tier_2 }
+				1 = { add_trait = formation_body_tier_3 }
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+﻿l_english:
+ spay_interaction:0 "Spay"
+ spay_interaction_desc:0 "Spay [recipient.GetShortUINameNoTooltip]"
+
+ deleg_interaction:0 "Amputate Leg"
+ deleg_interaction_desc:0 "Remove a leg from [recipient.GetShortUINameNoTooltip]"
+
+ dearm_interaction:0 "Maim"
+ dearm_interaction_desc:0 "Maim [recipient.GetShortUINameNoTooltip]"
+
+ forced_copulation_interaction:0 "Rape"
+ forced_copulation_interaction_desc:0 "Make full usage of [recipient.GetShortUINameNoTooltip]"

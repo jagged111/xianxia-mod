@@ -1,0 +1,118 @@
+﻿# DEMONIC CULTIVATION FAMILY - ALL 4 PATHS
+
+# ============================================================================
+# DEMONIC
+# ============================================================================
+cultivation_demonic = {
+    family = rf_cultivation_demonic
+	doctrine_background_icon = core_tenet_banner_eastern.dds
+	doctrine = abrahamic_hostility_doctrine
+	pagan_roots = yes
+	
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_fundamentalist
+	doctrine = doctrine_no_head
+	doctrine = doctrine_theocracy_lay_clergy
+	doctrine = doctrine_concubines
+	doctrine = doctrine_divorce_allowed
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_consanguinity_unrestricted
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_shunned
+	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_deviancy_shunned
+	doctrine = doctrine_witchcraft_accepted
+	doctrine = doctrine_kinslaying_accepted
+	doctrine = doctrine_clerical_function_recruitment
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_funeral_bewailment
+
+	traits = {
+		virtues = { wrathful sadistic brave callous }
+		sins = { calm compassionate craven forgiving }
+	}
+
+	custom_faith_icons = {
+		custom_faith_1 custom_faith_2 custom_faith_3 custom_faith_4 custom_faith_5 custom_faith_6 custom_faith_7 custom_faith_8 custom_faith_9 custom_faith_10 dualism_custom_1 zoroastrian_custom_1 zoroastrian_custom_2 buddhism_custom_1 buddhism_custom_2 buddhism_custom_3 buddhism_custom_4 taoism_custom_1 yazidi_custom_1 sunni_custom_2 sunni_custom_3 sunni_custom_4 ibadi_custom muhakkima_1 muhakkima_2 muhakkima_4 muhakkima_5 muhakkima_6 judaism_custom_1
+	}
+
+	holy_order_names = {
+		{ name = "holy_order_slaughter_legion" }
+		{ name = "holy_order_blood_reapers" }
+		{ name = "holy_order_massacre_immortals" }
+	}
+	holy_order_maa = { martial_artist_cultivator }
+
+	localization = {
+		HighGodName = cultivation_high_god_name
+		HighGodNamePossessive = cultivation_high_god_name_possessive
+		HouseOfWorship = slaughter_dao_temple
+		DevoteeMale = slaughter_cultivator_male
+		DevoteeFemale = slaughter_cultivator_female
+	}
+
+	faiths = {
+		ten_thousand_corpse_valley = {
+			color = { 0.3 0.1 0.1 }
+			icon = demonic_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_human_sacrifice
+			doctrine = tenet_demonic_cultivation
+		}
+
+		venomous_serpent_valley = {
+			color = { 0.2 0.5 0.1 }
+			icon = demonic_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_demonic_cultivation
+		}
+
+		blood_yin_cult = {
+			color = { 0.5 0.0 0.1 }
+			icon = demonic_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_human_sacrifice
+			doctrine = tenet_demonic_cultivation
+		}
+
+		blood_moon_demonic_sect = {
+			color = { 0.6 0.1 0.2 }
+			icon = demonic_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_human_sacrifice
+			doctrine = tenet_demonic_cultivation
+		}
+
+		# Soul draining through pleasure
+		succubus_palace = {
+			color = { 0.8 0.2 0.5 }
+			icon = demonic_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_human_sacrifice
+			doctrine = tenet_demonic_cultivation
+		}
+	}
+}

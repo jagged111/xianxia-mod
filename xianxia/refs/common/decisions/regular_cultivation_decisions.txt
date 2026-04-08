@@ -1,0 +1,49 @@
+﻿
+#Focus on cultivation
+
+focus_on_cultivation = {
+
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_start_cultivation.dds"
+	}
+
+    desc = focus_on_cultivation_desc
+    selection_tooltip = focus_on_cultivation_selection_tooltip
+	sort_order = 500
+
+    is_shown = {
+		AND = {
+			has_trait = cultivation_realm
+			breakthrough_threshold = no
+		}
+    }
+
+    ai_check_interval = 3
+
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = chance_to_cultivate
+			is_adult = yes
+		}
+	}
+
+	cooldown = {
+		months = 12
+	}
+
+    effect = {
+		add_character_modifier = {
+			modifier = focusing_cultivation_modifier
+			months = 3
+		}
+
+        trigger_event = {
+			id = cultivation_regular_event.001
+			months =  3
+		}
+		custom_tooltip = focus_on_cultivation_tooltip
+
+		
+    }
+}

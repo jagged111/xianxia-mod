@@ -1,0 +1,19 @@
+﻿unlocking_cultivation_modifier = {
+	icon = yin_yang_modifier
+	diplomacy = -3
+	martial = -3
+	intrigue = -3
+	stewardship = -3
+	prowess = -5
+}
+
+focusing_cultivation_modifier = {
+	icon = yin_yang_modifier
+	diplomacy = -3
+
+	martial = -3
+	
+	intrigue = -3
+	stewardship = -3
+	prowess = -5
+}

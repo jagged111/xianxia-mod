@@ -1,0 +1,8 @@
+﻿NSkills = {
+	MAX_DIPLOMACY = 99999		# Maximum possible diplomacy skill points per character
+	MAX_MARTIAL = 99999	# Maximum possible martial skill points per character
+	MAX_STEWARDSHIP = 99999	# Maximum possible stewardship skill points per character
+	MAX_INTRIGUE = 99999		# Maximum possible intrigue skill points per character
+	MAX_LEARNING = 99999		# Maximum possible learning skill points per character
+	MAX_PROWESS = 99999		# Maximum possible prowess skill points per character
+}

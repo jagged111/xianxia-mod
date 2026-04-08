@@ -1,0 +1,13 @@
+﻿taught_me_cultivation_opinion = {
+	icon = cultivation_martial_positive.dds
+	opinion = 50
+	years = 100
+	decaying = yes
+}
+
+taught_them_cultivation_opinion = {
+	icon = cultivation_martial_positive.dds
+	opinion = 15
+	years = 100
+	decaying = yes
+}

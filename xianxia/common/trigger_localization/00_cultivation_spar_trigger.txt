@@ -1,0 +1,3 @@
+﻿spar_total = {
+	global = cultivation_sect_spar_trigger
+}

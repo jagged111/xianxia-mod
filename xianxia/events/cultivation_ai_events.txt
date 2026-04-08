@@ -1,0 +1,1623 @@
+﻿namespace = cultivation_ai
+
+# Monthly orchestrator: iterate all living AI cultivators so progression does not
+# depend on implicit on_action character scope behavior.
+cultivation_ai.2000 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_ai = yes
+                is_alive = yes
+                age >= 14
+                NOT = { has_trait = incapable }
+                has_active_meridians = yes
+            }
+            trigger_event = cultivation_ai.0001
+            trigger_event = cultivation_ai.0002
+            trigger_event = cultivation_ai.0003
+            trigger_event = cultivation_ai.0004
+
+            trigger_event = cultivation_ai.0005
+            trigger_event = cultivation_ai.2240
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Monthly fertility safeguard: cultivators should never remain infertile.
+cultivation_ai.2100 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_cultivator = yes
+                has_trait = infertile
+            }
+            remove_trait = infertile
+        }
+    }
+
+    option = { name = OK }
+}
+
+# High-realm sect elders earn lore-appropriate honorific nicknames.
+cultivation_ai.2200 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                has_cultivation_sect_faith = yes
+                NOT = { has_character_flag = cultivation_sect_nickname_assigned }
+                OR = {
+                    has_trait = cultivation_nascent_soul
+                    has_trait = cultivation_heavenly_being
+                    has_trait = cultivation_four_axis
+                    has_trait = cultivation_integration
+                    has_trait = cultivation_star_shattering
+                    has_trait = cultivation_sacred_vessel
+                    has_trait = cultivation_entering_nirvana
+                    has_trait = cultivation_true_immortal
+                }
+            }
+
+            cultivation_assign_high_realm_sect_nickname_effect = yes
+            if = {
+                limit = { has_character_flag = cultivation_sect_nickname_newly_assigned }
+                add_character_flag = cultivation_sect_nickname_assigned
+                remove_character_flag = cultivation_sect_nickname_newly_assigned
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Lesser-known cultivators can gain smaller jianghu epithets over time.
+cultivation_ai.2210 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                NOT = { has_character_flag = cultivation_sect_nickname_assigned }
+                NOT = { has_character_flag = cultivation_minor_nickname_assigned }
+                OR = {
+                    has_trait = cultivation_qi_refining
+                    has_trait = cultivation_qi_building
+                    has_trait = cultivation_core_formation
+                }
+            }
+
+            random = {
+                chance = 3
+                random_list = {
+                    5 = { give_nickname = nick_the_river_wanderer }
+                    5 = { give_nickname = nick_the_cloud_sword }
+                    5 = { give_nickname = nick_the_jade_mantis }
+                    5 = { give_nickname = nick_the_bamboo_shadow }
+                    5 = { give_nickname = nick_the_iron_palm }
+                    5 = { give_nickname = nick_the_broken_spear }
+                    5 = { give_nickname = nick_the_mountain_fox }
+                    5 = { give_nickname = nick_the_white_crane }
+                    5 = { give_nickname = nick_the_ember_adept }
+                    5 = { give_nickname = nick_the_frost_edge }
+                    5 = { give_nickname = nick_the_silent_qi }
+                    5 = { give_nickname = nick_the_drunk_blade }
+                    5 = { give_nickname = nick_the_hidden_talisman }
+                    5 = { give_nickname = nick_the_night_reed }
+                    5 = { give_nickname = nick_the_wind_stepper }
+                    5 = { give_nickname = nick_the_stone_heart }
+                    5 = { give_nickname = nick_the_lotus_watcher }
+                    5 = { give_nickname = nick_the_red_cinnabar }
+                    4 = { give_nickname = nick_the_ghost_lantern }
+                    1 = { give_nickname = nick_the_swamp_viper }
+                }
+                add_character_flag = cultivation_minor_nickname_assigned
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Allied cultivators should build bonds quickly in a xianxia world.
+cultivation_ai.2220 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+            }
+
+            random = {
+                chance = 12
+                random_living_character = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_cultivator = yes
+                        NOT = { this = root }
+                        is_allied_to = root
+                        NOT = { has_relation_friend = root }
+                        NOT = { has_relation_best_friend = root }
+                    }
+                    save_scope_as = cultivation_friend_target
+                }
+
+                if = {
+                    limit = { exists = scope:cultivation_friend_target }
+                    add_opinion = { target = scope:cultivation_friend_target modifier = taught_me_cultivation_opinion years = 10 }
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Cultivators who fight each other should develop grudges and rivalries quickly.
+cultivation_ai.2230 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                is_at_war = yes
+            }
+
+            random = {
+                chance = 22
+                random_living_character = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_cultivator = yes
+                        NOT = { this = root }
+                        is_at_war_with = root
+                        NOT = { has_relation_nemesis = root }
+                        NOT = { has_relation_rival = root }
+                    }
+                    save_scope_as = cultivation_war_grudge_target
+                }
+
+                if = {
+                    limit = { exists = scope:cultivation_war_grudge_target }
+                    random_list = {
+                        75 = { add_opinion = { target = scope:cultivation_war_grudge_target modifier = lineage_betrayal_opinion years = 10 } }
+                        25 = { add_stress = 25 }
+                    }
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+
+# Startup bootstrap so AI cultivation is never player-gated.
+cultivation_ai.1000 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_ai = yes
+                is_adult = yes
+                NOT = { has_trait = incapable }
+            }
+            trigger_event = cultivation_ai.0001
+            trigger_event = cultivation_ai.0002
+        }
+    }
+
+    option = { name = OK }
+}
+
+# AI auto-cultivation progression pulse (meridian-driven).
+cultivation_ai.0001 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        is_ai = yes
+        is_alive = yes
+        age >= 14
+        NOT = { has_trait = incapable }
+        has_active_meridians = yes
+    }
+
+    immediate = {
+        # Ensure every AI gets exactly one meridian tier.
+        if = {
+            limit = { NOT = { has_active_meridians = yes } }
+            random_list = {
+                8500 = { add_trait = poor_meridians }
+                1200 = { add_trait = normal_meridians }
+                280 = { add_trait = good_meridians }
+                19 = { add_trait = excellent_meridians }
+                1 = { add_trait = heavenly_meridians }
+            }
+        }
+
+        # Awakening chance: intentionally high so the world fills with cultivators quickly.
+        if = {
+            limit = {
+                NOT = { is_cultivator = yes }
+                has_trait = poor_meridians
+            }
+            random_list = {
+                35 = { add_trait = cultivation_qi_gathering }
+                65 = { }
+            }
+        }
+        else_if = {
+            limit = {
+                NOT = { is_cultivator = yes }
+                has_trait = normal_meridians
+            }
+            random_list = {
+                60 = { add_trait = cultivation_qi_gathering }
+                40 = { }
+            }
+        }
+        else_if = {
+            limit = {
+                NOT = { is_cultivator = yes }
+                has_trait = good_meridians
+            }
+            random_list = {
+                85 = { add_trait = cultivation_qi_gathering }
+                15 = { }
+            }
+        }
+        else_if = {
+            limit = {
+                NOT = { is_cultivator = yes }
+                has_trait = excellent_meridians
+            }
+            random_list = {
+                97 = { add_trait = cultivation_qi_gathering }
+                3 = { }
+            }
+        }
+        else_if = {
+            limit = {
+                NOT = { is_cultivator = yes }
+                has_trait = heavenly_meridians
+            }
+            add_trait = cultivation_qi_gathering
+        }
+
+        # AI characters that awaken directly into Qi Gathering should still receive full Mortal foundation perks.
+        if = {
+            limit = { has_trait = cultivation_qi_gathering }
+            cultivation_ai_grant_mortal_foundation_perks_effect = yes
+            if = {
+                limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+                add_perk = qi_gathering_meridian_1_perk
+            }
+        }
+
+        # Progression chance scaled by meridian quality (checked every monthly pulse).
+        if = {
+            limit = { has_trait = cultivation_qi_gathering }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_qi_gathering add_trait = cultivation_qi_refining }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_qi_gathering add_trait = cultivation_qi_refining }
+                10 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_qi_gathering add_trait = cultivation_qi_refining }
+                36 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_qi_gathering add_trait = cultivation_qi_refining }
+                150 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_qi_gathering add_trait = cultivation_qi_refining }
+                801 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_qi_refining }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_qi_refining add_trait = cultivation_qi_building }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_qi_refining add_trait = cultivation_qi_building }
+                8 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_qi_refining add_trait = cultivation_qi_building }
+                26 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_qi_refining add_trait = cultivation_qi_building }
+                120 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_qi_refining add_trait = cultivation_qi_building }
+                843 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_qi_building }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_qi_building add_trait = cultivation_core_formation }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_qi_building add_trait = cultivation_core_formation }
+                6 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_qi_building add_trait = cultivation_core_formation }
+                20 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_qi_building add_trait = cultivation_core_formation }
+                90 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_qi_building add_trait = cultivation_core_formation }
+                881 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_core_formation }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_core_formation add_trait = cultivation_nascent_soul }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_core_formation add_trait = cultivation_nascent_soul }
+                6 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_core_formation add_trait = cultivation_nascent_soul }
+                25 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_core_formation add_trait = cultivation_nascent_soul }
+                90 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_core_formation add_trait = cultivation_nascent_soul }
+                876 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_nascent_soul }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_nascent_soul add_trait = cultivation_heavenly_being }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_nascent_soul add_trait = cultivation_heavenly_being }
+                5 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_nascent_soul add_trait = cultivation_heavenly_being }
+                18 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_nascent_soul add_trait = cultivation_heavenly_being }
+                70 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_nascent_soul add_trait = cultivation_heavenly_being }
+                904 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_heavenly_being }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_heavenly_being add_trait = cultivation_four_axis }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_heavenly_being add_trait = cultivation_four_axis }
+                4 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_heavenly_being add_trait = cultivation_four_axis }
+                10 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_heavenly_being add_trait = cultivation_four_axis }
+                50 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_heavenly_being add_trait = cultivation_four_axis }
+                933 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_four_axis }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_four_axis add_trait = cultivation_integration }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_four_axis add_trait = cultivation_integration }
+                3 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_four_axis add_trait = cultivation_integration }
+                8 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_four_axis add_trait = cultivation_integration }
+                40 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_four_axis add_trait = cultivation_integration }
+                946 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_integration }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_integration add_trait = cultivation_star_shattering }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_integration add_trait = cultivation_star_shattering }
+                2 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_integration add_trait = cultivation_star_shattering }
+                8 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_integration add_trait = cultivation_star_shattering }
+                35 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_integration add_trait = cultivation_star_shattering }
+                952 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_star_shattering }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_star_shattering add_trait = cultivation_sacred_vessel }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_star_shattering add_trait = cultivation_sacred_vessel }
+                2 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_star_shattering add_trait = cultivation_sacred_vessel }
+                6 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_star_shattering add_trait = cultivation_sacred_vessel }
+                28 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_star_shattering add_trait = cultivation_sacred_vessel }
+                961 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_sacred_vessel }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_sacred_vessel add_trait = cultivation_entering_nirvana }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_sacred_vessel add_trait = cultivation_entering_nirvana }
+                2 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_sacred_vessel add_trait = cultivation_entering_nirvana }
+                5 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_sacred_vessel add_trait = cultivation_entering_nirvana }
+                22 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_sacred_vessel add_trait = cultivation_entering_nirvana }
+                968 = { }
+            }
+        }
+        else_if = {
+            limit = { has_trait = cultivation_entering_nirvana }
+            random_list = {
+                1 = { trigger = { has_trait = poor_meridians } remove_trait = cultivation_entering_nirvana add_trait = cultivation_true_immortal }
+                2 = { trigger = { has_trait = normal_meridians } remove_trait = cultivation_entering_nirvana add_trait = cultivation_true_immortal }
+                2 = { trigger = { has_trait = good_meridians } remove_trait = cultivation_entering_nirvana add_trait = cultivation_true_immortal }
+                4 = { trigger = { has_trait = excellent_meridians } remove_trait = cultivation_entering_nirvana add_trait = cultivation_true_immortal }
+                18 = { trigger = { has_trait = heavenly_meridians } remove_trait = cultivation_entering_nirvana add_trait = cultivation_true_immortal }
+                973 = { }
+            }
+        }
+
+        cultivation_ai_autogrant_realm_perks_effect = yes
+        if = {
+            limit = { is_ai = yes is_adult = yes is_cultivator = yes }
+            cultivation_ai_force_cultivation_focus_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
+# AI sect-joining pulse.
+cultivation_ai.0002 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        is_ai = yes
+        is_alive = yes
+        is_adult = yes
+        has_active_meridians = yes
+        NOT = { government_has_flag = government_is_theocracy }
+        NOT = { has_character_flag = ai_recently_joined_sect }
+    }
+
+    immediate = {
+        # Emergency recovery: if meridianed AI never entered Qi Gathering,
+        # bootstrap them so sect assignment can proceed reliably.
+        if = {
+            limit = { NOT = { is_cultivator = yes } }
+            add_trait = cultivation_qi_gathering
+            if = {
+                limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+                add_perk = qi_gathering_meridian_1_perk
+            }
+        }
+
+        if = {
+            limit = {
+                NOT = { has_cultivation_sect_faith = yes }
+            }
+
+            cultivation_ai_join_any_sect_by_meridian_effect = yes
+
+            add_character_flag = { flag = ai_recently_joined_sect days = 1825 }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Realm hierarchy pressure: higher-realm cultivators strongly reject weaker lieges.
+cultivation_ai.0003 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        is_alive = yes
+        age >= 14
+        is_cultivator = yes
+        exists = liege
+        has_higher_cultivation_realm_than_liege = yes
+        NOT = {
+            OR = {
+                liege = { is_parent_of = scope:root }
+                liege = {
+                    dynasty = scope:root.dynasty
+                    is_close_or_extended_family_of = scope:root
+                }
+            }
+        }
+    }
+
+    immediate = {
+        add_opinion = {
+            target = liege
+            modifier = despises_weak_liege_cultivation_opinion
+            years = 2
+        }
+
+        if = {
+            limit = {
+                is_ai = yes
+                NOT = { has_character_flag = cultivation_realm_rebellion_cooldown }
+            }
+            add_character_flag = { flag = cultivation_realm_rebellion_cooldown days = 1825 }
+
+            random_list = {
+                40 = {
+                    add_stress = -40
+                }
+                30 = { add_dread = 8 }
+                30 = { add_prestige = 75 }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Personality-driven treatment of talented juniors:
+# ruthless elders suppress future threats, benevolent elders invest in them.
+cultivation_ai.0004 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        is_ai = yes
+        is_alive = yes
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+        NOT = { has_character_flag = cultivation_talent_posture_cooldown }
+    }
+
+    immediate = {
+        add_character_flag = { flag = cultivation_talent_posture_cooldown days = 365 }
+
+        if = {
+            limit = {
+                OR = {
+                    has_trait = sadistic
+                    has_trait = callous
+                    has_trait = wrathful
+                    has_trait = paranoid
+                    has_trait = deceitful
+                    has_trait = arbitrary
+                    has_trait = ambitious
+                    has_trait = vengeful
+                }
+            }
+
+            every_courtier = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    has_active_meridians = yes
+                    OR = {
+                        has_trait = excellent_meridians
+                        has_trait = heavenly_meridians
+                    }
+                    OR = {
+                        is_new_cultivator = yes
+                        is_known_cultivator = yes
+                    }
+                }
+                add_opinion = {
+                    target = scope:root
+                    modifier = cultivation_views_me_as_future_threat_opinion
+                    years = 10
+                }
+                # Ruthless high-realm cultivators can eliminate lower-realm threats.
+                random_list = {
+                    55 = { death = { death_reason = death_murder } }
+                    45 = { }
+                }
+            }
+
+            every_vassal = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    has_active_meridians = yes
+                    OR = {
+                        has_trait = excellent_meridians
+                        has_trait = heavenly_meridians
+                    }
+                    OR = {
+                        is_new_cultivator = yes
+                        is_known_cultivator = yes
+                    }
+                }
+                add_opinion = {
+                    target = scope:root
+                    modifier = cultivation_views_me_as_future_threat_opinion
+                    years = 10
+                }
+                random_list = {
+                    65 = { death = { death_reason = death_murder } }
+                    35 = { }
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_trait = compassionate
+                    has_trait = generous
+                    has_trait = just
+                    has_trait = patient
+                    has_trait = humble
+                    has_trait = calm
+                    has_trait = diligent
+                }
+            }
+
+            every_courtier = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    has_active_meridians = yes
+                    OR = {
+                        has_trait = good_meridians
+                        has_trait = excellent_meridians
+                        has_trait = heavenly_meridians
+                    }
+                    NOR = {
+                        has_trait = cultivation_nascent_soul
+                        has_trait = cultivation_heavenly_being
+                        has_trait = cultivation_four_axis
+                        has_trait = cultivation_integration
+                        has_trait = cultivation_star_shattering
+                        has_trait = cultivation_sacred_vessel
+                        has_trait = cultivation_entering_nirvana
+                        has_trait = cultivation_true_immortal
+                    }
+                }
+                add_opinion = {
+                    target = scope:root
+                    modifier = cultivation_invests_in_my_talent_opinion
+                    years = 10
+                }
+                add_prestige = 50
+            }
+
+            every_vassal = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    has_active_meridians = yes
+                    OR = {
+                        has_trait = good_meridians
+                        has_trait = excellent_meridians
+                        has_trait = heavenly_meridians
+                    }
+                    NOR = {
+                        has_trait = cultivation_nascent_soul
+                        has_trait = cultivation_heavenly_being
+                        has_trait = cultivation_four_axis
+                        has_trait = cultivation_integration
+                        has_trait = cultivation_star_shattering
+                        has_trait = cultivation_sacred_vessel
+                        has_trait = cultivation_entering_nirvana
+                        has_trait = cultivation_true_immortal
+                    }
+                }
+                add_opinion = {
+                    target = scope:root
+                    modifier = cultivation_invests_in_my_talent_opinion
+                    years = 10
+                }
+                add_prestige = 75
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Sect identity flavor: once realm perks are unlocked, sect doctrines grant distinct passive styles.
+cultivation_ai.0005 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        is_alive = yes
+        is_adult = yes
+        is_cultivator = yes
+        has_any_cultivation_realm_perk = yes
+        has_cultivation_sect_faith = yes
+    }
+
+    immediate = {
+        remove_character_modifier = orthodox_realm_insight
+        remove_character_modifier = unorthodox_realm_insight
+        remove_character_modifier = demonic_realm_insight
+        remove_character_modifier = vagrant_realm_insight
+        remove_character_modifier = divine_beast_spirit_companion
+        remove_character_modifier = wudang_taiji_harmony
+        remove_character_modifier = jade_chamber_alluring_presence
+        remove_character_modifier = blood_moon_killing_intent
+        remove_character_modifier = ancient_relic_treasure_resonance
+
+        if = {
+            limit = { faith = faith:divine_beast_mountain }
+            add_character_modifier = {
+                modifier = divine_beast_spirit_companion
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = faith:wudang_sect }
+            add_character_modifier = {
+                modifier = wudang_taiji_harmony
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = faith:jade_chamber_sect }
+            add_character_modifier = {
+                modifier = jade_chamber_alluring_presence
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = faith:blood_moon_demonic_sect }
+            add_character_modifier = {
+                modifier = blood_moon_killing_intent
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = faith:ancient_relic_sect }
+            add_character_modifier = {
+                modifier = ancient_relic_treasure_resonance
+                days = 730
+            }
+        }
+
+        if = {
+            limit = { faith = { has_doctrine = tenet_orthodox_cultivation } }
+            add_character_modifier = {
+                modifier = orthodox_realm_insight
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = { has_doctrine = tenet_unorthodox_cultivation } }
+            add_character_modifier = {
+                modifier = unorthodox_realm_insight
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = { has_doctrine = tenet_demonic_cultivation } }
+            add_character_modifier = {
+                modifier = demonic_realm_insight
+                days = 730
+            }
+        }
+        else_if = {
+            limit = { faith = { has_doctrine = tenet_vagrant_cultivation } }
+            add_character_modifier = {
+                modifier = vagrant_realm_insight
+                days = 730
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+
+# Sect solidarity pulse: same-sect independent cultivators form defensive pacts.
+cultivation_ai.3000 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_sect_defensive_pacts_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Light monthly sect-pact maintenance to avoid alliance decay without full-world O(n^2) spikes.
+cultivation_ai.3001 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        # Run multiple light repairs per month so sect pacts visibly recover in active games.
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_sect_defensive_pacts_effect = yes
+        }
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_sect_defensive_pacts_effect = yes
+        }
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_sect_defensive_pacts_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
+
+# AI requests breakthrough pills from better alchemists before breakthroughs.
+cultivation_ai.2240 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        is_ai = yes
+        is_cultivator = yes
+        OR = {
+            has_character_flag = can_attempt_qi_refining_breakthrough
+            has_character_flag = can_attempt_qi_building_breakthrough
+            has_character_flag = can_attempt_core_formation_breakthrough
+            has_character_flag = can_attempt_nascent_soul_breakthrough
+        }
+    }
+
+    immediate = {
+        random_courtier = {
+            limit = {
+                is_adult = yes
+                is_cultivator = yes
+                learning > root.learning
+            }
+            add_character_modifier = { modifier = perfected_spirit_pill days = 365 }
+            if = {
+                limit = { gold >= 80 }
+                add_gold = { add = 80 multiply = -1 }
+                root = { add_gold = 80 }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Fox spirit compatch: keep Huxian bodies yin-aspected and allow lore-fit AI ascension.
+cultivation_ai.2250 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                has_trait = huxian_blood
+            }
+
+            # Huxian should always sit at highest Yin body tier in this compatch.
+            if = {
+                limit = { NOT = { has_trait = yin_bloodline_3 } }
+                remove_trait = yin_bloodline_1
+                remove_trait = yin_bloodline_2
+                add_trait = yin_bloodline_3
+            }
+
+            # Huxian are always at least spiritborn meridian quality.
+            if = {
+                limit = {
+                    OR = {
+                        NOT = { has_active_meridians = yes }
+                        has_trait = poor_meridians
+                        has_trait = normal_meridians
+                        has_trait = good_meridians
+                    }
+                }
+                remove_trait = poor_meridians
+                remove_trait = normal_meridians
+                remove_trait = good_meridians
+                random_list = {
+                    80 = { add_trait = excellent_meridians }
+                    20 = { add_trait = heavenly_meridians }
+                }
+            }
+
+            # Fox spirits gain additional spiritual constitutions to offset social hate.
+            if = {
+                limit = { has_character_flag = fox_spirit_awakening_complete }
+
+                # Fox spirits are unnaturally alluring.
+                if = {
+                    limit = { NOT = { has_trait = beauty_good_3 } }
+                    remove_trait = beauty_good_1
+                    remove_trait = beauty_good_2
+                    add_trait = beauty_good_3
+                }
+
+                if = {
+                    limit = { NOT = { has_trait = spirit_bloodline_3 } }
+                    remove_trait = spirit_bloodline_1
+                    remove_trait = spirit_bloodline_2
+                    add_trait = spirit_bloodline_3
+                }
+
+                random_list = {
+                    30 = {
+                        trigger = { NOT = { has_trait = heavenly_meridians } }
+                        remove_trait = excellent_meridians
+                        add_trait = heavenly_meridians
+                    }
+                    20 = {
+                        trigger = { NOT = { has_trait = primal_bloodline_2 } NOT = { has_trait = primal_bloodline_3 } }
+                        remove_trait = primal_bloodline_1
+                        add_trait = primal_bloodline_2
+                    }
+                    20 = {
+                        trigger = { NOT = { has_trait = anchestor_bloodline_2 } NOT = { has_trait = anchestor_bloodline_3 } }
+                        remove_trait = anchestor_bloodline_1
+                        add_trait = anchestor_bloodline_2
+                    }
+                    30 = { }
+                }
+            }
+
+            # AI fox-spirit awakening remains uncommon and personality/sect gated.
+            if = {
+                limit = {
+                    is_ai = yes
+                    age >= 8
+                    has_active_meridians = yes
+                    NOT = { has_character_flag = fox_spirit_awakening_cooldown }
+                    NOT = { has_character_flag = fox_spirit_awakening_complete }
+                    OR = {
+                        has_trait = lustful
+                        has_trait = deceitful
+                        has_trait = arbitrary
+                        has_trait = ambitious
+                        has_trait = sadistic
+                        has_trait = callous
+                        has_trait = vengeful
+                        has_trait = cynical
+                    }
+                    NOT = { has_trait = honest }
+                    NOT = { has_trait = just }
+                    NOT = { has_trait = compassionate }
+                    NOT = {
+                        faith = {
+                            OR = {
+                                this = faith:mount_hua_sect
+                                this = faith:heavenly_sword_pavilion
+                                this = faith:azure_edge_sect
+                                this = faith:ten_thousand_swords_valley
+                                this = faith:violet_thunder_blade_sect
+                                this = faith:eight_trigrams_palace
+                                this = faith:celestial_talisman_hall
+                            }
+                        }
+                    }
+                }
+
+                add_character_flag = { flag = fox_spirit_awakening_cooldown days = 3650 }
+
+                random_list = {
+                    # Demonic sects are strong supporters.
+                    16 = { trigger = { faith = { has_doctrine_parameter = demonic_cultivation } } add_character_flag = fox_spirit_awakening_complete }
+                    # Yin/spirit/charm-compatible sect identities.
+                    10 = { trigger = { faith = faith:yin_phoenix_sect } add_character_flag = fox_spirit_awakening_complete }
+                    9 = { trigger = { faith = faith:succubus_palace } add_character_flag = fox_spirit_awakening_complete }
+                    8 = { trigger = { faith = faith:spirit_communion_temple } add_character_flag = fox_spirit_awakening_complete }
+                    # Unorthodox and vagrant are situational.
+                    6 = { trigger = { faith = { has_doctrine_parameter = unorthodox_cultivation } } add_character_flag = fox_spirit_awakening_complete }
+                    4 = { trigger = { faith = { has_doctrine_parameter = vagrant_cultivation } } add_character_flag = fox_spirit_awakening_complete }
+                    947 = { }
+                }
+
+                if = {
+                    limit = { has_character_flag = fox_spirit_awakening_complete }
+                    add_character_modifier = { modifier = fox_spirit_awakened days = -1 }
+
+                    # Child awakenings trigger parent acceptance/disown handling.
+                    cultivation_fox_spirit_child_parent_resolution_effect = yes
+
+                    every_ruler = {
+                        limit = {
+                            is_alive = yes
+                            is_adult = yes
+                            NOT = { this = root }
+                        }
+
+                        if = {
+                            limit = {
+                                faith = {
+                                    OR = {
+                                        this = faith:mount_hua_sect
+                                        this = faith:heavenly_sword_pavilion
+                                        this = faith:azure_edge_sect
+                                        this = faith:ten_thousand_swords_valley
+                                        this = faith:violet_thunder_blade_sect
+                                    }
+                                }
+                            }
+                            add_opinion = { target = root modifier = opinion_fox_spirit_orthodox_hate years = 30 }
+                        }
+                        else_if = {
+                            limit = {
+                                faith = {
+                                    OR = {
+                                        this = faith:eight_trigrams_palace
+                                        this = faith:celestial_talisman_hall
+                                    }
+                                }
+                            }
+                            add_opinion = { target = root modifier = opinion_fox_spirit_order_hate years = 30 }
+                        }
+                        else_if = {
+                            limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
+                            add_opinion = { target = root modifier = opinion_fox_spirit_demonic_ally years = 30 }
+                        }
+                        else_if = {
+                            limit = {
+                                OR = {
+                                    faith = faith:yin_phoenix_sect
+                                    faith = faith:spirit_communion_temple
+                                    faith = faith:jade_chamber_sect
+                                    faith = faith:eternal_pleasure_hall
+                                }
+                            }
+                            add_opinion = { target = root modifier = opinion_fox_spirit_yin_affinity years = 30 }
+                        }
+                        else_if = {
+                            limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+                            add_opinion = { target = root modifier = opinion_fox_spirit_unorthodox_wary years = 20 }
+                        }
+                        else_if = {
+                            limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+                            random_list = {
+                                34 = { add_opinion = { target = root modifier = opinion_fox_spirit_vagrant_swing years = 15 } }
+                                66 = { }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        # Guarantee at least one fox child exists in the world.
+        # If none exist yet, keep forcing one each pulse until the condition is satisfied.
+        if = {
+            limit = {
+                NOT = {
+                    any_living_character = {
+                        is_alive = yes
+                        is_adult = no
+                        has_trait = huxian_blood
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    any_living_character = {
+                        is_alive = yes
+                        is_ai = yes
+                        is_adult = no
+                        is_noble = yes
+                        age >= 6
+                        age <= 13
+                        NOT = { has_trait = huxian_blood }
+                        NOT = { has_trait = incapable }
+                        NOT = { has_trait = inbred }
+                        OR = {
+                            AND = {
+                                exists = father
+                                father = { is_ruler = yes }
+                            }
+                            AND = {
+                                exists = mother
+                                mother = { is_ruler = yes }
+                            }
+                        }
+                    }
+                }
+                random_living_character = {
+                    limit = {
+                        is_alive = yes
+                        is_ai = yes
+                        is_adult = no
+                        is_noble = yes
+                        age >= 6
+                        age <= 13
+                        NOT = { has_trait = huxian_blood }
+                        NOT = { has_trait = incapable }
+                        NOT = { has_trait = inbred }
+                        OR = {
+                            AND = {
+                                exists = father
+                                father = { is_ruler = yes }
+                            }
+                            AND = {
+                                exists = mother
+                                mother = { is_ruler = yes }
+                            }
+                        }
+                    }
+                    add_trait = huxian_blood
+                    if = {
+                        limit = { NOT = { has_active_meridians = yes } }
+                        random_list = {
+                            80 = { add_trait = excellent_meridians }
+                            20 = { add_trait = heavenly_meridians }
+                        }
+                    }
+                    if = {
+                        limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+                        add_perk = qi_gathering_meridian_1_perk
+                    }
+                    if = {
+                        limit = { NOT = { has_trait = cultivation_qi_gathering } }
+                        add_trait = cultivation_qi_gathering
+                    }
+                    if = {
+                        limit = { NOT = { has_cultivation_sect_faith = yes } }
+                        cultivation_ai_join_fox_spirit_sect_effect = yes
+                    }
+                    add_character_flag = fox_spirit_awakening_complete
+                    add_character_flag = { flag = fox_spirit_awakening_cooldown days = 3650 }
+                    add_character_modifier = { modifier = fox_spirit_awakened days = -1 }
+                    cultivation_fox_spirit_child_parent_resolution_effect = yes
+                    if = {
+                        limit = { NOT = { has_trait = beauty_good_3 } }
+                        remove_trait = beauty_good_1
+                        remove_trait = beauty_good_2
+                        add_trait = beauty_good_3
+                    }
+                }
+            }
+            else = {
+                random_living_character = {
+                    limit = {
+                        is_alive = yes
+                        is_ai = yes
+                        is_adult = no
+                        age >= 6
+                        age <= 13
+                        NOT = { has_trait = huxian_blood }
+                        NOT = { has_trait = incapable }
+                        NOT = { has_trait = inbred }
+                    }
+                    add_trait = huxian_blood
+                    if = {
+                        limit = { NOT = { has_active_meridians = yes } }
+                        random_list = {
+                            80 = { add_trait = excellent_meridians }
+                            20 = { add_trait = heavenly_meridians }
+                        }
+                    }
+                    if = {
+                        limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+                        add_perk = qi_gathering_meridian_1_perk
+                    }
+                    if = {
+                        limit = { NOT = { has_trait = cultivation_qi_gathering } }
+                        add_trait = cultivation_qi_gathering
+                    }
+                    if = {
+                        limit = { NOT = { has_cultivation_sect_faith = yes } }
+                        cultivation_ai_join_fox_spirit_sect_effect = yes
+                    }
+                    add_character_flag = fox_spirit_awakening_complete
+                    add_character_flag = { flag = fox_spirit_awakening_cooldown days = 3650 }
+                    add_character_modifier = { modifier = fox_spirit_awakened days = -1 }
+                    cultivation_fox_spirit_child_parent_resolution_effect = yes
+                    if = {
+                        limit = { NOT = { has_trait = beauty_good_3 } }
+                        remove_trait = beauty_good_1
+                        remove_trait = beauty_good_2
+                        add_trait = beauty_good_3
+                    }
+                }
+            }
+        }
+
+        # Fox demons occasionally seize additional mortal children as new vessels.
+        if = {
+            limit = {
+                any_living_character = {
+                    is_alive = yes
+                    is_adult = yes
+                    has_character_flag = fox_spirit_awakening_complete
+                }
+            }
+            random_list = {
+                35 = {
+                    if = {
+                        limit = {
+                            any_living_character = {
+                                is_alive = yes
+                                is_ai = yes
+                                is_adult = no
+                                is_noble = yes
+                                age >= 6
+                                age <= 13
+                                NOT = { has_trait = huxian_blood }
+                                NOT = { has_trait = incapable }
+                                NOT = { has_trait = inbred }
+                                OR = {
+                                    AND = {
+                                        exists = father
+                                        father = { is_ruler = yes }
+                                    }
+                                    AND = {
+                                        exists = mother
+                                        mother = { is_ruler = yes }
+                                    }
+                                }
+                            }
+                        }
+                        random_living_character = {
+                            limit = {
+                                is_alive = yes
+                                is_ai = yes
+                                is_adult = no
+                                is_noble = yes
+                                age >= 6
+                                age <= 13
+                                NOT = { has_trait = huxian_blood }
+                                NOT = { has_trait = incapable }
+                                NOT = { has_trait = inbred }
+                                OR = {
+                                    AND = {
+                                        exists = father
+                                        father = { is_ruler = yes }
+                                    }
+                                    AND = {
+                                        exists = mother
+                                        mother = { is_ruler = yes }
+                                    }
+                                }
+                            }
+                            add_trait = huxian_blood
+                            if = {
+                                limit = { NOT = { has_active_meridians = yes } }
+                                random_list = {
+                                    80 = { add_trait = excellent_meridians }
+                                    20 = { add_trait = heavenly_meridians }
+                                }
+                            }
+                            if = {
+                                limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+                                add_perk = qi_gathering_meridian_1_perk
+                            }
+                            if = {
+                                limit = { NOT = { has_trait = cultivation_qi_gathering } }
+                                add_trait = cultivation_qi_gathering
+                            }
+                            if = {
+                                limit = { NOT = { has_cultivation_sect_faith = yes } }
+                                cultivation_ai_join_fox_spirit_sect_effect = yes
+                            }
+                            add_character_flag = fox_spirit_awakening_complete
+                            add_character_flag = { flag = fox_spirit_awakening_cooldown days = 3650 }
+                            add_character_modifier = { modifier = fox_spirit_awakened days = -1 }
+                            cultivation_fox_spirit_child_parent_resolution_effect = yes
+                            if = {
+                                limit = { NOT = { has_trait = beauty_good_3 } }
+                                remove_trait = beauty_good_1
+                                remove_trait = beauty_good_2
+                                add_trait = beauty_good_3
+                            }
+                        }
+                    }
+                    else = {
+                        random_living_character = {
+                            limit = {
+                                is_alive = yes
+                                is_ai = yes
+                                is_adult = no
+                                age >= 6
+                                age <= 13
+                                NOT = { has_trait = huxian_blood }
+                                NOT = { has_trait = incapable }
+                                NOT = { has_trait = inbred }
+                            }
+                            add_trait = huxian_blood
+                            if = {
+                                limit = { NOT = { has_active_meridians = yes } }
+                                random_list = {
+                                    80 = { add_trait = excellent_meridians }
+                                    20 = { add_trait = heavenly_meridians }
+                                }
+                            }
+                            if = {
+                                limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } }
+                                add_perk = qi_gathering_meridian_1_perk
+                            }
+                            if = {
+                                limit = { NOT = { has_trait = cultivation_qi_gathering } }
+                                add_trait = cultivation_qi_gathering
+                            }
+                            if = {
+                                limit = { NOT = { has_cultivation_sect_faith = yes } }
+                                cultivation_ai_join_fox_spirit_sect_effect = yes
+                            }
+                            add_character_flag = fox_spirit_awakening_complete
+                            add_character_flag = { flag = fox_spirit_awakening_cooldown days = 3650 }
+                            add_character_modifier = { modifier = fox_spirit_awakened days = -1 }
+                            cultivation_fox_spirit_child_parent_resolution_effect = yes
+                            if = {
+                                limit = { NOT = { has_trait = beauty_good_3 } }
+                                remove_trait = beauty_good_1
+                                remove_trait = beauty_good_2
+                                add_trait = beauty_good_3
+                            }
+                        }
+                    }
+                }
+                65 = { }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Fox-spirit heresy purge pulse: certain paths actively execute exposed fox spirits.
+cultivation_ai.2260 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                has_character_flag = fox_spirit_awakening_complete
+                exists = liege
+                liege = {
+                    is_alive = yes
+                    faith = {
+                        OR = {
+                            this = faith:mount_hua_sect
+                            this = faith:heavenly_sword_pavilion
+                            this = faith:azure_edge_sect
+                            this = faith:ten_thousand_swords_valley
+                            this = faith:violet_thunder_blade_sect
+                            this = faith:eight_trigrams_palace
+                            this = faith:celestial_talisman_hall
+                        }
+                    }
+                }
+            }
+
+            random_list = {
+                12 = { death = { death_reason = death_murder } }
+                88 = { }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Player parent response to fox-spirit child awakening.
+cultivation_ai.2261 = {
+    type = character_event
+    title = cultivation_ai.2261.t
+    desc = cultivation_ai.2261.desc
+
+    trigger = {
+        is_alive = yes
+        is_adult = yes
+        OR = {
+            any_child = { has_character_flag = fox_spirit_parent_decision_pending }
+        }
+    }
+
+    immediate = {
+        random_child = {
+            limit = { has_character_flag = fox_spirit_parent_decision_pending }
+            save_scope_as = fox_spirit_child_target
+        }
+    }
+
+    option = {
+        name = cultivation_ai_2261_accept
+        trigger = { exists = scope:fox_spirit_child_target }
+
+        scope:fox_spirit_child_target = {
+            add_opinion = { target = root modifier = opinion_fox_spirit_accepted_child years = 30 }
+            remove_character_flag = fox_spirit_parent_decision_pending
+            remove_character_flag = fox_spirit_waiting_player_parent
+        }
+    }
+
+    option = {
+        name = cultivation_ai_2261_disown
+        trigger = { exists = scope:fox_spirit_child_target }
+
+        scope:fox_spirit_child_target = {
+            add_character_modifier = { modifier = fox_spirit_disowned_child days = -1 }
+            remove_character_flag = fox_spirit_parent_decision_pending
+            remove_character_flag = fox_spirit_waiting_player_parent
+        }
+        add_stress = -30
+    }
+}
+
+# Singular reincarnation lottery:
+# exactly one landed count+ ruler can hold this "heaven-sent monster" state at a time.
+cultivation_ai.2270 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        # If no eligible reincarnation holder remains, start global cooldown.
+        if = {
+            limit = {
+                any_living_character = {
+                    is_alive = yes
+                    has_character_flag = cultivation_reincarnation_holder
+                }
+                NOT = {
+                    any_living_character = {
+                        is_alive = yes
+                        is_landed = yes
+                        has_character_flag = cultivation_reincarnation_holder
+                        OR = {
+                            highest_held_title_tier = tier_county
+                            highest_held_title_tier = tier_duchy
+                            highest_held_title_tier = tier_kingdom
+                            highest_held_title_tier = tier_empire
+                        }
+                    }
+                }
+            }
+            random_living_character = {
+                limit = { is_alive = yes }
+                add_character_flag = { flag = cultivation_reincarnation_cooldown_anchor days = 73000 }
+            }
+            every_living_character = {
+                limit = { has_character_flag = cultivation_reincarnation_holder }
+                remove_character_flag = cultivation_reincarnation_holder
+            }
+        }
+
+        # If no active holder and cooldown is over, roll a new reincarnated monster.
+        if = {
+            limit = {
+                NOT = {
+                    any_living_character = {
+                        is_alive = yes
+                        has_character_flag = cultivation_reincarnation_holder
+                    }
+                }
+                NOT = {
+                    any_living_character = {
+                        is_alive = yes
+                        has_character_flag = cultivation_reincarnation_cooldown_anchor
+                    }
+                }
+            }
+
+            random_ruler = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_landed = yes
+                    OR = {
+                        highest_held_title_tier = tier_county
+                        highest_held_title_tier = tier_duchy
+                        highest_held_title_tier = tier_kingdom
+                        highest_held_title_tier = tier_empire
+                    }
+                    NOT = { has_trait = incapable }
+                }
+                save_scope_as = cultivation_reincarnation_candidate
+            }
+
+            if = {
+                limit = { exists = scope:cultivation_reincarnation_candidate }
+                scope:cultivation_reincarnation_candidate = {
+                # Realm cleanup -> max realm assignment.
+                remove_trait = cultivation_qi_gathering
+                remove_trait = cultivation_qi_refining
+                remove_trait = cultivation_qi_building
+                remove_trait = cultivation_core_formation
+                remove_trait = cultivation_nascent_soul
+                remove_trait = cultivation_heavenly_being
+                remove_trait = cultivation_four_axis
+                remove_trait = cultivation_integration
+                remove_trait = cultivation_star_shattering
+                remove_trait = cultivation_sacred_vessel
+                remove_trait = cultivation_entering_nirvana
+                add_trait = cultivation_true_immortal
+
+                # Max meridian potential.
+                remove_trait = poor_meridians
+                remove_trait = normal_meridians
+                remove_trait = good_meridians
+                remove_trait = excellent_meridians
+                add_trait = heavenly_meridians
+
+                # Grant the full cultivation perk progression.
+                add_perk = mortal_muscle_reconstruction_perk
+                add_perk = mortal_bone_reconstruction_perk
+                add_perk = mortal_internal_reconstruction_perk
+                add_perk = mortal_external_reconstruction_perk
+                add_perk = mortal_body_reconstruction_perk
+                add_perk = mortal_qi_gathering_breakthrough_perk
+                add_perk = qi_gathering_meridian_1_perk
+                add_perk = qi_gathering_meridian_2_perk
+                add_perk = qi_gathering_meridian_3a_perk
+                add_perk = qi_gathering_meridian_3b_perk
+                add_perk = qi_gathering_meridian_4_perk
+                add_perk = qi_gathering_qi_refining_breakthrough_perk
+                add_perk = qi_refining_1a_star_perk
+                add_perk = qi_refining_1b_star_perk
+                add_perk = qi_refining_qi_building_breakthrough_perk
+                add_perk = qi_building_1_perk
+                add_perk = qi_building_core_formation_breakthrough_perk
+                add_perk = core_formation_qi1_perk
+                add_perk = core_formation_nascent_soul_breakthrough_perk
+                add_perk = nascent_soul_early_perk
+                add_perk = nascent_soul_heavenly_being_breakthrough_perk
+                add_perk = heavenly_being_1_perk
+                add_perk = heavenly_being_four_axis_breakthrough_perk
+                add_perk = four_axis_axis_1a_perk
+                add_perk = four_axis_axis_1b_perk
+                add_perk = four_axis_axis_1c_perk
+                add_perk = four_axis_axis_1d_perk
+                add_perk = four_axis_integration_breakthrough_perk
+                add_perk = integration_1a_perk
+                add_perk = integration_1b_perk
+                add_perk = integration_1c_perk
+                add_perk = integration_1d_perk
+                add_perk = integration_1e_perk
+                add_perk = integration_star_shattering_breakthrough_perk
+                add_perk = star_shattering_explode_perk
+                add_perk = star_shattering_sacred_vessel_breakthrough_perk
+                add_perk = sacred_vessel_hour_perk
+                add_perk = sacred_vessel_entering_nirvana_breakthrough_perk
+                add_perk = entering_nirvana_life_perk
+                add_perk = entering_nirvana_death_perk
+                add_perk = entering_nirvana_reborn_perk
+                add_perk = true_immortal_final_perk
+
+                give_nickname = nick_the_reincarnator
+                add_character_flag = cultivation_reincarnation_holder
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}

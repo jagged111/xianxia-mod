@@ -1,0 +1,482 @@
+﻿# CULTIVATION BREAKTHROUGH DECISIONS
+# Player must have unlocked breakthrough perk (flag) but not yet have the trait
+# Triggers breakthrough attempt event
+
+# Qi Gathering Breakthrough
+attempt_qi_gathering_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 200
+	
+	title = attempt_qi_gathering_breakthrough_decision
+	desc = attempt_qi_gathering_breakthrough_decision_desc
+	selection_tooltip = attempt_qi_gathering_breakthrough_decision_tooltip
+	confirm_text = attempt_qi_gathering_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_qi_gathering_breakthrough has_perk = mortal_qi_gathering_breakthrough_perk }
+		NOT = { has_trait = cultivation_qi_gathering }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_qi_gathering_breakthrough has_perk = mortal_qi_gathering_breakthrough_perk }
+		NOT = { has_trait = cultivation_qi_gathering }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1000
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Qi Refining Breakthrough
+attempt_qi_refining_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 201
+	
+	title = attempt_qi_refining_breakthrough_decision
+	desc = attempt_qi_refining_breakthrough_decision_desc
+	selection_tooltip = attempt_qi_refining_breakthrough_decision_tooltip
+	confirm_text = attempt_qi_refining_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_qi_refining_breakthrough has_perk = qi_gathering_qi_refining_breakthrough_perk }
+		NOT = { has_trait = cultivation_qi_refining }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_qi_refining_breakthrough has_perk = qi_gathering_qi_refining_breakthrough_perk }
+		NOT = { has_trait = cultivation_qi_refining }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1100
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Qi Building Breakthrough
+attempt_qi_building_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 202
+	
+	title = attempt_qi_building_breakthrough_decision
+	desc = attempt_qi_building_breakthrough_decision_desc
+	selection_tooltip = attempt_qi_building_breakthrough_decision_tooltip
+	confirm_text = attempt_qi_building_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_qi_building_breakthrough has_perk = qi_refining_qi_building_breakthrough_perk }
+		NOT = { has_trait = cultivation_qi_building }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_qi_building_breakthrough has_perk = qi_refining_qi_building_breakthrough_perk }
+		NOT = { has_trait = cultivation_qi_building }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1200
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Core Formation Breakthrough
+attempt_core_formation_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 203
+	
+	title = attempt_core_formation_breakthrough_decision
+	desc = attempt_core_formation_breakthrough_decision_desc
+	selection_tooltip = attempt_core_formation_breakthrough_decision_tooltip
+	confirm_text = attempt_core_formation_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_core_formation_breakthrough has_perk = qi_building_core_formation_breakthrough_perk }
+		NOT = { has_trait = cultivation_core_formation }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_core_formation_breakthrough has_perk = qi_building_core_formation_breakthrough_perk }
+		NOT = { has_trait = cultivation_core_formation }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1300
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Nascent Soul Breakthrough
+attempt_nascent_soul_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 204
+	
+	title = attempt_nascent_soul_breakthrough_decision
+	desc = attempt_nascent_soul_breakthrough_decision_desc
+	selection_tooltip = attempt_nascent_soul_breakthrough_decision_tooltip
+	confirm_text = attempt_nascent_soul_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_nascent_soul_breakthrough has_perk = core_formation_nascent_soul_breakthrough_perk }
+		NOT = { has_trait = cultivation_nascent_soul }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_nascent_soul_breakthrough has_perk = core_formation_nascent_soul_breakthrough_perk }
+		NOT = { has_trait = cultivation_nascent_soul }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1400
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Heavenly Being Breakthrough
+attempt_heavenly_being_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 205
+	
+	title = attempt_heavenly_being_breakthrough_decision
+	desc = attempt_heavenly_being_breakthrough_decision_desc
+	selection_tooltip = attempt_heavenly_being_breakthrough_decision_tooltip
+	confirm_text = attempt_heavenly_being_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_heavenly_being_breakthrough has_perk = nascent_soul_heavenly_being_breakthrough_perk }
+		NOT = { has_trait = cultivation_heavenly_being }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_heavenly_being_breakthrough has_perk = nascent_soul_heavenly_being_breakthrough_perk }
+		NOT = { has_trait = cultivation_heavenly_being }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1500
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Four-Axis Breakthrough
+attempt_four_axis_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 206
+	
+	title = attempt_four_axis_breakthrough_decision
+	desc = attempt_four_axis_breakthrough_decision_desc
+	selection_tooltip = attempt_four_axis_breakthrough_decision_tooltip
+	confirm_text = attempt_four_axis_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_four_axis_breakthrough has_perk = heavenly_being_four_axis_breakthrough_perk }
+		NOT = { has_trait = cultivation_four_axis }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_four_axis_breakthrough has_perk = heavenly_being_four_axis_breakthrough_perk }
+		NOT = { has_trait = cultivation_four_axis }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1600
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Integration Breakthrough
+attempt_integration_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 207
+	
+	title = attempt_integration_breakthrough_decision
+	desc = attempt_integration_breakthrough_decision_desc
+	selection_tooltip = attempt_integration_breakthrough_decision_tooltip
+	confirm_text = attempt_integration_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_integration_breakthrough has_perk = four_axis_integration_breakthrough_perk }
+		NOT = { has_trait = cultivation_integration }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_integration_breakthrough has_perk = four_axis_integration_breakthrough_perk }
+		NOT = { has_trait = cultivation_integration }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1700
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Star Shattering Breakthrough
+attempt_star_shattering_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 208
+	
+	title = attempt_star_shattering_breakthrough_decision
+	desc = attempt_star_shattering_breakthrough_decision_desc
+	selection_tooltip = attempt_star_shattering_breakthrough_decision_tooltip
+	confirm_text = attempt_star_shattering_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_star_shattering_breakthrough has_perk = integration_star_shattering_breakthrough_perk }
+		NOT = { has_trait = cultivation_star_shattering }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_star_shattering_breakthrough has_perk = integration_star_shattering_breakthrough_perk }
+		NOT = { has_trait = cultivation_star_shattering }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1800
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Sacred Vessel Breakthrough
+attempt_sacred_vessel_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 209
+	
+	title = attempt_sacred_vessel_breakthrough_decision
+	desc = attempt_sacred_vessel_breakthrough_decision_desc
+	selection_tooltip = attempt_sacred_vessel_breakthrough_decision_tooltip
+	confirm_text = attempt_sacred_vessel_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_sacred_vessel_breakthrough has_perk = star_shattering_sacred_vessel_breakthrough_perk }
+		NOT = { has_trait = cultivation_sacred_vessel }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_sacred_vessel_breakthrough has_perk = star_shattering_sacred_vessel_breakthrough_perk }
+		NOT = { has_trait = cultivation_sacred_vessel }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.1900
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+
+# Entering Nirvana Breakthrough
+attempt_entering_nirvana_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 210
+	
+	title = attempt_entering_nirvana_breakthrough_decision
+	desc = attempt_entering_nirvana_breakthrough_decision_desc
+	selection_tooltip = attempt_entering_nirvana_breakthrough_decision_tooltip
+	confirm_text = attempt_entering_nirvana_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_entering_nirvana_breakthrough has_perk = sacred_vessel_entering_nirvana_breakthrough_perk }
+		NOT = { has_trait = cultivation_entering_nirvana }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_entering_nirvana_breakthrough has_perk = sacred_vessel_entering_nirvana_breakthrough_perk }
+		NOT = { has_trait = cultivation_entering_nirvana }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.2000
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}
+# True Immortal Breakthrough
+attempt_true_immortal_breakthrough_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm_martial.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 211
+	
+	title = attempt_true_immortal_breakthrough_decision
+	desc = attempt_true_immortal_breakthrough_decision_desc
+	selection_tooltip = attempt_true_immortal_breakthrough_decision_tooltip
+	confirm_text = attempt_true_immortal_breakthrough_confirm
+	
+	is_shown = {
+		OR = { has_character_flag = can_attempt_true_immortal_breakthrough has_perk = entering_nirvana_life_perk }
+		NOT = { has_trait = cultivation_true_immortal }
+	}
+	
+	is_valid = {
+		OR = { has_character_flag = can_attempt_true_immortal_breakthrough has_perk = entering_nirvana_life_perk }
+		NOT = { has_trait = cultivation_true_immortal }
+		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
+	}
+	
+	effect = {
+		if = {
+			limit = { is_ai = no }
+			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
+		}
+		trigger_event = cultivation_breakthrough.2100
+	}
+	
+	ai_check_interval = 60
+	ai_potential = { always = yes }
+	ai_will_do = {
+		base = 100
+	}
+}

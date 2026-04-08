@@ -1,0 +1,17 @@
+﻿# Runtime mirror snapshot for fodder sync.
+# Source of truth remains localization/english/*.yml; update this mirror in the same commit.
+
+mirror_localization = {
+    source = "localization/english/xianxia_world_l_english.yml"
+    source = "localization/english/cultivation_expansion_decisions_l_english.yml"
+    source = "localization/english/cultivation_teach_interactions_l_english.yml"
+}
+# sync_update: added council/resource/debug dynamic localization keys
+# sync_update: added BOM + decision/government visibility localization hotfixes for xianxia world decisions
+
+# sync_update: added weapon/trait character desc keys plus alchemy body and pill economy localization
+
+# sync_update: added localization for alchemy lifestyle + formation mastery/body traits and formation barrier decision/modifiers
+# sync_update: added fox-spirit awakened/opinion localization keys in zzz_cultivation_l_english
+# sync_update: added fox-spirit child disown/accept event localization and disowned modifier text
+# sync_update: added xianxia world localization for fox-spirit predation decisions/events/modifier/opinion

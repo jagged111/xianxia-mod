@@ -1,0 +1,24 @@
+# Common-Fodder Sync Map
+# Rule: any commit that changes runtime events/gui/localization must also update the matching common/fodder mirror file.
+# Enforcement command: python3 scripts/check_fodder_sync.py
+
+sync_pairs = {
+    events = {
+        runtime = "events/cultivation_ai_events.txt"
+        runtime = "events/cultivation_character_initialization_events.txt"
+        runtime = "events/xianxia_world_events.txt"
+        mirror = "common/fodder/events/00_runtime_event_mirror.txt"
+    }
+    gui = {
+        runtime = "gui/cultivation_window.gui"
+        runtime = "gui/cultivation_hud_button.gui"
+        runtime = "common/scripted_guis/cultivation_window_scripted_guis.txt"
+        mirror = "common/fodder/gui/00_runtime_gui_mirror.txt"
+    }
+    localization = {
+        runtime = "localization/english/xianxia_world_l_english.yml"
+        runtime = "localization/english/cultivation_expansion_decisions_l_english.yml"
+        runtime = "localization/english/cultivation_teach_interactions_l_english.yml"
+        mirror = "common/fodder/localization/00_runtime_localization_mirror.txt"
+    }
+}

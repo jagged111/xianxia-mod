@@ -1,0 +1,30 @@
+						fixedgridbox = {
+							name = "doctrines_grid_core_tenets"
+							datamodel = "[FaithWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
+							flipdirection = yes
+							addcolumn = 140
+							addrow = 210
+							setitemsizefromcell = yes
+							datamodel_wrap = 4
+							maxhorizontalslots = -1
+							maxverticalslots = -1
+							layoutpolicy_vertical = expanding
+							layoutpolicy_horizontal = expanding
+
+							state = {
+								name = "faith_view_refresh"
+								using = Animation_Refresh_FadeOut
+							}
+
+							state = {
+								using = Animation_Refresh_FadeIn
+							}
+
+							item = {
+								container_tenet_item = {
+									datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+									datacontext = "[GuiFaithDoctrineItem.GetFaith]"
+									tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+								}
+							}
+						}

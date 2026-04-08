@@ -1,0 +1,195 @@
+﻿##################################################
+# QI BUILDING REALM (Y: 16-20)
+# Tree: qi_building_tree
+##################################################
+
+qi_building_1_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 0 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+	}
+}
+
+qi_building_early_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 2 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+	parent = qi_building_1_perk
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+	}
+}
+
+qi_building_2_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 2 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+    parent = qi_building_early_perk
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+	}
+}
+
+qi_building_mid_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+	parent = qi_building_2_perk
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+		advantage = 5
+	}
+}
+
+qi_building_3_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 0 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+	parent = qi_building_mid_perk
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+	}
+}
+
+qi_building_late_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 2 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+	parent = qi_building_3_perk
+	
+	character_modifier = {
+		prowess = 15
+		learning = 3
+		health = 1.5
+		advantage = 5
+	}
+}
+
+qi_building_4_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 2 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+    parent = qi_building_late_perk
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+	}
+}
+
+qi_building_peak_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 0 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+	parent = qi_building_4_perk
+	
+	character_modifier = {
+		prowess = 15
+		learning = 4
+		health = 1.5
+		advantage = 10
+	}
+}
+
+qi_building_5_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 0 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = node_cultivation
+    parent = qi_building_peak_perk
+	
+	character_modifier = {
+		prowess = 12
+		learning = 3
+		health = 1.0
+	}
+}
+
+qi_building_core_formation_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_building_tree
+	position = { 2 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_building
+	}
+	icon = cultivation_core_formation_f
+	parent = qi_building_5_perk
+	
+	trait = cultivation_core_formation
+	
+	effect = {
+		add_character_flag = can_attempt_core_formation_breakthrough
+		trigger_event = cultivation_breakthrough.1300
+	}
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		monthly_prestige = 0.5
+	}
+}

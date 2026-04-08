@@ -1,0 +1,127 @@
+﻿# cultivation
+
+cultivation_legacy_1 = { # Mystic training
+	legacy = cultivation_legacy_track
+    effect = {
+        custom_description_no_bullet = {
+			text = cultivation_1_effect
+		}
+    }
+	character_modifier = {
+		general_opinion = -15
+	}
+
+	traits = {
+		yin_bloodline_1 = 1
+		yang_bloodline_1 = 100
+		dragon_bloodline_1 = 1
+		phoenix_bloodline_1 = 50
+		anchestor_bloodline_1 = 1
+		poison_bloodline_1 = 1
+		cursed_bloodline_1 = 1
+		demon_bloodline_1 = 1
+		primal_bloodline_1 = 1
+		spirit_bloodline_1 = 1
+		sun_bloodline_1 = 1
+	}
+
+	ai_chance = {
+		value = 3
+		if = {
+			limit = { can_start_new_legacy_track_trigger = no }
+			multiply = 0
+		}
+	}
+}
+
+cultivation_legacy_2 = { # Blademaster + MaA 1
+	legacy = cultivation_legacy_track
+
+	character_modifier = {
+		prowess = 5
+	}
+
+    effect = {
+        #Unique MAA
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_2_unlock_effect
+		}
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_2_effect
+		}
+    }
+
+	traits = {
+		lifestyle_blademaster = 100
+	}
+}
+
+cultivation_legacy_3 = { # Fertility + Attraction
+	legacy = cultivation_legacy_track
+
+	character_modifier = {
+		fertility = 0.15
+		attraction_opinion = 20
+	}
+
+    effect = {
+        #Unique MAA
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_3_unlock_effect
+		}
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_3_effect
+		}
+        custom_description_no_bullet = {
+            #sex gives prowess
+			text = cultivation_3_sex_effects
+		}
+    }	
+}
+
+cultivation_legacy_4 = { # MaA 2 + Popular opinion penalty
+	legacy = cultivation_legacy_track
+
+	character_modifier = {
+		general_opinion = -5
+	}
+	
+    effect = {
+        #Unique MAA
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_4_unlock_effect
+		}
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_4_effect
+		}
+    }
+}
+
+cultivation_legacy_5 = { # MaA 3
+	legacy = cultivation_legacy_track
+	
+	character_modifier = {
+		men_at_arms_cap = 1
+	}	
+
+    effect = {
+        #Unique MAA
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_5_unlock_effect
+		}
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = cultivation_5_effect
+		}
+    }	
+}
+
+
+

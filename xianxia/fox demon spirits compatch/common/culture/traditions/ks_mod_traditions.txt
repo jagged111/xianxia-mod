@@ -1,0 +1,32 @@
+﻿#######################
+# CULTURAL TRADITIONS #
+#######################
+
+######################
+# KS_MOD Traditions  #
+######################
+
+tradition_ks_huxian = {
+    category = regional
+
+    is_shown = { #only added from decision
+        always = no
+    }
+
+    parameters = {
+		courtiers_and_guests_less_likely_to_join_schemes = yes
+		unlock_voluntary_laampdom = yes
+		charming_trait_more_common = yes
+	}
+
+	character_modifier = {
+		owned_personal_scheme_success_chance_add = 10
+		character_travel_safety_mult = 0.1
+	}
+
+	layers = {
+		0 = diplo
+		1 = western
+		4 = quill.dds
+	}
+}

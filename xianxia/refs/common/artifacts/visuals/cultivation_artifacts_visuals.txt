@@ -1,0 +1,4 @@
+breakthrough_herb = {
+	icon = "breakthrough_herb.dds"
+	asset = fp2_armillary_sphere_01_a_entity
+}

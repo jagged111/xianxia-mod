@@ -1,0 +1,349 @@
+﻿l_russian:
+
+ ## Decisions
+
+ join_cultivation_sect_decision:0 "Вступить в секту Просветления"
+ join_cultivation_sect_desc:0 "В Китае просветлённые состоят в сектах. Некоторые секты древнее этого мира, другие же основаны лишь недавно. Найдите секту, которая согласится принять вас. Быть может, вы обретёте там новую семью, новый путь просветления или же новую цель в жизни. Но одно можно сказать наверняка: после вступления в секту ваша жизнь уже никогда не будет прежней."
+ join_cultivation_sect_tooltip:0 "Выберите секту для вступления."
+ join_cultivation_sect_confirm:0 "Вступить в секту"
+
+ join_mount_hua_sect:0 "Секта Горы Хуа"
+ join_shaolin_sect:0 "Секта Шаолинь"
+ join_demonic_sect:0 "Демоническая секта"
+ join_tang_sect:0 "Секта Тан"
+
+ visit_cultivation_sect_decision:0 "Посетить секту Просветления"
+ visit_cultivation_sect_desc:0 "В Китае просветлённые состоят в сектах. Некоторые секты древнее этого мира, другие же основаны лишь недавно. Посетите секту, чтобы узнать о ней больше. Познайте их историю, их путь просветления — и, возможно, вы захотите к ним присоединиться или же заставите их трепетать перед вашим величием."
+ visit_cultivation_sect_tooltip:0 "Выберите секту для посещения."
+ visit_cultivation_sect_confirm:0 "Посетить секту"
+
+ visit_mount_hua_sect:0 "Секта Горы Хуа"
+ visit_mount_hua_sect_tooltip:0 "Посетить Секту Горы Хуа, чтобы узнать о ней больше."
+ visit_hainan_sect:0 "Секта Хайнань"
+ visit_hainan_sect_tooltip:0 "Посетить Секту Хайнань, чтобы узнать о ней больше."
+ visit_shaolin_sect:0 "Секта Шаолинь"
+ visit_shaolin_sect_tooltip:0 "Посетить Секту Шаолинь, чтобы узнать о ней больше."
+ visit_tang_sect:0 "Секта Тан"
+ visit_tang_sect_tooltip:0 "Посетить Секту Тан, чтобы узнать о ней больше."
+ visit_kunlun_sect:0 "Секта Куньлунь"
+ visit_kunlun_sect_tooltip:0 "Посетить Секту Куньлунь, чтобы узнать о ней больше."
+ visit_diancang_sect:0 "Секта Дяньцан"
+ visit_diancang_sect_tooltip:0 "Посетить Секту Дяньцан, чтобы узнать о ней больше."
+ visit_qingcheng_sect:0 "Секта Цинчэн"
+ visit_qingcheng_sect_tooltip:0 "Посетить Секту Цинчэн, чтобы узнать о ней больше."
+ visit_kongtong_sect:0 "Секта Кунтун"
+ visit_kongtong_sect_tooltip:0 "Посетить Секту Кунтун, чтобы узнать о ней больше."
+ visit_zhongnan_sect:0 "Секта Чжуннань"
+ visit_zhongnan_sect_tooltip:0 "Посетить Секту Чжуннань, чтобы узнать о ней больше."
+ visit_wudang_sect:0 "Секта Удан"
+ visit_wudang_sect_tooltip:0 "Посетить Секту Удан, чтобы узнать о ней больше."
+ visit_emei_sect:0 "Секта Эмэй"
+ visit_emei_sect_tooltip:0 "Посетить Секту Эмэй, чтобы узнать о ней больше."
+ visit_demonic_sect:0 "Демоническая секта"
+ visit_demonic_sect_tooltip:0 "Посетить Демоническую секту, чтобы узнать о ней больше."
+
+ ## Религиозная локализация
+ rf_cultivation:0 "Просветление"
+ cultivation_alliance:0 "Секты Просветления — Ортодоксия"
+ cultivation_alliance_adj:0 "Ортодоксальные"
+ cultivation_alliance_adherent:0 "Даосы"
+ cultivation_alliance_adherent_plural:0 "Даос"
+ cultivation_alliance_desc:0 "Честь — их клинок, доброта — их щит. Их путь — это Дао."
+ cultivation_neutral:0 "Секты Просветления — Неортодоксия"
+ cultivation_neutral_adj:0 "Неортодоксальные"
+ cultivation_neutral_adherent:0 "Клан"
+ cultivation_neutral_adherent_plural:0 "Член клана"
+ cultivation_neutral_desc:0 "Они верят, что Дао повсюду. От больного дитяти до умирающего старца. Каждый может найти своё Дао собственным путём."
+ cultivation_demonic:0 "Секты Просветления — Демонические"
+ cultivation_demonic_adj:0 "Демонические"
+ cultivation_demonic_adherent:0 "Дьяволы"
+ cultivation_demonic_adherent_plural:0 "Дьявол"
+ cultivation_demonic_desc:0 "Они не верят, что Дао необходимо на пути просветления. Если ты силён — ТЫ СИЛЁН. Если нет — отними силу у другого."
+ mount_hua_sect:0 "Секта Горы Хуа"
+ mount_hua_sect_adj:0 "Горы Хуа"
+ shaolin_sect:0 "Храм Шаолинь"
+ shaolin_sect_adj:0 "Шаолинь"
+ demonic_sect:0 "Демоническая секта"
+ demonic_sect_adj:0 "Демоническая"
+ tang_sect:0 "Секта Тан"
+ tang_sect_adj:0 "Тан"
+ hainan_sect:0 "Секта Хайнань"
+ hainan_sect_adj:0 "Хайнань"
+ kunlun_sect:0 "Секта Куньлунь"
+ kunlun_sect_adj:0 "Куньлунь"
+ diancang_sect:0 "Секта Дяньцан"
+ diancang_sect_adj:0 "Дяньцан"
+ qingcheng_sect:0 "Секта Цинчэн"
+ qingcheng_sect_adj:0 "Цинчэн"
+ kongtong_sect:0 "Секта Кунтун"
+ kongtong_sect_adj:0 "Кунтун"
+ zhongnan_sect:0 "Секта Чжуннань"
+ zhongnan_sect_adj:0 "Чжуннань"
+ wudang_sect:0 "Секта Удан"
+ wudang_sect_adj:0 "Удан"
+ emei_sect:0 "Секта Эмэй"
+ emei_sect_adj:0 "Эмэй"
+
+ # Sect Event Titles
+ cultivation_sect_visit.1000.t:0 "Секта Горы Хуа"
+ cultivation_sect_visit.1000.desc:0 "Величественные пики Горы Хуа возвышаются предо мной — обитель одной из самых почитаемых ортодоксальных сект. Ученики оттачивают свои формы меча в совершенной гармонии, их движения подобны текучей воде. Ко мне приближается старейшина, оценивая мой потенциал в просветлении."
+ cultivation_sect_visit.1000.a:0 "Я желаю вступить в Секту Горы Хуа"
+ cultivation_sect_visit.1000.b:0 "Обучите меня технике меча Горы Хуа"
+ cultivation_sect_visit.1000.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1000.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.1100.t:0 "Секта Хайнань"
+ cultivation_sect_visit.1100.desc:0 "Безмятежные берега Хайнаня простираются предо мной — обитель секты, известной своим мастерством водных техник. Ученики движутся с плавностью океана, их навыки отточены суровыми тренировками. Ко мне приближается старейшина, оценивая мой потенциал."
+ cultivation_sect_visit.1100.a:0 "Я желаю вступить в Секту Хайнань"
+ cultivation_sect_visit.1100.b:0 "Обучите меня водным техникам Хайнаня"
+ cultivation_sect_visit.1100.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1100.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.1200.t:0 "Секта Удан"
+ cultivation_sect_visit.1200.desc:0 "Безмятежные пики Удана возвышаются предо мной — обитель секты, известной своим мастерством внутренних боевых искусств. Ученики движутся с плавностью ветра, их навыки отточены суровыми тренировками. Ко мне приближается старейшина, оценивая мой потенциал."
+ cultivation_sect_visit.1200.a:0 "Я желаю вступить в Секту Удан"
+ cultivation_sect_visit.1200.b:0 "Обучите меня внутренним техникам Удана"
+ cultivation_sect_visit.1200.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1200.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.1300.t:0 "Секта Кунтун"
+ cultivation_sect_visit.1300.desc:0 "Величественные пики Кунтуна возвышаются предо мной — обитель одной из самых почитаемых ортодоксальных сект. Ученики оттачивают свои формы меча в совершенной гармонии, их движения подобны текучей воде. Ко мне приближается старейшина, оценивая мой потенциал в просветлении."
+ cultivation_sect_visit.1300.a:0 "Я желаю вступить в Секту Кунтун"
+ cultivation_sect_visit.1300.b:0 "Обучите меня технике меча Кунтуна"
+ cultivation_sect_visit.1300.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1300.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.1400.t:0 "Секта Чжуннань"
+ cultivation_sect_visit.1400.desc:0 "Величественные пики Чжуннаня возвышаются предо мной — обитель одной из самых почитаемых ортодоксальных сект. Ученики оттачивают свои формы меча в совершенной гармонии, их движения подобны текучей воде. Ко мне приближается старейшина, оценивая мой потенциал в просветлении."
+ cultivation_sect_visit.1400.a:0 "Я желаю вступить в Секту Чжуннань"
+ cultivation_sect_visit.1400.b:0 "Обучите меня технике меча Чжуннаня"
+ cultivation_sect_visit.1400.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1400.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.1500.t:0 "Храм Шаолинь"
+ cultivation_sect_visit.1500.desc:0 "Древний Храм Шаолинь стоит предо мной, его стены хранят эхо веков буддийских песнопений. Монахи оттачивают своё легендарное боевое искусство во дворе, их движения сливают медитацию и бой в единый танец."
+ cultivation_sect_visit.1500.a:0 "Я ищу путь ученичества"
+ cultivation_sect_visit.1500.b:0 "Я желаю изучать буддийские учения"
+ cultivation_sect_visit.1500.c:0 "Обучите меня боевым искусствам Шаолиня"
+ cultivation_sect_visit.1500.d:0 "Я помедитирую и покину это место"
+
+ cultivation_sect_visit.1600.t:0 "Секта Тан"
+ cultivation_sect_visit.1600.desc:0 "Резиденция Секты Тан окутана тайной. Известная во всём мире своим мастерством ядов и скрытого оружия, она одновременно внушает страх и уважение. Ко мне приближается член секты, чьи одежды скрывают бесчисленное множество смертоносных инструментов."
+ cultivation_sect_visit.1600.a:0 "Я желаю вступить в Секту Тан"
+ cultivation_sect_visit.1600.b:0 "Обучите меня искусству ядов"
+ cultivation_sect_visit.1600.c:0 "Я желаю приобрести редкие яды"
+ cultivation_sect_visit.1600.d:0 "Я отклоняю ваше предложение"
+
+ cultivation_sect_visit.1700.t:0 "Секта Куньлунь"
+ cultivation_sect_visit.1700.desc:0 "Величественные пики Куньлуня возвышаются предо мной — обитель одной из самых почитаемых ортодоксальных сект. Ученики оттачивают свои формы меча в совершенной гармонии, их движения подобны текучей воде. Ко мне приближается старейшина, оценивая мой потенциал в просветлении."
+ cultivation_sect_visit.1700.a:0 "Я желаю вступить в Секту Куньлунь"
+ cultivation_sect_visit.1700.b:0 "Обучите меня технике меча Куньлуня"
+ cultivation_sect_visit.1700.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1700.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.1800.t:0 "Секта Дяньцан"
+ cultivation_sect_visit.1800.desc:0 "Древняя Секта Дяньцан стоит предо мной, её стены хранят эхо веков буддийских песнопений. Монахи оттачивают своё легендарное боевое искусство во дворе, их движения сливают медитацию и бой в единый танец."
+ cultivation_sect_visit.1800.a:0 "Я желаю вступить в Секту Дяньцан"
+ cultivation_sect_visit.1800.b:0 "Я желаю изучать буддийские учения"
+ cultivation_sect_visit.1800.c:0 "Обучите меня боевым искусствам Дяньцан"
+ cultivation_sect_visit.1800.d:0 "Я помедитирую и покину это место"
+
+ cultivation_sect_visit.1900.t:0 "Секта Цинчэн"
+ cultivation_sect_visit.1900.desc:0 "Величественные пики Цинчэна возвышаются предо мной — обитель одной из самых почитаемых ортодоксальных сект. Ученики оттачивают свои формы меча в совершенной гармонии, их движения подобны текучей воде. Ко мне приближается старейшина, оценивая мой потенциал в просветлении."
+ cultivation_sect_visit.1900.a:0 "Я желаю вступить в Секту Цинчэн"
+ cultivation_sect_visit.1900.b:0 "Обучите меня технике меча Цинчэна"
+ cultivation_sect_visit.1900.c:0 "Я бросаю вызов вашим ученикам"
+ cultivation_sect_visit.1900.d:0 "Я всего лишь гость"
+
+ cultivation_sect_visit.2000.t:0 "Демоническая секта"
+ cultivation_sect_visit.2000.desc:0 "Тёмная ци пропитывает воздух, когда я вхожу в демоническую секту. Просветлённые с кроваво-красными глазами наблюдают из тени. Это место, где сила — это всё, а слабые пожираются сильными. Мою душу наполняет всепоглощающее чувство опасности."
+ cultivation_sect_visit.2000.a:0 "Я принимаю демонический путь!"
+ cultivation_sect_visit.2000.b:0 "Обучите меня запретным техникам"
+ cultivation_sect_visit.2000.c:0 "Я бросаю вызов за право властвовать"
+ cultivation_sect_visit.2000.d:0 "Это было ошибкой... Я должен уйти"
+
+ sect_join:0 "Я желаю вступить в вашу секту и учиться вашим традициям"
+ sect_spar:0 "Я пришёл бросить вызов одному из ваших учеников!"
+ sect_visit_cancel:0 "Я всего лишь гость и скоро покину это место"
+ sect_join_cancel:0 "Я передумал вступать в секту"
+ sect_join_donate:0 "Что, если я сделаю пожертвование в знак искренности?"
+
+ # Modifier Descriptions
+ mount_hua_technique:0 "Техника Горы Хуа"
+ mount_hua_technique_desc:0 "Обучен изящным формам меча Секты Горы Хуа"
+
+ sect_spar_victory:0 "Победитель в спарринге"
+ sect_spar_victory_desc:0 "Победа в сектантском спарринге укрепила уверенность и репутацию"
+
+ sect_spar_defeat:0 "Поражение в спарринге"
+ sect_spar_defeat_desc:0 "Поражение в спарринге смирило этого персонажа"
+
+ shaolin_teachings:0 "Буддийские учения Шаолиня"
+ shaolin_teachings_desc:0 "Изучал глубокую буддийскую философию Храма Шаолинь"
+
+ shaolin_martial_training:0 "Боевая подготовка Шаолиня"
+ shaolin_martial_training_desc:0 "Обучался легендарным боевым искусствам Храма Шаолинь"
+
+ demonic_cultivation_path:0 "Путь демонического просветления"
+ demonic_cultivation_path_desc:0 "Ступает по опасному демоническому пути, обменивая мораль на силу"
+
+ forbidden_technique:0 "Запретная техника"
+ forbidden_technique_desc:0 "Изучил запретную технику просветления, которая усиливает мощь, но рискует вызвать отклонение ци"
+
+ qi_deviation:0 "Отклонение ци"
+ qi_deviation_desc:0 "Просветление пошло вкривь, вызывая внутренние повреждения и нестабильность"
+
+ demonic_challenger_victor:0 "Победитель демонического претендента"
+ demonic_challenger_victor_desc:0 "Поверг претендента из демонической секты и приобрёл устрашающую репутацию"
+
+ demonic_challenger_defeated:0 "Побеждённый демоническим претендентом"
+ demonic_challenger_defeated_desc:0 "Потерпел поражение от просветлённого демонической секты, потеряв лицо и престиж"
+
+ tang_poison_arts:0 "Искусство ядов Секты Тан"
+ tang_poison_arts_desc:0 "Обучался тайным техникам ядов Секты Тан"
+
+ exotic_poisons:0 "Экзотические яды"
+ exotic_poisons_desc:0 "Владеет редкими и экзотическими ядами из Секты Тан"
+
+ dual_cultivation_boost:0 "Гармония двойственного просветления"
+ dual_cultivation_boost_desc:0 "Сеанс двойственного просветления гармонизировал поток ци"
+
+ cultivation_breakthrough:0 "Прорыв в просветлении"
+ cultivation_breakthrough_desc:0 "Недавний прорыв в понимании просветления"
+
+ heavenly_tribulation_preparation:0 "Подготовка к Небесному испытанию"
+ heavenly_tribulation_preparation_desc:0 "Готовит тело и душу к испытанию, которое грядёт с возвышением"
+
+ sect_elder_respect:0 "Уважение сектантского старейшины"
+ sect_elder_respect_desc:0 "Заслужил уважение сектантских старейшин"
+
+ sect_disgrace:0 "Позор секты"
+ sect_disgrace_desc:0 "Навлёк позор на свою секту"
+
+ immortal_insight:0 "Прозрение Бессмертного"
+ immortal_insight_desc:0 "Обрёл глубокие прозрения, достигнув Сферы Бессмертия"
+
+ zombie_master:0 "Повелитель зомби"
+ zombie_master_desc:0 "Повелевает нежитью через некромантическое просветление"
+
+ martial_arts_training:0 "Тренировка боевых искусств"
+ martial_arts_training_desc:0 "Проходит интенсивную подготовку в боевых искусствах"
+
+ advanced_martial_arts:0 "Продвинутые боевые искусства"
+ advanced_martial_arts_desc:0 "Освоил продвинутые боевые техники"
+
+ master_martial_artist:0 "Мастер боевых искусств"
+ master_martial_artist_desc:0 "Признан мастером боевых искусств"
+
+ realm_stabilization:0 "Стабилизация сферы"
+ realm_stabilization_desc:0 "Стабилизирует сферу просветления после прорыва"
+
+ qi_gathering_focus:0 "Фокус на Собирании Ци"
+ qi_gathering_focus_desc:0 "Сосредоточен на сборе и очищении ци"
+
+ core_formation_focus:0 "Фокус на Формировании Ядра"
+ core_formation_focus_desc:0 "Концентрируется на формировании и укреплении ядра просветления"
+
+ golden_core_stability:0 "Стабильность Золотого Ядра"
+ golden_core_stability_desc:0 "Золотое Ядро стабильно и излучает мощную ци"
+
+ # Opinion Modifiers
+ taught_me_cultivation_opinion:0 "Обучил меня Просветлению"
+ taught_them_cultivation_opinion:0 "Я обучил Просветлению"
+
+ # Trait XP Tooltips
+ trait_1_xp_tt:0 "Прогресс Собирания Ци"
+ trait_1_xp_desc:0 "Ваше понимание сбора ци углубляется"
+ trait_2_xp_tt:0 "Прогресс Формирования Ядра"
+ trait_2_xp_desc:0 "Ваше ядро просветления становится сильнее"
+ trait_3_xp_tt:0 "Прогресс Золотого Ядра"
+ trait_3_xp_desc:0 "Ваше золотое ядро сияет ярче"
+ trait_4_xp_tt:0 "Прогресс Сферы Пика"
+ trait_4_xp_desc:0 "Вы приближаетесь к пику смертного просветления"
+ trait_5_xp_tt:0 "Прогресс Сферы Освобождения"
+ trait_5_xp_desc:0 "Ваша сила знает меньше границ"
+ trait_6_xp_tt:0 "Прогресс Сферы Бессмертия"
+ trait_6_xp_desc:0 "Вы становитесь ближе к истинному бессмертию"
+
+ # Additional Interaction Text
+ dual_cultivation_interaction_blocked_qi_deviation:0 "Невозможно практиковать двойственное просветление, страдая от отклонения ци"
+ dual_cultivation_same_realm_bonus:0 "Оба партнёра находятся в одной сфере просветления"
+ dual_cultivation_teaching_bonus:0 "Просветлённый высшей сферы обучает партнёра низшей сферы"
+
+ # Legacy Track
+ martial_arts_legacy_complete:0 "Наследие боевых искусств завершено"
+ martial_arts_legacy_complete_desc:0 "Эта династия овладела наследием боевых искусств"
+
+ # Dual Cultivation
+ dual_cultivation_interaction:0 "Двойственное просветление"
+ dual_cultivation_interaction_desc:0 "Совместное просветление для получения опыта в практике."
+
+ dual_xp_qi_root_tt:0 "Вы получаете #P +30#! опыта Собирания Ци"
+ dual_xp_core_root_tt:0 "Вы получаете #P +30#! опыта Формирования Ядра"
+ dual_xp_golden_root_tt:0 "Вы получаете #P +30#! опыта Золотого Ядра"
+ dual_xp_peak_root_tt:0 "Вы получаете #P +30#! опыта Сферы Пика"
+ dual_xp_unrestrained_root_tt:0 "Вы получаете #P +30#! опыта Сферы Освобождения"
+ dual_xp_immortal_root_tt:0 "Вы получаете #P +30#! опыта Сферы Бессмертия"
+
+ dual_xp_qi_partner_tt:0 "Партнёр получает #P +30#! опыта Собирания Ци"
+ dual_xp_core_partner_tt:0 "Партнёр получает #P +30#! опыта Формирования Ядра"
+ dual_xp_golden_partner_tt:0 "Партнёр получает #P +30#! опыта Золотого Ядра"
+ dual_xp_peak_partner_tt:0 "Партнёр получает #P +30#! опыта Сферы Пика"
+ dual_xp_unrestrained_partner_tt:0 "Партнёр получает #P +30#! опыта Сферы Освобождения"
+ dual_xp_immortal_partner_tt:0 "Партнёр получает #P +30#! опыта Сферы Бессмертия"
+
+ ##Martial Arts Men-at-Arms
+ martial_artist_cultivator:0 "Просветлённый"
+ martial_artist_army_1:0 "Мастер боевых искусств"
+ martial_artist_army_2:0 "Мастер-наставник боевых искусств"
+ martial_artist_army_3:0 "Великий Мастер боевых искусств"
+ zombie_army_1:0 "Зомби"
+ zombie_army_2:0 "Нежить"
+ zombie_army_3:0 "Цзянши"
+ zombie_army_4:0 "Возрождённый"
+ zombie_army_5:0 "Повелитель Смерти"
+ immortal_army_1:0 "Нефритовый Воин"
+ immortal_army_2:0 "Бессмертный Воин"
+
+ ##Martial Arts Men-at-Arms Descriptions
+ martial_artist_cultivator_flavor:0 "Просветлённые, лишь вставшие на путь Бессмертия."
+ martial_artist_army_1_flavor:0 "Недавно обученный мастер боевых искусств."
+ martial_artist_army_2_flavor:0 "Мастера, постигшие свои боевые пути. Хорошо обученные воины."
+ martial_artist_army_3_flavor:0 "Мастер, преодолевший человеческие ограничения. Способен использовать мечную ци."
+ zombie_army_1_flavor:0 "Зомби, созданный из мёртвого тела. Не может мыслить или просветляться. Живой щит для передовой."
+ zombie_army_2_flavor:0 "Первая попытка воскрешения. Не может мыслить самостоятельно, но способен использовать немного ци."
+ zombie_army_3_flavor:0 "Широко известный и принятый способ воскрешения. Цзянши — неотъемлемая часть пути просветления некоторых сект. Способны понимать и использовать просветление. Преданы своему создателю-просветлённому."
+ zombie_army_4_flavor:0 "Почти совершенное воскрешение. Сохранили некоторые воспоминания о прошлой жизни и часть своей силы просветления. Могут мыслить и действовать самостоятельно. Имеют слабую связь со своим создателем."
+ zombie_army_5_flavor:0 "Повелители Смерти — это воскрешённые, кто просветлял ци смерти и достиг realms Бессмертия."
+ immortal_army_1_flavor:0 "Нефритовые Воины достигли realms Бессмертия и носят в себе королевскую кровь. Они — уединённые и благородные истинные бессмертные."
+ immortal_army_2_flavor:0 "Они достигли realms Бессмертия чистой силой. Единственное, чего они желают, — это сражения."
+
+ ##Martial Arts
+ martial_arts_legacy_track_name:0 "Боевые искусства"
+ martial_arts_legacy_track_desc:0 "Путь к бессмертию"
+ martial_arts_legacy_1_name:0 "Открытие меридианов"
+ martial_arts_legacy_2_name:0 "Боевые искусства"
+ martial_arts_legacy_3_name:0 "Сексуальная энергия"
+ martial_arts_legacy_4_name:0 "Воскрешение"
+ martial_arts_legacy_5_name:0 "Кровь бессмертных"
+
+ IMMORTAL_CULTIVATOR_UNLOCK_DESCRIPTION:0 "Может нанимать [GetMaA('immortal_army_1').GetName] и [GetMaA('immortal_army_2').GetName] в качестве [men_at_arms|E]"
+ IMMORTAL_CULTIVATOR_DESCRIPTION:0 "#weak [GetMaA('immortal_army_1').GetName] и [GetMaA('immortal_army_2').GetName] Требуют: Сфера Бессмертия#!"
+
+ ZOMBIE_UNLOCK_DESCRIPTION:0 "Может нанимать [GetMaA('zombie_army_4').GetName] и [GetMaA('zombie_army_5').GetName] в качестве [men_at_arms|E]"
+ ZOMBIE_DESCRIPTION:0 "#weak [GetMaA('zombie_army_1').GetName] Требуют: Собирание Ци и выше, \n[GetMaA('zombie_army_2').GetName] Требуют: Золотое Ядро и выше, \n[GetMaA('zombie_army_3').GetName] Требуют: Сфера Пика и выше, \n[GetMaA('zombie_army_4').GetName] Требуют: Сфера Освобождения и выше, \n[GetMaA('zombie_army_5').GetName] Требуют: Сфера Бессмертия#!"
+
+ SEDUCER_UNLOCK_DESCRIPTION:0 ""
+ SEDUCER_DESCRIPTION:0 ""
+
+ MARTIAL_ARTIST_UNLOCK_DESCRIPTION:0 "Может нанимать [GetMaA('martial_artist_army_1').GetName], [GetMaA('martial_artist_army_2').GetName] и [GetMaA('martial_artist_army_3').GetName] в качестве [men_at_arms|E]"
+ MARTIAL_ARTIST_DESCRIPTION:0 "#weak [GetMaA('martial_artist_army_1').GetName] Требуют: Собирание Ци и выше, \n[GetMaA('martial_artist_army_2').GetName] Требуют: Сфера Пика и выше, \n[GetMaA('martial_artist_army_3').GetName] Требуют: Сфера Освобождения и выше#!"
+
+ CULTIVATOR_UNLOCK_DESCRIPTION:0 ""
+ CULTIVATOR_DESCRIPTION:0 ""
+
+ DUAL_CULTIVATION_SEX_EFFECT_DESCRIPTION:0 "Вы обучились двойственному просветлению. Вы можете увеличивать просветление с помощью сексуальной энергии."
+
+ #SECT SPAR
+ sect_spar_interaction:0 "Запросить спарринг"
+ recipient_secondary_sect_spar_interaction:0 "Вызов на спарринг — Получатель"

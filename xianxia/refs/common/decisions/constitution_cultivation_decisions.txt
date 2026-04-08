@@ -1,0 +1,44 @@
+﻿improve_dragon_bloodline_part_1 = {
+
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/improve_dragon_bloodline_part_1.dds"
+	}
+
+    desc = improve_dragon_bloodline_part_1_desc
+    selection_tooltip = improve_dragon_bloodline_part_1_selection_tooltip
+	sort_order = 500
+
+	cost = {
+		gold = 500
+	}
+
+    is_shown = {
+		AND = {
+			has_trait = dragon_bloodline
+			is_cultivator = yes
+		}
+    }
+
+    ai_check_interval = 3
+
+	ai_will_do = {
+		base = 50
+		modifier = {
+			add = chance_to_cultivate
+			is_adult = yes
+		}
+	}
+
+	cooldown = {
+		months = 12
+	}
+
+    effect = {
+
+		trigger_event = {
+			id = cultivation_constitutions_events.003
+			months = 3
+		}
+		custom_tooltip = improve_dragon_bloodline_part_1_tooltip
+    }
+}

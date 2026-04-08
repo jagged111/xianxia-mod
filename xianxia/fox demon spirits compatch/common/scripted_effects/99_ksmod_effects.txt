@@ -1,0 +1,963 @@
+﻿ks_cultivation_teacher_setup = {
+
+    # 保存修行地点
+    scope:activity.activity_location = { save_scope_as = location }
+
+    # 若没有 ks_teacher_1，则生成一个
+    if = {
+        limit = {
+            scope:activity = {
+                NOT = {
+                    any_attending_character = {
+                        has_character_flag = ks_teacher_1
+                    }
+                }
+            }
+        }
+
+        # 永远创建一个新师傅（你在模板里定义）
+        create_character = {
+            template = ks_cultivation_teacher_template   # ← 你的自定义模板
+            dynasty = none
+            location = scope:location
+            save_scope_as = ks_teacher_1
+
+            after_creation = {
+                add_character_flag = created
+            }
+        }
+
+        # 设置师傅状态
+        scope:ks_teacher_1 = {
+
+            # 清理冲突角色（避免继承到学生标记等）
+            if = { limit = { has_character_flag = student_1 } remove_character_flag = ks_student_1 }
+            if = { limit = { has_character_flag = student_2 } remove_character_flag = ks_student_2 }
+            if = { limit = { has_character_flag = teacher_1 } remove_character_flag = ks_teacher_1 } # 清除旧系统残留
+
+            # 加入活动
+            add_to_activity = scope:activity
+
+            # 设置新老师 flag
+            add_character_flag = ks_teacher_1
+        }
+    }
+}
+
+ks_cultivation_student_setup = {
+
+    # 保存活动地点
+    scope:activity.activity_location = { save_scope_as = location }
+
+    ########################
+    # 学生 1
+    ########################
+    if = {
+        limit = {
+            scope:activity = {
+                NOT = {
+                    any_attending_character = {
+                        has_character_flag = ks_student_1
+                    }
+                }
+            }
+        }
+
+        # 永远从模板生成
+        create_character = {
+            template = ks_cultivation_student_template  # ← 你的自定义学生模板
+            dynasty = none
+            location = scope:location
+            save_scope_as = ks_student_1
+
+            after_creation = {
+                add_character_flag = created
+				# add_character_flag = generated_character_uni  # 可选：原始大学系统标记
+            }
+        }
+
+        scope:ks_student_1 = {
+            # 清理冲突角色
+            if = { limit = { has_character_flag = ks_teacher_1 } remove_character_flag = ks_teacher_1 }
+            if = { limit = { has_character_flag = ks_student_2 } remove_character_flag = ks_student_2 }
+
+            # 加入活动
+            add_to_activity = scope:activity
+
+            # 设置 flag
+            add_character_flag = ks_student_1
+        }
+    }
+
+    ########################
+    # 学生 2
+    ########################
+    if = {
+        limit = {
+            scope:activity = {
+                NOT = {
+                    any_attending_character = {
+                        has_character_flag = ks_student_2
+                    }
+                }
+            }
+        }
+
+        # 永远从模板生成
+        create_character = {
+            template = ks_cultivation_student_template  # ← 同上模板
+            dynasty = none
+            location = scope:location
+            save_scope_as = ks_student_2
+
+            after_creation = {
+                add_character_flag = created
+            }
+        }
+
+        scope:ks_student_2 = {
+            # 清理冲突角色
+            if = { limit = { has_character_flag = ks_teacher_1 } remove_character_flag = ks_teacher_1 }
+            if = { limit = { has_character_flag = ks_student_1 } remove_character_flag = ks_student_1 }
+
+            # 加入活动
+            add_to_activity = scope:activity
+
+            # 设置 flag
+            add_character_flag = ks_student_2
+        }
+    }
+}
+
+
+resolve_ks_cultivation_success_reward_effect = {
+	involved_activity ?= {
+		scope:host = {
+				if = {
+					limit = {
+						NOT = { has_trait = huxian_cultivation }
+					}
+					add_trait = huxian_cultivation
+					add_trait_xp = {
+						trait = huxian_cultivation
+						value = {
+							value = scope:activity.var:activity_special_type_progression
+							multiply = {
+								value = 0.2
+								if = {
+									limit = {
+										scope:host = {
+											has_activity_intent = ks_study_hard_intent
+										}
+									}
+									add = 0.025
+								}
+								if = {
+									limit = {
+										scope:activity = {
+											has_activity_option = {
+												category = ks_cultivation_option_preparation
+												option = ks_cultivation_preparation_good
+											}
+										}
+									}
+									add = 0.025
+								}
+								if = {
+									limit = {
+										scope:activity = {
+											has_activity_option = {
+												category = ks_cultivation_option_preparation
+												option = ks_cultivation_preparation_bad
+											}
+										}
+									}
+									add = -0.025
+								}
+							}
+							round = yes
+						}
+					}
+				}
+				else = {
+					add_trait_xp = {
+						trait = huxian_cultivation
+						value = {
+							value = scope:activity.var:activity_special_type_progression
+							multiply = {
+								value = 0.2
+								if = {
+									limit = {
+										scope:host = {
+											has_activity_intent = ks_study_hard_intent
+										}
+									}
+									add = 0.025
+								}
+								if = {
+									limit = {
+										scope:activity = {
+											has_activity_option = {
+												category = ks_cultivation_option_preparation
+												option = ks_cultivation_preparation_good
+											}
+										}
+									}
+									add = 0.025
+								}
+								if = {
+									limit = {
+										scope:activity = {
+											has_activity_option = {
+												category = ks_cultivation_option_preparation
+												option = ks_cultivation_preparation_bad
+											}
+										}
+									}
+									add = -0.025
+								}
+							}
+							round = yes
+						}
+					}	
+				}
+
+		}
+	}
+}
+
+ks_cultivation_completed_log_entry_effect = {
+	involved_activity = {
+		add_activity_log_entry = {
+			key = ks_cultivation_studies_completed_log
+			tags = { completed }
+			score = 10
+			show_in_conclusion = yes
+			character = root
+			#Effects
+			custom_tooltip = ks_end_add_huxian_xp
+			#暂时没有
+			#root = {
+			#	disburse_adult_education_reward_effect = yes
+			#}
+		}
+	}
+}
+
+##########
+#bed_game
+##########
+
+
+#注意和下棋不同，狐仙双修的类型由被提议者决定
+ks_challenge_to_2p_bed_interaction_game_type_effect = {
+	$GAME_TYPE_SETTER$ = {
+		if = {
+			limit = {
+				OR={
+					culture = culture:huxian
+					culture = { has_cultural_tradition=tradition_ks_huxian }
+					has_trait=huxian_blood
+					has_trait=huxian_cultivation
+				}
+			}
+			save_scope_value_as = {
+				name = ks_bg_interaction_game_type
+				value = flag:hu2hu
+			}
+		}
+		else = {
+			save_scope_value_as = {
+				name = ks_bg_interaction_game_type
+				value = flag:hu2pe
+			}
+		}
+	}
+}
+
+ks_bg_stake_friendly_effect = {
+	$VICTOR$ = {
+		if = {
+			# Obscure opinion adds from players.
+			limit = { is_ai = yes }
+			add_opinion = {
+				target = $LOSER$
+				modifier = pleased_opinion
+				opinion = 25
+			}
+		}
+		add_stress = minor_stress_loss
+	}
+	$LOSER$ = {
+		if = {
+			# Obscure opinion adds from players.
+			limit = { is_ai = yes }
+			add_opinion = {
+				target = $VICTOR$
+				modifier = pleased_opinion
+				opinion = 10
+			}
+		}
+		add_stress = minor_stress_gain
+	}	
+}
+
+ks_configure_start_bed_game_effect = {
+	# DOCUMENTATION
+	## scope:bg_initiator
+		### Who started the board game? This is who the output/invalidation events will fire for.
+	## scope:bg_attacker
+		### The hostile party - in the event of a tie, the match is decided against them.
+	## scope:bg_defender
+		### The defending party - in the event of a tie, the match is decided in their favour.
+	## scope:bg_system = flag:XYZ
+		### These control both the relevant skills, counters, & some flavour adjacent to the game.
+		### hu2hu 狐对狐
+		### hu2pe 狐对人
+	## scope:locale = flag:XYZ
+		### These just trigger the event background of the same name. New ones can be added as needed, but should be added across all three events (round, victory, loss/board_games.0001, board_games.0031, board_games.0041), as we can't add a scripted list.
+		### terrain_scope
+		### wilderness_scope
+		### battlefield
+		### temple
+		### council_chamber
+		### courtyard
+		### dungeon
+		### docks
+		### feast
+		### gallows
+		### garden
+		### market
+		### sitting_room
+		### bedchamber
+		### study
+		### physicians_study
+		### tavern
+		### throne_room
+		### army_camp
+		### random_nice_day
+		#### Selects either garden or sitting_room, depending on season.
+	## output event ID
+		### Which event fires after the game's completion?
+
+	# Sort parties.
+	$BG_INITIATOR$ = { save_scope_as = ks_bg_initiator }
+	$BG_DEFENDER$ = { save_scope_as = ks_bg_defender }
+	$BG_ATTACKER$ = { save_scope_as = ks_bg_attacker }
+	# Make sure they're clean for setup.
+	hidden_effect = { ks_remove_bed_game_variables_effect = yes}
+	# Set them both to busy for the single combat.
+	scope:ks_bg_defender = {
+		set_variable = {
+			name = ks_engaged_in_bed_game
+			value = yes
+		}
+		add_character_flag = is_naked
+	}
+	scope:ks_bg_attacker = {
+		set_variable = {
+			name = ks_engaged_in_bed_game
+			value = yes
+		}
+		add_character_flag = is_naked
+	}
+	play_music_cue = "mx_cue_seduction" #放在最后事件或许更好？
+	## Sadly, we have no good justification for ripping your shirt off whilst playing board games.
+	# Set rules & system.
+	save_scope_value_as = {
+		name = ks_bg_system
+		value = flag:$SYSTEM$
+	}
+	## 狐对狐
+	### 勇武 克 谋略 克外交
+	if = {
+		limit = { scope:ks_bg_system = flag:hu2hu }
+		save_scope_value_as = {
+			name = ks_bg_skill_a
+			value = flag:prowess
+		}
+		save_scope_value_as = {
+			name = ks_bg_skill_b
+			value = flag:intrigue
+		}
+		save_scope_value_as = {
+			name = ks_bg_skill_c
+			value = flag:diplomacy
+		}
+	}
+	## 狐对人
+	### 一样
+	else_if = {
+		limit = { scope:ks_bg_system = flag:hu2pe }
+		save_scope_value_as = {
+			name = ks_bg_skill_a
+			value = flag:prowess
+		}
+		save_scope_value_as = {
+			name = ks_bg_skill_b
+			value = flag:intrigue
+		}
+		save_scope_value_as = {
+			name = ks_bg_skill_c
+			value = flag:diplomacy
+		}
+	}
+	# Note where the fight is taking place, if we're using a specific location.
+	save_scope_value_as = {
+		name = ks_bg_locale
+		value = flag:$LOCALE$
+	}
+	## Grab _scope backgrounds appropriately..
+	if = {
+		limit = { scope:ks_bg_locale = flag:terrain_scope }
+		scope:ks_bg_defender.location = { save_scope_as = background_terrain_scope }
+	}
+	else_if = {
+		limit = { scope:ks_bg_locale = flag:wilderness_scope }
+		scope:ks_bg_defender.location = { save_scope_as = background_wilderness_scope }
+	}
+	## Sort any random_ backgrounds if necessary.
+	else_if = {
+		limit = { scope:ks_bg_locale = flag:random_nice_day }
+		random_list = {
+			# Indoors.
+			50 = {
+				trigger = {
+					exists = scope:ks_bg_defender.location
+					is_nice_season_to_be_inside_trigger = { LOCATION = scope:ks_bg_defender.location }
+				}
+				save_scope_value_as = {
+					name = ks_bg_locale
+					value = flag:sitting_room
+				}
+			}
+			# Outdoors.
+			50 = {
+				trigger = {
+					exists = scope:ks_bg_defender.location
+					is_nice_season_to_be_outside_trigger = { LOCATION = scope:ks_bg_defender.location }
+				}
+				save_scope_value_as = {
+					name = ks_bg_locale
+					value = flag:garden
+				}
+			}
+			# Fallback: occasionally characters fall into a bloody void between space and time, I guess, and when they do we need to stop trying to calculate the weather for non-Euclidian space.
+			50 = {
+				trigger = {
+					NOT = { exists = scope:ks_bg_defender.location }
+				}
+				save_scope_value_as = {
+					name = ks_bg_locale
+					# Because black holes are from space and space lives inside books.
+					value = flag:study
+				}
+			}
+		}
+	}
+	# Arrange aftermath.
+	save_scope_value_as = {
+		name = ks_follow_up_event
+		value = event_id:$OUTPUT_EVENT$
+	}
+	save_scope_value_as = {
+		name = ks_invalidation_event
+		value = event_id:$INVALIDATION_EVENT$
+	}
+	# Configure starting scopes'n'variables.
+	scope:ks_bg_defender = {
+		# Set our current round.
+		set_variable = {
+			name = ks_bg_current_round
+			value = 1
+		}
+		# Set up our initial scores.
+		set_variable = {
+			name = ks_bg_current_score
+			value = 0
+		} 
+	}
+	scope:ks_bg_attacker = {
+		# Set up our initial scores.
+		set_variable = {
+			name = ks_bg_current_score
+			value = 0
+		}
+	}
+	# Finally, send the first event.
+	scope:ks_bg_defender = { trigger_event = ks_bed_games.0001 }
+}
+
+ks_bg_fire_clean_up_and_invalidate_effect = {
+	ks_remove_engaged_in_bed_game_variables_effect = yes
+	# We try to wing this at scope:bg_defender...
+	if = {
+		limit = {
+			scope:ks_bg_defender = { is_alive = yes }
+		}
+		scope:ks_bg_defender = {
+			trigger_event = { saved_event_id = scope:invalidation_event }
+		}
+	}
+	# ... then scope:bg_attacker...
+	else_if = {
+		limit = {
+			scope:ks_bg_attacker = { is_alive = yes }
+		}
+		scope:ks_bg_attacker = {
+			trigger_event = { saved_event_id = scope:invalidation_event }
+		}
+	}
+	# ... then scope:bg_initiator...
+	else_if = {
+		limit = {
+			scope:ks_bg_initiator = { is_alive = yes }
+		}
+		scope:ks_bg_initiator = {
+			trigger_event = { saved_event_id = scope:invalidation_event }
+		}
+	}
+	# ... then we give up, as somehow *everyone* involved in the board game has died simultaneously.
+}
+
+ks_remove_bed_game_variables_effect = {
+	# Player-side variables.
+	remove_variable = ks_bg_current_round
+	remove_variable = ks_bg_current_score
+	remove_variable = ks_bg_move_result
+	# If there are any wagering counties, clear the blockers on their being wagered.
+	#if = {
+	#	limit = { exists = scope:ks_bg_stake_land_recipient }
+	#	scope:ks_bg_stake_land_recipient = { remove_variable = wagered_county }
+	#}
+	#if = {
+	#	limit = { exists = scope:ks_bg_stake_land_actor }
+	#	scope:ks_bg_stake_land_actor = { remove_variable = wagered_county }
+	#}
+	# Remove any debug variables.
+	#remove_variable = ks_bg_gib_only_losing_locs
+	#remove_variable = ks_bg_gib_only_winning_locs
+	# Note, we don't remove var:engaged_in_board_game here, as we run this effect at the start of games for clean-up also.
+}
+
+ks_bg_play_move_type_effect = {
+	# Set the move type played.
+	## Either we're scope:bg_defender...
+	if = {
+		limit = { this = scope:ks_bg_defender }
+		save_scope_value_as = {
+			name = ks_bg_defender_move
+			value = flag:$SKILL$
+		}
+	}
+	## Or else we must be scope:bg_attacker.
+	else = {
+		save_scope_value_as = {
+			name = ks_bg_attacker_move
+			value = flag:$SKILL$
+		}
+	}
+	# Run the duel.
+	duel = {
+		skill = $SKILL$
+		value = decent_skill_rating
+		# Crit success.
+		10 = {
+			show_chance = no
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = 3.5
+				min = -49
+			}
+			ks_bg_play_move_type_effect_extraneous_advantages_self_modifier = yes
+			desc = ks_bed_games.0001.$LOC_KEY$.tt.crit_success
+			custom_tooltip = ks_bed_games.0001.$LOC_KEY$.tt.crit_success.tt
+			# Save the result.
+			set_variable = {
+				name = ks_bg_move_result
+				value = flag:crit_success
+			}
+		}
+		# Success.
+		40 = {
+			show_chance = no
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = 3.5
+				min = -49
+			}
+			ks_bg_play_move_type_effect_extraneous_advantages_self_modifier = yes
+			desc = ks_bed_games.0001.$LOC_KEY$.tt.success
+			custom_tooltip = ks_bed_games.0001.$LOC_KEY$.tt.success.tt
+			# Save the result.
+			set_variable = {
+				name = ks_bg_move_result
+				value = flag:success
+			}
+		}
+		# Failure.
+		40 = {
+			show_chance = no
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = -3.5
+				min = -49
+			}
+			ks_bg_play_move_type_effect_extraneous_advantages_opponent_modifier = yes
+			desc = ks_bed_games.0001.$LOC_KEY$.tt.failure
+			custom_tooltip = ks_bed_games.0001.$LOC_KEY$.tt.failure.tt
+			# Save the result.
+			set_variable = {
+				name = ks_bg_move_result
+				value = flag:failure
+			}
+		}
+		# Crit failure.
+		10 = {
+			show_chance = no
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = -3.5
+				min = -49
+			}
+			ks_bg_play_move_type_effect_extraneous_advantages_opponent_modifier = yes
+			desc = ks_bed_games.0001.$LOC_KEY$.tt.crit_failure
+			custom_tooltip = ks_bed_games.0001.$LOC_KEY$.tt.crit_failure.tt
+			# Save the result.
+			set_variable = {
+				name = ks_bg_move_result
+				value = flag:crit_failure
+			}
+		}
+	}
+}
+
+
+ks_bg_calc_current_scores_effect = {
+	$CURRENT_PLAYER$ = {
+		set_variable = {
+			name = ks_bg_current_score
+			value = {
+				value = $CURRENT_PLAYER$.var:ks_bg_current_score
+				# Add results based on move score.
+				## First, work out if we've been countered.
+				if = {
+					limit = {
+						exists = scope:ks_bg_counterer
+						scope:ks_bg_counterer = $OTHER_PLAYER$
+					}
+					# Lots'n'lots for crit successes.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:crit_success }
+						add = {
+							value = ks_bg_crit_success_add_value
+							multiply = ks_bg_counter_mult_value
+							round = yes
+						}
+					}
+					# Lots for successes.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:success }
+						add = {
+							value = ks_bg_success_add_value
+							multiply = ks_bg_counter_mult_value
+							round = yes
+						}
+					}
+					# Less for fails.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:failure }
+						add = {
+							value = ks_bg_failure_add_value
+							multiply = ks_bg_counter_mult_value
+							round = yes
+						}
+					}
+					# Not-lots for crit fails.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:crit_failure }
+						add = {
+							value = ks_bg_crit_failure_add_value
+							multiply = ks_bg_counter_mult_value
+							round = yes
+						}
+					}
+				}
+				## Otherwise, we can use the normal values.
+				if = {
+					limit = {
+						exists = scope:ks_bg_counterer
+						scope:ks_bg_counterer = $CURRENT_PLAYER$
+					}
+					# Lots'n'lots for crit successes.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:crit_success }
+						add = ks_bg_crit_success_add_value
+					}
+					# Lots for successes.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:success }
+						add = ks_bg_success_add_value
+					}
+					# Less for fails.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:failure }
+						add = ks_bg_failure_add_value
+					}
+					#  for crit fails.
+					if = {
+						limit = { $CURRENT_PLAYER$.var:ks_bg_move_result = flag:crit_failure }
+						add = ks_bg_crit_failure_add_value
+					}
+				}
+			}
+		}
+	}
+}
+
+ks_bg_finalise_match_end_effect = {
+	# Track variables.
+	## Is either character a player? If so, bookmark them on their opponent.
+	if = {
+		limit = {
+			OR = {
+				scope:ks_bg_victor = { is_ai = no }
+				scope:ks_bg_loser = { is_ai = no }
+			}
+		}
+		# Process stakes from the interaction.
+		scope:ks_bg_loser = {
+			# And otherwise we use the default.
+
+				set_variable = {
+					name = ks_bg_recent_default_loss_to
+					value = scope:ks_bg_victor
+					years = 10
+				}
+		}
+	}
+	## Is either character a player _or_ a game-master? If so, increment their tallies.
+	scope:ks_bg_victor = {
+		if = {
+			limit = {
+				OR = {
+					is_ai = no
+					# TIT-34022
+				}
+			}
+			# If they don't have a score tally already, create one.
+			if = {
+				limit = {
+					NOT = { has_variable = ks_bg_win_tally }
+				}
+				set_variable = {
+					name = ks_bg_win_tally
+					value = 0
+				}
+			}
+			# Now we make our changes.
+			change_variable = {
+				name = ks_bg_win_tally
+				add = 1
+			}
+		}
+	}
+	scope:ks_bg_loser = {
+		if = {
+			limit = {
+				OR = {
+					is_ai = no
+					# TIT-34022
+				}
+			}
+			# If they don't have a score tally already, create one.
+			if = {
+				limit = {
+					NOT = { has_variable = ks_bg_loss_tally }
+				}
+				set_variable = {
+					name = ks_bg_loss_tally
+					value = 0
+				}
+			}
+			# Now we make our changes.
+			change_variable = {
+				name = ks_bg_loss_tally
+				add = 1
+			}
+		}
+	}
+	# Send out results events.
+	scope:ks_bg_victor = { trigger_event = ks_bed_games.0031 }
+	scope:ks_bg_loser = { trigger_event = ks_bed_games.0041 }
+	# Clean up effects.
+	ks_remove_bed_game_info_effect = yes
+	## Including removing the in-progress match flag for invalidation if this was via interaction.
+	if = {
+		limit = {
+			exists = scope:actor
+			scope:actor = { has_character_flag = ks_taken_challenge_to_bedgame_interaction }
+		}
+		scope:actor = { remove_character_flag = ks_taken_challenge_to_bedgame_interaction }
+	}
+	# Finally, send out the post-match event for scope:sg_initiator.
+	scope:ks_bg_initiator = {
+		trigger_event = { saved_event_id = scope:ks_follow_up_event }
+	}
+}
+
+ks_remove_bed_game_info_effect = {
+	scope:ks_bg_defender = {
+		# Only remove variables if they're alive, as otherwise we get errors.
+		if = {
+			limit = { is_alive = yes }
+			ks_remove_bed_game_variables_effect = yes
+		}
+	}
+	scope:ks_bg_attacker = {
+		# Only remove variables if they're alive, as otherwise we get errors.
+		if = {
+			limit = { is_alive = yes }
+			ks_remove_bed_game_variables_effect = yes
+		}
+	}
+	ks_remove_engaged_in_bed_game_variables_effect = yes
+}
+
+ks_remove_engaged_in_bed_game_variables_effect = {
+	scope:ks_bg_attacker = {
+		if = {
+			# Restrict to live characters to prevent errors.
+			limit = { is_alive = yes }
+			remove_variable = ks_engaged_in_bed_game
+			remove_character_flag = is_naked
+		}
+	}
+	scope:ks_bg_defender = {
+		if = {
+			# Restrict to live characters to prevent errors.
+			limit = { is_alive = yes }
+			remove_variable = ks_engaged_in_bed_game
+			remove_character_flag = is_naked
+		}
+	}
+}
+
+ks_bg_victor_end_result_tooltip_effect = {
+	#Clarify the results.
+	if = {
+		limit = { scope:ks_bg_victory_type = flag:skill }
+		custom_tooltip = ks_bed_games.0031.desc.result.skill
+	}
+	else_if = {
+		limit = { scope:ks_bg_victory_type = flag:sudden_death }
+		custom_tooltip = ks_bed_games.0031.desc.result.sudden_death
+	}
+}
+
+ks_bg_loser_end_result_tooltip_effect = {
+	#Clarify the results.
+	if = {
+		limit = { scope:ks_bg_victory_type = flag:skill }
+		custom_tooltip = ks_bed_games.0041.desc.result.skill
+	}
+	else_if = {
+		limit = { scope:ks_bg_victory_type = flag:sudden_death }
+		custom_tooltip = ks_bed_games.0041.desc.result.sudden_death
+	}
+}
+
+ks_perk_interaction_0122_apply_effects_effect = {
+	ks_bg_stake_friendly_effect = {
+			VICTOR = scope:ks_bg_victor
+			LOSER = scope:ks_bg_loser
+	}
+	send_interface_toast = {
+		type = event_toast_effect_neutral
+		title = ks_bed_games.over
+		left_icon = scope:ks_bg_myself
+		scope:ks_bg_victor = {
+			if = {
+				limit = { 
+					OR={ #如果单纯是人永远得不到奖励
+						culture = culture:huxian
+						culture = { has_cultural_tradition=tradition_ks_huxian }
+						has_trait = huxian_blood
+						has_trait = huxian_cultivation
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_trait = huxian_cultivation
+						}
+					}
+						add_trait = huxian_cultivation
+					}
+				else = {
+					add_trait_xp = {
+						trait = huxian_cultivation
+						value = {
+							integer_range = {
+								min = 2
+								max = 5
+							}
+						}
+					}
+				}
+			}
+			else = {	#是人
+				add_character_modifier = {
+					modifier = ks_good_sexual_dream_modifier
+					years = 5
+				}
+			}
+		}
+		
+		scope:ks_bg_loser = {
+			if = {
+				limit = { 
+					OR={
+						culture = culture:huxian
+						culture = { has_cultural_tradition=tradition_ks_huxian }
+						has_trait = huxian_blood
+						has_trait = huxian_cultivation
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_trait = huxian_cultivation
+						}
+					}
+					add_trait = huxian_cultivation
+					}
+				else = {
+					add_trait_xp = {
+						trait = huxian_cultivation
+						value = 1
+					}
+				}
+			}
+			else = {	#是人
+				random_list = {
+					10 = {
+						add_character_modifier = {
+							modifier = ks_possessed_by_a_huxian_modifier
+							years = 5
+						}
+						add_trait = possessed_genetic
+					}
+					90 = {
+						add_character_modifier = {
+							modifier = ks_possessed_by_a_huxian_modifier
+							years = 5
+						}
+					}
+
+				}
+			}
+		}
+	}
+}
+

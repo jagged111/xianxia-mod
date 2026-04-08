@@ -1,0 +1,68 @@
+﻿# events/xianxia_cultivation_events.txt
+
+namespace = xianxia_cult
+
+# Yearly cultivation progress pulse — fires for ALL cultivators
+xianxia_cult.1000 = {
+    type = character_event
+    hidden = yes
+    
+    trigger = {
+        is_alive = yes
+        has_trait = cultivation_realm
+        OR = {
+            is_courtier = yes
+            is_landless = yes
+            is_guest = yes
+        }
+        NOT = { is_prisoner = yes }
+        NOT = { has_character_flag = recent_breakthrough }
+    }
+    
+    mean_time_to_happen = {
+        months = 12
+        
+        # Only main traits
+        modifier = {
+            factor = 15
+            has_trait = heavenly_meridians
+        }
+        modifier = {
+            factor = 6
+            has_trait = excellent_meridians
+        }
+        modifier = {
+            factor = 2
+            has_trait = normal_meridians
+        }
+        modifier = {
+            factor = 0.5
+            has_trait = poor_meridians
+        }
+        modifier = {
+            factor = 2
+            OR = {
+                is_courtier = yes
+                is_landless = yes
+            }
+        }
+        modifier = {
+            factor = 0
+            is_prisoner = yes
+        }
+    }
+    
+    immediate = {
+        earn_cultivation_xp = yes
+        
+        # Breakthrough attempt chance when near peak
+        if = {
+            limit = { trait_xp_percentage = { trait = cultivation_realm value >= 0.9 } }
+            random_list = {
+                75 = { }
+                20 = { trigger_event = { id = cultivation_important_event.012 } }
+                5  = { wound_cultivation_character = yes }
+            }
+        }
+    }
+}

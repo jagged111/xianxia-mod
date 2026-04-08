@@ -1,0 +1,47 @@
+﻿
+##################################################
+# Interactions
+
+ks_bg_cumulative_skill_score_value = {
+	value = 0
+
+	if = {
+		limit = { scope:ks_bg_system = flag:hu2pe }
+		add = diplomacy
+		add = intrigue
+		add = prowess
+	}
+
+	if = {
+		limit = { scope:ks_bg_system = flag:hu2hu }
+		add = diplomacy
+		add = intrigue
+		add = prowess
+	}
+
+}
+
+ks_bg_bad_player_threshold_value = 24
+ks_bg_average_player_threshold_value = 36
+ks_bg_good_player_threshold_value = 48
+
+ks_bg_relative_score_heavy_difference_threshold_value = {
+	value = 0
+	add = scope:ks_bg_opponent.var:ks_bg_current_score
+	add = 4
+}
+ks_bg_relative_score_light_difference_threshold_value = {
+	value = 0
+	add = scope:ks_bg_opponent.var:ks_bg_current_score
+	add = 2
+}
+
+ks_bg_winning_threshold_value = 10
+ks_bg_close_to_winning_threshold_value = 8
+ks_bg_round_cap_value = 6
+
+ks_bg_crit_success_add_value = 7
+ks_bg_success_add_value = 4
+ks_bg_failure_add_value = 2
+ks_bg_crit_failure_add_value = 0
+ks_bg_counter_mult_value = 0.5

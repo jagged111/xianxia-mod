@@ -1,0 +1,68 @@
+﻿
+travel_events_on_action = {
+	events = {
+
+	}
+
+	on_actions = {
+		handle_cultivation_travel_actions
+	}
+}
+
+
+travel_danger_events_on_action = {
+	events = {
+
+	}
+
+	on_actions = {
+		handle_cultivation_danger_travel_actions
+	}
+}
+
+handle_cultivation_travel_actions = {
+	trigger = {
+		always = yes
+	}
+
+	effect = {
+		random_list = {
+			4000 = {}
+			50 = {
+				trigger_event = {
+					id = cultivation_travel_events.001
+				}
+			}
+			50 = {
+				trigger_event = {
+					id = cultivation_travel_events.002
+				}
+			}
+			50 = {
+				trigger_event = {
+					id = cultivation_travel_events.003
+				}
+			}
+		}
+	}
+}
+
+handle_cultivation_danger_travel_actions = {
+	
+
+	effect = {
+		random_list = {
+			2000 = {}
+			50 = {
+				trigger_event = {
+					id = cultivation_travel_events.101
+				}
+			}
+			50 = {
+				trigger_event = {
+					id = cultivation_travel_events.102
+				}
+			}
+		}
+	}
+}

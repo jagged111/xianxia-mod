@@ -1,0 +1,54 @@
+﻿mymod_remove_all_diseases_effect = {
+    this = {   # ← THIS LINE IS THE FIX
+        if = {
+            limit = { has_trait = cultivation_realm
+			
+        has_trait = ill
+        has_trait = gout_ridden
+        has_trait = leper
+        has_trait = lovers_pox
+        has_trait = early_great_pox
+        has_trait = great_pox
+        has_trait = bubonic_plague
+        has_trait = smallpox
+        has_trait = measles
+        has_trait = pneumonic
+        has_trait = typhus
+        has_trait = dysentery
+        has_trait = consumption
+        has_trait = ergotism
+        has_trait = cancer
+        has_trait = wounded_1
+        has_trait = wounded_2
+        has_trait = wounded_3
+        has_trait = scarred
+        has_trait = infirm
+        has_trait = blind
+        has_trait = beauty_bad_1
+        has_trait = beauty_bad_2
+        has_trait = beauty_bad_3
+        has_trait = maimed
+        has_trait = inbred
+        has_trait = infertile
+        has_trait = bleeder
+        has_trait = wheezing
+        has_trait = impotent
+        has_trait = spindly
+        has_trait = scaly
+        has_trait = weak
+        has_trait = dull
+        has_trait = stuttering
+        has_trait = dwarf
+        has_trait = lisping
+        has_trait = clubfooted
+        has_trait = beardless_eunuch
+        has_trait = eunuch_1
+        has_trait = disfigured
+        has_trait = one_eyed
+        has_trait = one_arm
+        has_trait = one_legged
+        has_trait = incapable
+		remove_character_modifier = infected_wound_modifier
+        remove_character_modifier = gangrene_modifier
+    }
+}

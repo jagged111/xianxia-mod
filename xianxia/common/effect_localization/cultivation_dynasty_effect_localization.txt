@@ -1,0 +1,82 @@
+﻿
+cultivation_5_unlock_effect = {
+    global = IMMORTAL_CULTIVATOR_UNLOCK_DESCRIPTION 
+    first = IMMORTAL_CULTIVATOR_UNLOCK_DESCRIPTION 
+    third = IMMORTAL_CULTIVATOR_UNLOCK_DESCRIPTION 
+}
+cultivation_5_effect = {
+    global = IMMORTAL_CULTIVATOR_DESCRIPTION 
+    first = IMMORTAL_CULTIVATOR_DESCRIPTION 
+    third = IMMORTAL_CULTIVATOR_DESCRIPTION 
+}
+cultivation_4_unlock_effect = {
+    global = ZOMBIE_UNLOCK_DESCRIPTION 
+    first = ZOMBIE_UNLOCK_DESCRIPTION 
+    third = ZOMBIE_UNLOCK_DESCRIPTION 
+}
+cultivation_4_effect = {
+    global = ZOMBIE_DESCRIPTION
+    first = ZOMBIE_DESCRIPTION
+    third = ZOMBIE_DESCRIPTION
+}
+cultivation_3_sex_effects = {
+    global = DUAL_CULTIVATION_SEX_EFFECT_DESCRIPTION
+    first = DUAL_CULTIVATION_SEX_EFFECT_DESCRIPTION
+    third = DUAL_CULTIVATION_SEX_EFFECT_DESCRIPTION
+}
+cultivation_3_unlock_effect = {
+    global = SEDUCER_UNLOCK_DESCRIPTION 
+    first = SEDUCER_UNLOCK_DESCRIPTION 
+    third = SEDUCER_UNLOCK_DESCRIPTION 
+}
+cultivation_3_effect = {
+    global = SEDUCER_DESCRIPTION 
+    first = SEDUCER_DESCRIPTION 
+    third = SEDUCER_DESCRIPTION 
+}
+cultivation_3_sex_effect = {
+    global = DUAL_CULTIVATION_SEX_EFFECT
+    first = DUAL_CULTIVATION_SEX_EFFECT
+    third = DUAL_CULTIVATION_SEX_EFFECT
+}
+cultivation_2_unlock_effect = {
+    global = MARTIAL_ARTIST_UNLOCK_DESCRIPTION 
+    first = MARTIAL_ARTIST_UNLOCK_DESCRIPTION 
+    third = MARTIAL_ARTIST_UNLOCK_DESCRIPTION 
+}
+cultivation_2_effect = {
+    global = MARTIAL_ARTIST_DESCRIPTION 
+    first = MARTIAL_ARTIST_DESCRIPTION 
+    third = MARTIAL_ARTIST_DESCRIPTION 
+}
+#cultivation_2_building_unlock = {
+#    global = BBC_CAMP_BUILDING_UNLOCK
+#    first = BBC_CAMP_BUILDING_UNLOCK
+#    third = BBC_CAMP_BUILDING_UNLOCK
+#}
+#cultivation_2_court_position_unlock = {#not done
+#    global = BBC_CAMP_BUILDING_UNLOCK
+#    first = BBC_CAMP_BUILDING_UNLOCK
+#    third = BBC_CAMP_BUILDING_UNLOCK
+#}
+#cultivation_2_event_and_decision = {#not done
+#    global = BBC_CAMP_BUILDING_UNLOCK
+#    first = BBC_CAMP_BUILDING_UNLOCK
+#    third = BBC_CAMP_BUILDING_UNLOCK
+#}
+cultivation_1_unlock_effect = {
+    global = CULTIVATOR_UNLOCK_DESCRIPTION 
+    first = CULTIVATOR_UNLOCK_DESCRIPTION 
+    third = CULTIVATOR_UNLOCK_DESCRIPTION 
+}
+cultivation_1_effect = {
+    global = CULTIVATOR_DESCRIPTION 
+    first = CULTIVATOR_DESCRIPTION 
+    third = CULTIVATOR_DESCRIPTION 
+}
+
+sect_join = {
+    global = SECT_JOIN_DESCRIPTION 
+    first = SECT_JOIN_DESCRIPTION 
+    third = SECT_JOIN_DESCRIPTION 
+}

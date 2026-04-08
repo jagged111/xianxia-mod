@@ -1,0 +1,246 @@
+﻿sect_disciple = {
+    category = lifestyle
+    icon = first_rate.dds
+    desc = trait_sect_disciple_desc
+    group = education
+    ruler_designer_cost = 0
+    diplomacy = 1
+    learning = 1
+}
+
+sect_elder = {
+    category = lifestyle
+    icon = second_rate.dds
+    desc = trait_sect_elder_desc
+    group = education
+    ruler_designer_cost = 15
+    learning = 3
+    prowess = 2
+    monthly_piety = 0.25
+}
+
+sect_leader = {
+    category = lifestyle
+    icon = third_rate.dds
+    desc = trait_sect_leader_desc
+    group = education
+    ruler_designer_cost = 30
+    diplomacy = 2
+    martial = 2
+    stewardship = 1
+    monthly_prestige = 0.4
+}
+
+jianghu_righteous = {
+    category = lifestyle
+    icon = superior_root.dds
+    desc = trait_jianghu_righteous_desc
+    group = personality
+    general_opinion = 5
+}
+
+jianghu_demonic = {
+    category = lifestyle
+    icon = variant_root.dds
+    desc = trait_jianghu_demonic_desc
+    group = personality
+    general_opinion = -5
+    dread_gain_mult = 0.2
+}
+
+weapon_path_sword = {
+    category = lifestyle
+    icon = dao_seeking.dds
+    desc = trait_weapon_path_sword_desc
+    group = commander
+    prowess = 3
+    martial = 1
+}
+
+weapon_path_saber = {
+    category = lifestyle
+    icon = profound_realm.dds
+    desc = trait_weapon_path_saber_desc
+    group = commander
+    prowess = 3
+    martial = 1
+}
+
+weapon_path_spear = {
+    category = lifestyle
+    icon = peak_realm.dds
+    desc = trait_weapon_path_spear_desc
+    group = commander
+    prowess = 2
+    martial = 2
+}
+
+weapon_path_fist = {
+    category = lifestyle
+    icon = golden_core.dds
+    desc = trait_weapon_path_fist_desc
+    group = physical
+    prowess = 4
+}
+
+sect_inner_hall_elder = {
+    category = lifestyle
+    icon = excellent_meridians.dds
+    desc = trait_sect_inner_hall_elder_desc
+    group = education
+    learning = 2
+    stewardship = 2
+    monthly_piety = 0.2
+}
+
+sect_outer_hall_elder = {
+    category = lifestyle
+    icon = good_meridians.dds
+    desc = trait_sect_outer_hall_elder_desc
+    group = education
+    martial = 2
+    prowess = 2
+    monthly_prestige = 0.15
+}
+
+sect_enforcement_elder = {
+    category = lifestyle
+    icon = lightning_constitution.dds
+    desc = trait_sect_enforcement_elder_desc
+    group = education
+    martial = 1
+    intrigue = 1
+    dread_gain_mult = 0.15
+}
+
+sect_lineage_heir = {
+    category = lifestyle
+    icon = heavenly_root.dds
+    desc = trait_sect_lineage_heir_desc
+    group = personality
+    learning = 2
+    prowess = 1
+}
+
+alchemy_body_tier_1 = {
+    category = lifestyle
+    icon = poor_meridians.dds
+    desc = trait_alchemy_body_tier_1_desc
+    group = alchemy_body
+    level = 1
+    learning = 1
+    monthly_lifestyle_xp_gain_mult = 0.02
+}
+
+alchemy_body_tier_2 = {
+    category = lifestyle
+    icon = normal_meridians.dds
+    desc = trait_alchemy_body_tier_2_desc
+    group = alchemy_body
+    level = 2
+    learning = 2
+    monthly_lifestyle_xp_gain_mult = 0.04
+}
+
+alchemy_body_tier_3 = {
+    category = lifestyle
+    icon = second_rate.dds
+    desc = trait_alchemy_body_tier_3_desc
+    group = alchemy_body
+    level = 3
+    learning = 3
+    monthly_lifestyle_xp_gain_mult = 0.06
+}
+
+
+alchemy_lifestyle_tier_1 = {
+    category = lifestyle
+    icon = poor_meridians.dds
+    desc = trait_alchemy_lifestyle_tier_1_desc
+    group = alchemy_lifestyle
+    level = 1
+    learning = 1
+    monthly_lifestyle_xp_gain_mult = 0.01
+}
+
+alchemy_lifestyle_tier_2 = {
+    category = lifestyle
+    icon = normal_meridians.dds
+    desc = trait_alchemy_lifestyle_tier_2_desc
+    group = alchemy_lifestyle
+    level = 2
+    learning = 2
+    monthly_lifestyle_xp_gain_mult = 0.02
+}
+
+alchemy_lifestyle_tier_3 = {
+    category = lifestyle
+    icon = second_rate.dds
+    desc = trait_alchemy_lifestyle_tier_3_desc
+    group = alchemy_lifestyle
+    level = 3
+    learning = 3
+    monthly_lifestyle_xp_gain_mult = 0.03
+}
+
+formation_master_tier_1 = {
+    category = lifestyle
+    icon = peak_realm.dds
+    desc = trait_formation_master_tier_1_desc
+    group = formation_mastery
+    level = 1
+    martial = 1
+    advantage = 2
+}
+
+formation_master_tier_2 = {
+    category = lifestyle
+    icon = peak_realm.dds
+    desc = trait_formation_master_tier_2_desc
+    group = formation_mastery
+    level = 2
+    martial = 2
+    advantage = 4
+    controlled_province_advantage = 2
+}
+
+formation_master_tier_3 = {
+    category = lifestyle
+    icon = peak_realm.dds
+    desc = trait_formation_master_tier_3_desc
+    group = formation_mastery
+    level = 3
+    martial = 3
+    advantage = 6
+    controlled_province_advantage = 4
+}
+
+formation_body_tier_1 = {
+    category = lifestyle
+    icon = core_formation.dds
+    desc = trait_formation_body_tier_1_desc
+    group = formation_body
+    level = 1
+    prowess = 1
+    advantage = 1
+}
+
+formation_body_tier_2 = {
+    category = lifestyle
+    icon = core_formation.dds
+    desc = trait_formation_body_tier_2_desc
+    group = formation_body
+    level = 2
+    prowess = 2
+    advantage = 2
+}
+
+formation_body_tier_3 = {
+    category = lifestyle
+    icon = core_formation.dds
+    desc = trait_formation_body_tier_3_desc
+    group = formation_body
+    level = 3
+    prowess = 3
+    advantage = 3
+}

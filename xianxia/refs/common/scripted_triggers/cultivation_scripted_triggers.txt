@@ -1,0 +1,126 @@
+﻿is_cultivator = {
+    OR = {
+        has_trait = qi_gathering
+        has_trait = foundation_establishment
+        has_trait = core_formation
+        has_trait = nascent_soul
+        has_trait = spirit_severing
+        has_trait = dao_seeking
+        has_trait = immortal_ascension
+
+    }
+}
+
+is_foundation_plus = {
+    OR = {
+        has_trait = foundation_establishment
+        has_trait = core_formation
+        has_trait = nascent_soul
+        has_trait = spirit_severing
+        has_trait = dao_seeking
+        has_trait = immortal_ascension
+    }
+}
+
+is_core_plus = {
+    OR = {
+        has_trait = core_formation
+        has_trait = nascent_soul
+        has_trait = spirit_severing
+        has_trait = dao_seeking
+        has_trait = immortal_ascension
+    }
+}
+
+is_nascent_plus = {
+    OR = {
+        has_trait = nascent_soul
+        has_trait = spirit_severing
+        has_trait = dao_seeking
+        has_trait = immortal_ascension
+    }
+}
+
+is_spirit_plus = {
+    OR = {
+        has_trait = spirit_severing
+        has_trait = dao_seeking
+        has_trait = immortal_ascension
+    }
+}
+
+is_dao_plus = {
+    OR = {
+        has_trait = dao_seeking
+        has_trait = immortal_ascension
+    }
+}
+
+is_qi_gathering_cultivator = {
+    OR = {
+        has_trait = qi_gathering
+    }
+}
+
+is_foundation_establishment_cultivator = {
+    OR = {
+        has_trait = foundation_establishment
+    }
+}
+
+is_core_formation_cultivator = {
+    OR = {
+        has_trait = core_formation
+    }
+}
+
+is_nascent_soul_cultivator = {
+    OR = {
+        has_trait = nascent_soul
+    }
+}
+
+is_spirit_severing_cultivator = {
+    OR = {
+        has_trait = spirit_severing
+    }
+}
+
+is_dao_seeking_cultivator = {
+    OR = {
+        has_trait = dao_seeking
+    }
+}
+
+is_immortal_ascension_cultivator = {
+    has_trait = immortal_ascension
+}
+
+breakthrough_threshold = {
+    OR = {
+        has_trait_xp = {
+            trait = qi_gathering
+            value = 100
+        }
+        has_trait_xp = {
+            trait = foundation_establishment
+            value = 100
+        }
+        has_trait_xp = {
+            trait = core_formation
+            value = 100
+        }
+        has_trait_xp = {
+            trait = nascent_soul
+            value = 100
+        }
+        has_trait_xp = {
+            trait = spirit_severing
+            value = 100
+        }
+        has_trait_xp = {
+            trait = dao_seeking
+            value = 100
+        }
+    }
+}

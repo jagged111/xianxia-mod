@@ -1,0 +1,244 @@
+﻿#############################
+# TEACH CULTIVATION – FINAL AI VERSION (CLOSE FAMILY FIRST + NO ERRORS)
+#############################
+teach_cultivation_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 100
+	icon = icon_combat
+	
+	desc = teach_cultivation_interaction_desc
+	use_diplomatic_range = yes
+	
+	# Hyper-aggressive AI – checks very frequently
+	ai_frequency = 150
+	ai_targets = {
+		ai_recipients = courtiers
+		ai_recipients = children
+		ai_recipients = siblings
+		ai_recipients = parents
+	}
+	
+	# FIXED: "this" error removed – correct vanilla syntax
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		
+		scope:actor = {
+			is_ai = yes
+			is_alive = yes
+			has_trait = cultivation_realm
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_courtier_of = scope:actor
+                        has_trait = active_meridians
+			NOT = { has_trait = cultivation_realm }
+		}
+	}
+	
+	# AI WILL DO – CLOSE FAMILY IS GOD-TIER PRIORITY (includes poor meridians)
+	ai_will_do = {
+		base = 0
+		
+		# 1. CLOSE FAMILY IN COURT — TAUGHT FIRST, NO EXCEPTIONS
+		modifier = {
+			factor = 999999
+			scope:recipient = {
+				is_close_family_of = scope:actor
+				is_courtier_of = scope:actor
+				NOT = { has_trait = cultivation_realm }
+			}
+		}
+		
+		# 2. Extended family
+		modifier = {
+			factor = 10000
+			scope:recipient = {
+				is_extended_family_of = scope:actor
+				is_courtier_of = scope:actor
+				NOT = { has_trait = cultivation_realm }
+			}
+		}
+		
+		# 3. Non-family talented courtiers
+		modifier = { factor = 2000  scope:recipient = { has_trait = heavenly_meridians } }
+		modifier = { factor = 1200  scope:recipient = { has_trait = good_meridians } }
+		modifier = { factor = 600   scope:recipient = { has_trait = normal_meridians } }
+		
+		# 4. Non-family poor meridians – only if literally nothing else exists
+		modifier = {
+			factor = 10
+			scope:recipient = { has_trait = poor_meridians }
+		}
+		
+		# 5. Never teach someone who already knows
+		modifier = { factor = 0  scope:recipient = { has_trait = qi_gathering } }
+		
+		# 6. Slight opinion influence (won’t teach hated relatives)
+		opinion_modifier = {
+			who = scope:actor
+			opinion_target = scope:recipient
+			multiplier = 0.5
+		}
+	}
+	
+	ai_accept = { always = yes }
+	auto_accept = yes
+	
+	on_accept = {
+		scope:recipient = {
+			add_trait = qi_gathering
+			
+			add_opinion = {
+				target = scope:actor
+				modifier = taught_me_cultivation_opinion
+				years = 30
+			}
+		}
+		scope:actor = {
+			add_opinion = {
+				target = scope:recipient
+				modifier = taught_them_cultivation_opinion
+				years = 30
+			}
+		}
+	}
+}
+
+#############################
+# PLAYER VERSION (optional – keeps manual control clean)
+#############################
+teach_cultivation_interaction_player = {
+	category = interaction_category_friendly
+	interface_priority = 90
+	icon = icon_combat
+	desc = teach_cultivation_interaction_desc
+	use_diplomatic_range = yes
+	
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { is_human = yes }
+		scope:actor = { has_trait = cultivation_realm }
+                scope:recipient = { has_trait = active_meridians}
+		scope:recipient = { NOT = { has_trait = cultivation_realm } }
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			add_trait = qi_gathering
+			add_opinion = {
+				target = scope:actor
+				modifier = taught_me_cultivation_opinion
+			}
+		}
+	}
+}
+
+xianxia_extinguish_cultivator_family_interaction = {
+    icon = extinguish_noble_family
+    category = interaction_category_prison
+    common_interaction = yes
+    interface_priority = 65
+    
+    desc = xianxia_extinguish_cultivator_family_interaction_desc
+    
+    is_shown = {
+        scope:actor = {
+            has_trait = cultivation_realm
+            is_landed = yes
+            # Actor must be higher or equal realm than recipient
+            trait_rank = {
+                trait = cultivation_realm
+                value >= scope:recipient.trait_rank.cultivation_realm
+            }
+        }
+        scope:recipient = {
+            is_imprisoned_by = scope:actor
+            top_liege = scope:actor
+            has_trait = cultivation_realm
+            is_landed = yes
+        }
+    }
+    
+    is_highlighted = {
+        OR = {
+            scope:actor = { has_trait = sadistic }
+            scope:actor = { has_relation_rival = scope:recipient }
+            scope:actor = {
+                OR = {
+                    has_execute_reason = scope:recipient
+                    has_banish_reason = scope:recipient
+                }
+            }
+        }
+    }
+    
+    highlighted_reason = HIGHLIGHTED_HAS_EXECUTION_REASON
+    
+    is_valid_showing_failures_only = {
+        scope:recipient = { NOT = { has_strong_hook = scope:actor } }
+    }
+    
+    auto_accept = {
+        always = yes
+    }
+    
+    ai_will_do = {
+        factor = 50
+        modifier = { add = 100 has_trait = sadistic }
+        modifier = { add = 80 has_trait = ruthless }
+        modifier = { add = 50 has_relation_rival = scope:recipient }
+        modifier = { add = 30 scope:recipient = { highest_held_title_tier >= tier_duchy } }
+    }
+    
+    on_accept = {
+        hidden_effect = {
+            scope:recipient = {
+                every_close_or_extended_family_member = {
+                    limit = {
+                        top_liege = scope:actor
+                        house = scope:recipient.house
+                        NOR = {
+                            any_spouse = { house ?= scope:actor.house }
+                            any_parent = { house ?= scope:actor.house }
+                        }
+                        has_trait = cultivation_realm
+                    }
+                    if = { limit = { age >= 1 } add_to_list = those_to_kill }
+                    else = { add_to_list = those_to_banish }
+                }
+                every_spouse = {
+                    limit = {
+                        top_liege = scope:actor
+                        NOR = { any_parent = { house ?= scope:actor.house } }
+                        has_trait = cultivation_realm
+                    }
+                    add_to_list = those_to_banish
+                }
+            }
+            
+            every_in_list = {
+                list = those_to_banish
+                limit = { is_imprisoned = no }
+                scope:actor = { imprison = { target = prev type = house_arrest } }
+            }
+            every_in_list = {
+                list = those_to_kill
+                limit = { is_imprisoned = no }
+                scope:actor = { imprison = { target = prev type = house_arrest } }
+            }
+            scope:recipient = { imprison = { target = scope:recipient type = house_arrest } }
+        }
+        
+        scope:actor = {
+            add_dread = 50
+        }
+        
+        scope:recipient = {
+            death = {
+                death_reason = death_execution
+                killer = scope:actor
+            }
+            every_held_title = { destroy_title = prev }
+        }
+    }
+}

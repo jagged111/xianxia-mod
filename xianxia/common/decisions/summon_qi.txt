@@ -1,0 +1,385 @@
+﻿summon_thousand_qi_needles_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_call_hunt_2.dds" }
+	decision_group_type = major
+	title = summon_thousand_qi_needles_decision
+	desc = summon_thousand_qi_needles_decision_desc
+	selection_tooltip = summon_thousand_qi_needles_decision_tooltip
+	confirm_text = summon_thousand_qi_needles_decision_confirm
+	is_shown = {
+		has_trait = cultivation_qi_gathering
+		NOT = { has_character_flag = summon_thousand_qi_needles_cooldown }
+	}
+	is_valid = {
+		prowess >= 10
+	}
+	effect = {
+		custom_tooltip = summon_thousand_qi_needles_decision_effect1
+		custom_tooltip = summon_thousand_qi_needles_decision_effect2
+		add_character_flag = { flag = summon_thousand_qi_needles_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -100
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = thousand_qi_needles
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_qi_gathering
+		NOT = { has_character_flag = summon_thousand_qi_needles_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+
+summon_nine_heavens_sword_intent_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_martial_lifestyle.dds" }
+	decision_group_type = major
+	title = summon_nine_heavens_sword_intent_decision
+	desc = summon_nine_heavens_sword_intent_decision_desc
+	selection_tooltip = summon_nine_heavens_sword_intent_decision_tooltip
+	confirm_text = summon_nine_heavens_sword_intent_decision_confirm
+	is_shown = {
+		has_trait = cultivation_qi_refining
+		NOT = { has_character_flag = summon_nine_heavens_sword_intent_cooldown }
+	}
+	is_valid = {
+		prowess >= 15
+	}
+	effect = {
+		custom_tooltip = summon_nine_heavens_sword_intent_decision_effect1
+		custom_tooltip = summon_nine_heavens_sword_intent_decision_effect2
+		add_character_flag = { flag = summon_nine_heavens_sword_intent_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -200
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = nine_heavens_sword_intent
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_qi_refining
+		NOT = { has_character_flag = summon_nine_heavens_sword_intent_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+summon_golden_core_flame_lotus_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_dose_self.dds" }
+	decision_group_type = major
+	title = summon_golden_core_flame_lotus_decision
+	desc = summon_golden_core_flame_lotus_decision_desc
+	selection_tooltip = summon_golden_core_flame_lotus_decision_tooltip
+	confirm_text = summon_golden_core_flame_lotus_decision_confirm
+	is_shown = {
+		has_trait = cultivation_qi_building
+		NOT = { has_character_flag = summon_golden_core_flame_lotus_cooldown }
+	}
+	is_valid = {
+		prowess >= 25
+	}
+	effect = {
+		custom_tooltip = summon_golden_core_flame_lotus_decision_effect1
+		custom_tooltip = summon_golden_core_flame_lotus_decision_effect2
+		add_character_flag = { flag = summon_golden_core_flame_lotus_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -300
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = golden_core_flame_lotus
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_qi_building
+		NOT = { has_character_flag = summon_golden_core_flame_lotus_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+summon_nascent_soul_phantom_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_mystic_communion.dds" }
+	decision_group_type = major
+	title = summon_nascent_soul_phantom_decision
+	desc = summon_nascent_soul_phantom_decision_desc
+	selection_tooltip = summon_nascent_soul_phantom_decision_tooltip
+	confirm_text = summon_nascent_soul_phantom_decision_confirm
+	is_shown = {
+		has_trait = cultivation_core_formation
+		NOT = { has_character_flag = summon_nascent_soul_phantom_cooldown }
+	}
+	is_valid = {
+		prowess >= 30
+	}
+	effect = {
+		custom_tooltip = summon_nascent_soul_phantom_decision_effect1
+		custom_tooltip = summon_nascent_soul_phantom_decision_effect2
+		add_character_flag = { flag = summon_nascent_soul_phantom_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -500
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = nascent_soul_phantom
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_core_formation
+		NOT = { has_character_flag = summon_nascent_soul_phantom_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+summon_heaven_severing_blade_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_martial_lifestyle.dds" }
+	decision_group_type = major
+	title = summon_heaven_severing_blade_decision
+	desc = summon_heaven_severing_blade_decision_desc
+	selection_tooltip = summon_heaven_severing_blade_decision_tooltip
+	confirm_text = summon_heaven_severing_blade_decision_confirm
+	is_shown = {
+		has_trait = cultivation_nascent_soul
+		NOT = { has_character_flag = summon_heaven_severing_blade_cooldown }
+	}
+	is_valid = {
+		prowess >= 30
+	}
+	effect = {
+		custom_tooltip = summon_heaven_severing_blade_decision_effect1
+		custom_tooltip = summon_heaven_severing_blade_decision_effect2
+		add_character_flag = { flag = summon_heaven_severing_blade_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -800
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = heaven_severing_blade
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_nascent_soul
+		NOT = { has_character_flag = summon_heaven_severing_blade_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+summon_myriad_dao_suppression_domain_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_found_holy_order.dds" }
+	decision_group_type = major
+	title = summon_myriad_dao_suppression_domain_decision
+	desc = summon_myriad_dao_suppression_domain_decision_desc
+	selection_tooltip = summon_myriad_dao_suppression_domain_decision_tooltip
+	confirm_text = summon_myriad_dao_suppression_domain_decision_confirm
+	is_shown = {
+		has_trait = cultivation_heavenly_being
+		NOT = { has_character_flag = summon_myriad_dao_suppression_domain_cooldown }
+	}
+	is_valid = {
+		prowess >= 30
+	}
+	effect = {
+		custom_tooltip = summon_myriad_dao_suppression_domain_decision_effect1
+		custom_tooltip = summon_myriad_dao_suppression_domain_decision_effect2
+		add_character_flag = { flag = summon_myriad_dao_suppression_domain_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -1200
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = myriad_dao_suppression_domain
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_heavenly_being
+		NOT = { has_character_flag = summon_myriad_dao_suppression_domain_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+summon_heavenly_tribulation_descent_decision = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_become_chakravarti.dds" }
+	decision_group_type = major
+	title = summon_heavenly_tribulation_descent_decision
+	desc = summon_heavenly_tribulation_descent_decision_desc
+	selection_tooltip = summon_heavenly_tribulation_descent_decision_tooltip
+	confirm_text = summon_heavenly_tribulation_descent_decision_confirm
+	is_shown = {
+		has_trait = cultivation_true_immortal
+		NOT = { has_character_flag = summon_heavenly_tribulation_descent_cooldown }
+	}
+	is_valid = {
+		prowess >= 30
+	}
+	effect = {
+		custom_tooltip = summon_heavenly_tribulation_descent_decision_effect1
+		custom_tooltip = summon_heavenly_tribulation_descent_decision_effect2
+		add_character_flag = { flag = summon_heavenly_tribulation_descent_cooldown days = 730 }
+		add_prestige = 50
+		add_stress = -2000
+		add_legitimacy = 50
+		if = {
+			limit = { exists = dynasty }
+			dynasty = { add_dynasty_prestige = 2 }
+		}
+		spawn_army = {
+            men_at_arms = {
+                type = heavenly_tribulation_descent
+                stacks = 1
+            }
+            inheritable = no
+            uses_supply = no
+            location = capital_province
+		}
+	}
+	
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 60
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		has_trait = cultivation_true_immortal
+		NOT = { has_character_flag = summon_heavenly_tribulation_descent_cooldown }
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

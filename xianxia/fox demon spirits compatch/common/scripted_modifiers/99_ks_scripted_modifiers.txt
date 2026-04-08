@@ -1,0 +1,230 @@
+﻿##################################################
+# #Interaction
+
+ks_bg_play_move_type_effect_extraneous_advantages_self_modifier = {
+	#文化优势
+	modifier = {
+		add = 10
+		culture = { has_cultural_tradition=tradition_ks_huxian }
+	}
+	# 修炼后更强
+	modifier = {
+		add = 20
+		has_trait = huxian_cultivation
+	}
+}
+
+ks_bg_play_move_type_effect_extraneous_advantages_opponent_modifier = {
+	#文化优势
+	modifier = {
+		add = 10
+		culture = { has_cultural_tradition=tradition_ks_huxian }
+	}
+	# 修炼后更强
+	modifier = {
+		add = 20
+		has_trait = huxian_cultivation
+	}
+}
+
+ks_bg_ai_weight_choices_by_skill_modifier = {
+	# Their skills
+	## Prefer their stronger skills
+	### Reduce this if they're good at the game, & know you have a strong counter.
+	# Your skills
+	## If they're good at the game, and have a good skill that counters you, they should prefer that.
+	# AI values
+	## Standard personalities favouring different moves affair.
+	## If they have the board gamer trait or their skills are above a certain threshold, they disgard these entirely.
+
+	# Skills.
+	## If you're abysmal at board games, you only ever pick your highest skill.
+	modifier = {
+		add = 1000
+		highest_skill_including_prowess = $SKILL$
+		$CHARACTER$.ks_bg_cumulative_skill_score_value < ks_bg_bad_player_threshold_value
+	}
+	## If you're bad at board games, you roughly weigh your options but still tend to pick the heighest.
+	modifier = {
+		add = {
+			value = $SKILL$
+			# A small multiplier means that bad players are more affected by their personality values.
+			multiply = 5
+		}
+		$CHARACTER$.ks_bg_cumulative_skill_score_value >= ks_bg_bad_player_threshold_value
+		$CHARACTER$.ks_bg_cumulative_skill_score_value < ks_bg_average_player_threshold_value
+	}
+	modifier = {
+		add = 100
+		highest_skill_including_prowess = $SKILL$ 
+		$CHARACTER$.ks_bg_cumulative_skill_score_value >= ks_bg_bad_player_threshold_value
+		$CHARACTER$.ks_bg_cumulative_skill_score_value < ks_bg_average_player_threshold_value
+	}
+	## If you're average at board games, decently weight your raw skill.
+	modifier = {
+		add = {
+			value = $SKILL$
+			multiply = 10
+		}
+		$CHARACTER$.ks_bg_cumulative_skill_score_value >= ks_bg_average_player_threshold_value
+		$CHARACTER$.ks_bg_cumulative_skill_score_value < ks_bg_good_player_threshold_value
+	}
+	## If you're good at board games, consider the role of likely counters.
+	modifier = {
+		add = {
+			value = $SKILL$
+			# A larger multiplier means that excellent players are only slightly moved by their personality values.
+			multiply = 20
+		}
+		$CHARACTER$.ks_bg_cumulative_skill_score_value >= ks_bg_good_player_threshold_value
+	}
+	modifier = {
+		add = {
+			value = $SKILL$
+			# Focus on trying to use counters where appropriate if we've met these triggers.
+			multiply = 40
+		}
+		$CHARACTER$.ks_bg_cumulative_skill_score_value >= ks_bg_good_player_threshold_value
+		OR = {
+			# Countering scope:bg_skill_a.
+			AND = {
+				scope:ks_bg_skill_a = flag:$SKILL$
+				scope:ks_bg_skill_b = flag:diplomacy
+				scope:ks_bg_opponent = {
+					highest_skill = diplomacy
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:ks_bg_skill_a = flag:prowess
+								scope:ks_bg_skill_b = flag:prowess
+								scope:ks_bg_skill_c = flag:prowess
+							}
+						}
+						diplomacy >= prowess
+					}
+				}
+			}
+			AND = {
+				scope:ks_bg_skill_a = flag:$SKILL$
+				scope:ks_bg_skill_b = flag:intrigue
+				scope:ks_bg_opponent = {
+					highest_skill = intrigue
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:ks_bg_skill_a = flag:prowess
+								scope:ks_bg_skill_b = flag:prowess
+								scope:ks_bg_skill_c = flag:prowess
+							}
+						}
+						intrigue >= prowess
+					}
+				}
+			}
+			AND = {
+				scope:ks_bg_skill_a = flag:$SKILL$
+				scope:ks_bg_skill_b = flag:prowess
+				scope:ks_bg_opponent = {
+					prowess >= diplomacy
+					prowess >= martial
+					prowess >= stewardship
+					prowess >= intrigue
+					prowess >= learning
+				}
+			}
+			# Countering scope:bg_skill_b.
+			AND = {
+				scope:ks_bg_skill_b = flag:$SKILL$
+				scope:ks_bg_skill_c = flag:diplomacy
+				scope:ks_bg_opponent = {
+					highest_skill = diplomacy
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:ks_bg_skill_a = flag:prowess
+								scope:ks_bg_skill_b = flag:prowess
+								scope:ks_bg_skill_c = flag:prowess
+							}
+						}
+						diplomacy >= prowess
+					}
+				}
+			}
+			AND = {
+				scope:ks_bg_skill_b = flag:$SKILL$
+				scope:ks_bg_skill_c = flag:intrigue
+				scope:ks_bg_opponent = {
+					highest_skill = intrigue
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:ks_bg_skill_a = flag:prowess
+								scope:ks_bg_skill_b = flag:prowess
+								scope:ks_bg_skill_c = flag:prowess
+							}
+						}
+						intrigue >= prowess
+					}
+				}
+			}
+			AND = {
+				scope:ks_bg_skill_b = flag:$SKILL$
+				scope:ks_bg_skill_c = flag:prowess
+				scope:ks_bg_opponent = {
+					prowess >= diplomacy
+					prowess >= martial
+					prowess >= stewardship
+					prowess >= intrigue
+					prowess >= learning
+				}
+			}
+			# Countering scope:bg_skill_c.
+			AND = {
+				scope:ks_bg_skill_c = flag:$SKILL$
+				scope:ks_bg_skill_a = flag:diplomacy
+				scope:ks_bg_opponent = {
+					highest_skill = diplomacy
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:ks_bg_skill_a = flag:prowess
+								scope:ks_bg_skill_b = flag:prowess
+								scope:ks_bg_skill_c = flag:prowess
+							}
+						}
+						diplomacy >= prowess
+					}
+				}
+			}
+			AND = {
+				scope:ks_bg_skill_c = flag:$SKILL$
+				scope:ks_bg_skill_a = flag:intrigue
+				scope:ks_bg_opponent = {
+					highest_skill = intrigue
+					trigger_if = {
+						limit = {
+							OR = {
+								scope:ks_bg_skill_a = flag:prowess
+								scope:ks_bg_skill_b = flag:prowess
+								scope:ks_bg_skill_c = flag:prowess
+							}
+						}
+						intrigue >= prowess
+					}
+				}
+			}
+			AND = {
+				scope:ks_bg_skill_c = flag:$SKILL$
+				scope:ks_bg_skill_a = flag:prowess
+				scope:ks_bg_opponent = {
+					prowess >= diplomacy
+					prowess >= martial
+					prowess >= stewardship
+					prowess >= intrigue
+					prowess >= learning
+				}
+			}
+		}
+	}
+	# AI values taken care of in the option block, as these vary from skill to skill.
+}

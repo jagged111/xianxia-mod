@@ -1,0 +1,304 @@
+﻿namespace = cultivation_regular_event
+
+#000-100 Decision related
+cultivation_regular_event.001 = { # focus on training decision/event
+	type = character_event
+	
+
+	
+    trigger = {
+    }
+
+	immediate = {
+		root = {
+			earn_cultivation_xp = yes
+		}
+		
+	}
+	
+}
+
+
+cultivation_regular_event.101 = { # Mysterious cultivator sells herb
+
+	type = character_event
+	title = cultivation_regular_event.101.t
+	desc = cultivation_regular_event.101.desc
+
+	theme = diplomacy 
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	right_portrait = {
+		character = scope:cultivator
+		animation = personality_bold
+	}
+
+	trigger = {
+		is_cultivator = yes
+    }
+    immediate = {
+        # No spawning — removed entirely to prevent exponential growth
+    }
+
+	#TODO: add an option with wiseman to assert the quality
+
+	option = { #Steal it and consume it
+        name = cultivation_regular_event.101.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+			modifier = {
+				has_trait = honest
+				add = -20
+			}
+		}
+		
+		duel = {
+			skill = prowess
+			target = scope:cultivator
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 10
+					min = -19
+			   	}
+				earn_cultivation_xp = yes
+			}
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					min = -29
+					max = 0
+			   	}
+				
+				wound_cultivation_character = yes
+				earn_cultivation_xp = yes
+			}
+			50 = {
+				
+				wound_cultivation_character = yes
+				add_prestige = -200
+			}
+		}
+	}
+
+	option = { #Steal it and save it
+        name = cultivation_regular_event.101.b
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+			modifier = {
+				has_trait = honest
+				add = -20
+			}
+		}
+		
+		duel = {
+			skill = prowess
+			target = scope:cultivator
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 10
+					min = -19
+			   	}
+				create_breakthrough_artifact = {
+					OWNER = root
+				}
+			}
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					min = -29
+					max = 0
+			   	}
+				
+				wound_cultivation_character = yes
+				create_breakthrough_artifact = {
+					OWNER = root
+				}
+			}
+			50 = {
+				
+				wound_cultivation_character = yes
+				add_prestige = -200
+			}
+		}
+	}
+
+	option = { #Buy it and consume it
+        name = cultivation_regular_event.101.c
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+		}
+
+		random_list = {
+			90 = {#It's a scam
+
+			}
+			10 = {
+				earn_cultivation_xp = yes
+			}
+		}
+		remove_short_term_gold = 150
+	}
+
+	option = { #Buy it and save it
+        name = cultivation_regular_event.101.d
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+		}
+
+		random_list = {
+			90 = {#It's a scam
+
+			}
+			10 = {
+				create_breakthrough_artifact = {
+					OWNER = root
+				}
+			}
+		}
+		remove_short_term_gold = 150
+	}
+
+	
+	option = { #Ignore it
+        name = cultivation_regular_event.101.e
+		ai_chance = {
+			base = 45
+		}
+	}
+}
+
+
+
+cultivation_regular_event.102 = { # Time dilation
+
+	type = character_event
+	title = cultivation_regular_event.102.t
+	desc = cultivation_regular_event.102.desc
+
+	theme = learning 
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	trigger = {
+		is_cultivator = yes
+	}
+
+	option = { #Practice for 1 hour (safe)
+        name = cultivation_regular_event.102.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+		}
+		
+		random_list = {
+			1 = {
+				death = {
+                    death_reason = death_time_chamber
+                }
+			}
+			99 = {
+				earn_cultivation_xp = yes
+			}
+		}
+	}
+
+	option = { #Practice for 3 hours
+		name = cultivation_regular_event.102.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = ambitious
+				add = 10
+			}
+			modifier = {
+				has_trait = diligent
+				add = 10
+			}
+		}
+		
+		random_list = {
+			30 = {
+				death = {
+                    death_reason = death_time_chamber
+                }
+			}
+			70 = {
+				earn_cultivation_xp = yes
+				earn_cultivation_xp = yes
+			}
+		}
+	}
+	
+	option = { #Practice for 5 hours
+		name = cultivation_regular_event.102.c
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = ambitious
+				add = 30
+			}
+			modifier = {
+				has_trait = craven
+				add = -10
+			}
+		}
+		
+		random_list = {
+			50 = {
+				death = {
+                    death_reason = death_time_chamber
+                }
+			}
+			50 = {
+				earn_cultivation_xp = yes
+				earn_cultivation_xp = yes
+				earn_cultivation_xp = yes
+			}
+		}
+	}
+	
+	
+	option = { #Ignore it
+        name = cultivation_regular_event.102.d
+		ai_chance = {
+			base = 45
+		}
+	}
+}

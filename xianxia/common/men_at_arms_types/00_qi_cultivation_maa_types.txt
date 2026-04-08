@@ -1,0 +1,347 @@
+﻿@cultural_maa_extra_ai_score_1 = -30 # value = minus 3 regiments
+@cultural_maa_extra_ai_score_2 = 10
+@cultural_maa_extra_ai_score_3 = 40
+@cultural_maa_extra_ai_score_4 = 10
+
+thousand_qi_needles = {
+	type = heavy_infantry
+
+	damage = 28
+	toughness = 45
+	pursuit = 18
+	screen = 30
+	siege_value = 0
+	siege_tier = 0
+
+	# Qi Gathering
+	can_recruit = {
+		has_trait = cultivation_qi_gathering
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 10 toughness = 8 }
+		plains = { damage = 10 toughness = 8 }
+		terraced_hills = { damage = 10 toughness = 8 }
+		hills = { damage = 10 toughness = 8 }
+	}
+
+	counters = {
+		pikemen = 1.4
+		peasant_militia = 2.2
+		archers = 1.8
+		heavy_infantry = 1.2
+		skirmishers = 1.6
+		light_cavalry = 1.5
+		thousand_qi_needles = 4.0
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999.2 }
+	high_maintenance_cost = { gold = 999.6 }
+	provision_cost = 0
+
+	holy_order_fallback = yes
+	allowed_in_hired_troops = yes
+
+	stack = 20
+	ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+	icon = unrestrained_realm_taoists
+}
+
+nine_heavens_sword_intent = {
+	type = heavy_infantry
+
+	damage = 320
+	toughness = 240
+	pursuit = 90
+	screen = 120
+	siege_value = 2
+	siege_tier = 1
+
+	# Foundation Establishment
+	can_recruit = {
+		has_trait = cultivation_qi_refining
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 120 toughness = 60 }
+		plains = { damage = 120 toughness = 60 }
+		terraced_hills = { damage = 120 toughness = 60 }
+		hills = { damage = 120 toughness = 60 }
+	}
+
+	counters = {
+		pikemen = 2.0
+		peasant_militia = 3.2
+		archers = 2.6
+		heavy_infantry = 2.2
+		skirmishers = 2.6
+		light_cavalry = 2.6
+		heavy_cavalry = 1.6
+		thousand_qi_needles = 6.0
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999 }
+	high_maintenance_cost = { gold = 4 }
+	provision_cost = 0
+
+	holy_order_fallback = yes
+	allowed_in_hired_troops = yes
+
+	stack = 50
+	ai_quality = { value = @cultural_maa_extra_ai_score_2 }
+
+	icon = golden_core_taoists
+}
+
+golden_core_flame_lotus = {
+	type = war_elephant
+
+	damage = 180
+	toughness = 140
+	pursuit = 260
+	screen = 220
+	siege_value = 3
+	siege_tier = 2
+
+	# Core Formation
+	can_recruit = {
+		has_trait = cultivation_qi_building
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 620 toughness = 320 }
+		plains = { damage = 620 toughness = 320 }
+		terraced_hills = { damage = 620 toughness = 320 }
+		hills = { damage = 620 toughness = 320 }
+	}
+
+	counters = {
+		pikemen = 3.2
+		peasant_militia = 4.6
+		archers = 3.8
+		heavy_infantry = 3.4
+		skirmishers = 3.8
+		light_cavalry = 3.6
+		heavy_cavalry = 2.8
+	    thousand_qi_needles = 6.0
+		nine_heavens_sword_intent = 3.5
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999 }
+	high_maintenance_cost = { gold = 999 }
+	provision_cost = 0
+
+	holy_order_fallback = yes
+	allowed_in_hired_troops = no
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score_3 }
+
+	icon = golden_core_taoists
+}
+
+nascent_soul_phantom = {
+	type = war_elephant
+
+	damage = 650
+	toughness = 60
+	pursuit = 70
+	screen = 520
+	siege_value = 4
+	siege_tier = 3
+
+	# Nascent Soul
+	can_recruit = {
+		has_trait = cultivation_core_formation
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 240 toughness = 160 }
+		plains = { pursuit = 110 }
+		terraced_hills = { damage = 240 toughness = 160 }
+		hills = { damage = 240 toughness = 160 }
+	}
+
+	counters = {
+		pikemen = 4.8
+		peasant_militia = 6.0
+		archers = 5.2
+		heavy_infantry = 4.8
+		skirmishers = 5.2
+		light_cavalry = 5.6
+		heavy_cavalry = 4.2
+		thousand_qi_needles = 7.5
+		nine_heavens_sword_intent = 4.5
+		golden_core_flame_lotus = 3.8
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999 }
+	high_maintenance_cost = { gold = 999 }
+	provision_cost = 0
+
+	holy_order_fallback = no
+	allowed_in_hired_troops = no
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score_4 }
+
+	icon = golden_core_taoists
+}
+
+heaven_severing_blade = {
+	type = war_elephant
+
+	damage = 180
+	toughness = 160
+	pursuit = 120
+	screen = 90
+	siege_value = 6
+	siege_tier = 3
+
+	# Spirit Severing
+	can_recruit = {
+		has_trait = cultivation_nascent_soul
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 650 toughness = 380 }
+		plains = { damage = 650 toughness = 380 }
+		terraced_hills = { damage = 520 }
+		hills = { damage = 520 }
+	}
+
+	counters = {
+		pikemen = 6.0
+		peasant_militia = 7.8
+		archers = 6.6
+		heavy_infantry = 6.0
+		skirmishers = 6.6
+		light_cavalry = 6.6
+		heavy_cavalry = 5.2
+		thousand_qi_needles = 9.0
+		nine_heavens_sword_intent = 5.6
+		golden_core_flame_lotus = 5.0
+		nascent_soul_phantom = 4.2
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999 }
+	high_maintenance_cost = { gold = 999 }
+	provision_cost = 0
+
+	holy_order_fallback = no
+	allowed_in_hired_troops = no
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score_4 }
+
+	icon = peak_realm_taoists
+}
+
+myriad_dao_suppression_domain = {
+	type = war_elephant
+
+	damage = 420
+	toughness = 360
+	pursuit = 20
+	screen = 150
+	siege_value = 7
+	siege_tier = 3
+
+	# Dao Seeking
+	can_recruit = {
+		has_trait = cultivation_heavenly_being
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 140 toughness = 90 }
+		plains = { damage = 140 toughness = 90 }
+		terraced_hills = { damage = 140 toughness = 90 }
+		hills = { damage = 140 toughness = 90 }
+	}
+
+	counters = {
+		pikemen = 8.0
+		peasant_militia = 9.5
+		archers = 8.2
+		heavy_infantry = 8.0
+		skirmishers = 8.2
+		light_cavalry = 8.0
+		heavy_cavalry = 7.2
+		thousand_qi_needles = 6.5
+		nine_heavens_sword_intent = 6.6
+		golden_core_flame_lotus = 6.0
+		nascent_soul_phantom = 5.2
+		heaven_severing_blade = 4.6
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999 }
+	high_maintenance_cost = { gold = 999 }
+	provision_cost = 0
+
+	holy_order_fallback = no
+	allowed_in_hired_troops = no
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score_4 }
+
+	icon = peak_realm_taoists
+}
+
+heavenly_tribulation_descent = {
+	type = war_elephant
+
+	damage = 950
+	toughness = 850
+	pursuit = 340
+	screen = 260
+	siege_value = 8
+	siege_tier = 3
+
+	# Immortal Ascension
+	can_recruit = {
+		has_trait = cultivation_true_immortal
+	}
+
+	terrain_bonus = {
+		farmlands = { damage = 320 toughness = 240 }
+		plains = { damage = 320 toughness = 240 }
+		terraced_hills = { damage = 320 toughness = 240 }
+		hills = { damage = 320 toughness = 240 }
+	}
+
+	counters = {
+		pikemen = 6.0
+		peasant_militia = 6.0
+		archers = 6.2
+		heavy_infantry = 6.0
+		skirmishers = 6.2
+		light_cavalry = 6.0
+		heavy_cavalry = 9.0
+		thousand_qi_needles = 6.5
+		nine_heavens_sword_intent = 8.0
+		golden_core_flame_lotus = 7.2
+		nascent_soul_phantom = 6.4
+		heaven_severing_blade = 5.8
+		myriad_dao_suppression_domain = 5.2
+	}
+
+	buy_cost = { gold = 999 prestige = 999 piety = 999 }
+	low_maintenance_cost = { gold = 999 }
+	high_maintenance_cost = { gold = 999 }
+	provision_cost = 0
+
+	holy_order_fallback = no
+	allowed_in_hired_troops = no
+
+	stack = 10
+	ai_quality = { value = @cultural_maa_extra_ai_score_4 }
+
+	icon = peak_realm_taoists
+}

@@ -1,0 +1,227 @@
+﻿sect_headquarters_realm = {
+    monthly_prestige = 0.3
+    monthly_piety = 0.3
+    knight_effectiveness_mult = 0.1
+}
+
+sect_resource_surplus = {
+    monthly_income_mult = 0.1
+    monthly_prestige = 0.15
+}
+
+alchemy_backlash = {
+    health = -0.6
+    learning = -2
+}
+
+perfected_spirit_pill = {
+    health = 0.6
+    prowess = 2
+    learning = 2
+}
+
+manual_comprehension = {
+    monthly_lifestyle_xp_gain_mult = 0.08
+}
+
+tribulation_survivor = {
+    health = 1.0
+    prowess = 4
+    monthly_prestige = 0.5
+}
+
+cultivation_deviation = {
+    health = -0.8
+    diplomacy = -2
+    stewardship = -2
+    martial = -2
+}
+
+secret_realm_inheritance = {
+    monthly_lifestyle_xp_gain_mult = 0.10
+    monthly_prestige = 0.3
+}
+
+high_realm_longevity = {
+    health = 1.5
+    prowess = 2
+}
+
+jianghu_reputation_righteous = {
+    general_opinion = 5
+    clergy_opinion = 8
+}
+
+jianghu_reputation_demonic = {
+    same_faith_opinion = -5
+    dread_gain_mult = 0.3
+    enemy_hostile_scheme_success_chance_add = 10
+}
+
+sect_governance_feudal_adapted = {
+    monthly_prestige = 0.2
+    short_reign_duration_mult = -0.1
+}
+
+sect_governance_republic_adapted = {
+    monthly_income_mult = 0.08
+    vassal_opinion = 4
+}
+
+sect_governance_clan_adapted = {
+    monthly_prestige = 0.25
+    monthly_income_mult = 0.05
+    powerful_vassal_opinion = 5
+}
+
+sect_governance_tribal_adapted = {
+    knight_effectiveness_mult = 0.12
+    monthly_prestige = 0.25
+    levy_size = 0.1
+}
+
+sect_governance_theocracy_adapted = {
+    monthly_piety = 0.4
+    clergy_opinion = 8
+    monthly_lifestyle_xp_gain_mult = 0.04
+}
+
+sect_governance_administrative_adapted = {
+    domain_limit = 1
+    monthly_income_mult = 0.06
+    monthly_prestige = 0.2
+}
+
+jianghu_realm_friction = {
+    vassal_opinion = -4
+}
+
+
+sect_resource_obligations = {
+    monthly_income_mult = -0.08
+    monthly_prestige = 0.1
+    vassal_opinion = -3
+}
+
+sect_resource_stockpile = {
+    monthly_income_mult = 0.12
+    monthly_prestige = 0.2
+    monthly_piety = 0.1
+}
+
+sect_internal_dispute = {
+    vassal_opinion = -8
+    levy_size = -0.08
+    tyranny_gain_mult = 0.1
+}
+
+sect_power_struggle = {
+    enemy_hostile_scheme_success_chance_add = 10
+    owned_personal_scheme_success_chance_add = 8
+    stress_gain_mult = 0.1
+}
+
+tournament_chain_momentum = {
+    martial = 2
+    prowess = 2
+    monthly_prestige = 0.25
+}
+
+tournament_chain_injury = {
+    health = -0.5
+    prowess = -1
+}
+
+expedition_progress = {
+    monthly_lifestyle_xp_gain_mult = 0.08
+    prowess = 1
+}
+
+expedition_setback = {
+    health = -0.4
+    travel_speed_mult = -0.15
+}
+
+lineage_prestige_mentor = {
+    monthly_dynasty_prestige = 0.2
+    monthly_prestige = 0.15
+}
+
+lineage_marked_disciple = {
+    monthly_lifestyle_xp_gain_mult = 0.08
+    monthly_piety = 0.1
+}
+
+alchemy_furnace_masterwork = {
+    learning = 3
+    prowess = 2
+    monthly_income_mult = 0.05
+}
+
+alchemy_qi_deviation_wound = {
+    health = -0.7
+    prowess = -2
+}
+
+sect_council_consensus = {
+    vassal_opinion = 6
+    monthly_prestige = 0.2
+    monthly_piety = 0.1
+}
+
+sect_council_deadlock = {
+    vassal_opinion = -10
+    monthly_prestige = -0.15
+    stress_gain_mult = 0.15
+}
+
+sect_lineage_favor = {
+    monthly_dynasty_prestige = 0.25
+    same_faith_opinion = 4
+}
+
+sect_lineage_fracture = {
+    same_faith_opinion = -8
+    enemy_hostile_scheme_success_chance_add = 8
+}
+
+alchemy_herb_stockpile = {
+    monthly_income_mult = 0.04
+    learning = 1
+}
+
+alchemy_ore_stockpile = {
+    monthly_income_mult = 0.05
+    stewardship = 1
+}
+
+alchemy_core_stockpile = {
+    prowess = 1
+    monthly_piety = 0.1
+}
+
+
+alchemy_enlightenment_pill = {
+    monthly_lifestyle_xp_gain_mult = 0.20
+    learning = 1
+}
+
+
+formation_barrier_network = {
+    advantage = 4
+    controlled_province_advantage = 4
+    levy_size = 0.08
+}
+
+formation_warded_county = {
+    fort_level = 1
+    garrison_size = 0.15
+}
+
+fox_spirit_mortal_hunt_frenzy = {
+    monthly_lifestyle_xp_gain_mult = 0.25
+    intrigue = 2
+    prowess = 1
+    monthly_dread = 8
+    stress_loss_mult = 0.1
+}

@@ -1,0 +1,80 @@
+# Graphics Reference Inventory
+
+Generated from script/GUI references in this repository.
+
+## .gfx files present in repository
+- None found (`rg --files | rg "\.gfx$"` returned no matches).
+
+## Referenced `gfx/...` assets
+- `gfx/interface/frontend/portrait_main_menu_shadow.dds`
+- `gfx/interface/icons/dynasty/cultivation_legacy_track.dds`
+- `gfx/interface/icons/faith/ancient_relic_sect.dds`
+- `gfx/interface/icons/faith/blood_moon_demonic_sect.dds`
+- `gfx/interface/icons/faith/blood_yin_cult.dds`
+- `gfx/interface/icons/faith/crimson_moon_blade_hall.dds`
+- `gfx/interface/icons/faith/demon_suppressing_blade_clan.dds`
+- `gfx/interface/icons/faith/divine_beast_mountain.dds`
+- `gfx/interface/icons/faith/eternal_harmony_pavilion.dds`
+- `gfx/interface/icons/faith/eternal_pleasure_hall.dds`
+- `gfx/interface/icons/faith/eternal_rest_clan.dds`
+- `gfx/interface/icons/faith/feral_bond_sect.dds`
+- `gfx/interface/icons/faith/heavenly_sword_pavilion.dds`
+- `gfx/interface/icons/faith/hundred_herbs_pavilion.dds`
+- `gfx/interface/icons/faith/jade_chamber_sect.dds`
+- `gfx/interface/icons/faith/lone_wolf_wanderers.dds`
+- `gfx/interface/icons/faith/medicine_king_valley.dds`
+- `gfx/interface/icons/faith/moonless_night_pavilion.dds`
+- `gfx/interface/icons/faith/mount_hua_sect.dds`
+- `gfx/interface/icons/faith/mystic_forge_hall.dds`
+- `gfx/interface/icons/faith/mystic_seal_pavilion.dds`
+- `gfx/interface/icons/faith/nine_star_formation_sect.dds`
+- `gfx/interface/icons/faith/pale_bone_hall.dds`
+- `gfx/interface/icons/faith/primal_beast_sect.dds`
+- `gfx/interface/icons/faith/primordial_chaos_hall.dds`
+- `gfx/interface/icons/faith/shaolin_temple.dds`
+- `gfx/interface/icons/faith/succubus_palace.dds`
+- `gfx/interface/icons/faith/ten_thousand_corpse_valley.dds`
+- `gfx/interface/icons/faith/ten_thousand_swords_valley.dds`
+- `gfx/interface/icons/faith/thousand_beast_valley.dds`
+- `gfx/interface/icons/faith/thousand_treasures_pavilion.dds`
+- `gfx/interface/icons/faith/tyrant_saber_palace.dds`
+- `gfx/interface/icons/faith/vagrant_blade_brotherhood.dds`
+- `gfx/interface/icons/faith/venomous_serpent_valley.dds`
+- `gfx/interface/icons/faith/violet_thunder_blade_sect.dds`
+- `gfx/interface/icons/faith/wudang_sect.dds`
+- `gfx/interface/icons/lifestyles_perks/cultivation_qi_gathering_f.dds`
+- `gfx/interface/icons/traits/athletic.dds`
+- `gfx/interface/icons/traits/blademaster_1.dds`
+- `gfx/interface/icons/traits/blademaster_2.dds`
+- `gfx/interface/icons/traits/compassionate.dds`
+- `gfx/interface/icons/traits/diligent.dds`
+- `gfx/interface/icons/traits/education_diplomacy_1.dds`
+- `gfx/interface/icons/traits/education_learning_1.dds`
+- `gfx/interface/icons/traits/education_learning_2.dds`
+- `gfx/interface/icons/traits/education_learning_3.dds`
+- `gfx/interface/icons/traits/education_learning_4.dds`
+- `gfx/interface/icons/traits/education_martial_3.dds`
+- `gfx/interface/icons/traits/education_martial_4.dds`
+- `gfx/interface/icons/traits/just.dds`
+- `gfx/interface/icons/traits/sadistic.dds`
+- `gfx/interface/icons/traits/stalwart_leader.dds`
+- `gfx/interface/icons/traits/strategist.dds`
+- `gfx/interface/illustrations/decisions/decision_ask_for_gold.dds`
+- `gfx/interface/illustrations/decisions/decision_become_chakravarti.dds`
+- `gfx/interface/illustrations/decisions/decision_call_hunt_2.dds`
+- `gfx/interface/illustrations/decisions/decision_destiny_goal.dds`
+- `gfx/interface/illustrations/decisions/decision_dose_self.dds`
+- `gfx/interface/illustrations/decisions/decision_found_holy_order.dds`
+- `gfx/interface/illustrations/decisions/decision_hold_court.dds`
+- `gfx/interface/illustrations/decisions/decision_hunt_animal.dds`
+- `gfx/interface/illustrations/decisions/decision_martial_lifestyle.dds`
+- `gfx/interface/illustrations/decisions/decision_misc.dds`
+- `gfx/interface/illustrations/decisions/decision_mystic_communion.dds`
+- `gfx/interface/illustrations/decisions/decision_prepare_for_war.dds`
+- `gfx/interface/illustrations/decisions/decision_realm_martial.dds`
+- `gfx/interface/illustrations/decisions/decision_search_for_secrets.dds`
+- `gfx/interface/illustrations/decisions/decision_study_culture.dds`
+- `gfx/interface/illustrations/decisions/decision_torture_prisoner.dds`
+- `gfx/interface/illustrations/decisions/decision_write_diplomatic_treatise.dds`
+- `gfx/interface/illustrations/decisions/visit_sect_decision.dds`
+- `gfx/portraits/portrait_mask_solid.dds`

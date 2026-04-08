@@ -1,0 +1,206 @@
+﻿##################################################
+# CORE FORMATION REALM (Y: 21-25) +15 years
+# Tree: core_formation_tree
+##################################################
+
+core_formation_qi1_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 0 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 10
+	}
+}
+
+core_formation_early_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 2 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_qi1_perk
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 10
+	}
+}
+
+core_formation_qi2_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 2 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_early_perk
+
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 10
+	}
+}
+
+core_formation_mid_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_qi2_perk
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 15
+	}
+}
+
+core_formation_qi3_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 0 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_mid_perk
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 10
+	}
+}
+
+core_formation_late_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 2 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_qi3_perk
+	
+	character_modifier = {
+		prowess = 21
+		learning = 5
+		health = 2.5
+		advantage = 15
+	}
+}
+
+core_formation_qi4_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 2 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_late_perk
+
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 10
+	}
+}
+
+core_formation_peak_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 0 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_qi4_perk
+	
+	character_modifier = {
+		prowess = 21
+		learning = 5
+		health = 2.5
+		advantage = 20
+		monthly_prestige = 0.5
+	}
+}
+
+core_formation_qi5_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 0 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = node_cultivation
+	parent = core_formation_peak_perk
+
+	
+	character_modifier = {
+		prowess = 18
+		learning = 4
+		health = 2.0
+		advantage = 10
+	}
+}
+
+core_formation_nascent_soul_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = core_formation_tree
+	position = { 2 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_core_formation
+	}
+	icon = cultivation_nascent_soul_f
+	parent = core_formation_qi5_perk
+	
+	trait = cultivation_nascent_soul
+	
+	effect = {
+		add_character_flag = can_attempt_nascent_soul_breakthrough
+		trigger_event = cultivation_breakthrough.1400
+	}
+	
+	character_modifier = {
+		prowess = 27
+		learning = 5
+		health = 3.0
+		advantage = 20
+		monthly_prestige = 1.0
+	}
+}

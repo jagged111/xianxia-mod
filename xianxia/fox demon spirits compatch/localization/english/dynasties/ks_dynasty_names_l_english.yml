@@ -1,0 +1,31 @@
+﻿l_english:
+ ############################################################
+ #Prefixes
+ ############################################################
+ #dynnp__: "$articleblank_article$"
+ #dynnp_a: "A· "
+ 
+ ############################################################
+ #Names
+ ############################################################
+ #dynn_Abazasdze: "Abazasdze"
+ dynn_ksHu: "Hu"          # 胡
+ dynn_ksHu2: "Hu (Fox)"   # 狐
+ dynn_ksLinghu: "Linghu"  # Linghu (Chinese surname)
+ dynn_ksKitsne: "Kitsune" # Japanese word for fox
+ dynn_ksKi: "Ki"          # 吉 (Good luck / fortune)
+ dynn_ksTsne: "Tsne"      # 津 (Harbor / Ferry)
+ dynn_ksFox: "Foqi"       # 福齐 (phonetic, stylized "Fox")
+ dynn_ksFo: "Fo"          # 福 (Fortune)
+ dynn_ksRenard: "Renard"  # French for "fox"
+ dynn_ksRe: "Re"          # 勒 (phonetic part of Renard)
+ dynn_ksNa: "Na"          # 讷 (phonetic part of Renard)
+ dynn_ksFuchs: "Fuchs"    # German for "fox"
+ dynn_ksLisa: "Lisa"      # Lisa (sounds like "lisa/fox" in Slavic)
+ dynn_ksLi: "Li"          # 李 (common Chinese surname)
+ dynn_ksLi2: "Li (Li2)"   # 里 (phonetic surname)
+ dynn_ksLi3: "Li (Li3)"   # 黎 (common surname, also "black")
+ dynn_ksTilki: "Tilki"    # Turkish for "fox"
+ dynn_ksTi: "Ti"          # 提 (phonetic part of Tilki)
+ dynn_ksUrnerg: "Urnerg"  # Invented / stylized
+ dynn_ksUr: "Ur"          # 乌 (black / crow / phonetic)

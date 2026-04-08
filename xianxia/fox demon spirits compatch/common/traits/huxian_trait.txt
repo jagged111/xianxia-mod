@@ -1,0 +1,304 @@
+﻿huxian_blood = {
+	birth=0.1
+	random_creation=0.1
+
+	intrigue = 3
+	
+	attraction_opinion = 60
+	general_opinion = -20
+	#same_culture_opinion = 10
+	same_opinion = 20
+	clergy_opinion = -10
+	zealot_opinion = -30
+	#fertility = 0.2
+	
+	monthly_lifestyle_xp_gain_mult = 0.1
+	
+	ruler_designer_cost = 20
+
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = this
+					is_female = yes
+				}
+				desc = trait_huxian_female
+			}
+			desc = trait_huxian
+		}
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_huxian_desc
+			}
+			desc = trait_huxian_desc
+		}
+	}
+	
+	genetic_constraint_all = beauty_1
+	genetic_constraint_men = male_beauty_1
+	genetic_constraint_women = female_beauty_1
+	
+	good = yes
+	genetic = yes
+	physical = yes
+
+	#ai_honor = -10
+	ai_sociability = low_negative_ai_value
+	
+}
+
+
+huxian_cultivation = {
+	minimum_age = 16
+	category = fame
+
+	intrigue = 1	
+	same_opinion = 10
+	ruler_designer_cost = 50
+	
+	track = {
+		20 = {
+			intrigue = 2
+			attraction_opinion = 20
+			monthly_lifestyle_xp_gain_mult = 0.04
+
+		}
+		40 = {
+			intrigue = 3
+			hostile_scheme_phase_duration_add = medium_scheme_phase_duration_bonus_value
+			enemy_hostile_scheme_phase_duration_add = medium_scheme_phase_duration_malus_value
+			prowess = 5
+			monthly_lifestyle_xp_gain_mult = 0.04
+
+		}
+		60 = {
+			intrigue = 1
+			learning = 3
+			negate_health_penalty_add = 0.5
+			health = 0.5
+			monthly_lifestyle_xp_gain_mult = 0.04
+			#flag = immortal_visuals 无效
+			#set_immortal_age = 20
+		}
+		80 = {
+			intrigue = 1
+			diplomacy = 3
+			dread_gain_mult = 0.25
+			#same_opinion = 25
+			general_opinion = 25
+			stewardship = 2
+			monthly_lifestyle_xp_gain_mult = 0.04
+			#flag = immortal_fertility
+
+		}
+		100 = {
+			intrigue = 2
+			prowess = 5
+			martial = 5
+			levy_size = 0.1
+			dread_baseline_add = 25
+			monthly_lifestyle_xp_gain_mult = 0.04
+			#flag = immortal_incapability
+		}
+	}
+	icon = {
+		first_valid = {
+			triggered_desc = { # If no character exists
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation_d.dds
+			}
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 100
+					}
+				}
+				desc = huxian_cultivation_5.dds
+			}
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 80
+					}
+				}
+				desc = huxian_cultivation_4.dds
+			}
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 60
+					}
+				}
+				desc = huxian_cultivation_3.dds
+			}
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 40
+					}
+				}
+				desc = huxian_cultivation_2.dds
+			}
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 20
+					}
+				}
+				desc = huxian_cultivation_1.dds
+			}
+			desc = huxian_cultivation.dds
+		}
+	}
+
+	# Loc
+	name = {
+		first_valid = {
+			#Eight tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 100
+					}
+				}
+				desc = trait_huxian_cultivation_5
+			}
+			#Seven tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 80
+					}
+				}
+				desc = trait_huxian_cultivation_4
+			}
+			#Five Tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 60
+					}
+				}
+				desc = trait_huxian_cultivation_3
+			}
+			#Three tails
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 40
+					}
+				}
+				desc = trait_huxian_cultivation_2
+			}
+			#Two tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 20
+					}
+				}
+				desc = trait_huxian_cultivation_1
+			}
+			#huxian_cultivation(One tail)
+			desc = trait_huxian_cultivation
+		}
+	}
+
+	# Loc
+	desc = {
+		first_valid = {
+			#The trait can never go higher than the first level if it's not assigned to a character
+			triggered_desc = {
+				trigger = { 
+					NOT = { exists = this } 
+				}
+			}
+			#Eight tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 100
+					}
+				}
+				desc = trait_huxian_cultivation_5_desc
+			}
+			#Seven tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 80
+					}
+				}
+				desc = trait_huxian_cultivation_4_desc
+			}
+			#Five tails
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 60
+					}
+				}
+				desc = trait_huxian_cultivation_3_desc
+			}
+			#Three tails
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 40
+					}
+				}
+				desc = trait_huxian_cultivation_2_desc
+			}
+			#Two tails
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = huxian_cultivation
+						value >= 20
+					}
+				}
+				desc = trait_huxian_cultivation_1_desc
+			}
+			#One tail
+			desc = trait_huxian_cultivation_desc
+		}
+	}
+
+	ai_zeal = 10
+}

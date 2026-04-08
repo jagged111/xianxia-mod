@@ -1,0 +1,427 @@
+﻿# Find Cultivation Partner Interactions (Self-Target Style)
+# Place in common/character_interactions/
+# Based on vanilla find_concubine - interaction is on yourself, opens a list
+
+### FIND LEFT PARTNER ###
+
+find_cultivation_left_partner = {
+	category = interaction_category_friendly
+	hidden = yes  # Hide from player interaction menu - only accessible via GUI button
+	icon = family
+	desc = find_cultivation_left_partner_desc
+	
+	# This makes it open a character selection list
+	needs_recipient_to_open = no
+	
+	# Redirect to handle the UI properly (exactly like find_concubine)
+	redirect = {
+		scope:actor = {
+			save_scope_as = secondary_actor
+		}
+		if = {
+			limit = {
+				# When candidate is selected, set secondary_recipient
+				scope:actor != scope:recipient
+			}
+			scope:recipient = {
+				save_scope_as = secondary_recipient
+			}
+		}
+	}
+	
+	# Populate the character list with cultivators
+	populate_recipient_list = {
+		scope:actor = {
+			# Add courtiers who are cultivators
+			every_courtier = {
+				limit = {
+					is_cultivator = yes
+					is_adult = yes
+					NOT = { this = scope:actor }
+					# Exclude right partner if already set
+					trigger_if = {
+						limit = { scope:actor = { has_variable = cultivation_right_partner } }
+						NOT = { this = scope:actor.var:cultivation_right_partner }
+					}
+				}
+				add_to_list = characters
+			}
+			
+			# Add vassals who are cultivators
+			every_vassal = {
+				limit = {
+					is_cultivator = yes
+					is_adult = yes
+					NOT = { this = scope:actor }
+					# Exclude right partner if already set
+					trigger_if = {
+						limit = { scope:actor = { has_variable = cultivation_right_partner } }
+						NOT = { this = scope:actor.var:cultivation_right_partner }
+					}
+				}
+				add_to_list = characters
+			}
+			
+			# Add pool characters (guests, wanderers)
+			every_pool_character = {
+				province = scope:actor.capital_province
+				limit = {
+					is_cultivator = yes
+					is_adult = yes
+					NOT = { this = scope:actor }
+					# Exclude right partner if already set
+					trigger_if = {
+						limit = { scope:actor = { has_variable = cultivation_right_partner } }
+						NOT = { this = scope:actor.var:cultivation_right_partner }
+					}
+				}
+				add_to_list = characters
+			}
+		}
+	}
+	
+	is_shown = {
+		scope:actor = {
+			is_cultivator = yes
+			is_adult = yes
+			
+			# Show the list interface
+			trigger_if = {
+				limit = {
+					NOT = { exists = scope:secondary_recipient }
+				}
+				scope:actor = scope:recipient
+			}
+		}
+		
+		# When a candidate is selected
+		trigger_if = {
+			limit = {
+				scope:actor != scope:recipient
+			}
+			scope:recipient = {
+				is_cultivator = yes
+				is_adult = yes
+			}
+		}
+	}
+	
+	is_valid_showing_failures_only = {
+		# Check there are cultivators available
+		custom_description = {
+			text = "CULTIVATION_LEFT_PARTNER_AVAILABLE"
+			object = scope:actor
+			scope:actor = {
+				OR = {
+					any_courtier = {
+						is_cultivator = yes
+						is_adult = yes
+						NOT = { this = scope:actor }
+						# Exclude right partner
+						trigger_if = {
+							limit = { scope:actor = { has_variable = cultivation_right_partner } }
+							NOT = { this = scope:actor.var:cultivation_right_partner }
+						}
+					}
+					any_vassal = {
+						is_cultivator = yes
+						is_adult = yes
+						NOT = { this = scope:actor }
+						# Exclude right partner
+						trigger_if = {
+							limit = { scope:actor = { has_variable = cultivation_right_partner } }
+							NOT = { this = scope:actor.var:cultivation_right_partner }
+						}
+					}
+					any_pool_character = {
+						province = scope:actor.capital_province
+						is_cultivator = yes
+						is_adult = yes
+						NOT = { this = scope:actor }
+						# Exclude right partner
+						trigger_if = {
+							limit = { scope:actor = { has_variable = cultivation_right_partner } }
+							NOT = { this = scope:actor.var:cultivation_right_partner }
+						}
+					}
+				}
+			}
+		}
+		
+		# When specific character is selected
+		trigger_if = {
+			limit = {
+				scope:actor != scope:recipient
+			}
+			scope:recipient = {
+				is_cultivator = yes
+				is_adult = yes
+			}
+			
+			# Can't be the same as right partner
+			custom_description = {
+				text = "NOT_ALREADY_RIGHT_PARTNER"
+				object = scope:recipient
+				trigger_if = {
+					limit = {
+						scope:actor = { has_variable = cultivation_right_partner }
+					}
+					scope:recipient = {
+						NOT = { this = scope:actor.var:cultivation_right_partner }
+					}
+				}
+			}
+		}
+	}
+	
+	can_be_picked = {
+		is_adult = yes
+		is_cultivator = yes
+		# Can't pick right partner
+		trigger_if = {
+			limit = { scope:actor = { has_variable = cultivation_right_partner } }
+			NOT = { this = scope:actor.var:cultivation_right_partner }
+		}
+	}
+	
+	auto_accept = {
+		always = yes
+	}
+	
+	ai_will_do = {
+		base = 0
+	}
+	
+	on_accept = {
+		# The redirect block makes scope:secondary_recipient the selected character
+		# Save it to the variable
+		scope:secondary_actor = {
+			set_variable = {
+				name = cultivation_left_partner
+				value = scope:secondary_recipient
+			}
+		}
+		
+		# Notification
+		scope:secondary_actor = {
+			send_interface_toast = {
+				title = CULTIVATION_LEFT_PARTNER_SELECTED
+				left_icon = scope:secondary_recipient
+				
+				custom_tooltip = CULTIVATION_LEFT_PARTNER_SELECTED_DESC
+			}
+		}
+	}
+}
+
+### FIND RIGHT PARTNER ###
+
+find_cultivation_right_partner = {
+	category = interaction_category_friendly
+	hidden = yes  # Hide from player interaction menu - only accessible via GUI button
+	icon = family
+	desc = find_cultivation_right_partner_desc
+	
+	# This makes it open a character selection list
+	needs_recipient_to_open = no
+	
+	# Redirect to handle the UI properly (exactly like find_concubine)
+	redirect = {
+		scope:actor = {
+			save_scope_as = secondary_actor
+		}
+		if = {
+			limit = {
+				# When candidate is selected, set secondary_recipient
+				scope:actor != scope:recipient
+			}
+			scope:recipient = {
+				save_scope_as = secondary_recipient
+			}
+		}
+	}
+	
+	# Populate the character list with cultivators
+	populate_recipient_list = {
+		scope:actor = {
+			# Add courtiers who are cultivators
+			every_courtier = {
+				limit = {
+					is_cultivator = yes
+					is_adult = yes
+					NOT = { this = scope:actor }
+					# Exclude left partner if already set
+					trigger_if = {
+						limit = { scope:actor = { has_variable = cultivation_left_partner } }
+						NOT = { this = scope:actor.var:cultivation_left_partner }
+					}
+				}
+				add_to_list = characters
+			}
+			
+			# Add vassals who are cultivators
+			every_vassal = {
+				limit = {
+					is_cultivator = yes
+					is_adult = yes
+					NOT = { this = scope:actor }
+					# Exclude left partner if already set
+					trigger_if = {
+						limit = { scope:actor = { has_variable = cultivation_left_partner } }
+						NOT = { this = scope:actor.var:cultivation_left_partner }
+					}
+				}
+				add_to_list = characters
+			}
+			
+			# Add pool characters (guests, wanderers)
+			every_pool_character = {
+				province = scope:actor.capital_province
+				limit = {
+					is_cultivator = yes
+					is_adult = yes
+					NOT = { this = scope:actor }
+					# Exclude left partner if already set
+					trigger_if = {
+						limit = { scope:actor = { has_variable = cultivation_left_partner } }
+						NOT = { this = scope:actor.var:cultivation_left_partner }
+					}
+				}
+				add_to_list = characters
+			}
+		}
+	}
+	
+	is_shown = {
+		scope:actor = {
+			is_cultivator = yes
+			is_adult = yes
+			
+			# Show the list interface
+			trigger_if = {
+				limit = {
+					NOT = { exists = scope:secondary_recipient }
+				}
+				scope:actor = scope:recipient
+			}
+		}
+		
+		# When a candidate is selected
+		trigger_if = {
+			limit = {
+				scope:actor != scope:recipient
+			}
+			scope:recipient = {
+				is_cultivator = yes
+				is_adult = yes
+			}
+		}
+	}
+	
+	is_valid_showing_failures_only = {
+		# Check there are cultivators available
+		custom_description = {
+			text = "CULTIVATION_RIGHT_PARTNER_AVAILABLE"
+			object = scope:actor
+			scope:actor = {
+				OR = {
+					any_courtier = {
+						is_cultivator = yes
+						is_adult = yes
+						NOT = { this = scope:actor }
+						# Exclude left partner
+						trigger_if = {
+							limit = { scope:actor = { has_variable = cultivation_left_partner } }
+							NOT = { this = scope:actor.var:cultivation_left_partner }
+						}
+					}
+					any_vassal = {
+						is_cultivator = yes
+						is_adult = yes
+						NOT = { this = scope:actor }
+						# Exclude left partner
+						trigger_if = {
+							limit = { scope:actor = { has_variable = cultivation_left_partner } }
+							NOT = { this = scope:actor.var:cultivation_left_partner }
+						}
+					}
+					any_pool_character = {
+						province = scope:actor.capital_province
+						is_cultivator = yes
+						is_adult = yes
+						NOT = { this = scope:actor }
+						# Exclude left partner
+						trigger_if = {
+							limit = { scope:actor = { has_variable = cultivation_left_partner } }
+							NOT = { this = scope:actor.var:cultivation_left_partner }
+						}
+					}
+				}
+			}
+		}
+		
+		# When specific character is selected
+		trigger_if = {
+			limit = {
+				scope:actor != scope:recipient
+			}
+			scope:recipient = {
+				is_cultivator = yes
+				is_adult = yes
+			}
+			
+			# Can't be the same as left partner
+			custom_description = {
+				text = "NOT_ALREADY_LEFT_PARTNER"
+				object = scope:recipient
+				trigger_if = {
+					limit = {
+						scope:actor = { has_variable = cultivation_left_partner }
+					}
+					scope:recipient = {
+						NOT = { this = scope:actor.var:cultivation_left_partner }
+					}
+				}
+			}
+		}
+	}
+	
+	can_be_picked = {
+		is_adult = yes
+		is_cultivator = yes
+		# Can't pick left partner
+		trigger_if = {
+			limit = { scope:actor = { has_variable = cultivation_left_partner } }
+			NOT = { this = scope:actor.var:cultivation_left_partner }
+		}
+	}
+	
+	auto_accept = {
+		always = yes
+	}
+	
+	ai_will_do = {
+		base = 0
+	}
+	
+	on_accept = {
+		# The redirect block makes scope:secondary_recipient the selected character
+		# Save it to the variable
+		scope:secondary_actor = {
+			set_variable = {
+				name = cultivation_right_partner
+				value = scope:secondary_recipient
+			}
+		}
+		
+		# Notification
+		scope:secondary_actor = {
+			send_interface_toast = {
+				title = CULTIVATION_RIGHT_PARTNER_SELECTED
+				left_icon = scope:secondary_recipient
+				
+				custom_tooltip = CULTIVATION_RIGHT_PARTNER_SELECTED_DESC
+			}
+		}
+	}
+}

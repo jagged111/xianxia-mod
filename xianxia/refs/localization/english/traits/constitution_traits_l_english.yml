@@ -1,0 +1,27 @@
+﻿l_english:
+  trait_yang_constitution:0 "Yang constitution"
+  trait_yang_constitution_desc:0 "A yang focused constitution. Exclusive to males, allow for a special cultivation if paired with a yin constitution cultivator (WIP, not yet implemented). All constitutions increase cultivation speed"
+  trait_yang_constitution_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has a yang constitution. Allows for faster cultivation" 
+
+  trait_yin_constitution:0 "Yin constitution"
+  trait_yin_constitution_desc:0 "A yin focused constitution. Exclusive to females, allow for a special cultivation if paired with a yang constitution cultivator (WIP, not yet implemented). All constitutions increase cultivation speed"
+  trait_yin_constitution_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has a yin constitution. Allows for faster cultivation" 
+
+  trait_poison_constitution:0 "Poison constitution"
+  trait_poison_constitution_desc:0 "A poison constitution feared by many. Reduces chances of poisoning (WIP). All constitutions increase cultivation speed"
+  trait_poison_constitution_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has a poison constitution. Allows for faster cultivation" 
+
+  trait_lightning_constitution:0 "Lightining constitution"
+  trait_lightning_constitution_desc:0 "A lightning constitution, allowing easier breakthroughs. All constitutions increase cultivation speed"
+  trait_lightning_constitution_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has a lightining constitution. Allows for faster cultivation" 
+
+  trait_dragon_bloodline:0 "Dragon Bloodline"
+  trait_dragon_bloodline_desc:0 "A bloodline that carries the ancient essence of dragons. This grants some enhancements, but the full potential of this legacy is yet to be unlocked."
+  trait_dragon_bloodline_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has a small percentage of the bloodline of the dragons. Its' full potential not yet unleashed." 
+  trait_track_dragon_bloodline:0 "Purity"
+  trait_track_dragon_bloodline_desc:0 "The level of purity of the draconic bloodline"
+
+  trait_dragon_body_constitution:0 "Dragon Body Constitution"
+  trait_dragon_body_constitution_desc:0 "A fully unleashed dragon bloodline, it imbues the body of whoever carries it with inmense potential and capabilities"
+  trait_dragon_body_constitution_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has succesfully inherited the body of a dragon, granting them a mighty aura and heavenly capabilities" 
+

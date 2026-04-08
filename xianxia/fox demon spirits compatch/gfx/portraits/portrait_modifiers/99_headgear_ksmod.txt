@@ -1,0 +1,32 @@
+﻿# Tags:
+# rank_headgear: any headgear that signifies a certain title. crowns, pope hat etc.
+
+headgear_ksmod = {
+
+	usage = game
+	selection_behavior = weighted_random
+	priority = 1
+
+
+	huxian_general = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = fox_ears
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 101
+				portrait_fox_ears_trigger = {
+					CULTURE_FLAG = huxian
+				}
+			}
+
+		}
+	}
+
+}

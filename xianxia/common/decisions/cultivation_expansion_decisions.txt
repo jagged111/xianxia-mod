@@ -1,0 +1,360 @@
+﻿claim_heavenly_mandate_vassal_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds" }
+    sort_order = 400
+    decision_group_type = major
+
+    title = claim_heavenly_mandate_vassal_title
+    desc = claim_heavenly_mandate_vassal_desc
+    confirm_text = claim_heavenly_mandate_vassal_confirm
+    selection_tooltip = claim_heavenly_mandate_vassal_tooltip
+
+    is_shown = {
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_core_formation
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+        exists = liege
+        NOT = { has_trait = conqueror }
+        NOT = { has_character_flag = mandate_claimed_once }
+    }
+
+    is_valid = { prowess >= 20 }
+
+    ai_check_interval = 60
+    ai_potential = { always = yes }
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 100
+            OR = {
+                has_trait = wrathful
+                has_trait = ambitious
+                has_trait = sadistic
+                has_trait = callous
+            }
+        }
+    }
+
+    effect = {
+        add_trait = conqueror
+        add_pressed_claim = liege.primary_title
+        add_character_flag = mandate_claimed_once
+    }
+}
+
+claim_heavenly_mandate_independent_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds" }
+    sort_order = 401
+    decision_group_type = major
+
+    title = claim_heavenly_mandate_independent_title
+    desc = claim_heavenly_mandate_independent_desc
+    confirm_text = claim_heavenly_mandate_independent_confirm
+    selection_tooltip = claim_heavenly_mandate_independent_tooltip
+
+    is_shown = {
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_core_formation
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+        NOT = { exists = liege }
+        NOT = { has_trait = conqueror }
+        NOT = { has_character_flag = mandate_claimed_once }
+    }
+
+    is_valid = { prowess >= 20 }
+
+    ai_check_interval = 60
+    ai_potential = { always = yes }
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 100
+            OR = {
+                has_trait = wrathful
+                has_trait = ambitious
+                has_trait = sadistic
+                has_trait = callous
+            }
+        }
+    }
+
+    effect = {
+        add_trait = conqueror
+        add_character_flag = mandate_claimed_once
+    }
+}
+
+claim_superior_realm_liege_title_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds" }
+    sort_order = 410
+    decision_group_type = major
+
+    title = claim_superior_realm_liege_title
+    desc = claim_superior_realm_liege_desc
+    confirm_text = claim_superior_realm_liege_confirm
+    selection_tooltip = claim_superior_realm_liege_tooltip
+
+    is_shown = {
+        is_cultivator = yes
+        exists = liege
+        OR = {
+            has_trait = cultivation_core_formation
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+
+        liege = {
+            NOT = {
+                OR = {
+                    has_trait = cultivation_core_formation
+                    has_trait = cultivation_nascent_soul
+                    has_trait = cultivation_heavenly_being
+                    has_trait = cultivation_four_axis
+                    has_trait = cultivation_integration
+                    has_trait = cultivation_star_shattering
+                    has_trait = cultivation_sacred_vessel
+                    has_trait = cultivation_entering_nirvana
+                    has_trait = cultivation_true_immortal
+                }
+            }
+        }
+
+        NOT = { has_character_flag = superior_realm_claim_used }
+    }
+
+    is_valid = { prowess >= 20 }
+
+    ai_check_interval = 30
+    ai_potential = { always = yes }
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 120
+            OR = {
+                has_trait = wrathful
+                has_trait = ambitious
+                has_trait = sadistic
+                has_trait = callous
+            }
+        }
+    }
+
+    effect = {
+        add_pressed_claim = liege.primary_title
+        add_character_flag = superior_realm_claim_used
+    }
+}
+
+awaken_meridian_disciples_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+    sort_order = 350
+    decision_group_type = major
+
+    title = awaken_meridian_disciples_decision
+    desc = awaken_meridian_disciples_decision_desc
+    confirm_text = awaken_meridian_disciples_decision_confirm
+    selection_tooltip = awaken_meridian_disciples_tooltip
+
+    is_shown = {
+        is_cultivator = yes
+        OR = { is_ruler = yes has_court_position = court_tutor }
+        OR = {
+            any_courtier = { is_adult = yes NOT = { is_cultivator = yes } OR = { has_trait = poor_meridians has_trait = normal_meridians has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians } }
+            any_vassal = { is_adult = yes NOT = { is_cultivator = yes } OR = { has_trait = poor_meridians has_trait = normal_meridians has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians } }
+        }
+        NOT = { has_character_flag = awaken_meridian_disciples_cooldown }
+    }
+
+    is_valid = { always = yes }
+    ai_check_interval = 60
+    ai_potential = { always = yes }
+    ai_will_do = { base = 50 }
+
+    effect = {
+        every_courtier = {
+            limit = {
+                is_adult = yes
+                NOT = { is_cultivator = yes }
+                OR = { has_trait = poor_meridians has_trait = normal_meridians has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians }
+            }
+            add_trait = cultivation_qi_gathering
+            set_character_faith = root.faith
+        }
+        every_vassal = {
+            limit = {
+                is_adult = yes
+                NOT = { is_cultivator = yes }
+                OR = { has_trait = poor_meridians has_trait = normal_meridians has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians }
+            }
+            add_trait = cultivation_qi_gathering
+            set_character_faith = root.faith
+        }
+
+        add_piety = 150
+        add_prestige = 200
+        add_character_flag = { flag = awaken_meridian_disciples_cooldown days = 1825 }
+    }
+}
+
+cleanse_remnant_sects_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_misc.dds" }
+    sort_order = 352
+    decision_group_type = major
+
+    title = cleanse_remnant_sects_decision
+    desc = cleanse_remnant_sects_decision_desc
+    confirm_text = cleanse_remnant_sects_decision_confirm
+    selection_tooltip = cleanse_remnant_sects_decision_tooltip
+
+    is_shown = {
+        is_cultivator = yes
+        is_landed = yes
+        any_held_title = {
+            tier = tier_county
+            NOT = { faith = root.faith }
+        }
+        NOT = { has_character_flag = cleanse_remnant_sects_cooldown }
+    }
+
+    is_valid = {
+        any_held_title = {
+            tier = tier_county
+            NOT = { faith = root.faith }
+        }
+    }
+
+    ai_check_interval = 60
+    ai_potential = { always = yes }
+    ai_will_do = { base = 20 }
+
+    effect = {
+        every_held_title = {
+            limit = {
+                tier = tier_county
+                NOT = { faith = root.faith }
+            }
+            faith = { save_temporary_scope_as = former_sect_faith }
+
+            root = {
+                every_vassal = {
+                    limit = {
+                        faith = scope:former_sect_faith
+                    }
+                    add_opinion = {
+                        target = root
+                        modifier = remnant_sect_purged_opinion
+                    }
+                }
+            }
+        }
+
+        cultivation_convert_direct_domain_faith_effect = yes
+
+        add_piety = 100
+        add_character_flag = { flag = cleanse_remnant_sects_cooldown days = 1825 }
+    }
+}
+
+purge_mortal_afflictions_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_court.dds" }
+    sort_order = 360
+    decision_group_type = major
+
+    title = purge_mortal_afflictions_decision
+    desc = purge_mortal_afflictions_decision_desc
+    confirm_text = purge_mortal_afflictions_decision_confirm
+    selection_tooltip = purge_mortal_afflictions_decision_tooltip
+
+    is_shown = {
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_qi_refining
+            has_trait = cultivation_qi_building
+            has_trait = cultivation_core_formation
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = purge_mortal_afflictions_cooldown }
+        OR = {
+            has_trait = ill
+            has_trait = pneumonic
+            has_trait = great_pox
+            has_trait = lovers_pox
+            has_trait = leper
+            has_trait = cancer
+            has_trait = wounded_1
+            has_trait = wounded_2
+            has_trait = wounded_3
+            has_trait = maimed
+            has_trait = one_eyed
+            has_trait = one_legged
+            has_trait = disfigured
+            has_trait = infirm
+            has_trait = gout_ridden
+        }
+    }
+
+    ai_check_interval = 6
+    ai_potential = { always = yes }
+    ai_will_do = { base = 1000 }
+
+    effect = {
+        # Diseases and bodily trauma are burned away with circulating qi.
+        remove_trait = ill
+        remove_trait = pneumonic
+        remove_trait = great_pox
+        remove_trait = lovers_pox
+        remove_trait = leper
+        remove_trait = cancer
+        remove_trait = wounded_1
+        remove_trait = wounded_2
+        remove_trait = wounded_3
+        remove_trait = maimed
+        remove_trait = one_eyed
+        remove_trait = one_legged
+        remove_trait = disfigured
+        remove_trait = infirm
+        remove_trait = gout_ridden
+
+        add_character_modifier = {
+            modifier = realm_stabilization
+            months = 24
+        }
+
+        add_stress = -50
+        add_prestige = 100
+        add_character_flag = { flag = purge_mortal_afflictions_cooldown days = 30 }
+    }
+}

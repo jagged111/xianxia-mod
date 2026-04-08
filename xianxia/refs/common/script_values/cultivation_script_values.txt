@@ -1,0 +1,261 @@
+﻿cultivation_progress_multiplier = {
+
+	#Meridian checks
+	switch = {
+		trigger = has_trait 
+		poor_meridians = {
+			value = 0.1
+		}
+		normal_meridians = {
+			value = 1
+		}
+		good_meridians = {
+			value = 2.7
+		}
+		excellent_meridians = {
+			value = 4
+		}
+		heavenly_meridians = {
+			value = 50
+		}
+	}
+
+	#personality checks
+	if = {
+		limit = {
+			has_trait = diligent
+		}
+		add = 0.1
+	} else_if = {
+		limit = {
+			has_trait = lazy
+		}
+		add = -0.5
+	}
+
+	#constitutions checks
+	if = {
+		limit = {
+			has_trait = yang_constitution
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_trait = yin_constitution
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_trait = poison_constitution
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_trait = lightning_constitution
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_trait = dragon_bloodline
+		}
+		add = 0.3
+	}
+	if = {
+		limit = {
+			has_trait = dragon_body_constitution
+		}
+		add = 2
+	}
+	if = {
+		limit = {
+			has_trait = phoenix_blood_constitution
+		}
+		add = 1.5
+	}
+}
+
+breakthrough_difficulty_modifier = {
+	value = 0
+
+	if = {
+		limit = {
+			has_trait = lightning_constitution
+		}
+		add = 10
+	}
+}
+
+
+cultivation_xp_for_yearly_progress = {
+	value = 0
+	switch = {
+		trigger = has_trait
+		qi_gathering = { 
+			value = 3
+		}
+		foundation_establishment = {
+			value = 3
+		}
+		core_formation = {
+			value = 2
+		}
+		nascent_soul = {
+			value = 2
+		}
+		spirit_severing = {
+			value = 1
+		}
+		dao_seeking = {
+			value = 1
+		}
+		immortal_ascension = {
+			value = 1
+		}
+		
+	}
+
+	multiply = cultivation_progress_multiplier
+}
+
+
+
+#AI Calculations
+chance_to_cultivate = {
+	value = 40
+
+
+	if = {
+		limit = {
+			is_independent_ruler = no
+		}
+		add = 30
+	}
+
+	if = {
+		limit = {
+			is_landed = no
+		}
+		add = 30
+	}
+
+	if = {
+		limit = {
+			is_at_war = yes
+		}
+		add = -100
+	}
+
+	add = cultivation_attitude
+
+	#meditation_exclusive_Attitudes
+	if = {
+
+		limit = {
+			has_trait = impatient
+		}
+		add = -15
+	}
+
+	#meridians checks
+	if = {
+
+		limit = {
+			has_trait = poor_meridians
+		}
+		add = -15
+	}
+	if = {
+
+		limit = {
+			has_trait = good_meridians
+		}
+		add = 20
+	}
+	if = {
+
+		limit = {
+			has_trait = excellent_meridians
+		}
+		add = 35
+	}
+	if = {
+
+		limit = {
+			has_trait = heavenly_meridians
+		}
+		add = 70
+	}
+
+}
+
+cultivation_attitude = {
+	base = 0
+	if = {
+
+		limit = {
+			has_trait = ambitious
+		}
+		
+		add = 20
+	}
+	if = {
+
+		limit = {
+			has_trait = diligent
+		}
+		add = 20
+	}
+	if = {
+
+		limit = {
+			has_trait = stubborn
+		}
+		add = 20
+	}
+	if = {
+
+		limit = {
+			has_trait = arrogant
+		}
+		add = 20
+	}
+	if = {
+
+		limit = {
+			has_trait = craven
+		}
+		add = -15
+	}
+	if = {
+
+		limit = {
+			has_trait = shy
+		}
+		add = -15
+	}
+	if = {
+
+		limit = {
+			has_trait = fickle
+		}
+		add = -15
+	}
+	if = {
+
+		limit = {
+			has_trait = lazy
+		}
+		add = -15
+	}
+	if = {
+
+		limit = {
+			has_trait = content
+		}
+		add = -15
+	}
+}

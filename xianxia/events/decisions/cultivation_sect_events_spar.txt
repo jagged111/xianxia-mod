@@ -1,0 +1,85 @@
+﻿namespace = cultivation_sect_spar
+
+##################################################
+# SECT SPARRING EVENTS WITH WIN/LOSS TRACKING
+# 1000 - Spar initiation (uses full duel system)
+# 1001 - Spar result (after duel completes)
+# 1002 - Spar invalidation (if duel fails)
+#
+# Variables tracked:
+# - sect_spars_won (total wins)
+# - sect_spars_lost (total losses)
+# - sect_spars_total (total spars)
+##################################################
+
+# Sect Spar - Initiation Event
+cultivation_sect_spar.1000 = {
+	type = character_event
+	title = cultivation_sect_spar.1000.t
+	desc = cultivation_sect_spar.1000.desc
+	theme = martial
+
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+
+	right_portrait = {
+		character = scope:sparring_partner
+		animation = personality_vengeful
+	}
+
+	# Accept the spar - Start duel
+	option = {
+		name = cultivation_sect_spar.1000.a
+		
+		# Save sparring partner for duel
+		scope:sparring_partner = { save_scope_as = sparring_partner }
+		
+		# Start friendly practice duel
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = root
+			SC_ATTACKER = root
+			SC_DEFENDER = scope:sparring_partner
+			FATALITY = practice		# No death, no wounds - friendly spar!
+			FIXED = no				# Fair fight, no rigging
+			LOCALE = courtyard		# Sect courtyard setting
+			OUTPUT_EVENT = cultivation_sect_spar_results.1000
+			INVALIDATION_EVENT = cultivation_sect_spar_results.1000
+		}
+		
+		stress_impact = {
+			brave = minor_stress_impact_loss
+			craven = minor_stress_impact_gain
+			arrogant = minor_stress_impact_loss
+		}
+		
+		ai_chance = {
+			base = 100
+			modifier = {
+				add = 50
+				prowess >= 12
+			}
+		}
+	}
+	
+	# Refuse the spar
+	option = {
+		name = cultivation_sect_spar.1000.b
+		
+		add_prestige = minor_prestige_loss
+		
+		stress_impact = {
+			brave = medium_stress_impact_gain
+			craven = minor_stress_impact_loss
+		}
+		
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 50
+				prowess < 10
+			}
+		}
+	}
+}

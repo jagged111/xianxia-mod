@@ -1,0 +1,129 @@
+﻿l_english:
+#Open meridians
+  open_meridians_decision:0 "Try to open your meridians"
+  open_meridians_decision_desc:0 "You meditate to try and open your meridians."
+  open_meridians_decision_selection_tooltip:0 "You can increase your odds of good meridians"
+  open_meridians_decision_tooltip:0 "Start trying"
+  open_meridians_decision_confirm:0 "Start your meditation"
+
+#start cultivation
+  begin_cultivation_decision:0 "Begin Cultivation"
+  begin_cultivation_decision_desc:0 "You start your Cultivation journey."
+  begin_cultivation_decision_selection_tooltip:0 "You get the first Cultivation Trait"
+  begin_cultivation_decision_tooltip:0 "Start Cultivating"
+  begin_cultivation_decision_confirm:0 "Begin your Cultivation"
+  begin_cultivation_decision_effect_tooltip:0 "You start Cultivating"
+
+#Focus on cultivation
+  focus_on_cultivation:0 "Focus on your Cultivation"
+  focus_on_cultivation_tooltip:0 "Spend the next few months focused on cultivation"
+  focus_on_cultivation_selection_tooltip:0 "Spend the next few months focused on cultivation"
+  focus_on_cultivation_desc:0 "You spend the next 3 months focusing on your cultivation, reducing your ability to do other stuff"
+  focus_on_cultivation_effect_tooltip:0 "You focus on your cultivation"
+  focus_on_cultivation_confirm:0 "Focus on your cultivation"
+
+
+  breakthrough_decision_1:0 "Establish Foundation"
+  breakthrough_decision_1_desc:0 "Break through into the Foundation Establishment Realm"
+  breakthrough_decision_1_selection_tooltip:0 "Upgrade your Cultivation Trait"
+  breakthrough_decision_1_tooltip:0 "Establish your Foundation"
+  breakthrough_decision_1_confirm:0 "Are you sure you want to break through?"
+  breakthrough_decision_1_valid_description:0 "Achieve the peak of the Qi Gathering Realm to break through"
+
+  breakthrough_decision_2:0 "Form Core"
+  breakthrough_decision_2_desc:0 "Break through into the Core Formation Realm"
+  breakthrough_decision_2_selection_tooltip:0 "Upgrade your Cultivation Trait"
+  breakthrough_decision_2_tooltip:0 "Form your Core"
+  breakthrough_decision_2_confirm:0 "Are you sure you want to break through?"
+  breakthrough_decision_2_valid_description:0 "Achieve the peak of the Foundation Establishment Realm to break through"
+
+  breakthrough_decision_3:0 "Create Soul"
+  breakthrough_decision_3_desc:0 "Break through into the Nascent Soul Realm"
+  breakthrough_decision_3_selection_tooltip:0 "Upgrade your Cultivation Trait"
+  breakthrough_decision_3_tooltip:0 "Manifest your Soul"
+  breakthrough_decision_3_confirm:0 "Are you sure you want to break through?"
+  breakthrough_decision_3_valid_description:0 "Achieve the peak of the Core Formation Realm to break through"
+
+  breakthrough_decision_4:0 "Sever Spirit"
+  breakthrough_decision_4_desc:0 "Break through into the Spirit Severing Realm"
+  breakthrough_decision_4_selection_tooltip:0 "Upgrade your Cultivation Trait"
+  breakthrough_decision_4_tooltip:0 "Sever your Spirit"
+  breakthrough_decision_4_confirm:0 "Are you sure you want to break through?"
+  breakthrough_decision_4_valid_description:0 "Achieve the peak of the Nascent Soul Realm to break through"
+
+  breakthrough_decision_5:0 "Seek Dao"
+  breakthrough_decision_5_desc:0 "Break through into the Dao Seeking Realm"
+  breakthrough_decision_5_selection_tooltip:0 "Upgrade your Cultivation Trait"
+  breakthrough_decision_5_tooltip:0 "Seek the Dao"
+  breakthrough_decision_5_confirm:0 "Are you sure you want to break through?"
+  breakthrough_decision_5_valid_description:0 "Achieve the peak of the Spirit Severing Realm to break through"
+
+  breakthrough_decision_6:0 "Ascend to Immortality"
+  breakthrough_decision_6_desc:0 "Break through into the Immortal Ascension Realm"
+  breakthrough_decision_6_selection_tooltip:0 "Upgrade your Cultivation Trait"
+  breakthrough_decision_6_tooltip:0 "Ascend to Immortality"
+  breakthrough_decision_6_confirm:0 "Are you sure you want to break through?"
+  breakthrough_decision_6_valid_description:0 "Achieve the peak of the Dao Seeking Realm to break through"
+
+  breakthrough_decision_effect_tooltip:0 "You break through into the next Realm"
+
+#Constitution decisions
+  improve_dragon_bloodline_part_1:0 "Awaken your dragon bloodline: Part 1"
+  improve_dragon_bloodline_part_1_desc:0 "Now that you have the dragon bloodline you can feel what you need in order to awaken it and achieve a true dragon's body. For your first step you will need to gather special materials and concoct a pill. While it should be safe, there is a low possibility of failing. It should take you a few months to get every material"
+  improve_dragon_bloodline_part_1_selection_tooltip:0 "Start gathering the materials to awaken your bloodline's potential, it might take a few months"
+  improve_dragon_bloodline_part_1_tooltip:0 "Start gathering the materials"
+  improve_dragon_bloodline_part_1_confirm:0 "Start gathering the materials"
+  
+ # ———————— NEW 2.0 HEAVENLY MANDATE DECISION ————————
+  claim_heavenly_mandate_decision:0 "Proclaim the Mandate of Heaven"
+  claim_heavenly_mandate_decision_desc:0 "The heavens themselves have acknowledged my supremacy. Mortal kings and emperors are but ants beneath my feet. From this day forth, all lands under the sky shall bow to the one true sovereign of the Dao."
+
+ # Nascent Soul version
+  claim_heavenly_mandate_nascent_soul_desc:0 "At Nascent Soul, I have transcended mortal limits. The spiritual energy of heaven and earth flows through me like rivers to the sea. Why should I serve earthly rulers when my soul already commands the firmament?"
+  claim_heavenly_mandate_nascent_soul_confirm:0 "Let the world witness the birth of a heavenly sovereign!"
+  claim_heavenly_mandate_nascent_soul_tooltip:0 "The heavens bow. All kingdoms shall kneel."
+
+ # Dao Seeking version
+  claim_heavenly_mandate_dao_seeking_desc:0 "Having glimpsed the boundless Dao, I stand above the cycle of life and death. Empires crumble like sand before my palm. The Mandate of Heaven is no longer a gift—it is my birthright."
+  claim_heavenly_mandate_dao_seeking_confirm:0 "The Dao is with me. All under heaven belong to me."
+  claim_heavenly_mandate_dao_seeking_tooltip:0 "One thought severs fate. One decree rules the world."
+
+ # Spirit Severing version
+  claim_heavenly_mandate_spirit_severing_desc:0 "I have severed the chains of reincarnation itself. Mortal laws are illusions; their thrones are dust. Today, the heavens and earth shall bear witness: there is only one ruler beneath the sky."
+  claim_heavenly_mandate_spirit_severing_confirm:0 "Heaven and earth shall tremble at my name!"
+  claim_heavenly_mandate_spirit_severing_tooltip:0 "The Mandate is mine alone. All kings shall fall."
+
+ # Immortal Ascension version
+  claim_heavenly_mandate_immortal_desc:0 "I have stepped beyond life and death, ascending as a true Immortal. The wheel of samsara turns no more for me. All realms, all worlds, all heavens—everything beneath the firmament is now under my eternal dominion."
+  claim_heavenly_mandate_immortal_confirm:0 "From this day forth, I am the Heavenly Emperor!"
+  claim_heavenly_mandate_immortal_tooltip:0 "Immortality achieved. The Mandate of Heaven is eternal."
+
+ # Generic tooltips (used in selection/confirmation popups)
+  claim_heavenly_mandate_selection_tooltip:0 "Proclaim yourself sovereign of heaven and earth. Gain the Conqueror trait and immediately press all claims in your current title’s de jure land."
+  claim_heavenly_mandate_confirm_generic:0 "The heavens have spoken. Let the conquest begin."
+  
+ 
+  grant_qi_gathering_to_meridian_holders_decision:0 "Awaken the Qi of All Meridian Bearers"
+  grant_qi_gathering_to_meridian_holders_decision_desc:0 "Those born with active meridians are destined for the path of cultivation. With a decree of heavenly insight, I shall open the gates of qi gathering to every soul in my realm who bears this gift."
+  grant_qi_gathering_to_meridian_holders_decision_confirm:0 "Let the qi flow through all who are worthy!"
+  qi_gathering_granted_tooltip:0 "All characters with active meridians in your court, vassals, and realm gain the Qi Gathering trait."
+
+  purify_mortal_shell_decision:0 "Purify the Mortal Shell"
+  purify_mortal_shell_decision_desc:0 "This frail flesh is but a cage for my immortal soul. With a single circulation of true qi, I shall cast out all mortal impurities, wounds, and imperfections."
+  purify_mortal_shell_decision_confirm:0 "Refine body and soul as one!"
+  purify_mortal_shell_decision_tooltip:0 "Removes every disease, wound, deformity, and genetic flaw. 2-year cooldown."
+  
+  claim_heavenly_mandate_vassal_title:0 "Assert Heavenly Supremacy"
+  claim_heavenly_mandate_vassal_desc:0 "My cultivation has surpassed my liege. The Mandate of Heaven demands their title be mine by right."
+  claim_heavenly_mandate_vassal_confirm:0 "Their crown belongs to me!"
+  claim_heavenly_mandate_vassal_tooltip:0 "Grants the Conqueror trait and a pressed claim on your liege's primary title."
+
+  claim_heavenly_mandate_independent_title:0 "Proclaim the Heavenly Mandate"
+  claim_heavenly_mandate_independent_desc:0 "No one stands above me. The Mandate of Heaven is fulfilled."
+  claim_heavenly_mandate_independent_confirm:0 "I am the Mandate."
+  claim_heavenly_mandate_independent_tooltip:0 "Grants the Conqueror trait."
+  
+  claim_superior_realm_liege_title:0 "Claim Liege's Title by Superior Realm"
+  claim_superior_realm_liege_desc:0 "My cultivation realm surpasses my liege's. By The Right Of Dao, their title belongs to the stronger. I press my claim upon their throne."
+  claim_superior_realm_liege_confirm:0 "Their realm is mine by right!"
+  claim_superior_realm_liege_tooltip:0 "Grants a pressed claim on your liege's primary title. Available only if your cultivation realm is higher."

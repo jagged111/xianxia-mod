@@ -1,0 +1,287 @@
+﻿### NEW INTERACTIONS ###
+
+dragatus_prisoner_marriage_interaction = {
+	common_interaction = yes
+
+	category = interaction_category_diplomacy #interaction_category_prison
+
+	desc = dragatus_prisoner_marriage_interaction_desc
+
+	interface = marriage #concubine_list #
+	
+	ai_targets = {
+		ai_recipients = prisoners
+	}
+	ai_target_quick_trigger = {
+		adult = yes
+		owner_attracted = yes # Not optimal, but saves a lot of performance
+	}
+	ai_frequency = 12
+
+	needs_recipient_to_open = yes
+
+	redirect = {
+		# The UI will open to the already filled left and right first if we don't tell it we've got both sides filled
+		#scope:actor = {
+		#	save_scope_as = secondary_actor
+		#}
+		clear_saved_scope = secondary_actor
+		scope:recipient = {
+			save_scope_as = secondary_recipient
+		}
+	}
+
+	populate_actor_list = {
+		scope:actor = {
+			if = {
+				limit = {
+					sex_opposite_of = scope:recipient
+					allowed_more_spouses = yes
+					# My faith allows this level of consanguinity
+					OR = {
+						NOT = { is_close_or_extended_family_of = scope:recipient }
+						AND = {
+							is_cousin_of = scope:recipient
+							faith = { has_doctrine_parameter = allows_cousin_marriage }
+						}
+						AND = {
+							OR = {
+								is_uncle_or_aunt_of = scope:recipient
+								is_nibling_of = scope:recipient
+							}
+							faith = { has_doctrine_parameter = allows_aunt_nephew_and_uncle_niece_marriage }
+						}
+						faith = { has_doctrine_parameter = allows_unrestricted_marriage }
+					}
+				}
+				add_to_list = characters
+			}
+			every_courtier = {
+				limit = {
+					is_at_home = yes
+					is_adult = yes
+					allowed_more_spouses = yes
+					sex_opposite_of = scope:recipient
+					NOT = { is_spouse_of = scope:recipient }
+					# My faith allows this level of consanguinity
+					OR = {
+						NOT = { is_close_or_extended_family_of = scope:recipient }
+						AND = {
+							is_cousin_of = scope:recipient
+							faith = { has_doctrine_parameter = allows_cousin_marriage }
+						}
+						AND = {
+							OR = {
+								is_uncle_or_aunt_of = scope:recipient
+								is_nibling_of = scope:recipient
+							}
+							faith = { has_doctrine_parameter = allows_aunt_nephew_and_uncle_niece_marriage }
+						}
+						faith = { has_doctrine_parameter = allows_unrestricted_marriage }
+					}
+				}
+				add_to_list = characters
+			}
+			every_child = {
+				limit = {
+					NOT = { is_in_list = characters }
+					is_adult = yes
+					allowed_more_spouses = yes
+					sex_opposite_of = scope:recipient
+					NOT = { is_spouse_of = scope:recipient }
+					# My faith allows this level of consanguinity
+					OR = {
+						NOT = { is_close_or_extended_family_of = scope:recipient }
+						AND = {
+							is_cousin_of = scope:recipient
+							faith = { has_doctrine_parameter = allows_cousin_marriage }
+						}
+						AND = {
+							OR = {
+								is_uncle_or_aunt_of = scope:recipient
+								is_nibling_of = scope:recipient
+							}
+							faith = { has_doctrine_parameter = allows_aunt_nephew_and_uncle_niece_marriage }
+						}
+						faith = { has_doctrine_parameter = allows_unrestricted_marriage }
+					}
+				}
+				add_to_list = characters
+			}
+		}
+	}
+
+	populate_recipient_list = {
+		scope:recipient = {
+			add_to_list = characters
+		}
+	}
+	
+	is_shown = {
+		scope:actor = {
+			is_adult = yes
+		}
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			dragatus_prisoner_can_marry_actor_trigger = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		#custom_description = {
+		#	text = dragatus_has_max_spouses
+		#	object = scope:recipient
+		#	scope:secondary_actor = {
+		#		allowed_more_spouses = yes
+		#	}
+		#}
+		scope:recipient = {
+			is_diplomatically_available = yes
+			is_imprisoned_by = scope:actor
+			is_landed = no
+		}
+	}
+	
+	ai_potential = {
+		is_landed = yes
+		is_adult = yes
+		highest_held_title_tier >= tier_county
+		fertility > 0
+		allowed_more_spouses = yes
+		NOR = {
+			has_trait = chaste
+			has_trait = celibate
+			has_sexuality = asexual
+			has_sexuality = homosexual
+        }
+	}
+	
+	on_accept = {
+		dragatus_prisoner_marriage_interaction_effect = yes #marriage_interaction_on_accept_effect #
+	}
+	
+	auto_accept = yes
+	
+	ai_will_do = {
+		base = 0
+		
+		modifier = {
+			add = 50
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+				sex_opposite_of = scope:actor
+				is_lowborn = no
+				fertility > 0.4
+				trigger_if = {
+					limit = {
+						is_female = yes
+					}
+					age < define:NChildbirth|MAX_FEMALE_REPRODUCTION_AGE
+				}
+			}
+		}
+		
+		modifier = {
+			add = 50
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+				sex_opposite_of = scope:actor
+				is_lowborn = no
+				fertility > 0.4
+				trigger_if = {
+					limit = {
+						is_female = yes
+					}
+					age < define:NChildbirth|MAX_FEMALE_REPRODUCTION_AGE
+				}
+			}
+		}
+		
+		modifier = {
+			add = 25
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+				sex_opposite_of = scope:actor
+				fertility > 0.4				
+				num_of_good_genetic_traits > 0
+				trigger_if = {
+					limit = {
+						is_female = yes
+					}
+					age < define:NChildbirth|MAX_FEMALE_REPRODUCTION_AGE
+				}
+			}
+		}
+		
+		modifier = {
+			add = 25
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+				sex_opposite_of = scope:actor
+				fertility > 0.4				
+				num_of_good_genetic_traits > 1
+				trigger_if = {
+					limit = {
+						is_female = yes
+					}
+					age < define:NChildbirth|MAX_FEMALE_REPRODUCTION_AGE
+				}
+			}
+		}
+		
+		modifier = {
+			add = 25
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+				sex_opposite_of = scope:actor
+				fertility > 0.4				
+				num_of_good_genetic_traits > 2
+				trigger_if = {
+					limit = {
+						is_female = yes
+					}
+					age < define:NChildbirth|MAX_FEMALE_REPRODUCTION_AGE
+				}
+			}
+		}
+		
+		modifier = {
+			add = 25
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+				sex_opposite_of = scope:actor
+				fertility > 0.4
+				OR = {
+					is_female = no
+					age < 30
+				}
+			}
+		}
+		
+		modifier = {
+			add = -1000
+			scope:recipient = {
+				has_contagious_disease_trigger = yes
+			}
+		}
+
+		# Actor trait triggers
+		
+		modifier = {
+			add = -50
+			scope:actor = {
+				has_personality_benevolent_trigger = yes
+			}
+		}
+
+		modifier = {
+			add = 25
+			scope:actor = {
+				OR = {
+					has_personality_dominant_trigger = yes
+					has_personality_malicious_trigger = yes
+				}
+			}
+		}
+	}
+}

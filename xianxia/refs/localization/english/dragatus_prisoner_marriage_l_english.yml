@@ -1,0 +1,17 @@
+﻿l_english:
+
+ dragatus_prisoner_marriage_interaction:0 "Arrange Marriage for Prisoner"
+ dragatus_prisoner_marriage_interaction_desc:0 "Marry [recipient.GetShortUINameNoTooltip] to someone in your court."
+ actor_secondary_dragatus_prisoner_marriage_interaction:0 "Sender"
+ dragatus_has_max_spouses:0 "I cannot take more [recipient.Custom('WifeHusband')|U]s."
+ msg_dragatus_prisoner_marriage_title:0 "Taken a [actor.Custom('WifeHusbandOpp')|U]"
+
+ dragatus_rightful_spouse_opinion:0 "Rightful Spouse"
+ dragatus_stole_my_wife_opinion:0 "Wife Stealer"
+ dragatus_stole_my_husband_opinion:0 "Husband Stealer"
+
+ dragatus_prisoner_marriage_reclaim_wife_war:0 "Reclaim Spouse"
+ DRAGATUS_PM_RECLAIM_WIFE_WAR_NAME:0 "War to Reclaim Rightful Spouse"
+ dragatus_prisoner_marriage_reclaim_wife_war_victory_desc:0 "[defender.GetShortUIName|U] is forced to return all stolen spouses."
+ dragatus_prisoner_marriage_reclaim_wife_war_white_peace_desc:0 "The war ends inconclusively and no spouses are returned."
+ dragatus_prisoner_marriage_reclaim_wife_war_defeat_desc:0 "[defender.GetShortUIName|U] imprisons [attacker.GetShortUIName|U]."

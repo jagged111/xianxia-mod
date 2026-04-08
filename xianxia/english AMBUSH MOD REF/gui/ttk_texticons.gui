@@ -1,0 +1,9 @@
+﻿texticon = {
+	icon = ttk_murder_icon
+	iconsize = {
+		texture = "gfx/interface/icons/secret_categories/murder.dds"
+		size = { 25 25 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}

@@ -1,0 +1,78 @@
+﻿# Cultivation window scripted GUIs
+# Place in common/scripted_guis/
+
+set_cultivation_defaults = {
+	scope = character
+	
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_variable = cultivation_zoom }
+			}
+			set_variable = {
+				name = cultivation_zoom
+				value = 3
+			}
+		}
+	}
+}
+
+cultivation_zoom_in = {
+	scope = character
+	
+	is_valid = {
+		OR = {
+			NOT = { has_variable = cultivation_zoom }
+			AND = {
+				has_variable = cultivation_zoom
+				var:cultivation_zoom < 3
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_variable = cultivation_zoom }
+			}
+			set_variable = {
+				name = cultivation_zoom
+				value = 3
+			}
+		}
+		change_variable = {
+			name = cultivation_zoom
+			add = 1
+		}
+	}
+}
+
+cultivation_zoom_out = {
+	scope = character
+	
+	is_valid = {
+		OR = {
+			NOT = { has_variable = cultivation_zoom }
+			AND = {
+				has_variable = cultivation_zoom
+				var:cultivation_zoom > 1
+			}
+		}
+	}
+	
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_variable = cultivation_zoom }
+			}
+			set_variable = {
+				name = cultivation_zoom
+				value = 3
+			}
+		}
+		change_variable = {
+			name = cultivation_zoom
+			add = -1
+		}
+	}
+}

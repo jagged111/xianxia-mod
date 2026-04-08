@@ -1,0 +1,6 @@
+﻿l_english:
+ shieldmaiden_skill_killed_enemy_no_trait_v1_enemy:0 "Our $knight_culture_player_no_tooltip_lowercase$ [CHARACTER.GetShortUINameNoTooltip] was decapitated by [TARGET_CHARACTER.GetShortUINameNoTooltip]!"
+ shieldmaiden_skill_killed_enemy_no_trait_v2_enemy:0 "Our $knight_culture_player_no_tooltip_lowercase$ [TARGET_CHARACTER.GetShortUINameNoTooltip] was cloven in half by the [GetTrait('shieldmaiden').GetName( GetNullCharacter )] [CHARACTER.GetShortUINameNoTooltip]!"
+ shieldmaiden_skill_killed_enemy_no_trait_v3_enemy:0 "Our $knight_culture_player_no_tooltip_lowercase$ [TARGET_CHARACTER.GetShortUINameNoTooltip] was viciously dismembered by the [GetTrait('shieldmaiden').GetName( GetNullCharacter )] [CHARACTER.GetShortUINameNoTooltip]!"
+ shieldmaiden_skill_killed_enemy_no_trait_v4_enemy:0 "Our $knight_culture_player_no_tooltip_lowercase$ [CHARACTER.GetShortUINameNoTooltip] was piteously cut down by [TARGET_CHARACTER.GetShortUINameNoTooltip]!"
+ shieldmaiden_skill_killed_enemy_no_trait_v5_enemy:0 "Our $knight_culture_player_no_tooltip_lowercase$ [TARGET_CHARACTER.GetShortUINameNoTooltip] was chopped into pieces by the [GetTrait('shieldmaiden').GetName( GetNullCharacter )] [CHARACTER.GetShortUINameNoTooltip]!"

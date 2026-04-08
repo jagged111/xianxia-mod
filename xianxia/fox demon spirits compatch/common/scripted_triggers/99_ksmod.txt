@@ -1,0 +1,14 @@
+﻿portrait_fox_ears_trigger = {
+	#portrait_shared_clothing_contents_trigger = {
+	#	CULTURE_SCOPE = scope:culture
+	#	CULTURE_FLAG = afr_berber
+	#}
+	trigger_if={
+		limit = { exists = this }
+		OR = {
+			scope:culture ?= { has_clothing_gfx = $CULTURE_FLAG$_clothing_gfx }
+			has_trait = huxian_blood 
+			scope:culture ?= {	has_cultural_tradition = tradition_ks_huxian}
+		}
+	}
+}

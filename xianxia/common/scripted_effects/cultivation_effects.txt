@@ -1,0 +1,886 @@
+﻿# Cultivation Scripted Effects
+# Path: common/scripted_effects/cultivation_effects.txt
+
+cultivation_convert_direct_domain_faith_effect = {
+	if = {
+		limit = { is_landed = yes }
+		# Convert only personally-held county titles (never vassal-held counties).
+		every_held_title = {
+			limit = { tier = tier_county }
+			set_county_faith = root.faith
+		}
+	}
+}
+
+cultivation_ai_join_orthodox_sect_effect = {
+	random_list = {
+		10 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:heavenly_sword_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+		7 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+		7 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+		6 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+	}
+}
+
+cultivation_ai_join_unorthodox_sect_effect = {
+	random_list = {
+		10 = { set_character_faith = faith:crimson_moon_blade_hall cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:tyrant_saber_palace cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:demon_suppressing_blade_clan cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:medicine_king_valley cultivation_convert_direct_domain_faith_effect = yes }
+		7 = { set_character_faith = faith:hundred_herbs_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:moonless_night_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
+	}
+}
+
+cultivation_ai_join_demonic_sect_effect = {
+	random_list = {
+		9 = { set_character_faith = faith:ten_thousand_corpse_valley cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:venomous_serpent_valley cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+	}
+}
+
+cultivation_ai_join_vagrant_sect_effect = {
+	random_list = {
+		11 = { set_character_faith = faith:lone_wolf_wanderers cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:vagrant_blade_brotherhood cultivation_convert_direct_domain_faith_effect = yes }
+		9 = { set_character_faith = faith:thousand_treasures_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+		8 = { set_character_faith = faith:mystic_forge_hall cultivation_convert_direct_domain_faith_effect = yes }
+		7 = { set_character_faith = faith:ancient_relic_sect cultivation_convert_direct_domain_faith_effect = yes }
+		7 = { set_character_faith = faith:primal_beast_sect cultivation_convert_direct_domain_faith_effect = yes }
+		7 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
+		6 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
+	}
+}
+
+
+
+cultivation_ai_join_fox_spirit_sect_effect = {
+	random_list = {
+		20 = { set_character_faith = faith:yin_phoenix_sect cultivation_convert_direct_domain_faith_effect = yes }
+		18 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+		16 = { set_character_faith = faith:spirit_communion_temple cultivation_convert_direct_domain_faith_effect = yes }
+		14 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+		12 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+		10 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+	}
+}
+
+# Shared child-handling flow for fox-spirit awakenings that need parent response logic.
+cultivation_fox_spirit_child_parent_resolution_effect = {
+	if = {
+		limit = { is_adult = no }
+		add_character_flag = fox_spirit_parent_decision_pending
+
+		if = {
+			limit = { exists = father father = { is_alive = yes is_ai = no } }
+			add_character_flag = fox_spirit_waiting_player_parent
+			father = { trigger_event = cultivation_ai.2261 }
+		}
+		if = {
+			limit = { exists = mother mother = { is_alive = yes is_ai = no } }
+			add_character_flag = fox_spirit_waiting_player_parent
+			mother = { trigger_event = cultivation_ai.2261 }
+		}
+
+		# AI parents auto-resolve by personality when no player-parent response is pending.
+		if = {
+			limit = {
+				exists = father
+				father = { is_alive = yes is_ai = yes }
+				has_character_flag = fox_spirit_parent_decision_pending
+				NOT = { has_character_flag = fox_spirit_waiting_player_parent }
+			}
+			if = {
+				limit = {
+					father = {
+						OR = {
+							has_trait = just
+							has_trait = honest
+							has_trait = zealous
+						}
+					}
+				}
+				add_character_modifier = { modifier = fox_spirit_disowned_child days = -1 }
+				remove_character_flag = fox_spirit_parent_decision_pending
+			}
+			else = {
+				add_opinion = { target = father modifier = opinion_fox_spirit_accepted_child years = 30 }
+				remove_character_flag = fox_spirit_parent_decision_pending
+			}
+		}
+
+		if = {
+			limit = {
+				exists = mother
+				mother = { is_alive = yes is_ai = yes }
+				has_character_flag = fox_spirit_parent_decision_pending
+				NOT = { has_character_flag = fox_spirit_waiting_player_parent }
+			}
+			if = {
+				limit = {
+					mother = {
+						OR = {
+							has_trait = just
+							has_trait = honest
+							has_trait = zealous
+						}
+					}
+				}
+				add_character_modifier = { modifier = fox_spirit_disowned_child days = -1 }
+				remove_character_flag = fox_spirit_parent_decision_pending
+			}
+			else = {
+				add_opinion = { target = mother modifier = opinion_fox_spirit_accepted_child years = 30 }
+				remove_character_flag = fox_spirit_parent_decision_pending
+			}
+		}
+	}
+}
+
+cultivation_ai_join_any_sect_by_meridian_effect = {
+	if = {
+		limit = {
+			OR = {
+				has_trait = just
+				has_trait = humble
+				has_trait = temperate
+				has_trait = compassionate
+				has_trait = patient
+			}
+		}
+		cultivation_ai_join_orthodox_sect_effect = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = ambitious
+				has_trait = deceitful
+				has_trait = cynical
+				has_trait = arbitrary
+			}
+		}
+		cultivation_ai_join_unorthodox_sect_effect = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = wrathful
+				has_trait = sadistic
+				has_trait = callous
+				has_trait = vengeful
+			}
+		}
+		cultivation_ai_join_demonic_sect_effect = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_trait = shy
+				has_trait = calm
+				has_trait = content
+			}
+		}
+		cultivation_ai_join_vagrant_sect_effect = yes
+	}
+	else_if = {
+		limit = { has_trait = poor_meridians }
+		random_list = {
+			7 = { set_character_faith = faith:ancient_relic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:crimson_moon_blade_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:demon_suppressing_blade_clan cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:hundred_herbs_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:lone_wolf_wanderers cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:medicine_king_valley cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:moonless_night_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:mystic_forge_hall cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:primal_beast_sect cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:ten_thousand_corpse_valley cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:thousand_treasures_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:tyrant_saber_palace cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:vagrant_blade_brotherhood cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:venomous_serpent_valley cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+		}
+	}
+	else_if = {
+		limit = { has_trait = normal_meridians }
+		random_list = {
+			2 = { set_character_faith = faith:ancient_relic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:crimson_moon_blade_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:demon_suppressing_blade_clan cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:hundred_herbs_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:lone_wolf_wanderers cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:medicine_king_valley cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:moonless_night_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:mystic_forge_hall cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primal_beast_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:ten_thousand_corpse_valley cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:thousand_treasures_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:tyrant_saber_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:vagrant_blade_brotherhood cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:venomous_serpent_valley cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			4 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+		}
+	}
+	else_if = {
+		limit = { has_trait = good_meridians }
+		random_list = {
+			2 = { set_character_faith = faith:ancient_relic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:crimson_moon_blade_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:demon_suppressing_blade_clan cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:hundred_herbs_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:lone_wolf_wanderers cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:medicine_king_valley cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:moonless_night_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:mystic_forge_hall cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primal_beast_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:ten_thousand_corpse_valley cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:thousand_treasures_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:tyrant_saber_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:vagrant_blade_brotherhood cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:venomous_serpent_valley cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			5 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+		}
+	}
+	else_if = {
+		limit = { has_trait = excellent_meridians }
+		random_list = {
+			2 = { set_character_faith = faith:ancient_relic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:crimson_moon_blade_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:demon_suppressing_blade_clan cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:hundred_herbs_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:lone_wolf_wanderers cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:medicine_king_valley cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:moonless_night_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:mystic_forge_hall cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primal_beast_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:ten_thousand_corpse_valley cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:thousand_treasures_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:tyrant_saber_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:vagrant_blade_brotherhood cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:venomous_serpent_valley cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+		}
+	}
+	else_if = {
+		limit = { has_trait = heavenly_meridians }
+		random_list = {
+			2 = { set_character_faith = faith:ancient_relic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:blood_yin_cult cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:crimson_moon_blade_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:demon_suppressing_blade_clan cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_pleasure_hall cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:hundred_herbs_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:jade_chamber_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:lone_wolf_wanderers cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:medicine_king_valley cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:moonless_night_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:mystic_forge_hall cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primal_beast_sect cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:ten_thousand_corpse_valley cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:thousand_treasures_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			3 = { set_character_faith = faith:tyrant_saber_palace cultivation_convert_direct_domain_faith_effect = yes }
+			2 = { set_character_faith = faith:vagrant_blade_brotherhood cultivation_convert_direct_domain_faith_effect = yes }
+			1 = { set_character_faith = faith:venomous_serpent_valley cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+		}
+	}
+}
+
+cultivation_ai_grant_next_realm_perk_effect = {
+	if = {
+		limit = { has_trait = cultivation_mortal }
+		if = { limit = { NOT = { has_perk = mortal_muscle_reconstruction_perk } } add_perk = mortal_muscle_reconstruction_perk }
+		else_if = { limit = { NOT = { has_perk = mortal_bone_reconstruction_perk } } add_perk = mortal_bone_reconstruction_perk }
+		else_if = { limit = { NOT = { has_perk = mortal_internal_reconstruction_perk } } add_perk = mortal_internal_reconstruction_perk }
+		else_if = { limit = { NOT = { has_perk = mortal_external_reconstruction_perk } } add_perk = mortal_external_reconstruction_perk }
+		else_if = { limit = { NOT = { has_perk = mortal_body_reconstruction_perk } } add_perk = mortal_body_reconstruction_perk }
+		else_if = { limit = { NOT = { has_perk = mortal_qi_gathering_breakthrough_perk } } add_perk = mortal_qi_gathering_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_qi_gathering }
+		if = { limit = { NOT = { has_perk = qi_gathering_meridian_1_perk } } add_perk = qi_gathering_meridian_1_perk }
+		else_if = { limit = { NOT = { has_perk = qi_gathering_meridian_2_perk } } add_perk = qi_gathering_meridian_2_perk }
+		else_if = { limit = { NOT = { has_perk = qi_gathering_meridian_3a_perk } } add_perk = qi_gathering_meridian_3a_perk }
+		else_if = { limit = { NOT = { has_perk = qi_gathering_meridian_3b_perk } } add_perk = qi_gathering_meridian_3b_perk }
+		else_if = { limit = { NOT = { has_perk = qi_gathering_meridian_4_perk } } add_perk = qi_gathering_meridian_4_perk }
+		else_if = { limit = { NOT = { has_perk = qi_gathering_qi_refining_breakthrough_perk } } add_perk = qi_gathering_qi_refining_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_qi_refining }
+		if = { limit = { NOT = { has_perk = qi_refining_1a_star_perk } } add_perk = qi_refining_1a_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_1b_star_perk } } add_perk = qi_refining_1b_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_middle_perk } } add_perk = qi_refining_middle_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_2a_star_perk } } add_perk = qi_refining_2a_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_2b_star_perk } } add_perk = qi_refining_2b_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_2c_star_perk } } add_perk = qi_refining_2c_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_2d_star_perk } } add_perk = qi_refining_2d_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_higher_perk } } add_perk = qi_refining_higher_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_3a_star_perk } } add_perk = qi_refining_3a_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_3b_star_perk } } add_perk = qi_refining_3b_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_3c_star_perk } } add_perk = qi_refining_3c_star_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_peak_perk } } add_perk = qi_refining_peak_perk }
+		else_if = { limit = { NOT = { has_perk = qi_refining_qi_building_breakthrough_perk } } add_perk = qi_refining_qi_building_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_qi_building }
+		if = { limit = { NOT = { has_perk = qi_building_1_perk } } add_perk = qi_building_1_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_early_perk } } add_perk = qi_building_early_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_2_perk } } add_perk = qi_building_2_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_mid_perk } } add_perk = qi_building_mid_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_3_perk } } add_perk = qi_building_3_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_late_perk } } add_perk = qi_building_late_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_4_perk } } add_perk = qi_building_4_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_peak_perk } } add_perk = qi_building_peak_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_5_perk } } add_perk = qi_building_5_perk }
+		else_if = { limit = { NOT = { has_perk = qi_building_core_formation_breakthrough_perk } } add_perk = qi_building_core_formation_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_core_formation }
+		if = { limit = { NOT = { has_perk = core_formation_qi1_perk } } add_perk = core_formation_qi1_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_early_perk } } add_perk = core_formation_early_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_qi2_perk } } add_perk = core_formation_qi2_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_mid_perk } } add_perk = core_formation_mid_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_qi3_perk } } add_perk = core_formation_qi3_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_late_perk } } add_perk = core_formation_late_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_qi4_perk } } add_perk = core_formation_qi4_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_peak_perk } } add_perk = core_formation_peak_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_qi5_perk } } add_perk = core_formation_qi5_perk }
+		else_if = { limit = { NOT = { has_perk = core_formation_nascent_soul_breakthrough_perk } } add_perk = core_formation_nascent_soul_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_nascent_soul }
+		if = { limit = { NOT = { has_perk = nascent_soul_early_perk } } add_perk = nascent_soul_early_perk }
+		else_if = { limit = { NOT = { has_perk = nascent_soul_mid_perk } } add_perk = nascent_soul_mid_perk }
+		else_if = { limit = { NOT = { has_perk = nascent_soul_late_perk } } add_perk = nascent_soul_late_perk }
+		else_if = { limit = { NOT = { has_perk = nascent_soul_peak_perk } } add_perk = nascent_soul_peak_perk }
+		else_if = { limit = { NOT = { has_perk = nascent_soul_heavenly_being_breakthrough_perk } } add_perk = nascent_soul_heavenly_being_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_heavenly_being }
+		if = { limit = { NOT = { has_perk = heavenly_being_1_perk } } add_perk = heavenly_being_1_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_early_perk } } add_perk = heavenly_being_early_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_2_perk } } add_perk = heavenly_being_2_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_mid_perk } } add_perk = heavenly_being_mid_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_3_perk } } add_perk = heavenly_being_3_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_late_perk } } add_perk = heavenly_being_late_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_4_perk } } add_perk = heavenly_being_4_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_peak_perk } } add_perk = heavenly_being_peak_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_5_perk } } add_perk = heavenly_being_5_perk }
+		else_if = { limit = { NOT = { has_perk = heavenly_being_four_axis_breakthrough_perk } } add_perk = heavenly_being_four_axis_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_four_axis }
+		if = { limit = { NOT = { has_perk = four_axis_axis_1a_perk } } add_perk = four_axis_axis_1a_perk }
+		else_if = { limit = { NOT = { has_perk = four_axis_axis_1b_perk } } add_perk = four_axis_axis_1b_perk }
+		else_if = { limit = { NOT = { has_perk = four_axis_axis_1c_perk } } add_perk = four_axis_axis_1c_perk }
+		else_if = { limit = { NOT = { has_perk = four_axis_axis_1d_perk } } add_perk = four_axis_axis_1d_perk }
+		else_if = { limit = { NOT = { has_perk = four_axis_axis_2_perk } } add_perk = four_axis_axis_2_perk }
+		else_if = { limit = { NOT = { has_perk = four_axis_integration_breakthrough_perk } } add_perk = four_axis_integration_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_integration }
+		if = { limit = { NOT = { has_perk = integration_1a_perk } } add_perk = integration_1a_perk }
+		else_if = { limit = { NOT = { has_perk = integration_1b_perk } } add_perk = integration_1b_perk }
+		else_if = { limit = { NOT = { has_perk = integration_1c_perk } } add_perk = integration_1c_perk }
+		else_if = { limit = { NOT = { has_perk = integration_1d_perk } } add_perk = integration_1d_perk }
+		else_if = { limit = { NOT = { has_perk = integration_1e_perk } } add_perk = integration_1e_perk }
+		else_if = { limit = { NOT = { has_perk = integration_2a_perk } } add_perk = integration_2a_perk }
+		else_if = { limit = { NOT = { has_perk = integration_2b_perk } } add_perk = integration_2b_perk }
+		else_if = { limit = { NOT = { has_perk = integration_2c_perk } } add_perk = integration_2c_perk }
+		else_if = { limit = { NOT = { has_perk = integration_2d_perk } } add_perk = integration_2d_perk }
+		else_if = { limit = { NOT = { has_perk = integration_2e_perk } } add_perk = integration_2e_perk }
+		else_if = { limit = { NOT = { has_perk = integration_star_shattering_breakthrough_perk } } add_perk = integration_star_shattering_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_star_shattering }
+		if = { limit = { NOT = { has_perk = star_shattering_explode_perk } } add_perk = star_shattering_explode_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_1a_perk } } add_perk = star_shattering_1a_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_1b_perk } } add_perk = star_shattering_1b_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_1d_perk } } add_perk = star_shattering_1d_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_1e_perk } } add_perk = star_shattering_1e_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_1c_perk } } add_perk = star_shattering_1c_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_becoming_star_perk } } add_perk = star_shattering_becoming_star_perk }
+		else_if = { limit = { NOT = { has_perk = star_shattering_sacred_vessel_breakthrough_perk } } add_perk = star_shattering_sacred_vessel_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_sacred_vessel }
+		if = { limit = { NOT = { has_perk = sacred_vessel_hour_perk } } add_perk = sacred_vessel_hour_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_day_perk } } add_perk = sacred_vessel_day_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_month_perk } } add_perk = sacred_vessel_month_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_year_perk } } add_perk = sacred_vessel_year_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_calendar_perk } } add_perk = sacred_vessel_calendar_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_fixed_star_perk } } add_perk = sacred_vessel_fixed_star_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_correctness_perk } } add_perk = sacred_vessel_correctness_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_strongness_perk } } add_perk = sacred_vessel_strongness_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_mildness_perk } } add_perk = sacred_vessel_mildness_perk }
+		else_if = { limit = { NOT = { has_perk = sacred_vessel_entering_nirvana_breakthrough_perk } } add_perk = sacred_vessel_entering_nirvana_breakthrough_perk }
+	}
+	else_if = {
+		limit = { has_trait = cultivation_entering_nirvana }
+		if = { limit = { NOT = { has_perk = entering_nirvana_life_perk } } add_perk = entering_nirvana_life_perk }
+		else_if = { limit = { NOT = { has_perk = entering_nirvana_death_perk } } add_perk = entering_nirvana_death_perk }
+		else_if = { limit = { NOT = { has_perk = entering_nirvana_reborn_perk } } add_perk = entering_nirvana_reborn_perk }
+		else_if = { limit = { NOT = { has_perk = true_immortal_final_perk } } add_perk = true_immortal_final_perk }
+	}
+}
+
+cultivation_ai_grant_mortal_foundation_perks_effect = {
+	if = {
+		limit = { is_ai = yes is_adult = yes has_trait = cultivation_qi_gathering }
+		if = { limit = { NOT = { has_perk = mortal_muscle_reconstruction_perk } } add_perk = mortal_muscle_reconstruction_perk }
+		if = { limit = { NOT = { has_perk = mortal_bone_reconstruction_perk } } add_perk = mortal_bone_reconstruction_perk }
+		if = { limit = { NOT = { has_perk = mortal_internal_reconstruction_perk } } add_perk = mortal_internal_reconstruction_perk }
+		if = { limit = { NOT = { has_perk = mortal_external_reconstruction_perk } } add_perk = mortal_external_reconstruction_perk }
+		if = { limit = { NOT = { has_perk = mortal_body_reconstruction_perk } } add_perk = mortal_body_reconstruction_perk }
+		if = { limit = { NOT = { has_perk = mortal_qi_gathering_breakthrough_perk } } add_perk = mortal_qi_gathering_breakthrough_perk }
+	}
+}
+
+cultivation_ai_force_cultivation_focus_effect = {
+	if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_focus = cultivation_orthodox_focus
+					has_focus = cultivation_unorthodox_focus
+					has_focus = cultivation_demonic_focus
+					has_focus = cultivation_vagrant_focus
+				}
+			}
+		}
+		if = {
+			limit = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+			set_focus = cultivation_orthodox_focus
+		}
+		else_if = {
+			limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+			set_focus = cultivation_unorthodox_focus
+		}
+		else_if = {
+			limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
+			set_focus = cultivation_demonic_focus
+		}
+		else_if = {
+			limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+			set_focus = cultivation_vagrant_focus
+		}
+	}
+}
+
+cultivation_ai_autogrant_realm_perks_effect = {
+	if = {
+		limit = { is_ai = yes is_adult = yes is_cultivator = yes }
+		random_list = {
+			8 = { trigger = { has_trait = good_meridians } cultivation_ai_grant_next_realm_perk_effect = yes }
+			28 = {
+				trigger = { has_trait = excellent_meridians }
+				cultivation_ai_grant_next_realm_perk_effect = yes
+				cultivation_ai_grant_next_realm_perk_effect = yes
+			}
+			140 = {
+				trigger = { has_trait = heavenly_meridians }
+				cultivation_ai_grant_next_realm_perk_effect = yes
+				cultivation_ai_grant_next_realm_perk_effect = yes
+				cultivation_ai_grant_next_realm_perk_effect = yes
+				cultivation_ai_grant_next_realm_perk_effect = yes
+			}
+			824 = { }
+		}
+	}
+}
+
+
+cultivation_breakthrough_failure_consequence_effect = {
+	if = {
+		limit = { has_trait = poor_meridians }
+		if = { limit = { has_trait = cultivation_qi_gathering } random_list = { 4 = { death = { death_reason = death_cultivation_failure } } 96 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_refining } random_list = { 6 = { death = { death_reason = death_cultivation_failure } } 94 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_building } random_list = { 9 = { death = { death_reason = death_cultivation_failure } } 91 = { } } }
+		else_if = { limit = { has_trait = cultivation_core_formation } random_list = { 12 = { death = { death_reason = death_cultivation_failure } } 88 = { } } }
+		else_if = { limit = { has_trait = cultivation_nascent_soul } random_list = { 16 = { death = { death_reason = death_cultivation_failure } } 84 = { } } }
+		else_if = { limit = { has_trait = cultivation_heavenly_being } random_list = { 22 = { death = { death_reason = death_cultivation_failure } } 78 = { } } }
+		else_if = { limit = { has_trait = cultivation_four_axis } random_list = { 30 = { death = { death_reason = death_cultivation_failure } } 70 = { } } }
+		else_if = { limit = { has_trait = cultivation_integration } random_list = { 38 = { death = { death_reason = death_cultivation_failure } } 62 = { } } }
+		else_if = { limit = { has_trait = cultivation_star_shattering } random_list = { 48 = { death = { death_reason = death_cultivation_failure } } 52 = { } } }
+		else_if = { limit = { has_trait = cultivation_sacred_vessel } random_list = { 60 = { death = { death_reason = death_cultivation_failure } } 40 = { } } }
+		else_if = { limit = { has_trait = cultivation_entering_nirvana } random_list = { 72 = { death = { death_reason = death_cultivation_failure } } 28 = { } } }
+		else_if = { limit = { has_trait = cultivation_true_immortal } random_list = { 85 = { death = { death_reason = death_cultivation_failure } } 15 = { } } }
+		else = { random_list = { 3 = { death = { death_reason = death_cultivation_failure } } 97 = { } } }
+	}
+	else_if = {
+		limit = { has_trait = normal_meridians }
+		if = { limit = { has_trait = cultivation_qi_gathering } random_list = { 3 = { death = { death_reason = death_cultivation_failure } } 97 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_refining } random_list = { 4 = { death = { death_reason = death_cultivation_failure } } 96 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_building } random_list = { 6 = { death = { death_reason = death_cultivation_failure } } 94 = { } } }
+		else_if = { limit = { has_trait = cultivation_core_formation } random_list = { 8 = { death = { death_reason = death_cultivation_failure } } 92 = { } } }
+		else_if = { limit = { has_trait = cultivation_nascent_soul } random_list = { 11 = { death = { death_reason = death_cultivation_failure } } 89 = { } } }
+		else_if = { limit = { has_trait = cultivation_heavenly_being } random_list = { 15 = { death = { death_reason = death_cultivation_failure } } 85 = { } } }
+		else_if = { limit = { has_trait = cultivation_four_axis } random_list = { 20 = { death = { death_reason = death_cultivation_failure } } 80 = { } } }
+		else_if = { limit = { has_trait = cultivation_integration } random_list = { 26 = { death = { death_reason = death_cultivation_failure } } 74 = { } } }
+		else_if = { limit = { has_trait = cultivation_star_shattering } random_list = { 32 = { death = { death_reason = death_cultivation_failure } } 68 = { } } }
+		else_if = { limit = { has_trait = cultivation_sacred_vessel } random_list = { 40 = { death = { death_reason = death_cultivation_failure } } 60 = { } } }
+		else_if = { limit = { has_trait = cultivation_entering_nirvana } random_list = { 50 = { death = { death_reason = death_cultivation_failure } } 50 = { } } }
+		else_if = { limit = { has_trait = cultivation_true_immortal } random_list = { 65 = { death = { death_reason = death_cultivation_failure } } 35 = { } } }
+		else = { random_list = { 2 = { death = { death_reason = death_cultivation_failure } } 98 = { } } }
+	}
+	else_if = {
+		limit = { has_trait = good_meridians }
+		if = { limit = { has_trait = cultivation_qi_gathering } random_list = { 2 = { death = { death_reason = death_cultivation_failure } } 98 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_refining } random_list = { 3 = { death = { death_reason = death_cultivation_failure } } 97 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_building } random_list = { 4 = { death = { death_reason = death_cultivation_failure } } 96 = { } } }
+		else_if = { limit = { has_trait = cultivation_core_formation } random_list = { 6 = { death = { death_reason = death_cultivation_failure } } 94 = { } } }
+		else_if = { limit = { has_trait = cultivation_nascent_soul } random_list = { 8 = { death = { death_reason = death_cultivation_failure } } 92 = { } } }
+		else_if = { limit = { has_trait = cultivation_heavenly_being } random_list = { 11 = { death = { death_reason = death_cultivation_failure } } 89 = { } } }
+		else_if = { limit = { has_trait = cultivation_four_axis } random_list = { 15 = { death = { death_reason = death_cultivation_failure } } 85 = { } } }
+		else_if = { limit = { has_trait = cultivation_integration } random_list = { 19 = { death = { death_reason = death_cultivation_failure } } 81 = { } } }
+		else_if = { limit = { has_trait = cultivation_star_shattering } random_list = { 24 = { death = { death_reason = death_cultivation_failure } } 76 = { } } }
+		else_if = { limit = { has_trait = cultivation_sacred_vessel } random_list = { 30 = { death = { death_reason = death_cultivation_failure } } 70 = { } } }
+		else_if = { limit = { has_trait = cultivation_entering_nirvana } random_list = { 38 = { death = { death_reason = death_cultivation_failure } } 62 = { } } }
+		else_if = { limit = { has_trait = cultivation_true_immortal } random_list = { 50 = { death = { death_reason = death_cultivation_failure } } 50 = { } } }
+		else = { random_list = { 1 = { death = { death_reason = death_cultivation_failure } } 99 = { } } }
+	}
+	else_if = {
+		limit = { has_trait = excellent_meridians }
+		if = { limit = { has_trait = cultivation_qi_gathering } random_list = { 1 = { death = { death_reason = death_cultivation_failure } } 99 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_refining } random_list = { 2 = { death = { death_reason = death_cultivation_failure } } 98 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_building } random_list = { 3 = { death = { death_reason = death_cultivation_failure } } 97 = { } } }
+		else_if = { limit = { has_trait = cultivation_core_formation } random_list = { 4 = { death = { death_reason = death_cultivation_failure } } 96 = { } } }
+		else_if = { limit = { has_trait = cultivation_nascent_soul } random_list = { 6 = { death = { death_reason = death_cultivation_failure } } 94 = { } } }
+		else_if = { limit = { has_trait = cultivation_heavenly_being } random_list = { 8 = { death = { death_reason = death_cultivation_failure } } 92 = { } } }
+		else_if = { limit = { has_trait = cultivation_four_axis } random_list = { 11 = { death = { death_reason = death_cultivation_failure } } 89 = { } } }
+		else_if = { limit = { has_trait = cultivation_integration } random_list = { 14 = { death = { death_reason = death_cultivation_failure } } 86 = { } } }
+		else_if = { limit = { has_trait = cultivation_star_shattering } random_list = { 18 = { death = { death_reason = death_cultivation_failure } } 82 = { } } }
+		else_if = { limit = { has_trait = cultivation_sacred_vessel } random_list = { 22 = { death = { death_reason = death_cultivation_failure } } 78 = { } } }
+		else_if = { limit = { has_trait = cultivation_entering_nirvana } random_list = { 28 = { death = { death_reason = death_cultivation_failure } } 72 = { } } }
+		else_if = { limit = { has_trait = cultivation_true_immortal } random_list = { 38 = { death = { death_reason = death_cultivation_failure } } 62 = { } } }
+		else = { random_list = { 1 = { death = { death_reason = death_cultivation_failure } } 99 = { } } }
+	}
+	else_if = {
+		limit = { has_trait = heavenly_meridians }
+		if = { limit = { has_trait = cultivation_qi_gathering } random_list = { 1 = { death = { death_reason = death_cultivation_failure } } 99 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_refining } random_list = { 1 = { death = { death_reason = death_cultivation_failure } } 99 = { } } }
+		else_if = { limit = { has_trait = cultivation_qi_building } random_list = { 2 = { death = { death_reason = death_cultivation_failure } } 98 = { } } }
+		else_if = { limit = { has_trait = cultivation_core_formation } random_list = { 3 = { death = { death_reason = death_cultivation_failure } } 97 = { } } }
+		else_if = { limit = { has_trait = cultivation_nascent_soul } random_list = { 4 = { death = { death_reason = death_cultivation_failure } } 96 = { } } }
+		else_if = { limit = { has_trait = cultivation_heavenly_being } random_list = { 6 = { death = { death_reason = death_cultivation_failure } } 94 = { } } }
+		else_if = { limit = { has_trait = cultivation_four_axis } random_list = { 8 = { death = { death_reason = death_cultivation_failure } } 92 = { } } }
+		else_if = { limit = { has_trait = cultivation_integration } random_list = { 10 = { death = { death_reason = death_cultivation_failure } } 90 = { } } }
+		else_if = { limit = { has_trait = cultivation_star_shattering } random_list = { 13 = { death = { death_reason = death_cultivation_failure } } 87 = { } } }
+		else_if = { limit = { has_trait = cultivation_sacred_vessel } random_list = { 16 = { death = { death_reason = death_cultivation_failure } } 84 = { } } }
+		else_if = { limit = { has_trait = cultivation_entering_nirvana } random_list = { 20 = { death = { death_reason = death_cultivation_failure } } 80 = { } } }
+		else_if = { limit = { has_trait = cultivation_true_immortal } random_list = { 28 = { death = { death_reason = death_cultivation_failure } } 72 = { } } }
+		else = { random_list = { 100 = { } } }
+	}
+}
+
+
+cultivation_cripple_mortalize_effect = {
+	# Break the foundation permanently: remove realms, perks, and progression capability.
+	remove_trait = cultivation_true_immortal
+	remove_trait = cultivation_entering_nirvana
+	remove_trait = cultivation_sacred_vessel
+	remove_trait = cultivation_star_shattering
+	remove_trait = cultivation_integration
+	remove_trait = cultivation_four_axis
+	remove_trait = cultivation_heavenly_being
+	remove_trait = cultivation_nascent_soul
+	remove_trait = cultivation_core_formation
+	remove_trait = cultivation_qi_building
+	remove_trait = cultivation_qi_refining
+	remove_trait = cultivation_qi_gathering
+	remove_trait = heavenly_meridians
+	remove_trait = excellent_meridians
+	remove_trait = good_meridians
+	remove_trait = normal_meridians
+	remove_trait = poor_meridians
+	add_trait = crippled_meridians
+	remove_perk = core_formation_early_perk
+	remove_perk = core_formation_late_perk
+	remove_perk = core_formation_mid_perk
+	remove_perk = core_formation_nascent_soul_breakthrough_perk
+	remove_perk = core_formation_peak_perk
+	remove_perk = core_formation_qi1_perk
+	remove_perk = core_formation_qi2_perk
+	remove_perk = core_formation_qi3_perk
+	remove_perk = core_formation_qi4_perk
+	remove_perk = core_formation_qi5_perk
+	remove_perk = entering_nirvana_death_perk
+	remove_perk = entering_nirvana_life_perk
+	remove_perk = entering_nirvana_reborn_perk
+	remove_perk = four_axis_axis_1a_perk
+	remove_perk = four_axis_axis_1b_perk
+	remove_perk = four_axis_axis_1c_perk
+	remove_perk = four_axis_axis_1d_perk
+	remove_perk = four_axis_axis_2_perk
+	remove_perk = four_axis_integration_breakthrough_perk
+	remove_perk = heavenly_being_1_perk
+	remove_perk = heavenly_being_2_perk
+	remove_perk = heavenly_being_3_perk
+	remove_perk = heavenly_being_4_perk
+	remove_perk = heavenly_being_5_perk
+	remove_perk = heavenly_being_early_perk
+	remove_perk = heavenly_being_four_axis_breakthrough_perk
+	remove_perk = heavenly_being_late_perk
+	remove_perk = heavenly_being_mid_perk
+	remove_perk = heavenly_being_peak_perk
+	remove_perk = integration_1a_perk
+	remove_perk = integration_1b_perk
+	remove_perk = integration_1c_perk
+	remove_perk = integration_1d_perk
+	remove_perk = integration_1e_perk
+	remove_perk = integration_2a_perk
+	remove_perk = integration_2b_perk
+	remove_perk = integration_2c_perk
+	remove_perk = integration_2d_perk
+	remove_perk = integration_2e_perk
+	remove_perk = integration_star_shattering_breakthrough_perk
+	remove_perk = mortal_body_reconstruction_perk
+	remove_perk = mortal_bone_reconstruction_perk
+	remove_perk = mortal_external_reconstruction_perk
+	remove_perk = mortal_internal_reconstruction_perk
+	remove_perk = mortal_muscle_reconstruction_perk
+	remove_perk = mortal_qi_gathering_breakthrough_perk
+	remove_perk = nascent_soul_early_perk
+	remove_perk = nascent_soul_heavenly_being_breakthrough_perk
+	remove_perk = nascent_soul_late_perk
+	remove_perk = nascent_soul_mid_perk
+	remove_perk = nascent_soul_peak_perk
+	remove_perk = qi_building_1_perk
+	remove_perk = qi_building_2_perk
+	remove_perk = qi_building_3_perk
+	remove_perk = qi_building_4_perk
+	remove_perk = qi_building_5_perk
+	remove_perk = qi_building_core_formation_breakthrough_perk
+	remove_perk = qi_building_early_perk
+	remove_perk = qi_building_late_perk
+	remove_perk = qi_building_mid_perk
+	remove_perk = qi_building_peak_perk
+	remove_perk = qi_gathering_meridian_1_perk
+	remove_perk = qi_gathering_meridian_2_perk
+	remove_perk = qi_gathering_meridian_3a_perk
+	remove_perk = qi_gathering_meridian_3b_perk
+	remove_perk = qi_gathering_meridian_4_perk
+	remove_perk = qi_gathering_qi_refining_breakthrough_perk
+	remove_perk = qi_refining_1a_star_perk
+	remove_perk = qi_refining_1b_star_perk
+	remove_perk = qi_refining_2a_star_perk
+	remove_perk = qi_refining_2b_star_perk
+	remove_perk = qi_refining_2c_star_perk
+	remove_perk = qi_refining_2d_star_perk
+	remove_perk = qi_refining_3a_star_perk
+	remove_perk = qi_refining_3b_star_perk
+	remove_perk = qi_refining_3c_star_perk
+	remove_perk = qi_refining_higher_perk
+	remove_perk = qi_refining_middle_perk
+	remove_perk = qi_refining_peak_perk
+	remove_perk = qi_refining_qi_building_breakthrough_perk
+	remove_perk = sacred_vessel_calendar_perk
+	remove_perk = sacred_vessel_correctness_perk
+	remove_perk = sacred_vessel_day_perk
+	remove_perk = sacred_vessel_entering_nirvana_breakthrough_perk
+	remove_perk = sacred_vessel_fixed_star_perk
+	remove_perk = sacred_vessel_hour_perk
+	remove_perk = sacred_vessel_mildness_perk
+	remove_perk = sacred_vessel_month_perk
+	remove_perk = sacred_vessel_strongness_perk
+	remove_perk = sacred_vessel_year_perk
+	remove_perk = star_shattering_1a_perk
+	remove_perk = star_shattering_1b_perk
+	remove_perk = star_shattering_1c_perk
+	remove_perk = star_shattering_1d_perk
+	remove_perk = star_shattering_1e_perk
+	remove_perk = star_shattering_becoming_star_perk
+	remove_perk = star_shattering_explode_perk
+	remove_perk = star_shattering_sacred_vessel_breakthrough_perk
+	remove_perk = true_immortal_final_perk
+	remove_character_flag = can_attempt_qi_gathering_breakthrough
+	remove_character_flag = can_attempt_qi_refining_breakthrough
+	remove_character_flag = can_attempt_qi_building_breakthrough
+	remove_character_flag = can_attempt_core_formation_breakthrough
+	remove_character_flag = can_attempt_nascent_soul_breakthrough
+	remove_character_flag = can_attempt_heavenly_being_breakthrough
+	remove_character_flag = can_attempt_four_axis_breakthrough
+	remove_character_flag = can_attempt_integration_breakthrough
+	remove_character_flag = can_attempt_star_shattering_breakthrough
+	remove_character_flag = can_attempt_sacred_vessel_breakthrough
+	remove_character_flag = can_attempt_entering_nirvana_breakthrough
+	remove_character_flag = can_attempt_true_immortal_breakthrough
+	remove_character_modifier = contemplating_breakthrough
+	remove_character_modifier = failed_breakthrough_attempt
+}
+
+cultivation_assign_high_realm_sect_nickname_effect = {
+	if = { limit = { faith = faith:mount_hua_sect } give_nickname = nick_the_mount_hua_sword_sage add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:heavenly_sword_pavilion } give_nickname = nick_the_heavenly_sword_lord add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:ten_thousand_swords_valley } give_nickname = nick_the_ten_thousand_blades add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:violet_thunder_blade_sect } give_nickname = nick_the_violet_thunder_blade add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:nine_star_formation_sect } give_nickname = nick_the_nine_star_array_master add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:mystic_seal_pavilion } give_nickname = nick_the_mystic_seal_warden add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:wudang_sect } give_nickname = nick_the_wudang_trueperson add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:shaolin_temple } give_nickname = nick_the_shaolin_vajra add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:eternal_harmony_pavilion } give_nickname = nick_the_eternal_harmony_master add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:divine_beast_mountain } give_nickname = nick_the_divine_beast_tamer add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:thousand_beast_valley } give_nickname = nick_the_thousand_beast_sovereign add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:crimson_moon_blade_hall } give_nickname = nick_the_crimson_moon_blade add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:tyrant_saber_palace } give_nickname = nick_the_tyrant_saber_overlord add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:demon_suppressing_blade_clan } give_nickname = nick_the_demon_suppressing_edge add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:medicine_king_valley } give_nickname = nick_the_medicine_king add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:hundred_herbs_pavilion } give_nickname = nick_the_hundred_herbs_alchemist add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:jade_chamber_sect } give_nickname = nick_the_jade_chamber_enchantress add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:eternal_pleasure_hall } give_nickname = nick_the_eternal_serenity_master add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:moonless_night_pavilion } give_nickname = nick_the_moonless_night_revenant add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:pale_bone_hall } give_nickname = nick_the_pale_bone_necromancer add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:eternal_rest_clan } give_nickname = nick_the_eternal_rest_keeper add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:ten_thousand_corpse_valley } give_nickname = nick_the_ten_thousand_corpse_lord add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:venomous_serpent_valley } give_nickname = nick_the_venomous_serpent_sovereign add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:blood_yin_cult } give_nickname = nick_the_blood_yin_ancestor add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:blood_moon_demonic_sect } give_nickname = nick_the_heavenly_demon add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:succubus_palace } give_nickname = nick_the_nightshade_tempter add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:lone_wolf_wanderers } give_nickname = nick_the_lone_wolf_immortal add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:vagrant_blade_brotherhood } give_nickname = nick_the_vagrant_blade_brother add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:thousand_treasures_pavilion } give_nickname = nick_the_thousand_treasures_curator add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:mystic_forge_hall } give_nickname = nick_the_mystic_forge_artificer add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:ancient_relic_sect } give_nickname = nick_the_ancient_relic_seeker add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:primal_beast_sect } give_nickname = nick_the_primal_beast_lord add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:primordial_chaos_hall } give_nickname = nick_the_primordial_chaos_ascendant add_character_flag = cultivation_sect_nickname_newly_assigned }
+	else_if = { limit = { faith = faith:feral_bond_sect } give_nickname = nick_the_feral_bond_master add_character_flag = cultivation_sect_nickname_newly_assigned }
+}
+
+
+# Build same-sect defensive pacts among independent cultivator rulers.
+cultivation_form_sect_defensive_pacts_effect = {
+    if = {
+        limit = {
+            is_alive = yes
+            is_adult = yes
+            NOT = { exists = liege }
+            is_cultivator = yes
+            has_cultivation_sect_faith = yes
+        }
+
+        every_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+                faith = root.faith
+                NOT = { this = root }
+                NOT = { is_allied_to = root }
+                OR = {
+                    is_within_diplo_range = root
+                    AND = {
+                        root = {
+                            NOT = { has_trait = cultivation_qi_gathering }
+                        }
+                        NOT = { has_trait = cultivation_qi_gathering }
+                    }
+                }
+            }
+            add_alliance = root
+        }
+    }
+}

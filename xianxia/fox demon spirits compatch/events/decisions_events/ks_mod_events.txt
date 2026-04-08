@@ -1,0 +1,330 @@
+﻿namespace = ks_mod_events
+
+#Search for a fox
+ks_mod_events.0001 = {
+	type = character_event
+	title = {
+		desc = ks_mod_events.0001.t
+	}
+	desc = {
+		first_valid = {
+			desc = ks_mod_events.0001.desc
+		}
+	}
+	theme = university
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		trigger = { exists = scope:realm_priest }
+		character = scope:realm_priest
+		animation = personality_zealous
+	}
+	lower_center_portrait = scope:fox_option
+	
+	lower_right_portrait = scope:fox_option_2
+	
+
+	trigger = { #If I lost it before I got this event, I shouldn't get a physician
+		exists = capital_province
+	}
+
+	immediate = {
+	
+		hidden_effect = {
+			
+			if = {
+				limit = { exists = cp:councillor_court_chaplain }
+				cp:councillor_court_chaplain = {
+					save_scope_as = realm_priest
+					}
+			}
+
+			create_character = {
+				location = root.capital_province
+				template = fox_template
+				gender_female_chance = 50
+				faith = root.faith
+				save_scope_as = fox_option
+			}
+			create_character = {
+				location = root.capital_province
+				template = fox_template
+				age = { 16 25 }
+				gender_female_chance = root_attraction_based_female_chance
+				faith = root.faith
+				save_scope_as = fox_option_2
+			}
+							
+		}
+	}
+
+	#I want a fox
+	option = {
+		trigger = {
+			is_playable_character = yes #extra check to make sure they haven't lost their status
+		}
+		name = ks_mod_events.0001.a
+
+		#custom_tooltip = ks_mod_events.0001.a.aptitude
+		if = {
+			limit = {
+				exists = scope:realm_priest
+			}
+			pay_short_term_gold = {
+				target = scope:realm_priest
+				gold = major_gold_value
+			}
+		}
+		else = {
+			remove_short_term_gold = major_gold_value
+		}
+		custom_tooltip = ks_mod_events.0001.a.tt
+
+		add_courtier = scope:fox_option
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	#I want a fox lover
+	option = {
+		trigger = {
+			is_playable_character = yes #extra check to make sure they haven't lost their status
+		}
+		name = ks_mod_events.0001.a2
+
+		#custom_tooltip = ks_mod_events.0001.a2.aptitude
+		if = {
+			limit = {
+				exists = scope:realm_priest
+			}
+			pay_short_term_gold = {
+				target = scope:realm_priest
+				gold = major_gold_value
+			}
+		}
+		else = {
+			remove_short_term_gold = major_gold_value
+		}
+		custom_tooltip = ks_mod_events.0001.a2.tt
+
+		add_courtier = scope:fox_option_2
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+
+	#None...
+	option = {
+		name=ks_mod_events.0001.b
+		custom_tooltip = ks_mod_events.0001.b.tt
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	after = {
+		scope:fox_option ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+		scope:fox_option_2 ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+	}
+}
+#尝试消除狐仙血脉影响
+ks_mod_events.0002 = {
+	type = character_event
+	title = {
+		desc = ks_mod_events.0002.t
+	}
+	desc = {
+		desc = ks_mod_events.0002.desc
+	}
+	theme = university
+	override_background = {
+		reference = temple
+	}
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		trigger = { exists = scope:realm_priest }
+		character = scope:realm_priest
+		animation = scheme
+	}
+
+	immediate = {
+	
+		hidden_effect = {
+			
+			if = {
+				limit = { exists = cp:councillor_court_chaplain }
+				cp:councillor_court_chaplain = {
+					save_scope_as = realm_priest
+					}
+			}							
+		}
+	}
+
+	#举行一场作法
+	option = {
+		trigger = {
+			is_playable_character = yes #extra check to make sure they haven't lost their status
+			exists = scope:realm_priest
+		}
+		name = ks_mod_events.0002.a
+
+		#custom_tooltip = ks_mod_events.0001.a.aptitude
+		
+		pay_short_term_gold = {
+			target = scope:realm_priest
+			gold = {
+				value = massive_gold_value
+				min = 500
+			}
+		}
+
+		custom_tooltip = ks_mod_events.0002.a.tt
+		
+		add_character_modifier = {
+			modifier = ks_ritual_modifier
+		}
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	#买一个护身符
+	option = {
+		trigger = {
+			is_playable_character = yes #extra check to make sure they haven't lost their status
+			exists = scope:realm_priest
+		}
+		name = ks_mod_events.0002.b
+
+
+		pay_short_term_gold = {
+				target = scope:realm_priest
+				gold = medium_gold_value
+		}
+
+		custom_tooltip = ks_mod_events.0002.b.tt
+
+		add_character_modifier = {
+			modifier = ks_amulet_modifier
+			years = 10
+		}
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+
+	#None...
+	option = {
+		name=ks_mod_events.0002.c
+		custom_tooltip = ks_mod_events.0002.c.tt
+
+		ai_chance = {
+			factor = 1
+		}
+		
+		hidden_effect = {
+			random = {
+				chance = 10	
+				trigger_event = ks_mod_events.0003
+			}
+		}
+	}
+}
+
+#狐仙启示
+ks_mod_events.0003 = {
+	type = character_event
+	title = {
+		desc = ks_mod_events.0003.t
+	}
+	desc = {
+		desc = ks_mod_events.0003.desc
+	}
+	theme = travel
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:fox_spirit
+		animation = interested
+	}
+
+	immediate = {
+	
+		hidden_effect = {
+			create_character = {
+				location = root.location
+				template = fox_template
+				age = { 46 55 }
+				faith = root.faith
+				save_scope_as = fox_spirit
+			}						
+		}
+	}
+
+	#好吧，我很有兴趣
+	option = {
+		trigger = {
+			is_playable_character = yes #extra check to make sure they haven't lost their status
+		}
+		name = ks_mod_events.0003.a
+		custom_tooltip = ks_mod_events.0003.a.tt
+		
+		add_piety = -1000
+		add_trait = huxian_cultivation
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	#还是算了
+	option = {
+		name=ks_mod_events.0003.b
+		custom_tooltip = ks_mod_events.0003.b.tt
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	after = {
+		scope:fox_spirit ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+	}
+}

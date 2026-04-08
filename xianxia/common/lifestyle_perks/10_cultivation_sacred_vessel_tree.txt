@@ -1,0 +1,204 @@
+﻿##################################################
+# SACRED VESSEL REALM (Y: 46-54) +280 years
+# Tree: sacred_vessel_tree
+##################################################
+
+sacred_vessel_hour_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 1 0.8 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 18
+		learning = 3
+		health = 1.0
+	}
+}
+
+sacred_vessel_day_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 1 1.5 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_hour_perk
+	
+	character_modifier = {
+		prowess = 18
+		learning = 3
+		health = 1.0
+		advantage = 10
+	}
+}
+
+sacred_vessel_month_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 2 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_day_perk
+	
+	character_modifier = {
+		prowess = 21
+		learning = 4
+		health = 1.5
+		advantage = 10
+	}
+}
+
+sacred_vessel_year_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 1 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_month_perk
+	
+	character_modifier = {
+		prowess = 21
+		learning = 4
+		health = 1.5
+		advantage = 15
+	}
+}
+
+sacred_vessel_calendar_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_year_perk
+	
+	character_modifier = {
+		prowess = 24
+		learning = 5
+		health = 2.0
+		advantage = 15
+		monthly_prestige = 1.0
+	}
+}
+
+sacred_vessel_fixed_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 1 2.3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_calendar_perk
+	
+	character_modifier = {
+		prowess = 27
+		learning = 6
+		health = 2.5
+		advantage = 20
+		monthly_prestige = 1.0
+	}
+}
+
+# 3-way branch
+sacred_vessel_correctness_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 0 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_fixed_star_perk
+	
+	character_modifier = {
+		learning = 5
+		advantage = 10
+	}
+}
+
+sacred_vessel_strongness_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 1 3.2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_fixed_star_perk
+	
+	character_modifier = {
+		prowess = 18
+		martial = 10
+		advantage = 10
+	}
+}
+
+sacred_vessel_mildness_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 2 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = node_cultivation
+	parent = sacred_vessel_fixed_star_perk
+	
+	character_modifier = {
+		health = 2.0
+		advantage = 10
+	}
+}
+
+# Entering Nirvana Breakthrough (merges all 3)
+sacred_vessel_entering_nirvana_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = sacred_vessel_tree
+	position = { 1 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_sacred_vessel
+	}
+	icon = cultivation_entering_nirvana_f
+	parent = sacred_vessel_correctness_perk
+	parent = sacred_vessel_strongness_perk
+	parent = sacred_vessel_mildness_perk
+	
+	trait = cultivation_entering_nirvana
+	
+	effect = {
+		add_character_flag = can_attempt_entering_nirvana_breakthrough
+		trigger_event = cultivation_breakthrough.2000
+	}
+	
+	character_modifier = {
+		prowess = 93
+		learning = 18
+		health = 12.0
+		advantage = 100
+		monthly_prestige = 6.0
+		dread_baseline_add = 35
+		stress_loss_mult = 0.5
+	}
+}

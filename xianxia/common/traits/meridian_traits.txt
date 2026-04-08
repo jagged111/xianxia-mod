@@ -1,0 +1,166 @@
+﻿poor_meridians = {
+	index = 14250
+	group = active_meridians
+	level = 1
+	opposites = { normal_meridians good_meridians excellent_meridians heavenly_meridians }
+	birth = 85
+	random_creation = 88
+	ruler_designer_cost = -80
+	inherit_chance = 95
+	both_parent_has_trait_inherit_chance = 99
+	attraction_opinion = -20
+	monthly_lifestyle_xp_gain_mult = -0.55
+	physical = yes
+	good = no
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = poor_meridians.dds
+			}
+			desc = poor_meridians.dds
+		}
+	}
+}
+
+normal_meridians = {
+	index = 14251
+	group = active_meridians
+	level = 2
+	opposites = { poor_meridians good_meridians excellent_meridians heavenly_meridians }
+	birth = 12
+	random_creation = 10
+	ruler_designer_cost = 0
+	inherit_chance = 70
+	both_parent_has_trait_inherit_chance = 90
+	monthly_lifestyle_xp_gain_mult = -0.15
+	physical = yes
+	good = yes
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = normal_meridians.dds
+			}
+			desc = normal_meridians.dds
+		}
+	}
+}
+
+good_meridians = {
+	index = 14252
+	group = active_meridians
+	level = 3
+	opposites = { poor_meridians normal_meridians excellent_meridians heavenly_meridians }
+	birth = 2.8
+	random_creation = 1.8
+	ruler_designer_cost = 150
+	inherit_chance = 40
+	both_parent_has_trait_inherit_chance = 75
+	learning = 2
+	monthly_lifestyle_xp_gain_mult = 0.02
+	attraction_opinion = 10
+	physical = yes
+	good = yes
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = good_meridians.dds
+			}
+			desc = good_meridians.dds
+		}
+	}
+}
+
+excellent_meridians = {
+	index = 14253
+	group = active_meridians
+	level = 4
+	opposites = { poor_meridians normal_meridians good_meridians heavenly_meridians }
+	birth = 0.19
+	random_creation = 0.19
+	ruler_designer_cost = 500
+	inherit_chance = 20
+	both_parent_has_trait_inherit_chance = 55
+	fertility = -0.15
+	learning = 5
+	monthly_lifestyle_xp_gain_mult = 0.08
+	attraction_opinion = 30
+	monthly_prestige = 2
+	physical = yes
+	good = yes
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = excellent_meridians.dds
+			}
+			desc = excellent_meridians.dds
+		}
+	}
+}
+
+heavenly_meridians = {
+	index = 14254
+	group = active_meridians
+	level = 5
+	opposites = { poor_meridians normal_meridians good_meridians excellent_meridians }
+	birth = 0.0001
+	random_creation = 0.00005
+	ruler_designer_cost = 2000
+	inherit_chance = 5
+	both_parent_has_trait_inherit_chance = 30
+	fertility = -0.4
+	learning = 12
+	monthly_lifestyle_xp_gain_mult = 0.30
+	prowess = 20
+	martial = 5
+	attraction_opinion = 80
+	monthly_prestige = 10
+	dread_baseline_add = 40
+	physical = yes
+	good = yes
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = heavenly_meridians.dds
+			}
+			desc = heavenly_meridians.dds
+		}
+	}
+}
+
+
+crippled_meridians = {
+	index = 14255
+	group = active_meridians
+	level = 0
+	opposites = { poor_meridians normal_meridians good_meridians excellent_meridians heavenly_meridians }
+	birth = 0
+	random_creation = 0
+	ruler_designer_cost = -2000
+	inherit_chance = 0
+	learning = -8
+	health = -0.5
+	monthly_lifestyle_xp_gain_mult = -0.95
+	attraction_opinion = -30
+	physical = yes
+	good = no
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = poor_meridians.dds
+			}
+			desc = poor_meridians.dds
+		}
+	}
+}

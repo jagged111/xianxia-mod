@@ -1,0 +1,57 @@
+﻿nick_the_mount_hua_sword_sage = {}
+nick_the_heavenly_sword_lord = {}
+nick_the_ten_thousand_blades = {}
+nick_the_violet_thunder_blade = {}
+nick_the_nine_star_array_master = {}
+nick_the_mystic_seal_warden = {}
+nick_the_wudang_trueperson = {}
+nick_the_shaolin_vajra = {}
+nick_the_eternal_harmony_master = {}
+nick_the_divine_beast_tamer = {}
+nick_the_thousand_beast_sovereign = {}
+nick_the_crimson_moon_blade = {}
+nick_the_tyrant_saber_overlord = {}
+nick_the_demon_suppressing_edge = {}
+nick_the_medicine_king = {}
+nick_the_hundred_herbs_alchemist = {}
+nick_the_jade_chamber_enchantress = {}
+nick_the_eternal_serenity_master = {}
+nick_the_moonless_night_revenant = {}
+nick_the_pale_bone_necromancer = { is_bad = yes }
+nick_the_eternal_rest_keeper = {}
+nick_the_ten_thousand_corpse_lord = { is_bad = yes }
+nick_the_venomous_serpent_sovereign = { is_bad = yes }
+nick_the_blood_yin_ancestor = { is_bad = yes }
+nick_the_heavenly_demon = { is_bad = yes }
+nick_the_nightshade_tempter = { is_bad = yes }
+nick_the_lone_wolf_immortal = {}
+nick_the_vagrant_blade_brother = {}
+nick_the_thousand_treasures_curator = {}
+nick_the_mystic_forge_artificer = {}
+nick_the_ancient_relic_seeker = {}
+nick_the_primal_beast_lord = {}
+nick_the_primordial_chaos_ascendant = {}
+nick_the_feral_bond_master = {}
+
+# Random jianghu/xianxia style nicknames for lesser-known cultivators.
+nick_the_river_wanderer = {}
+nick_the_cloud_sword = {}
+nick_the_jade_mantis = {}
+nick_the_bamboo_shadow = {}
+nick_the_iron_palm = {}
+nick_the_broken_spear = {}
+nick_the_mountain_fox = {}
+nick_the_white_crane = {}
+nick_the_ember_adept = {}
+nick_the_frost_edge = {}
+nick_the_silent_qi = {}
+nick_the_drunk_blade = {}
+nick_the_hidden_talisman = {}
+nick_the_night_reed = {}
+nick_the_wind_stepper = {}
+nick_the_stone_heart = {}
+nick_the_lotus_watcher = {}
+nick_the_red_cinnabar = {}
+nick_the_ghost_lantern = {}
+nick_the_swamp_viper = { is_bad = yes }
+nick_the_reincarnator = {}

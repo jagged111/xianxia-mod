@@ -1,0 +1,8 @@
+# Runtime mirror snapshot for fodder sync.
+# Source of truth remains gui/*.gui and common/scripted_guis/*.txt; update this mirror in the same commit.
+
+mirror_gui = {
+    source = "gui/cultivation_window.gui"
+    source = "gui/cultivation_hud_button.gui"
+    source = "common/scripted_guis/cultivation_window_scripted_guis.txt"
+}

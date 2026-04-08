@@ -1,0 +1,118 @@
+﻿dual_cultivation_interaction = {
+    icon = icon_relation
+    category = interaction_category_friendly
+    interface_priority = 80
+    desc = dual_cultivation_interaction_desc
+    use_diplomatic_range = no
+
+    is_shown = {
+        NOT = { scope:actor = scope:recipient }
+        scope:actor = {
+            is_adult = yes
+            is_cultivator = yes
+            OR = {
+                has_relation_lover = scope:recipient
+                has_relation_soulmate = scope:recipient
+            }
+        }
+        scope:recipient = {
+            is_adult = yes
+            is_cultivator = yes
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        scope:actor = { NOT = { has_character_modifier = qi_deviation } }
+        scope:recipient = { NOT = { has_character_modifier = qi_deviation } }
+        OR = {
+            scope:recipient = { has_relation_lover = scope:actor }
+            scope:recipient = { has_relation_soulmate = scope:actor }
+        }
+    }
+
+    cooldown = { months = 3 }
+
+    on_accept = {
+        scope:actor = {
+            add_opinion = {
+                target = scope:recipient
+                modifier = taught_me_cultivation_opinion
+            }
+            add_character_modifier = {
+                modifier = dual_cultivation_insight
+                months = 6
+            }
+            dual_cultivation_effect = yes
+
+            scope:recipient = {
+                add_opinion = {
+                    target = scope:actor
+                    modifier = taught_them_cultivation_opinion
+                }
+                add_character_modifier = {
+                    modifier = dual_cultivation_insight
+                    months = 6
+                }
+            }
+        }
+    }
+
+    ai_potential = { always = yes }
+    ai_will_do = { base = 15 }
+    ai_accept = {
+        base = 0
+        modifier = {
+            add = 45
+            OR = {
+                scope:actor = { has_character_flag = fox_spirit_awakening_complete }
+                scope:recipient = { has_character_flag = fox_spirit_awakening_complete }
+            }
+            OR = {
+                scope:recipient.faith = { has_doctrine_parameter = demonic_cultivation }
+                scope:recipient.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                scope:recipient = { faith = faith:yin_phoenix_sect }
+                scope:recipient = { faith = faith:succubus_palace }
+                scope:recipient = { faith = faith:jade_chamber_sect }
+                scope:recipient = { faith = faith:eternal_pleasure_hall }
+            }
+        }
+        modifier = {
+            add = -220
+            OR = {
+                scope:actor = { has_character_flag = fox_spirit_awakening_complete }
+                scope:recipient = { has_character_flag = fox_spirit_awakening_complete }
+            }
+            OR = {
+                scope:recipient = { faith = faith:mount_hua_sect }
+                scope:recipient = { faith = faith:heavenly_sword_pavilion }
+                scope:recipient = { faith = faith:azure_edge_sect }
+                scope:recipient = { faith = faith:ten_thousand_swords_valley }
+                scope:recipient = { faith = faith:violet_thunder_blade_sect }
+                scope:recipient = { faith = faith:eight_trigrams_palace }
+                scope:recipient = { faith = faith:celestial_talisman_hall }
+            }
+        }
+        modifier = {
+            add = 80
+            scope:recipient = { opinion = { target = scope:actor value >= 50 } }
+        }
+        modifier = {
+            add = 40
+            OR = {
+                scope:recipient = { has_relation_lover = scope:actor }
+                scope:recipient = { has_relation_soulmate = scope:actor }
+            }
+        }
+        modifier = {
+            add = -60
+            scope:recipient = { opinion = { target = scope:actor value <= -25 } }
+        }
+        modifier = {
+            add = -1000
+            OR = {
+                scope:recipient = { has_relation_rival = scope:actor }
+                scope:recipient = { has_relation_nemesis = scope:actor }
+            }
+        }
+    }
+}

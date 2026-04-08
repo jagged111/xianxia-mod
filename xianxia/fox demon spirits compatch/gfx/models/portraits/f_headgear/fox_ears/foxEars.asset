@@ -1,0 +1,21 @@
+﻿pdxmesh = {
+	name = "foxEars_mesh"
+	file = "fox_ears.mesh"
+
+	meshsettings = {
+		name = "foxEars_"
+		index = 0
+		texture_diffuse = "catears_diffuse.dds"
+		texture_normal = "catears_normals.dds"
+		texture_specular = "catears_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+
+}
+
+entity = {
+	name = "fox_ears_entity"
+	pdxmesh = "foxEars_mesh"
+}

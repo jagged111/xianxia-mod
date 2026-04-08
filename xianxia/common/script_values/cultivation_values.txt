@@ -1,0 +1,22 @@
+﻿dual_cultivation_cooldown_base = {
+	value = 12
+}
+
+#dual_cultivation_cooldown = {
+#	value = dual_cultivation_cooldown_base
+#	if = {
+#		limit = { has_game_rule = carn_sex_interaction_no_cd }
+#		multiply = 0
+#	}
+#}
+
+display_sect_spars_won = {
+    value = 1
+    if = {
+        limit = { exists = var:sect_spars_won }
+        add = var:sect_spars_won
+    }
+}
+dual_cultivation_cooldown = {
+	value = dual_cultivation_cooldown_base
+}

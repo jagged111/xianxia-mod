@@ -1,0 +1,32 @@
+﻿
+death_breakthrough = {
+	public_knowledge = yes
+	icon = "death_disease.dds"
+}
+
+death_animal_fight = {
+	public_knowledge = yes
+	icon = "death_murder.dds"
+}
+
+death_cultivator_spirit = {
+	public_knowledge = yes
+	icon = "death_murder.dds"
+}
+
+death_poison_area = {
+	public_knowledge = yes
+	icon = "death_disease.dds"
+}
+
+
+death_time_chamber = {
+	public_knowledge = yes
+	icon = "death_disease.dds"
+}
+
+
+death_evolution = {
+	public_knowledge = yes
+	icon = "death_disease.dds"
+}

@@ -1,0 +1,196 @@
+﻿sect_spar_interaction = {
+    category = interaction_category_friendly
+    interface_priority = 120
+    common_interaction = yes
+    icon = icon_combat
+
+    #interface = sect_spar
+
+	popup_on_receive = yes
+	pause_on_receive = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:actor = scope:recipient
+				}
+				desc = sect_spar_interaction_desc_own_court
+			}
+			desc = sect_spar_interaction_desc_other_court
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		# Basic validity checks
+		scope:secondary_actor = {
+			is_imprisoned = no
+			is_incapable = no
+			is_adult = yes
+		}
+		scope:secondary_recipient = {
+			is_imprisoned = no
+			is_incapable = no
+			is_adult = yes
+		}
+		# Can't spar yourself
+		custom_description = {
+			text = cannot_spar_yourself
+			NOT = { scope:secondary_actor = scope:secondary_recipient }
+		}
+	}
+
+	# Populate actor's side (you + your courtiers/children)
+	populate_actor_list = {
+		scope:actor = {
+			# The actor themselves
+			add_to_list = characters
+
+			# Actor's courtiers
+			every_courtier = {
+				limit = {
+					is_adult = yes
+					is_alive = yes
+					is_imprisoned = no
+					is_incapable = no
+				}
+				add_to_list = characters
+			}
+
+			# Actor's children
+			every_child = {
+				limit = {
+					is_adult = yes
+					is_alive = yes
+					is_imprisoned = no
+					is_incapable = no
+					NOT = { is_in_list = characters }
+				}
+				add_to_list = characters
+			}
+		}
+	}
+
+	# Populate recipient's side (target + their courtiers/children)
+	populate_recipient_list = {
+		scope:recipient = {
+			# The recipient themselves
+			add_to_list = characters
+
+			# Recipient's courtiers
+			every_courtier = {
+				limit = {
+					is_adult = yes
+					is_alive = yes
+					faith = scope:recipient.faith
+					NOT = { this = scope:recipient }
+					is_imprisoned = no
+					is_incapable = no
+				}
+				add_to_list = characters
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			# Save the chosen sparring partner
+			scope:recipient = {
+				save_scope_as = sparring_partner
+			}
+
+			# Initialize variables if they don't exist
+			if = {
+				limit = { NOT = { exists = var:sect_spars_won } }
+				set_variable = { name = sect_spars_won value = 0 }
+			}
+			if = {
+				limit = { NOT = { exists = var:sect_spars_lost } }
+				set_variable = { name = sect_spars_lost value = 0 }
+			}
+			if = {
+				limit = { NOT = { exists = var:sect_spars_total } }
+				set_variable = { name = sect_spars_total value = 0 }
+			}
+			custom_tooltip = cultivation_spar_effect.tt
+
+			# Same for opponent
+			scope:sparring_partner = {
+				if = {
+					limit = { NOT = { exists = var:sect_spars_won } }
+					set_variable = { name = sect_spars_won value = 0 }
+				}
+				if = {
+					limit = { NOT = { exists = var:sect_spars_lost } }
+					set_variable = { name = sect_spars_lost value = 0 }
+				}
+				if = {
+					limit = { NOT = { exists = var:sect_spars_total } }
+					set_variable = { name = sect_spars_total value = 0 }
+				}
+				custom_tooltip = cultivation_spar_effect.ttt
+			}
+
+			# Trigger the sparring event
+			trigger_event = cultivation_sect_spar.1000
+		}
+	}
+
+	# Send modes for different scenarios
+	send_option = {
+		is_shown = {
+			scope:actor = scope:recipient
+		}
+		is_valid = {
+			scope:actor = {
+				scope:secondary_actor = { is_courtier_of = scope:actor }
+			}
+			scope:recipient = {
+				scope:secondary_recipient = { is_courtier_of = scope:recipient }
+			}
+		}
+		flag = send_own_court
+		localization = SECT_SPAR_SEND_OWN_COURT
+	}
+
+	send_option = {
+		is_shown = {
+			NOT = { scope:actor = scope:recipient }
+		}
+		is_valid = {
+			scope:actor = {
+				scope:secondary_actor = { is_courtier_of = scope:actor }
+			}
+		}
+		flag = send_other_court
+		localization = SECT_SPAR_SEND_OTHER_COURT
+	}
+
+	# Should auto-accept if arranging spar in own court
+
+	ai_accept = {
+		base = 50
+
+		# More likely to accept if good fighter
+		modifier = {
+			add = 25
+			scope:secondary_recipient = {
+				prowess >= 12
+			}
+			desc = AI_PROWESS_REASON
+		}
+
+		# Less likely if weak
+		modifier = {
+			add = -25
+			scope:secondary_recipient = {
+				prowess < 8
+			}
+			desc = AI_PROWESS_REASON
+		}
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

@@ -1,0 +1,546 @@
+﻿namespace = cultivation_travel_events
+
+#First 100 are for regular travelling
+
+cultivation_travel_events.001 = { # Found a cultivation herb
+
+	type = character_event
+	title = cultivation_travel_events.001.t
+	desc = cultivation_travel_events.001.desc
+
+	theme = widgetless_travel_danger 
+	left_portrait = {
+		character = root
+		animation = survey
+	}
+	override_background = { reference = wilderness }
+
+	trigger = {
+		is_available_travelling_adult = yes
+		is_cultivator = yes
+	}
+
+	option = {
+        name = cultivation_travel_events.001.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+		}
+		
+		random_list = {
+			10 = {
+				#Get the herb uninjured
+				modifier = {
+					add = prowess
+				}
+				earn_cultivation_xp = yes
+			}
+			70 = {
+				#Get the herb but you are injured
+				earn_cultivation_xp = yes
+
+				wound_cultivation_character = yes
+			}
+			20 = {
+				#Die trying
+				modifier = {
+					add = {
+						value = prowess
+						multiply = -0.2
+					}
+				}
+				death = {
+					death_reason = death_animal_fight 
+				}
+			}
+		}
+	}
+
+	option = {
+        name = cultivation_travel_events.001.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = craven
+				add = 10
+			}
+		}
+
+		random_list = {
+			1 = {
+				#Get the herb uninjured
+				modifier = {
+					add = prowess
+				}
+				create_breakthrough_artifact = {
+					OWNER = root
+				}
+			}
+			29 = {
+				#Get the herb but you are injured
+				create_breakthrough_artifact = {
+					OWNER = root
+				}
+
+				wound_cultivation_character = yes
+			}
+			70 = {
+				#Die trying
+				modifier = {
+					add = {
+						value = prowess
+						multiply = -0.2
+					}
+				}
+				death = {
+					death_reason = death_animal_fight 
+				}
+			}
+		}
+	}
+
+	option = {
+        name = cultivation_travel_events.001.c
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+cultivation_travel_events.002 = { # A spirit calls you to a nearby tomb
+
+	type = character_event
+	title = cultivation_travel_events.002.t
+	desc = cultivation_travel_events.002.desc
+
+	theme = widgetless_travel_danger 
+	left_portrait = {
+		character = root
+		animation = survey
+	}
+	override_background = { reference = wilderness }
+
+	trigger = {
+		is_available_travelling_adult = yes
+		is_cultivator = yes
+	}
+
+	option = { #fight it
+        name = cultivation_travel_events.002.a
+
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				add = 20
+				has_trait = paranoid
+			}
+		}
+		
+		random_list = {
+			1 = {
+				#Attack it and be uninjured
+				modifier = {
+					add = prowess
+				}
+				earn_cultivation_xp = yes
+				earn_cultivation_xp = yes
+			}
+			65 = {
+				#You beat it but are injured
+				earn_cultivation_xp = yes
+				earn_cultivation_xp = yes
+
+				wound_cultivation_character = yes
+
+				
+			}
+			25 = {
+				#Die trying
+				modifier = {
+					add = {
+						value = prowess
+						multiply = -0.1
+					}
+				}
+				death = {
+					death_reason = death_cultivator_spirit 
+				}
+			}
+		}
+	}
+
+	option = { #Allow it
+        name = cultivation_travel_events.002.b
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				add = -100
+				has_trait = paranoid
+			}
+		}
+		
+		random_list = {
+			1 = {
+				#He is a good spirit
+				modifier = {
+					add = intrigue
+				}
+				modifier = {
+					add = diplomacy
+				}
+				earn_cultivation_xp = yes
+			}
+			75 = {
+				#He posseses you
+				earn_cultivation_xp = yes
+				improve_meridians = yes
+
+				add_trait = possessed_1
+				
+			}
+			3 = {
+				#He just kills you
+				death = {
+					death_reason = death_cultivator_spirit 
+				}
+			}
+		}
+	}
+
+	option = {
+        name = cultivation_travel_events.002.c
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = 30
+				has_trait = paranoid
+			}
+			modifier = {
+				add = 30
+				has_trait = craven
+			}
+		}
+	}
+}
+
+cultivation_travel_events.003 = { # Found dilapidated ruins, could potentially derive in different events
+
+	type = character_event
+	title = cultivation_travel_events.003.t
+	desc = cultivation_travel_events.003.desc
+
+	theme = widgetless_travel_danger 
+	left_portrait = {
+		character = root
+		animation = survey
+	}
+
+	override_background = { reference = wilderness }
+
+	trigger = {
+		is_available_travelling_adult = yes
+		is_cultivator = yes
+	}
+
+	option = {
+        name = cultivation_travel_events.003.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+			modifier = {
+				has_trait = ambitious
+				add = 10
+			}
+		}
+		
+		random_list = {
+			1 = {
+				#Get dragon bloodline opportunity
+				trigger_event = {
+					id = cultivation_constitutions_events.002
+				}
+			}
+			300 = {
+				#Ruins break down and you get hurt
+				wound_cultivation_character = yes
+			}
+			50 = {#Nothing happens
+				
+			}
+		}
+	}
+
+	option = {
+        name = cultivation_travel_events.003.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				has_trait = craven
+				add = 10
+			}
+		}
+	}
+}
+
+#100-199 for danger travelling
+
+
+cultivation_travel_events.101 = { # Poisonous mist ahead
+
+	type = character_event
+	title = cultivation_travel_events.101.t
+	desc = cultivation_travel_events.101.desc
+
+	theme = widgetless_travel_danger 
+	left_portrait = {
+		character = root
+		animation = survey
+	}
+	override_background = { reference = wilderness }
+
+	trigger = {
+		is_available_travelling_adult = yes
+		is_cultivator = yes
+	}
+
+	option = {
+        name = cultivation_travel_events.101.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+			modifier = {
+				has_trait = poison_constitution
+				add = 200
+			}
+		}
+		
+		random_list = {
+			1 = {
+				#Go through without issue and get poison constitution
+				add_trait = poison_constitution
+				modifier = {
+					has_trait = poison_constitution
+					add = -1
+				}
+			}
+			25 = {
+				#Go through without issue
+			}
+			70 = {
+				#Go through but get ill
+				modifier = {
+					has_trait = poison_constitution
+					add = -70
+				}
+				#TODO: make all that are travelling together ill
+				current_travel_plan = { delay_travel_plan = { days = 7 } }
+
+				add_trait = wounded_1
+			}
+			3 = {
+				#Die trying
+				modifier = {
+					has_trait = poison_constitution
+					add = -3
+				}
+				death = {
+					death_reason = death_poison_area
+				}
+			}
+		}
+	}
+
+	option = {
+        name = cultivation_travel_events.101.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = craven
+				add = 10
+			}
+			modifier = {
+				has_trait = poison_constitution
+				add = -200
+			}
+		}
+		
+		
+		current_travel_plan = { delay_travel_plan = { days = 15 } }
+	}
+}
+
+
+cultivation_travel_events.102 = { # A cultivator tries to steal u
+
+	type = character_event
+	title = cultivation_travel_events.102.t
+	desc = cultivation_travel_events.102.desc
+
+	theme = widgetless_travel_danger 
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	right_portrait = {
+		character = scope:cultivator
+		animation = personality_bold
+	}
+
+	override_background = { reference = wilderness }
+
+	trigger = {
+		is_available_travelling_adult = yes
+		is_cultivator = yes
+    }
+    immediate = {
+        # No spawning — removed entirely to prevent exponential growth
+    }
+	option = { # Fight
+        name = cultivation_travel_events.102.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+			modifier ={
+				has_trait = brave
+				add = 10
+			}
+		}
+		
+		duel = {
+			skill = prowess
+			target = scope:cultivator
+			20 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 10
+					min = -19
+			   	}
+			}
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					min = -29
+			   	}
+				
+				wound_cultivation_character = yes
+			}
+			50 = {
+				
+				wound_cultivation_character = yes
+				remove_short_term_gold = 150
+			}
+		}
+	}
+
+	option = { # Give money
+        name = cultivation_travel_events.102.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = craven
+				add = 10
+			}
+			
+			modifier = {
+				has_trait = greedy
+				add = -10
+			}
+		}
+		
+		remove_short_term_gold = 150
+	}
+
+	option = { #Attempt to run
+		name = cultivation_travel_events.102.c
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = craven
+				add = 10
+			}
+			
+			modifier = {
+				has_trait = greedy
+				add = 10
+			}
+		}
+
+		duel = {
+			skill = prowess
+			target = scope:cultivator
+			40 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 5
+					min = -39
+			   	}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+					min = -49
+			   	}
+				
+				wound_cultivation_character = yes
+			}
+			10 = {
+				
+				wound_cultivation_character = yes
+				remove_short_term_gold = 150
+			}
+		}
+		
+		current_travel_plan = { delay_travel_plan = { days = 15 } }
+	}
+}

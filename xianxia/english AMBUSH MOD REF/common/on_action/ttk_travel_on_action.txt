@@ -1,0 +1,71 @@
+﻿on_travel_plan_movement = { 
+	on_actions = {
+		ttk_travel_event_kill
+		}
+}
+
+on_travel_plan_complete = {
+	on_actions = {
+		ttk_travel_event_clear
+		}
+}
+	
+ttk_travel_event_kill = {
+	trigger = {
+		is_ruler = yes
+		is_adult = yes
+		is_alive = yes
+		highest_held_title_tier >= tier_county
+		NOT = { has_character_flag = ttk_can_pass }
+		root.location.county.holder ?= {
+			exists = cp:councillor_spymaster
+			NOT = { cp:councillor_spymaster = root }
+			is_alive = yes
+			is_imprisoned = no
+			is_in_army = no
+			is_travelling = no
+			is_incapable = no
+			trigger_if = {
+				limit = { exists = involved_activity }
+				NOT = {
+					OR = {
+						has_activity_state = passive
+						has_activity_state = active
+					}
+				}
+			}
+			NOT = { has_trait = infirm }
+			OR = {
+				has_relation_nemesis  = root
+				has_relation_rival = root
+				any_scheme = {
+					scheme_type = murder
+					scheme_target_character = root
+				}
+				house_has_feud_relation_with_trigger = { TARGET = root }
+			}
+		}
+	}		
+	effect = {
+		save_scope_as = ttk_target
+		root.location.county.holder = { save_scope_as = ttk_killer }
+		random = {
+			chance = 20
+			scope:ttk_killer = {
+				trigger_event = ttk_travel_event_kill.0001
+			}
+		}
+	}
+}
+
+ttk_travel_event_clear = {
+	trigger = {
+		has_character_flag = ttk_can_pass
+		highest_held_title_tier >= tier_county
+		is_adult = yes
+		is_ruler = yes
+	}
+	effect = {
+		remove_character_flag = ttk_can_pass
+	}
+}

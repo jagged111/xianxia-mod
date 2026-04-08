@@ -1,0 +1,8 @@
+﻿on_game_start = {
+    effect = {
+        every_living_character = {
+            mymod_initialize_meridians_effect
+            mymod_initialize_cultivation_effect
+        }
+    }
+}

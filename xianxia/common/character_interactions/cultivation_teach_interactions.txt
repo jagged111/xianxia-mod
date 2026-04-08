@@ -1,0 +1,238 @@
+﻿teach_cultivation_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 100
+	icon = icon_combat
+	desc = teach_cultivation_interaction_desc
+	use_diplomatic_range = yes
+
+	ai_frequency = 120
+	ai_targets = {
+		ai_recipients = courtiers
+		ai_recipients = children
+		ai_recipients = family
+	}
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = {
+			is_alive = yes
+			is_cultivator = yes
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_adult = yes
+			is_courtier_of = scope:actor
+			NOT = { is_cultivator = yes }
+			OR = {
+				has_trait = poor_meridians
+				has_trait = normal_meridians
+				has_trait = good_meridians
+				has_trait = excellent_meridians
+				has_trait = heavenly_meridians
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 0
+		modifier = {
+			factor = 100
+			scope:recipient = { is_close_family_of = scope:actor }
+		}
+		modifier = {
+			factor = 20
+			scope:recipient = { has_trait = heavenly_meridians }
+		}
+		modifier = {
+			factor = 10
+			scope:recipient = { has_trait = excellent_meridians }
+		}
+		modifier = {
+			factor = 5
+			scope:recipient = { has_trait = good_meridians }
+		}
+		modifier = {
+			factor = 0
+			scope:recipient = { is_cultivator = yes }
+		}
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			add_trait = cultivation_qi_gathering
+			add_opinion = {
+				target = scope:actor
+				modifier = taught_me_cultivation_opinion
+				years = 20
+			}
+		}
+		scope:actor = {
+			add_opinion = {
+				target = scope:recipient
+				modifier = taught_them_cultivation_opinion
+				years = 20
+			}
+		}
+	}
+}
+
+recruit_disciple_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 110
+	icon = icon_court
+	desc = recruit_disciple_interaction_desc
+	use_diplomatic_range = yes
+
+	is_shown = {
+		scope:actor = { is_cultivator = yes is_adult = yes }
+		scope:recipient = {
+			is_adult = yes
+			is_courtier_of = scope:actor
+			NOT = { has_trait = sect_disciple }
+			NOT = { has_trait = sect_inner_hall_elder }
+			NOT = { has_trait = sect_outer_hall_elder }
+			NOT = { has_trait = sect_enforcement_elder }
+			OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians }
+		}
+	}
+
+	auto_accept = yes
+	ai_will_do = {
+		base = 5
+		modifier = { factor = 20 scope:recipient = { has_trait = heavenly_meridians } }
+		modifier = { factor = 3 scope:recipient = { has_trait = excellent_meridians } }
+		modifier = { factor = 0 scope:recipient = { has_trait = poor_meridians } }
+	}
+
+	on_accept = {
+		scope:recipient = {
+			add_trait = cultivation_qi_gathering
+			add_trait = sect_disciple
+			add_character_modifier = { modifier = lineage_marked_disciple days = 1825 }
+			add_character_flag = disciple_of_current_mentor
+			add_character_flag = has_lineage_mentor
+			add_opinion = { target = scope:actor modifier = mentor_guidance_opinion years = 15 }
+			set_variable = { name = lineage_generation value = 1 }
+		}
+		scope:actor = {
+			add_character_modifier = { modifier = lineage_prestige_mentor days = 1825 }
+			add_character_modifier = { modifier = sect_lineage_favor days = 1095 }
+			add_dynasty_prestige = 150
+			change_variable = { name = disciples_recruited add = 1 }
+		}
+	}
+}
+
+teach_technique_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 111
+	icon = icon_lifestyle_learning
+	desc = teach_technique_interaction_desc
+	use_diplomatic_range = no
+
+	is_shown = {
+		scope:actor = { is_cultivator = yes is_adult = yes }
+		scope:recipient = {
+			is_courtier_of = scope:actor
+			has_trait = sect_disciple
+			is_cultivator = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			NOT = { has_character_flag = teach_technique_cooldown }
+		}
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:recipient = {
+			add_learning_lifestyle_xp = medium_lifestyle_xp
+			add_character_flag = { flag = teach_technique_cooldown days = 365 }
+			if = {
+				limit = { has_character_flag = has_lineage_mentor }
+				change_variable = { name = lineage_techniques_learned add = 1 }
+			}
+			if = {
+				limit = { scope:actor = { has_trait = sect_inner_hall_elder } }
+				add_character_modifier = { modifier = manual_comprehension days = 365 }
+			}
+			if = {
+				limit = { scope:actor = { has_trait = sect_enforcement_elder } }
+				add_prowess_skill = 1
+			}
+		}
+		scope:actor = {
+			add_prestige = 100
+		}
+	}
+}
+
+inherit_manuals_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 112
+	icon = icon_artifact
+	desc = inherit_manuals_interaction_desc
+	use_diplomatic_range = no
+
+	is_shown = {
+		scope:actor = { is_cultivator = yes is_adult = yes }
+		scope:recipient = {
+			has_trait = sect_disciple
+			is_cultivator = yes
+			is_courtier_of = scope:actor
+		}
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:recipient = {
+			add_character_modifier = { modifier = secret_realm_inheritance days = 1095 }
+			add_trait = sect_lineage_heir
+			add_character_modifier = { modifier = sect_lineage_favor days = 1825 }
+			change_variable = { name = lineage_generation add = 1 }
+			add_opinion = { target = scope:actor modifier = mentor_guidance_opinion years = 20 }
+		}
+		scope:actor = {
+			add_character_modifier = { modifier = lineage_prestige_mentor days = 1095 }
+		}
+	}
+}
+
+expel_or_betray_disciple_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 113
+	icon = icon_tyranny
+	desc = expel_or_betray_disciple_interaction_desc
+	use_diplomatic_range = no
+
+	is_shown = {
+		scope:actor = { is_cultivator = yes is_adult = yes }
+		scope:recipient = {
+			has_trait = sect_disciple
+			is_cultivator = yes
+			is_courtier_of = scope:actor
+		}
+	}
+
+	auto_accept = yes
+	on_accept = {
+		scope:recipient = {
+			remove_trait = sect_disciple
+			remove_trait = sect_lineage_heir
+			add_trait = jianghu_demonic
+			add_character_modifier = { modifier = sect_internal_dispute days = 1825 }
+			add_character_modifier = { modifier = sect_lineage_fracture days = 1460 }
+			add_opinion = { target = scope:actor modifier = lineage_betrayal_opinion years = 20 }
+			remove_character_flag = disciple_of_current_mentor
+		}
+		scope:actor = {
+			add_dread = 15
+			add_stress = 40
+			add_character_modifier = { modifier = sect_internal_dispute days = 1095 }
+			add_character_modifier = { modifier = sect_power_struggle days = 730 }
+			add_character_modifier = { modifier = sect_lineage_fracture days = 730 }
+		}
+	}
+}

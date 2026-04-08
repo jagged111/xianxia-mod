@@ -1,0 +1,299 @@
+﻿#Activity Pulse Actions for Pilgrimages
+#
+#Adult education means guests are always AI and unlanded, some of these are therefore only for the host
+#There won't always be an entourage of more than a caravan master
+#There will be other students, and teachers. These are identified with flags and are generated/picked out by the activity.
+#APAs marked with * involve or can happen to characters other than the host
+
+#Study Hard Intent:
+#apa_leveraging_language_skills
+
+#Revelry Intent:
+#
+
+#Stress - University life requires work
+#apa_procrastination
+
+##Lifestyles, etc
+#apa_studying_scripture - Shared/From other File
+#apa_visited_markets - Shared/From other File
+#apa_foreign_custom - Shared/From other File
+
+##Random Education APAs
+#apa_sight_seeing_group - Shared/From other File
+#apa_university_discussions - Pick up lifestyle xp from teacher
+
+#Character knows liturgical language of the religion of the university
+#We are using the location here - rather than the religion of the teachers - which could differ
+
+apa_ks_procrastination = {
+	#Either suitable trait or reveller intent
+	icon = learning
+	is_valid = {
+		is_current_phase_active = yes
+		any_attending_character = {
+			NOR = {
+				has_character_flag = ks_teacher_1
+			}
+			OR = {
+				has_activity_intent = ks_cultivation_revelry_intent
+				has_trait = lazy
+				has_trait = arrogant
+				has_trait = drunkard
+				has_trait = fickle
+				has_trait = arbitrary
+			}
+		}
+	}
+
+	weight = {
+		value = 1
+	}
+
+	effect = {
+		random_attending_character = {
+			limit = {
+				NOT = {
+					has_character_flag = ks_teacher_1
+				}
+				OR = {
+					has_activity_intent = ks_cultivation_revelry_intent
+					has_trait = lazy
+					has_trait = arrogant
+					has_trait = drunkard
+					has_trait = fickle
+					has_trait = arbitrary
+				}
+			}
+			save_scope_as = first
+		}
+		add_activity_log_entry = {
+			key = apa_ks_procrastination
+			tags = { pulse_action }
+			character = scope:first
+			
+			scope:first = {
+				add_stress = minor_stress_gain
+			}
+		}
+	}
+}
+
+apa_ks_university_discussions = {
+	#No real triggers
+	icon = learning
+	is_valid = {
+		is_current_phase_active = yes
+		any_attending_character = {
+			this != scope:host
+			is_available_healthy_ai_adult = yes
+			has_character_flag = ks_teacher_1
+		}
+	}
+
+	weight = {
+		value = 1
+	}
+
+	effect = {
+		scope:host = {
+			save_scope_as = first
+		}
+		random_attending_character = {
+			limit = {
+				this != scope:host
+				is_available_healthy_ai_adult = yes
+				has_character_flag = ks_teacher_1
+
+			}
+			save_scope_as = second
+		}
+		add_activity_log_entry = {
+			key = apa_ks_university_discussions
+			tags = { pulse_action }
+			character = scope:first
+			target = scope:second
+
+			scope:second = {
+				if = {
+					limit = {
+						has_education_martial_trigger = yes
+					}
+					scope:first = {
+						add_martial_lifestyle_xp = medium_lifestyle_xp
+					}
+				}
+				else_if = {
+					limit = {
+						has_education_diplomacy_trigger = yes
+					}
+					scope:first = {
+						add_diplomacy_lifestyle_xp = medium_lifestyle_xp
+					}
+				}
+				else_if = {
+					limit = {
+						has_education_learning_trigger = yes
+					}
+					scope:first = {
+						add_learning_lifestyle_xp = medium_lifestyle_xp
+					}
+				}
+				else_if = {
+					limit = {
+						has_education_stewardship_trigger = yes
+					}
+					scope:first = {
+						add_stewardship_lifestyle_xp = medium_lifestyle_xp
+					}
+				}
+				else_if = {
+					limit = {
+						has_education_intrigue_trigger = yes
+					}
+					scope:first = {
+						add_intrigue_lifestyle_xp = medium_lifestyle_xp
+					}
+				}
+			}
+		}
+	}
+}
+
+apa_ks_night_on_books = {
+	icon = learning
+	is_valid = {
+		is_current_phase_active = yes
+		any_attending_character = {
+			NOT = {
+				has_character_flag = ks_teacher_1
+			}
+		}
+	}
+
+	weight = {
+		value = 1
+	}
+
+	effect = {
+		random_attending_character = {
+			limit = {
+				NOT = {
+					has_character_flag = ks_teacher_1
+				}
+			}
+			save_scope_as = first
+		}
+
+		add_activity_log_entry = {
+			key = apa_ks_night_on_books
+			tags = { pulse_action }
+			character = scope:first
+			
+			scope:first = {
+				add_stress = minor_stress_gain
+				if = {
+					limit = {
+						this = scope:host
+					}
+					custom_tooltip = ks_cultivation_tt_positive_tiny
+					scope:activity = { activity_special_type_progression_tiny = yes }
+				}
+			}
+		}
+	}
+}
+
+apa_ks_great_progress = {
+	icon = learning
+	is_valid = {
+		is_current_phase_active = yes
+		any_attending_character = {
+			NOT = {
+				has_character_flag = ks_teacher_1
+			}
+		}
+	}
+
+	weight = {
+		value = 1
+	}
+
+	effect = {
+		random_attending_character = {
+			limit = {
+				NOT = {
+					has_character_flag = ks_teacher_1
+				}
+			}
+			save_scope_as = first
+		}
+
+		add_activity_log_entry = {
+			key = apa_ks_great_progress
+			tags = { pulse_action }
+			character = scope:first
+			
+			scope:first = {
+				add_stress = minor_stress_loss
+				if = {
+					limit = {
+						this = scope:host
+					}
+					custom_tooltip = ks_cultivation_tt_positive_medium
+					scope:activity = { activity_special_type_progression_medium = yes }
+				}
+			}
+		}
+	}
+}
+
+apa_ks_local_food = {
+	icon = social
+	is_valid = {
+		is_current_phase_active = yes
+		any_attending_character = {
+			NOT = {
+				has_character_flag = ks_teacher_1
+			}
+		}
+	}
+
+	weight = {
+		value = 1
+	}
+
+	effect = {
+		random_attending_character = {
+			limit = {
+				NOT = {
+					has_character_flag = ks_teacher_1
+				}
+			}
+			save_scope_as = first
+		}
+
+		add_activity_log_entry = {
+			key = apa_ks_local_food
+			tags = { pulse_action }
+			character = scope:first
+	
+			every_attending_character = {
+				limit = {
+					NOR = {
+						this = scope:first
+						is_ai = no
+					}
+				}
+				add_opinion = {
+					target = scope:first
+					modifier = shared_delicacy_opinion
+					opinion = 5
+				}
+			}
+		}
+	}
+}
+
+
+

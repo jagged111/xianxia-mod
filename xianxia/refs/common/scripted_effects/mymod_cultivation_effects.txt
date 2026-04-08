@@ -1,0 +1,159 @@
+﻿# ---------------------------------------------------------
+#   MYMOD — Cultivation XP Gain & Breakthrough Logic
+#   Safe version using only verified CK3 syntax
+# ---------------------------------------------------------
+
+# -----------------------------
+# 1. XP Gain Each Year
+# -----------------------------
+mymod_cultivation_gain_xp_effect = {
+    
+    # Only apply to characters who have any cultivation realm trait
+    if = {
+        limit = {
+            OR = {
+                has_trait = qi_gathering
+                has_trait = foundation_establishment
+                has_trait = core_formation
+                has_trait = nascent_soul
+                has_trait = spirit_severing
+                has_trait = dao_seeking
+                has_trait = immortal_ascension
+            }
+        }
+
+        # Basic XP gain for everyone
+        add_trait_xp = {
+            trait = qi_gathering
+            value = 1
+        }
+        add_trait_xp = {
+            trait = foundation_establishment
+            value = 1
+        }
+        add_trait_xp = {
+            trait = core_formation
+            value = 1
+        }
+        add_trait_xp = {
+            trait = nascent_soul
+            value = 1
+        }
+        add_trait_xp = {
+            trait = spirit_severing
+            value = 1
+        }
+        add_trait_xp = {
+            trait = dao_seeking
+            value = 1
+        }
+        add_trait_xp = {
+            trait = immortal_ascension
+            value = 1
+        }
+    }
+}
+
+# -----------------------------
+# 2. Breakthrough Logic (Safe)
+# -----------------------------
+mymod_cultivation_breakthrough_effect = {
+
+    # Only attempt breakthroughs if the character has a cultivation trait
+    if = {
+        limit = {
+            OR = {
+                has_trait = qi_gathering
+                has_trait = foundation_establishment
+                has_trait = core_formation
+                has_trait = nascent_soul
+                has_trait = spirit_severing
+                has_trait = dao_seeking
+            }
+        }
+
+        # ---------------------------------------------------------
+        # QI GATHERING → FOUNDATION ESTABLISHMENT
+        # ---------------------------------------------------------
+        if = {
+            limit = { has_trait = qi_gathering }
+            random_list = {
+                75 = {
+                    remove_trait = qi_gathering
+                    add_trait = foundation_establishment
+                }
+                25 = { }
+            }
+        }
+
+        # ---------------------------------------------------------
+        # FOUNDATION → CORE FORMATION
+        # ---------------------------------------------------------
+        if = {
+            limit = { has_trait = foundation_establishment }
+            random_list = {
+                50 = {
+                    remove_trait = foundation_establishment
+                    add_trait = core_formation
+                }
+                50 = { }
+            }
+        }
+
+        # ---------------------------------------------------------
+        # CORE FORMATION → NASCENT SOUL
+        # ---------------------------------------------------------
+        if = {
+            limit = { has_trait = core_formation }
+            random_list = {
+                2 = {
+                    remove_trait = core_formation
+                    add_trait = nascent_soul
+                }
+                98 = { }
+            }
+        }
+
+        # ---------------------------------------------------------
+        # NASCENT SOUL → SPIRIT SEVERING
+        # ---------------------------------------------------------
+        if = {
+            limit = { has_trait = nascent_soul }
+            random_list = {
+                1 = {
+                    remove_trait = nascent_soul
+                    add_trait = spirit_severing
+                }
+                99 = { }
+            }
+        }
+
+        # ---------------------------------------------------------
+        # SPIRIT SEVERING → DAO SEEKING
+        # ---------------------------------------------------------
+        if = {
+            limit = { has_trait = spirit_severing }
+            random_list = {
+                1 = {
+                    remove_trait = spirit_severing
+                    add_trait = dao_seeking
+                }
+                99 = { }
+            }
+        }
+
+        # ---------------------------------------------------------
+        # DAO SEEKING → IMMORTAL ASCENSION
+        # ---------------------------------------------------------
+        if = {
+            limit = { has_trait = dao_seeking }
+            random_list = {
+                1 = {
+                    remove_trait = dao_seeking
+                    add_trait = immortal_ascension
+                }
+                99 = { }
+            }
+        }
+    }
+}

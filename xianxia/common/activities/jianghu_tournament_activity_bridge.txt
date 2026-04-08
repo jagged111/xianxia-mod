@@ -1,0 +1,35 @@
+# Activity bridge excerpt for quick reference (mirrors live in-game script locations).
+# NOTE: Engine-loaded canonical definitions remain in the original files listed below.
+
+# Canonical file: /common/decisions/cultivation_jianghu_flavor_decisions.txt
+jianghu_oath_gathering_decision = {
+    effect = {
+        add_character_flag = { flag = jianghu_oath_gathering_cooldown days = 1825 }
+        trigger_event = xianxia_world.1100
+    }
+}
+
+# Canonical file: /events/xianxia_world_events.txt
+xianxia_world.1100 = {
+    type = character_event
+    title = xianxia_world.1100.t
+    desc = xianxia_world.1100.desc
+
+    option = {
+        name = xianxia_world.1100.a
+        if = {
+            limit = { can_host_activity = activity_tournament }
+            ai_attempt_to_host_activity = activity_tournament
+        }
+        add_character_modifier = { modifier = sect_resource_surplus days = 730 }
+        add_prestige = 250
+        trigger_event = { id = xianxia_world.1110 days = 15 }
+    }
+}
+
+
+# Canonical file: /events/xianxia_world_events.txt
+# Stage continuation hooks
+xianxia_world.1110 = { option = { trigger_event = { id = xianxia_world.1120 days = 20 } } }
+
+# Branch note: xianxia_world.1110 now offers stable (a) and aggressive rivalry (b) tournament paths before finals.

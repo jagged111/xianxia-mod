@@ -1,0 +1,30 @@
+﻿# Modifiers from the betterbattles mod for compat
+#if you are using the mod, these should be overwritten by the mod's versions (in case those ever change) since their file is after this one alphabetically
+#if you are NOT using the mod these will not be applied by anything, but exist here so the game does not crash on load
+
+melt = {
+	icon = martial_positive
+	advantage = 1
+	martial = 1
+}
+
+unit = { 
+	icon = prowess_positive
+	prowess = 1
+	monthly_prestige = 0.3
+	knight_effectiveness_mult = 0.25
+}
+
+#including this here because why make a second file when I don't have to?
+
+msc_captured = {
+	icon = prowess_negative
+	#zero out captured knights' prowess so they no longer have any impact on the wider battle
+	prowess = -99999
+}
+
+msc_duel_cooldown = {
+	icon = prowess_negative	
+	#this only exists to mark this as a character mod and suppress errors
+	monthly_prestige = 0.1
+}

@@ -1,0 +1,1503 @@
+﻿namespace = cultivation_sect_join
+
+# ============================================================================
+# ALL CULTIVATION SECT JOIN EVENTS - 67 SECTS
+# ============================================================================
+
+# ===== ORTHODOX SWORD DAO =====
+
+# Mount Hua Sect - Join Event 1000
+cultivation_sect_join.1000 = {
+    type = character_event
+    title = cultivation_sect_join.1000.t
+    desc = cultivation_sect_join.1000.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator= yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+			
+        set_character_faith = faith:mount_hua_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:mount_hua_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Ten Thousand Swords Valley - Join Event 1003
+cultivation_sect_join.1003 = {
+    type = character_event
+    title = cultivation_sect_join.1003.t
+    desc = cultivation_sect_join.1003.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:ten_thousand_swords_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:ten_thousand_swords_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Violet Thunder Blade Sect - Join Event 1004
+cultivation_sect_join.1004 = {
+    type = character_event
+    title = cultivation_sect_join.1004.t
+    desc = cultivation_sect_join.1004.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:violet_thunder_blade_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:violet_thunder_blade_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Nine Star Formation Sect - Join Event 1052
+cultivation_sect_join.1052 = {
+    type = character_event
+    title = cultivation_sect_join.1052.t
+    desc = cultivation_sect_join.1052.desc
+    theme = learning
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:nine_star_formation_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:nine_star_formation_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Mystic Seal Pavilion - Join Event 1053
+cultivation_sect_join.1053 = {
+    type = character_event
+    title = cultivation_sect_join.1053.t
+    desc = cultivation_sect_join.1053.desc
+    theme = learning
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:mystic_seal_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:mystic_seal_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Wudang Sect - Join Event 1100
+cultivation_sect_join.1100 = {
+    type = character_event
+    title = cultivation_sect_join.1100.t
+    desc = cultivation_sect_join.1100.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:wudang_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:wudang_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Shaolin Temple - Join Event 1101
+cultivation_sect_join.1101 = {
+    type = character_event
+    title = cultivation_sect_join.1101.t
+    desc = cultivation_sect_join.1101.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:shaolin_temple
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:shaolin_temple
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Eternal Harmony Pavilion - Join Event 1102
+cultivation_sect_join.1102 = {
+    type = character_event
+    title = cultivation_sect_join.1102.t
+    desc = cultivation_sect_join.1102.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:eternal_harmony_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:eternal_harmony_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Divine Beast Mountain - Join Event 1150
+cultivation_sect_join.1150 = {
+    type = character_event
+    title = cultivation_sect_join.1150.t
+    desc = cultivation_sect_join.1150.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:divine_beast_mountain
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:divine_beast_mountain
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Thousand Beast Valley - Join Event 1154
+cultivation_sect_join.1154 = {
+    type = character_event
+    title = cultivation_sect_join.1154.t
+    desc = cultivation_sect_join.1154.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:thousand_beast_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:thousand_beast_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# ===== UNORTHODOX SABER DAO =====
+
+# Crimson Moon Blade Hall - Join Event 2000
+cultivation_sect_join.2000 = {
+    type = character_event
+    title = cultivation_sect_join.2000.t
+    desc = cultivation_sect_join.2000.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:crimson_moon_blade_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:crimson_moon_blade_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Tyrant Saber Palace - Join Event 2001
+cultivation_sect_join.2001 = {
+    type = character_event
+    title = cultivation_sect_join.2001.t
+    desc = cultivation_sect_join.2001.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:tyrant_saber_palace
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:tyrant_saber_palace
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Demon Suppressing Blade Clan - Join Event 2003
+cultivation_sect_join.2003 = {
+    type = character_event
+    title = cultivation_sect_join.2003.t
+    desc = cultivation_sect_join.2003.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:demon_suppressing_blade_clan
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:demon_suppressing_blade_clan
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Medicine King Valley - Join Event 2051
+cultivation_sect_join.2051 = {
+    type = character_event
+    title = cultivation_sect_join.2051.t
+    desc = cultivation_sect_join.2051.desc
+    theme = learning
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:medicine_king_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:medicine_king_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Hundred Herbs Pavilion - Join Event 2052
+cultivation_sect_join.2052 = {
+    type = character_event
+    title = cultivation_sect_join.2052.t
+    desc = cultivation_sect_join.2052.desc
+    theme = learning
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:hundred_herbs_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:hundred_herbs_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Jade Chamber Sect - Join Event 2103
+cultivation_sect_join.2103 = {
+    type = character_event
+    title = cultivation_sect_join.2103.t
+    desc = cultivation_sect_join.2103.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:jade_chamber_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:jade_chamber_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Eternal Pleasure Hall - Join Event 2104
+cultivation_sect_join.2104 = {
+    type = character_event
+    title = cultivation_sect_join.2104.t
+    desc = cultivation_sect_join.2104.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:eternal_pleasure_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:eternal_pleasure_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# ===== UNORTHODOX JIANGSHI DAO =====
+
+# Moonless Night Pavilion - Join Event 2150
+cultivation_sect_join.2150 = {
+    type = character_event
+    title = cultivation_sect_join.2150.t
+    desc = cultivation_sect_join.2150.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:moonless_night_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:moonless_night_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Pale Bone Hall - Join Event 2151
+cultivation_sect_join.2151 = {
+    type = character_event
+    title = cultivation_sect_join.2151.t
+    desc = cultivation_sect_join.2151.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:pale_bone_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:pale_bone_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Eternal Rest Clan - Join Event 2152
+cultivation_sect_join.2152 = {
+    type = character_event
+    title = cultivation_sect_join.2152.t
+    desc = cultivation_sect_join.2152.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:eternal_rest_clan
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:eternal_rest_clan
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Ten Thousand Corpse Valley - Join Event 3001
+cultivation_sect_join.3001 = {
+    type = character_event
+    title = cultivation_sect_join.3001.t
+    desc = cultivation_sect_join.3001.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:ten_thousand_corpse_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:ten_thousand_corpse_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Venomous Serpent Valley - Join Event 3051
+cultivation_sect_join.3051 = {
+    type = character_event
+    title = cultivation_sect_join.3051.t
+    desc = cultivation_sect_join.3051.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:venomous_serpent_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:venomous_serpent_valley
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# ===== DEMONIC BLOOD DAO =====
+
+# Blood Yin Cult - Join Event 3100
+cultivation_sect_join.3100 = {
+    type = character_event
+    title = cultivation_sect_join.3100.t
+    desc = cultivation_sect_join.3100.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:blood_yin_cult
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:blood_yin_cult
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Blood Moon Demonic Sect - Join Event 3101
+cultivation_sect_join.3101 = {
+    type = character_event
+    title = cultivation_sect_join.3101.t
+    desc = cultivation_sect_join.3101.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:blood_moon_demonic_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:blood_moon_demonic_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Succubus Palace - Join Event 3150
+cultivation_sect_join.3150 = {
+    type = character_event
+    title = cultivation_sect_join.3150.t
+    desc = cultivation_sect_join.3150.desc
+    theme = intrigue
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:succubus_palace
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:succubus_palace
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# ===== VAGRANT WANDERING BLADE DAO =====
+
+# Lone Wolf Wanderers - Join Event 4000
+cultivation_sect_join.4000 = {
+    type = character_event
+    title = cultivation_sect_join.4000.t
+    desc = cultivation_sect_join.4000.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:lone_wolf_wanderers
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:lone_wolf_wanderers
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Vagrant Blade Brotherhood - Join Event 4002
+cultivation_sect_join.4002 = {
+    type = character_event
+    title = cultivation_sect_join.4002.t
+    desc = cultivation_sect_join.4002.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:vagrant_blade_brotherhood
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:vagrant_blade_brotherhood
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# ===== VAGRANT ARTIFACT DAO =====
+
+# Thousand Treasures Pavilion - Join Event 4050
+cultivation_sect_join.4050 = {
+    type = character_event
+    title = cultivation_sect_join.4050.t
+    desc = cultivation_sect_join.4050.desc
+    theme = stewardship
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:thousand_treasures_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:thousand_treasures_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Mystic Forge Hall - Join Event 4051
+cultivation_sect_join.4051 = {
+    type = character_event
+    title = cultivation_sect_join.4051.t
+    desc = cultivation_sect_join.4051.desc
+    theme = stewardship
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:mystic_forge_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:mystic_forge_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Ancient Relic Sect - Join Event 4052
+cultivation_sect_join.4052 = {
+    type = character_event
+    title = cultivation_sect_join.4052.t
+    desc = cultivation_sect_join.4052.desc
+    theme = stewardship
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:ancient_relic_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:ancient_relic_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Primal Beast Sect - Join Event 4101
+cultivation_sect_join.4101 = {
+    type = character_event
+    title = cultivation_sect_join.4101.t
+    desc = cultivation_sect_join.4101.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:primal_beast_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:primal_beast_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Primordial Chaos Hall - Join Event 4102
+cultivation_sect_join.4102 = {
+    type = character_event
+    title = cultivation_sect_join.4102.t
+    desc = cultivation_sect_join.4102.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:primordial_chaos_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:primordial_chaos_hall
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Feral Bond Sect - Join Event 4152
+cultivation_sect_join.4152 = {
+    type = character_event
+    title = cultivation_sect_join.4152.t
+    desc = cultivation_sect_join.4152.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # MASTER OPTION - High cultivation level required
+    option = {
+        name = sect_join
+		custom_tooltip = sect_join_is_cultivator_desc
+		
+        trigger = { 
+			custom_tooltip = {
+				text = sect_join_isnt_cultivator_desc
+				is_cultivator = yes 
+			}
+		}
+			
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:feral_bond_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # DONATION OPTION - Pay gold to join
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:feral_bond_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}

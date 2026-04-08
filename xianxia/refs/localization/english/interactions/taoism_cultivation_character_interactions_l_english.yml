@@ -1,0 +1,9 @@
+﻿l_english:
+ 
+ teach_cultivation_interaction:0 "Teach Cultivation"
+ teach_cultivation_interaction_desc:0 "Teach [recipient.GetShortUINameNoTooltip] Cultivation"
+ teach_cultivation_interaction_player:0 "Teach Cultivation"
+ teach_cultivation_interaction_player_desc:0 "Teach [recipient.GetShortUINameNoTooltip] Cultivation"
+ 
+ request_teach_cultivation_interaction:0 "Request teaching in Cultivation"
+ request_teach_cultivation_interaction_desc:0 "Request that [recipient.GetShortUINameNoTooltip] teach you Cultivation"

@@ -1,0 +1,215 @@
+﻿##################################################
+# INTEGRATION REALM (Y: 39-41) +150 years + RESURRECTION!
+# Tree: integration_tree
+# 5 branches in stage 1, 5 branches in stage 2
+##################################################
+
+# Integration Stage 1 (5 branches)
+integration_1a_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 12
+		learning = 2
+	}
+}
+
+integration_1b_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 1 0.5 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		martial = 6
+		learning = 2
+	}
+}
+
+integration_1c_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 2 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		learning = 4
+		health = 0.5
+	}
+}
+
+integration_1d_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 3 0.5 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		advantage = 10
+		health = 0.5
+	}
+}
+
+integration_1e_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 4 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 9
+		advantage = 10
+	}
+}
+
+# Integration Stage 2 (5 branches, each connects to ALL stage 1)
+integration_2a_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 0 2.5 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+	parent = integration_1a_perk
+	
+	character_modifier = {
+		prowess = 15
+		learning = 3
+		advantage = 15
+	}
+}
+
+integration_2b_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 1 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+	parent = integration_1b_perk
+	
+	character_modifier = {
+		martial = 8
+		learning = 3
+		advantage = 15
+	}
+}
+
+integration_2c_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 2 1.5 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+	parent = integration_1c_perk
+	
+	character_modifier = {
+		learning = 5
+		health = 1.0
+		advantage = 15
+	}
+}
+
+integration_2d_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 3 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+	parent = integration_1d_perk
+	
+	character_modifier = {
+		prowess = 12
+		advantage = 20
+		health = 1.0
+	}
+}
+
+integration_2e_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 4 2.5 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = node_cultivation
+	parent = integration_1e_perk
+	
+	character_modifier = {
+		prowess = 15
+		martial = 6
+		advantage = 20
+	}
+}
+
+# Star Shattering Breakthrough
+integration_star_shattering_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = integration_tree
+	position = { 2 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_integration
+	}
+	icon = cultivation_star_shattering_f
+	parent = integration_2a_perk
+	parent = integration_2b_perk
+	parent = integration_2c_perk
+	parent = integration_2d_perk
+	parent = integration_2e_perk
+	
+	trait = cultivation_star_shattering
+	
+	effect = {
+		add_character_flag = can_attempt_star_shattering_breakthrough
+		trigger_event = cultivation_breakthrough.1800
+	}
+	
+	character_modifier = {
+		prowess = 69
+		learning = 12
+		health = 8.0
+		advantage = 70
+		monthly_prestige = 4.0
+		dread_baseline_add = 25
+	}
+}

@@ -1,0 +1,2173 @@
+﻿l_english:
+
+ ##Martial Arts Men-at-Arms
+ martial_artist_cultivator:0 "Cultivator"
+ martial_artist_army_1:0 "Martial Artist"
+ martial_artist_army_2:0 "Master Martial Artist"
+ martial_artist_army_3:0 "Grand Master Martial Artist"
+ zombie_army_1:0 "Zombie"
+ zombie_army_2:0 "Undead"
+ zombie_army_3:0 "Jiang-Shi"
+ zombie_army_4:0 "Resurrected"
+ zombie_army_5:0 "Death Lord"
+ immortal_army_1:0 "Jade Warrior"
+ immortal_army_2:0 "Immortal Warrior"
+
+ ##Martial Arts Men-at-Arms Descriptions
+ martial_artist_cultivator_flavor:0 "Cultivators that just started in the way of Immortality"
+ martial_artist_army_1_flavor:0 "Newly trained martial artist."
+ martial_artist_army_2_flavor:0 "Martial artist's that mastered their martial ways. A well trained warrior."
+ martial_artist_army_3_flavor:0 "Martial artist that trascended the human limits. Can use sword qi."
+ zombie_army_1_flavor:0 "A Zombie born from decased body. Can't think or cultivate. Meat shield for frontlines."
+ zombie_army_2_flavor:0 "First try at resurrection. Can't think on his own but can use some qi."
+ zombie_army_3_flavor:0 "Widely known and accepted way of resurrection. Jiang-Shi's is must have for some sects way of cultivation. Can understand and use cultivation. Loyal to creator cultivator."
+ zombie_army_4_flavor:0 "Nearly perfect resurrected. Has some memories of their past lives and retains some cultivation. Can think and oparate on its own. Have a small bond with its creator."
+ zombie_army_5_flavor:0 "Death Lords are resurrected people that cultivated death qi and reach immortal realm."
+ immortal_army_1_flavor:0 "Jade Warriors have reached immortal realm and have royal blood in them. They are solitary and honoroble true immortals."
+ immortal_army_2_flavor:0 "They reached immortal realm with sheer power. The only thing they want is fight."
+
+ ##############
+ ##Bloodline Men-at-Arms
+ ##############
+ yin_cultivator_1:0 "Yin Cultivator"
+ yin_cultivator_1_flavor:0 "Yin Cultivator"
+ yin_cultivator_2:0 "Master Yin Cultivator"
+ yin_cultivator_2_flavor:0 "Master Yin Cultivator"
+ yin_cultivator_3:0 "Grandmaster Yin Cultivator"
+ yin_cultivator_3_flavor:0 "Grandmaster Yin Cultivator"
+
+ yang_cultivator_1:0 "Yang Cultivator"
+ yang_cultivator_1_flavor:0 "Yang Cultivator"
+ yang_cultivator_2:0 "Master Yang Cultivator"
+ yang_cultivator_2_flavor:0 "Yang Cultivator"
+ yang_cultivator_3:0 "Grandmaster Yang Cultivator"
+ yang_cultivator_3_flavor:0 "Yang Cultivator"
+
+ primal_cultivator_1:0 "Primal Cultivator"
+ primal_cultivator_1_flavor:0 "Primal Cultivator"
+ primal_cultivator_2:0 "Master Primal Cultivator"
+ primal_cultivator_2_flavor:0 "Primal Cultivator"
+ primal_cultivator_3:0 "Grandmaster Primal Cultivator"
+ primal_cultivator_3_flavor:0 "Primal Cultivator"
+
+ sun_cultivator_1:0 "Sand Warrior"
+ sun_cultivator_1_flavor:0 "Sand Warrior"
+ sun_cultivator_2:0 "Master Sand Warrior"
+ sun_cultivator_2_flavor:0 "Sand Warrior"
+ sun_cultivator_3:0 "Grandmaster Sand Warrior"
+ sun_cultivator_3_flavor:0 "Sand Warrior"
+
+ ##############
+ ##Dynasty
+ ##############
+ cultivation_legacy_track_name:0 "Immortal Blood"
+ cultivation_legacy_track_desc:0 "Cultivation familys create their own way"
+ cultivation_legacy_1_name:0 "Awaken Bloodline"
+ cultivation_legacy_2_name:0 "Teaching"
+ cultivation_legacy_3_name:0 "Army"
+ cultivation_legacy_4_name:0 "Tradition"
+ cultivation_legacy_5_name:0 "Ascended Bloodline"
+
+ cultivation_1_effect:0 ""
+ cultivation_1_unlock_effect:0 ""
+ cultivation_2_effect:0 ""
+ cultivation_2_unlock_effect:0 ""
+ cultivation_3_effect:0 ""
+ cultivation_3_unlock_effect:0 ""
+ cultivation_4_effect:0 ""
+ cultivation_4_unlock_effect:0 ""
+ cultivation_5_effect:0 ""
+ cultivation_5_unlock_effect:0 ""
+
+ IMMORTAL_CULTIVATOR_UNLOCK_DESCRIPTION:0 "Can recruit [GetMaA('immortal_army_1').GetName] and [GetMaA('immortal_army_2').GetName] as [men_at_arms|E]"
+ IMMORTAL_CULTIVATOR_DESCRIPTION:0 "#weak [GetMaA('immortal_army_1').GetName] and [GetMaA('immortal_army_2').GetName] Requires: Immortal Realm#!"
+
+ ZOMBIE_UNLOCK_DESCRIPTION:0 "Can recruit [GetMaA('zombie_army_4').GetName] and [GetMaA('zombie_army_5').GetName] as [men_at_arms|E]"
+ ZOMBIE_DESCRIPTION:0 "#weak [GetMaA('zombie_army_1').GetName], Requieres: Qi Gathering and up, \n[GetMaA('zombie_army_2').GetName], Requires: Golden Core and up, \n[GetMaA('zombie_army_3').GetName], Requires: Peak Realm and up, \n[GetMaA('zombie_army_4').GetName], Requires: Unrestrained Realm and up, \n[GetMaA('zombie_army_5').GetName], Requires: Immortal Realm#!"
+
+ SEDUCER_UNLOCK_DESCRIPTION:0 ""
+ SEDUCER_DESCRIPTION:0 ""
+
+ MARTIAL_ARTIST_UNLOCK_DESCRIPTION:0 "Can recruit [GetMaA('martial_artist_army_1').GetName], [GetMaA('martial_artist_army_2').GetName] and [GetMaA('martial_artist_army_3').GetName] as [men_at_arms|E]"
+ MARTIAL_ARTIST_DESCRIPTION:0 "#weak [GetMaA('martial_artist_army_1').GetName], Requieres: Qi Gathering and up, \n[GetMaA('martial_artist_army_2').GetName], Requires: Peak Realm and up, \n[GetMaA('martial_artist_army_3').GetName] Requires: Unrestrained Realm and up#!"
+
+ CULTIVATOR_UNLOCK_DESCRIPTION:0 ""
+ CULTIVATOR_DESCRIPTION:0 ""
+
+ DUAL_CULTIVATION_SEX_EFFECT_DESCRIPTION:0 "You have learned dual cultivation, harmonizing yin and yang essence to accelerate your progress on the Dao."
+
+ ##################################################
+ # SECT SPAR EVENTS - With Variable Display
+ ##################################################
+
+ # Event 1000 - Invitation
+ cultivation_sect_spar.1000.t:0 "Sect Sparring Invitation"
+ cultivation_sect_spar.1000.desc:0 "[sparring_partner.GetTitledFirstName] approaches you in the sect courtyard, challenge gleaming in [sparring_partner.GetHerHis] eyes.\n\n\"Fellow cultivator, let us test our skills. A friendly spar sharpens the blade!\"\n\n#bold Your Record:#! \n   Spar Won: #P [ROOT.Var('sect_spars_won').GetValue] #! \n   Spar Lost: #N  [ROOT.Var('sect_spars_lost').GetValue] #! \n   Total Spar: [ROOT.Var('sect_spars_total').GetValue]"
+ cultivation_sect_spar.1000.a:0 "Accept the challenge!"
+ cultivation_sect_spar.1000.b:0 "Decline respectfully"
+
+ ##################################################
+ # SECT SPAR INTERACTION
+ ##################################################
+
+ actor_secondary_sect_spar_interaction:0 "Challenger"
+
+ SECT_SPAR_INTERACTION_TITLE:0 "Challenge to Sect Spar"
+ sect_spar_interaction_desc:0 "Challenge a fellow cultivator to a friendly spar to test your skills and gain experience."
+
+ YOUR_SPAR_RECORD:0 "Your Sparring Record"
+ OPPONENT_SPAR_RECORD:0 "Opponent's Record"
+
+ CHALLENGE_TO_SPAR:0 "Challenge to Spar"
+
+ # Interaction descriptions
+ sect_spar_interaction_desc_own_court:0 "Arrange a sect spar between members of your court to test their skills and build experience."
+ sect_spar_interaction_desc_other_court:0 "Arrange a sect spar between a member of your court and [recipient.GetTitledFirstNamePossessive] court."
+
+ # GUI labels
+ YOUR_FIGHTER:0 "Your Fighter"
+ OPPONENT_FIGHTER:0 "Opponent"
+ CLEAR_SPAR_CHARACTERS:0 "Clear Selected Fighters"
+
+ # Send options
+ SECT_SPAR_SEND_OWN_COURT:0 "Arrange Spar (Own Court)"
+ SECT_SPAR_SEND_OTHER_COURT:0 "Propose Spar"
+ SECT_SPAR_SEND:0 "Arrange Spar"
+
+ # Validation messages
+ cannot_spar_yourself:0 "Cannot spar yourself"
+
+ # AI reasons
+ AI_PROWESS_REASON:0 "Based on fighter's prowess"
+
+ sect_spar_interaction:0 "Challenge a Sect Member"
+ recipient_secondary_sect_spar_interaction:0 "Sect Member"
+
+ challenge_to_sect_spar:0 "Challenge to Sect Spar"
+ challenge_to_sect_spar_desc:0 "Challenge [recipient.GetTitledFirstName] to a friendly cultivation spar in the sect courtyard.\n\n#bold Your Record:#! [actor.Var('sect_spars_won').GetValue]W - [actor.Var('sect_spars_lost').GetValue]L ([actor.Var('sect_spars_total').GetValue] total)\n#bold Their Record:#! [recipient.Var('sect_spars_won').GetValue]W - [recipient.Var('sect_spars_lost').GetValue]L ([recipient.Var('sect_spars_total').GetValue] total)"
+
+ cultivation_spar_effect.tt:0 "Can gain #P [GetLifestyle('cultivation_lifestyle').GetName] #!Experiance"
+ cultivation_spar_effect.ttt:0 "Can gain #P [GetLifestyle('cultivation_lifestyle').GetName] #!Experiance"
+
+ ##################################################
+ # MODIFIERS
+ ##################################################
+
+ sect_spar_victory:0 "Recent Spar Victory"
+ sect_spar_victory_desc:0 "This cultivator recently won a sect spar, confidence surging.\n\n#bold Career Wins:#! [Character.Var('sect_spars_won').GetValue]"
+
+ sect_spar_defeat:0 "Recent Spar Defeat"
+ sect_spar_defeat_desc:0 "The sting of defeat from a recent sect spar still lingers.\n\n#bold Career Losses:#! [Character.Var('sect_spars_lost').GetValue]"
+
+ ##################################################
+ # SECT JOINING DECISION TOOLTIPS
+ ##################################################
+
+ join_elite_sect_decision:0 "Join Elite Sect"
+ join_elite_sect_decision_desc:0 "Petition to join the prestigious Iron Fist Sect.\n\nThey only accept warriors with proven combat prowess.\n\n#bold Your Sparring Record:#!\nWins: #P [Character.Var('sect_spars_won').GetValue]#!\nLosses: #N [Character.Var('sect_spars_lost').GetValue]#!\nTotal: [Character.Var('sect_spars_total').GetValue]"
+ join_elite_sect_decision_tooltip:0 "Petition to join the Iron Fist Sect"
+ join_elite_sect_decision_confirm:0 "Submit petition"
+
+ # Custom tooltip for requirements
+ elite_sect_needs_wins:0 "Not enough spar victories ([Character.Var('sect_spars_won').GetValue]/10 required)"
+ elite_sect_needs_positive_ratio:0 "Negative win/loss ratio (#P [Character.Var('sect_spars_won').GetValue]#! wins vs #N [Character.Var('sect_spars_lost').GetValue]#! losses)"
+ elite_sect_requirements_met:0 "Sparring record qualifies! ([Character.Var('sect_spars_won').GetValue] wins, [Character.Var('sect_spars_lost').GetValue] losses)"
+
+ ##################################################
+ # CHARACTER TOOLTIP ADDITIONS
+ ##################################################
+
+ # This can be used in character info panels
+ sect_sparring_record_header:0 "Sect Sparring Record"
+ sect_sparring_record_details:0 "#bold Total Spars:#! [Character.Var('sect_spars_total').GetValue]\n#P Wins:#! [Character.Var('sect_spars_won').GetValue]\n#N Losses:#! [Character.Var('sect_spars_lost').GetValue]"
+
+ ##################################################
+ # REPUTATION TITLES
+ ##################################################
+
+ undefeated_sparring_champion:0 "Undefeated Sparring Champion"
+ undefeated_sparring_champion_desc:0 "[Character.GetFirstName] has won #bold [Character.Var('sect_spars_won').GetValue]#! sect spars without a single defeat!"
+
+ sparring_champion:0 "Sparring Champion"
+ sparring_champion_desc:0 "With #P [Character.Var('sect_spars_won').GetValue]#! victories in sect spars, [Character.GetFirstName] is renowned as a formidable cultivator."
+
+ sparring_expert:0 "Sparring Expert"
+ sparring_expert_desc:0 "[Character.GetFirstName] has won #P [Character.Var('sect_spars_won').GetValue]#! sect spars, demonstrating considerable skill."
+
+ sparring_veteran:0 "Sparring Veteran"
+ sparring_veteran_desc:0 "Through #bold [Character.Var('sect_spars_total').GetValue]#! sect spars, [Character.GetFirstName] has gained valuable experience."
+
+ struggling_sparrer:0 "Struggling in Spars"
+ struggling_sparrer_desc:0 "Despite #bold [Character.Var('sect_spars_total').GetValue]#! attempts, [Character.GetFirstName] has only won #P [Character.Var('sect_spars_won').GetValue]#! spars."
+
+ ##################################################
+ # AI ACCEPTANCE MODIFIERS
+ ##################################################
+
+ spar_target_is_champion:0 "[recipient.GetFirstName] is a proven sparring champion ([recipient.Var('sect_spars_won').GetValue] wins)"
+ spar_target_is_weak:0 "[recipient.GetFirstName] has a poor sparring record ([recipient.Var('sect_spars_lost').GetValue] losses)"
+ spar_actor_is_renowned:0 "You are a renowned sparring champion ([actor.Var('sect_spars_won').GetValue] wins)"
+ spar_actor_is_inexperienced:0 "You have limited sparring experience ([actor.Var('sect_spars_total').GetValue] total spars)"
+
+ sect_spar_option_tooltip:0 "Your record: #P [Character.Var('sect_spars_won').GetValue]W#! - #N [Character.Var('sect_spars_lost').GetValue]L#! ([Character.Var('sect_spars_total').GetValue] total)"
+ sect_join_is_cultivator_desc:0 "You are cultivator."
+ sect_join_isnt_cultivator_desc:0 "You are not a cultivator."
+ FIND_LEFT_PARTNER_TOOLTIP:0 "Find a left-side dual cultivation partner."
+ FIND_RIGHT_PARTNER_TOOLTIP:0 "Find a right-side dual cultivation partner."
+ BREAKTHROUGH:0 "Breakthrough"
+ CULTIVATION_GUI_SECT_LABEL:0 "Sect:"
+ CULTIVATION_GUI_PROWESS_LABEL:0 "Prowess:"
+ CULTIVATION_GUI_REALM_LABEL:0 "Realm:"
+ CULTIVATION_GUI_MORTAL_LABEL:0 "Mortal"
+ cultivation_ai.0001.desc:0 "The wheel of cultivation turns unseen among the masses."
+ cultivation_ai.0002.desc:0 "A wandering soul seeks a sect aligned with their destiny."
+
+ ##################################################
+ # LIFESTYLE
+ ##################################################
+
+ cultivation_lifestyle:0 "Cultivation"
+ cultivation_lifestyle_name:0 "Cultivation"
+ cultivation_lifestyle_desc:0 "The path of immortality through cultivation of Qi, body refinement, and soul tempering."
+ cultivation_lifestyle_highlight_desc:0 "Unlocks a new way of life"
+ cultivation_path_name:0 "Cultivation Path"
+
+ ##################################################
+ # FOCUSES
+ ##################################################
+
+ ## CULTIVATION FOCUSES
+ cultivation_orthodox_focus:0 "Orthodox Cultivation"
+ cultivation_orthodox_focus_name:0 "Orthodox Cultivation"
+ cultivation_orthodox_focus_desc:0 "Focus on righteous orthodox cultivation methods, emphasizing moral virtue and traditional techniques."
+ cultivation_orthodox_focus_effect_desc:0 ""
+
+ cultivation_unorthodox_focus:0 "Unorthodox Cultivation"
+ cultivation_unorthodox_focus_name:0 "Unorthodox Cultivation"
+ cultivation_unorthodox_focus_desc:0 "Pursue unconventional cultivation methods that lie in the grey area between orthodox and demonic paths."
+ cultivation_unorthodox_focus_effect_desc:0 ""
+
+ cultivation_demonic_focus:0 "Demonic Cultivation"
+ cultivation_demonic_focus_name:0 "Demonic Cultivation"
+ cultivation_demonic_focus_desc:0 "Practice forbidden demonic cultivation techniques, gaining immense power through dark methods."
+ cultivation_demonic_focus_effect_desc:0 ""
+
+ cultivation_vagrant_focus:0 "Vagrant Cultivation"
+ cultivation_vagrant_focus_name:0 "Vagrant Cultivation"
+ cultivation_rogue_focus_name:0 "Vagrant Cultivation"
+ cultivation_vagrant_focus_desc:0 "Walk your own independent path of cultivation, beholden to no sect or tradition."
+ cultivation_vagrant_focus_effect_desc:0 ""
+
+ # Focus modifier localization (shown in character modifier list while a focus is active)
+ cultivation_orthodox_focus_modifier:0 "Orthodox Cultivation Focus"
+ cultivation_orthodox_focus_modifier_desc:0 "This character is focused on orthodox methods: disciplined cultivation, righteous conduct, and stable progress."
+ cultivation_unorthodox_focus_modifier:0 "Unorthodox Cultivation Focus"
+ cultivation_unorthodox_focus_modifier_desc:0 "This character is focused on unorthodox methods: adaptive techniques, rivalry-driven growth, and pragmatic insight."
+ cultivation_demonic_focus_modifier:0 "Demonic Cultivation Focus"
+ cultivation_demonic_focus_modifier_desc:0 "This character is focused on demonic methods: ruthless power, dangerous momentum, and fear-driven dominance."
+ cultivation_vagrant_focus_modifier:0 "Vagrant Cultivation Focus"
+ cultivation_vagrant_focus_modifier_desc:0 "This character is focused on an independent wandering path: flexible insight and freedom from sect orthodoxy."
+
+ ##################################################
+ # PERK TREES (REALMS)
+ ##################################################
+
+ mortal_realm:0 "Mortal Realm"
+ mortal_realm_name:0 "Mortal Realm"
+
+ qi_refining_realm:0 "Qi Refining Realm"
+ qi_refining_realm_name:0 "Qi Refining Realm"
+
+ foundation_realm:0 "Foundation Establishment"
+ foundation_realm_name:0 "Foundation Establishment"
+
+ golden_core_realm:0 "Golden Core Realm"
+ golden_core_realm_name:0 "Golden Core Realm"
+
+ nascent_soul_realm:0 "Nascent Soul Realm"
+ nascent_soul_realm_name:0 "Nascent Soul Realm"
+
+ soul_severing_realm:0 "Soul Severing Realm"
+ soul_severing_realm_name:0 "Soul Severing Realm"
+
+ tribulation_realm:0 "Tribulation Transcendence"
+ tribulation_realm_name:0 "Tribulation Transcendence"
+
+ mahayana_realm:0 "Mahayana Realm"
+ mahayana_realm_name:0 "Mahayana Realm"
+
+ ##################################################
+ # TRAITS
+ ##################################################
+
+ trait_cultivation_mortal:0 "Mortal"
+ trait_cultivation_mortal_name:0 "Mortal"
+ trait_cultivation_mortal_desc:0 "A mortal beginning their cultivation journey. Lifespan: 60-80 years."
+ trait_cultivation_mortal_character_desc:0 "[ROOT.Char.GetFirstName] is a mortal cultivator taking their first steps on the path to immortality."
+
+ trait_cultivation_qi_gathering:0 "Qi Gathering"
+ trait_cultivation_qi_gathering_name:0 "Qi Gathering"
+ trait_cultivation_qi_gathering_desc:0 "Opening meridians and gathering Qi. Lifespan: 60-80 years."
+ trait_cultivation_qi_gathering_character_desc:0 "[ROOT.Char.GetFirstName] is gathering Qi and opening their meridians."
+
+ trait_cultivation_qi_refining:0 "Qi Refining"
+ trait_cultivation_qi_refining_name:0 "Qi Refining"
+ trait_cultivation_qi_refining_desc:0 "Refining Qi through multiple stars. Lifespan: 60-80 years."
+ trait_cultivation_qi_refining_character_desc:0 "[ROOT.Char.GetFirstName] is refining their Qi, progressing through the stars."
+
+ trait_cultivation_qi_building:0 "Qi Building"
+ trait_cultivation_qi_building_name:0 "Qi Building"
+ trait_cultivation_qi_building_desc:0 "Building a solid Qi foundation. Lifespan: 60-80 years."
+ trait_cultivation_qi_building_character_desc:0 "[ROOT.Char.GetFirstName] is building their Qi foundation for core formation."
+
+ trait_cultivation_core_formation:0 "Core Formation"
+ trait_cultivation_core_formation_name:0 "Core Formation"
+ trait_cultivation_core_formation_desc:0 "Formed a cultivation core. Lifespan: 75-95 years (+15 years)."
+ trait_cultivation_core_formation_character_desc:0 "[ROOT.Char.GetFirstName] has formed their core, extending their lifespan."
+
+ trait_cultivation_nascent_soul:0 "Nascent Soul"
+ trait_cultivation_nascent_soul_name:0 "Nascent Soul"
+ trait_cultivation_nascent_soul_desc:0 "Birthed a Nascent Soul. Lifespan: 115-135 years (+40 years)."
+ trait_cultivation_nascent_soul_character_desc:0 "[ROOT.Char.GetFirstName] has birthed their Nascent Soul and greatly extended their life."
+
+ trait_cultivation_heavenly_being:0 "Heavenly Being"
+ trait_cultivation_heavenly_being_name:0 "Heavenly Being"
+ trait_cultivation_heavenly_being_desc:0 "Ascended to Heavenly Being. Lifespan: 185-205 years (+70 years)."
+ trait_cultivation_heavenly_being_character_desc:0 "[ROOT.Char.GetFirstName] has become a Heavenly Being, living far beyond mortal limits."
+
+ trait_cultivation_four_axis:0 "Four-Axis"
+ trait_cultivation_four_axis_name:0 "Four-Axis"
+ trait_cultivation_four_axis_desc:0 "Mastered the Four Axes. Lifespan: 285-305 years (+100 years)."
+ trait_cultivation_four_axis_character_desc:0 "[ROOT.Char.GetFirstName] has mastered the Four Axes and lives for centuries."
+
+ trait_cultivation_integration:0 "Integration"
+ trait_cultivation_integration_name:0 "Integration"
+ trait_cultivation_integration_desc:0 "Achieved Integration and Resurrection. Lifespan: 435-455 years (+150 years)."
+ trait_cultivation_integration_character_desc:0 "[ROOT.Char.GetFirstName] has achieved Integration. They can resurrect from death!"
+
+ trait_cultivation_star_shattering:0 "Star Shattering"
+ trait_cultivation_star_shattering_name:0 "Star Shattering"
+ trait_cultivation_star_shattering_desc:0 "Shattered the stars. Lifespan: 635-655 years (+200 years)."
+ trait_cultivation_star_shattering_character_desc:0 "[ROOT.Char.GetFirstName] has shattered the stars and wields cosmic power."
+
+ trait_cultivation_sacred_vessel:0 "Sacred Vessel"
+ trait_cultivation_sacred_vessel_name:0 "Sacred Vessel"
+ trait_cultivation_sacred_vessel_desc:0 "Became a Sacred Vessel. Lifespan: 915-935 years (+280 years)."
+ trait_cultivation_sacred_vessel_character_desc:0 "[ROOT.Char.GetFirstName] has become a Sacred Vessel, containing divine essence."
+
+ trait_cultivation_entering_nirvana:0 "Entering Nirvana"
+ trait_cultivation_entering_nirvana_name:0 "Entering Nirvana"
+ trait_cultivation_entering_nirvana_desc:0 "Entering Nirvana realm. Lifespan: 1,265-1,285 years (+350 years)."
+ trait_cultivation_entering_nirvana_character_desc:0 "[ROOT.Char.GetFirstName] is entering Nirvana, transcending life and death."
+
+ trait_cultivation_true_immortal:0 "True Immortal"
+ trait_cultivation_true_immortal_name:0 "True Immortal"
+ trait_cultivation_true_immortal_desc:0 "Achieved True Immortality. Lifespan: IMMORTAL (+500 years)."
+ trait_cultivation_true_immortal_character_desc:0 "[ROOT.Char.GetFirstName] has achieved True Immortality. Ageless and eternal!"
+
+ ##################################################
+ # BLOODLINES
+ ##################################################
+
+ trait_yin_bloodline:0 "Lunar Yin Lineage"
+ trait_yin_bloodline_1:0 "Dormant Lunar Yin"
+ trait_yin_bloodline_2:0 "Pure Lunar Yin"
+ trait_yin_bloodline_3:0 "Awakened Lunar Yin"
+ trait_yang_bloodline:0 "Solar Yang Lineage"
+ trait_yang_bloodline_1:0 "Dormant Solar Yang"
+ trait_yang_bloodline_2:0 "Pure Solar Yang"
+ trait_yang_bloodline_3:0 "Awakened Solar Yang"
+ trait_dragon_bloodline:0 "True Dragon Lineage"
+ trait_dragon_bloodline_1:0 "Dormant Dragon Blood"
+ trait_dragon_bloodline_2:0 "Pure Dragon Blood"
+ trait_dragon_bloodline_3:0 "Awakened Dragon Soulblood"
+ trait_phoenix_bloodline:0 "Vermilion Phoenix Lineage"
+ trait_phoenix_bloodline_1:0 "Dormant Phoenix Blood"
+ trait_phoenix_bloodline_2:0 "Pure Phoenix Blood"
+ trait_phoenix_bloodline_3:0 "Awakened Phoenix Soulflame"
+ trait_anchestor_bloodline:0 "Ancestral Sage Lineage"
+ trait_anchestor_bloodline_1:0 "Dormant Ancestral Blood"
+ trait_anchestor_bloodline_2:0 "Pure Ancestral Blood"
+ trait_anchestor_bloodline_3:0 "Awakened Ancestral Echo"
+ trait_poison_bloodline:0 "Ten-Thousand Venoms Lineage"
+ trait_poison_bloodline_1:0 "Dormant Venom Blood"
+ trait_poison_bloodline_2:0 "Pure Venom Blood"
+ trait_poison_bloodline_3:0 "Awakened Venomous Heartblood"
+ trait_cursed_bloodline:0 "Calamity-Bound Lineage"
+ trait_cursed_bloodline_1:0 "Dormant Calamity Blood"
+ trait_cursed_bloodline_2:0 "Pure Calamity Blood"
+ trait_cursed_bloodline_3:0 "Awakened Calamity Mark"
+ trait_demon_bloodline:0 "Abyssal Demon Lineage"
+ trait_demon_bloodline_1:0 "Dormant Demon Blood"
+ trait_demon_bloodline_2:0 "Pure Demon Blood"
+ trait_demon_bloodline_3:0 "Awakened Demon Heartblood"
+ trait_primal_bloodline:0 "Primordial Chaos Lineage"
+ trait_primal_bloodline_1:0 "Dormant Primordial Blood"
+ trait_primal_bloodline_2:0 "Pure Primordial Blood"
+ trait_primal_bloodline_3:0 "Awakened Primordial Origin"
+ trait_sun_bloodline:0 "Great Sun Lineage"
+ trait_sun_bloodline_1:0 "Dormant Great Sun Blood"
+ trait_sun_bloodline_2:0 "Pure Great Sun Blood"
+ trait_sun_bloodline_3:0 "Awakened Great Sun Essence"
+ trait_spirit_bloodline:0 "Heavenly Spirit Lineage"
+ trait_spirit_bloodline_1:0 "Dormant Spirit Blood"
+ trait_spirit_bloodline_2:0 "Pure Spirit Blood"
+ trait_spirit_bloodline_3:0 "Awakened Spirit Origin"
+
+ ##################################################
+ # BLOODLINES Desc
+ ##################################################
+
+ trait_yin_bloodline_desc:0 "A naturally cold and moon-aligned bloodline. Yin blood excels in subtle qi circulation, soul arts, and long-form cultivation."
+ trait_yin_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Yin Blood, with calm meridians and an affinity for moonlit and spiritual cultivation."
+ trait_yang_bloodline_desc:0 "A blazing, sun-like bloodline. Yang blood grants fierce vitality, explosive breakthroughs, and domineering offensive qi."
+ trait_yang_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Yang Blood, radiating hot-blooded vitality and forceful cultivation intent."
+ trait_dragon_bloodline_desc:0 "An ancient sovereign bloodline tied to draconic will. Dragon blood strengthens body, authority, and battlefield presence."
+ trait_dragon_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Dragon Blood, bearing a tyrannical aura that bends weaker wills."
+ trait_phoenix_bloodline_desc:0 "A noble flame bloodline associated with rebirth and purification. Phoenix blood grants resilience and recovery after hardship."
+ trait_phoenix_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Phoenix Blood, enduring calamity with unyielding life force."
+ trait_anchestor_bloodline_desc:0 "A lineage blessed by ancestral echoes. This bloodline preserves inherited techniques and stabilizes generational cultivation."
+ trait_anchestor_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Ancestor Blood, with spiritual roots deeply tied to clan legacy."
+ trait_poison_bloodline_desc:0 "A dangerous bloodline infused with venomous essence. Poison blood turns qi into corrosion, toxins, and insidious killing arts."
+ trait_poison_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Poison Blood, and even their qi can erode enemies from within."
+ trait_cursed_bloodline_desc:0 "A burdened lineage marked by fate. Cursed blood grants forbidden power at the cost of ominous karmic consequences."
+ trait_cursed_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Cursed Blood, walking a path of strength shadowed by misfortune."
+ trait_demon_bloodline_desc:0 "A savage bloodline attuned to slaughter and devouring intent. Demon blood favors ruthless growth and fearsome pressure."
+ trait_demon_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Demon Blood, with a sinister aura that unsettles even veteran cultivators."
+ trait_primal_bloodline_desc:0 "A primordial lineage close to the origin of heaven and earth. Primal blood offers raw compatibility with fundamental dao laws."
+ trait_primal_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Primal Blood, resonating with ancient and untamed world qi."
+ trait_spirit_bloodline_desc:0 "A lucid bloodline favored by spirits. Spirit blood sharpens perception, affinity, and control over refined qi techniques."
+ trait_spirit_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Spirit Blood, naturally attuned to subtle fluctuations of heaven and earth."
+ trait_sun_bloodline_desc:0 "A radiant bloodline born from pure solar essence. Sun blood empowers flame arts, purification, and tyrannical daytime cultivation."
+ trait_sun_bloodline_character_desc:0 "[ROOT.Char.GetFirstName] carries Sun Blood, blazing with intense yang radiance."
+
+ ##################################################
+ # MORTAL REALM PERKS (Y: 0-3)
+ ##################################################
+
+ mortal_realm_tree_name:0 "Mortal Realm"
+
+ mortal_internal_reconstruction_perk:0 "Internal Reconstruction"
+ mortal_internal_reconstruction_perk_name:0 "Internal Reconstruction"
+ mortal_internal_reconstruction_perk_desc:0 "Reforge your internal channels to build a stronger cultivation base."
+
+ mortal_external_reconstruction_perk:0 "External Reconstruction"
+ mortal_external_reconstruction_perk_name:0 "External Reconstruction"
+ mortal_external_reconstruction_perk_desc:0 "Temper your external physique to endure harsher training."
+
+ mortal_muscle_reconstruction_perk:0 "Muscle Reconstruction"
+ mortal_muscle_reconstruction_perk_name:0 "Muscle Reconstruction"
+ mortal_muscle_reconstruction_perk_desc:0 "Reconstruct muscles for greater strength."
+
+ mortal_bone_reconstruction_perk:0 "Bone Reconstruction"
+ mortal_bone_reconstruction_perk_name:0 "Bone Reconstruction"
+ mortal_bone_reconstruction_perk_desc:0 "Strengthen bones through cultivation."
+
+ mortal_body_reconstruction_perk:0 "Body Reconstruction"
+ mortal_body_reconstruction_perk_name:0 "Body Reconstruction"
+ mortal_body_reconstruction_perk_desc:0 "Complete body reconstruction at the mortal level."
+
+ mortal_qi_gathering_breakthrough_perk:0 "Breakthrough: Qi Gathering"
+ mortal_qi_gathering_breakthrough_perk_name:0 "Breakthrough: Qi Gathering"
+ mortal_qi_gathering_breakthrough_perk_desc:0 "Break through to the Qi Gathering Realm!"
+
+ ##################################################
+ # QI GATHERING REALM PERKS (Y: 4-9)
+ ##################################################
+
+ qi_gathering_tree_name:0 "Qi Gathering Realm"
+
+ qi_gathering_meridian_1_perk:0 "Qi Gathering"
+ qi_gathering_meridian_1_perk_name:0 "Qi Gathering"
+ qi_gathering_meridian_1_perk_desc:0 "Open the first meridian."
+
+ qi_gathering_meridian_2_perk:0 "Qi Gathering"
+ qi_gathering_meridian_2_perk_name:0 "Qi Gathering"
+ qi_gathering_meridian_2_perk_desc:0 "Open the second meridian."
+
+ qi_gathering_meridian_3a_perk:0 "Lower Dantian"
+ qi_gathering_meridian_3a_perk_name:0 "Lower Dantian"
+ qi_gathering_meridian_3a_perk_desc:0 "Follow the scholarly meridian path."
+
+ qi_gathering_meridian_3b_perk:0 "Upper Dantian"
+ qi_gathering_meridian_3b_perk_name:0 "Upper Dantian"
+ qi_gathering_meridian_3b_perk_desc:0 "Follow the martial meridian path."
+
+ qi_gathering_meridian_4_perk:0 "Middle Dantian"
+ qi_gathering_meridian_4_perk_name:0 "Middle Dantian"
+ qi_gathering_meridian_4_perk_desc:0 "Open the fourth meridian, merging the paths."
+
+ qi_gathering_qi_refining_breakthrough_perk:0 "Breakthrough: Qi Refining"
+ qi_gathering_qi_refining_breakthrough_perk_name:0 "Breakthrough: Qi Refining"
+ qi_gathering_qi_refining_breakthrough_perk_desc:0 "Break through to the Qi Refining Realm!"
+
+ ##################################################
+ # QI REFINING REALM PERKS (Y: 9-20)
+ ##################################################
+
+ qi_refining_tree_name:0 "Qi Refining Realm"
+
+ qi_refining_1a_star_perk:0 "1-Star"
+ qi_refining_1a_star_perk_name:0 "1-Star"
+ qi_refining_1a_star_perk_desc:0 "Achieve the first star, scholarly path."
+
+ qi_refining_1b_star_perk:0 "2-Star"
+ qi_refining_1b_star_perk_name:0 "2-Star"
+ qi_refining_1b_star_perk_desc:0 "Achieve the first star, martial path."
+
+ qi_refining_middle_perk:0 "Middle Qi Refining"
+ qi_refining_middle_perk_name:0 "Middle Qi Refining"
+ qi_refining_middle_perk_desc:0 "Reach the middle stage of Qi Refining."
+
+ qi_refining_2a_star_perk:0 "3-Star"
+ qi_refining_2a_star_perk_name:0 "3-Star"
+ qi_refining_2a_star_perk_desc:0 "Third star, prowess specialization."
+
+ qi_refining_2b_star_perk:0 "4-Star"
+ qi_refining_2b_star_perk_name:0 "4-Star"
+ qi_refining_2b_star_perk_desc:0 "Third star, martial specialization."
+
+ qi_refining_2c_star_perk:0 "5-Star"
+ qi_refining_2c_star_perk_name:0 "5-Star"
+ qi_refining_2c_star_perk_desc:0 "Third star, learning specialization."
+
+ qi_refining_2d_star_perk:0 "6-Star"
+ qi_refining_2d_star_perk_name:0 "6-Star"
+ qi_refining_2d_star_perk_desc:0 "Third star, vitality specialization."
+
+ qi_refining_higher_perk:0 "Higher Qi Refining"
+ qi_refining_higher_perk_name:0 "Higher Qi Refining"
+ qi_refining_higher_perk_desc:0 "Reach the higher stage of Qi Refining."
+
+ qi_refining_3a_star_perk:0 "7-Star"
+ qi_refining_3a_star_perk_name:0 "7-Star"
+ qi_refining_3a_star_perk_desc:0 "Seventh star, prowess mastery."
+
+ qi_refining_3b_star_perk:0 "8-Star"
+ qi_refining_3b_star_perk_name:0 "8-Star"
+ qi_refining_3b_star_perk_desc:0 "Seventh star, martial mastery."
+
+ qi_refining_3c_star_perk:0 "9-Star"
+ qi_refining_3c_star_perk_name:0 "9-Star"
+ qi_refining_3c_star_perk_desc:0 "Seventh star, learning mastery."
+
+ qi_refining_peak_perk:0 "Peak Qi Refining"
+ qi_refining_peak_perk_name:0 "Peak Qi Refining"
+ qi_refining_peak_perk_desc:0 "Reach the peak of the Qi Refining Realm."
+
+ qi_refining_qi_building_breakthrough_perk:0 "Breakthrough: Qi Building"
+ qi_refining_qi_building_breakthrough_perk_name:0 "Breakthrough: Qi Building"
+ qi_refining_qi_building_breakthrough_perk_desc:0 "Break through to the Qi Building Realm!"
+
+ ##################################################
+ # QI BUILDING REALM PERKS (Y: 16-20)
+ ##################################################
+
+ qi_building_tree_name:0 "Qi Building Realm"
+
+ qi_building_1_perk:0 "Qi Gathering"
+ qi_building_1_perk_name:0 "Qi Gathering"
+ qi_building_1_perk_desc:0 "Begin building your Qi foundation."
+
+ qi_building_2_perk:0 "Qi Gathering"
+ qi_building_2_perk_name:0 "Qi Gathering"
+ qi_building_2_perk_desc:0 "Begin building your Qi foundation."
+
+ qi_building_3_perk:0 "Qi Gathering"
+ qi_building_3_perk_name:0 "Qi Gathering"
+ qi_building_3_perk_desc:0 "Begin building your Qi foundation."
+
+ qi_building_4_perk:0 "Qi Gathering"
+ qi_building_4_perk_name:0 "Qi Gathering"
+ qi_building_4_perk_desc:0 "Begin building your Qi foundation."
+
+ qi_building_5_perk:0 "Qi Gathering"
+ qi_building_5_perk_name:0 "Qi Gathering"
+ qi_building_5_perk_desc:0 "Begin building your Qi foundation."
+
+ qi_building_early_perk:0 "Early Qi Building"
+ qi_building_early_perk_name:0 "Early Qi Building"
+ qi_building_early_perk_desc:0 "Begin building your Qi foundation."
+
+ qi_building_mid_perk:0 "Middle Qi Building"
+ qi_building_mid_perk_name:0 "Middle Qi Building"
+ qi_building_mid_perk_desc:0 "Continue building your foundation."
+
+ qi_building_late_perk:0 "Late Qi Building"
+ qi_building_late_perk_name:0 "Late Qi Building"
+ qi_building_late_perk_desc:0 "Near completion of Qi Building."
+
+ qi_building_peak_perk:0 "Peak Qi Building"
+ qi_building_peak_perk_name:0 "Peak Qi Building"
+ qi_building_peak_perk_desc:0 "Perfect your Qi Building stage and prepare to form a core."
+
+ qi_building_core_formation_breakthrough_perk:0 "Breakthrough: Core Formation"
+ qi_building_core_formation_breakthrough_perk_name:0 "Breakthrough: Core Formation"
+ qi_building_core_formation_breakthrough_perk_desc:0 "Form your core! Lifespan +15 years!"
+
+ ##################################################
+ # CORE FORMATION REALM PERKS (Y: 21-25) +15 YEARS
+ ##################################################
+
+ core_formation_tree_name:0 "Core Formation Realm"
+
+ core_formation_qi1_perk:0 "Qi Gathering"
+ core_formation_qi1_perk_name:0 "Qi Gathering"
+ core_formation_qi1_perk_desc:0 "Begin building your Qi foundation."
+
+ core_formation_qi2_perk:0 "Qi Gathering"
+ core_formation_qi2_perk_name:0 "Qi Gathering"
+ core_formation_qi2_perk_desc:0 "Begin building your Qi foundation."
+
+ core_formation_qi3_perk:0 "Qi Gathering"
+ core_formation_qi3_perk_name:0 "Qi Gathering"
+ core_formation_qi3_perk_desc:0 "Begin building your Qi foundation."
+
+ core_formation_qi4_perk:0 "Qi Gathering"
+ core_formation_qi4_perk_name:0 "Qi Gathering"
+ core_formation_qi4_perk_desc:0 "Begin building your Qi foundation."
+
+ core_formation_qi5_perk:0 "Qi Gathering"
+ core_formation_qi5_perk_name:0 "Qi Gathering"
+ core_formation_qi5_perk_desc:0 "Begin building your Qi foundation."
+
+ core_formation_early_perk:0 "Early Core Formation"
+ core_formation_early_perk_name:0 "Early Core Formation"
+ core_formation_early_perk_desc:0 "Stabilize your newly formed core."
+
+ core_formation_mid_perk:0 "Middle Core Formation"
+ core_formation_mid_perk_name:0 "Middle Core Formation"
+ core_formation_mid_perk_desc:0 "Strengthen your cultivation core."
+
+ core_formation_late_perk:0 "Late Core Formation"
+ core_formation_late_perk_name:0 "Late Core Formation"
+ core_formation_late_perk_desc:0 "Perfect your core's structure."
+
+ core_formation_peak_perk:0 "Peak Core Formation"
+ core_formation_peak_perk_name:0 "Peak Core Formation"
+ core_formation_peak_perk_desc:0 "Reach the peak of Core Formation."
+
+ core_formation_nascent_soul_breakthrough_perk:0 "Breakthrough: Nascent Soul"
+ core_formation_nascent_soul_breakthrough_perk_name:0 "Breakthrough: Nascent Soul"
+ core_formation_nascent_soul_breakthrough_perk_desc:0 "Birth your Nascent Soul! Lifespan +40 years!"
+
+ ##################################################
+ # NASCENT SOUL REALM PERKS (Y: 26-30) +40 YEARS
+ ##################################################
+
+ nascent_soul_tree_name:0 "Nascent Soul Realm"
+
+ nascent_soul_early_perk:0 "Early Nascent Soul"
+ nascent_soul_early_perk_name:0 "Early Nascent Soul"
+ nascent_soul_early_perk_desc:0 "Nurture your Nascent Soul."
+
+ nascent_soul_mid_perk:0 "Mid Nascent Soul"
+ nascent_soul_mid_perk_name:0 "Mid Nascent Soul"
+ nascent_soul_mid_perk_desc:0 "Strengthen your soul."
+
+ nascent_soul_late_perk:0 "Late Nascent Soul"
+ nascent_soul_late_perk_name:0 "Late Nascent Soul"
+ nascent_soul_late_perk_desc:0 "Perfect your soul cultivation."
+
+ nascent_soul_peak_perk:0 "Peak Nascent Soul"
+ nascent_soul_peak_perk_name:0 "Peak Nascent Soul"
+ nascent_soul_peak_perk_desc:0 "Peak Nascent Soul power."
+
+ nascent_soul_heavenly_being_breakthrough_perk:0 "Breakthrough: Heavenly Being"
+ nascent_soul_heavenly_being_breakthrough_perk_name:0 "Breakthrough: Heavenly Being"
+ nascent_soul_heavenly_being_breakthrough_perk_desc:0 "Ascend to Heavenly Being! Lifespan +70 years!"
+
+ ##################################################
+ # HEAVENLY BEING REALM PERKS (Y: 31-35) +70 YEARS
+ ##################################################
+
+ heavenly_being_tree_name:0 "Heavenly Being Realm"
+
+ heavenly_being_1_perk:0 "Qi Gathering"
+ heavenly_being_1_perk_name:0 "Qi Gathering"
+ heavenly_being_1_perk_desc:0 "Begin building your Qi foundation."
+
+ heavenly_being_2_perk:0 "Qi Gathering"
+ heavenly_being_2_perk_name:0 "Qi Gathering"
+ heavenly_being_2_perk_desc:0 "Begin building your Qi foundation."
+
+ heavenly_being_3_perk:0 "Qi Gathering"
+ heavenly_being_3_perk_name:0 "Qi Gathering"
+ heavenly_being_3_perk_desc:0 "Begin building your Qi foundation."
+
+ heavenly_being_4_perk:0 "Qi Gathering"
+ heavenly_being_4_perk_name:0 "Qi Gathering"
+ heavenly_being_4_perk_desc:0 "Begin building your Qi foundation."
+
+ heavenly_being_5_perk:0 "Qi Gathering"
+ heavenly_being_5_perk_name:0 "Qi Gathering"
+ heavenly_being_5_perk_desc:0 "Begin building your Qi foundation."
+
+ heavenly_being_early_perk:0 "Early Heavenly Being"
+ heavenly_being_early_perk_name:0 "Early Heavenly Being"
+ heavenly_being_early_perk_desc:0 "Enter the Heavenly Being realm."
+
+ heavenly_being_mid_perk:0 "Mid Heavenly Being"
+ heavenly_being_mid_perk_name:0 "Mid Heavenly Being"
+ heavenly_being_mid_perk_desc:0 "Consolidate Heavenly Being power."
+
+ heavenly_being_late_perk:0 "Late Heavenly Being"
+ heavenly_being_late_perk_name:0 "Late Heavenly Being"
+ heavenly_being_late_perk_desc:0 "Approach Heavenly Being peak."
+
+ heavenly_being_peak_perk:0 "Peak Heavenly Being"
+ heavenly_being_peak_perk_name:0 "Peak Heavenly Being"
+ heavenly_being_peak_perk_desc:0 "Peak Heavenly Being cultivation."
+
+ heavenly_being_four_axis_breakthrough_perk:0 "Breakthrough: Four-Axis"
+ heavenly_being_four_axis_breakthrough_perk_name:0 "Breakthrough: Four-Axis"
+ heavenly_being_four_axis_breakthrough_perk_desc:0 "Master the Four Axes! Lifespan +100 years!"
+
+ ##################################################
+ # FOUR-AXIS REALM PERKS (Y: 36-41) +100 YEARS
+ ##################################################
+
+ four_axis_tree_name:0 "Four Axis Realm"
+
+ four_axis_axis_1a_perk:0 "Longevity Axis"
+ four_axis_axis_1a_perk_name:0 "Longevity Axis"
+ four_axis_axis_1a_perk_desc:0 "Master the Prowess Axis."
+
+ four_axis_axis_1b_perk:0 "Wealth Axis"
+ four_axis_axis_1b_perk_name:0 "Wealth Axis"
+ four_axis_axis_1b_perk_desc:0 "Master the Martial Axis."
+
+ four_axis_axis_1c_perk:0 "Love of Virtue Axis"
+ four_axis_axis_1c_perk_name:0 "Love of Virtue Axis"
+ four_axis_axis_1c_perk_desc:0 "Master the Learning Axis."
+
+ four_axis_axis_1d_perk:0 "Health Axis"
+ four_axis_axis_1d_perk_name:0 "Health Axis"
+ four_axis_axis_1d_perk_desc:0 "Master the Vitality Axis."
+
+ four_axis_axis_2_perk:0 "Earth Axis"
+ four_axis_axis_2_perk_name:0 "Earth Axis"
+ four_axis_axis_2_perk_desc:0 "Merge all four axes into one."
+
+ four_axis_integration_breakthrough_perk:0 "Breakthrough: Integration"
+ four_axis_integration_breakthrough_perk_name:0 "Breakthrough: Integration"
+ four_axis_integration_breakthrough_perk_desc:0 "Achieve Integration! RESURRECTION! Lifespan +150 years!"
+
+ ##################################################
+ # INTEGRATION REALM PERKS (Y: 39-41) +150 YEARS + RESURRECTION!
+ ##################################################
+
+ integration_tree_name:0 "Integration Realm"
+
+ integration_1a_perk:0 "Rain"
+ integration_1a_perk_name:0 "Rain"
+ integration_1a_perk_desc:0 "First integration path."
+
+ integration_1b_perk:0 "Sun"
+ integration_1b_perk_name:0 "Sun"
+ integration_1b_perk_desc:0 "First integration path."
+
+ integration_1c_perk:0 "Heat"
+ integration_1c_perk_name:0 "Heat"
+ integration_1c_perk_desc:0 "First integration path."
+
+ integration_1d_perk:0 "Cold"
+ integration_1d_perk_name:0 "Cold"
+ integration_1d_perk_desc:0 "First integration path."
+
+ integration_1e_perk:0 "Wind"
+ integration_1e_perk_name:0 "Wind"
+ integration_1e_perk_desc:0 "First integration path."
+
+ integration_2a_perk:0 "Cloudiness"
+ integration_2a_perk_name:0 "Cloudiness"
+ integration_2a_perk_desc:0 "Second integration path."
+
+ integration_2b_perk:0 "Time"
+ integration_2b_perk_name:0 "Time"
+ integration_2b_perk_desc:0 "Second integration path."
+
+ integration_2c_perk:0 "Warmth"
+ integration_2c_perk_name:0 "Warmth"
+ integration_2c_perk_desc:0 "Second integration path."
+
+ integration_2d_perk:0 "Coldness"
+ integration_2d_perk_name:0 "Coldness"
+ integration_2d_perk_desc:0 "Second integration path."
+
+ integration_2e_perk:0 "Clearness"
+ integration_2e_perk_name:0 "Clearness"
+ integration_2e_perk_desc:0 "Second integration path."
+
+ integration_star_shattering_breakthrough_perk:0 "Breakthrough: Star Shattering"
+ integration_star_shattering_breakthrough_perk_name:0 "Breakthrough: Star Shattering"
+ integration_star_shattering_breakthrough_perk_desc:0 "Shatter the stars! Lifespan +200 years!"
+
+ ##################################################
+ # STAR SHATTERING REALM PERKS (Y: 42-48) +200 YEARS
+ ##################################################
+
+ star_shattering_tree_name:0 "Star Shattering Realm"
+
+ star_shattering_explode_perk:0 "Explode"
+ star_shattering_explode_perk_name:0 "Explode"
+ star_shattering_explode_perk_desc:0 "Explode your inner star."
+
+ star_shattering_1a_perk:0 "First Star Fragment"
+ star_shattering_1a_perk_name:0 "First Star Fragment"
+ star_shattering_1a_perk_desc:0 "Gather star fragments."
+
+ star_shattering_1b_perk:0 "Second Star Fragment"
+ star_shattering_1b_perk_name:0 "Second Star Fragment"
+ star_shattering_1b_perk_desc:0 "Gather star fragments."
+
+ star_shattering_1c_perk:0 "Last Star Fragment"
+ star_shattering_1c_perk_name:0 "Last Star Fragment"
+ star_shattering_1c_perk_desc:0 "Gather star fragments."
+
+ star_shattering_1d_perk:0 "Fourth Star Fragment"
+ star_shattering_1d_perk_name:0 "Fourth Star Fragment"
+ star_shattering_1d_perk_desc:0 "Gather star fragments."
+
+ star_shattering_1e_perk:0 "Third Star Fragment"
+ star_shattering_1e_perk_name:0 "Third Star Fragment"
+ star_shattering_1e_perk_desc:0 "Gather star fragments."
+
+ star_shattering_becoming_star_perk:0 "Becoming Star"
+ star_shattering_becoming_star_perk_name:0 "Becoming Star"
+ star_shattering_becoming_star_perk_desc:0 "Reform as a living star."
+
+ star_shattering_sacred_vessel_breakthrough_perk:0 "Breakthrough: Sacred Vessel"
+ star_shattering_sacred_vessel_breakthrough_perk_name:0 "Breakthrough: Sacred Vessel"
+ star_shattering_sacred_vessel_breakthrough_perk_desc:0 "Become a Sacred Vessel! Lifespan +280 years!"
+
+ ##################################################
+ # SACRED VESSEL REALM PERKS (Y: 46-54) +280 YEARS
+ ##################################################
+
+ sacred_vessel_tree_name:0 "Sacred Vessel Realm"
+
+ sacred_vessel_hour_perk:0 "Hour"
+ sacred_vessel_hour_perk_name:0 "Hour"
+ sacred_vessel_hour_perk_desc:0 "Master the hour."
+
+ sacred_vessel_day_perk:0 "Day"
+ sacred_vessel_day_perk_name:0 "Day"
+ sacred_vessel_day_perk_desc:0 "Master the day."
+
+ sacred_vessel_month_perk:0 "Month"
+ sacred_vessel_month_perk_name:0 "Month"
+ sacred_vessel_month_perk_desc:0 "Master the month."
+
+ sacred_vessel_year_perk:0 "Year"
+ sacred_vessel_year_perk_name:0 "Year"
+ sacred_vessel_year_perk_desc:0 "Master the year."
+
+ sacred_vessel_calendar_perk:0 "Calendar"
+ sacred_vessel_calendar_perk_name:0 "Calendar"
+ sacred_vessel_calendar_perk_desc:0 "Master the calendar."
+
+ sacred_vessel_fixed_star_perk:0 "Fixed Star"
+ sacred_vessel_fixed_star_perk_name:0 "Fixed Star"
+ sacred_vessel_fixed_star_perk_desc:0 "Become a fixed star."
+
+ sacred_vessel_correctness_perk:0 "Correctness"
+ sacred_vessel_correctness_perk_name:0 "Correctness"
+ sacred_vessel_correctness_perk_desc:0 "Embody righteous order."
+
+ sacred_vessel_strongness_perk:0 "Strength"
+ sacred_vessel_strongness_perk_name:0 "Strength"
+ sacred_vessel_strongness_perk_desc:0 "Embody strength."
+
+ sacred_vessel_mildness_perk:0 "Mildness"
+ sacred_vessel_mildness_perk_name:0 "Mildness"
+ sacred_vessel_mildness_perk_desc:0 "Embody gentle restraint."
+
+ sacred_vessel_entering_nirvana_breakthrough_perk:0 "Breakthrough: Entering Nirvana"
+ sacred_vessel_entering_nirvana_breakthrough_perk_name:0 "Breakthrough: Entering Nirvana"
+ sacred_vessel_entering_nirvana_breakthrough_perk_desc:0 "Enter Nirvana! Lifespan +350 years!"
+
+ ##################################################
+ # ENTERING NIRVANA REALM PERKS (Y: 54-57) +350 YEARS
+ ##################################################
+
+ entering_nirvana_tree_name:0 "Entering Nirvana Realm"
+
+ entering_nirvana_life_perk:0 "Life"
+ entering_nirvana_life_perk_name:0 "Life"
+ entering_nirvana_life_perk_desc:0 "Understand life."
+
+ entering_nirvana_death_perk:0 "Death"
+ entering_nirvana_death_perk_name:0 "Death"
+ entering_nirvana_death_perk_desc:0 "Understand death."
+
+ entering_nirvana_reborn_perk:0 "Reborn"
+ entering_nirvana_reborn_perk_name:0 "Reborn"
+ entering_nirvana_reborn_perk_desc:0 "Be reborn in Nirvana."
+
+ true_immortal_final_perk:0 "Breakthrough: Immortal"
+ true_immortal_final_perk_name:0 "Breakthrough: True Immortal"
+ true_immortal_final_perk_desc:0 "Achieve TRUE IMMORTALITY! Lifespan +500 years! IMMORTAL!"
+
+ ## RELIGION FAMILIES
+ rf_cultivation_orthodox:0 "Orthodox Cultivation"
+ rf_cultivation_orthodox_adj:0 "Orthodox"
+ rf_cultivation_unorthodox:0 "Unorthodox Cultivation"
+ rf_cultivation_unorthodox_adj:0 "Unorthodox"
+ rf_cultivation_demonic:0 "Demonic Cultivation"
+ rf_cultivation_demonic_adj:0 "Demonic"
+ rf_cultivation_vagrant:0 "Vagrant Cultivation"
+ rf_cultivation_vagrant_adj:0 "Vagrant"
+
+ ## CULTIVATION PATH DOCTRINES
+ doctrine_orthodox_cultivation_name:0 "Orthodox Cultivation Path"
+ doctrine_orthodox_cultivation_desc:0 "This sect follows the orthodox path of cultivation, emphasizing righteousness and proper methods."
+ doctrine_parameter_orthodox_cultivation:0 "Follows Orthodox Cultivation"
+ doctrine_unorthodox_cultivation_name:0 "Unorthodox Cultivation Path"
+ doctrine_unorthodox_cultivation_desc:0 "This sect follows unorthodox methods, pursuing power through unconventional means."
+ doctrine_parameter_unorthodox_cultivation:0 "Follows Unorthodox Cultivation"
+ doctrine_demonic_cultivation_name:0 "Demonic Cultivation Path"
+ doctrine_demonic_cultivation_desc:0 "This sect practices demonic cultivation, gaining power through dark and forbidden methods."
+ doctrine_parameter_demonic_cultivation:0 "Follows Demonic Cultivation"
+ doctrine_vagrant_cultivation_name:0 "Vagrant Cultivation Path"
+ doctrine_vagrant_cultivation_desc:0 "This sect consists of independent cultivators who walk their own unique paths."
+ doctrine_parameter_vagrant_cultivation:0 "Follows Vagrant Cultivation"
+
+ ## RELIGION/PATH LOCALIZATIONS - ALL 16 PATHS
+ ## Copy these into your localization file
+
+ # ============================================================================
+ # ORTHODOX FAMILY RELIGIONS (4)
+ # ============================================================================
+
+ cultivation_orthodox:0 "Cultivation: Orthodox"
+ cultivation_orthodox_adj:0 "Orthodox"
+ cultivation_orthodox_adherent:0 "Orthodox Cultivator"
+ cultivation_orthodox_adherent_plural:0 "Orthodox Cultivators"
+ cultivation_orthodox_desc:0 "The righteous road of law-abiding sects: temper the heart before the blade, honor master-disciple bonds, repay virtue with virtue, and cut down evil without staining one's Dao-Heart."
+
+ # ============================================================================
+ # UNORTHODOX FAMILY RELIGIONS (4)
+ # ============================================================================
+
+ cultivation_unorthodox:0 "Cultivation: Unorthodox"
+ cultivation_unorthodox_adj:0 "Unorthodox"
+ cultivation_unorthodox_adherent:0 "Unorthodox Cultivator"
+ cultivation_unorthodox_adherent_plural:0 "Unorthodox Cultivators"
+ cultivation_unorthodox_desc:0 "A gray path of hidden inheritances and irregular methods. Unorthodox sects reject stale orthodoxy, seeking breakthroughs through risk, cunning, and techniques the great sects call heresy."
+
+ # ============================================================================
+ # DEMONIC FAMILY RELIGIONS (4)
+ # ============================================================================
+
+ cultivation_demonic:0 "Cultivation: Demonic"
+ cultivation_demonic_adj:0 "Demonic"
+ cultivation_demonic_adherent:0 "Demon"
+ cultivation_demonic_adherent_plural:0 "Demons"
+ cultivation_demonic_desc:0 "The forbidden way of blood sacrifice, baleful qi, corpse arts, and soul plunder. Demonic cultivators challenge heaven itself, advancing through terror, obsession, and ruthless seizure of destiny."
+
+ # ============================================================================
+ # VAGRANT FAMILY RELIGIONS (4)
+ # ============================================================================
+
+ cultivation_vagrant:0 "Cultivation: Vagrant"
+ cultivation_vagrant_adj:0 "Vagrant"
+ cultivation_vagrant_adherent:0 "Vagrant"
+ cultivation_vagrant_adherent_plural:0 "Vagrants"
+ cultivation_vagrant_desc:0 "The road of rootless wanderers and rogue inheritances. Vagrant cultivators keep no mountain gate, trading certainty for freedom as they learn from ruins, duels, and the merciless rivers and lakes."
+
+ # ============================================================================
+ # TOTAL: 16 RELIGIONS x 5 KEYS = 80 LOCALIZATION ENTRIES
+ # ============================================================================
+
+ ## ALL CULTIVATION SECTS (67)
+ mount_hua_sect:0 "Mount Hua Sect"
+ mount_hua_sect_adj:0 "Mount Hua"
+ mount_hua_sect_adherent:0 "Mount Hua Cultivator"
+ mount_hua_sect_adherent_plural:0 "Mount Hua Cultivators"
+ mount_hua_sect_desc:0 "A famed righteous mountain gate whose disciples refine austere sword intent and strict sect discipline, valuing reputation, duty, and clean victories."
+
+ heavenly_sword_pavilion:0 "Heavenly Sword Pavilion"
+ heavenly_sword_pavilion_adj:0 "Heavenly Sword"
+ heavenly_sword_pavilion_adherent:0 "Heavenly Sword Cultivator"
+ heavenly_sword_pavilion_adherent_plural:0 "Heavenly Sword Cultivators"
+ heavenly_sword_pavilion_desc:0 "A lofty lineage that studies star charts and heavenly phenomena to temper sword intent, seeking unity between celestial order and mortal technique."
+
+ azure_edge_sect:0 "Azure Edge Sect"
+ azure_edge_sect_adj:0 "Azure Edge"
+ azure_edge_sect_adherent:0 "Azure Edge Cultivator"
+ azure_edge_sect_adherent_plural:0 "Azure Edge Cultivators"
+ azure_edge_sect_desc:0 "Practitioners of the swift azure blade, combining speed and precision in their sword dao."
+
+ ten_thousand_swords_valley:0 "Ten Thousand Swords Valley"
+ ten_thousand_swords_valley_adj:0 "Ten Thousand Swords"
+ ten_thousand_swords_valley_adherent:0 "Ten Thousand Swords Cultivator"
+ ten_thousand_swords_valley_adherent_plural:0 "Ten Thousand Swords Cultivators"
+ ten_thousand_swords_valley_desc:0 "A valley filled with countless sword techniques, where disciples learn from thousands of blade styles."
+
+ violet_thunder_blade_sect:0 "Violet Thunder Blade Sect"
+ violet_thunder_blade_sect_adj:0 "Violet Thunder"
+ violet_thunder_blade_sect_adherent:0 "Violet Thunder Cultivator"
+ violet_thunder_blade_sect_adherent_plural:0 "Violet Thunder Cultivators"
+ violet_thunder_blade_sect_desc:0 "Wielders of lightning-infused swords, channeling thunder's fury through their blades."
+
+ eight_trigrams_palace:0 "Eight Trigrams Palace"
+ eight_trigrams_palace_adj:0 "Eight Trigrams"
+ eight_trigrams_palace_adherent:0 "Eight Trigrams Cultivator"
+ eight_trigrams_palace_adherent_plural:0 "Eight Trigrams Cultivators"
+ eight_trigrams_palace_desc:0 "Masters of formation arrays based on the ancient Eight Trigrams, manipulating reality through geometric patterns."
+
+ celestial_talisman_hall:0 "Celestial Talisman Hall"
+ celestial_talisman_hall_adj:0 "Celestial Talisman"
+ celestial_talisman_hall_adherent:0 "Celestial Talisman Cultivator"
+ celestial_talisman_hall_adherent_plural:0 "Celestial Talisman Cultivators"
+ celestial_talisman_hall_desc:0 "Specialists in creating powerful talismans that harness celestial energies."
+
+ nine_star_formation_sect:0 "Nine Star Formation Sect"
+ nine_star_formation_sect_adj:0 "Nine Star"
+ nine_star_formation_sect_adherent:0 "Nine Star Cultivator"
+ nine_star_formation_sect_adherent_plural:0 "Nine Star Cultivators"
+ nine_star_formation_sect_desc:0 "Formation masters who arrange their arrays based on the nine celestial stars."
+
+ mystic_seal_pavilion:0 "Mystic Seal Pavilion"
+ mystic_seal_pavilion_adj:0 "Mystic Seal"
+ mystic_seal_pavilion_adherent:0 "Mystic Seal Cultivator"
+ mystic_seal_pavilion_adherent_plural:0 "Mystic Seal Cultivators"
+ mystic_seal_pavilion_desc:0 "Experts in sealing techniques and protective barriers that guard against all threats."
+
+ heavens_array_manor:0 "Heaven's Array Manor"
+ heavens_array_manor_adj:0 "Heaven's Array"
+ heavens_array_manor_adherent:0 "Heaven's Array Cultivator"
+ heavens_array_manor_adherent_plural:0 "Heaven's Array Cultivators"
+ heavens_array_manor_desc:0 "Defensive formation specialists who can create impenetrable arrays blessed by the heavens."
+
+ wudang_sect:0 "Wudang Sect"
+ wudang_sect_adj:0 "Wudang"
+ wudang_sect_adherent:0 "Wudang Cultivator"
+ wudang_sect_adherent_plural:0 "Wudang Cultivators"
+ wudang_sect_desc:0 "A Daoist mountain tradition of stillness and softness overcoming hardness, harmonizing yin and yang through internal alchemy, measured swordplay, and breath regulation."
+
+ shaolin_temple:0 "Shaolin Temple"
+ shaolin_temple_adj:0 "Shaolin"
+ shaolin_temple_adherent:0 "Shaolin Cultivator"
+ shaolin_temple_adherent_plural:0 "Shaolin Cultivators"
+ shaolin_temple_desc:0 "A monastic lineage that tempers fist, staff, and mind together; its disciples pursue compassion, restraint, and unbreakable foundations forged through ascetic training."
+
+ eternal_harmony_pavilion:0 "Eternal Harmony Pavilion"
+ eternal_harmony_pavilion_adj:0 "Eternal Harmony"
+ eternal_harmony_pavilion_adherent:0 "Eternal Harmony Cultivator"
+ eternal_harmony_pavilion_adherent_plural:0 "Eternal Harmony Cultivators"
+ eternal_harmony_pavilion_desc:0 "Practitioners of righteous dual cultivation, seeking perfect spiritual harmony between partners."
+
+ jade_lotus_temple:0 "Jade Lotus Temple"
+ jade_lotus_temple_adj:0 "Jade Lotus"
+ jade_lotus_temple_adherent:0 "Jade Lotus Cultivator"
+ jade_lotus_temple_adherent_plural:0 "Jade Lotus Cultivators"
+ jade_lotus_temple_desc:0 "Pure yin-yang cultivators who believe in the sacred union of complementary energies."
+
+ supreme_balance_sect:0 "Supreme Balance Sect"
+ supreme_balance_sect_adj:0 "Supreme Balance"
+ supreme_balance_sect_adherent:0 "Supreme Balance Cultivator"
+ supreme_balance_sect_adherent_plural:0 "Supreme Balance Cultivators"
+ supreme_balance_sect_desc:0 "Seekers of absolute equilibrium in all aspects of cultivation and life."
+
+ divine_beast_mountain:0 "Divine Beast Mountain"
+ divine_beast_mountain_adj:0 "Divine Beast"
+ divine_beast_mountain_adherent:0 "Divine Beast Cultivator"
+ divine_beast_mountain_adherent_plural:0 "Divine Beast Cultivators"
+ divine_beast_mountain_desc:0 "Form contracts with sacred heavenly beasts, bonding with creatures of immense spiritual power."
+
+ celestial_phoenix_pavilion:0 "Celestial Phoenix Pavilion"
+ celestial_phoenix_pavilion_adj:0 "Celestial Phoenix"
+ celestial_phoenix_pavilion_adherent:0 "Celestial Phoenix Cultivator"
+ celestial_phoenix_pavilion_adherent_plural:0 "Celestial Phoenix Cultivators"
+ celestial_phoenix_pavilion_desc:0 "Specialists in contracting with bird-type divine spirits, particularly the legendary phoenix."
+
+ dragon_whisper_sect:0 "Dragon Whisper Sect"
+ dragon_whisper_sect_adj:0 "Dragon Whisper"
+ dragon_whisper_sect_adherent:0 "Dragon Whisper Cultivator"
+ dragon_whisper_sect_adherent_plural:0 "Dragon Whisper Cultivators"
+ dragon_whisper_sect_desc:0 "Those who commune with dragon-lineage beasts and harness their ancient power."
+
+ spirit_communion_temple:0 "Spirit Communion Temple"
+ spirit_communion_temple_adj:0 "Spirit Communion"
+ spirit_communion_temple_adherent:0 "Spirit Communion Cultivator"
+ spirit_communion_temple_adherent_plural:0 "Spirit Communion Cultivators"
+ spirit_communion_temple_desc:0 "Mediators between the human and beast realms, fostering mutual understanding and growth."
+
+ thousand_beast_valley:0 "Thousand Beast Valley"
+ thousand_beast_valley_adj:0 "Thousand Beast"
+ thousand_beast_valley_adherent:0 "Thousand Beast Cultivator"
+ thousand_beast_valley_adherent_plural:0 "Thousand Beast Cultivators"
+ thousand_beast_valley_desc:0 "Masters of forming contracts with multiple spirit beasts simultaneously."
+
+ crimson_moon_blade_hall:0 "Crimson Moon Blade Hall"
+ crimson_moon_blade_hall_adj:0 "Crimson Moon"
+ crimson_moon_blade_hall_adherent:0 "Crimson Moon Cultivator"
+ crimson_moon_blade_hall_adherent_plural:0 "Crimson Moon Cultivators"
+ crimson_moon_blade_hall_desc:0 "Night-fighting saber specialists whose blades gleam crimson under the moon."
+
+ tyrant_saber_palace:0 "Tyrant Saber Palace"
+ tyrant_saber_palace_adj:0 "Tyrant Saber"
+ tyrant_saber_palace_adherent:0 "Tyrant Saber Cultivator"
+ tyrant_saber_palace_adherent_plural:0 "Tyrant Saber Cultivators"
+ tyrant_saber_palace_desc:0 "Practitioners of domineering saber techniques that overwhelm all opposition."
+
+ howling_wind_saber_sect:0 "Howling Wind Saber Sect"
+ howling_wind_saber_sect_adj:0 "Howling Wind"
+ howling_wind_saber_sect_adherent:0 "Howling Wind Cultivator"
+ howling_wind_saber_sect_adherent_plural:0 "Howling Wind Cultivators"
+ howling_wind_saber_sect_desc:0 "Speed-based saber masters whose strikes are as swift and unpredictable as the wind."
+
+ demon_suppressing_blade_clan:0 "Demon Suppressing Blade Clan"
+ demon_suppressing_blade_clan_adj:0 "Demon Suppressing"
+ demon_suppressing_blade_clan_adherent:0 "Demon Suppressing Cultivator"
+ demon_suppressing_blade_clan_adherent_plural:0 "Demon Suppressing Cultivators"
+ demon_suppressing_blade_clan_desc:0 "Unorthodox cultivators who hunt demonic practitioners with brutal efficiency."
+
+ black_iron_saber_sect:0 "Black Iron Saber Sect"
+ black_iron_saber_sect_adj:0 "Black Iron"
+ black_iron_saber_sect_adherent:0 "Black Iron Cultivator"
+ black_iron_saber_sect_adherent_plural:0 "Black Iron Cultivators"
+ black_iron_saber_sect_desc:0 "Heavy saber wielders who crush enemies with overwhelming brute force."
+
+ jade_cauldron_sect:0 "Jade Cauldron Sect"
+ jade_cauldron_sect_adj:0 "Jade Cauldron"
+ jade_cauldron_sect_adherent:0 "Jade Cauldron Cultivator"
+ jade_cauldron_sect_adherent_plural:0 "Jade Cauldron Cultivators"
+ jade_cauldron_sect_desc:0 "Alchemists who refine legendary pills in ancient jade cauldrons."
+
+ medicine_king_valley:0 "Medicine King Valley"
+ medicine_king_valley_adj:0 "Medicine King"
+ medicine_king_valley_adherent:0 "Medicine King Cultivator"
+ medicine_king_valley_adherent_plural:0 "Medicine King Cultivators"
+ medicine_king_valley_desc:0 "Healers and pill makers who have perfected the medicinal arts."
+
+ hundred_herbs_pavilion:0 "Hundred Herbs Pavilion"
+ hundred_herbs_pavilion_adj:0 "Hundred Herbs"
+ hundred_herbs_pavilion_adherent:0 "Hundred Herbs Cultivator"
+ hundred_herbs_pavilion_adherent_plural:0 "Hundred Herbs Cultivators"
+ hundred_herbs_pavilion_desc:0 "Gatherers and cultivators of rare spiritual herbs for alchemy."
+
+ eternal_furnace_hall:0 "Eternal Furnace Hall"
+ eternal_furnace_hall_adj:0 "Eternal Furnace"
+ eternal_furnace_hall_adherent:0 "Eternal Furnace Cultivator"
+ eternal_furnace_hall_adherent_plural:0 "Eternal Furnace Cultivators"
+ eternal_furnace_hall_desc:0 "Masters of the eternal flame, refining pills of incredible potency."
+
+ transcendent_elixir_sect:0 "Transcendent Elixir Sect"
+ transcendent_elixir_sect_adj:0 "Transcendent Elixir"
+ transcendent_elixir_sect_adherent:0 "Transcendent Elixir Cultivator"
+ transcendent_elixir_sect_adherent_plural:0 "Transcendent Elixir Cultivators"
+ transcendent_elixir_sect_desc:0 "Creators of legendary elixirs that defy the heavens themselves."
+
+ pure_yang_palace:0 "Pure Yang Palace"
+ pure_yang_palace_adj:0 "Pure Yang"
+ pure_yang_palace_adherent:0 "Pure Yang Cultivator"
+ pure_yang_palace_adherent_plural:0 "Pure Yang Cultivators"
+ pure_yang_palace_desc:0 "A fire-aspected inheritance where disciples temper blazing yang essence through body-forging and furnace-like circulation methods that burn away impurities."
+
+ yin_phoenix_sect:0 "Yin Phoenix Sect"
+ yin_phoenix_sect_adj:0 "Yin Phoenix"
+ yin_phoenix_sect_adherent:0 "Yin Phoenix Cultivator"
+ yin_phoenix_sect_adherent_plural:0 "Yin Phoenix Cultivators"
+ yin_phoenix_sect_desc:0 "A yin-aspected phoenix lineage famed for graceful yet lethal arts, cold-fire rebirth methods, and refined control over soul and meridian flow."
+
+ blissful_union_pavilion:0 "Blissful Union Pavilion"
+ blissful_union_pavilion_adj:0 "Blissful Union"
+ blissful_union_pavilion_adherent:0 "Blissful Union Cultivator"
+ blissful_union_pavilion_adherent_plural:0 "Blissful Union Cultivators"
+ blissful_union_pavilion_desc:0 "A dual-cultivation pavilion teaching strict contract-bound yin-yang harmonization, where shared circulation and mutual trust become a path to higher realms."
+
+ jade_chamber_sect:0 "Jade Chamber Sect"
+ jade_chamber_sect_adj:0 "Jade Chamber"
+ jade_chamber_sect_adherent:0 "Jade Chamber Cultivator"
+ jade_chamber_sect_adherent_plural:0 "Jade Chamber Cultivators"
+ jade_chamber_sect_desc:0 "Refiners of spirit resonance arts who strengthen mind and meridians through ritualized harmony techniques."
+
+ eternal_pleasure_hall:0 "Eternal Serenity Hall"
+ eternal_pleasure_hall_adj:0 "Eternal Serenity"
+ eternal_pleasure_hall_adherent:0 "Eternal Serenity Cultivator"
+ eternal_pleasure_hall_adherent_plural:0 "Eternal Serenity Cultivators"
+ eternal_pleasure_hall_desc:0 "Meditative adepts who sustain tranquil spirit states to refine qi without interruption."
+
+ moonless_night_pavilion:0 "Moonless Night Pavilion"
+ moonless_night_pavilion_adj:0 "Moonless Night"
+ moonless_night_pavilion_adherent:0 "Moonless Night Cultivator"
+ moonless_night_pavilion_adherent_plural:0 "Moonless Night Cultivators"
+ moonless_night_pavilion_desc:0 "Corpse refinement specialists who practice their dark arts in absolute darkness."
+
+ pale_bone_hall:0 "Pale Bone Hall"
+ pale_bone_hall_adj:0 "Pale Bone"
+ pale_bone_hall_adherent:0 "Pale Bone Cultivator"
+ pale_bone_hall_adherent_plural:0 "Pale Bone Cultivators"
+ pale_bone_hall_desc:0 "Jiangshi masters who command armies of hopping corpses and skeletal servants."
+
+ eternal_rest_clan:0 "Eternal Rest Clan"
+ eternal_rest_clan_adj:0 "Eternal Rest"
+ eternal_rest_clan_adherent:0 "Eternal Rest Cultivator"
+ eternal_rest_clan_adherent_plural:0 "Eternal Rest Cultivators"
+ eternal_rest_clan_desc:0 "Those who disturb the eternal slumber, binding the dead to serve the living."
+
+ withered_soul_temple:0 "Withered Soul Temple"
+ withered_soul_temple_adj:0 "Withered Soul"
+ withered_soul_temple_adherent:0 "Withered Soul Cultivator"
+ withered_soul_temple_adherent_plural:0 "Withered Soul Cultivators"
+ withered_soul_temple_desc:0 "Practitioners who drain the essence from corpses to fuel their cultivation."
+
+ hopping_corpse_sect:0 "Hopping Corpse Sect"
+ hopping_corpse_sect_adj:0 "Hopping Corpse"
+ hopping_corpse_sect_adherent:0 "Hopping Corpse Cultivator"
+ hopping_corpse_sect_adherent_plural:0 "Hopping Corpse Cultivators"
+ hopping_corpse_sect_desc:0 "Specialists in creating and controlling traditional Chinese jiangshi."
+
+ blood_river_sect:0 "Blood River Sect"
+ blood_river_sect_adj:0 "Blood River"
+ blood_river_sect_adherent:0 "Blood River Cultivator"
+ blood_river_sect_adherent_plural:0 "Blood River Cultivators"
+ blood_river_sect_desc:0 "Demonic cultivators who bathe in rivers of their enemies' blood to grow stronger."
+
+ ten_thousand_corpse_valley:0 "Ten Thousand Corpse Valley"
+ ten_thousand_corpse_valley_adj:0 "Ten Thousand Corpse"
+ ten_thousand_corpse_valley_adherent:0 "Ten Thousand Corpse Cultivator"
+ ten_thousand_corpse_valley_adherent_plural:0 "Ten Thousand Corpse Cultivators"
+ ten_thousand_corpse_valley_desc:0 "A dread valley of corpse refinement and corpse-qi arts, where the dead are forged into weapons and living disciples cultivate amid miasma and burial fires."
+
+ asura_battle_hall:0 "Asura Battle Hall"
+ asura_battle_hall_adj:0 "Asura"
+ asura_battle_hall_adherent:0 "Asura Cultivator"
+ asura_battle_hall_adherent_plural:0 "Asura Cultivators"
+ asura_battle_hall_desc:0 "Demon warriors who embody the wrathful asura, living only for combat and slaughter."
+
+ five_poison_cult:0 "Five Poison Cult"
+ five_poison_cult_adj:0 "Five Poison"
+ five_poison_cult_adherent:0 "Five Poison Cultivator"
+ five_poison_cult_adherent_plural:0 "Five Poison Cultivators"
+ five_poison_cult_desc:0 "Masters of the five deadly poisons: scorpion, snake, spider, centipede, and toad."
+
+ venomous_serpent_valley:0 "Venomous Serpent Valley"
+ venomous_serpent_valley_adj:0 "Venomous Serpent"
+ venomous_serpent_valley_adherent:0 "Venomous Serpent Cultivator"
+ venomous_serpent_valley_adherent_plural:0 "Venomous Serpent Cultivators"
+ venomous_serpent_valley_desc:0 "Poison cultivators who breed and extract venom from deadly serpents."
+
+ miasma_swamp_sect:0 "Miasma Swamp Sect"
+ miasma_swamp_sect_adj:0 "Miasma Swamp"
+ miasma_swamp_sect_adherent:0 "Miasma Swamp Cultivator"
+ miasma_swamp_sect_adherent_plural:0 "Miasma Swamp Cultivators"
+ miasma_swamp_sect_desc:0 "Dwellers in toxic swamps who cultivate through breathing poisonous miasma."
+
+ blood_yin_cult:0 "Blood Yin Cult"
+ blood_yin_cult_adj:0 "Blood Yin"
+ blood_yin_cult_adherent:0 "Blood Yin Cultivator"
+ blood_yin_cult_adherent_plural:0 "Blood Yin Cultivators"
+ blood_yin_cult_desc:0 "A sinister blood path sect that harvests blood essence and moon-qi, refining stolen vitality into rapid breakthroughs and cruel body arts."
+
+ blood_moon_demonic_sect:0 "Heavenly Demon Sect"
+ blood_moon_demonic_sect_adj:0 "Heavenly Demon"
+ blood_moon_demonic_sect_adherent:0 "Heavenly Demon Cultivator"
+ blood_moon_demonic_sect_adherent_plural:0 "Heavenly Demon Cultivators"
+ blood_moon_demonic_sect_desc:0 "An infamous demonic lineage that performs moonlit blood rites, invoking baleful lunar tides to fuel sacrificial breakthroughs and curse arts."
+
+ scarlet_heart_palace:0 "Scarlet Heart Palace"
+ scarlet_heart_palace_adj:0 "Scarlet Heart"
+ scarlet_heart_palace_adherent:0 "Scarlet Heart Cultivator"
+ scarlet_heart_palace_adherent_plural:0 "Scarlet Heart Cultivators"
+ scarlet_heart_palace_desc:0 "Those who refine human hearts into cultivation resources."
+
+ succubus_palace:0 "Nightshade Palace"
+ succubus_palace_adj:0 "Nightshade"
+ succubus_palace_adherent:0 "Nightshade Cultivator"
+ succubus_palace_adherent_plural:0 "Nightshade Cultivators"
+ succubus_palace_desc:0 "A perilous demonic palace whose disciples practice charm, dream, and soul-binding techniques, siphoning essence through contracts, obsession, and spiritual corrosion."
+
+ womb_engraving_sect:0 "Crimson Sigil Sect"
+ womb_engraving_sect_adj:0 "Crimson Sigil"
+ womb_engraving_sect_adherent:0 "Crimson Sigil Cultivator"
+ womb_engraving_sect_adherent_plural:0 "Crimson Sigil Cultivators"
+ womb_engraving_sect_desc:0 "Dark practitioners who brand targets with forbidden sigils, binding spirit and will to their command."
+
+ lone_wolf_wanderers:0 "Lone Wolf Wanderers"
+ lone_wolf_wanderers_adj:0 "Lone Wolf"
+ lone_wolf_wanderers_adherent:0 "Lone Wolf Cultivator"
+ lone_wolf_wanderers_adherent_plural:0 "Lone Wolf Cultivators"
+ lone_wolf_wanderers_desc:0 "Independent blade cultivators who walk their path alone, beholden to no sect."
+
+ rootless_sword_alliance:0 "Rootless Sword Alliance"
+ rootless_sword_alliance_adj:0 "Rootless Sword"
+ rootless_sword_alliance_adherent:0 "Rootless Sword Cultivator"
+ rootless_sword_alliance_adherent_plural:0 "Rootless Sword Cultivators"
+ rootless_sword_alliance_desc:0 "Vagrant swordsmen who band together for mutual protection while maintaining independence."
+
+ vagrant_blade_brotherhood:0 "Vagrant Blade Brotherhood"
+ vagrant_blade_brotherhood_adj:0 "Vagrant Blade"
+ vagrant_blade_brotherhood_adherent:0 "Vagrant Blade Cultivator"
+ vagrant_blade_brotherhood_adherent_plural:0 "Vagrant Blade Cultivators"
+ vagrant_blade_brotherhood_desc:0 "Wandering warriors who form brotherly bonds on the road."
+
+ thousand_treasures_pavilion:0 "Thousand Treasures Pavilion"
+ thousand_treasures_pavilion_adj:0 "Thousand Treasures"
+ thousand_treasures_pavilion_adherent:0 "Thousand Treasures Cultivator"
+ thousand_treasures_pavilion_adherent_plural:0 "Thousand Treasures Cultivators"
+ thousand_treasures_pavilion_desc:0 "Collectors and refiners of countless mystical artifacts and treasures."
+
+ mystic_forge_hall:0 "Mystic Forge Hall"
+ mystic_forge_hall_adj:0 "Mystic Forge"
+ mystic_forge_hall_adherent:0 "Mystic Forge Cultivator"
+ mystic_forge_hall_adherent_plural:0 "Mystic Forge Cultivators"
+ mystic_forge_hall_desc:0 "Wandering smiths who forge legendary weapons and artifacts."
+
+ ancient_relic_sect:0 "Ancient Relic Sect"
+ ancient_relic_sect_adj:0 "Ancient Relic"
+ ancient_relic_sect_adherent:0 "Ancient Relic Cultivator"
+ ancient_relic_sect_adherent_plural:0 "Ancient Relic Cultivators"
+ ancient_relic_sect_desc:0 "Treasure hunters who seek out and refine ancient relics of power."
+
+ ancient_bloodline_temple:0 "Ancient Bloodline Temple"
+ ancient_bloodline_temple_adj:0 "Ancient Bloodline"
+ ancient_bloodline_temple_adherent:0 "Ancient Bloodline Cultivator"
+ ancient_bloodline_temple_adherent_plural:0 "Ancient Bloodline Cultivators"
+ ancient_bloodline_temple_desc:0 "A lineage shrine devoted to awakening primordial ancestries hidden in mortal flesh, using relic rites and inheritance altars to trigger bloodline resonance."
+
+ primal_beast_sect:0 "Primal Beast Sect"
+ primal_beast_sect_adj:0 "Primal Beast"
+ primal_beast_sect_adherent:0 "Primal Beast Cultivator"
+ primal_beast_sect_adherent_plural:0 "Primal Beast Cultivators"
+ primal_beast_sect_desc:0 "Those who transform their bodies to embody primal beast characteristics."
+
+ primordial_chaos_hall:0 "Primordial Chaos Hall"
+ primordial_chaos_hall_adj:0 "Primordial Chaos"
+ primordial_chaos_hall_adherent:0 "Primordial Chaos Cultivator"
+ primordial_chaos_hall_adherent_plural:0 "Primordial Chaos Cultivators"
+ primordial_chaos_hall_desc:0 "Body cultivators who tap into the primordial chaos that predates creation."
+
+ wild_beast_mountain:0 "Wild Beast Mountain"
+ wild_beast_mountain_adj:0 "Wild Beast"
+ wild_beast_mountain_adherent:0 "Wild Beast Cultivator"
+ wild_beast_mountain_adherent_plural:0 "Wild Beast Cultivators"
+ wild_beast_mountain_desc:0 "Tamers of wild and savage beasts, forming bonds with untamed creatures."
+
+ savage_fang_clan:0 "Savage Fang Clan"
+ savage_fang_clan_adj:0 "Savage Fang"
+ savage_fang_clan_adherent:0 "Savage Fang Cultivator"
+ savage_fang_clan_adherent_plural:0 "Savage Fang Cultivators"
+ savage_fang_clan_desc:0 "Beast tamers who embrace the savage nature of their companions."
+
+ feral_bond_sect:0 "Feral Bond Sect"
+ feral_bond_sect_adj:0 "Feral Bond"
+ feral_bond_sect_adherent:0 "Feral Bond Cultivator"
+ feral_bond_sect_adherent_plural:0 "Feral Bond Cultivators"
+ feral_bond_sect_desc:0 "Those who forge primal spirit pacts with beast companions, merging human and beast qi."
+
+ ## VISIT SECT DECISION TOOLTIPS
+
+ visit_mount_hua_sect:0 "Mount Hua Sect"
+ visit_mount_hua_sect_tooltip:0 "Visit the Mount Hua Sect to learn about their cultivation path."
+ visit_heavenly_sword_pavilion:0 "Heavenly Sword Pavilion"
+ visit_heavenly_sword_pavilion_tooltip:0 "Visit the Heavenly Sword Pavilion to learn about their cultivation path."
+ visit_azure_edge_sect:0 "Azure Edge Sect"
+ visit_azure_edge_sect_tooltip:0 "Visit the Azure Edge Sect to learn about their cultivation path."
+ visit_ten_thousand_swords_valley:0 "Ten Thousand Swords Valley"
+ visit_ten_thousand_swords_valley_tooltip:0 "Visit the Ten Thousand Swords Valley to learn about their cultivation path."
+ visit_violet_thunder_blade_sect:0 "Violet Thunder Blade Sect"
+ visit_violet_thunder_blade_sect_tooltip:0 "Visit the Violet Thunder Blade Sect to learn about their cultivation path."
+ visit_eight_trigrams_palace:0 "Eight Trigrams Palace"
+ visit_eight_trigrams_palace_tooltip:0 "Visit the Eight Trigrams Palace to learn about their cultivation path."
+ visit_celestial_talisman_hall:0 "Celestial Talisman Hall"
+ visit_celestial_talisman_hall_tooltip:0 "Visit the Celestial Talisman Hall to learn about their cultivation path."
+ visit_nine_star_formation_sect:0 "Nine Star Formation Sect"
+ visit_nine_star_formation_sect_tooltip:0 "Visit the Nine Star Formation Sect to learn about their cultivation path."
+ visit_mystic_seal_pavilion:0 "Mystic Seal Pavilion"
+ visit_mystic_seal_pavilion_tooltip:0 "Visit the Mystic Seal Pavilion to learn about their cultivation path."
+ visit_heavens_array_manor:0 "Heaven's Array Manor"
+ visit_heavens_array_manor_tooltip:0 "Visit the Heaven's Array Manor to learn about their cultivation path."
+ visit_wudang_sect:0 "Wudang Sect"
+ visit_wudang_sect_tooltip:0 "Visit the Wudang Sect to learn about their cultivation path."
+ visit_shaolin_temple:0 "Shaolin Temple"
+ visit_shaolin_temple_tooltip:0 "Visit the Shaolin Temple to learn about their cultivation path."
+ visit_eternal_harmony_pavilion:0 "Eternal Harmony Pavilion"
+ visit_eternal_harmony_pavilion_tooltip:0 "Visit the Eternal Harmony Pavilion to learn about their cultivation path."
+ visit_jade_lotus_temple:0 "Jade Lotus Temple"
+ visit_jade_lotus_temple_tooltip:0 "Visit the Jade Lotus Temple to learn about their cultivation path."
+ visit_supreme_balance_sect:0 "Supreme Balance Sect"
+ visit_supreme_balance_sect_tooltip:0 "Visit the Supreme Balance Sect to learn about their cultivation path."
+ visit_divine_beast_mountain:0 "Divine Beast Mountain"
+ visit_divine_beast_mountain_tooltip:0 "Visit the Divine Beast Mountain to learn about their cultivation path."
+ visit_celestial_phoenix_pavilion:0 "Celestial Phoenix Pavilion"
+ visit_celestial_phoenix_pavilion_tooltip:0 "Visit the Celestial Phoenix Pavilion to learn about their cultivation path."
+ visit_dragon_whisper_sect:0 "Dragon Whisper Sect"
+ visit_dragon_whisper_sect_tooltip:0 "Visit the Dragon Whisper Sect to learn about their cultivation path."
+ visit_spirit_communion_temple:0 "Spirit Communion Temple"
+ visit_spirit_communion_temple_tooltip:0 "Visit the Spirit Communion Temple to learn about their cultivation path."
+ visit_thousand_beast_valley:0 "Thousand Beast Valley"
+ visit_thousand_beast_valley_tooltip:0 "Visit the Thousand Beast Valley to learn about their cultivation path."
+ visit_crimson_moon_blade_hall:0 "Crimson Moon Blade Hall"
+ visit_crimson_moon_blade_hall_tooltip:0 "Visit the Crimson Moon Blade Hall to learn about their cultivation path."
+ visit_tyrant_saber_palace:0 "Tyrant Saber Palace"
+ visit_tyrant_saber_palace_tooltip:0 "Visit the Tyrant Saber Palace to learn about their cultivation path."
+ visit_howling_wind_saber_sect:0 "Howling Wind Saber Sect"
+ visit_howling_wind_saber_sect_tooltip:0 "Visit the Howling Wind Saber Sect to learn about their cultivation path."
+ visit_demon_suppressing_blade_clan:0 "Demon Suppressing Blade Clan"
+ visit_demon_suppressing_blade_clan_tooltip:0 "Visit the Demon Suppressing Blade Clan to learn about their cultivation path."
+ visit_black_iron_saber_sect:0 "Black Iron Saber Sect"
+ visit_black_iron_saber_sect_tooltip:0 "Visit the Black Iron Saber Sect to learn about their cultivation path."
+ visit_jade_cauldron_sect:0 "Jade Cauldron Sect"
+ visit_jade_cauldron_sect_tooltip:0 "Visit the Jade Cauldron Sect to learn about their cultivation path."
+ visit_medicine_king_valley:0 "Medicine King Valley"
+ visit_medicine_king_valley_tooltip:0 "Visit the Medicine King Valley to learn about their cultivation path."
+ visit_hundred_herbs_pavilion:0 "Hundred Herbs Pavilion"
+ visit_hundred_herbs_pavilion_tooltip:0 "Visit the Hundred Herbs Pavilion to learn about their cultivation path."
+ visit_eternal_furnace_hall:0 "Eternal Furnace Hall"
+ visit_eternal_furnace_hall_tooltip:0 "Visit the Eternal Furnace Hall to learn about their cultivation path."
+ visit_transcendent_elixir_sect:0 "Transcendent Elixir Sect"
+ visit_transcendent_elixir_sect_tooltip:0 "Visit the Transcendent Elixir Sect to learn about their cultivation path."
+ visit_pure_yang_palace:0 "Pure Yang Palace"
+ visit_pure_yang_palace_tooltip:0 "Visit the Pure Yang Palace to learn about their cultivation path."
+ visit_yin_phoenix_sect:0 "Yin Phoenix Sect"
+ visit_yin_phoenix_sect_tooltip:0 "Visit the Yin Phoenix Sect to learn about their cultivation path."
+ visit_blissful_union_pavilion:0 "Blissful Union Pavilion"
+ visit_blissful_union_pavilion_tooltip:0 "Visit the Blissful Union Pavilion to learn about their cultivation path."
+ visit_jade_chamber_sect:0 "Jade Chamber Sect"
+ visit_jade_chamber_sect_tooltip:0 "Visit the Jade Chamber Sect to learn about their cultivation path."
+ visit_eternal_pleasure_hall:0 "Eternal Serenity Hall"
+ visit_eternal_pleasure_hall_tooltip:0 "Visit the Eternal Serenity Hall to learn about their cultivation path."
+ visit_moonless_night_pavilion:0 "Moonless Night Pavilion"
+ visit_moonless_night_pavilion_tooltip:0 "Visit the Moonless Night Pavilion to learn about their cultivation path."
+ visit_pale_bone_hall:0 "Pale Bone Hall"
+ visit_pale_bone_hall_tooltip:0 "Visit the Pale Bone Hall to learn about their cultivation path."
+ visit_eternal_rest_clan:0 "Eternal Rest Clan"
+ visit_eternal_rest_clan_tooltip:0 "Visit the Eternal Rest Clan to learn about their cultivation path."
+ visit_withered_soul_temple:0 "Withered Soul Temple"
+ visit_withered_soul_temple_tooltip:0 "Visit the Withered Soul Temple to learn about their cultivation path."
+ visit_hopping_corpse_sect:0 "Hopping Corpse Sect"
+ visit_hopping_corpse_sect_tooltip:0 "Visit the Hopping Corpse Sect to learn about their cultivation path."
+ visit_blood_river_sect:0 "Blood River Sect"
+ visit_blood_river_sect_tooltip:0 "Visit the Blood River Sect to learn about their cultivation path."
+ visit_ten_thousand_corpse_valley:0 "Ten Thousand Corpse Valley"
+ visit_ten_thousand_corpse_valley_tooltip:0 "Visit the Ten Thousand Corpse Valley to learn about their cultivation path."
+ visit_asura_battle_hall:0 "Asura Battle Hall"
+ visit_asura_battle_hall_tooltip:0 "Visit the Asura Battle Hall to learn about their cultivation path."
+ visit_five_poison_cult:0 "Five Poison Cult"
+ visit_five_poison_cult_tooltip:0 "Visit the Five Poison Cult to learn about their cultivation path."
+ visit_venomous_serpent_valley:0 "Venomous Serpent Valley"
+ visit_venomous_serpent_valley_tooltip:0 "Visit the Venomous Serpent Valley to learn about their cultivation path."
+ visit_miasma_swamp_sect:0 "Miasma Swamp Sect"
+ visit_miasma_swamp_sect_tooltip:0 "Visit the Miasma Swamp Sect to learn about their cultivation path."
+ visit_blood_yin_cult:0 "Blood Yin Cult"
+ visit_blood_yin_cult_tooltip:0 "Visit the Blood Yin Cult to learn about their cultivation path."
+ visit_blood_moon_demonic_sect:0 "Heavenly Demon Sect"
+ visit_blood_moon_demonic_sect_tooltip:0 "Visit the Heavenly Demon Sect to learn about their cultivation path."
+ visit_scarlet_heart_palace:0 "Scarlet Heart Palace"
+ visit_scarlet_heart_palace_tooltip:0 "Visit the Scarlet Heart Palace to learn about their cultivation path."
+ visit_succubus_palace:0 "Nightshade Palace"
+ visit_succubus_palace_tooltip:0 "Visit the Nightshade Palace to learn about their cultivation path."
+ visit_womb_engraving_sect:0 "Crimson Sigil Sect"
+ visit_womb_engraving_sect_tooltip:0 "Visit the Crimson Sigil Sect to learn about their cultivation path."
+ visit_lone_wolf_wanderers:0 "Lone Wolf Wanderers"
+ visit_lone_wolf_wanderers_tooltip:0 "Visit the Lone Wolf Wanderers to learn about their cultivation path."
+ visit_rootless_sword_alliance:0 "Rootless Sword Alliance"
+ visit_rootless_sword_alliance_tooltip:0 "Visit the Rootless Sword Alliance to learn about their cultivation path."
+ visit_vagrant_blade_brotherhood:0 "Vagrant Blade Brotherhood"
+ visit_vagrant_blade_brotherhood_tooltip:0 "Visit the Vagrant Blade Brotherhood to learn about their cultivation path."
+ visit_thousand_treasures_pavilion:0 "Thousand Treasures Pavilion"
+ visit_thousand_treasures_pavilion_tooltip:0 "Visit the Thousand Treasures Pavilion to learn about their cultivation path."
+ visit_mystic_forge_hall:0 "Mystic Forge Hall"
+ visit_mystic_forge_hall_tooltip:0 "Visit the Mystic Forge Hall to learn about their cultivation path."
+ visit_ancient_relic_sect:0 "Ancient Relic Sect"
+ visit_ancient_relic_sect_tooltip:0 "Visit the Ancient Relic Sect to learn about their cultivation path."
+ visit_ancient_bloodline_temple:0 "Ancient Bloodline Temple"
+ visit_ancient_bloodline_temple_tooltip:0 "Visit the Ancient Bloodline Temple to learn about their cultivation path."
+ visit_primal_beast_sect:0 "Primal Beast Sect"
+ visit_primal_beast_sect_tooltip:0 "Visit the Primal Beast Sect to learn about their cultivation path."
+ visit_primordial_chaos_hall:0 "Primordial Chaos Hall"
+ visit_primordial_chaos_hall_tooltip:0 "Visit the Primordial Chaos Hall to learn about their cultivation path."
+ visit_wild_beast_mountain:0 "Wild Beast Mountain"
+ visit_wild_beast_mountain_tooltip:0 "Visit the Wild Beast Mountain to learn about their cultivation path."
+ visit_savage_fang_clan:0 "Savage Fang Clan"
+ visit_savage_fang_clan_tooltip:0 "Visit the Savage Fang Clan to learn about their cultivation path."
+ visit_feral_bond_sect:0 "Feral Bond Sect"
+ visit_feral_bond_sect_tooltip:0 "Visit the Feral Bond Sect to learn about their cultivation path."
+
+ ## VISIT EVENTS
+
+ visit_cultivation_sect_decision:0 "Visit Cultivation Sect"
+ visit_cultivation_sect_decision_desc:0 "Cultivators often belong to sects. Some lineages are as old as the world itself, while others are newly founded. Visit a sect to learn its history and cultivation path—then decide whether to join them or make them tremble before your power."
+ visit_cultivation_sect_decision_tooltip:0 "Choose a sect to visit."
+ visit_cultivation_sect_decision_confirm:0 "Visit Sect"
+
+ cultivation_sect_visit.1000.t:0 "Mount Hua Sect"
+ cultivation_sect_visit.1000.desc:0 "A prestigious orthodox sect known for their elegant sword techniques and righteous cultivation path. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1001.t:0 "Heavenly Sword Pavilion"
+ cultivation_sect_visit.1001.desc:0 "Masters of celestial sword arts, they believe in perfecting the union of heaven and blade. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1002.t:0 "Azure Edge Sect"
+ cultivation_sect_visit.1002.desc:0 "Practitioners of the swift azure blade, combining speed and precision in their sword dao. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1003.t:0 "Ten Thousand Swords Valley"
+ cultivation_sect_visit.1003.desc:0 "A valley filled with countless sword techniques, where disciples learn from thousands of blade styles. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1004.t:0 "Violet Thunder Blade Sect"
+ cultivation_sect_visit.1004.desc:0 "Wielders of lightning-infused swords, channeling thunder's fury through their blades. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1050.t:0 "Eight Trigrams Palace"
+ cultivation_sect_visit.1050.desc:0 "Masters of formation arrays based on the ancient Eight Trigrams, manipulating reality through geometric patterns. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1051.t:0 "Celestial Talisman Hall"
+ cultivation_sect_visit.1051.desc:0 "Specialists in creating powerful talismans that harness celestial energies. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1052.t:0 "Nine Star Formation Sect"
+ cultivation_sect_visit.1052.desc:0 "Formation masters who arrange their arrays based on the nine celestial stars. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1053.t:0 "Mystic Seal Pavilion"
+ cultivation_sect_visit.1053.desc:0 "Experts in sealing techniques and protective barriers that guard against all threats. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1054.t:0 "Heaven's Array Manor"
+ cultivation_sect_visit.1054.desc:0 "Defensive formation specialists who can create impenetrable arrays blessed by the heavens. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1100.t:0 "Wudang Sect"
+ cultivation_sect_visit.1100.desc:0 "Founded on Taoist principles, they seek perfect balance between yin and yang, body and mind. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1101.t:0 "Shaolin Temple"
+ cultivation_sect_visit.1101.desc:0 "Buddhist monks who cultivate both body and spirit through rigorous martial and meditative practices. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1102.t:0 "Eternal Harmony Pavilion"
+ cultivation_sect_visit.1102.desc:0 "Practitioners of righteous dual cultivation, seeking perfect spiritual harmony between partners. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1103.t:0 "Jade Lotus Temple"
+ cultivation_sect_visit.1103.desc:0 "Pure yin-yang cultivators who believe in the sacred union of complementary energies. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1104.t:0 "Supreme Balance Sect"
+ cultivation_sect_visit.1104.desc:0 "Seekers of absolute equilibrium in all aspects of cultivation and life. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1150.t:0 "Divine Beast Mountain"
+ cultivation_sect_visit.1150.desc:0 "Form contracts with sacred heavenly beasts, bonding with creatures of immense spiritual power. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1151.t:0 "Celestial Phoenix Pavilion"
+ cultivation_sect_visit.1151.desc:0 "Specialists in contracting with bird-type divine spirits, particularly the legendary phoenix. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1152.t:0 "Dragon Whisper Sect"
+ cultivation_sect_visit.1152.desc:0 "Those who commune with dragon-lineage beasts and harness their ancient power. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1153.t:0 "Spirit Communion Temple"
+ cultivation_sect_visit.1153.desc:0 "Mediators between the human and beast realms, fostering mutual understanding and growth. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.1154.t:0 "Thousand Beast Valley"
+ cultivation_sect_visit.1154.desc:0 "Masters of forming contracts with multiple spirit beasts simultaneously. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2000.t:0 "Crimson Moon Blade Hall"
+ cultivation_sect_visit.2000.desc:0 "Night-fighting saber specialists whose blades gleam crimson under the moon. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2001.t:0 "Tyrant Saber Palace"
+ cultivation_sect_visit.2001.desc:0 "Practitioners of domineering saber techniques that overwhelm all opposition. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2002.t:0 "Howling Wind Saber Sect"
+ cultivation_sect_visit.2002.desc:0 "Speed-based saber masters whose strikes are as swift and unpredictable as the wind. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2003.t:0 "Demon Suppressing Blade Clan"
+ cultivation_sect_visit.2003.desc:0 "Unorthodox cultivators who hunt demonic practitioners with brutal efficiency. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2004.t:0 "Black Iron Saber Sect"
+ cultivation_sect_visit.2004.desc:0 "Heavy saber wielders who crush enemies with overwhelming brute force. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2050.t:0 "Jade Cauldron Sect"
+ cultivation_sect_visit.2050.desc:0 "Alchemists who refine legendary pills in ancient jade cauldrons. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2051.t:0 "Medicine King Valley"
+ cultivation_sect_visit.2051.desc:0 "Healers and pill makers who have perfected the medicinal arts. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2052.t:0 "Hundred Herbs Pavilion"
+ cultivation_sect_visit.2052.desc:0 "Gatherers and cultivators of rare spiritual herbs for alchemy. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2053.t:0 "Eternal Furnace Hall"
+ cultivation_sect_visit.2053.desc:0 "Masters of the eternal flame, refining pills of incredible potency. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2054.t:0 "Transcendent Elixir Sect"
+ cultivation_sect_visit.2054.desc:0 "Creators of legendary elixirs that defy the heavens themselves. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2100.t:0 "Pure Yang Palace"
+ cultivation_sect_visit.2100.desc:0 "Pure Yang lineage cultivators who temper blazing yang essence through disciplined body-forging methods. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2101.t:0 "Yin Phoenix Sect"
+ cultivation_sect_visit.2101.desc:0 "Female yin cultivation masters who embody feminine power and allure. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2102.t:0 "Blissful Union Pavilion"
+ cultivation_sect_visit.2102.desc:0 "Balanced dual-cultivation practitioners who seek enlightenment through disciplined yin-yang harmony. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2103.t:0 "Jade Chamber Sect"
+ cultivation_sect_visit.2103.desc:0 "Refiners of spirit resonance arts who strengthen mind and meridians through ritualized harmony techniques. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2104.t:0 "Eternal Serenity Hall"
+ cultivation_sect_visit.2104.desc:0 "Meditative adepts who sustain tranquil spirit states to refine qi without interruption. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2150.t:0 "Moonless Night Pavilion"
+ cultivation_sect_visit.2150.desc:0 "Corpse refinement specialists who practice their dark arts in absolute darkness. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2151.t:0 "Pale Bone Hall"
+ cultivation_sect_visit.2151.desc:0 "Jiangshi masters who command armies of hopping corpses and skeletal servants. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2152.t:0 "Eternal Rest Clan"
+ cultivation_sect_visit.2152.desc:0 "Those who disturb the eternal slumber, binding the dead to serve the living. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2153.t:0 "Withered Soul Temple"
+ cultivation_sect_visit.2153.desc:0 "Practitioners who drain the essence from corpses to fuel their cultivation. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.2154.t:0 "Hopping Corpse Sect"
+ cultivation_sect_visit.2154.desc:0 "Specialists in creating and controlling traditional Chinese jiangshi. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3000.t:0 "Blood River Sect"
+ cultivation_sect_visit.3000.desc:0 "Demonic cultivators who bathe in rivers of their enemies' blood to grow stronger. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3001.t:0 "Ten Thousand Corpse Valley"
+ cultivation_sect_visit.3001.desc:0 "A valley littered with the remains of their victims, where death fuels power. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3002.t:0 "Asura Battle Hall"
+ cultivation_sect_visit.3002.desc:0 "Demon warriors who embody the wrathful asura, living only for combat and slaughter. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3050.t:0 "Five Poison Cult"
+ cultivation_sect_visit.3050.desc:0 "Masters of the five deadly poisons: scorpion, snake, spider, centipede, and toad. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3051.t:0 "Venomous Serpent Valley"
+ cultivation_sect_visit.3051.desc:0 "Poison cultivators who breed and extract venom from deadly serpents. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3052.t:0 "Miasma Swamp Sect"
+ cultivation_sect_visit.3052.desc:0 "Dwellers in toxic swamps who cultivate through breathing poisonous miasma. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3100.t:0 "Blood Yin Cult"
+ cultivation_sect_visit.3100.desc:0 "Vampiric cultivators who drain blood essence from their victims. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3101.t:0 "Blood Moon Demonic Sect"
+ cultivation_sect_visit.3101.desc:0 "Blood magic practitioners who draw power from the blood moon. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3102.t:0 "Scarlet Heart Palace"
+ cultivation_sect_visit.3102.desc:0 "Those who refine human hearts into cultivation resources. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3150.t:0 "Nightshade Palace"
+ cultivation_sect_visit.3150.desc:0 "Shadow-path cultivators who siphon spiritual vitality through forbidden soul-binding arts. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.3151.t:0 "Crimson Sigil Sect"
+ cultivation_sect_visit.3151.desc:0 "Dark practitioners who brand targets with forbidden sigils, binding spirit and will to their command. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4000.t:0 "Lone Wolf Wanderers"
+ cultivation_sect_visit.4000.desc:0 "Independent blade cultivators who walk their path alone, beholden to no sect. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4001.t:0 "Rootless Sword Alliance"
+ cultivation_sect_visit.4001.desc:0 "Vagrant swordsmen who band together for mutual protection while maintaining independence. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4002.t:0 "Vagrant Blade Brotherhood"
+ cultivation_sect_visit.4002.desc:0 "Wandering warriors who form brotherly bonds on the road. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4050.t:0 "Thousand Treasures Pavilion"
+ cultivation_sect_visit.4050.desc:0 "Collectors and refiners of countless mystical artifacts and treasures. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4051.t:0 "Mystic Forge Hall"
+ cultivation_sect_visit.4051.desc:0 "Wandering smiths who forge legendary weapons and artifacts. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4052.t:0 "Ancient Relic Sect"
+ cultivation_sect_visit.4052.desc:0 "Treasure hunters who seek out and refine ancient relics of power. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4100.t:0 "Ancient Bloodline Temple"
+ cultivation_sect_visit.4100.desc:0 "Cultivators who awaken ancient bloodlines dormant in their bodies. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4101.t:0 "Primal Beast Sect"
+ cultivation_sect_visit.4101.desc:0 "Those who transform their bodies to embody primal beast characteristics. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4102.t:0 "Primordial Chaos Hall"
+ cultivation_sect_visit.4102.desc:0 "Body cultivators who tap into the primordial chaos that predates creation. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4150.t:0 "Wild Beast Mountain"
+ cultivation_sect_visit.4150.desc:0 "Tamers of wild and savage beasts, forming bonds with untamed creatures. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4151.t:0 "Savage Fang Clan"
+ cultivation_sect_visit.4151.desc:0 "Beast tamers who embrace the savage nature of their companions. A sect elder approaches to assess your potential."
+ cultivation_sect_visit.4152.t:0 "Feral Bond Sect"
+ cultivation_sect_visit.4152.desc:0 "Those who forge primal spirit pacts with beast companions, merging human and beast qi into a unified battle path. A sect elder approaches to assess your potential."
+
+ ## JOIN EVENTS
+
+ cultivation_sect_join.1000.t:0 "Join the Mount Hua Sect"
+ cultivation_sect_join.1000.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Mount Hua Sect?"
+ cultivation_sect_join.1001.t:0 "Join the Heavenly Sword Pavilion"
+ cultivation_sect_join.1001.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Heavenly Sword Pavilion?"
+ cultivation_sect_join.1002.t:0 "Join the Azure Edge Sect"
+ cultivation_sect_join.1002.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Azure Edge Sect?"
+ cultivation_sect_join.1003.t:0 "Join the Ten Thousand Swords Valley"
+ cultivation_sect_join.1003.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Ten Thousand Swords Valley?"
+ cultivation_sect_join.1004.t:0 "Join the Violet Thunder Blade Sect"
+ cultivation_sect_join.1004.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Violet Thunder Blade Sect?"
+ cultivation_sect_join.1050.t:0 "Join the Eight Trigrams Palace"
+ cultivation_sect_join.1050.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Eight Trigrams Palace?"
+ cultivation_sect_join.1051.t:0 "Join the Celestial Talisman Hall"
+ cultivation_sect_join.1051.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Celestial Talisman Hall?"
+ cultivation_sect_join.1052.t:0 "Join the Nine Star Formation Sect"
+ cultivation_sect_join.1052.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Nine Star Formation Sect?"
+ cultivation_sect_join.1053.t:0 "Join the Mystic Seal Pavilion"
+ cultivation_sect_join.1053.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Mystic Seal Pavilion?"
+ cultivation_sect_join.1054.t:0 "Join the Heaven's Array Manor"
+ cultivation_sect_join.1054.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Heaven's Array Manor?"
+ cultivation_sect_join.1100.t:0 "Join the Wudang Sect"
+ cultivation_sect_join.1100.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Wudang Sect?"
+ cultivation_sect_join.1101.t:0 "Join the Shaolin Temple"
+ cultivation_sect_join.1101.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Shaolin Temple?"
+ cultivation_sect_join.1102.t:0 "Join the Eternal Harmony Pavilion"
+ cultivation_sect_join.1102.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Eternal Harmony Pavilion?"
+ cultivation_sect_join.1103.t:0 "Join the Jade Lotus Temple"
+ cultivation_sect_join.1103.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Jade Lotus Temple?"
+ cultivation_sect_join.1104.t:0 "Join the Supreme Balance Sect"
+ cultivation_sect_join.1104.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Supreme Balance Sect?"
+ cultivation_sect_join.1150.t:0 "Join the Divine Beast Mountain"
+ cultivation_sect_join.1150.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Divine Beast Mountain?"
+ cultivation_sect_join.1151.t:0 "Join the Celestial Phoenix Pavilion"
+ cultivation_sect_join.1151.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Celestial Phoenix Pavilion?"
+ cultivation_sect_join.1152.t:0 "Join the Dragon Whisper Sect"
+ cultivation_sect_join.1152.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Dragon Whisper Sect?"
+ cultivation_sect_join.1153.t:0 "Join the Spirit Communion Temple"
+ cultivation_sect_join.1153.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Spirit Communion Temple?"
+ cultivation_sect_join.1154.t:0 "Join the Thousand Beast Valley"
+ cultivation_sect_join.1154.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Thousand Beast Valley?"
+ cultivation_sect_join.2000.t:0 "Join the Crimson Moon Blade Hall"
+ cultivation_sect_join.2000.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Crimson Moon Blade Hall?"
+ cultivation_sect_join.2001.t:0 "Join the Tyrant Saber Palace"
+ cultivation_sect_join.2001.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Tyrant Saber Palace?"
+ cultivation_sect_join.2002.t:0 "Join the Howling Wind Saber Sect"
+ cultivation_sect_join.2002.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Howling Wind Saber Sect?"
+ cultivation_sect_join.2003.t:0 "Join the Demon Suppressing Blade Clan"
+ cultivation_sect_join.2003.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Demon Suppressing Blade Clan?"
+ cultivation_sect_join.2004.t:0 "Join the Black Iron Saber Sect"
+ cultivation_sect_join.2004.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Black Iron Saber Sect?"
+ cultivation_sect_join.2050.t:0 "Join the Jade Cauldron Sect"
+ cultivation_sect_join.2050.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Jade Cauldron Sect?"
+ cultivation_sect_join.2051.t:0 "Join the Medicine King Valley"
+ cultivation_sect_join.2051.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Medicine King Valley?"
+ cultivation_sect_join.2052.t:0 "Join the Hundred Herbs Pavilion"
+ cultivation_sect_join.2052.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Hundred Herbs Pavilion?"
+ cultivation_sect_join.2053.t:0 "Join the Eternal Furnace Hall"
+ cultivation_sect_join.2053.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Eternal Furnace Hall?"
+ cultivation_sect_join.2054.t:0 "Join the Transcendent Elixir Sect"
+ cultivation_sect_join.2054.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Transcendent Elixir Sect?"
+ cultivation_sect_join.2100.t:0 "Join the Pure Yang Palace"
+ cultivation_sect_join.2100.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Pure Yang Palace?"
+ cultivation_sect_join.2101.t:0 "Join the Yin Phoenix Sect"
+ cultivation_sect_join.2101.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Yin Phoenix Sect?"
+ cultivation_sect_join.2102.t:0 "Join the Blissful Union Pavilion"
+ cultivation_sect_join.2102.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Blissful Union Pavilion?"
+ cultivation_sect_join.2103.t:0 "Join the Jade Chamber Sect"
+ cultivation_sect_join.2103.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Jade Chamber Sect?"
+ cultivation_sect_join.2104.t:0 "Join the Eternal Serenity Hall"
+ cultivation_sect_join.2104.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Eternal Serenity Hall?"
+ cultivation_sect_join.2150.t:0 "Join the Moonless Night Pavilion"
+ cultivation_sect_join.2150.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Moonless Night Pavilion?"
+ cultivation_sect_join.2151.t:0 "Join the Pale Bone Hall"
+ cultivation_sect_join.2151.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Pale Bone Hall?"
+ cultivation_sect_join.2152.t:0 "Join the Eternal Rest Clan"
+ cultivation_sect_join.2152.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Eternal Rest Clan?"
+ cultivation_sect_join.2153.t:0 "Join the Withered Soul Temple"
+ cultivation_sect_join.2153.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Withered Soul Temple?"
+ cultivation_sect_join.2154.t:0 "Join the Hopping Corpse Sect"
+ cultivation_sect_join.2154.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Hopping Corpse Sect?"
+ cultivation_sect_join.3000.t:0 "Join the Blood River Sect"
+ cultivation_sect_join.3000.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Blood River Sect?"
+ cultivation_sect_join.3001.t:0 "Join the Ten Thousand Corpse Valley"
+ cultivation_sect_join.3001.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Ten Thousand Corpse Valley?"
+ cultivation_sect_join.3002.t:0 "Join the Asura Battle Hall"
+ cultivation_sect_join.3002.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Asura Battle Hall?"
+ cultivation_sect_join.3050.t:0 "Join the Five Poison Cult"
+ cultivation_sect_join.3050.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Five Poison Cult?"
+ cultivation_sect_join.3051.t:0 "Join the Venomous Serpent Valley"
+ cultivation_sect_join.3051.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Venomous Serpent Valley?"
+ cultivation_sect_join.3052.t:0 "Join the Miasma Swamp Sect"
+ cultivation_sect_join.3052.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Miasma Swamp Sect?"
+ cultivation_sect_join.3100.t:0 "Join the Blood Yin Cult"
+ cultivation_sect_join.3100.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Blood Yin Cult?"
+ cultivation_sect_join.3101.t:0 "Join the Crimson Moon Demonic Sect"
+ cultivation_sect_join.3101.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Crimson Moon Demonic Sect?"
+ cultivation_sect_join.3102.t:0 "Join the Scarlet Heart Palace"
+ cultivation_sect_join.3102.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Scarlet Heart Palace?"
+ cultivation_sect_join.3150.t:0 "Join the Nightshade Palace"
+ cultivation_sect_join.3150.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Nightshade Palace?"
+ cultivation_sect_join.3151.t:0 "Join the Crimson Sigil Sect"
+ cultivation_sect_join.3151.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Crimson Sigil Sect?"
+ cultivation_sect_join.4000.t:0 "Join the Lone Wolf Wanderers"
+ cultivation_sect_join.4000.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Lone Wolf Wanderers?"
+ cultivation_sect_join.4001.t:0 "Join the Rootless Sword Alliance"
+ cultivation_sect_join.4001.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Rootless Sword Alliance?"
+ cultivation_sect_join.4002.t:0 "Join the Vagrant Blade Brotherhood"
+ cultivation_sect_join.4002.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Vagrant Blade Brotherhood?"
+ cultivation_sect_join.4050.t:0 "Join the Thousand Treasures Pavilion"
+ cultivation_sect_join.4050.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Thousand Treasures Pavilion?"
+ cultivation_sect_join.4051.t:0 "Join the Mystic Forge Hall"
+ cultivation_sect_join.4051.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Mystic Forge Hall?"
+ cultivation_sect_join.4052.t:0 "Join the Ancient Relic Sect"
+ cultivation_sect_join.4052.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Ancient Relic Sect?"
+ cultivation_sect_join.4100.t:0 "Join the Ancient Bloodline Temple"
+ cultivation_sect_join.4100.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Ancient Bloodline Temple?"
+ cultivation_sect_join.4101.t:0 "Join the Primal Beast Sect"
+ cultivation_sect_join.4101.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Primal Beast Sect?"
+ cultivation_sect_join.4102.t:0 "Join the Primordial Chaos Hall"
+ cultivation_sect_join.4102.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Primordial Chaos Hall?"
+ cultivation_sect_join.4150.t:0 "Join the Wild Beast Mountain"
+ cultivation_sect_join.4150.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Wild Beast Mountain?"
+ cultivation_sect_join.4151.t:0 "Join the Savage Fang Clan"
+ cultivation_sect_join.4151.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Savage Fang Clan?"
+ cultivation_sect_join.4152.t:0 "Join the Feral Bond Sect"
+ cultivation_sect_join.4152.desc:0 "The elder evaluates your cultivation level and resources. Will you join the Feral Bond Sect?"
+
+ ## COMMON EVENT OPTIONS
+ sect_join:0 "Request to Join the Sect"
+ sect_spar:0 "Spar with Their Disciples"
+ sect_visit_cancel:0 "Take My Leave"
+ sect_join_donate:0 "Offer gold to Join the Sect"
+ sect_join_cancel:0 "Changed my Mind"
+
+ tenet_sect_empty_1_name:0 ""
+ tenet_sect_empty_1_desc:0 "Select new tenet."
+ tenet_sect_empty_2_name:0 ""
+ tenet_sect_empty_2_desc:0 "Select new tenet."
+ tenet_sect_empty_3_name:0 ""
+ tenet_sect_empty_3_desc:0 "Select new tenet."
+ tenet_sect_empty_4_name:0 ""
+ tenet_sect_empty_4_desc:0 "Select new tenet."
+ tenet_sect_empty_5_name:0 ""
+ tenet_sect_empty_5_desc:0 "Select new tenet."
+ tenet_sect_empty_6_name:0 ""
+ tenet_sect_empty_6_desc:0 "Select new tenet."
+ tenet_sect_empty_7_name:0 ""
+ tenet_sect_empty_7_desc:0 "Select new tenet."
+ tenet_sect_empty_8_name:0 ""
+ tenet_sect_empty_8_desc:0 "Select new tenet."
+ tenet_sect_empty_9_name:0 ""
+ tenet_sect_empty_9_desc:0 "Select new tenet."
+ tenet_sect_empty_10_name:0 ""
+ tenet_sect_empty_10_desc:0 "Select new tenet."
+ tenet_sect_empty_11_name:0 ""
+ tenet_sect_empty_11_desc:0 "Select new tenet."
+ tenet_sect_empty_12_name:0 ""
+ tenet_sect_empty_12_desc:0 "Select new tenet."
+ tenet_sect_empty_13_name:0 ""
+ tenet_sect_empty_13_desc:0 "Select new tenet."
+ tenet_sect_empty_14_name:0 ""
+ tenet_sect_empty_14_desc:0 "Select new tenet."
+ tenet_sect_empty_15_name:0 ""
+ tenet_sect_empty_15_desc:0 "Select new tenet."
+ tenet_sect_empty_16_name:0 ""
+ tenet_sect_empty_16_desc:0 "Select new tenet."
+ tenet_sect_empty_17_name:0 ""
+ tenet_sect_empty_17_desc:0 "Select new tenet."
+
+ #######################
+ ## BREAKTHROUGH DECISIONS
+ #######################
+
+ attempt_qi_gathering_breakthrough_decision:0 "Breakthrough: Qi Gathering"
+ attempt_qi_gathering_breakthrough_decision_desc:0 "Attempt to breakthrough from Mortal Realm to [GetTrait('cultivation_qi_gathering').GetName(GetNullCharacter)] realm."
+ attempt_qi_gathering_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to Qi Gathering."
+ attempt_qi_gathering_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_qi_gathering_breakthrough:0 "Breakthrough: Qi Gathering perk"
+
+ attempt_qi_refining_breakthrough_decision:0 "Breakthrough: Qi Refining"
+ attempt_qi_refining_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_qi_gathering').GetName(GetNullCharacter)] to [GetTrait('cultivation_qi_refining').GetName(GetNullCharacter)] realm."
+ attempt_qi_refining_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_qi_refining').GetName(GetNullCharacter)] realm."
+ attempt_qi_refining_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_qi_refining_breakthrough:0 "Breakthrough: Qi Refining perk"
+
+ attempt_qi_building_breakthrough_decision:0 "Breakthrough: Qi Building"
+ attempt_qi_building_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_qi_refining').GetName(GetNullCharacter)] to [GetTrait('cultivation_qi_building').GetName(GetNullCharacter)] realm."
+ attempt_qi_building_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to Qi Building."
+ attempt_qi_building_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_qi_building_breakthrough:0 "Breakthrough: Qi Building perk"
+
+ attempt_core_formation_breakthrough_decision:0 "Breakthrough: Core Formation"
+ attempt_core_formation_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_qi_building').GetName(GetNullCharacter)] to [GetTrait('cultivation_core_formation').GetName(GetNullCharacter)] realm."
+ attempt_core_formation_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_core_formation').GetName(GetNullCharacter)] realm."
+ attempt_core_formation_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_core_formation_breakthrough:0 "Breakthrough: Qi Core Formation perk"
+
+ attempt_nascent_soul_breakthrough_decision:0 "Breakthrough: Nascent Soul"
+ attempt_nascent_soul_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_core_formation').GetName(GetNullCharacter)] to [GetTrait('cultivation_nascent_soul').GetName(GetNullCharacter)] realm."
+ attempt_nascent_soul_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to Nascent Soul."
+ attempt_nascent_soul_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_nascent_soul_breakthrough:0 "Breakthrough: Qi Nascent Soul perk"
+
+ attempt_heavenly_being_breakthrough_decision:0 "Breakthrough: Heavenly Being"
+ attempt_heavenly_being_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_nascent_soul').GetName(GetNullCharacter)] to [GetTrait('cultivation_heavenly_being').GetName(GetNullCharacter)] realm."
+ attempt_heavenly_being_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_heavenly_being').GetName(GetNullCharacter)] realm."
+ attempt_heavenly_being_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_heavenly_being_breakthrough:0 "Breakthrough: Heavenly Being perk"
+
+ attempt_four_axis_breakthrough_decision:0 "Breakthrough: Four-Axis"
+ attempt_four_axis_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_heavenly_being').GetName(GetNullCharacter)] to [GetTrait('cultivation_four_axis').GetName(GetNullCharacter)] realm."
+ attempt_four_axis_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_four_axis').GetName(GetNullCharacter)] realm."
+ attempt_four_axis_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_four_axis_breakthrough:0 "Breakthrough: Four-Axis perk"
+
+ attempt_integration_breakthrough_decision:0 "Breakthrough: Integration"
+ attempt_integration_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_four_axis').GetName(GetNullCharacter)] to [GetTrait('cultivation_integration').GetName(GetNullCharacter)] realm."
+ attempt_integration_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_integration').GetName(GetNullCharacter)] realm."
+ attempt_integration_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_integration_breakthrough:0 "Breakthrough: Integration perk"
+
+ attempt_star_shattering_breakthrough_decision:0 "Breakthrough: Star Shattering"
+ attempt_star_shattering_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_integration').GetName(GetNullCharacter)] to [GetTrait('cultivation_star_shattering').GetName(GetNullCharacter)] realm."
+ attempt_star_shattering_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_star_shattering').GetName(GetNullCharacter)] realm."
+ attempt_star_shattering_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_star_shattering_breakthrough:0 "Breakthrough: Star Shattering perk"
+
+ attempt_sacred_vessel_breakthrough_decision:0 "Breakthrough: Sacred Vessel"
+ attempt_sacred_vessel_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_star_shattering').GetName(GetNullCharacter)] to [GetTrait('cultivation_sacred_vessel').GetName(GetNullCharacter)] realm."
+ attempt_sacred_vessel_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_sacred_vessel').GetName(GetNullCharacter)]."
+ attempt_sacred_vessel_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_sacred_vessel_breakthrough:0 "Breakthrough: Sacred Vessel perk"
+
+ attempt_entering_nirvana_breakthrough_decision:0 "Breakthrough: Entering Nirvana"
+ attempt_entering_nirvana_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_sacred_vessel').GetName(GetNullCharacter)] to [GetTrait('cultivation_entering_nirvana').GetName(GetNullCharacter)] realm."
+ attempt_entering_nirvana_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_entering_nirvana').GetName(GetNullCharacter)] realm."
+ attempt_entering_nirvana_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_entering_nirvana_breakthrough:0 "Breakthrough: Entering Nirvana perk"
+
+ attempt_true_immortal_breakthrough_decision:0 "Breakthrough: True Immortal"
+ attempt_true_immortal_breakthrough_decision_desc:0 "Attempt to breakthrough from [GetTrait('cultivation_entering_nirvana').GetName(GetNullCharacter)] to [GetTrait('cultivation_true_immortal').GetName(GetNullCharacter)] realm."
+ attempt_true_immortal_breakthrough_decision_tooltip:0 "You are ready to attempt the breakthrough to [GetTrait('cultivation_true_immortal').GetName(GetNullCharacter)] realm."
+ attempt_true_immortal_breakthrough_confirm:0 "Attempt Breakthrough"
+ can_attempt_true_immortal_breakthrough:0 "Breakthrough: True Immortal perk"
+
+ #######################
+ ## BREAKTHROUGH EVENTS - MAIN CHOICES
+ #######################
+
+ # Qi Gathering (1000-1002)
+ cultivation_breakthrough.1000.t:0 "Qi Gathering Breakthrough"
+ cultivation_breakthrough.1000.desc:0 "You sit in meditation, gathering the spiritual energy around you. This is the moment of truth - will you breakthrough to Qi Gathering realm?"
+ cultivation_breakthrough.1000.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1000.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1000.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_qi_gathering').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1000.f_tt:0 "#low Failure:#! +15 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1001.t:0 "Breakthrough Success!"
+ cultivation_breakthrough.1001.desc:0 "A surge of spiritual energy floods your body! Your mortal shell shatters as you step into the [GetTrait('cultivation_qi_gathering').GetName(GetNullCharacter)] realm. The world seems brighter, your senses sharper - you have taken your first step on the path to immortality!"
+ cultivation_breakthrough.1001.a:0 "I have broken through!"
+
+ cultivation_breakthrough.1002.t:0 "Breakthrough Failed"
+ cultivation_breakthrough.1002.desc:0 "The Qi slips through your grasp like water through your fingers. Your foundation trembles, but holds. You have failed this time, but you can try again once you recover."
+ cultivation_breakthrough.1002.a:0 "I need more preparation..."
+
+ # Qi Refining (1100-1102)
+ cultivation_breakthrough.1100.t:0 "Qi Refining Breakthrough"
+ cultivation_breakthrough.1100.desc:0 "Your gathered Qi swirls within you, ready to be refined into something purer. The next realm awaits - but the difficulty increases."
+ cultivation_breakthrough.1100.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1100.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1100.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_qi_refining').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1100.f_tt:0 "#low Failure:#! +20 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1101.t:0 "Qi Refining Success!"
+ cultivation_breakthrough.1101.desc:0 "Your Qi transforms, becoming purer and more potent! You have entered the [GetTrait('cultivation_qi_refining').GetName(GetNullCharacter)] realm. Each breath now draws in refined spiritual energy."
+ cultivation_breakthrough.1101.a:0 "My Qi is refined!"
+
+ cultivation_breakthrough.1102.t:0 "Qi Refining Failed"
+ cultivation_breakthrough.1102.desc:0 "The refinement process goes awry. Your Qi remains unchanged, but you sense what went wrong. Next time will be different."
+ cultivation_breakthrough.1102.a:0 "I will try again..."
+
+ # Qi Building (1200-1202)
+ cultivation_breakthrough.1200.t:0 "Qi Building Breakthrough"
+ cultivation_breakthrough.1200.desc:0 "Your refined Qi needs structure. You must construct a stable foundation for Core Formation - a critical step in cultivation."
+ cultivation_breakthrough.1200.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1200.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1200.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_qi_building').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1200.f_tt:0 "#low Failure:#! +25 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1201.t:0 "Qi Building Success!"
+ cultivation_breakthrough.1201.desc:0 "Your Qi foundation solidifies! Brick by brick, layer by layer, you have constructed a stable base for your future golden core. The [GetTrait('cultivation_qi_building').GetName(GetNullCharacter)] realm is yours!"
+ cultivation_breakthrough.1201.a:0 "My foundation is solid!"
+
+ cultivation_breakthrough.1202.t:0 "Qi Building Failed"
+ cultivation_breakthrough.1202.desc:0 "Cracks appear in your Qi structure. The foundation refuses to stabilize. You must study more before attempting again."
+ cultivation_breakthrough.1202.a:0 "Back to studying..."
+
+ # Core Formation (1300-1302)
+ cultivation_breakthrough.1300.t:0 "Core Formation Breakthrough"
+ cultivation_breakthrough.1300.desc:0 "The moment has come to condense your Qi into a golden core. This is the true beginning of immortality! Success means transcending mortality itself."
+ cultivation_breakthrough.1300.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1300.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1300.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_core_formation').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1300.f_tt:0 "#low Failure:#! +30 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1301.t:0 "Core Formation Success!"
+ cultivation_breakthrough.1301.desc:0 "A brilliant golden light erupts from your dantian! Your Qi condenses into a perfect golden core, radiating power. You are no longer truly mortal - the path to immortality lies open before you!"
+ cultivation_breakthrough.1301.a:0 "The Golden Core is formed!"
+
+ cultivation_breakthrough.1302.t:0 "Core Formation Failed"
+ cultivation_breakthrough.1302.desc:0 "The Qi refuses to condense. Your core remains unformed. This is a difficult barrier - many cultivators are stuck here for decades. But you will try again."
+ cultivation_breakthrough.1302.a:0 "The bottleneck remains..."
+
+ # Nascent Soul (1400-1402)
+ cultivation_breakthrough.1400.t:0 "Nascent Soul Breakthrough"
+ cultivation_breakthrough.1400.desc:0 "Your golden core begins to crack... not from failure, but transformation! A nascent soul will emerge from within!"
+ cultivation_breakthrough.1400.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1400.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1400.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_nascent_soul').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1400.f_tt:0 "#low Failure:#! +35 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1401.t:0 "Nascent Soul Success!"
+ cultivation_breakthrough.1401.desc:0 "Your golden core shatters, and from within emerges a miniature version of yourself - your Nascent Soul! Even if your body dies, your soul can survive. True immortality is within reach!"
+ cultivation_breakthrough.1401.a:0 "My soul is born!"
+
+ cultivation_breakthrough.1402.t:0 "Nascent Soul Failed"
+ cultivation_breakthrough.1402.desc:0 "The transformation fails. Your core remains intact but unchanging. The nascent soul refuses to emerge."
+ cultivation_breakthrough.1402.a:0 "Not yet..."
+
+ # Heavenly Being (1500-1502)
+ cultivation_breakthrough.1500.t:0 "Heavenly Being Breakthrough"
+ cultivation_breakthrough.1500.desc:0 "Ascend beyond mortality and become a heavenly existence! Your nascent soul yearns to transform."
+ cultivation_breakthrough.1500.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1500.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1500.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_heavenly_beingg').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1500.f_tt:0 "#low Failure:#! +40 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1501.t:0 "Heavenly Being Success!"
+ cultivation_breakthrough.1501.desc:0 "Your nascent soul ascends! You are no longer bound by mortal laws. The heavens themselves recognize your existence!"
+ cultivation_breakthrough.1501.a:0 "I ascend!"
+
+ cultivation_breakthrough.1502.t:0 "Heavenly Being Failed"
+ cultivation_breakthrough.1502.desc:0 "The heavens reject you. The barrier holds firm."
+ cultivation_breakthrough.1502.a:0 "The heavens bar my path..."
+
+ # Four-Axis (1600-1602)
+ cultivation_breakthrough.1600.t:0 "Four-Axis Breakthrough"
+ cultivation_breakthrough.1600.desc:0 "Master the four fundamental forces and transcend the heavens themselves!"
+ cultivation_breakthrough.1600.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1600.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1600.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_four_axis').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1600.f_tt:0 "#low Failure:#! +45 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1601.t:0 "Four-Axis Success!"
+ cultivation_breakthrough.1601.desc:0 "The four axes align! Space, time, matter, energy - all bow to your will!"
+ cultivation_breakthrough.1601.a:0 "The forces are mine!"
+
+ cultivation_breakthrough.1602.t:0 "Four-Axis Failed"
+ cultivation_breakthrough.1602.desc:0 "The forces remain beyond your grasp."
+ cultivation_breakthrough.1602.a:0 "Not strong enough..."
+
+ # Integration (1700-1702)
+ cultivation_breakthrough.1700.t:0 "Integration Breakthrough"
+ cultivation_breakthrough.1700.desc:0 "Integrate all your cultivation insights into perfect harmony!"
+ cultivation_breakthrough.1700.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1700.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1700.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_integration').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1700.f_tt:0 "#low Failure:#! +50 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1701.t:0 "Integration Success!"
+ cultivation_breakthrough.1701.desc:0 "Perfect integration achieved! All aspects of your cultivation merge into one!"
+ cultivation_breakthrough.1701.a:0 "Unity achieved!"
+
+ cultivation_breakthrough.1702.t:0 "Integration Failed"
+ cultivation_breakthrough.1702.desc:0 "The pieces refuse to unite. Your cultivation remains fragmented."
+ cultivation_breakthrough.1702.a:0 "Still fragmented..."
+
+ # Star Shattering (1800-1802)
+ cultivation_breakthrough.1800.t:0 "Star Shattering Breakthrough"
+ cultivation_breakthrough.1800.desc:0 "Gain the power to shatter stars with a single gesture!"
+ cultivation_breakthrough.1800.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1800.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1800.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_star_shattering').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1800.f_tt:0 "#low Failure:#! +55 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1801.t:0 "Star Shattering Success!"
+ cultivation_breakthrough.1801.desc:0 "Your power explodes outward! Stars tremble at your presence!"
+ cultivation_breakthrough.1801.a:0 "Even stars bow before me!"
+
+ cultivation_breakthrough.1802.t:0 "Star Shattering Failed"
+ cultivation_breakthrough.1802.desc:0 "The stars remain beyond your reach."
+ cultivation_breakthrough.1802.a:0 "Not yet..."
+
+ # Sacred Vessel (1900-1902)
+ cultivation_breakthrough.1900.t:0 "Sacred Vessel Breakthrough"
+ cultivation_breakthrough.1900.desc:0 "Transform your body into a sacred vessel of boundless power!"
+ cultivation_breakthrough.1900.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.1900.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.1900.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_sacred_vessel').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.1900.f_tt:0 "#low Failure:#! +60 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.1901.t:0 "Sacred Vessel Success!"
+ cultivation_breakthrough.1901.desc:0 "Your body transforms! You are now a sacred vessel containing infinite potential!"
+ cultivation_breakthrough.1901.a:0 "My body is divine!"
+
+ cultivation_breakthrough.1902.t:0 "Sacred Vessel Failed"
+ cultivation_breakthrough.1902.desc:0 "The transformation fails. Your mortal shell persists."
+ cultivation_breakthrough.1902.a:0 "Still mortal..."
+
+ # Entering Nirvana (2000-2002)
+ cultivation_breakthrough.2000.t:0 "Entering Nirvana Breakthrough"
+ cultivation_breakthrough.2000.desc:0 "The final step before true transcendence. Will you enter Nirvana?"
+ cultivation_breakthrough.2000.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.2000.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.2000.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_entering_nirvana').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.2000.f_tt:0 "#low Failure:#! +65 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.2001.t:0 "Entering Nirvana Success!"
+ cultivation_breakthrough.2001.desc:0 "You step into Nirvana! The cycle of rebirth is broken! True transcendence is at hand!"
+ cultivation_breakthrough.2001.a:0 "I enter Nirvana!"
+
+ cultivation_breakthrough.2002.t:0 "Entering Nirvana Failed"
+ cultivation_breakthrough.2002.desc:0 "Nirvana remains closed. One more step remains."
+ cultivation_breakthrough.2002.a:0 "The final barrier..."
+
+ # True Immortal (2100-2102)
+ cultivation_breakthrough.2100.t:0 "True Immortal Breakthrough"
+ cultivation_breakthrough.2100.desc:0 "The ultimate transformation awaits. Beyond Nirvana lies True Immortality - eternal existence, unchanging and undying. This is the peak of cultivation!"
+ cultivation_breakthrough.2100.attempt:0 "Attempt Breakthrough Now"
+ cultivation_breakthrough.2100.wait:0 "Wait for Better Opportunity"
+ cultivation_breakthrough.2100.s_tt:0 "#high Success:#! Ascend to [GetTrait('cultivation_true_immortal').GetName(GetNullCharacter)] realm!"
+ cultivation_breakthrough.2100.f_tt:0 "#low Failure:#! +70 [stress|E], gain [GetModifier('failed_breakthrough_attempt').GetNameWithTooltip] for 3 months"
+
+ cultivation_breakthrough.2101.t:0 "True Immortal Success!"
+ cultivation_breakthrough.2101.desc:0 "You transcend all mortal limits! The universe itself acknowledges your existence as a True Immortal. Death has no meaning. Time has no hold. You are eternal!"
+ cultivation_breakthrough.2101.a:0 "I am immortal!"
+
+ cultivation_breakthrough.2102.t:0 "True Immortal Failed"
+ cultivation_breakthrough.2102.desc:0 "The final barrier holds. Even Nirvana cannot breach true immortality yet. But you will persist."
+ cultivation_breakthrough.2102.a:0 "One day..."
+
+ contemplating_breakthrough:0 "Contemplating Breakthrough"
+ contemplating_breakthrough_desc:0 "Deep in contemplation, preparing for the breakthrough attempt."
+
+ failed_breakthrough_attempt:0 "Failed Breakthrough"
+ failed_breakthrough_attempt_desc:0 "Still recovering from the failed breakthrough. Foundation is unstable."
+
+ #######################
+ ## BREAKTHROUGH MODIFIERS
+ #######################
+
+
+
+ #######################
+ ## CULTIVATION PATH TENETS
+ #######################
+
+ # Orthodox Cultivation
+ tenet_orthodox_cultivation:0 "Orthodox Cultivation"
+ tenet_orthodox_cultivation_desc:0 "This sect walks the righteous path: strict rules, clear karmic conduct, master-disciple orthodoxy, and open-faced conflict. Their disciples prize honor, restraint, and legitimacy in the Jianghu."
+ tenet_orthodox_cultivation_name:0 "Orthodox Path"
+
+ # Unorthodox Cultivation
+ tenet_unorthodox_cultivation:0 "Unorthodox Cultivation"
+ tenet_unorthodox_cultivation_desc:0 "This sect pursues irregular inheritances and unconventional methods that orthodox elders condemn. They are not inherently demonic, but they value results, innovation, and opportunistic breakthroughs."
+ tenet_unorthodox_cultivation_name:0 "Unorthodox Path"
+
+ # Demonic Cultivation
+ tenet_demonic_cultivation:0 "Demonic Cultivation"
+ tenet_demonic_cultivation_desc:0 "This sect embraces forbidden arts of devouring, sacrifice, and baleful refinement. Power is seized, not granted; fear is a resource; and each breakthrough risks deeper karmic corruption."
+ tenet_demonic_cultivation_name:0 "Demonic Path"
+
+ # Vagrant Cultivation
+ tenet_vagrant_cultivation:0 "Vagrant Cultivation"
+ tenet_vagrant_cultivation_desc:0 "This sect follows the wandering path, blending fragments of many inheritances without binding itself to a single orthodoxy. Its cultivators survive by adaptability, dueling skill, and hard-won field experience."
+ tenet_vagrant_cultivation_name:0 "Vagrant Path"
+
+ #######################
+ ## CULTIVATION HUD
+ #######################
+
+ CULTIVATION_WINDOW_TITLE:0 "Cultivation"
+ CULTIVATION_WINDOW_TOOLTIP:0 "Open Cultivation Window"
+ CULTIVATION_WINDOW_CONTENT:0 "This is your cultivation window.\n\nYou can add content here!"
+
+ # Partner Selection
+ NO_LEFT_PARTNER:0 "No Left Partner"
+ NO_RIGHT_PARTNER:0 "No Right Partner"
+ SELECT_LEFT_PARTNER:0 "Select Left Partner"
+ SELECT_RIGHT_PARTNER:0 "Select Right Partner"
+ REMOVE_PARTNER:0 "Remove Partner"
+
+ SELECT_LEFT_PARTNER_TOOLTIP:0 "Choose a cultivator as your left dual cultivation partner"
+ SELECT_RIGHT_PARTNER_TOOLTIP:0 "Choose a cultivator as your right dual cultivation partner"
+
+ # Interactions
+ cultivation_select_left_partner_interaction:0 "Select Left Cultivation Partner"
+ cultivation_select_left_partner_interaction_desc:0 "Choose this cultivator as your left dual cultivation partner. They will appear in your cultivation window."
+
+ cultivation_select_right_partner_interaction:0 "Select Right Cultivation Partner"
+ cultivation_select_right_partner_interaction_desc:0 "Choose this cultivator as your right dual cultivation partner. They will appear in your cultivation window."
+
+ CULTIVATION_PARTNER_SELECTED_NOTIFICATION:0 "Cultivation partner selected"
+ find_cultivation_left_partner_desc:0 "Select a left-side dual cultivation partner."
+ CULTIVATION_LEFT_PARTNER_SELECTED:0 "Left partner selected."
+ find_cultivation_right_partner_desc:0 "Select a right-side dual cultivation partner."
+ CULTIVATION_RIGHT_PARTNER_SELECTED:0 "Right partner selected."
+ dual_cultivation_interaction:0 "Dual Cultivation"
+ dual_cultivation_interaction_desc:0 "Cultivate together to harmonize yin and yang."
+ visit_mount_hua_sect_decision_tooltip:0 "Travel to Mount Hua Sect."
+ visit_heavenly_sword_pavilion_decision_tooltip:0 "Travel to Heavenly Sword Pavilion."
+ visit_ten_thousand_swords_valley_decision_tooltip:0 "Travel to Ten Thousand Swords Valley."
+ visit_violet_thunder_blade_sect_decision_tooltip:0 "Travel to Violet Thunder Blade Sect."
+ visit_wudang_sect_decision_tooltip:0 "Travel to Wudang Sect."
+ trait_1_xp_tt:0 "Gain trait experience."
+ trait_1_xp_desc:0 "Your first trait gains experience."
+ trait_2_xp_tt:0 "Gain trait experience."
+ trait_2_xp_desc:0 "Your second trait gains experience."
+ trait_3_xp_tt:0 "Gain trait experience."
+ trait_3_xp_desc:0 "Your third trait gains experience."
+ trait_4_xp_tt:0 "Gain trait experience."
+ trait_4_xp_desc:0 "Your fourth trait gains experience."
+ trait_5_xp_tt:0 "Gain trait experience."
+ trait_5_xp_desc:0 "Your fifth trait gains experience."
+ trait_6_xp_tt:0 "Gain trait experience."
+ trait_6_xp_desc:0 "Your sixth trait gains experience."
+
+ CULTIVATION_MARRIAGE_BLOCKED_MERIDIANS_TABOO:0 "Blocked Meridians Are a Marriage Taboo"
+ CULTIVATION_MARRIAGE_POOR_MERIDIANS_PENALTY:0 "Poor Meridian Foundation"
+ CULTIVATION_MARRIAGE_STRONG_MERIDIANS_PRIORITY:0 "Prioritizes Strong Meridians"
+ CULTIVATION_MARRIAGE_HEAVENLY_MERIDIANS_PRIORITY:0 "Seeks Heavenly Meridian Heirs"
+ CULTIVATION_MARRIAGE_HEAVENLY_MERIDIAN_PURITY:0 "Heavenly Meridian Purity Standard"
+ fox_spirit_awakened:0 "Awakened Fox Spirit"
+ fox_spirit_awakened_desc:0 "This cultivator has embraced fox-spirit arts of yin resonance, allure, and soul-masking deception."
+ opinion_fox_spirit_orthodox_hate:0 "Fox-Spirit Heresy"
+ opinion_fox_spirit_order_hate:0 "Possession Taboo"
+ opinion_fox_spirit_unorthodox_wary:0 "Wary of Fox-Spirit Arts"
+ opinion_fox_spirit_vagrant_swing:0 "Rogue Curiosity"
+ opinion_fox_spirit_demonic_ally:0 "Fox-Spirit Ally"
+ opinion_fox_spirit_yin_affinity:0 "Yin-Spirit Resonance"
+ opinion_fox_spirit_accepted_child:0 "Accepted My Fox-Spirit Nature"
+ fox_spirit_disowned_child:0 "Disowned Fox-Spirit Child"
+ fox_spirit_disowned_child_desc:0 "Rejected by family after awakening as a fox spirit, this cultivator bears social scars alongside spiritual power."
+ cultivation_ai.2261.t:0 "A Child Awakens as a Fox Spirit"
+ cultivation_ai.2261.desc:0 "[scope:fox_spirit_child_target.GetFirstName] has manifested fox-spirit nature. You may accept the child into your lineage, or sever ties and cast them out."
+ cultivation_ai_2261_accept:0 "Accept the child and shelter them."
+ cultivation_ai_2261_disown:0 "Disown them. We have no fox spirits in this line."

@@ -1,0 +1,148 @@
+﻿on_travel_plan_movement = { 
+	on_actions = {
+		ttk_travel_event_duel
+	}
+}
+
+on_travel_plan_complete = {
+	on_actions = {
+		ttk_travel_event_duel_clear
+		}
+}
+	
+ttk_travel_event_duel = {
+	trigger = {
+				is_adult = yes
+		is_alive = yes
+		is_incapable = no
+		NOT = { has_trait = infirm }
+		is_travelling = yes
+		NOT = { has_character_flag = ttk_duel_can_pass }
+		OR = {
+			location.county ?= {
+				any_county_province = {
+					any_character_in_location = { 
+						NOT = { this = root }
+						is_travelling = yes
+						is_ai = yes						
+						has_relation_rival = root
+						OR = {
+							is_travel_entourage_character = yes
+							is_ruler = yes
+						}
+						NOT = { is_courtier_of = root }						
+					}
+				}
+			}
+			location.county ?= {
+				any_county_province = {
+					any_neighboring_province = {
+						any_character_in_location = { 
+							NOT = { this = root }
+							is_travelling = yes
+							is_ai = yes	
+							has_relation_rival = root
+							OR = {
+								is_travel_entourage_character = yes
+								is_ruler = yes
+							}
+							NOT = { is_courtier_of = root }						
+						}
+					}
+				}
+			}
+		}
+	}		
+	effect = {
+		save_scope_as = ttk_duel_init
+		location = { save_scope_as = background_terrain_scope }
+		location.county = {
+			every_county_province = {
+				random_character_in_location = { 
+					limit = {
+						NOT = { this = scope:ttk_duel_init }
+						is_travelling = yes
+						is_ai = yes
+						has_relation_rival = scope:ttk_duel_init
+						OR = {
+							is_travel_entourage_character = yes
+							is_ruler = yes
+						}
+						NOT = { is_courtier_of = scope:ttk_duel_init }		
+					}
+					save_scope_as = ttk_duel_target					
+				}
+			}
+		}
+		location.county = {
+			every_county_province = {
+				every_neighboring_province = {
+					random_character_in_location = { 
+						limit = {
+							NOT = { this = scope:ttk_duel_init }
+							is_travelling = yes
+							is_ai = yes
+							has_relation_rival = scope:ttk_duel_init
+							OR = {
+								is_travel_entourage_character = yes
+								is_ruler = yes
+							}
+							NOT = { is_courtier_of = scope:ttk_duel_init }	
+							NOT = { exists = scope:ttk_duel_target }
+						}
+						save_scope_as = ttk_duel_target
+					}
+				}
+			}
+		}
+		random = {
+			chance = 60
+			scope:ttk_duel_init = {
+				trigger_event = ttk_travel_event_duel.0001
+			}
+		}
+	}
+}
+
+ttk_travel_event_duel_clear = {
+	trigger = {
+				has_character_flag = ttk_duel_can_pass
+	}
+	effect = {
+		remove_character_flag = ttk_duel_can_pass
+	}
+}
+
+on_war_started = {
+	on_actions = {
+		ttk_war_opening_duel_on_action
+	}
+}
+
+ttk_war_opening_duel_on_action = {
+	trigger = {
+		exists = scope:attacker
+		exists = scope:defender
+		scope:attacker = {
+			is_alive = yes
+			is_adult = yes
+			NOT = { has_trait = incapable }
+		}
+		scope:defender = {
+			is_alive = yes
+			is_adult = yes
+			NOT = { has_trait = incapable }
+		}
+	}
+	effect = {
+		save_scope_as = ttk_war_scope
+		scope:attacker = { save_scope_as = ttk_war_duel_challenger }
+		scope:defender = { save_scope_as = ttk_war_duel_target }
+		random = {
+			chance = 75
+			scope:ttk_war_duel_challenger = {
+				trigger_event = ttk_travel_event_duel.0100
+			}
+		}
+	}
+}

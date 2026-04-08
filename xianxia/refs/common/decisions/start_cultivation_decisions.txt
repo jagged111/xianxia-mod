@@ -1,0 +1,371 @@
+﻿# active Roots
+
+open_meridians_decision = {
+
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_find_roots.dds"
+	}
+	
+	#decision_group_type = cultivation
+	sort_order = 500
+
+    desc = open_meridians_decision_desc
+    selection_tooltip = open_meridians_decision_selection_tooltip
+	ai_goal = yes
+
+	cooldown = { years = 10 }
+
+    is_shown = {
+        NOT = {
+			has_trait = active_meridians
+		}
+		prowess >= 10
+    }
+	is_valid = {
+		always = yes
+	}
+    ai_check_interval = 60
+
+    
+	ai_will_do = {
+		base = 100
+		modifier = {
+			add = chance_to_cultivate
+			is_adult = yes
+		}
+	}
+
+    effect = {
+		custom_tooltip = open_meridians_decision_tooltip
+        trigger_event = cultivation_important_event.001
+	}
+}
+
+
+#Begin Cultivation
+
+begin_cultivation_decision = {
+
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_start_cultivation.dds"
+	}
+
+    desc = begin_cultivation_decision_desc
+    selection_tooltip = begin_cultivation_decision_selection_tooltip
+	sort_order = 501
+
+    cooldown = { months = 1 }
+
+    is_shown = {
+		AND = {
+			is_adult = yes
+			has_trait = active_meridians
+			NOT = {
+				has_trait = cultivation_realm
+			}
+
+		}
+    }
+	is_valid = {
+		always = yes
+	}
+    ai_check_interval = 60
+
+	ai_will_do = {
+		base = 100
+		modifier = {
+			add = chance_to_cultivate
+			is_adult = yes
+		}
+	}
+
+
+    effect = {
+		add_character_modifier = {
+			modifier = unlocking_cultivation_modifier
+			months = 1
+		}
+
+        trigger_event = {
+			id = cultivation_important_event.002
+			months =  1
+		}
+		custom_tooltip = begin_cultivation_decision_tooltip
+
+		
+    }
+}
+
+#Breakthrough Decision
+
+breakthrough_decision_1 = {
+
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_breakthrough.dds"
+	}
+    
+
+    desc = breakthrough_decision_1_desc
+    selection_tooltip = breakthrough_decision_1_selection_tooltip
+	sort_order = 1000
+
+    is_shown = {
+        has_trait = qi_gathering
+    }
+
+    is_valid = {
+        custom_description = {
+            text = breakthrough_decision_1_valid_description
+            has_trait_xp = {
+                trait = qi_gathering
+                value = 100
+            }
+        }
+    }
+
+    ai_check_interval = 3
+    ai_will_do = {
+        base = 100
+    }
+
+    effect = {
+        trigger_event = {
+            id = cultivation_important_event.011
+        }
+        show_as_tooltip = {
+            breakthrough_decision_effect = yes
+        }
+    }
+}
+#To core formation
+breakthrough_decision_2 = {
+    
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_breakthrough.dds"
+	}
+    
+
+    desc = breakthrough_decision_2_desc
+    selection_tooltip = breakthrough_decision_2_selection_tooltip
+	sort_order = 1000
+
+    is_shown = {
+        has_trait = foundation_establishment
+    }
+
+    is_valid = {
+        custom_description = {
+            text = breakthrough_decision_2_valid_description
+            has_trait_xp = {
+                trait = foundation_establishment
+                value = 100
+            }
+        }
+    }
+
+    ai_check_interval = 3
+    ai_will_do = {
+        base = 100
+    }
+
+    effect = {
+        trigger_event = {
+            id = cultivation_important_event.012
+        }
+        show_as_tooltip = {
+            breakthrough_decision_effect = yes
+        }
+    }
+}
+#To nascent soul
+breakthrough_decision_3 = {
+    
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_breakthrough.dds"
+	}
+    
+
+    desc = breakthrough_decision_3_desc
+    selection_tooltip = breakthrough_decision_3_selection_tooltip
+	sort_order = 1000
+
+    is_shown = {
+        has_trait = core_formation
+    }
+
+    is_valid = {
+        custom_description = {
+            text = breakthrough_decision_3_valid_description
+            has_trait_xp = {
+                trait = core_formation
+                value = 100
+            }
+        }
+    }
+
+    ai_check_interval = 3
+    ai_will_do = {
+        base = 100
+    }
+
+    effect = {
+        trigger_event = {
+            id = cultivation_important_event.013
+        }
+        show_as_tooltip = {
+            breakthrough_decision_effect = yes
+        }
+
+		
+    }
+}
+#To spirit severing
+breakthrough_decision_4 = {
+    
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_breakthrough.dds"
+	}
+    
+
+    desc = breakthrough_decision_4_desc
+    selection_tooltip = breakthrough_decision_4_selection_tooltip
+	sort_order = 1000
+
+    is_shown = {
+        has_trait = nascent_soul
+    }
+
+    is_valid = {
+        custom_description = {
+            text = breakthrough_decision_4_valid_description
+            has_trait_xp = {
+                trait = nascent_soul
+                value = 100
+            }
+        }
+    }
+
+    ai_check_interval = 3
+    ai_will_do = {
+        base = 100
+    }
+
+    effect = {
+        trigger_event = {
+            id = cultivation_important_event.014
+        }
+        show_as_tooltip = {
+            breakthrough_decision_effect = yes
+        }
+    }
+}
+
+breakthrough_decision_5 = {
+    
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_breakthrough.dds"
+	}
+    
+
+    desc = breakthrough_decision_5_desc
+    selection_tooltip = breakthrough_decision_5_selection_tooltip
+	sort_order = 1000
+
+    is_shown = {
+        has_trait = spirit_severing
+    }
+
+    is_valid = {
+        custom_description = {
+            text = breakthrough_decision_5_valid_description
+            has_trait_xp = {
+                trait = spirit_severing
+                value = 100
+            }
+        }
+    }
+
+    ai_check_interval = 3
+    ai_will_do = {
+        base = 100
+    }
+
+    effect = {
+        trigger_event = {
+            id = cultivation_important_event.015
+        }
+        show_as_tooltip = {
+            breakthrough_decision_effect = yes
+        }
+    }
+}
+
+breakthrough_decision_6 = {
+    
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_breakthrough.dds"
+	}
+    
+
+    desc = breakthrough_decision_6_desc
+    selection_tooltip = breakthrough_decision_6_selection_tooltip
+	sort_order = 1000
+
+    is_shown = {
+        has_trait = dao_seeking
+    }
+
+    is_valid = {
+        custom_description = {
+            text = breakthrough_decision_6_valid_description
+            has_trait_xp = {
+                trait = dao_seeking
+                value = 100
+            }
+        }
+    }
+
+    ai_check_interval = 3
+    ai_will_do = {
+        base = 100
+    }
+
+    effect = {
+        trigger_event = {
+            id = cultivation_important_event.016
+        }
+        show_as_tooltip = {
+            breakthrough_decision_effect = yes
+        }
+    }
+}
+
+
+#DEBUG
+test_decision = {
+    picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_start_cultivation.dds"
+	}
+    
+
+    desc = test_decision
+    selection_tooltip = test_decision
+	sort_order = 1000
+
+    is_shown = {
+        is_ai = no
+        always = no
+    }
+
+    is_valid = {
+        always = no
+    }
+
+    ai_check_interval = 0
+
+    effect = {
+        trigger_event = {
+            id = cultivation_travel_events.003
+        }
+    }
+}

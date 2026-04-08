@@ -1,0 +1,11 @@
+### NEW TRIGGERS ###
+
+dragatus_prisoner_can_marry_actor_trigger = {
+	is_imprisoned_by = scope:actor
+	NOT = { is_spouse_of = scope:actor }
+	#NOT = { is_spouse_of = scope:secondary_actor } # Before secondary actor is selected this returns null and bloats the error log.
+	is_ruler = no
+	is_landed = no
+	is_adult = yes
+	#sex_opposite_of = scope:secondary_actor
+}

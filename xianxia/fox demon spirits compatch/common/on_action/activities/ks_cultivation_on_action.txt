@@ -1,0 +1,25 @@
+﻿ks_cultivation_arrival_events = {
+	events = {
+		ks_cultivation.0010	#抵达修行地
+	}
+}
+
+ks_cultivation_destination_events = {
+	random_events = {
+		100 = ks_cultivation.1000 
+		100 = ks_cultivation.1010
+		100 = ks_cultivation.1020
+		100 = ks_cultivation.1030
+		100 = ks_cultivation.1040
+		100 = ks_cultivation.1100 
+		100 = ks_cultivation.1110
+		100 = ks_cultivation.1120
+		100 = ks_cultivation.1130
+		10 = ks_cultivation.1140
+		100 = ks_cultivation.1200 
+		100 = ks_cultivation.1210
+		100 = ks_cultivation.1220
+		100 = ks_cultivation.1230
+		100 = ks_cultivation.1240
+	}
+}

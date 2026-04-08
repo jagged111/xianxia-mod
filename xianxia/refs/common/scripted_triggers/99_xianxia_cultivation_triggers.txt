@@ -1,0 +1,28 @@
+﻿can_gain_qi_gathering = {
+	is_adult = yes
+	is_alive = yes
+	NOT = { has_trait = cultivation_realm }
+	has_trait = active_meridians
+}
+
+is_reincarnator = {
+	OR = {
+		has_trait = cultivation_realm
+		religion = buddhism_religion
+		religion = taoism_religion
+	}
+}
+
+is_reincarnation_eligible = {
+	is_ai = no          # optional: speeds up AI turns
+	age < 11
+	is_child = yes
+	NOT = { has_trait = reincarnation }   # vanilla trait name
+	OR = {
+		has_trait = active_meridians
+		always = yes   # guarantees at least one eligible child in realm
+	}
+	religion = root.religion
+	culture = root.culture
+	NOT = { faith = faith_maitreya }
+}

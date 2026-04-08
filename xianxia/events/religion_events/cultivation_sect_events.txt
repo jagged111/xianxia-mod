@@ -1,0 +1,33 @@
+﻿namespace = clean_empty_tenet
+	
+clean_empty_tenet.001 = {	
+	hidden = yes
+	
+	trigger = {	
+	   always = yes
+	}	
+	
+	immediate = {	
+		faith = {	
+
+			remove_doctrine = tenet_sect_empty_1
+			remove_doctrine = tenet_sect_empty_2
+			remove_doctrine = tenet_sect_empty_3
+			remove_doctrine = tenet_sect_empty_4
+			remove_doctrine = tenet_sect_empty_5
+			remove_doctrine = tenet_sect_empty_6
+			remove_doctrine = tenet_sect_empty_7
+			remove_doctrine = tenet_sect_empty_8
+			remove_doctrine = tenet_sect_empty_9
+			remove_doctrine = tenet_sect_empty_10
+			remove_doctrine = tenet_sect_empty_11
+			remove_doctrine = tenet_sect_empty_12
+			remove_doctrine = tenet_sect_empty_13
+			remove_doctrine = tenet_sect_empty_14
+			remove_doctrine = tenet_sect_empty_15
+			remove_doctrine = tenet_sect_empty_16
+			remove_doctrine = tenet_sect_empty_17
+
+		}	
+	}	
+}

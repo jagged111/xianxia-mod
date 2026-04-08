@@ -1,0 +1,34 @@
+﻿namespace = cultivation_sect_spar_results
+
+cultivation_sect_spar_results.1000 = {
+    type = character_event
+	hidden = yes
+	theme = martial
+	immediate = {
+
+		# Winner gain
+		scope:sc_victor = {
+			change_variable = {
+				name = sect_spars_won
+				add = 1
+			}
+			change_variable = {
+				name = sect_spars_total
+				add = 1
+			}
+			#add_cultivation_lifestyle_xp = minor_lifestyle_xp
+		}
+
+		# Loser gain
+		scope:sc_loser = {
+			change_variable = {
+				name = sect_spars_lost
+				add = 1
+			}
+			change_variable = {
+				name = sect_spars_total
+				add = 1
+			}
+		}
+	}
+}

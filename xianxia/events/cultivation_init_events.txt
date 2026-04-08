@@ -1,0 +1,26 @@
+﻿# Cultivation Initialization Events
+# Path: events/cultivation_init_events.txt
+# Based on ACTUAL Carnalitas implementation
+
+namespace = cultivation_init
+
+#
+# 0001. seed cultivation trait for this character
+#
+
+#cultivation_init.0001 = {
+#	hidden = yes
+#	
+#	trigger = {
+#		NOT = { has_character_flag = cultivation_trait_seeded }
+#		is_alive = yes
+#	}
+#	
+#	immediate = {
+#		# Mark as seeded
+#		add_character_flag = cultivation_trait_seeded
+#		
+#		# Seed the cultivation trait
+##		cultivation_seed_mortal_trait_effect = yes
+#	}
+#}

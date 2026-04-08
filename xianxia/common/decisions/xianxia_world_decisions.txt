@@ -1,0 +1,417 @@
+﻿found_sect_domain_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_found_holy_order.dds" }
+    decision_group_type = major
+    sort_order = 521
+
+    title = found_sect_domain_decision
+    desc = found_sect_domain_decision_desc
+    selection_tooltip = found_sect_domain_decision_tooltip
+    confirm_text = found_sect_domain_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        is_independent_ruler = yes
+        OR = {
+            highest_held_title_tier = tier_county
+            highest_held_title_tier = tier_duchy
+        }
+    }
+
+    is_valid = {
+        realm_size >= 3
+        NOT = { has_character_flag = founded_sect_domain }
+        OR = {
+            highest_held_title_tier = tier_county
+            highest_held_title_tier = tier_duchy
+        }
+    }
+
+    ai_check_interval = 24
+    ai_potential = { always = yes }
+    ai_will_do = { base = 20 }
+
+    effect = {
+        add_character_flag = founded_sect_domain
+        trigger_event = xianxia_world.1200
+    }
+}
+
+refine_spirit_pill_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_dose_self.dds" }
+    decision_group_type = major
+    sort_order = 522
+
+    title = refine_spirit_pill_decision
+    desc = refine_spirit_pill_decision_desc
+    selection_tooltip = refine_spirit_pill_decision_tooltip
+    confirm_text = refine_spirit_pill_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+    }
+
+    is_valid = {
+        gold >= 75
+        NOT = { has_character_flag = spirit_pill_refining_cooldown }
+    }
+
+    effect = {
+        add_character_flag = { flag = spirit_pill_refining_cooldown days = 365 }
+        trigger_event = xianxia_world.1300
+    }
+
+    ai_check_interval = 18
+    ai_will_do = { base = 25 }
+}
+
+comprehend_martial_manual_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_write_diplomatic_treatise.dds" }
+    decision_group_type = major
+    sort_order = 523
+
+    title = comprehend_martial_manual_decision
+    desc = comprehend_martial_manual_decision_desc
+    selection_tooltip = comprehend_martial_manual_decision_tooltip
+    confirm_text = comprehend_martial_manual_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = manual_comprehension_cooldown }
+    }
+
+    effect = {
+        add_character_flag = { flag = manual_comprehension_cooldown days = 730 }
+        trigger_event = xianxia_world.1400
+    }
+
+    ai_check_interval = 18
+    ai_will_do = { base = 30 }
+}
+
+enter_secret_realm_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_search_for_secrets.dds" }
+    decision_group_type = major
+    sort_order = 524
+
+    title = enter_secret_realm_decision
+    desc = enter_secret_realm_decision_desc
+    selection_tooltip = enter_secret_realm_decision_tooltip
+    confirm_text = enter_secret_realm_decision_confirm
+
+    is_shown = { is_adult = yes is_cultivator = yes }
+    is_valid = {
+        NOT = { has_character_flag = secret_realm_expedition_cooldown }
+    }
+
+    effect = {
+        add_character_flag = { flag = secret_realm_expedition_cooldown days = 1095 }
+        trigger_event = xianxia_world.1500
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 15 }
+}
+
+undergo_heavenly_tribulation_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_become_chakravarti.dds" }
+    decision_group_type = major
+    sort_order = 525
+
+    title = undergo_heavenly_tribulation_decision
+    desc = undergo_heavenly_tribulation_decision_desc
+    selection_tooltip = undergo_heavenly_tribulation_decision_tooltip
+    confirm_text = undergo_heavenly_tribulation_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = heavenly_tribulation_cooldown }
+    }
+
+    effect = {
+        add_character_flag = { flag = heavenly_tribulation_cooldown days = 1825 }
+        trigger_event = xianxia_world.1600
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 10 }
+}
+
+xianxia_debug_state_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_study_culture.dds" }
+    decision_group_type = major
+    sort_order = 526
+
+    title = xianxia_debug_state_decision
+    desc = xianxia_debug_state_decision_desc
+    selection_tooltip = xianxia_debug_state_decision_tooltip
+    confirm_text = xianxia_debug_state_decision_confirm
+
+    is_shown = { always = yes }
+    is_valid = { always = yes }
+
+    ai_check_interval = 0
+    ai_potential = { always = no }
+
+    effect = {
+        trigger_event = xianxia_world.1900
+    }
+}
+
+convene_sect_council_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_court.dds" }
+    decision_group_type = major
+    sort_order = 527
+
+    title = convene_sect_council_decision
+    desc = convene_sect_council_decision_desc
+    selection_tooltip = convene_sect_council_decision_tooltip
+    confirm_text = convene_sect_council_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_cultivator = yes
+        has_cultivation_sect_faith = yes
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = sect_council_cooldown }
+    }
+
+    effect = {
+        add_character_flag = { flag = sect_council_cooldown days = 365 }
+        trigger_event = xianxia_world.1720
+        if = {
+            limit = { can_host_activity = activity_feast }
+            ai_attempt_to_host_activity = activity_feast
+        }
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 20 }
+}
+
+gather_alchemy_resources_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_search_for_secrets.dds" }
+    decision_group_type = major
+    sort_order = 528
+
+    title = gather_alchemy_resources_decision
+    desc = gather_alchemy_resources_decision_desc
+    selection_tooltip = gather_alchemy_resources_decision_tooltip
+    confirm_text = gather_alchemy_resources_decision_confirm
+
+    is_shown = { is_adult = yes is_cultivator = yes }
+    is_valid = { NOT = { has_character_flag = gather_alchemy_resources_cooldown } }
+
+    effect = {
+        add_character_flag = { flag = gather_alchemy_resources_cooldown days = 180 }
+        trigger_event = xianxia_world.1330
+        if = {
+            limit = { can_host_activity = activity_hunt }
+            ai_attempt_to_host_activity = activity_hunt
+        }
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 25 }
+}
+
+embrace_fox_spirit_predation_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_torture_prisoner.dds" }
+    decision_group_type = major
+    sort_order = 529
+
+    title = embrace_fox_spirit_predation_decision
+    desc = embrace_fox_spirit_predation_decision_desc
+    selection_tooltip = embrace_fox_spirit_predation_decision_tooltip
+    confirm_text = embrace_fox_spirit_predation_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        has_character_flag = fox_spirit_awakening_complete
+    }
+
+    is_valid = {
+        NOT = { has_trait = cannibal }
+        NOT = { has_character_flag = fox_spirit_predation_choice_cooldown }
+    }
+
+    effect = {
+        add_trait = cannibal
+        add_character_flag = { flag = fox_spirit_predation_choice_cooldown days = 3650 }
+        add_dread = 15
+        add_stress = -20
+        trigger_event = xianxia_world.2260
+    }
+
+    ai_check_interval = 48
+    ai_will_do = { base = 10 }
+}
+
+hunt_mortals_fox_spirit_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hunt_animal.dds" }
+    decision_group_type = major
+    sort_order = 530
+
+    title = hunt_mortals_fox_spirit_decision
+    desc = hunt_mortals_fox_spirit_decision_desc
+    selection_tooltip = hunt_mortals_fox_spirit_decision_tooltip
+    confirm_text = hunt_mortals_fox_spirit_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        has_character_flag = fox_spirit_awakening_complete
+        has_trait = cannibal
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = fox_spirit_mortal_hunt_cooldown }
+    }
+
+    effect = {
+        add_character_flag = { flag = fox_spirit_mortal_hunt_cooldown days = 730 }
+        trigger_event = xianxia_world.2261
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 18 }
+}
+
+
+sell_spirit_pill_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_ask_for_gold.dds" }
+    decision_group_type = major
+    sort_order = 529
+
+    title = sell_spirit_pill_decision
+    desc = sell_spirit_pill_decision_desc
+    selection_tooltip = sell_spirit_pill_decision_tooltip
+    confirm_text = sell_spirit_pill_decision_confirm
+
+    is_shown = { is_adult = yes is_cultivator = yes }
+    is_valid = {
+        has_character_modifier = perfected_spirit_pill
+        NOT = { has_character_flag = sell_spirit_pill_cooldown }
+    }
+
+    effect = {
+        remove_character_modifier = perfected_spirit_pill
+        add_gold = 100
+        add_character_flag = { flag = sell_spirit_pill_cooldown days = 365 }
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 15 }
+}
+
+buy_breakthrough_pill_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_dose_self.dds" }
+    decision_group_type = major
+    sort_order = 530
+
+    title = buy_breakthrough_pill_decision
+    desc = buy_breakthrough_pill_decision_desc
+    selection_tooltip = buy_breakthrough_pill_decision_tooltip
+    confirm_text = buy_breakthrough_pill_decision_confirm
+
+    is_shown = { is_adult = yes is_cultivator = yes }
+    is_valid = {
+        gold >= 120
+        NOT = { has_character_flag = buy_breakthrough_pill_cooldown }
+    }
+
+    effect = {
+        add_gold = { add = 120 multiply = -1 }
+        add_character_modifier = { modifier = perfected_spirit_pill days = 1095 }
+        random = {
+            chance = 30
+            add_character_modifier = { modifier = alchemy_enlightenment_pill days = 730 }
+        }
+        add_character_flag = { flag = buy_breakthrough_pill_cooldown days = 365 }
+    }
+
+    ai_check_interval = 24
+    ai_will_do = {
+        base = 5
+        modifier = {
+            add = 30
+            OR = {
+                has_character_flag = can_attempt_qi_refining_breakthrough
+                has_character_flag = can_attempt_qi_building_breakthrough
+                has_character_flag = can_attempt_core_formation_breakthrough
+                has_character_flag = can_attempt_nascent_soul_breakthrough
+            }
+        }
+    }
+}
+
+
+raise_formation_barriers_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_prepare_for_war.dds" }
+    decision_group_type = major
+    sort_order = 531
+
+    title = raise_formation_barriers_decision
+    desc = raise_formation_barriers_decision_desc
+    selection_tooltip = raise_formation_barriers_decision_tooltip
+    confirm_text = raise_formation_barriers_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = formation_master_tier_1
+            has_trait = formation_master_tier_2
+            has_trait = formation_master_tier_3
+            has_trait = formation_body_tier_1
+            has_trait = formation_body_tier_2
+            has_trait = formation_body_tier_3
+            has_trait = cultivation_qi_refining
+            has_trait = cultivation_qi_building
+            has_trait = cultivation_core_formation
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_soul_formation
+            has_trait = cultivation_saint_realm
+            has_trait = cultivation_true_immortal
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = raise_formation_barriers_cooldown }
+        exists = capital_county
+    }
+
+    effect = {
+        add_character_flag = { flag = raise_formation_barriers_cooldown days = 365 }
+        add_character_modifier = { modifier = formation_barrier_network days = 730 }
+        capital_county = { add_county_modifier = { name = formation_warded_county duration = 1825 } }
+
+        change_variable = { name = formation_mastery_xp add = 1 }
+        xianxia_update_formation_master_trait_effect = yes
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 15 }
+}

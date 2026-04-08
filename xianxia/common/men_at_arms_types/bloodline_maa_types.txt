@@ -1,0 +1,1511 @@
+﻿@cultural_maa_extra_ai_score_1 = -30 # value = minus 3 regiments 
+@cultural_maa_extra_ai_score_2 = 10
+@cultural_maa_extra_ai_score_3 = 40
+@cultural_maa_extra_ai_score_4 = 100
+
+yin_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = yin_bloodline_1
+			has_trait = yin_bloodline_2
+			has_trait = yin_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = yin_cultivator_1
+}
+
+yin_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = yin_bloodline_2
+			has_trait = yin_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = yin_cultivator_2
+}
+
+yin_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = yin_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = yin_cultivator_3
+}
+
+yang_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = yang_bloodline_1
+			has_trait = yang_bloodline_2
+			has_trait = yang_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = yang_cultivator_1
+}
+
+yang_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = yang_bloodline_2
+			has_trait = yang_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = yang_cultivator_2
+}
+
+yang_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = yang_bloodline_3
+        
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = yang_cultivator_3
+}
+
+dragon_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = dragon_bloodline_1
+			has_trait = dragon_bloodline_2
+			has_trait = dragon_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = dragon_cultivator_1
+}
+
+dragon_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = dragon_bloodline_2
+			has_trait = dragon_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = dragon_cultivator_2
+}
+
+dragon_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = dragon_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = dragon_cultivator_3
+}
+
+phoenix_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = phoenix_bloodline_1
+			has_trait = phoenix_bloodline_2
+			has_trait = phoenix_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = phoenix_cultivator_1
+}
+
+phoenix_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = phoenix_bloodline_2
+			has_trait = phoenix_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = phoenix_cultivator_2
+}
+
+phoenix_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = phoenix_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = phoenix_cultivator_3
+}
+
+anchestor_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = anchestor_bloodline_1
+			has_trait = anchestor_bloodline_2
+			has_trait = anchestor_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = anchestor_cultivator_1
+}
+
+anchestor_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = anchestor_bloodline_2
+			has_trait = anchestor_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = anchestor_cultivator_2
+}
+
+anchestor_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = anchestor_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = anchestor_cultivator_3
+}
+
+poison_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = poison_bloodline_1
+			has_trait = poison_bloodline_2
+			has_trait = poison_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = poison_cultivator_1
+}
+
+poison_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = poison_bloodline_2
+			has_trait = poison_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = poison_cultivator_2
+}
+
+poison_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = poison_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = poison_cultivator_3
+}
+
+cursed_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = cursed_bloodline_1
+			has_trait = cursed_bloodline_2
+			has_trait = cursed_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = cursed_cultivator_1
+}
+
+cursed_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = cursed_bloodline_2
+			has_trait = cursed_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = cursed_cultivator_2
+}
+
+cursed_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = cursed_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = cursed_cultivator_3
+}
+
+demon_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = demon_bloodline_1
+			has_trait = demon_bloodline_2
+			has_trait = demon_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = demon_cultivator_1
+}
+
+demon_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = demon_bloodline_2
+			has_trait = demon_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = demon_cultivator_2
+}
+
+demon_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = demon_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = demon_cultivator_3
+}
+
+primal_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = primal_bloodline_1
+			has_trait = primal_bloodline_2
+			has_trait = primal_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = primal_cultivator_1
+}
+
+primal_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = primal_bloodline_2
+			has_trait = primal_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = primal_cultivator_2
+}
+
+primal_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = primal_bloodline_3
+		
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = primal_cultivator_3
+}
+
+spirit_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = spirit_bloodline_1
+			has_trait = spirit_bloodline_2
+			has_trait = spirit_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = spirit_cultivator_1
+}
+
+spirit_cultivator_2 = {
+    type = skirmishers
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = spirit_bloodline_2
+			has_trait = spirit_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = spirit_cultivator_2
+}
+
+spirit_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = spirit_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = spirit_cultivator_3
+}
+
+sun_cultivator_1 = {
+    type = skirmishers
+    
+    damage = 35
+    toughness = 35
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = sun_bloodline_1
+			has_trait = sun_bloodline_2
+			has_trait = sun_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { prestige = 30 piety = 50 }
+    low_maintenance_cost = { piety = 0.2 }
+    high_maintenance_cost = { piety = 0.5 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = sun_cultivator_1
+}
+
+sun_cultivator_2 = {
+    type = heavy_infantry
+    
+    damage = 45
+    toughness = 45
+    pursuit = 5
+    screen = 5
+        
+    can_recruit = {
+        OR = { 
+			has_trait = sun_bloodline_2
+			has_trait = sun_bloodline_3
+        } 
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 100 }
+    low_maintenance_cost = { piety = 0.4 }
+    high_maintenance_cost = { piety = 1 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = sun_cultivator_2
+}
+
+sun_cultivator_3 = {
+    type = heavy_infantry
+    
+    damage = 50
+    toughness = 50
+    pursuit = 10
+    screen = 10
+        
+    can_recruit = {
+		has_trait = sun_bloodline_3
+
+        cultivation_has_martial_arts_1 = yes
+    }
+    
+    terrain_bonus = {
+        farmlands = { damage = 8 toughness = 4 }
+        plains = { damage = 8 toughness = 4 }
+        terraced_hills = { damage = 10 toughness = 8 }
+        hills = { damage = 10 toughness = 8 }
+    }
+    
+    counters = {
+        pikemen = 1
+        peasant_militia = 3
+        archers = 4
+        heavy_infantry = 1
+        skirmishers = 2
+        light_cavalry = 1
+    }
+    
+    buy_cost = { piety = 250 }
+    low_maintenance_cost = { piety = 0.5 }
+    high_maintenance_cost = { piety = 1.0 }
+    provision_cost = 0
+    
+    holy_order_fallback = no
+    allowed_in_hired_troops = no
+    
+    stack = 100
+    ai_quality = { value = @cultural_maa_extra_ai_score_1 }
+
+    icon = sun_cultivator_3
+}

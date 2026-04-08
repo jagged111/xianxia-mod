@@ -1,0 +1,127 @@
+﻿#Start of Cultivation Event Effects
+
+#CURRENTLY NOT IN USE
+start_cultivating_event_effect = {
+    add_trait = qi_gathering
+	
+   ##TODO: remember to check the origianl code since it used something about immortal age
+}
+
+breakthrough_effect = {
+    if = {
+        limit = {
+            OR = {
+                has_trait = qi_gathering
+                has_trait = foundation_establishment
+                has_trait = core_formation
+                has_trait = nascent_soul
+                has_trait = spirit_severing
+                has_trait = dao_seeking
+            }
+        }
+        change_trait_rank = {
+            trait = cultivation_realm
+            rank = 1
+        }
+    }
+}
+
+earn_cultivation_xp = {
+    
+    switch = {
+        trigger = has_trait
+        qi_gathering = {
+            add_trait_xp = {
+                trait = qi_gathering
+                value = cultivation_xp_for_yearly_progress
+            }
+            
+        }
+        foundation_establishment = {
+            add_trait_xp = {
+                trait = foundation_establishment
+                value = cultivation_xp_for_yearly_progress
+            }
+        }
+        core_formation = {
+            add_trait_xp = {
+                trait = core_formation
+                value = cultivation_xp_for_yearly_progress
+            }
+        }
+        nascent_soul = {
+            add_trait_xp = {
+                trait = nascent_soul
+                value = cultivation_xp_for_yearly_progress
+            }
+        }
+        spirit_severing = {
+            add_trait_xp = {
+                trait = spirit_severing
+                value = cultivation_xp_for_yearly_progress
+            }
+        }
+        dao_seeking = {
+            add_trait_xp = {
+                trait = dao_seeking
+                value = cultivation_xp_for_yearly_progress
+            }
+        }
+        immortal_ascension = {
+            add_trait_xp = {
+                trait = immortal_ascension
+                value = cultivation_xp_for_yearly_progress
+            }
+        }
+    }
+}
+
+improve_meridians = {
+    if = {
+        limit = {
+            OR = {
+                has_trait = bad_meridians
+                has_trait = normal_meridians
+                has_trait = good_meridians
+                has_trait = excellent_meridians
+            }
+        }
+        change_trait_rank = {
+            trait = active_meridians
+            rank = 1
+        }
+    }else = {
+        earn_cultivation_xp = yes
+    }
+}
+
+wound_cultivation_character = {
+    if = {
+        limit = {
+            NOT = {
+                has_trait = wounded
+            }
+        }
+        add_trait = wounded_1
+    }else = {
+        
+        switch = {
+            trigger = has_trait
+            wounded_1 = {
+                change_trait_rank = {
+                    trait = wounded
+                    rank = 1
+                }
+            }
+            wounded_2 = {
+                change_trait_rank = {
+                    trait = wounded
+                    rank = 1
+                }
+            }
+            wounded_3 = {
+                add_trait = maimed
+            }
+        }
+    }
+}

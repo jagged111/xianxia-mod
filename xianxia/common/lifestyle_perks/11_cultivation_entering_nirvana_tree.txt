@@ -1,0 +1,99 @@
+﻿##################################################
+# ENTERING NIRVANA REALM (Y: 54-57) +350 years
+# Tree: entering_nirvana_tree
+##################################################
+
+entering_nirvana_life_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = entering_nirvana_tree
+	position = { 0 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_entering_nirvana
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 18
+		learning = 5
+		health = 2.0
+		advantage = 20
+	}
+}
+
+entering_nirvana_death_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = entering_nirvana_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_entering_nirvana
+	}
+	icon = node_cultivation
+	parent = entering_nirvana_life_perk
+	
+	character_modifier = {
+		prowess = 33
+		learning = 5
+		health = 3.0
+		advantage = 20
+		dread_baseline_add = 10
+	}
+}
+
+entering_nirvana_reborn_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = entering_nirvana_tree
+	position = { 0 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_entering_nirvana
+	}
+	icon = node_cultivation
+	parent = entering_nirvana_death_perk
+	
+	character_modifier = {
+		prowess = 33
+		learning = 8
+		health = 3.0
+		advantage = 30
+		monthly_prestige = 2.0
+		stress_loss_mult = 0.25
+	}
+}
+
+##################################################
+# TRUE IMMORTAL (Y: 58) IMMORTAL!!!
+##################################################
+
+true_immortal_final_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = entering_nirvana_tree
+	position = { 0 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_entering_nirvana
+	}
+	icon = cultivation_true_immortal_f
+	parent = entering_nirvana_reborn_perk
+	
+	trait = cultivation_true_immortal
+
+	effect = {
+		add_character_flag = can_attempt_true_immortal_breakthrough
+	}
+	
+	character_modifier = {
+		prowess = 33
+		martial = 20
+		diplomacy = 10
+		stewardship = 10
+		intrigue = 10
+		learning = 10
+		health = 5.0
+		advantage = 50
+		monthly_prestige = 5.0
+		stress_loss_mult = 0.25
+	}
+}

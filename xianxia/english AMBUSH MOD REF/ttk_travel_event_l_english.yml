@@ -1,0 +1,101 @@
+﻿l_english:
+
+ ttk_travel_event_kill.0001.toast.escort: "Ambush a Wandering Cultivator: Collateral Damages"
+ ttk_ambushed_me_opinion:0 "Ambushed me"
+ ttk_ambushed_me:0 "[TARGET_CHARACTER.GetShortUIName] has ambushed [CHARACTER.GetShortUIName] while travelling"
+ ttk_ambushed_me_corresponding:0 "[TARGET_CHARACTER.GetShortUIName] was ambushed while travelling by [CHARACTER.GetShortUIName]"
+ 
+ ttk_travel_event_kill.0001.t: "Ambush a Wandering Cultivator"
+ ttk_travel_event_kill.0001.rival: "My [spymaster|E] [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetFirstName] approached me in haste. \n\n"Sir", [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetSheHe] began, "your [rival|E] [ttk_target.GetFirstName] has been spotted traveling through your domain. This presents a rare opportunity to put an end to [ttk_target.GetHerHis] life." \n\n"If you depart at once, you may yet catch [ttk_target.GetHerHim] while [ttk_target.GetSheHe] remains in the wilderness." \n"However, if you seek a more discreet approach, I have a few rogue cultivators at my disposal who can carry out the task for a modest sum of gold." \n\n"What is your preference, Sect Leader ?""
+ ttk_travel_event_kill.0001.nemesis: "My [spymaster|E] [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetFirstName] approached me in haste. \n\n"Sir", [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetSheHe] began, "your [nemesis|E] [ttk_target.GetFirstName] has been spotted traveling through your domain. This presents a rare opportunity to put an end to [ttk_target.GetHerHis] life." \n\n"If you depart at once, you may yet catch [ttk_target.GetHerHim] while [ttk_target.GetSheHe] remains in the wilderness." \n"However, if you seek a more discreet approach, I have a few rogue cultivators at my disposal who can carry out the task for a modest sum of gold." \n\n"What is your preference, Sect Leader ?""
+ ttk_travel_event_kill.0001.murder: "My [spymaster|E] [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetFirstName] approached me in haste. \n\n"Sir", [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetSheHe] began, "your murder target [ttk_target.GetFirstName] has been spotted traveling through your domain. This presents a rare opportunity to put an end to [ttk_target.GetHerHis] life." \n\n"If you depart at once, you may yet catch [ttk_target.GetHerHim] while [ttk_target.GetSheHe] remains in the wilderness." \n"However, if you seek a more discreet approach, I have a few rogue cultivators at my disposal who can carry out the task for a modest sum of gold." \n\n"What is your preference, Sect Leader ?""
+ ttk_travel_event_kill.0001.feud: "My [spymaster|E] [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetFirstName] approached me in haste. \n\n"Sir", [ttk_killer.GetCouncillor( 'councillor_spymaster' ).GetSheHe] began, "[ttk_target.GetFirstName] a member of house [ttk_target.GetHouse.GetName] you are feuding with has been spotted traveling through your domain. This presents a rare opportunity to put an end to [ttk_target.GetHerHis] life." \n\n"If you depart at once, you may yet catch [ttk_target.GetHerHim] while [ttk_target.GetSheHe] remains in the wilderness." \n"However, if you seek a more discreet approach, I have a few rogue cultivators at my disposal who can carry out the task for a modest sum of gold." \n\n"What is your preference, Sect Leader ?""
+ ttk_travel_event_kill.0001.a: "I shall handle this matter myself"
+ ttk_travel_event_kill.0001.b: "I trust those rogue cultivators are worth the price"
+ ttk_travel_event_kill.0001.c: "Let [ttk_target.GetHerHim] go, I have no time for this at the moment"
+ ttk_travel_event_kill.0001.a.success:0 "#TS Success#!"
+ ttk_travel_event_kill.0001.a.failure:0 "#TS Failure#!"
+ ttk_travel_event_kill.0001.b.success:0 "#TS Success#!"
+ ttk_travel_event_kill.0001.b.failure:0 "#TS Failure#!"
+ 
+ ttk_travel_event_kill.0002.t: "Ambush a Wandering Cultivator : The Victory"
+ ttk_travel_event_kill.0002.desc: "We successfully ambushed our enemy while [ttk_target.GetSheHe] was resting.\n\nAfter a fierce charge, we have overcome the escort.\nNow, [ttk_target.GetFirstName] lies on the ground, awaiting our decision on what to do with [ttk_target.GetHerHim].\n\nSo, what shall I do ?"
+ ttk_travel_event_kill.0002.a: "I shall end [ttk_target.GetHerHis] life right now"
+ ttk_travel_event_kill.0002.b: "[ttk_target.GetSheHe] would be more useful behind bars"
+ ttk_travel_event_kill.0002.c: "Take [ttk_target.GetHerHis] gold and let [ttk_target.GetHerHim] go, [ttk_target.GetSheHe] has learned the lesson"
+ 
+ 
+ ttk_travel_event_kill.0003.t: "Ambush a Wandering Cultivator: Failed Attack"
+ ttk_travel_event_kill.0003.desc: "Despite your efforts, [ttk_target.GetFirstName] manages to escape from your attack. \n\nAs you watch [ttk_target.GetHerHis] group flee on horseback, anger fills you while you contemplate your next move, now that [ttk_target.GetFirstName] knows you are the leader of this attack, you must prepare for [ttk_target.GetHerHis] retaliation. \n\nYou turn to your disciple and say: It's time to leave and return home."
+ ttk_travel_event_kill.0003.a: "Maybe next time"
+ 
+ 
+ ttk_travel_event_kill.0004.t: "Ambush a Wandering Cultivator: Rogue Cultivators Succeeded"
+ ttk_travel_event_kill.0004.desc: "I've received a report that [ttk_target.GetFirstName] was attacked and killed by a group of rogue cultivators. My [spymaster|E] was right, those rogue cultivators were worth the price. \n\nNow, I can only hope this secret stays hidden."
+ ttk_travel_event_kill.0004.a: "What a great day"
+ ttk_travel_event_kill.0004.a.ct.murder:0 "@ttk_murder_icon! You gain a murder secret against [ttk_target.GetFirstName]"
+ 
+ 
+ ttk_travel_event_kill.0005.t: "Ambush a Wandering Cultivator: Rogue Cultivators Failed"
+ ttk_travel_event_kill.0005.desc: "I've received a report that [ttk_target.GetFirstName] was attacked but managed to kill the rogue cultivators and escape. \n\nWhat a waste of money. I just hope [ttk_target.GetFirstName] hasn’t found out I was behind this plan."
+ ttk_travel_event_kill.0005.a: "Maybe next time"
+ 
+ 
+ ttk_travel_event_kill.0006.t: "Ambush a Wandering Cultivator: The Execution"
+ ttk_travel_event_kill.0006.desc: "With a quick blow, I put an end to [ttk_target.GetFirstName] life. \n\nAs [ttk_target.GetHerHis] lifeless corpse lies on the ground, I feel a sense of satisfaction, knowing this story has ended as expected. \n\nNow, everyone knows they can't cross me."
+ ttk_travel_event_kill.0006.a: "Time to move on"
+ 
+ 
+ ttk_travel_event_kill.0007.t: "Ambush a Wandering Cultivator: The Prisoner"
+ ttk_travel_event_kill.0007.desc: "I've decided that [ttk_target.GetFirstName] would be more useful in my dungeon. \n\nAfter throwing [ttk_target.GetHerHim] into [ttk_target.GetHerHis] cell, [ttk_target.GetSheHe] glares at me with despair. \n\nNow, it's time to consider what to do with [ttk_target.GetHerHim] next."
+ ttk_travel_event_kill.0007.a: "I have plenty of solutions"
+ 
+ 
+ ttk_travel_event_kill.0008.t: "Ambush a Wandering Cultivator: The Mercy"
+ ttk_travel_event_kill.0008.desc: "[ttk_target.GetFirstName] begs me: "Take it and be done with it", [ttk_target.GetSheHe] snarls. \n\nI've decided that [ttk_target.GetHerHis] gold is worth far more than [ttk_target.GetHerHis] miserable life. \n\nAs the last coin falls into my palm, I order my disciples to release [ttk_target.GetHerHim] and let [ttk_target.GetHerHim] go. \n\nI believe [ttk_target.GetSheHe] has learned lesson"
+ ttk_travel_event_kill.0008.a: "Time to move on"
+ 
+ 
+ ttk_travel_event_kill.0009.t: "Ambush a Wandering Cultivator: The Escape"
+ ttk_travel_event_kill.0009.desc: "We were ambushed by [ttk_killer.GetFirstName], but we managed to fight back. \n\nThanks to the courage of my escort, the enemy was stunned, giving us the time to flee the battlefield. \n\nThis cowardly attack from [ttk_killer.GetFirstName] will not go without consequence."
+ ttk_travel_event_kill.0009.a: "Let's leave quickly"
+ 
+ 
+ ttk_travel_event_kill.0010.t: "Ambush a Wandering Cultivator: Rogue Cultivators Succeeded"
+ ttk_travel_event_kill.0010.desc: "The rogue cultivators attacked us, outnumbering us, and we couldn’t do anything against such a force. \n\nWhile those bastards are looting our convoy, the apparent leader of the rogue cultivators approaches me, pulling a dagger from [ttk_ruffian.GetHerHis] belt and saying: "Now it's your turn." \n\nI'm closing my eyes..."
+ ttk_travel_event_kill.0010.a: "My end is near"
+ 
+ 
+ ttk_travel_event_kill.0011.t: "Ambush a Wandering Cultivator: Rogue Cultivators Failed"
+ ttk_travel_event_kill.0011.desc: "The rogue cultivators attacked us, but thanks to the valor of my escort, we managed to defeat them. \n\nAs we get away as fast as possible from this mess, I'm still wondering why some poor rogue cultivators would take such a risk attacking us. \n\nThere must be someone behind this."
+ ttk_travel_event_kill.0011.a: "Let's leave quickly"
+ 
+ 
+ ttk_travel_event_kill.0012.t: "Ambush a Wandering Cultivator: The Execution"
+ ttk_travel_event_kill.0012.desc: "We were ambushed by [ttk_killer.GetFirstName], and they vanquished us. We had no chance against such a lightning-fast attack and a force so heavily armored. \n\nNow, [ttk_killer.GetFirstName] approaches me, wielding [ttk_killer.GetHerHis] weapon, and I can feel the rage in [ttk_killer.GetHerHis] eyes. [ttk_killer.GetSheHe] roars at me: "Now you will perish by my weapon." \n\nStanding in front of me, [ttk_killer.GetSheHe] starts raising [ttk_killer.GetHerHis] weapon..."
+ ttk_travel_event_kill.0012.a: "My end is near"
+ 
+ 
+ ttk_travel_event_kill.0013.t: "Ambush a Wandering Cultivator: The Prisoner"
+ ttk_travel_event_kill.0013.desc: "We were ambushed by [ttk_killer.GetFirstName], and they vanquished us. We had no chance against such a lightning-fast attack and a force so heavily armored. \n\nNow, [ttk_killer.GetFirstName] approaches me with a pair of cuffs, smiling. [ttk_killer.GetSheHe] stares at me and says:  "Now you will follow me." \n\nI know where I will end up..."
+ ttk_travel_event_kill.0013.a: "I have no choice"
+ 
+ 
+ ttk_travel_event_kill.0014.t: "Ambush a Wandering Cultivator: The Mercy"
+ ttk_travel_event_kill.0014.desc: "We were ambushed by [ttk_killer.GetFirstName], and they vanquished us. We had no chance against such a lightning-fast attack and a force so heavily armored. \n\nNow, [ttk_killer.GetFirstName] approaches me with a malicious smile. [ttk_killer.GetSheHe] stares at me and says:  "Now you will have to pay if you want to get away safe and sound." \n\nI look at [ttk_killer.GetHerHim] and say: "Take it and be done with it.""
+ ttk_travel_event_kill.0014.a: "Let's leave quickly"
+ 
+ 
+ ttk_travel_event_kill.0015.t: "Ambush a Wandering Cultivator: An Approaching Force"
+ ttk_travel_event_kill.0015.rival: "While we are resting after a long day of travel, I notice a low rumbling sound coming from the road. \n\nAn armored cavalry troop, led by my [rival|E] [ttk_killer.GetFirstName], is approaching quickly. \n\nWe must ready ourselve, they’re not coming in a friendly manner."
+ ttk_travel_event_kill.0015.nemesis: "While we are resting after a long day of travel, I notice a low rumbling sound coming from the road. \n\nAn armored cavalry troop, led by my [nemesis|E] [ttk_killer.GetFirstName], is approaching quickly. \n\nWe must ready ourselve, they’re not coming in a friendly manner."
+ ttk_travel_event_kill.0015.murder: "While we are resting after a long day of travel, I notice a low rumbling sound coming from the road. \n\nAn armored cavalry troop, led by [ttk_killer.GetFirstName], is approaching quickly. \n\nWe must ready ourselve, they’re not coming in a friendly manner."
+ ttk_travel_event_kill.0015.feud: "While we are resting after a long day of travel, I notice a low rumbling sound coming from the road. \n\nAn armored cavalry troop, led by [ttk_killer.GetFirstName] a member of house [ttk_killer.GetHouse.GetName] we are feuding with, is approaching quickly. \n\nWe must ready ourselve, they’re not coming in a friendly manner."
+ ttk_travel_event_kill.0015.a: "Get ready"
+ 
+ 
+ ttk_travel_event_kill.0016.t: "Ambush a Wandering Cultivator: The Rogue Cultivators"
+ ttk_travel_event_kill.0016.desc: "While we are resting after a long day of travel, I notice some rogue cultivators in the distance coming toward us, weapons drawn. \n\nI know this isn't going to end well, we need to prepare ourselves."
+ ttk_travel_event_kill.0016.a: "Get ready"
+ 
+ house_relation_reason_ttk_ambush_desc: "[char.GetShortUIName|U] ambushed [target_char.GetShortUIName]"

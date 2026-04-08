@@ -1,0 +1,25 @@
+# Xianxia Activity Map (Canonical In-Game Wiring Index)
+#
+# Purpose:
+# - Prevent path mismatch between reference activity material and our real scripted gameplay hooks.
+# - Keep a single index under /common/activities for EVERY future gameplay change with activity touchpoints,
+#   even if the edited file is not itself an activity_type file.
+#
+# Vanilla/reference sources to cross-check on every relevant change:
+# - /activities/  (local vanilla mirror/reference)
+# - Paradox official documentation
+#
+# Current in-game activity wiring owned by this mod:
+# - Decision hook: /common/decisions/cultivation_jianghu_flavor_decisions.txt
+#   -> jianghu_oath_gathering_decision.effect triggers xianxia_world.1100
+# - Activity launch event: /events/xianxia_world_events.txt
+#   -> xianxia_world.1100 attempts hosting activity_tournament and chains to xianxia_world.1110/1120 rounds with branch choices (stable/aggressive bracket)
+# - On-action orchestration: /common/on_action/zzzz_cultivation_ai_pulse.txt
+#   -> xianxia_world.1000 periodic maintenance pass
+# - Player-facing text: /localization/english/cultivation_expansion_decisions_l_english.yml
+#   -> jianghu_oath_gathering_decision_tooltip
+#
+# Workflow rule:
+# 1) Any time you modify ANY gameplay system that can touch activity behavior, timing, participation,
+#    rewards, or AI hosting, update this index and the changelog in the same commit.
+# 2) Cross-check against /activities/ structure patterns before finalizing.

@@ -1,0 +1,2783 @@
+﻿namespace = ks_cultivation
+
+# CONCLUSION EVENT
+ks_cultivation.0009 = {
+	type = activity_event
+	title = ks_cultivation.0009.t
+	desc = ks_cultivation.0009.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	center_portrait = {
+		character = root
+		animation = thinking
+	}
+	left_portrait = {
+		character = scope:ks_teacher_1
+		animation = admiration
+	}
+
+
+	immediate = {
+		#Reward effects
+		ks_cultivation_completed_log_entry_effect = yes
+		scope:activity = {
+			random_attending_character = {
+				limit = {
+					has_character_flag = ks_teacher_1
+				}
+				save_scope_as = ks_teacher_1
+			}
+		}
+	}
+
+	option = {
+		name = ks_cultivation.0009.a
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	after = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						OR = {
+							has_character_flag = teacher_1
+							has_character_flag = student_1
+							has_character_flag = student_2
+						}
+					}
+					silent_disappearance_ai_if_created_effect = yes
+				}
+			}
+		}
+	}
+}
+
+## ARRIVAL EVENTS
+ks_cultivation.0010 = {
+	type = activity_event
+	title = ks_cultivation.0010.t
+	desc = ks_cultivation.0010.desc_end
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	center_portrait = {
+		character = root
+		animation = happy_teacher
+	}
+
+	immediate = {
+		scope:activity.activity_location = { save_scope_as = location }
+	}
+
+	option = {
+		name = ks_cultivation.0010.a
+	}
+}
+
+#讲授-勾引
+ks_cultivation.1000 = {
+	type = activity_event
+	title = ks_cultivation.1000.t
+	desc = ks_cultivation.1000.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1000
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1000
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 认真听讲
+	option = {
+		name = ks_cultivation.1000.a
+		flavor = ks_cultivation.1000.a.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		duel = {
+			skill = learning
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1000.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1000.a.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								add_intrigue_skill = 1
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_major
+						activity_special_type_progression_major = yes
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1000.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1000.a.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = minor_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 恶作剧
+	option = {
+		name = ks_cultivation.1000.b
+		flavor = ks_cultivation.1000.b.tt
+		trigger = {
+			has_activity_intent = ks_cultivation_revelry_intent
+		}
+		duel = {
+			skill = intrigue
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1000.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1000.b.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = joking_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								if = {
+									limit = {
+										NOT = {
+											has_trait = huxian_cultivation
+										}
+									}
+									add_trait = huxian_cultivation
+								}
+								else = {
+									add_trait_xp = {
+										trait = huxian_cultivation
+										value = 2
+									}
+								}
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_tiny
+						activity_special_type_progression_tiny = yes
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1000.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1000.b.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = joking_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = medium_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 自学
+	option = {
+		name = ks_cultivation.1000.c
+		custom_tooltip = ks_cultivation_tt_positive_medium
+		scope:activity = { activity_special_type_progression_medium = yes }
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+#讲授-共同修行
+ks_cultivation.1010 = {
+	type = activity_event
+	title = ks_cultivation.1010.t
+	desc = ks_cultivation.1010.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	center_portrait = {
+		character = scope:student
+		animation = eyeroll
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1010
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1010
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 认真听讲
+	option = {
+		name = ks_cultivation.1010.a
+		flavor = ks_cultivation.1010.a.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		duel = {
+			skill = intrigue
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1010.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1010.a.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								add_intrigue_skill = 1
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_major
+						activity_special_type_progression_major = yes
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1010.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1010.a.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = minor_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 恶作剧
+	option = {
+		name = ks_cultivation.1010.b
+		flavor = ks_cultivation.1010.b.tt
+		trigger = {
+			has_activity_intent = ks_cultivation_revelry_intent
+		}
+		duel = {
+			skill = diplomacy
+			target = scope:student
+			#value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1010.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1010.b.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = joking_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								if = {
+									limit = {
+										NOT = {
+											has_trait = huxian_cultivation
+										}
+									}
+									add_trait = huxian_cultivation
+								}
+								else = {
+									add_trait_xp = {
+										trait = huxian_cultivation
+										value = 3
+									}
+								}
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_tiny
+						activity_special_type_progression_tiny = yes
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1010.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1010.b.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = joking_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = medium_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 自学
+	option = {
+		name = ks_cultivation.1010.c
+		custom_tooltip = ks_cultivation_tt_positive_medium
+		scope:activity = { activity_special_type_progression_medium = yes }
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#讲授-狐仙之血
+ks_cultivation.1020 = {
+	type = activity_event
+	title = ks_cultivation.1020.t
+	desc = ks_cultivation.1020.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1020
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1020
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 认真听讲
+	option = {
+		name = ks_cultivation.1020.a
+		flavor = ks_cultivation.1020.a.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		duel = {
+			skill = learning
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1020.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1020.a.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								bp2_lifestyle_xp_gain_per_type_effect = { VALUE = medium }
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_major
+						activity_special_type_progression_major = yes
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1020.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1020.a.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = minor_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 恶作剧
+	option = {
+		name = ks_cultivation.1020.b
+		flavor = ks_cultivation.1020.b.tt
+		trigger = {
+			has_activity_intent = ks_cultivation_revelry_intent
+		}
+		duel = {
+			skill = intrigue
+			target = scope:student
+			#value = medium_skill_rating
+			40 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1020.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1020.b.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = joking_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								if = {
+									limit = {
+										NOT = {
+											has_trait = huxian_cultivation
+										}
+									}
+									add_trait = huxian_cultivation
+								}
+								else = {
+									add_trait_xp = {
+										trait = huxian_cultivation
+										value = 1
+									}
+								}
+								add_intrigue_lifestyle_xp =  minor_lifestyle_xp
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_tiny
+						activity_special_type_progression_tiny = yes
+					}
+				}
+			}
+			60 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1020.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1020.b.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = joking_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = medium_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 自学
+	option = {
+		name = ks_cultivation.1020.c
+		custom_tooltip = ks_cultivation_tt_positive_medium
+		scope:activity = { activity_special_type_progression_medium = yes }
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#讲授-狐仙恋人
+ks_cultivation.1030 = {
+	type = activity_event
+	title = ks_cultivation.1030.t
+	desc = ks_cultivation.1030.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1030
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1030
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 认真听讲
+	option = {
+		name = ks_cultivation.1030.a
+		flavor = ks_cultivation.1030.a.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		duel = {
+			skill = learning
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1030.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1030.a.success.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { good activity }
+							show_in_conclusion = yes
+							character = root
+			
+							#Effect
+							root = {
+								add_diplomacy_skill = 1
+							}
+						}
+						custom_tooltip = ks_cultivation_tt_positive_major
+						activity_special_type_progression_major = yes
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1030.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1030.a.failure.tt
+					left_icon = root
+					scope:activity = {
+						add_activity_log_entry = {
+							key = goodgoodstudy_log
+							score = 25
+							tags = { negative }
+							character = root
+					
+							#Effect
+							root = {
+								stress_impact = {
+									base = minor_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 恶作剧
+	option = {
+		name = ks_cultivation.1030.b
+		flavor = ks_cultivation.1030.b.tt
+		trigger = {
+			has_activity_intent = ks_cultivation_revelry_intent
+		}
+		add_prestige = medium_prestige_gain
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_gain
+			gregarious = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 自学
+	option = {
+		name = ks_cultivation.1030.c
+		custom_tooltip = ks_cultivation_tt_positive_medium
+		scope:activity = { activity_special_type_progression_medium = yes }
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#讲授-最伟大的狐
+ks_cultivation.1040 = {
+	type = activity_event
+	title = ks_cultivation.1040.t
+	desc = ks_cultivation.1040.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1040
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1040
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 我要成为最伟大的狐
+	option = {
+		name = ks_cultivation.1040.a
+		flavor = ks_cultivation.1040.a.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		custom_tooltip = ks_cultivation_tt_positive_tiny
+		scope:activity = { activity_special_type_progression_tiny = yes }
+		add_prestige = medium_prestige_gain
+		stress_impact = {
+			base = minor_stress_impact_gain
+			shy = medium_stress_impact_gain
+			gregarious = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+			arrogant = minor_stress_impact_loss
+			vengeful = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 实干好过好高骛远
+	option = {
+		name = ks_cultivation.1040.b
+		flavor = ks_cultivation.1040.b.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		if = {
+				limit = {
+					NOT = {
+					has_trait = huxian_cultivation
+				}
+				}
+				add_trait = huxian_cultivation
+			}
+		else = {
+					add_trait_xp = {
+					trait = huxian_cultivation
+					value = 2
+				}
+		}
+		bp2_lifestyle_xp_gain_per_type_effect = {medium}
+		stress_impact = {
+			base = major_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 自学
+	option = {
+		name = ks_cultivation.1040.c
+		flavor = ks_cultivation.1040.c.tt
+		custom_tooltip = ks_cultivation_tt_positive_medium
+		scope:activity = { activity_special_type_progression_medium = yes }
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#修行-谋术修炼
+ks_cultivation.1100 = {
+	type = activity_event
+	title = ks_cultivation.1100.t
+	desc = ks_cultivation.1100.desc
+
+	theme = university
+	override_background = {
+		reference = market
+	}
+
+	left_portrait = {
+		character = root
+		animation = schadenfreude
+	}
+	right_portrait = {
+		character = scope:peasant
+		animation = thinking
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1100
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1100
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+		hidden_effect = {
+			create_character = {
+				age = { 20 35 }
+				random_traits = yes
+				gender_female_chance = 50
+				dynasty = none
+				faith = this.faith
+				culture = this.culture
+				location = scope:activity.activity_location
+				save_scope_as = peasant
+			}
+		}
+	}
+	#A 使用骗术
+	option = {
+		name = ks_cultivation.1100.a
+		flavor = ks_cultivation.1100.a.tt
+		duel = {
+			skill = intrigue
+			target = scope:peasant
+			70 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1100.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1100.a.success.tt
+					left_icon = root
+
+					scope:activity = {
+						custom_tooltip = ks_cultivation_tt_positive_major
+						activity_special_type_progression_major = yes 
+						}
+					root = {
+						add_gold = minor_gold_value
+						stress_impact = {
+							base = minor_stress_impact_gain
+							shy = medium_stress_impact_gain
+							honest = medium_stress_impact_gain
+							compassionate = medium_stress_impact_gain
+							gregarious = minor_stress_impact_loss
+						}
+					}
+
+				}
+			}
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1100.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1100.a.failure.tt
+					left_icon = root
+					root ={
+						stress_impact = {
+								base = medium_stress_impact_gain
+								shy = major_stress_impact_gain
+								honest = major_stress_impact_gain
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 使用法术
+	option = {
+		name = ks_cultivation.1100.b
+		flavor = ks_cultivation.1100.b.tt
+		duel = {
+			skill = prowess
+			target = scope:peasant
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1100.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1100.b.success.tt
+					left_icon = root
+
+					root = {
+						add_gold = medium_gold_value
+						add_prestige = medium_prestige_gain
+						add_prowess_skill = 1
+						stress_impact = {
+							shy = medium_stress_impact_gain
+							just = medium_stress_impact_gain
+							compassionate = medium_stress_impact_gain
+							wrathful = minor_stress_impact_loss
+						}
+					}
+
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1100.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1100.b.failure.tt
+					left_icon = root
+					root ={
+						stress_impact = {
+								base = medium_stress_impact_gain
+								just = major_stress_impact_gain
+								compassionate = major_stress_impact_gain
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 
+	option = {
+		name = ks_cultivation.1100.c
+		flavor = ks_cultivation.1100.c.tt
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			vengeful = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	after = {
+		scope:peasant ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+	}
+}
+#修行-勾引
+ks_cultivation.1110 = {
+	type = activity_event
+	title = ks_cultivation.1110.t
+	desc = ks_cultivation.1110.desc
+
+	theme = university
+	override_background = {
+		reference = relaxing_room
+	}
+
+	left_portrait = {
+		character = root
+		animation = flirtation
+	}
+	right_portrait = {
+		character = scope:beautiful_peasant
+		animation = ecstasy
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1110
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1110
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+		hidden_effect = {
+			create_character = {
+					location = scope:activity.activity_location
+					template = beautiful_peasant_character
+					gender_female_chance = root_attraction_based_female_chance
+					faith = scope:activity.activity_location.county.faith
+					culture = scope:activity.activity_location.county.culture
+					dynasty = none
+					save_scope_as = beautiful_peasant
+			}
+		}
+	}
+	#A do as a huxian would
+	option = {
+		name = ks_cultivation.1110.a
+		flavor = ks_cultivation.1110.a.tt
+		duel = {
+			skill = intrigue
+			target = scope:beautiful_peasant
+			70 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1110.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1110.a.success.tt
+					left_icon = root
+
+					scope:activity = {
+						custom_tooltip = ks_cultivation_tt_positive_medium
+						activity_special_type_progression_medium = yes 
+						}
+					root = {
+						stress_impact = {
+							base = minor_stress_impact_loss
+							chaste = medium_stress_impact_gain
+							lustful = medium_stress_impact_loss
+						}
+						had_sex_with_effect = {
+							CHARACTER = scope:beautiful_peasant
+							PREGNANCY_CHANCE = pregnancy_chance
+						}
+					}
+
+				}
+			}
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1110.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1110.a.failure.tt
+					left_icon = root
+					root = {
+						stress_impact = {
+							lustful = medium_stress_impact_gain
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B fall in love
+	option = {
+		name = ks_cultivation.1110.b
+		flavor = ks_cultivation.1110.b.tt
+		root={
+			had_sex_with_effect = {
+				CHARACTER = scope:beautiful_peasant
+				PREGNANCY_CHANCE = pregnancy_chance
+			}
+			stress_impact = {
+				base = medium_stress_impact_loss
+				chaste = medium_stress_impact_gain
+				lustful = major_stress_impact_loss
+			}
+		}
+		add_courtier = scope:beautiful_peasant	
+		set_relation_lover = { target = scope:beautiful_peasant province = scope:activity.activity_location }
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 
+	option = {
+		name = ks_cultivation.1110.c
+		flavor = ks_cultivation.1110.c.tt
+		stress_impact = {
+			base = minor_stress_impact_loss
+			shy = medium_stress_impact_loss
+			gregarious = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+			chaste = medium_stress_impact_gain
+			lustful = major_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	after = {
+		scope:beautiful_peasant ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+	}
+}
+#修行-挑战鬼怪
+ks_cultivation.1120 = {
+	type = activity_event
+	title = ks_cultivation.1120.t
+	desc = ks_cultivation.1120.desc
+
+	theme = university
+	override_background = {
+		reference = alley_night
+	}
+
+	left_portrait = {
+		character = root
+		animation = stress
+	}
+	right_portrait = {
+		character = scope:student
+		animation = schadenfreude
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1120
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1120
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A fight
+	option = {
+		name = ks_cultivation.1120.a
+		flavor = ks_cultivation.1120.a.tt
+		duel = {
+			skill = prowess
+			value = medium_skill_rating
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1120.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1120.a.success.tt
+					left_icon = root
+
+					scope:activity = {
+						custom_tooltip = ks_cultivation_tt_positive_massive
+						activity_special_type_progression_massive = yes 
+						}
+					root = {
+						stress_impact = {
+							brave = medium_stress_impact_loss
+						}
+						add_prowess_skill = 2
+						add_prestige = medium_prestige_gain
+					}
+
+				}
+			}
+			70 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1120.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1120.a.failure.tt
+					left_icon = root
+					root = {
+						change_trait_rank = {
+							trait = wounded
+							rank = 1
+							max = 3
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B it's a trick
+	option = {
+		name = ks_cultivation.1120.b
+		flavor = ks_cultivation.1120.b.tt
+		trigger = {
+			root.intrigue >= 30
+		}
+		
+		root={
+			add_learning_skill = 2
+			stress_impact = {
+				base = medium_stress_impact_loss
+				brave = medium_stress_impact_gain
+			}
+			add_learning_lifestyle_xp = medium_lifestyle_xp
+			add_intrigue_lifestyle_xp = medium_lifestyle_xp			
+			add_prestige = minor_prestige_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 
+	option = {
+		name = ks_cultivation.1120.c
+		flavor = ks_cultivation.1120.c.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_medium
+			activity_special_type_progression_medium = yes 
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+#修行-不老药研究
+ks_cultivation.1130 = {
+	type = activity_event
+	title = ks_cultivation.1130.t
+	desc = ks_cultivation.1130.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:student
+		animation = worry
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1130
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1130
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A be a herber
+	option = {
+		name = ks_cultivation.1130.a
+		flavor = ks_cultivation.1130.a.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_major
+			activity_special_type_progression_major = yes 
+		}
+		root = {
+			if = {
+				limit = {
+					NOT = {
+						has_trait = lifestyle_herbalist
+					}
+				}
+				add_trait = lifestyle_herbalist
+			}
+			stress_impact = {
+				base = medium_stress_impact_gain
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B there's no such medicine
+	option = {
+		name = ks_cultivation.1130.b
+		flavor = ks_cultivation.1130.b.tt
+		trigger = {
+			root.learning >= 25
+		}
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_tiny
+			activity_special_type_progression_tiny = yes 
+		}
+		root={
+			add_learning_skill = 1
+			add_learning_lifestyle_xp = medium_lifestyle_xp			
+			add_prestige = medium_prestige_gain
+			stress_impact = {
+				humble = minor_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: great meal is the medicine 
+	option = {
+		name = ks_cultivation.1130.c
+		flavor = ks_cultivation.1130.c.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_tiny
+			activity_special_type_progression_tiny = yes 
+		}
+		root = {
+			add_character_modifier = {
+				modifier = best_meal_of_my_life_modifier
+				years = 5
+			}
+			remove_short_term_gold = medium_gold_value
+			stress_impact = {
+				base = minor_stress_impact_loss
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option D: I'd sleep
+	option = {
+		name = ks_cultivation.1130.d
+		flavor = ks_cultivation.1130.d.tt
+		stress_impact = {
+			base = major_stress_impact_loss
+			diligent = minor_stress_impact_gain
+			ambitious  = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+#修行-桌游
+ks_cultivation.1140 = {
+	type = activity_event
+	title = ks_cultivation.1140.t
+	desc = ks_cultivation.1140.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1140
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1140
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A HOI4
+	option = {
+		name = ks_cultivation.1140.a
+		flavor = ks_cultivation.1140.a.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_medium
+			activity_special_type_progression_medium = yes 
+		}
+		root = {
+			add_martial_skill = 1
+			stress_impact = {
+				base = minor_stress_impact_loss
+				compassionate = minor_stress_impact_gain
+				lazy = minor_stress_impact_gain
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B EU4
+	option = {
+		name = ks_cultivation.1140.b
+		flavor = ks_cultivation.1140.b.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_medium
+			activity_special_type_progression_medium = yes 
+		}
+		root = {
+			add_diplomacy_skill = 1
+			stress_impact = {
+				base = minor_stress_impact_loss
+				ambitious = medium_stress_impact_loss
+				diligent = minor_stress_impact_gain
+				impatient = minor_stress_impact_gain
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#C VIC3
+	option = {
+		name = ks_cultivation.1140.c
+		flavor = ks_cultivation.1140.c.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_medium
+			activity_special_type_progression_medium = yes 
+		}
+		root = {
+			add_stewardship_skill = 1
+			stress_impact = {
+				base = minor_stress_impact_loss
+				arrogant = minor_stress_impact_gain
+				callous = medium_stress_impact_loss
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	#D CK3
+	option = {
+		name = ks_cultivation.1140.d
+		flavor = ks_cultivation.1140.d.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_massive
+			activity_special_type_progression_massive= yes 
+		}
+		root = {
+			random_list = {
+				10 = {
+					desc = ks_cultivation.1140.d.bad1
+					stress_impact = {
+						base = major_stress_impact_gain
+					}
+				}
+				60 = {
+					desc = ks_cultivation.1140.d.bad2
+					stress_impact = {
+						base = medium_stress_impact_gain
+					}
+				}
+				20 = {
+					desc = ks_cultivation.1140.d.bad3
+					stress_impact = {
+						base = minor_stress_impact_gain
+					}
+				}
+				10 = {
+					desc = ks_cultivation.1140.d.good1
+					add_gold = major_gold_value
+					add_character_modifier={
+						modifier = easy_difficulty
+						years = 5
+					}
+				}
+
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+#猎狐人
+ks_cultivation.1200 = {
+	type = activity_event
+	title = ks_cultivation.1200.t
+	desc = ks_cultivation.1200.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:peasant
+		animation = hunting_horn
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1200
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1200
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+		hidden_effect = {
+			create_character = {
+				age = { 20 35 }
+				random_traits = yes
+				gender_female_chance = 50
+				dynasty = none
+				faith = this.faith
+				culture = this.culture
+				location = scope:activity.activity_location
+				save_scope_as = peasant
+			}
+		}
+	}
+	#A 劝说他离开
+	option = {
+		name = ks_cultivation.1200.a
+		flavor = ks_cultivation.1200.a.tt
+		duel = {
+			skill = diplomacy
+			target = scope:peasant
+			70 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1200.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1200.a.success.tt
+					left_icon = root
+
+					root = {
+						add_piety = medium_piety_gain
+						stress_impact = {
+							base = minor_stress_impact_loss
+							shy = minor_stress_impact_gain
+							compassionate = minor_stress_impact_loss
+						}
+					}
+
+				}
+			}
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1200.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1200.a.failure.tt
+					left_icon = root
+					root ={
+						stress_impact = {
+							compassionate = minor_stress_impact_loss
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 杀死农民
+	option = {
+		name = ks_cultivation.1200.b
+		flavor = ks_cultivation.1200.b.tt
+		duel = {
+			skill = prowess
+			target = scope:peasant
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1200.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1200.b.success.tt
+					left_icon = root
+					#character = root
+					#target = scope:peasant
+
+					root = {
+						add_gold = medium_gold_value
+						add_prestige = medium_prestige_gain
+						stress_impact = {
+							shy = medium_stress_impact_gain
+							just = medium_stress_impact_gain
+							compassionate = medium_stress_impact_gain
+						}
+					}
+					
+					scope:peasant = {
+						death = { death_reason = death_hunting_accident 
+						killer = root }
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1200.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1200.b.failure.tt
+					left_icon = root
+					root ={
+						add_prestige = medium_prestige_loss
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 认真修行
+	option = {
+		name = ks_cultivation.1200.c
+		flavor = ks_cultivation.1200.c.tt
+		trigger = {
+			has_activity_intent = ks_study_hard_intent
+		}
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_medium
+			activity_special_type_progression_medium = yes 
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	after = {
+		scope:peasant ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+	}
+}
+#和尚来袭
+ks_cultivation.1210 = {
+	type = activity_event
+	title = ks_cultivation.1210.t
+	desc = ks_cultivation.1210.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:monk
+		animation = rage
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1210
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1210
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+		hidden_effect = {
+			create_character = {
+					location = scope:activity.activity_location
+					template = tgp_warrior_monk_template
+					gender_female_chance = root_attraction_based_female_chance
+					faith = scope:activity.activity_location.county.faith
+					culture = scope:activity.activity_location.county.culture
+					dynasty = none
+					save_scope_as = monk
+			}
+		}
+	}
+	#A 魅惑他
+	option = {
+		name = ks_cultivation.1210.a
+		flavor = ks_cultivation.1210.a.tt
+		duel = {
+			skill = intrigue
+			target = scope:monk
+			30 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1210.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1210.a.success.tt
+					left_icon = root
+					root = {
+						stress_impact = {
+							base = minor_stress_impact_loss
+							chaste = medium_stress_impact_gain
+							lustful = medium_stress_impact_loss
+						}
+						had_sex_with_effect = {
+							CHARACTER = scope:monk
+							PREGNANCY_CHANCE = pregnancy_chance
+						}
+						#add_courtier = scope:monk	
+						#set_relation_lover = { target = scope:monk province = scope:activity.activity_location }
+					}
+
+				}
+			}
+			70 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1210.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1210.a.failure.tt
+					left_icon = root
+					root ={
+						stress_impact = {
+							base = minor_stress_impact_gain
+							lustful = minor_stress_impact_gain
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 杀死和尚
+	option = {
+		name = ks_cultivation.1210.b
+		flavor = ks_cultivation.1210.b.tt
+		duel = {
+			skill = prowess
+			target = scope:monk
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1210.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1210.b.success.tt
+					left_icon = root
+					#character = root
+					#target = scope:monk
+					scope:activity = {
+						custom_tooltip = ks_cultivation_tt_positive_huge
+						activity_special_type_progression_huge = yes 
+					}
+					root = {
+						add_prestige = medium_prestige_gain
+						stress_impact = {
+							shy = medium_stress_impact_gain
+							just = medium_stress_impact_gain
+							compassionate = medium_stress_impact_gain
+						}
+					}
+					
+					scope:monk = {
+						death = { death_reason = death_fight 
+						killer = root}
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1210.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1210.b.failure.tt
+					left_icon = root
+					root ={
+						add_prestige = medium_prestige_loss
+						change_trait_rank = {
+							trait = wounded
+							rank = 1
+							max = 3
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	# Option C: 避战修行
+	option = {
+		name = ks_cultivation.1210.c
+		flavor = ks_cultivation.1210.c.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_major
+			activity_special_type_progression_major = yes 
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	after = {
+		scope:monk ?= {
+			if = {
+				limit = {
+					NOT = { is_courtier_of = root }
+				}
+ 				silent_disappearance_effect = yes
+			}
+		}
+	}
+}
+
+#狐仙的烦恼
+ks_cultivation.1220 = {
+	type = activity_event
+	title = ks_cultivation.1220.t
+	desc = ks_cultivation.1220.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1220
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1220
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 晚上去找老师
+	option = {
+		name = ks_cultivation.1220.a
+		flavor = ks_cultivation.1220.a.tt
+		root = {
+			add_character_modifier = {
+				modifier = ks_night_cultivation_modifier
+				years = 3
+			}
+			add_character_modifier = {
+				modifier = ks_human_like_fox_modifier
+				years = 5
+			}
+			add_character_flag = ks_human_like_fox
+			stress_impact = {
+				base = minor_stress_impact_gain
+				lazy = major_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 说服老师现在教你
+	option = {
+		name = ks_cultivation.1220.b
+		flavor = ks_cultivation.1220.b.tt
+		duel = {
+			skill = diplomacy
+			target = scope:teacher
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1220.b.success
+				send_interface_toast = {
+					title = ks_cultivation.1220.b.success.tt
+					left_icon = root
+					root = {
+						add_character_modifier = {
+							modifier = ks_human_like_fox_modifier
+							years = 5
+						}
+						add_character_flag = ks_human_like_fox
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1220.b.failure
+				send_interface_toast = {
+					title = ks_cultivation.1220.b.failure.tt
+					left_icon = root
+					root ={
+						add_prestige = medium_prestige_loss
+
+					}
+					scope:teacher = {
+						add_opinion = {
+							target = root
+							modifier = insulted_opinion
+							opinion = -20
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#C 不感兴趣
+	option = {
+		name = ks_cultivation.1220.c
+		flavor = ks_cultivation.1220.c.tt
+		scope:activity = {
+			custom_tooltip = ks_cultivation_tt_positive_medium
+			activity_special_type_progression_medium = yes 
+		}
+		root = {
+			stress_impact = {
+				base = minor_stress_impact_loss
+				ambitious = medium_stress_impact_gain
+				diligent = medium_stress_impact_gain
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+
+#残局之妙
+ks_cultivation.1230 = {
+	type = activity_event
+	title = ks_cultivation.1230.t
+	desc = ks_cultivation.1230.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = thinking
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1230
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1230
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 尝试用知识解决
+	option = {
+		name = ks_cultivation.1230.a
+		flavor = ks_cultivation.1230.a.tt
+		trigger = {
+			learning >= 15
+		}
+		root = {
+			random_list = {
+				60 = {
+						desc = ks_cultivation.1230.a.better
+						scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_major
+							activity_special_type_progression_major = yes 
+						}
+					}
+				
+				40 = {
+					desc = ks_cultivation.1230.a.good
+					scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_tiny
+							activity_special_type_progression_tiny = yes 
+						}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 尝试用谋略解决
+	option = {
+		name = ks_cultivation.1230.b
+		flavor = ks_cultivation.1230.b.tt
+		trigger = {
+			intrigue >= 15
+		}
+		root = {
+			random_list = {
+				60 = {
+						desc = ks_cultivation.1230.b.better
+						scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_major
+							activity_special_type_progression_major = yes 
+						}
+					}
+				
+				40 = {
+					desc = ks_cultivation.1230.b.good
+					scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_tiny
+							activity_special_type_progression_tiny = yes 
+						}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#C 我将乱下
+	option = {
+		name = ks_cultivation.1230.c
+		flavor = ks_cultivation.1230.c.tt
+		root = {
+			random_list = {
+				10 = {
+						desc = ks_cultivation.1230.c.better
+						scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_medium
+							activity_special_type_progression_medium = yes 
+						}
+				}
+				
+				20 = {
+					desc = ks_cultivation.1230.c.good
+					scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_tiny
+							activity_special_type_progression_tiny = yes 
+						}
+				}
+				60 = {
+					desc = ks_cultivation.1230.c.common
+
+				}
+				10 = {
+					desc = ks_cultivation.1230.c.wonderful
+					scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_massive
+							activity_special_type_progression_massive = yes 
+						}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#D 不感兴趣
+	option = {
+		name = ks_cultivation.1230.d
+		flavor = ks_cultivation.1230.d.tt
+		root = {
+			stress_impact = {
+				base = minor_stress_impact_loss
+				ambitious = medium_stress_impact_gain
+				diligent = medium_stress_impact_gain
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}
+#古籍研究
+ks_cultivation.1240 = {
+	type = activity_event
+	title = ks_cultivation.1240.t
+	desc = ks_cultivation.1240.desc
+
+	theme = university
+	override_background = {
+		reference = wilderness
+	}
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:teacher
+		animation = happy_teacher
+	}
+	
+	trigger = {
+		NOT = { 
+			scope:activity = {
+				has_variable = has_had_event_1240
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			set_variable = has_had_event_1240
+			activity_location = { save_scope_as = location }
+			random_attending_character = {
+				limit = {
+					OR = {
+						has_character_flag = ks_student_1
+						has_character_flag = ks_student_2
+					}
+				}
+				save_scope_as = student
+			}
+			random_attending_character = {
+				limit = {
+						has_character_flag = ks_teacher_1
+				}
+				save_scope_as = teacher
+			}
+		}
+	}
+	#A 我将尝试破解
+	option = {
+		name = ks_cultivation.1240.a
+		flavor = ks_cultivation.1240.a.tt
+		trigger = {
+			learning >= 15
+		}
+		duel = {
+			skill = learning
+			value = high_skill_rating
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ks_cultivation.1240.a.success
+				send_interface_toast = {
+					title = ks_cultivation.1240.a.success.tt
+					left_icon = root
+					scope:activity = {
+						custom_tooltip = ks_cultivation_tt_positive_huge
+						activity_special_type_progression_huge = yes
+					}
+					
+					root = {
+						if = {
+							limit = {
+										NOT = {
+											has_trait = scholar
+										}
+									}
+								add_trait = scholar
+							}
+					
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ks_cultivation.1010.a.failure
+				send_interface_toast = {
+					title = ks_cultivation.1010.a.failure.tt
+					left_icon = root
+					
+					root = {
+								stress_impact = {
+									base = minor_stress_impact_gain
+									ambitious = medium_stress_impact_gain
+									arrogant = medium_stress_impact_gain
+									diligent = medium_stress_impact_gain
+									scholar = major_stress_impact_gain
+								}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#B 我该换一本现代点的书
+	option = {
+		name = ks_cultivation.1240.b
+		flavor = ks_cultivation.1240.b.tt
+		root = {
+			random_list = {
+				60 = {
+						desc = ks_cultivation.1240.b.good
+						scope:activity = {
+							custom_tooltip = ks_cultivation_tt_positive_major
+							activity_special_type_progression_major = yes 
+						}
+						if = {
+									limit = {
+										NOT = {
+											has_trait = huxian_cultivation
+										}
+									}
+									add_trait = huxian_cultivation
+								}
+						else = {
+									add_trait_xp = {
+										trait = huxian_cultivation
+										value = 2
+									}
+						}
+				}
+				
+				40 = {
+					desc = ks_cultivation.1240.b.worse
+					stress_impact = {
+						base = minor_stress_impact_loss
+						lustful = minor_stress_impact_gain
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	
+	#C 不感兴趣
+	option = {
+		name = ks_cultivation.1240.c
+		flavor = ks_cultivation.1240.c.tt
+		root = {
+			stress_impact = {
+				base = major_stress_impact_loss
+				ambitious = medium_stress_impact_gain
+				diligent = medium_stress_impact_gain
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+}

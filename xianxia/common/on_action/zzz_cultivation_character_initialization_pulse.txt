@@ -1,0 +1,73 @@
+﻿# Cultivation Character Initialization Pulse
+# Path: common/on_action/zzz_cultivation_character_initialization_pulse.txt
+# Based on ACTUAL Carnalitas implementation
+
+# IMPORTANT: "zzz" prefix makes this fire LAST after all vanilla events
+
+# There's no way for us to easily catch every character that's generated
+# so instead we hook into multiple on_actions and fire our pulse
+
+on_game_start_after_lobby = {
+	events = {
+		cultivation_character_initialization.0001  # Initialize ALL characters at game start
+	}
+}
+
+on_birthday = {
+	on_actions = { cultivation_character_initialization_pulse }
+}
+
+on_birth_child = {
+	on_actions = { cultivation_character_initialization_pulse }
+}
+
+# This is the pulse that all our initialization events hook into
+cultivation_character_initialization_pulse = {
+	events = {
+		cultivation_character_initialization.0002
+		cultivation_character_initialization.0003
+		cultivation_character_initialization.0004
+		cultivation_character_initialization.0005
+		cultivation_character_initialization.0006
+	}
+}
+
+on_faith_created = {
+	events = {
+		clean_empty_tenet.001
+	}
+}
+
+################
+#TRAIT PULSE
+################
+
+#on_trait_gain_cultivation = {
+#
+#	trigger = {
+ #       OR = {
+#			has_trait = cultivation_qi_refining
+#			has_trait = cultivation_qi_building
+#			has_trait = cultivation_core_formation
+#			has_trait = cultivation_nascent_soul
+#			has_trait = cultivation_heavenly_being
+#			has_trait = cultivation_four_axis
+#			has_trait = cultivation_integration
+##			has_trait = cultivation_star_shattering
+#			has_trait = cultivation_sacred_vessel
+#			has_trait = cultivation_entering_nirvana
+##			has_trait = cultivation_true_immortal
+#       }    
+#	}
+#	
+#   effect = {
+#        # Set visual age when gaining the trait
+#        if = {
+#            limit = { age >= 10 }
+#            set_immortal_age = 10
+#        }
+#        else = {
+#            set_immortal_age = age
+#        }
+#    }
+#}

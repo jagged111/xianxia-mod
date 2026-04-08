@@ -1,0 +1,50 @@
+﻿l_english:
+#Realms
+#Qi Gathering
+
+  trait_qi_gathering:0 "Qi Gathering"
+  trait_qi_gathering_desc:0 "This character is in the Qi Gathering Realm"
+  trait_track_stage:0 "Stages"
+  trait_track_stage_desc:0 "The stages of the Qi Gathering Realm"
+
+#Foundation Establishment
+
+  trait_foundation_establishment:0 "Foundation Establishment"
+  trait_foundation_establishment_desc:0 "This character is in the Foundation Establishment Realm"
+  trait_track_foundation:0 "Foundation"
+  trait_track_foundation_desc:0 "The stages of the Foundation Establishment Realm"
+
+#Core Formation
+
+  trait_core_formation:0 "Core Formation"
+  trait_core_formation_desc:0 "This character is in the Core Formation Realm"
+  trait_track_core:0 "Core"
+  trait_track_core_desc:0 "The stages of the Core Formation Realm"
+
+#Nascent Soul
+
+  trait_nascent_soul:0 "Nascent Soul"
+  trait_nascent_soul_desc:0 "This character is in the Nascent Soul Realm"
+  trait_track_soul:0 "Soul"
+  trait_track_suol_desc:0 "The stages of the Nascent Soul Realm"
+
+#Spirit Severing
+
+  trait_spirit_severing:0 "Spirit Severing"
+  trait_spirit_severing_desc:0 "This character is in the Spirit Severing Realm"
+  trait_track_spirit:0 "Severing"
+  trait_track_spirit_desc:0 "The stages of the Spirit Severing Realm"
+
+  #Dao Seeking
+
+  trait_dao_seeking:0 "Dao Seeking"
+  trait_dao_seeking_desc:0 "This character is in the Dao Seeking Realm"
+  trait_track_dao:0 "Dao"
+  trait_track_dao_desc:0 "The stages of the Dao Seeking Realm"
+
+  #Immortal Ascension
+
+  trait_immortal_ascension:0 "Immortal Ascension"
+  trait_immortal_ascension_desc:0 "This character is in the Immortal Ascension Realm"
+  trait_track_ascension:0 "Immortal"
+  trait_track_ascension_desc:0 "The stages of the Immortal Ascension Realm"

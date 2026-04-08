@@ -1,0 +1,1166 @@
+ï»¿namespace = ttk_travel_event_kill
+
+# main event killer chose method #### theme done
+ttk_travel_event_kill.0001 = {
+	type = character_event
+	title = ttk_travel_event_kill.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						has_relation_nemesis = scope:ttk_target
+					}
+				}
+				desc = ttk_travel_event_kill.0001.nemesis
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						has_relation_rival = scope:ttk_target
+					}
+				}
+				desc = ttk_travel_event_kill.0001.rival
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						any_scheme = {
+							scheme_type = murder
+							scheme_target_character = scope:ttk_target
+						}		
+					}
+				}
+				desc = ttk_travel_event_kill.0001.murder
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						house_has_feud_relation_with_trigger = { TARGET = scope:ttk_target }		
+					}
+				}
+				desc = ttk_travel_event_kill.0001.feud
+			}
+		}
+	}
+	override_background = { reference = council_chamber }
+	theme = rival_relation   
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = interested  
+	}
+	right_portrait = {
+		character = scope:ttk_killer.cp:councillor_spymaster 
+		animation = spymaster_ttk
+	}
+	lower_center_portrait = scope:ttk_target	
+	immediate = {
+		hidden_effect = {
+			create_character = {
+				template = ttk_bandit_character
+				gender = male
+				location = scope:ttk_target.location
+				faith = scope:ttk_target.location.faith
+				culture = scope:ttk_target.location.culture
+				save_scope_as = ttk_ruffian
+			}
+		}
+		scope:ttk_target = {
+			add_character_flag = {
+				flag = ttk_can_pass
+				years = 2
+			}
+			location = { save_scope_as = background_terrain_scope }
+		}
+		hidden_effect = { 
+			scope:ttk_target = {
+				current_travel_plan ?= { 
+					pause_travel_plan = yes 
+					random_entourage_character = {
+						limit = {
+							is_adult = yes
+							is_ai = yes
+							NOT = { this = scope:ttk_target }
+						}
+						save_scope_as = ttk_target_entourage_1
+					}
+					random_entourage_character = {
+						limit = {
+							is_adult = yes
+							is_ai = yes
+							NOT = { this = scope:ttk_target }
+							NOT = { this = scope:ttk_target_entourage_1 }
+						}
+						save_scope_as = ttk_target_entourage_2
+					}
+				}
+			}
+		}
+	}
+	#attaque himself
+	option = {
+		name = ttk_travel_event_kill.0001.a
+		add_character_flag = {
+			flag = need_military_outfit
+			days = 4
+		}
+		add_character_flag = {
+			flag = ttk_pwhd_compat
+			days = 4
+		}
+		hidden_effect = {
+			scope:ttk_killer = {
+				random_knight = {
+					limit = {
+						highest_held_title_tier < tier_county
+						is_adult = yes
+						is_ai = yes
+					}
+					save_scope_as = ttk_killer_knight_1
+				}
+				random_knight = {
+					limit = {					
+						highest_held_title_tier < tier_county
+						is_adult = yes
+						is_ai = yes
+						NOT = { this = scope:ttk_killer_knight_1 }
+					}
+					save_scope_as = ttk_killer_knight_2
+				}
+			}
+			scope:ttk_killer_knight_1 ?= {
+				add_character_flag = {
+					flag = need_military_outfit
+					days = 4
+				}
+				add_character_flag = {
+					flag = ttk_pwhd_compat
+					days = 4
+				}
+			}
+			scope:ttk_killer_knight_2 ?= {
+				add_character_flag = {
+					flag = need_military_outfit
+					days = 4
+				}
+				add_character_flag = {
+					flag = ttk_pwhd_compat
+					days = 4
+				}
+			}
+		}				
+		duel = {
+			target = scope:ttk_target
+			skills = { martial prowess }
+			50 = {
+				desc = ttk_travel_event_kill.0001.a.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2.5
+				min = -49
+				}
+				modifier = {
+					add = -15
+					tkk_travel_event_escort_trigger = { LEADER = ttk_target }
+				}
+				scope:ttk_target = { trigger_event = ttk_travel_event_kill.0015 }
+				trigger_event = {
+					id = ttk_travel_event_kill.0002
+					days = 3
+				}
+				trigger_event = {
+					id = ttk_travel_event_kill.0021
+					days = 4
+				}
+				scope:ttk_target = {
+					trigger_event = {
+						id = ttk_travel_event_kill.0021
+						days = 4
+					}
+				}
+			}
+			50 = {
+				desc = ttk_travel_event_kill.0001.a.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -2.5
+					min = -49
+				}
+				modifier = {
+					add = 15
+					tkk_travel_event_escort_trigger = { LEADER = ttk_target }
+				}
+				scope:ttk_target = { trigger_event = ttk_travel_event_kill.0015 }
+				trigger_event = {
+					id = ttk_travel_event_kill.0003
+					days = 3
+				}
+				trigger_event = {
+					id = ttk_travel_event_kill.0021
+					days = 4
+				}
+				scope:ttk_target = {
+					trigger_event = {
+						id = ttk_travel_event_kill.0021
+						days = 4
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.75
+				ai_honor = 0.25
+				ai_compassion = -0.25
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = craven
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = brave
+			}
+			modifier = {
+				factor = 0.5
+				is_close_family_of = scope:ttk_target
+			}
+		}	
+	}
+	#pay ruffians to attack
+	option = {
+		name = ttk_travel_event_kill.0001.b
+		remove_short_term_gold = minor_gold_value
+		duel = {
+			target = scope:ttk_target
+			skills = { intrigue }
+			50 = {
+				desc = ttk_travel_event_kill.0001.b.success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2.5
+				min = -49			
+				}
+				modifier = {
+					add = -15
+					tkk_travel_event_escort_trigger = { LEADER = ttk_target }
+				}
+				modifier = {
+					add = {
+						add = scope:ttk_ruffian.prowess
+						subtract = scope:ttk_target.prowess
+						multiply = 2.5
+					}
+				}
+				scope:ttk_target = {
+					trigger_event = ttk_travel_event_kill.0016
+					trigger_event = {
+						id = ttk_travel_event_kill.0010
+						days = 3
+					}
+				}
+				trigger_event = {
+					id = ttk_travel_event_kill.0021
+					days = 4
+				}
+				scope:ttk_target = {
+					trigger_event = {
+						id = ttk_travel_event_kill.0021
+						days = 4
+					}
+				}
+			}
+			50 = {
+				desc = ttk_travel_event_kill.0001.b.failure
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -2.5
+					min = -49
+				}
+				modifier = {
+					add = 15
+					tkk_travel_event_escort_trigger = { LEADER = ttk_target }
+				}
+				modifier = {
+					add = {
+						add = scope:ttk_ruffian.prowess
+						subtract = scope:ttk_target.prowess
+						multiply = -2.5
+					}
+				}
+				scope:ttk_target = { trigger_event = ttk_travel_event_kill.0016 }
+				trigger_event = {
+					id = ttk_travel_event_kill.0005
+					days = 3
+				}
+				trigger_event = {
+					id = ttk_travel_event_kill.0021
+					days = 4
+				}
+				scope:ttk_target = {
+					trigger_event = {
+						id = ttk_travel_event_kill.0021
+						days = 4
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.75
+				ai_honor = -0.5
+				ai_compassion = -0.25
+			}
+			modifier = {
+				factor = 0.15
+				OR = {
+					short_term_gold <= minor_gold_value
+					has_trait = brave
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = deceitful
+			}
+			modifier = {
+				factor = 0.5
+				is_close_family_of = scope:ttk_target
+			}
+		}
+	}
+	#let him pass
+	option = {
+		name = ttk_travel_event_kill.0001.c
+		hidden_effect = {
+			scope:ttk_target = {
+				if = { 
+					limit = { current_travel_plan ?= { is_paused = yes } }
+					current_travel_plan ?= { resume_travel_plan = yes }
+				}
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = -0.25
+				ai_honor = 0.25
+				ai_compassion = 0.5
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					has_trait = compassionate
+				}
+			}
+			modifier = {
+				factor = 1.5
+				is_close_family_of = scope:ttk_target
+			}
+		}		
+	}
+}
+
+			
+#succes attaque myself  ### theme done
+ttk_travel_event_kill.0002 = {
+	type = character_event
+	title = ttk_travel_event_kill.0002.t
+	desc = {
+		desc = ttk_travel_event_kill.0002.desc
+	}
+	override_effect_2d = {
+		reference = smoke
+	}
+	theme = rival_relation 
+	override_background = { reference = terrain_scope }
+	left_portrait = {
+		character = scope:ttk_killer 
+		scripted_animation = duel_celebrate 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = severelywounded 
+	}
+	trigger = {
+		scope:ttk_killer = { is_alive = yes }
+		scope:ttk_target = { is_alive = yes }
+	}
+	immediate = {
+		hidden_effect = {
+			ttk_travel_event_wound_effect = { 
+				SCOPE1 = ttk_target_entourage_1
+				SCOPE2 = ttk_target_entourage_2
+				LEADER = ttk_target
+			}
+			ttk_travel_event_wound_effect = { 
+				SCOPE1 = ttk_killer_knight_1
+				SCOPE2 = ttk_killer_knight_2
+				LEADER = ttk_killer
+			}
+			ttk_travel_event_wound_leader_effect = { LEADER =  ttk_target }
+			ttk_travel_event_wound_leader_effect = { LEADER = ttk_killer }
+		}
+	}
+	#execute him
+	option = {
+		name = ttk_travel_event_kill.0002.a
+		if = { 
+			limit = { 
+				scope:ttk_target = { is_ai = no }
+				scope:ttk_killer = { is_ai = yes }
+				}
+			scope:ttk_target = {
+				trigger_event =  ttk_travel_event_kill.0012
+			}
+		}
+		else = {
+			ttk_execute_prisoner_effect = {
+				VICTIM = scope:ttk_target
+				EXECUTIONER = scope:ttk_killer
+			}
+			trigger_event = ttk_travel_event_kill.0006
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.5
+				ai_honor = -0.25
+				ai_compassion = -0.5
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = forgiving
+			}
+			modifier = {
+				factor = 1.5
+					has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.10
+				is_close_family_of = scope:ttk_target
+			}
+		}
+	}
+	#imprison him
+	option = {
+		name = ttk_travel_event_kill.0002.b
+		if = {
+			limit = { 
+				scope:ttk_target = { is_ai = yes } 
+				scope:ttk_killer = { is_ai = no } 
+			}
+			hard_imprison_character_effect = {
+				TARGET = scope:ttk_target
+				IMPRISONER = scope:ttk_killer
+			}
+			trigger_event = ttk_travel_event_kill.0007
+		}
+		else = {
+			scope:ttk_target = {
+				trigger_event = ttk_travel_event_kill.0013
+			}
+		}
+		#envoyer event à victim
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.5
+				ai_honor = 0.25
+				ai_compassion = -0.25
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = forgiving
+			}
+			modifier = {
+				factor = 1.5
+					has_trait = deceitful
+			}
+			modifier = {
+				factor = 0.50
+				is_close_family_of = scope:ttk_target
+			}
+		}
+	}
+	#let it go
+	option = {
+		name = ttk_travel_event_kill.0002.c
+		hidden_effect = {
+			scope:ttk_target = {
+				if = { 
+					limit = { current_travel_plan ?= { is_paused = yes } }
+					current_travel_plan ?= { resume_travel_plan = yes }
+				}
+			}
+		}
+		if = {
+			limit = { 
+				scope:ttk_killer = { is_ai = yes }
+				scope:ttk_target = { is_ai = no }
+				}
+			scope:ttk_target = {	
+				trigger_event = ttk_travel_event_kill.0014
+			}
+		}
+		else = {
+			scope:ttk_target = {
+				pay_short_term_gold = {
+					target = scope:ttk_killer
+					gold = minor_gold_value
+				}
+			}
+			scope:ttk_killer = {
+				if = {
+					limit = {
+						has_personality_benevolent_trigger = no
+					}
+					add_stress = medium_stress_gain
+				}
+				else_if = {
+					limit = {
+						has_personality_benevolent_trigger = yes
+					}
+					add_stress = medium_stress_loss
+				}
+			}
+			trigger_event = ttk_travel_event_kill.0008
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = -0.5
+				ai_honor = 0.5
+				ai_compassion = 0.25
+				ai_greed = 0.25
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = forgiving
+			}
+			modifier = {
+				factor = 0.25
+					has_trait = vengeful
+			}
+			modifier = {
+				factor = 1.5
+				is_close_family_of = scope:ttk_target
+			}
+		}
+	}
+}
+
+#fail attaque myself ### theme done
+ttk_travel_event_kill.0003 = {
+	type = character_event
+	title = ttk_travel_event_kill.0003.t
+	desc = {
+		desc = ttk_travel_event_kill.0003.desc
+	}
+	override_effect_2d = {
+		reference = smoke
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_target 
+		animation = jockey_gallop
+		camera = camera_event_horse_left 
+	}
+	right_portrait = {
+		character = scope:ttk_killer 
+		animation = rage 
+	}
+	trigger = {
+		scope:ttk_killer = { is_alive = yes }
+		scope:ttk_target = { is_alive = yes }
+	}
+	immediate = {
+		if = {
+			limit = { scope:ttk_killer = { is_ai = no } }
+			scope:ttk_target = {
+				ttk_travel_event_opinion_modifier_effect = { KILLER = ttk_killer }
+			}
+		}
+		scope:ttk_target = {
+			if = { 
+				limit = { current_travel_plan ?= { is_paused = yes } }
+				current_travel_plan ?= { resume_travel_plan = yes }
+			}
+		}
+		hidden_effect = {
+			ttk_travel_event_wound_effect = { 
+				SCOPE1 = ttk_target_entourage_1
+				SCOPE2 = ttk_target_entourage_2
+				LEADER = ttk_target
+			}
+			ttk_travel_event_wound_effect = { 
+				SCOPE1 = ttk_killer_knight_1
+				SCOPE2 = ttk_killer_knight_2
+				LEADER = ttk_killer
+			}
+			ttk_travel_event_wound_leader_effect = { LEADER =  ttk_target }
+			ttk_travel_event_wound_leader_effect = { LEADER = ttk_killer }	
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0003.a
+		scope:ttk_target = {
+			trigger_event = ttk_travel_event_kill.0009
+		}
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#success pay ruffians to attack
+ttk_travel_event_kill.0004 = {
+	type = character_event
+	title = ttk_travel_event_kill.0004.t
+	desc = {
+		desc = ttk_travel_event_kill.0004.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_ruffian 
+		animation = assassin 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = loss_1 
+	}
+	option = {
+		name = ttk_travel_event_kill.0004.a
+		custom_tooltip = ttk_travel_event_kill.0004.a.ct.murder
+		unknown_murder_effect = {
+				VICTIM = scope:ttk_target
+				MURDERER = scope:ttk_killer
+				REASON = death_mysterious
+			}
+		hidden_effect = {
+			trigger_event = ttk_travel_event_kill.0020
+		}
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+
+#fail pay ruffians to attack  ### theme done
+ttk_travel_event_kill.0005 = {
+	type = character_event
+	title = ttk_travel_event_kill.0005.t
+	desc = {
+		desc = ttk_travel_event_kill.0005.desc
+	}
+	override_effect_2d = {
+		reference = smoke
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_target 
+		animation = jockey_gallop
+		camera = camera_event_horse_left
+	}
+	right_portrait = {
+		character = scope:ttk_ruffian 
+		animation = loss_1 
+	}
+	trigger = {
+		scope:ttk_killer = { is_alive = yes }
+		scope:ttk_target = { is_alive = yes }
+	}
+	immediate = {
+		scope:ttk_target = {
+			if = { 
+				limit = { current_travel_plan ?= { is_paused = yes } }
+				current_travel_plan ?= { resume_travel_plan = yes }
+			}
+		}
+		hidden_effect = {
+			ttk_travel_event_wound_effect = { 
+				SCOPE1 = ttk_target_entourage_1
+				SCOPE2 = ttk_target_entourage_2
+				LEADER = ttk_target
+			}
+			ttk_travel_event_wound_leader_effect = { LEADER =  ttk_target }
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0005.a
+		scope:ttk_target = {
+			trigger_event = ttk_travel_event_kill.0011
+		}
+		#envoyer event à victim
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#succes attaque myself / execute #### theme done
+ttk_travel_event_kill.0006 = {
+	type = character_event
+	title = ttk_travel_event_kill.0006.t
+	desc = {
+		desc = ttk_travel_event_kill.0006.desc
+	}
+	theme = rival_relation 
+	override_background = { reference = terrain_scope }
+	left_portrait = {
+		character = scope:ttk_killer 
+		scripted_animation = duel_wield_weapon 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = loss_1  
+	}
+	option = {
+		name = ttk_travel_event_kill.0006.a
+		ai_chance = {
+			base = 100
+		}		
+	}
+}
+
+#success attaque myself / imprison ### theme done
+ttk_travel_event_kill.0007 = {
+	type = character_event
+	title = ttk_travel_event_kill.0007.t
+	desc = {
+		desc = ttk_travel_event_kill.0007.desc
+	}
+	override_background = { reference = dungeon }
+	theme = rival_relation   
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = interested 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = prisonhouse  
+	}
+	immediate = {
+		scope:ttk_target = {
+			ttk_travel_event_opinion_modifier_effect = { KILLER = ttk_killer }
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0007.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#success attaque myself / let it go ### theme done
+ttk_travel_event_kill.0008 = {
+	type = character_event
+	title = ttk_travel_event_kill.0008.t
+	desc = {
+		desc = ttk_travel_event_kill.0008.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = dismissal 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = beg 
+	}
+	immediate = {
+		scope:ttk_target = {
+			ttk_travel_event_opinion_modifier_effect = { KILLER = ttk_killer }
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0008.a
+		#envoyer event à victim
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#fail attaque myself / victim ### theme done
+ttk_travel_event_kill.0009 = {
+	type = character_event
+	title = ttk_travel_event_kill.0009.t
+	desc = {
+		desc = ttk_travel_event_kill.0009.desc
+	}
+	override_effect_2d = {
+		reference = smoke
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_target 
+		animation = jockey_gallop
+		camera = camera_event_horse_left
+	}
+	right_portrait = {
+		character = scope:ttk_killer 
+		animation = rage 
+	}
+	immediate = {
+		if = {
+			limit = { scope:ttk_killer = { is_ai = yes } }
+			ttk_travel_event_opinion_modifier_effect = { KILLER = ttk_killer }
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0009.a
+		#envoyer event à victim
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#succes ruffian / victim #### theme done
+ttk_travel_event_kill.0010 = {
+	type = character_event
+	title = ttk_travel_event_kill.0010.t
+	desc = {
+		desc = ttk_travel_event_kill.0010.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_ruffian 
+		animation = assassin 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = loss_1 
+	}
+	trigger = {
+		scope:ttk_killer = { is_alive = yes }
+		scope:ttk_target = { is_alive = yes }
+	}
+	immediate = {
+		hidden_effect = {
+		ttk_travel_event_wound_effect = { 
+			SCOPE1 = ttk_target_entourage_1
+			SCOPE2 = ttk_target_entourage_2
+			LEADER = ttk_target
+		}
+		ttk_travel_event_wound_leader_effect = { LEADER =  ttk_target }
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0010.a
+		if = { 
+			limit = { 
+				scope:ttk_target = { is_ai = no } 
+				scope:ttk_killer = { is_ai = yes } 
+			}
+			unknown_murder_effect = {
+				VICTIM = scope:ttk_target
+				MURDERER = scope:ttk_killer
+				REASON = death_mysterious
+			}
+			hidden_effect = {
+				trigger_event = ttk_travel_event_kill.0020
+			}
+		}
+		else = {
+			scope:ttk_killer = {
+				trigger_event = ttk_travel_event_kill.0004
+			}
+		}
+		#envoyer event à victim
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#fail ruffian / victim ### theme done
+ttk_travel_event_kill.0011 = {
+	type = character_event
+	title = ttk_travel_event_kill.0011.t
+	desc = {
+		desc = ttk_travel_event_kill.0011.desc
+	}
+	override_effect_2d = {
+		reference = smoke
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_target 
+		animation = jockey_gallop
+		camera = camera_event_horse_left
+	}
+	right_portrait = {
+		character = scope:ttk_ruffian 
+		animation = loss_1 
+	}
+	option = {
+		name = ttk_travel_event_kill.0011.a
+		#envoyer event à victim
+		hidden_effect = {
+			trigger_event = ttk_travel_event_kill.0020
+		}
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#succes attaque myself / execute /victim  ### theme done
+ttk_travel_event_kill.0012 = {
+	type = character_event
+	title = ttk_travel_event_kill.0012.t
+	desc = {
+		desc = ttk_travel_event_kill.0012.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = aggressive_sword  
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = loss_1 
+	}
+	option = {
+		name = ttk_travel_event_kill.0012.a
+		ttk_execute_prisoner_effect = {
+			VICTIM = scope:ttk_target
+			EXECUTIONER = scope:ttk_killer
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#success attaque myself / imprison / victim ### theme done
+ttk_travel_event_kill.0013 = {
+	type = character_event
+	title = ttk_travel_event_kill.0013.t
+	desc = {
+		desc = ttk_travel_event_kill.0013.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = interested 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = prisonhouse 
+	}
+	immediate = {
+		scope:ttk_target = {
+			ttk_travel_event_opinion_modifier_effect = { KILLER = ttk_killer }
+		}
+	}
+	option = {
+		name = ttk_travel_event_kill.0013.a
+		hard_imprison_character_effect = {
+				TARGET = scope:ttk_target
+				IMPRISONER = scope:ttk_killer
+		}
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#success attaque myself / let it go / victim ### theme done
+ttk_travel_event_kill.0014 = {
+	type = character_event
+	title = ttk_travel_event_kill.0014.t
+	desc = {
+		desc = ttk_travel_event_kill.0014.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = dismissal 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = beg 
+	}
+	immediate = {
+		ttk_travel_event_opinion_modifier_effect = { KILLER = ttk_killer }
+	}
+	option = {
+		name = ttk_travel_event_kill.0014.a
+		pay_short_term_gold = {
+				target = scope:ttk_killer
+				gold = minor_gold_value
+		}
+		scope:ttk_killer = {
+			if = {
+				limit = {
+					has_personality_benevolent_trigger = no
+				}
+				add_stress = medium_stress_gain
+			}
+			else_if = {
+				limit = {
+					has_personality_benevolent_trigger = yes
+				}
+				add_stress = medium_stress_loss
+			}
+		}
+		#envoyer event à ¶ictim
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+#victim stop attaque myself  ### theme done
+ttk_travel_event_kill.0015 = {
+	type = character_event
+	title = ttk_travel_event_kill.0015.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						has_relation_rival = scope:ttk_target
+					}
+				}
+				desc = ttk_travel_event_kill.0015.nemesis
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						has_relation_nemesis = scope:ttk_target
+					}
+				}
+				desc = ttk_travel_event_kill.0015.rival
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						any_scheme = {
+							scheme_type = murder
+							scheme_target_character = scope:ttk_target
+						}		
+					}
+				}
+				desc = ttk_travel_event_kill.0015.murder
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_killer = {
+						house_has_feud_relation_with_trigger = { TARGET = scope:ttk_target }		
+					}
+				}
+				desc = ttk_travel_event_kill.0015.feud
+			}
+		}
+	}
+	override_effect_2d = {
+		reference = smoke
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation   
+	left_portrait = {
+		character = scope:ttk_killer 
+		animation = horse_sword_shield
+		camera = camera_event_horse_left
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = shock
+		
+	}
+	option = {
+		name = ttk_travel_event_kill.0015.a
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#victim stop ruffian ### theme done
+ttk_travel_event_kill.0016 = {
+	type = character_event
+	title = ttk_travel_event_kill.0016.t
+	desc = {
+		desc = ttk_travel_event_kill.0016.desc
+	}
+	override_background = { reference = terrain_scope }
+	theme = rival_relation 
+	left_portrait = {
+		character = scope:ttk_ruffian 
+		animation = menacing 
+	}
+	right_portrait = {
+		character = scope:ttk_target 
+		animation = shock 
+	}
+	option = {
+		name = ttk_travel_event_kill.0016.a
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+
+#clean event
+ttk_travel_event_kill.0020 = {
+	hidden = yes
+	immediate = {
+		scope:ttk_ruffian = {
+			death = {
+				death_reason = death_vanished 
+			}
+		}
+	}
+}
+
+#trigger if one is dead
+ttk_travel_event_kill.0021 = {
+	hidden = yes
+	trigger = {
+		OR = {
+			scope:ttk_killer = { is_alive = no }
+			scope:ttk_target = { is_alive = no }
+		}
+	}
+	immediate = {
+		if = {
+			limit = { scope:ttk_target = { is_alive = yes } }
+			scope:ttk_target = {
+				if = { 
+					limit = { current_travel_plan ?= { is_paused = yes } }
+					current_travel_plan ?= { resume_travel_plan = yes }
+				}
+			}
+		}
+		scope:ttk_ruffian ?= {
+			if = { 
+				limit = { is_alive = yes } 
+				death = {
+					death_reason = death_vanished 
+				}
+			}
+		}		
+	}
+}

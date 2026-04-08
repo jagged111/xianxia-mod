@@ -1,0 +1,15 @@
+﻿breakthrough_herb_template = {
+	can_equip = {
+		# TODO: when we have proper 'Quest' items, make them unequipable
+		always = yes
+	}
+
+	can_benefit = {
+	}
+
+	fallback = {
+
+	}
+
+	unique = yes
+}

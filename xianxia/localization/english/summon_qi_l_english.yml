@@ -1,0 +1,56 @@
+﻿l_english:
+ # Thousand Qi Needles
+ summon_thousand_qi_needles_decision:0 "Unleash Thousand Qi Needles"
+ summon_thousand_qi_needles_decision_desc:0 "Countless shimmering needles of pure qi erupt from your meridians, piercing the heavens like a storm of silver rain, shredding all in their path."
+ summon_thousand_qi_needles_decision_confirm:0 "Let the needles fly!"
+ summon_thousand_qi_needles_decision_tooltip:0 "This barrage of qi needles will pierce through mortal armies like paper, leaving no survivors."
+ summon_thousand_qi_needles_decision_effect1:0 "I once scattered a handful of qi needles to hunt beasts. Now I shall unleash a thousand upon my foes."
+ summon_thousand_qi_needles_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."
+
+ # Nine Heavens Sword Intent
+ summon_nine_heavens_sword_intent_decision:0 "Manifest Nine Heavens Sword Intent"
+ summon_nine_heavens_sword_intent_decision_desc:0 "Nine ethereal swords of sword qi descend from the nine heavens, each blade carving through mountains and severing the void itself."
+ summon_nine_heavens_sword_intent_decision_confirm:0 "Heavens, heed my call!"
+ summon_nine_heavens_sword_intent_decision_tooltip:0 "The sword intent of the nine heavens will cleave empires asunder, unstoppable and divine."
+ summon_nine_heavens_sword_intent_decision_effect1:0 "I once formed a single sword qi to cut through stone. Now the nine heavens shall forge my blades."
+ summon_nine_heavens_sword_intent_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."
+
+ # Golden Core Flame Lotus
+ summon_golden_core_flame_lotus_decision:0 "Bloom Golden Core Flame Lotus"
+ summon_golden_core_flame_lotus_decision_desc:0 "A radiant golden lotus of blazing core flames unfurls from your dantian, its petals incinerating all matter in an inferno of purified qi."
+ summon_golden_core_flame_lotus_decision_confirm:0 "Let the lotus burn eternal!"
+ summon_golden_core_flame_lotus_decision_tooltip:0 "This flame lotus will reduce vast armies to ash, its golden fire devouring even immortals."
+ summon_golden_core_flame_lotus_decision_effect1:0 "I once ignited a spark from my forming core to warm my cultivation cave. Now it blossoms into annihilation."
+ summon_golden_core_flame_lotus_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."
+
+ # Nascent Soul Phantom
+ summon_nascent_soul_phantom_decision:0 "Summon Nascent Soul Phantom"
+ summon_nascent_soul_phantom_decision_desc:0 "Your nascent soul manifests as a colossal phantom, its ethereal form crushing realms with illusory might drawn from the soul sea."
+ summon_nascent_soul_phantom_decision_confirm:0 "Soul, descend and dominate!"
+ summon_nascent_soul_phantom_decision_tooltip:0 "The nascent soul phantom eclipses the sun, its power shattering sects and toppling heavenly tribulations."
+ summon_nascent_soul_phantom_decision_effect1:0 "I once glimpsed my nascent soul as a faint wisp. Now it rises as a phantom to conquer worlds."
+ summon_nascent_soul_phantom_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."
+
+ # Heaven Severing Blade
+ summon_heaven_severing_blade_decision:0 "Execute Heaven Severing Blade"
+ summon_heaven_severing_blade_decision_desc:0 "A single blade of severing qi slashes across the firmament, cleaving heaven and earth, dooming all paths of dao beneath its edge."
+ summon_heaven_severing_blade_decision_confirm:0 "Sever the heavens!"
+ summon_heaven_severing_blade_decision_tooltip:0 "This heaven-severing strike defies the celestial order, annihilating divine armies in a single stroke."
+ summon_heaven_severing_blade_decision_effect1:0 "I once severed a minor tribulation with a weak blade qi. Now I shall cut the heavens themselves."
+ summon_heaven_severing_blade_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."
+
+ # Myriad Dao Suppression Domain
+ summon_myriad_dao_suppression_domain_decision:0 "Deploy Myriad Dao Suppression Domain"
+ summon_myriad_dao_suppression_domain_decision_desc:0 "An boundless domain unfolds, suppressing the myriad daos of heaven and earth, nullifying all techniques within its absolute realm."
+ summon_myriad_dao_suppression_domain_decision_confirm:0 "Domain, suppress all daos!"
+ summon_myriad_dao_suppression_domain_decision_tooltip:0 "The myriad dao suppression domain renders all foes powerless, crushing infinite paths under its weight."
+ summon_myriad_dao_suppression_domain_decision_effect1:0 "I once suppressed a single dao fluctuation in meditation. Now my domain engulfs the myriad."
+ summon_myriad_dao_suppression_domain_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."
+
+ # Heavenly Tribulation Descent
+ summon_heavenly_tribulation_descent_decision:0 "Invoke Heavenly Tribulation Descent"
+ summon_heavenly_tribulation_descent_decision_desc:0 "The ultimate tribulation descends at your command, thunderous cataclysms of heavenly wrath obliterating all existence in apocalyptic fury."
+ summon_heavenly_tribulation_descent_decision_confirm:0 "Tribulation, descend upon my enemies!"
+ summon_heavenly_tribulation_descent_decision_tooltip:0 "Heavenly tribulation itself becomes your weapon, erasing realms and immortals from creation."
+ summon_heavenly_tribulation_descent_decision_effect1:0 "I once endured a minor tribulation to ascend. Now I wield its full descent against the unworthy."
+ summon_heavenly_tribulation_descent_decision_effect2:0 "#help This technique can be invoked again after a cultivation recovery period."

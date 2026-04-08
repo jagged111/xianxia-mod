@@ -1,0 +1,13 @@
+0.	<KS_DIR> #mod file need maintaince
+	===<CK3_DIR> #the corrsponding CK3 file, "===" meaning corrspondence of files
+	#how to update this mod
+	#the mod files added to the game in an additional way (instead of covering the original files or certain content) is not listed, since they need to be updated only when the syntax of PDX files are changed. However, you may have to check these files, which are always located in the folders with the same path as in the original game.
+
+1.	<KHUSEN_DIR>\common\genes\.
+	===<CK3_DIR>\game\common\genes\06_genes_special_accessories_headgear.txt
+	if the PDX file in <1.> is updated:
+		1 search "additive_headgear"
+		2 copy the whole additive_headgear={} block
+		3 merge it with additive_headgear={} block in KS file
+	Maintenance Probability: ***/*****	#after every big update
+	Maintenance Urgency: */*****	#just some PDX's newest headgear may be covered

@@ -1,0 +1,157 @@
+﻿namespace = cultivation_constitutions_events
+
+#Phoenix resurrection, TODO: figure out how to implement it
+cultivation_constitutions_events.001 = {
+    trigger = {
+        has_trait = phoenix_blood_constitution
+		always = no
+    }
+
+    option = {
+        name = "Resurrect from your ashes"
+        apply_effect = {
+            remove_wound = yes
+            gain_piety = 100
+        }
+    }
+}
+
+#Dragon bloodline unlock by eating a dragon heart
+cultivation_constitutions_events.002 = {
+
+	type = character_event
+	title = cultivation_constitutions_events.002.t
+	desc = cultivation_constitutions_events.002.desc
+
+	theme = widgetless_travel_danger 
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	trigger = {
+		and = {
+			not = {
+				has_trait = dragon_bloodline
+			}
+			not = {
+				has_trait = dragon_body_constitution
+			}
+			is_cultivator = yes
+		}
+	}
+
+	option = { #You eat the heart
+        name = cultivation_constitutions_events.002.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = ambitious
+				add = 10
+			}
+		}
+		random_list = {
+			10 = {#Get the bloodline, no consequences
+				add_trait = dragon_bloodline
+			}
+			40 = {#Get the bloodline but also get ill
+				add_trait = dragon_bloodline
+				add_trait = wounded_1
+			}
+			40 = {#Get the bloodline but also get ill and injured
+				add_trait = dragon_bloodline
+				add_trait = wounded_1
+				wound_cultivation_character = yes
+			}
+			10 = {
+				death = {
+					death_reason = death_evolution
+				}
+			}
+		}
+	}
+
+	option = {#You ignore it
+        name = cultivation_constitutions_events.002.b
+
+		ai_chance = {
+			base = 50
+			modifier = {
+				has_trait = craven
+				add = 10
+			}
+		}
+	}
+}
+
+#Dragon bloodline upgrade 1
+cultivation_constitutions_events.003 = {
+
+	type = character_event
+	title = cultivation_constitutions_events.003.t
+	desc = cultivation_constitutions_events.003.desc
+
+	theme = learning 
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	trigger = {
+		and = {
+			has_trait = dragon_bloodline
+			not = {
+				has_trait = dragon_body_constitution
+			}
+			is_cultivator = yes
+		}
+	}
+
+	option = { #Pill craftin
+        name = cultivation_constitutions_events.003.a
+
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = cultivation_attitude
+			}
+			modifier = {
+				has_trait = ambitious
+				add = 10
+			}
+		}
+		random_list = { #TODO: Change this into an add trait xp so that the questline can be expanded
+			10 = {#Get the trait, no consequences
+				remove_trait = dragon_bloodline
+				add_trait = dragon_body_constitution
+			}
+			27 = {#Get the trait but also get ill
+				remove_trait = dragon_bloodline
+				add_trait = dragon_body_constitution
+				add_trait = wounded_1
+			}
+			25 = {#You get ill
+				add_trait = wounded_1
+			}
+			35 = {#Concotion fails
+
+			}
+			3 = {
+				death = {
+					death_reason = death_evolution
+				}
+			}
+		}
+	}
+
+	option = {#You ignore it
+        name = cultivation_constitutions_events.003.b
+		ai_chance = {
+			base = 50
+		}
+	}
+}

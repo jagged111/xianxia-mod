@@ -1,0 +1,132 @@
+﻿# common/traits/meridian_traits.txt
+poor_meridians = {
+	index = 14250
+	group = active_meridians
+	level = 1
+	opposites = { normal_meridians good_meridians excellent_meridians heavenly_meridians }
+	birth = 85							# 85% of mortals are trash
+	random_creation = 88
+	ruler_designer_cost = -80			# nobody wants this
+	inherit_chance = 95
+	both_parent_has_trait_inherit_chance = 99
+	attraction_opinion = -20
+	custom_tooltip = {
+		text = poor_meridians_opinion_tooltip
+		hidden_effect = {
+			opinion = { modifier = opinion_poor_meridians value = -50 who = { has_trait = normal_meridians } }
+			opinion = { modifier = opinion_poor_meridians value = -100 who = { has_trait = good_meridians } }
+			opinion = { modifier = opinion_poor_meridians value = -150 who = { has_trait = excellent_meridians } }
+			opinion = { modifier = opinion_poor_meridians value = -250 who = { has_trait = heavenly_meridians } }
+		}
+	}
+	physical = yes
+	good = no
+}
+
+normal_meridians = {
+	index = 14251
+	group = active_meridians
+	level = 2
+	opposites = { poor_meridians good_meridians excellent_meridians heavenly_meridians }
+	birth = 12
+	random_creation = 10
+	ruler_designer_cost = 0
+	inherit_chance = 70
+	both_parent_has_trait_inherit_chance = 90
+	custom_tooltip = {
+		text = normal_meridians_opinion_tooltip
+		hidden_effect = {
+			opinion = { modifier = opinion_normal_meridians value = 20 who = { has_trait = poor_meridians } }
+			opinion = { modifier = opinion_normal_meridians value = -30 who = { has_trait = good_meridians } }
+			opinion = { modifier = opinion_normal_meridians value = -70 who = { has_trait = excellent_meridians } }
+			opinion = { modifier = opinion_normal_meridians value = -140 who = { has_trait = heavenly_meridians } }
+		}
+	}
+	physical = yes
+	good = yes
+}
+
+good_meridians = {
+	index = 14252
+	group = active_meridians
+	level = 3
+	opposites = { poor_meridians normal_meridians excellent_meridians heavenly_meridians }
+	birth = 2.8
+	random_creation = 1.8
+	ruler_designer_cost = 150
+	inherit_chance = 40
+	both_parent_has_trait_inherit_chance = 75
+	learning = 2
+	attraction_opinion = 10
+	custom_tooltip = {
+		text = good_meridians_opinion_tooltip
+		hidden_effect = {
+			opinion = { modifier = opinion_good_meridians value = 60 who = { has_trait = poor_meridians } }
+			opinion = { modifier = opinion_good_meridians value = 20 who = { has_trait = normal_meridians } }
+			opinion = { modifier = opinion_good_meridians value = -40 who = { has_trait = excellent_meridians } }
+			opinion = { modifier = opinion_good_meridians value = -100 who = { has_trait = heavenly_meridians } }
+		}
+	}
+	physical = yes
+	good = yes
+}
+
+excellent_meridians = {
+	index = 14253
+	group = active_meridians
+	level = 4
+	opposites = { poor_meridians normal_meridians good_meridians heavenly_meridians }
+	birth = 0.19							# 1 in ~526 births
+	random_creation = 0.19
+	ruler_designer_cost = 500
+	inherit_chance = 20
+	both_parent_has_trait_inherit_chance = 55
+	fertility = -0.15
+	monthly_life_expectancy = 40
+	learning = 5
+	attraction_opinion = 30
+	monthly_prestige = 2
+	custom_tooltip = {
+		text = excellent_meridians_opinion_tooltip
+		hidden_effect = {
+			opinion = { modifier = opinion_excellent_meridians value = 120 who = { has_trait = poor_meridians } }
+			opinion = { modifier = opinion_excellent_meridians value = 60 who = { has_trait = normal_meridians } }
+			opinion = { modifier = opinion_excellent_meridians value = 20 who = { has_trait = good_meridians } }
+			opinion = { modifier = opinion_excellent_meridians value = -60 who = { has_trait = heavenly_meridians } }
+		}
+	}
+	physical = yes
+	good = yes
+}
+
+heavenly_meridians = {
+	index = 14254
+	group = active_meridians
+	level = 5
+	opposites = { poor_meridians normal_meridians good_meridians excellent_meridians }
+	birth = 0.0001							# 1 in 1,000,000 — true protagonist material
+	random_creation = 0.00005
+	ruler_designer_cost = 2000
+	inherit_chance = 5
+	both_parent_has_trait_inherit_chance = 30
+	fertility = -0.4						# heavenly envy, hard to have children
+	monthly_life_expectancy = 150
+	learning = 12
+	prowess = 20
+	martial = 5
+	attraction_opinion = 80
+	monthly_prestige = 10
+	dread_baseline_add = 40
+	hostile_scheme_resistance = 0.5
+	custom_tooltip = {
+		text = heavenly_meridians_opinion_tooltip
+		hidden_effect = {
+			opinion = { modifier = opinion_heavenly_meridians value = 300 who = { has_trait = poor_meridians } }
+			opinion = { modifier = opinion_heavenly_meridians value = 200 who = { has_trait = normal_meridians } }
+			opinion = { modifier = opinion_heavenly_meridians value = 120 who = { has_trait = good_meridians } }
+			opinion = { modifier = opinion_heavenly_meridians value = 40 who = { has_trait = excellent_meridians } }
+		}
+	}
+	physical = yes
+	good = yes
+}

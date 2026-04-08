@@ -1,0 +1,339 @@
+﻿# Cultivation Scripted Triggers
+
+is_mortal = {
+    NOR = {
+		has_trait = cultivation_qi_gathering
+		has_trait = cultivation_qi_refining
+		has_trait = cultivation_qi_building
+		has_trait = cultivation_core_formation
+		has_trait = cultivation_nascent_soul
+		has_trait = cultivation_heavenly_being
+		has_trait = cultivation_four_axis
+		has_trait = cultivation_integration
+		has_trait = cultivation_star_shattering
+		has_trait = cultivation_sacred_vessel
+		has_trait = cultivation_entering_nirvana
+		has_trait = cultivation_true_immortal
+    }
+}
+
+is_cultivator = {
+    OR = {
+		has_trait = cultivation_qi_gathering
+		has_trait = cultivation_qi_refining
+		has_trait = cultivation_qi_building
+		has_trait = cultivation_core_formation
+		has_trait = cultivation_nascent_soul
+		has_trait = cultivation_heavenly_being
+		has_trait = cultivation_four_axis
+		has_trait = cultivation_integration
+		has_trait = cultivation_star_shattering
+		has_trait = cultivation_sacred_vessel
+		has_trait = cultivation_entering_nirvana
+		has_trait = cultivation_true_immortal
+    }
+}
+
+is_new_cultivator = {
+    OR = {
+		has_trait = cultivation_qi_gathering
+		has_trait = cultivation_qi_refining
+    }
+}
+
+is_known_cultivator = {
+    OR = {
+		has_trait = cultivation_qi_building
+		has_trait = cultivation_core_formation
+    }
+}
+
+is_respected_cultivator = {
+    OR = {
+		has_trait = cultivation_nascent_soul
+		has_trait = cultivation_heavenly_being
+    }
+}
+
+is_immortal_cultivator = {
+    OR = {
+		has_trait = cultivation_four_axis
+		has_trait = cultivation_integration
+		has_trait = cultivation_star_shattering
+		has_trait = cultivation_sacred_vessel
+		has_trait = cultivation_entering_nirvana
+		has_trait = cultivation_true_immortal
+    }
+}
+
+has_active_meridians = {
+    OR = {
+        has_trait = poor_meridians
+        has_trait = normal_meridians
+        has_trait = good_meridians
+        has_trait = excellent_meridians
+        has_trait = heavenly_meridians
+    }
+}
+
+has_any_cultivation_bloodline_trait = {
+	OR = {
+		has_trait = yin_bloodline_1
+		has_trait = yin_bloodline_2
+		has_trait = yin_bloodline_3
+		has_trait = yang_bloodline_1
+		has_trait = yang_bloodline_2
+		has_trait = yang_bloodline_3
+		has_trait = dragon_bloodline_1
+		has_trait = dragon_bloodline_2
+		has_trait = dragon_bloodline_3
+		has_trait = phoenix_bloodline_1
+		has_trait = phoenix_bloodline_2
+		has_trait = phoenix_bloodline_3
+		has_trait = anchestor_bloodline_1
+		has_trait = anchestor_bloodline_2
+		has_trait = anchestor_bloodline_3
+		has_trait = poison_bloodline_1
+		has_trait = poison_bloodline_2
+		has_trait = poison_bloodline_3
+		has_trait = cursed_bloodline_1
+		has_trait = cursed_bloodline_2
+		has_trait = cursed_bloodline_3
+		has_trait = demon_bloodline_1
+		has_trait = demon_bloodline_2
+		has_trait = demon_bloodline_3
+		has_trait = primal_bloodline_1
+		has_trait = primal_bloodline_2
+		has_trait = primal_bloodline_3
+		has_trait = spirit_bloodline_1
+		has_trait = spirit_bloodline_2
+		has_trait = spirit_bloodline_3
+		has_trait = sun_bloodline_1
+		has_trait = sun_bloodline_2
+		has_trait = sun_bloodline_3
+	}
+}
+
+
+has_cultivation_sect_faith = {
+	faith = {
+		OR = {
+			has_doctrine = tenet_orthodox_cultivation
+			has_doctrine = tenet_unorthodox_cultivation
+			has_doctrine = tenet_demonic_cultivation
+			has_doctrine = tenet_vagrant_cultivation
+		}
+	}
+}
+
+has_any_cultivation_realm_perk = {
+	OR = {
+		has_perk = mortal_muscle_reconstruction_perk
+		has_perk = mortal_bone_reconstruction_perk
+		has_perk = mortal_internal_reconstruction_perk
+		has_perk = mortal_external_reconstruction_perk
+		has_perk = mortal_body_reconstruction_perk
+		has_perk = mortal_qi_gathering_breakthrough_perk
+		has_perk = qi_gathering_meridian_1_perk
+		has_perk = qi_gathering_meridian_2_perk
+		has_perk = qi_gathering_meridian_3a_perk
+		has_perk = qi_gathering_meridian_3b_perk
+		has_perk = qi_gathering_meridian_4_perk
+		has_perk = qi_gathering_qi_refining_breakthrough_perk
+		has_perk = qi_refining_1a_star_perk
+		has_perk = qi_refining_1b_star_perk
+		has_perk = qi_refining_qi_building_breakthrough_perk
+		has_perk = qi_building_1_perk
+		has_perk = qi_building_core_formation_breakthrough_perk
+		has_perk = core_formation_qi1_perk
+		has_perk = core_formation_nascent_soul_breakthrough_perk
+		has_perk = nascent_soul_early_perk
+		has_perk = nascent_soul_heavenly_being_breakthrough_perk
+		has_perk = heavenly_being_1_perk
+		has_perk = heavenly_being_four_axis_breakthrough_perk
+		has_perk = four_axis_axis_1a_perk
+		has_perk = four_axis_axis_1b_perk
+		has_perk = four_axis_axis_1c_perk
+		has_perk = four_axis_axis_1d_perk
+		has_perk = four_axis_integration_breakthrough_perk
+		has_perk = integration_1a_perk
+		has_perk = integration_1b_perk
+		has_perk = integration_1c_perk
+		has_perk = integration_1d_perk
+		has_perk = integration_1e_perk
+		has_perk = integration_star_shattering_breakthrough_perk
+		has_perk = star_shattering_explode_perk
+		has_perk = star_shattering_sacred_vessel_breakthrough_perk
+		has_perk = sacred_vessel_hour_perk
+		has_perk = sacred_vessel_entering_nirvana_breakthrough_perk
+		has_perk = entering_nirvana_life_perk
+		has_perk = entering_nirvana_death_perk
+		has_perk = entering_nirvana_reborn_perk
+		has_perk = true_immortal_final_perk
+	}
+}
+
+# Character has a strictly higher cultivation realm than their current liege.
+has_higher_cultivation_realm_than_liege = {
+	exists = liege
+	OR = {
+		AND = {
+			has_trait = cultivation_true_immortal
+			liege = { NOT = { has_trait = cultivation_true_immortal } }
+		}
+		AND = {
+			has_trait = cultivation_entering_nirvana
+			liege = {
+				NOR = {
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_sacred_vessel
+			liege = {
+				NOR = {
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_star_shattering
+			liege = {
+				NOR = {
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_integration
+			liege = {
+				NOR = {
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_four_axis
+			liege = {
+				NOR = {
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_heavenly_being
+			liege = {
+				NOR = {
+					has_trait = cultivation_heavenly_being
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_nascent_soul
+			liege = {
+				NOR = {
+					has_trait = cultivation_nascent_soul
+					has_trait = cultivation_heavenly_being
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_core_formation
+			liege = {
+				NOR = {
+					has_trait = cultivation_core_formation
+					has_trait = cultivation_nascent_soul
+					has_trait = cultivation_heavenly_being
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_qi_building
+			liege = {
+				NOR = {
+					has_trait = cultivation_qi_building
+					has_trait = cultivation_core_formation
+					has_trait = cultivation_nascent_soul
+					has_trait = cultivation_heavenly_being
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_qi_refining
+			liege = {
+				NOR = {
+					has_trait = cultivation_qi_refining
+					has_trait = cultivation_qi_building
+					has_trait = cultivation_core_formation
+					has_trait = cultivation_nascent_soul
+					has_trait = cultivation_heavenly_being
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+		AND = {
+			has_trait = cultivation_qi_gathering
+			liege = {
+				NOR = {
+					has_trait = cultivation_qi_gathering
+					has_trait = cultivation_qi_refining
+					has_trait = cultivation_qi_building
+					has_trait = cultivation_core_formation
+					has_trait = cultivation_nascent_soul
+					has_trait = cultivation_heavenly_being
+					has_trait = cultivation_four_axis
+					has_trait = cultivation_integration
+					has_trait = cultivation_star_shattering
+					has_trait = cultivation_sacred_vessel
+					has_trait = cultivation_entering_nirvana
+					has_trait = cultivation_true_immortal
+				}
+			}
+		}
+	}
+}

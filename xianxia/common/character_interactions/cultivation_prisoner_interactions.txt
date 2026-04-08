@@ -1,0 +1,55 @@
+﻿cripple_cultivator_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 120
+	icon = icon_torture
+	desc = cripple_cultivator_interaction_desc
+	use_diplomatic_range = no
+
+	ai_targets = {
+		ai_recipients = prisoners
+	}
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { is_alive = yes }
+		scope:recipient = {
+			is_alive = yes
+			is_imprisoned_by = scope:actor
+			is_cultivator = yes
+			NOT = { has_trait = crippled_meridians }
+		}
+	}
+
+	is_valid = {
+		scope:recipient = {
+			is_alive = yes
+			is_imprisoned_by = scope:actor
+			is_cultivator = yes
+			NOT = { has_trait = crippled_meridians }
+		}
+	}
+
+	ai_will_do = {
+		base = 5
+		modifier = {
+			add = 60
+			scope:actor = { OR = { has_trait = sadistic has_trait = callous has_trait = wrathful } }
+		}
+		modifier = {
+			add = 40
+			scope:actor = { has_trait = cultivation_heavenly_being }
+		}
+		modifier = {
+			add = 80
+			scope:actor = { has_trait = cultivation_true_immortal }
+		}
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:recipient = {
+			cultivation_cripple_mortalize_effect = yes
+		}
+	}
+}

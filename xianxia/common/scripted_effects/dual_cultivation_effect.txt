@@ -1,0 +1,129 @@
+﻿dual_cultivation_effect = {
+
+    ############################################
+    # SAFETY — partner scope yoksa ROOT yap
+    ############################################
+    if = {
+        limit = { NOT = { exists = scope:carn_sex_partner_scope } }
+        save_scope_as = carn_sex_partner_scope
+    }
+
+    ############################################
+    # ROOT XP
+    ############################################
+
+    if = {
+        limit = {
+            has_trait = cultivation_mortal
+        }
+        add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        send_interface_toast = {
+            title = trait_1_xp_tt
+            desc = trait_1_xp_desc
+        }
+    }
+    else_if = {
+        limit = {
+            has_trait = core_formation
+            NOT = { has_trait_xp = { trait = core_formation value >= 100 } }
+        }
+        add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        send_interface_toast = {
+            title = trait_2_xp_tt
+            desc = trait_2_xp_desc
+        }
+    }
+    else_if = {
+        limit = {
+            has_trait = golden_core
+            NOT = { has_trait_xp = { trait = golden_core value >= 100 } }
+        }
+        add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        send_interface_toast = {
+            title = trait_3_xp_tt
+            desc = trait_3_xp_desc
+        }
+    }
+    else_if = {
+        limit = {
+            has_trait = peak_realm
+            NOT = { has_trait_xp = { trait = peak_realm value >= 100 } }
+        }
+        add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        send_interface_toast = {
+            title = trait_4_xp_tt
+            desc = trait_4_xp_desc
+        }
+    }
+    else_if = {
+        limit = {
+            has_trait = unrestrained_realm
+            NOT = { has_trait_xp = { trait = unrestrained_realm value >= 100 } }
+        }
+        add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        send_interface_toast = {
+            title = trait_5_xp_tt
+            desc = trait_5_xp_desc
+        }
+    }
+    else_if = {
+        limit = {
+            has_trait = immortal_realm
+            NOT = { has_trait_xp = { trait = immortal_realm value >= 100 } }
+        }
+        add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        send_interface_toast = {
+            title = trait_6_xp_tt
+            desc = trait_6_xp_desc
+        }
+    }
+
+    ############################################
+    # PARTNER XP
+    ############################################
+
+    scope:carn_sex_partner_scope = {
+
+        if = {
+            limit = {
+                has_trait = cultivation_mortal
+            }
+            add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        }
+        else_if = {
+            limit = {
+                has_trait = core_formation
+                NOT = { has_trait_xp = { trait = core_formation value >= 100 } }
+            }
+            add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        }
+        else_if = {
+            limit = {
+                has_trait = golden_core
+                NOT = { has_trait_xp = { trait = golden_core value >= 100 } }
+            }
+            add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        }
+        else_if = {
+            limit = {
+                has_trait = peak_realm
+                NOT = { has_trait_xp = { trait = peak_realm value >= 100 } }
+            }
+            add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        }
+        else_if = {
+            limit = {
+                has_trait = unrestrained_realm
+                NOT = { has_trait_xp = { trait = unrestrained_realm value >= 100 } }
+            }
+            add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        }
+        else_if = {
+            limit = {
+                has_trait = immortal_realm
+                NOT = { has_trait_xp = { trait = immortal_realm value >= 100 } }
+            }
+            add_cultivation_lifestyle_xp = medium_lifestyle_xp
+        }
+    }
+}

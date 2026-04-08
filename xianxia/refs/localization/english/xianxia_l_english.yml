@@ -1,0 +1,6 @@
+﻿l_english:
+ xianxia_reincarnation.0002.t:0 "Samsara Turns"
+ xianxia_reincarnation.0002.d:0 "[ROOT.Char.GetTitledFirstNamePossessive] soul has returned in the body of [THIS.Char.GetTitledFirstNameNoTooltip] of House [THIS.Char.GetHouseName]!"
+ xianxia_reincarnation.0002.a:0 "The wheel of rebirth continues."
+ samsara_memories:0 "Samsara Memories"
+ samsara_memories_desc:0 "Echoes of past lives grant insight and serenity."

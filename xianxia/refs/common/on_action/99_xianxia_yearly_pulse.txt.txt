@@ -1,0 +1,82 @@
+﻿on_yearly_character_pulse = {
+    events = {
+        xianxia_qi.0001        # your hidden Qi grant (use whichever ID you prefer)
+    }
+
+    effect = {
+        every_living_character = {
+            # ————————————————
+            # 1. Realm Cultivators – XP + Breakthrough + Disease Cleanse
+            # ————————————————
+            if = {
+                limit = { has_trait = cultivation_realm }
+                mymod_cultivation_gain_xp_effect
+                mymod_cultivation_breakthrough_effect
+                mymod_remove_all_diseases_effect
+            }
+
+            # ————————————————
+            # 2. Auto-grant Qi Gathering to anyone with meridians
+            # ————————————————
+            if = {
+                limit = {
+                    OR = {
+                        has_trait = poor_meridians
+                        has_trait = normal_meridians
+                        has_trait = good_meridians
+                        has_trait = excellent_meridians
+                        has_trait = heavenly_meridians
+                    }
+                    NOT = {
+                        OR = {
+                            has_trait = qi_gathering
+                            has_trait = foundation_establishment
+                            has_trait = core_formation
+                            has_trait = nascent_soul
+                            has_trait = spirit_severing
+                            has_trait = dao_seeking
+                            has_trait = immortal_ascension
+                            has_trait = cultivation_realm
+                        }
+                    }
+                }
+                add_trait = qi_gathering
+            }
+
+            # ————————————————
+            # 3. Ruler Auto-Teaches one promising courtier per year (immersion)
+            # ————————————————
+            if = {
+                limit = {
+                    is_ruler = yes
+                    has_trait = cultivation_realm
+                }
+                court = {
+                    random_character = {
+                        limit = {
+                            NOT = { has_trait = qi_gathering }
+                            OR = {
+                                has_trait = heavenly_meridians
+                                has_trait = good_meridians
+                                has_trait = normal_meridians
+                            }
+                        }
+                        add_trait = qi_gathering
+                        root = {
+                            add_opinion = {
+                                target = PREV
+                                modifier = taught_me_cultivation_opinion
+                            }
+                        }
+                        PREV = {
+                            add_opinion = {
+                                target = root
+                                modifier = taught_them_cultivation_opinion
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

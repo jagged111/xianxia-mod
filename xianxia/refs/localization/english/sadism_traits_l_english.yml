@@ -1,0 +1,4 @@
+﻿l_english:
+ trait_spayed:0 "Spayed"
+ trait_spayed_desc:0 "This character has been intentionally spayed."
+ trait_spayed_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been intentionally spayed."

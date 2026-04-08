@@ -1,0 +1,56 @@
+﻿#############################################
+# CHARACTER NICKNAMES
+#############################################
+
+# Xianxia & Cultivation Nicknames
+nick_the_flame_emperor = {}
+nick_the_sword_saint = {}
+nick_the_heavenly_demon = {}
+nick_the_immortal_dragon = {}
+nick_the_bloodthirsty = { is_bad = yes }
+nick_the_wandering_immortal = {}
+nick_the_frozen_king = {}
+nick_the_divine_beast = {}
+nick_the_heavenly_beast = {}
+nick_the_black_soul = { is_bad = yes }
+nick_the_silent_master = {}
+nick_the_mountain_ruler = {}
+nick_the_winged_tiger = {}
+nick_the_demon_slayer = {}
+nick_the_sun_emperor = {}
+nick_the_dark_prince = { is_bad = yes }
+nick_the_earthly_saint = {}
+nick_the_azure_monk = {}
+nick_the_white_fox = {}
+nick_the_red_dragon = {}
+nick_the_shining_star = {}
+nick_the_storm_walker = {}
+nick_the_wind_king = {}
+nick_the_dawn_of_the_lotus = {}
+nick_the_blood_of_the_immortal = {}
+nick_the_shadow_lord = { is_bad = yes }
+nick_the_heavenly_butterfly = {}
+nick_the_celestial_sword = {}
+nick_the_lord_of_mountains = {}
+nick_the_black_tiger = {}
+nick_the_void_walker = {}
+nick_the_crimson_flame = {}
+nick_the_ancient_master = {}
+nick_the_iron_fist = {}
+nick_the_sword_of_heaven = {}
+nick_the_undying_lord = { is_bad = yes }
+nick_the_fire_dragon = {}
+nick_the_twin_lotus = {}
+nick_the_soul_eater = { is_bad = yes }
+nick_the_ice_witch = { is_bad = yes }
+nick_the_golden_knight = {}
+nick_the_starry_prince = {}
+nick_the_dark_queen = { is_bad = yes }
+nick_the_ancient_wizard = {}
+nick_the_infernal_lord = { is_bad = yes }
+nick_the_reborn_phoenix = {}
+nick_the_celestial_hunter = {}
+nick_the_everlasting = {}
+nick_the_warrior_of_sun = {}
+nick_the_shadow_bringer = {}
+nick_the_earth_empress = {}

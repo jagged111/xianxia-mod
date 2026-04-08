@@ -1,0 +1,31 @@
+﻿l_english:
+#Mysterious herb event
+  cultivation_travel_events.001.t:0 "Mysterious herb"
+  cultivation_travel_events.001.desc:0 "You find a mysterious herb in the wilds, but it seems to be guarded by *insert local animal*. It seems dangerous but it might be worth it..."
+  cultivation_travel_events.001.a:0 "Fight the *insert local animal*"
+  cultivation_travel_events.001.b:0 "Fight the *insert local animal* and save the herb for later"
+  cultivation_travel_events.001.c:0 "Leave it be"
+#Tomb call
+  cultivation_travel_events.002.t:0 "Call from the dead"
+  cultivation_travel_events.002.desc:0 "As you are travelling, you feel a tug in the back of your head that guides you to a tomb. As you approach it, a ghost appears and tells you that they are a deceased cultivator and can help you with your cultivation if you allow them to."
+  cultivation_travel_events.002.a:0 "Attack the ghost to try to consume it"
+  cultivation_travel_events.002.b:0 "Allow the ghost to do its thing"
+  cultivation_travel_events.002.c:0 "Leave it be"
+#Dilapidated place
+  cultivation_travel_events.003.t:0 "Forgotten ruins"
+  cultivation_travel_events.003.desc:0 "While travelling you come across some forgotten ruins, you could explore them, but there might be danger awaiting."
+  cultivation_travel_events.003.a:0 "Explore it"
+  cultivation_travel_events.003.b:0 "Ignore it"
+
+#Danger travel
+#Poison mist
+  cultivation_travel_events.101.t:0 "Poisonous mist"
+  cultivation_travel_events.101.desc:0 "While travelling you spot a greenish mist up ahead, while you can try to go through it, you might get poisoned"
+  cultivation_travel_events.101.a:0 "Go through it anyway"
+  cultivation_travel_events.101.b:0 "Try to go around it"
+#A cultivator robs u
+  cultivation_travel_events.102.t:0 "Dangerous encounter"
+  cultivation_travel_events.102.desc:0 "While travelling a shady figure approaches you. He starts talking to you and says you either give him money or he beats you up and takes your money."
+  cultivation_travel_events.102.a:0 "Fight him"
+  cultivation_travel_events.102.b:0 "Give him the money"
+  cultivation_travel_events.102.c:0 "Try to run away"

@@ -1,0 +1,115 @@
+﻿
+on_combat_end_winner = {
+	on_actions = {
+		cultivation_xp_on_actions
+	}
+}
+
+on_combat_end_loser = {
+	on_actions = {
+		cultivation_xp_on_actions
+	}
+}
+
+on_siege_completion = {
+	on_actions = {
+		cultivation_xp_on_actions
+	}
+}
+
+cultivation_xp_on_actions = {
+
+    effect = {
+        every_knight = {
+            limit = {
+                location = scope:barony.title_province
+                exists = knight_army
+                OR = {
+                    has_trait = qi_gathering
+                    has_trait = foundation_establishment					
+                    has_trait = core_formation
+                    has_trait = nascent_soul
+                    has_trait = spirit_severing
+                    has_trait = dao_seeking
+                    has_trait = immortal_ascension
+                }
+            }
+			if = {
+				limit = { has_trait = qi_gathering }
+				add_trait_xp = { trait = qi_gathering value = 0.2 }
+            }
+			if = {
+				limit = { has_trait = foundation_establishment }
+				add_trait_xp = { trait = foundation_establishment value = 0.2 }
+			}
+			if = {
+				limit = { has_trait = core_formation }
+				add_trait_xp = { trait = core_formation value = 0.2 }
+			}
+			if = {
+				limit = { has_trait = nascent_soul }
+				add_trait_xp = { trait = nascent_soul value = 0.2 }
+			}
+			if = {
+				limit = { has_trait = spirit_severing }
+				add_trait_xp = { trait = spirit_severing value = 0.2 }
+			}
+			if = {
+				limit = { has_trait = dao_seeking }
+				add_trait_xp = { trait = dao_seeking value = 0.2 }
+			}
+			if = {
+				limit = { has_trait = immortal_ascension }
+				add_trait_xp = { trait = immortal_ascension value = 0.2 }
+			}
+		}
+		
+		scope:barony.title_province = { # this should give trait xp to army commander on_siege_completion
+			every_army_in_location = {
+				army_commander ?= {  
+					limit = {
+						is_commanding_army = yes
+						location.barony = scope:barony
+						OR = {
+							has_trait = qi_gathering
+							has_trait = foundation_establishment							
+							has_trait = core_formation
+							has_trait = nascent_soul
+							has_trait = spirit_severing
+							has_trait = dao_seeking
+							has_trait = immortal_ascension
+						}
+					}
+					if = {
+						limit = { has_trait = qi_gathering }
+						add_trait_xp = { trait = qi_gathering value = 0.2 }
+					}
+					if = {
+						limit = { has_trait = foundation_establishment }
+						add_trait_xp = { trait = foundation_establishment value = 0.2 }
+					}
+					if = {
+						limit = { has_trait = core_formation }
+						add_trait_xp = { trait = core_formation value = 0.2 }
+					}
+					if = {
+						limit = { has_trait = nascent_soul }
+						add_trait_xp = { trait = nascent_soul value = 0.2 }
+					}
+					if = {
+						limit = { has_trait = spirit_severing }
+						add_trait_xp = { trait = spirit_severing value = 0.2 }
+					}
+					if = {
+						limit = { has_trait = dao_seeking }
+						add_trait_xp = { trait = dao_seeking value = 0.2 }
+					}
+					if = {
+						limit = { has_trait = immortal_ascension }
+						add_trait_xp = { trait = immortal_ascension value = 0.2 }
+					}
+				}
+			}
+		}
+	}
+}

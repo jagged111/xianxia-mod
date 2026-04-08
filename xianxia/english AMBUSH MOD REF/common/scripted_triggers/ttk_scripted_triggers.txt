@@ -1,0 +1,12 @@
+﻿
+tkk_travel_event_escort_trigger = {
+	scope:$LEADER$ = {
+		current_travel_plan ?= {
+			OR = {
+				has_travel_option = hire_experienced_mercenaries_option
+				has_travel_option = hire_allied_mercenaries_option
+			}
+		}
+	}
+}
+	

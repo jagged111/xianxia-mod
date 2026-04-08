@@ -1,0 +1,1510 @@
+﻿namespace = cultivation_breakthrough
+
+# ============================================================================
+# CULTIVATION BREAKTHROUGH EVENTS - CHANCE BASED SYSTEM
+# Each realm has a breakthrough event with success chance based on learning
+# ============================================================================
+
+# Qi Gathering Breakthrough (1000)
+cultivation_breakthrough.1000 = {
+	type = character_event
+	title = cultivation_breakthrough.1000.t
+	desc = cultivation_breakthrough.1000.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	# ATTEMPT BREAKTHROUGH
+	option = {
+		name = cultivation_breakthrough.1000.attempt
+		
+		random_list = {
+			50 = {
+				custom_tooltip = cultivation_breakthrough.1000.s_tt
+				# Increase chance with learning
+				modifier = {
+					add = 10
+					learning >= 12
+				}
+				modifier = {
+					add = 10
+					learning >= 14
+				}
+				modifier = {
+					add = 10
+					learning >= 16
+				}
+				modifier = {
+					add = 10
+					learning >= 18
+				}
+				modifier = {
+					add = 10
+					learning >= 20
+				}
+				
+				# Future: Add bonuses for traits/items
+				# modifier = {
+				#     add = 15
+				#     has_trait = cultivation_genius
+				# }
+				# modifier = {
+				#     add = 10
+				#     has_artifact = breakthrough_pill
+				# }
+				
+
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				# SUCCESS
+				add_trait = cultivation_qi_gathering
+				remove_character_flag = can_attempt_qi_gathering_breakthrough
+				trigger_event = cultivation_breakthrough.1001
+			}
+			50 = {
+				# FAILURE
+				custom_tooltip = cultivation_breakthrough.1000.f_tt
+				trigger_event = cultivation_breakthrough.1002
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 15
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	# WAIT FOR BETTER OPPORTUNITY
+	option = {
+		name = cultivation_breakthrough.1000.wait
+		
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+# Qi Gathering - SUCCESS (1001)
+cultivation_breakthrough.1001 = {
+	type = character_event
+	title = cultivation_breakthrough.1001.t
+	desc = cultivation_breakthrough.1001.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1001.a
+		add_prestige = 200
+		add_piety = 100
+		stress_impact = {
+			base = -10
+		}
+	}
+}
+
+# Qi Gathering - FAILURE (1002)
+cultivation_breakthrough.1002 = {
+	type = character_event
+	title = cultivation_breakthrough.1002.t
+	desc = cultivation_breakthrough.1002.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1002.a
+		# Keep the flag - can try again
+	}
+}
+
+# ============================================================================
+# Qi Refining Breakthrough (1100)
+# ============================================================================
+
+cultivation_breakthrough.1100 = {
+	type = character_event
+	title = cultivation_breakthrough.1100.t
+	desc = cultivation_breakthrough.1100.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1100.attempt
+		
+		random_list = {
+			40 = {
+				custom_tooltip = cultivation_breakthrough.1100.s_tt
+				modifier = {
+					add = 10
+					learning >= 14
+				}
+				modifier = {
+					add = 10
+					learning >= 16
+				}
+				modifier = {
+					add = 10
+					learning >= 18
+				}
+				modifier = {
+					add = 10
+					learning >= 20
+				}
+				modifier = {
+					add = 10
+					learning >= 22
+				}
+				
+				#add_trait = cultivation_qi_refining
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -20
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_qi_gathering
+				add_trait = cultivation_qi_refining
+				remove_character_flag = can_attempt_qi_refining_breakthrough
+				trigger_event = cultivation_breakthrough.1101
+			}
+			60 = {
+				custom_tooltip = cultivation_breakthrough.1100.f_tt
+				trigger_event = cultivation_breakthrough.1102
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 20
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1100.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1101 = {
+	type = character_event
+	title = cultivation_breakthrough.1101.t
+	desc = cultivation_breakthrough.1101.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1101.a
+		add_prestige = 300
+		add_piety = 150
+		stress_impact = {
+			base = -15
+		}
+	}
+}
+
+cultivation_breakthrough.1102 = {
+	type = character_event
+	title = cultivation_breakthrough.1102.t
+	desc = cultivation_breakthrough.1102.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1102.a
+	}
+}
+
+# ============================================================================
+# Qi Building Breakthrough (1200)
+# ============================================================================
+
+cultivation_breakthrough.1200 = {
+	type = character_event
+	title = cultivation_breakthrough.1200.t
+	desc = cultivation_breakthrough.1200.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1200.attempt
+		
+		random_list = {
+			35 = {
+				custom_tooltip = cultivation_breakthrough.1200.s_tt
+				modifier = {
+					add = 10
+					learning >= 16
+				}
+				modifier = {
+					add = 10
+					learning >= 18
+				}
+				modifier = {
+					add = 10
+					learning >= 20
+				}
+				modifier = {
+					add = 10
+					learning >= 22
+				}
+				modifier = {
+					add = 10
+					learning >= 24
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_qi_refining
+				add_trait = cultivation_qi_building
+				remove_character_flag = can_attempt_qi_building_breakthrough
+				trigger_event = cultivation_breakthrough.1201
+			}
+			65 = {
+				custom_tooltip = cultivation_breakthrough.1200.f_tt
+				trigger_event = cultivation_breakthrough.1202
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 25
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1200.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1201 = {
+	type = character_event
+	title = cultivation_breakthrough.1201.t
+	desc = cultivation_breakthrough.1201.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1201.a
+		add_prestige = 130
+		add_piety = 200
+		stress_impact = {
+			base = -20
+		}
+	}
+}
+
+cultivation_breakthrough.1202 = {
+	type = character_event
+	title = cultivation_breakthrough.1202.t
+	desc = cultivation_breakthrough.1202.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1202.a
+	}
+}
+
+# ============================================================================
+# Core Formation Breakthrough (1300)
+# ============================================================================
+
+cultivation_breakthrough.1300 = {
+	type = character_event
+	title = cultivation_breakthrough.1300.t
+	desc = cultivation_breakthrough.1300.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1300.attempt
+		
+		random_list = {
+			30 = {
+				custom_tooltip = cultivation_breakthrough.1300.s_tt
+				modifier = {
+					add = 10
+					learning >= 18
+				}
+				modifier = {
+					add = 10
+					learning >= 20
+				}
+				modifier = {
+					add = 10
+					learning >= 22
+				}
+				modifier = {
+					add = 10
+					learning >= 24
+				}
+				modifier = {
+					add = 10
+					learning >= 26
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_qi_building
+				add_trait = cultivation_core_formation
+				remove_character_flag = can_attempt_core_formation_breakthrough
+				trigger_event = cultivation_breakthrough.1301
+			}
+			70 = {
+				custom_tooltip = cultivation_breakthrough.1300.f_tt
+				trigger_event = cultivation_breakthrough.1302
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 30
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1300.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1301 = {
+	type = character_event
+	title = cultivation_breakthrough.1301.t
+	desc = cultivation_breakthrough.1301.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1301.a
+		add_prestige = 500
+		add_piety = 250
+		stress_impact = {
+			base = -25
+		}
+	}
+}
+
+cultivation_breakthrough.1302 = {
+	type = character_event
+	title = cultivation_breakthrough.1302.t
+	desc = cultivation_breakthrough.1302.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1302.a
+	}
+}
+
+# ============================================================================
+# Nascent Soul Breakthrough (1400)
+# ============================================================================
+
+cultivation_breakthrough.1400 = {
+	type = character_event
+	title = cultivation_breakthrough.1400.t
+	desc = cultivation_breakthrough.1400.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1400.attempt
+		
+		random_list = {
+			25 = {
+				custom_tooltip = cultivation_breakthrough.1400.s_tt
+				modifier = {
+					add = 10
+					learning >= 20
+				}
+				modifier = {
+					add = 10
+					learning >= 22
+				}
+				modifier = {
+					add = 10
+					learning >= 24
+				}
+				modifier = {
+					add = 10
+					learning >= 26
+				}
+				modifier = {
+					add = 10
+					learning >= 28
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_core_formation
+				add_trait = cultivation_nascent_soul
+				remove_character_flag = can_attempt_nascent_soul_breakthrough
+				trigger_event = cultivation_breakthrough.1401
+			}
+			75 = {
+				custom_tooltip = cultivation_breakthrough.1400.f_tt
+				trigger_event = cultivation_breakthrough.1402
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 35
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1400.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1401 = {
+	type = character_event
+	title = cultivation_breakthrough.1401.t
+	desc = cultivation_breakthrough.1401.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1401.a
+		add_prestige = 150
+		add_piety = 300
+		stress_impact = {
+			base = -30
+		}
+	}
+}
+
+cultivation_breakthrough.1402 = {
+	type = character_event
+	title = cultivation_breakthrough.1402.t
+	desc = cultivation_breakthrough.1402.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1402.a
+	}
+}
+
+# ============================================================================
+# Heavenly Being Breakthrough (1500)
+# ============================================================================
+
+cultivation_breakthrough.1500 = {
+	type = character_event
+	title = cultivation_breakthrough.1500.t
+	desc = cultivation_breakthrough.1500.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1500.attempt
+		
+		random_list = {
+			20 = {
+				custom_tooltip = cultivation_breakthrough.1500.s_tt
+				modifier = {
+					add = 10
+					learning >= 22
+				}
+				modifier = {
+					add = 10
+					learning >= 24
+				}
+				modifier = {
+					add = 10
+					learning >= 26
+				}
+				modifier = {
+					add = 10
+					learning >= 28
+				}
+				modifier = {
+					add = 10
+					learning >= 30
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_nascent_soul
+				add_trait = cultivation_heavenly_being
+				remove_character_flag = can_attempt_heavenly_being_breakthrough
+				trigger_event = cultivation_breakthrough.1501
+			}
+			80 = {
+				custom_tooltip = cultivation_breakthrough.1500.f_tt
+				trigger_event = cultivation_breakthrough.1502
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 40
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1500.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1501 = {
+	type = character_event
+	title = cultivation_breakthrough.1501.t
+	desc = cultivation_breakthrough.1501.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1501.a
+		add_prestige = 700
+		add_piety = 350
+		stress_impact = {
+			base = -35
+		}
+	}
+}
+
+cultivation_breakthrough.1502 = {
+	type = character_event
+	title = cultivation_breakthrough.1502.t
+	desc = cultivation_breakthrough.1502.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1502.a
+	}
+}
+
+# ============================================================================
+# Four-Axis Breakthrough (1600)
+# ============================================================================
+
+cultivation_breakthrough.1600 = {
+	type = character_event
+	title = cultivation_breakthrough.1600.t
+	desc = cultivation_breakthrough.1600.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1600.attempt
+		
+		random_list = {
+			15 = {
+				custom_tooltip = cultivation_breakthrough.1600.s_tt
+				modifier = {
+					add = 10
+					learning >= 24
+				}
+				modifier = {
+					add = 10
+					learning >= 26
+				}
+				modifier = {
+					add = 10
+					learning >= 28
+				}
+				modifier = {
+					add = 10
+					learning >= 30
+				}
+				modifier = {
+					add = 10
+					learning >= 32
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_heavenly_being
+				add_trait = cultivation_four_axis
+				remove_character_flag = can_attempt_four_axis_breakthrough
+				trigger_event = cultivation_breakthrough.1601
+			}
+			85 = {
+				custom_tooltip = cultivation_breakthrough.1600.f_tt
+				trigger_event = cultivation_breakthrough.1602
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 45
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1600.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1601 = {
+	type = character_event
+	title = cultivation_breakthrough.1601.t
+	desc = cultivation_breakthrough.1601.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1601.a
+		add_prestige = 800
+		add_piety = 130
+		stress_impact = {
+			base = -40
+		}
+	}
+}
+
+cultivation_breakthrough.1602 = {
+	type = character_event
+	title = cultivation_breakthrough.1602.t
+	desc = cultivation_breakthrough.1602.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1602.a
+	}
+}
+
+# ============================================================================
+# Integration Breakthrough (1700)
+# ============================================================================
+
+cultivation_breakthrough.1700 = {
+	type = character_event
+	title = cultivation_breakthrough.1700.t
+	desc = cultivation_breakthrough.1700.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1700.attempt
+		
+		random_list = {
+			10 = {
+				custom_tooltip = cultivation_breakthrough.1700.s_tt
+				modifier = {
+					add = 10
+					learning >= 26
+				}
+				modifier = {
+					add = 10
+					learning >= 28
+				}
+				modifier = {
+					add = 10
+					learning >= 30
+				}
+				modifier = {
+					add = 10
+					learning >= 32
+				}
+				modifier = {
+					add = 10
+					learning >= 34
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_four_axis
+				add_trait = cultivation_integration
+				remove_character_flag = can_attempt_integration_breakthrough
+				trigger_event = cultivation_breakthrough.1701
+			}
+			90 = {
+				custom_tooltip = cultivation_breakthrough.1700.f_tt
+				trigger_event = cultivation_breakthrough.1702
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 50
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1700.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1701 = {
+	type = character_event
+	title = cultivation_breakthrough.1701.t
+	desc = cultivation_breakthrough.1701.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1701.a
+		add_prestige = 900
+		add_piety = 450
+		stress_impact = {
+			base = -45
+		}
+	}
+}
+
+cultivation_breakthrough.1702 = {
+	type = character_event
+	title = cultivation_breakthrough.1702.t
+	desc = cultivation_breakthrough.1702.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1702.a
+	}
+}
+
+# ============================================================================
+# Star Shattering Breakthrough (1800)
+# ============================================================================
+
+cultivation_breakthrough.1800 = {
+	type = character_event
+	title = cultivation_breakthrough.1800.t
+	desc = cultivation_breakthrough.1800.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1800.attempt
+		
+		random_list = {
+			10 = {
+				custom_tooltip = cultivation_breakthrough.1800.s_tt
+				modifier = {
+					add = 10
+					learning >= 28
+				}
+				modifier = {
+					add = 10
+					learning >= 30
+				}
+				modifier = {
+					add = 10
+					learning >= 32
+				}
+				modifier = {
+					add = 10
+					learning >= 34
+				}
+				modifier = {
+					add = 10
+					learning >= 36
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_integration
+				add_trait = cultivation_star_shattering
+				remove_character_flag = can_attempt_star_shattering_breakthrough
+				trigger_event = cultivation_breakthrough.1801
+			}
+			90 = {
+				custom_tooltip = cultivation_breakthrough.1800.f_tt
+				trigger_event = cultivation_breakthrough.1802
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 55
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1800.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1801 = {
+	type = character_event
+	title = cultivation_breakthrough.1801.t
+	desc = cultivation_breakthrough.1801.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1801.a
+		add_prestige = 1000
+		add_piety = 500
+		stress_impact = {
+			base = -50
+		}
+	}
+}
+
+cultivation_breakthrough.1802 = {
+	type = character_event
+	title = cultivation_breakthrough.1802.t
+	desc = cultivation_breakthrough.1802.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1802.a
+	}
+}
+
+# ============================================================================
+# Sacred Vessel Breakthrough (1900)
+# ============================================================================
+
+cultivation_breakthrough.1900 = {
+	type = character_event
+	title = cultivation_breakthrough.1900.t
+	desc = cultivation_breakthrough.1900.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1900.attempt
+		
+		random_list = {
+			5 = {
+				custom_tooltip = cultivation_breakthrough.1900.s_tt
+				modifier = {
+					add = 10
+					learning >= 30
+				}
+				modifier = {
+					add = 10
+					learning >= 32
+				}
+				modifier = {
+					add = 10
+					learning >= 34
+				}
+				modifier = {
+					add = 10
+					learning >= 36
+				}
+				modifier = {
+					add = 10
+					learning >= 38
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_star_shattering
+				add_trait = cultivation_sacred_vessel
+				remove_character_flag = can_attempt_sacred_vessel_breakthrough
+				trigger_event = cultivation_breakthrough.1901
+			}
+			95 = {
+				custom_tooltip = cultivation_breakthrough.1900.f_tt
+				trigger_event = cultivation_breakthrough.1902
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 60
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1900.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.1901 = {
+	type = character_event
+	title = cultivation_breakthrough.1901.t
+	desc = cultivation_breakthrough.1901.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1901.a
+		add_prestige = 1100
+		add_piety = 550
+		stress_impact = {
+			base = -55
+		}
+	}
+}
+
+cultivation_breakthrough.1902 = {
+	type = character_event
+	title = cultivation_breakthrough.1902.t
+	desc = cultivation_breakthrough.1902.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.1902.a
+	}
+}
+
+# ============================================================================
+# Entering Nirvana Breakthrough (2000)
+# ============================================================================
+
+cultivation_breakthrough.2000 = {
+	type = character_event
+	title = cultivation_breakthrough.2000.t
+	desc = cultivation_breakthrough.2000.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2000.attempt
+		
+		random_list = {
+			5 = {
+				custom_tooltip = cultivation_breakthrough.2000.s_tt
+				modifier = {
+					add = 10
+					learning >= 32
+				}
+				modifier = {
+					add = 10
+					learning >= 34
+				}
+				modifier = {
+					add = 10
+					learning >= 36
+				}
+				modifier = {
+					add = 10
+					learning >= 38
+				}
+				modifier = {
+					add = 10
+					learning >= 40
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_sacred_vessel
+				add_trait = cultivation_entering_nirvana
+				remove_character_flag = can_attempt_entering_nirvana_breakthrough
+				trigger_event = cultivation_breakthrough.2001
+			}
+			95 = {
+				custom_tooltip = cultivation_breakthrough.2000.f_tt
+				trigger_event = cultivation_breakthrough.2002
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 65
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2000.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.2001 = {
+	type = character_event
+	title = cultivation_breakthrough.2001.t
+	desc = cultivation_breakthrough.2001.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2001.a
+		add_prestige = 1200
+		add_piety = 150
+		stress_impact = {
+			base = -60
+		}
+	}
+}
+
+cultivation_breakthrough.2002 = {
+	type = character_event
+	title = cultivation_breakthrough.2002.t
+	desc = cultivation_breakthrough.2002.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2002.a
+	}
+}
+# ============================================================================
+# True Immortal Breakthrough (2100)
+# ============================================================================
+
+cultivation_breakthrough.2100 = {
+	type = character_event
+	title = cultivation_breakthrough.2100.t
+	desc = cultivation_breakthrough.2100.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2100.attempt
+		
+		random_list = {
+			5 = {
+				custom_tooltip = cultivation_breakthrough.2100.s_tt
+				modifier = {
+					add = 10
+					learning >= 34
+				}
+				modifier = {
+					add = 10
+					learning >= 36
+				}
+				modifier = {
+					add = 10
+					learning >= 38
+				}
+				modifier = {
+					add = 10
+					learning >= 40
+				}
+				modifier = {
+					add = 10
+					learning >= 42
+				}
+				
+				# Meridian affinity affects breakthrough odds
+				modifier = {
+					add = -45
+					has_trait = poor_meridians
+				}
+				modifier = {
+					add = 3
+					has_trait = good_meridians
+				}
+				modifier = {
+					add = 10
+					has_trait = excellent_meridians
+				}
+				modifier = {
+					add = 25
+					has_trait = heavenly_meridians
+				}
+
+				remove_trait = cultivation_entering_nirvana
+				add_trait = cultivation_true_immortal
+				remove_character_flag = can_attempt_true_immortal_breakthrough
+				trigger_event = cultivation_breakthrough.2101
+			}
+			95 = {
+				custom_tooltip = cultivation_breakthrough.2100.f_tt
+				trigger_event = cultivation_breakthrough.2102
+				cultivation_breakthrough_failure_consequence_effect = yes
+				add_stress = 70
+				add_character_modifier = {
+					modifier = failed_breakthrough_attempt
+					months = 3
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2100.wait
+		add_character_modifier = {
+			modifier = contemplating_breakthrough
+			months = 6
+		}
+	}
+}
+
+cultivation_breakthrough.2101 = {
+	type = character_event
+	title = cultivation_breakthrough.2101.t
+	desc = cultivation_breakthrough.2101.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2101.a
+		add_prestige = 1300
+		add_piety = 650
+		stress_impact = {
+			base = -65
+		}
+	}
+}
+
+cultivation_breakthrough.2102 = {
+	type = character_event
+	title = cultivation_breakthrough.2102.t
+	desc = cultivation_breakthrough.2102.desc
+	theme = learning
+	
+	left_portrait = {
+		character = ROOT
+		animation = disapproval
+	}
+	
+	option = {
+		name = cultivation_breakthrough.2102.a
+	}
+}

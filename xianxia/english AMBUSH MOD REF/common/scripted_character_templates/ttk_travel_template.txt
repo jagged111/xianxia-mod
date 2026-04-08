@@ -1,0 +1,86 @@
+﻿ttk_bandit_character = {
+	age = { 20 40 }
+	random_traits = yes
+	dynasty = none
+	trait = gallowsbait
+	random_traits_list = {
+		count = 1
+		clubfooted = {}
+		hunchbacked = {}
+		dwarf = {}
+		one_eyed = {}
+		scarred = {}
+		giant = {}
+		beauty_bad_1 = {}
+		beauty_bad_2 = {}
+		drunkard = {}
+	}
+	random_traits_list = {
+		count = 1
+		education_intrigue_1 = {}
+		education_intrigue_2 = {}
+		education_intrigue_3 = {}
+	}
+	random_traits_list = {
+		count = 3
+		ambitious = {}
+		gregarious = {}
+		impatient = {}
+		wrathful = {}
+		callous = {}
+		stubborn = {}
+		vengeful = {}
+		greedy = {}
+		zealous = {}
+		diligent = {}
+		deceitful = {}
+		arrogant = {}
+		brave = {}
+		sadistic = {}
+	}
+	diplomacy = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	martial = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	stewardship = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	intrigue = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	learning = {
+		min_template_low_skill
+		max_template_low_skill
+	}
+	prowess = {
+		min_template_medium_skill
+		max_template_medium_skill
+	}
+	after_creation = {
+		if = {
+			limit = {
+				OR = {
+					culture = { has_cultural_pillar = heritage_north_germanic }
+					religion = religion:germanic_religion
+				}
+			}
+			random = {
+				chance = 25
+				add_trait = berserker
+			}
+			random = {
+				chance = 10
+				add_trait = viking 
+			}
+		}
+	}
+}
+
+
+

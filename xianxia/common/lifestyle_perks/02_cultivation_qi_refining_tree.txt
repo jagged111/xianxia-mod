@@ -1,0 +1,243 @@
+﻿##################################################
+# QI REFINING REALM (Y: 9-20)
+# Tree: qi_refining_tree
+# Multiple branches at stars!
+##################################################
+
+# 1-Star branches (2 paths)
+qi_refining_1a_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 0 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 6
+		learning = 1
+	}
+}
+
+qi_refining_1b_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 4 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	
+	character_modifier = {
+		martial = 2
+		learning = 1
+	}
+}
+
+# Middle Qi Refining (merges)
+qi_refining_middle_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 2 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_1a_star_perk
+	parent = qi_refining_1b_star_perk
+	
+	character_modifier = {
+		prowess = 9
+		learning = 2
+		health = 0.5
+	}
+}
+
+# 3-Star branches (4 paths!)
+qi_refining_2a_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_middle_perk
+	
+	character_modifier = {
+		prowess = 6
+	}
+}
+
+qi_refining_2b_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 0 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_2a_star_perk
+	
+	character_modifier = {
+		martial = 2
+	}
+}
+
+qi_refining_2c_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 4 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_middle_perk
+	
+	character_modifier = {
+		learning = 1
+	}
+}
+
+qi_refining_2d_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 4 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_2c_star_perk
+	
+	character_modifier = {
+		health = 0.5
+	}
+}
+
+# Higher Qi Refining (merges all 4)
+qi_refining_higher_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 2 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_2b_star_perk
+	parent = qi_refining_2d_star_perk
+	
+	character_modifier = {
+		prowess = 9
+		martial = 4
+		learning = 2
+		health = 1.0
+	}
+}
+
+# 7-Star branches (4 paths!)
+qi_refining_3a_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 2 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_higher_perk
+	
+	character_modifier = {
+		prowess = 9
+	}
+}
+
+qi_refining_3b_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 4 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_3a_star_perk
+	
+	character_modifier = {
+		martial = 4
+	}
+}
+
+qi_refining_3c_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 0 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_3a_star_perk
+	
+	character_modifier = {
+		learning = 2
+	}
+}
+
+# Peak Qi Refining (merges all 4)
+qi_refining_peak_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 2 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = node_cultivation
+	parent = qi_refining_3b_star_perk
+	parent = qi_refining_3c_star_perk
+	
+	character_modifier = {
+		prowess = 12
+		martial = 6
+		learning = 3
+		advantage = 10
+		health = 1.5
+	}
+}
+
+# Qi Building Breakthrough
+qi_refining_qi_building_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = qi_refining_tree
+	position = { 2 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_qi_refining
+	}
+	icon = cultivation_qi_building_f
+	parent = qi_refining_peak_perk
+	
+	trait = cultivation_qi_building
+	
+	effect = {
+		add_character_flag = can_attempt_qi_building_breakthrough
+		trigger_event = cultivation_breakthrough.1200
+	}
+	
+	character_modifier = {
+		prowess = 12
+		martial = 6
+		learning = 3
+		monthly_prestige = 0.25
+	}
+}

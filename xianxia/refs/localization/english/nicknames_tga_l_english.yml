@@ -1,0 +1,98 @@
+﻿l_english:
+  # Qi Gathering Stage
+  nick_the_seeker: "the Seeker"
+  nick_the_seeker_desc: "A humble disciple, driven by an insatiable thirst for knowledge, seeking the path of the immortal."
+
+  nick_novice_disciple: "the Novice Disciple"
+  nick_novice_disciple_desc: "A fresh recruit in the martial world, just beginning to understand the profound secrets of cultivation."
+
+  nick_mortal_wanderer: "the Mortal Wanderer"
+  nick_mortal_wanderer_desc: "An ambitious mortal who dreams of ascension, walking the path of the unknown, with only hope as their guide."
+
+  nick_awakened_one: "the Awakened One"
+  nick_awakened_one_desc: "Someone who has realized the truth of the cultivation path, their mind and spirit opening to the mysteries of the universe."
+
+  # Foundation Establishment Stage
+  nick_stone_fist: "the Stone Fist"
+  nick_stone_fist_desc: "A person of unmatched strength, their power as solid as stone, unyielding in the face of all challenges."
+
+  nick_ember_monk: "the Ember Monk"
+  nick_ember_monk_desc: "A practitioner of fire, their body and spirit are both tempered in the flames of cultivation."
+
+  nick_wandering_sage: "the Wandering Sage"
+  nick_wandering_sage_desc: "An itinerant scholar, traveling from place to place, seeking wisdom and refining their cultivation through diverse experiences."
+
+  nick_iron_will: "the Iron Will"
+  nick_iron_will_desc: "A cultivator with an indomitable will, their mind and body forged in the furnace of hardship, their resolve as strong as iron."
+
+  # Core Formation Stage
+  nick_flame_king: "the Flame King"
+  nick_flame_king_desc: "A ruler of fire, whose every strike scorches the heavens. Master of the flame, their power is absolute."
+
+  nick_sage_of_earth: "the Sage of Earth"
+  nick_sage_of_earth_desc: "A practitioner of the earth element, their deep connection to the land grants them unshakable power and wisdom."
+
+  nick_divine_master: "the Divine Master"
+  nick_divine_master_desc: "A being of incredible mastery, able to command the forces of the cosmos. Their cultivation is a work of divine art."
+
+  nick_shadow_king: "the Shadow King"
+  nick_shadow_king_desc: "Ruler of the unseen, they are a master of stealth and shadow, commanding forces of darkness with unrivaled skill."
+
+  # Nascent Soul Stage
+  nick_soul_monarch: "the Soul Monarch"
+  nick_soul_monarch_desc: "A sovereign of the soul, their cultivation transcends the physical body, becoming one with the universe itself."
+
+  nick_celestial_king: "the Celestial King"
+  nick_celestial_king_desc: "Ruler of the heavens, their power flows directly from the celestial realm, allowing them to manipulate fate itself."
+
+  nick_void_seeker: "the Void Seeker"
+  nick_void_seeker_desc: "A seeker of the ultimate truths, they explore the infinite void, seeking answers to the mysteries of existence."
+
+  nick_eternal_wanderer: "the Eternal Wanderer"
+  nick_eternal_wanderer_desc: "A traveler of time and space, forever seeking the path of immortality, their journey one of endless discovery."
+
+  # Spirit Severing Stage
+  nick_soulbreaker: "the Soulbreaker"
+  nick_soulbreaker_desc: "A cultivator capable of severing the souls of their enemies, their strength lies not only in their body but in their mastery of the soul."
+
+  nick_the_blade_of_destiny: "the Blade of Destiny"
+  nick_the_blade_of_destiny_desc: "A warrior whose fate is to shape the world with every strike. Their blade is destined to carve the future."
+
+  nick_warlord_of_spirits: "the Warlord of Spirits"
+  nick_warlord_of_spirits_desc: "Master of the dead, they command legions of spirits, using them to overwhelm their foes with an unstoppable tide."
+
+  nick_deaths_shadow: "Death’s Shadow"
+  nick_deaths_shadow_desc: "A figure whose very presence signals the end. Their mastery over death is absolute, and none can escape their grasp."
+
+  # Dao Seeking Stage
+  nick_dao_seeker: "the Dao Seeker"
+  nick_dao_seeker_desc: "A sage in search of the Dao, the ultimate truth of existence. They wander the world in search of enlightenment."
+
+  nick_master_of_heavens: "the Master of Heavens"
+  nick_master_of_heavens_desc: "A being whose power transcends the mortal realm, able to command the forces of the heavens with ease."
+
+  nick_divine_emperor: "the Divine Emperor"
+  nick_divine_emperor_desc: "Ruler of all, their authority is supreme, and their cultivation is on par with the gods themselves."
+
+  nick_pathfinder_of_eternity: "the Pathfinder of Eternity"
+  nick_pathfinder_of_eternity_desc: "A being who seeks eternal life, their journey an unending quest for immortality and the secrets of the universe."
+
+  # Immortal Ascension Stage
+  nick_the_immortal: "the Immortal"
+  nick_the_immortal_desc: "An immortal being, untouched by time and invulnerable to death. Their cultivation has surpassed all limits."
+
+  nick_heavens_blade: "Heaven’s Blade"
+  nick_heavens_blade_desc: "A cultivator whose power is so great it can cleave the very heavens. Their blade is an extension of the divine."
+
+  nick_world_sovereign: "the World Sovereign"
+  nick_world_sovereign_desc: "The ruler of all realms, their power is beyond that of mortal kings, able to shape the world as they see fit."
+
+  nick_heavenly_emperor: "the Heavenly Emperor"
+  nick_heavenly_emperor_desc: "The ultimate ruler, their power is divine, their authority unquestionable. The Heavenly Emperor stands above all."
+
+  # New Nicknames for Xianxia Mod
+  nick_flame_emperor: "the Flame Emperor"
+  nick_flame_emperor_desc: "A cultivator whose mastery over fire has ascended them to the throne, ruling with unparalleled fiery power."
+
+  nick_heavenly_demon: "the Heavenly Demon"
+  nick_heavenly_demon_desc: "A being of dark and light, whose strength transcends even that of the gods, feared by all who know their name."

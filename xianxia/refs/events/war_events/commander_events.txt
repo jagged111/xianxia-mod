@@ -1,0 +1,1870 @@
+﻿
+namespace = commanders
+
+##################################
+# Commander Battle Pulse Event 	 #
+# by Sean Hughes and Alex Oltner #
+# commanders.1001				 #
+##################################
+
+commanders.0001 = {
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+	}
+
+	immediate = {
+		random_list = {
+			1000 = {
+				modifier = {
+					factor = 1.5
+					has_perk = stalwart_leader_perk
+					is_ai = no
+				}
+				modifier = {
+					factor = 1.15
+					has_perk = stalwart_leader_perk
+					is_ai = yes
+				}
+				modifier = {
+					factor = 1.25
+					exists = dynasty
+					dynasty = {
+						has_dynasty_perk = warfare_legacy_3
+					}
+				}
+				
+				modifier = { # Difficulty
+					factor = 1.5
+					is_ai = no
+					has_game_rule = easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					is_ai = no
+					has_game_rule = very_easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					has_trait = pregnant
+				}
+			}
+			10 = { # Berserkers rip people's heads off (and variants)
+				trigger = {
+					is_knight = no
+					health >= fine_health
+					has_trait = berserker
+					NOT = { has_trait = craven }
+					scope:combat_side.enemy_side = {
+						any_side_knight = {
+							is_alive = yes
+							this.prowess <= { value = root.prowess multiply = 0.8 }
+						}
+					}
+				}
+				modifier = {
+					factor = 1.5
+					has_perk = stalwart_leader_perk
+					is_ai = no
+				}
+				modifier = {
+					factor = 1.15
+					has_perk = stalwart_leader_perk
+					is_ai = yes
+				}
+				modifier = {
+					factor = 1.25
+					exists = dynasty
+					dynasty = {
+						has_dynasty_perk = warfare_legacy_3
+					}
+				}
+				modifier = { # Difficulty
+					factor = 1.5
+					is_ai = no
+					has_game_rule = easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					is_ai = no
+					has_game_rule = very_easy_difficulty
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 3
+					has_trait = irritable
+				}
+				modifier = {
+					factor = 5
+					has_trait = giant
+				}
+				modifier = {
+					factor = 3
+					has_trait = impatient
+				}
+				modifier = {
+					factor = 3
+					has_trait = brave
+				}
+				modifier = {
+					factor = 2
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 3
+					has_trait = zealous
+				}
+				modifier = {
+					factor = 3
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 1.25
+					has_trait = athletic
+				}
+				modifier = {
+					factor = 2
+					has_trait = viking
+				}
+				modifier = {
+					factor = 2
+					has_culture = culture:norse
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = temperate
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = lazy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = patient
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = shy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = content
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = cynical
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = paranoid
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = compassionate
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = forgiving
+				}
+				modifier = {
+					factor = 0.1
+					has_trait_rank = {
+						trait = wounded
+						rank = 1
+					}
+				}
+				modifier = {
+					factor = 0.05
+					has_trait_rank = {
+						trait = wounded
+						rank = 2
+					}
+				}
+				modifier = {
+					factor = 0.01
+					OR = {
+						has_trait_rank = {
+							trait = wounded
+							rank = 3
+						}
+						has_trait = maimed
+					}
+				}
+				modifier = {
+					factor = 0.1
+					OR = {
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = one_eyed
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = strong
+				}
+				modifier = {
+					add = 2
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 2
+					has_trait = physique_good_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = physique_good_3
+				}
+				modifier = {
+					add = 2
+					has_trait = lifestyle_blademaster
+				}
+				modifier = {
+					factor = 2
+					has_trait = blademaster_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = blademaster_3
+				}
+				modifier = {
+					add = 4
+					has_trait = education_martial_prowess_4
+				}
+				modifier = {
+					add = 3
+					has_trait = education_martial_prowess_3
+				}
+				modifier = {
+					add = 2
+					has_trait = education_martial_prowess_2
+				}
+				modifier = {
+					add = 1
+					has_trait = education_martial_prowess_1
+				}
+				modifier = {
+					factor = 2
+					prowess >= 40
+				}
+				modifier = {
+					factor = 2
+					prowess >= 35
+				}
+				modifier = {
+					factor = 2
+					prowess >= 30
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 25
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 20
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = pregnant
+				}
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+							save_temporary_scope_as = enemy_knight
+						}
+					}
+					if = {
+						limit = {
+							root = { is_alive = yes }
+							scope:enemy_knight = { is_alive = yes }
+						}
+						add_prestige = knight_prestige_gain_on_kill
+						knight_increase_prowess_chance_effect = yes
+						berserker_kill_version_randomization_effect = yes
+					}
+				}
+			}
+			15 = { # Become a Berserker
+				trigger = {
+					is_knight = no
+					health >= fine_health
+					faith = {
+						has_doctrine = tenet_warmonger
+					}
+					OR = {
+#						culture_group = culture_group:north_germanic_group
+						religion = religion:germanic_religion
+						fp1_is_norse = yes
+					}
+					NOR = {
+						has_trait = craven
+						has_trait = berserker
+						has_trait = calm
+					}
+					prowess >= 12
+					OR = {
+						has_trait = wrathful
+						has_trait = irritable
+						has_trait = impatient
+						has_trait = sadistic
+						has_trait = brave
+						has_trait = ambitious
+						has_trait = viking
+						has_trait = zealous
+						has_trait = vengeful
+						has_trait = arrogant
+						has_trait = diligent
+						has_trait = stubborn
+						has_trait = torturer
+						has_trait = faith_warrior
+						has_trait = order_member
+						has_trait = adventurer
+						has_trait = aggressive_attacker
+						has_trait = holy_warrior
+						has_trait = reaver
+						has_trait = reckless
+						has_trait = lifestyle_blademaster
+						has_trait = education_martial_prowess
+					}
+				}
+				modifier = {
+					factor = 1.5
+					has_perk = stalwart_leader_perk
+					is_ai = no
+				}
+				modifier = {
+					factor = 1.15
+					has_perk = stalwart_leader_perk
+					is_ai = yes
+				}
+				modifier = {
+					factor = 1.25
+					exists = dynasty
+					dynasty = {
+						has_dynasty_perk = warfare_legacy_3
+					}
+				}
+				modifier = { # Difficulty
+					factor = 1.5
+					is_ai = no
+					has_game_rule = easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					is_ai = no
+					has_game_rule = very_easy_difficulty
+				}
+				modifier = {
+					factor = 5
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 3
+					has_trait = irritable
+				}
+				modifier = {
+					factor = 5
+					has_trait = giant
+				}
+				modifier = {
+					factor = 3
+					has_trait = impatient
+				}
+				modifier = {
+					factor = 3
+					has_trait = brave
+				}
+				modifier = {
+					factor = 2
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 3
+					has_trait = zealous
+				}
+				modifier = {
+					factor = 3
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 1.25
+					has_trait = athletic
+				}
+				modifier = {
+					factor = 2
+					has_trait = viking
+				}
+				modifier = {
+					factor = 2
+					has_culture = culture:norse
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = content
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = compassionate
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = temperate
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = lazy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = patient
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = paranoid
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = forgiving
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = shy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = cynical
+				}
+				modifier = {
+					factor = 0.15
+					has_trait_rank = {
+						trait = wounded
+						rank = 1
+					}
+				}
+				modifier = {
+					factor = 0.1
+					has_trait_rank = {
+						trait = wounded
+						rank = 2
+					}
+				}
+				modifier = {
+					factor = 0.01
+					OR = {
+						has_trait_rank = {
+							trait = wounded
+							rank = 3
+						}
+						has_trait = maimed
+					}
+				}
+				modifier = {
+					factor = 0.1
+					OR = {
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = one_eyed
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = strong
+				}
+				modifier = {
+					add = 2
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 2
+					has_trait = physique_good_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = physique_good_3
+				}
+				modifier = {
+					add = 2
+					has_trait = lifestyle_blademaster
+				}
+				modifier = {
+					factor = 2
+					has_trait = blademaster_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = blademaster_3
+				}
+				modifier = {
+					add = 4
+					has_trait = education_martial_prowess_4
+				}
+				modifier = {
+					add = 3
+					has_trait = education_martial_prowess_3
+				}
+				modifier = {
+					add = 2
+					has_trait = education_martial_prowess_2
+				}
+				modifier = {
+					add = 1
+					has_trait = education_martial_prowess_1
+				}
+				modifier = {
+					factor = 2
+					prowess >= 40
+				}
+				modifier = {
+					factor = 2
+					prowess >= 35
+				}
+				modifier = {
+					factor = 2
+					prowess >= 30
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 25
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 20
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = pregnant
+				}
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+							save_temporary_scope_as = enemy_knight
+						}
+					}
+					if = {
+						limit = {
+							root = { is_alive = yes }
+							scope:enemy_knight = { is_alive = yes }
+						}
+						scope:combat_side = {
+							battle_event = {
+								key = "berserker_rage_killed_enemy"
+								left_portrait = root
+								right_portrait = scope:enemy_knight
+								type = death
+								target_right = yes
+							}
+							add_to_variable_list = {
+								name = slain_side_knights
+								target = scope:enemy_knight
+							}
+						}
+						add_prestige = knight_prestige_gain_on_kill
+						knight_increase_prowess_chance_effect = yes
+						add_trait = berserker
+						scope:enemy_knight = {
+							death = {
+								death_reason = death_head_ripped_off
+								killer = root
+							}
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							root = { is_alive = yes }
+						}
+						scope:combat_side = {
+							battle_event = {
+								key = "berserker_rage_no_enemy"
+								left_portrait = root
+								type = death
+								target_right = yes
+							}
+						}
+						add_trait = berserker
+					}
+				}
+			}
+			10 = { # Shieldmaidens cut foes down (and variants)
+				trigger = {
+					is_knight = no
+					health >= fine_health
+					has_trait = shieldmaiden
+					scope:combat_side.enemy_side = {
+						any_side_knight = {
+							is_alive = yes
+							this.prowess <= { value = root.prowess multiply = 0.8 }
+						}
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = gallant
+				}
+				modifier = {
+					factor = 2
+					has_focus = martial_chivalry_focus
+				}
+				modifier = {
+					factor = 1.5
+					has_perk = stalwart_leader_perk
+					is_ai = no
+				}
+				modifier = {
+					factor = 1.15
+					has_perk = stalwart_leader_perk
+					is_ai = yes
+				}
+				modifier = {
+					factor = 1.25
+					exists = dynasty
+					dynasty = {
+						has_dynasty_perk = warfare_legacy_3
+					}
+				}
+				modifier = {
+					add = 5
+					OR = {
+						culture_group = culture_group:north_germanic_group
+						religion = religion:germanic_religion
+					}
+				}
+				modifier = { # Difficulty
+					factor = 1.5
+					is_ai = no
+					has_game_rule = easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					is_ai = no
+					has_game_rule = very_easy_difficulty
+				}
+				modifier = {
+					factor = 3
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 2
+					has_trait = irritable
+				}
+				modifier = {
+					factor = 5
+					has_trait = giant
+				}
+				modifier = {
+					factor = 3
+					has_trait = impatient
+				}
+				modifier = {
+					factor = 3
+					has_trait = brave
+				}
+				modifier = {
+					factor = 3
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 3
+					has_trait = zealous
+				}
+				modifier = {
+					factor = 3
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 1.25
+					has_trait = athletic
+				}
+				modifier = {
+					factor = 2
+					has_trait = viking
+				}
+				modifier = {
+					factor = 2
+					has_culture = culture:norse
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = content
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = compassionate
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = temperate
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = lazy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = calm
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = patient
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = paranoid
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = forgiving
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = shy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = cynical
+				}
+				modifier = {
+					factor = 0.1
+					has_trait_rank = {
+						trait = wounded
+						rank = 1
+					}
+				}
+				modifier = {
+					factor = 0.05
+					has_trait_rank = {
+						trait = wounded
+						rank = 2
+					}
+				}
+				modifier = {
+					factor = 0.01
+					OR = {
+						has_trait_rank = {
+							trait = wounded
+							rank = 3
+						}
+						has_trait = maimed
+					}
+				}
+				modifier = {
+					factor = 0.1
+					OR = {
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = one_eyed
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = strong
+				}
+				modifier = {
+					add = 2
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 2
+					has_trait = physique_good_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = physique_good_3
+				}
+				modifier = {
+					add = 2
+					has_trait = lifestyle_blademaster
+				}
+				modifier = {
+					factor = 2
+					has_trait = blademaster_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = blademaster_3
+				}
+				modifier = {
+					add = 4
+					has_trait = education_martial_prowess_4
+				}
+				modifier = {
+					add = 3
+					has_trait = education_martial_prowess_3
+				}
+				modifier = {
+					add = 2
+					has_trait = education_martial_prowess_2
+				}
+				modifier = {
+					add = 1
+					has_trait = education_martial_prowess_1
+				}
+				modifier = {
+					factor = 2
+					prowess >= 40
+				}
+				modifier = {
+					factor = 2
+					prowess >= 35
+				}
+				modifier = {
+					factor = 2
+					prowess >= 30
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 25
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 20
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = pregnant
+				}
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+							save_temporary_scope_as = enemy_knight
+						}
+					}
+					if = {
+						limit = {
+							root = { is_alive = yes }
+							scope:enemy_knight = { is_alive = yes }
+						}
+						add_prestige = knight_prestige_gain_on_kill
+						knight_increase_prowess_chance_effect = yes
+						shieldmaiden_kill_version_randomisation_effect = yes
+					}
+				}
+			}
+			15 = { # Become a Shieldmaiden
+				trigger = {
+					is_knight = no
+					health >= fine_health
+					OR = {
+						culture_group = culture_group:north_germanic_group
+						culture = culture:norman
+						religion = religion:germanic_religion
+					}
+					NOR = {
+						has_trait = craven
+						has_trait = shieldmaiden
+					}
+					prowess >= 12
+					OR = {
+						AND = {
+							is_female = yes
+							faith = { has_doctrine = doctrine_gender_male_dominated }
+						}
+						AND = {
+							is_male = yes
+							faith = { has_doctrine = doctrine_gender_female_dominated }
+						}
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = gallant
+				}
+				modifier = {
+					factor = 2
+					has_focus = martial_chivalry_focus
+				}
+				modifier = {
+					factor = 1.5
+					has_perk = stalwart_leader_perk
+					is_ai = no
+				}
+				modifier = {
+					factor = 1.15
+					has_perk = stalwart_leader_perk
+					is_ai = yes
+				}
+				modifier = {
+					factor = 1.5
+					exists = dynasty
+					dynasty = {
+						has_dynasty_perk = warfare_legacy_3
+					}
+				}
+				modifier = {
+					add = 5
+					OR = {
+						culture_group = culture_group:north_germanic_group
+						religion = religion:germanic_religion
+					}
+				}
+				modifier = { # Difficulty
+					factor = 1.5
+					is_ai = no
+					has_game_rule = easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					is_ai = no
+					has_game_rule = very_easy_difficulty
+				}
+				modifier = {
+					factor = 3
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 2
+					has_trait = irritable
+				}
+				modifier = {
+					factor = 5
+					has_trait = giant
+				}
+				modifier = {
+					factor = 3
+					has_trait = impatient
+				}
+				modifier = {
+					factor = 3
+					has_trait = brave
+				}
+				modifier = {
+					factor = 3
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 3
+					has_trait = zealous
+				}
+				modifier = {
+					factor = 3
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = callous
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 1.25
+					has_trait = athletic
+				}
+				modifier = {
+					factor = 2
+					has_trait = viking
+				}
+				modifier = {
+					factor = 2
+					has_culture = culture:norse
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = content
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = compassionate
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = temperate
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = lazy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = calm
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = patient
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = paranoid
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = forgiving
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = shy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = cynical
+				}
+				modifier = {
+					factor = 0.15
+					has_trait_rank = {
+						trait = wounded
+						rank = 1
+					}
+				}
+				modifier = {
+					factor = 0.1
+					has_trait_rank = {
+						trait = wounded
+						rank = 2
+					}
+				}
+				modifier = {
+					factor = 0.01
+					OR = {
+						has_trait_rank = {
+							trait = wounded
+							rank = 3
+						}
+						has_trait = maimed
+					}
+				}
+				modifier = {
+					factor = 0.1
+					OR = {
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = one_eyed
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = strong
+				}
+				modifier = {
+					add = 2
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 2
+					has_trait = physique_good_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = physique_good_3
+				}
+				modifier = {
+					add = 2
+					has_trait = lifestyle_blademaster
+				}
+				modifier = {
+					factor = 2
+					has_trait = blademaster_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = blademaster_3
+				}
+				modifier = {
+					add = 4
+					has_trait = education_martial_prowess_4
+				}
+				modifier = {
+					add = 3
+					has_trait = education_martial_prowess_3
+				}
+				modifier = {
+					add = 2
+					has_trait = education_martial_prowess_2
+				}
+				modifier = {
+					add = 1
+					has_trait = education_martial_prowess_1
+				}
+				modifier = {
+					factor = 2
+					prowess >= 40
+				}
+				modifier = {
+					factor = 2
+					prowess >= 35
+				}
+				modifier = {
+					factor = 2
+					prowess >= 30
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 25
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 20
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = pregnant
+				}
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								is_alive = yes
+								this.prowess <= { value = root.prowess multiply = 0.8 }
+							}
+							save_temporary_scope_as = enemy_knight
+						}
+					}
+					if = {
+						limit = {
+							root = { is_alive = yes }
+							scope:enemy_knight = { is_alive = yes }
+						}
+						scope:combat_side = {
+							battle_event = {
+								key = "shieldmaiden_skill_killed_enemy"
+								left_portrait = root
+								right_portrait = scope:enemy_knight
+								type = death
+								target_right = yes
+							}
+							add_to_variable_list = {
+								name = slain_side_knights
+								target = scope:enemy_knight
+							}
+						}
+						add_prestige = knight_prestige_gain_on_kill
+						knight_increase_prowess_chance_effect = yes
+						add_trait = shieldmaiden
+						scope:enemy_knight = {
+							death = {
+								death_reason = death_head_ripped_off
+								killer = root
+							}
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							root = { is_alive = yes }
+						}
+						scope:combat_side = {
+							battle_event = {
+								key = "shieldmaiden_skill_no_enemy"
+								left_portrait = root
+								type = death
+								target_right = yes
+							}
+						}
+						add_trait = shieldmaiden
+					}
+				}
+			}
+			25 = { # Wounded
+				trigger = {
+					has_trait_rank = {
+						trait = wounded
+						rank <= 3
+					}
+				}
+				modifier = {
+					factor = { # Prowess directly reduces chance of injury/death
+						value = 40 # Value at which 'immortality' happens
+						subtract = prowess
+						divide = 40
+						min = 0.1 # Everyone dies.
+					}
+				}
+				modifier = { # Reduce chance when outnumbering the enemy
+					factor = {
+						value = scope:combat_side.enemy_side.side_strength
+						divide = scope:combat_side.side_strength
+						multiply = 1.4 # Outnumbering 2-1 reduces chance by 30%
+						max = 1
+					}
+					scope:combat_side.side_strength > scope:combat_side.enemy_side.side_strength
+				}
+				modifier = {
+					factor = 2
+					has_trait = brave
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = craven
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = pregnant
+				}
+
+				# Trigger the battle event indicating we have been Wounded.
+				if = {
+					# Check for an enemy Knight with at least 80% of our Prowess to be our wound-inflicter.
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								this.prowess >= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								this.prowess >= { value = root.prowess multiply = 0.8 }
+							}
+							save_scope_as = enemy_knight
+							add_prestige = knight_prestige_gain_on_wound_inverse
+							knight_increase_prowess_chance_effect = yes
+						}
+					}
+					# Trigger the battle event where we are wounded by the enemy Knight.
+					scope:combat_side = {
+						battle_event = {
+							key = "commander_wounded_by_enemy"
+							left_portrait = root
+							right_portrait = scope:enemy_knight
+							type = wound
+						}
+					}
+					# Send the toast telling the player if they have been wounded.
+					send_interface_toast = {
+						title = commander_wounded_by_enemy_interface_friendly_player
+						left_icon = root
+						right_icon = scope:enemy_knight
+
+						# Inflict a wound on the commander.
+						increase_wounds_effect = { REASON = fight }
+					}
+				}
+				else = {
+					# Trigger the battle event where we are wounded by a nameless soldier.
+					scope:combat_side = {
+						battle_event = {
+							key = "commander_wounded_no_enemy"
+							left_portrait = root
+							type = wound
+						}
+					}
+					# Send the toast telling the player if they have been wounded.
+					send_interface_toast = {
+						title = commander_wounded_no_enemy_interface_friendly_player
+						left_icon = root
+
+						# Inflict a wound on the commander.
+						increase_wounds_effect = { REASON = fight }
+					}
+				}
+
+				
+
+			}
+			10 = { # Maimed
+				trigger = {
+					NAND = {
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = one_eyed
+						has_trait = maimed
+					}
+				}
+				modifier = {
+					factor = { # Prowess directly reduces chance of injury/death
+						value = 30 # Value at which 'immortality' happens
+						subtract = prowess
+						divide = 30
+						min = 0.1 # Everyone dies.
+					}
+				}
+				modifier = { # Reduce chance when outnumbering the enemy
+					factor = {
+						value = scope:combat_side.enemy_side.side_strength
+						divide = scope:combat_side.side_strength
+						multiply = 1.4 # Outnumbering 2-1 reduces chance by 30%
+						max = 1
+					}
+					scope:combat_side.side_strength > scope:combat_side.enemy_side.side_strength
+				}
+				modifier = { # No deaths when vastly outnumbering the enemy
+					factor = 0
+					scope:combat_side.side_strength > { value = scope:combat_side.enemy_side.side_strength multiply = 5 }
+				}
+				modifier = {
+					factor = 2
+					has_trait = brave
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = craven
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 0.25
+					has_trait = pregnant
+				}
+
+				# Trigger the battle event indicating we have been Maimed.
+				if = {
+					# Check for an enemy Knight with at least 80% of our Prowess to be our maimer.
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								this.prowess >= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								this.prowess >= { value = root.prowess multiply = 0.8 }
+							}
+							save_scope_as = enemy_knight
+							add_prestige = knight_prestige_gain_on_wound_inverse
+							knight_increase_prowess_chance_effect = yes
+						}
+					}
+
+					# Trigger the battle event where we are maimed by an enemy Knight.
+					scope:combat_side = {
+						battle_event = {
+							key = "commander_maimed_by_enemy"
+							left_portrait = root
+							right_portrait = scope:enemy_knight
+							type = wound
+						}
+					}
+					# Send the toast telling the player if they have been maimed.
+					send_interface_toast = {
+						title = commander_maimed_by_enemy_interface_friendly_player
+						left_icon = root
+						right_icon = scope:enemy_knight
+
+						# Main the commander.
+						maimed_in_battle_effect = yes
+					}
+				}
+				else = {
+					# Trigger the battle event were we are maimed by a nameless soldier.
+					scope:combat_side = {
+						battle_event = {
+							key = "commander_maimed_no_enemy"
+							left_portrait = root
+							type = wound
+						}
+					}
+					# Send the toast telling the player if they have been maimed.
+					send_interface_toast = {
+						title = commander_maimed_no_enemy_interface_friendly_player
+						left_icon = root
+
+						# Main the commander.
+						maimed_in_battle_effect = yes
+					}	
+				}
+			}
+			5 = { #Killed
+				trigger = {
+					#Commanders cannot be killed outright unless...
+					OR = {
+						#...they are already wounded...
+						has_trait_rank = {
+							trait = wounded
+							rank >= 1
+						}
+						#...or they are absolutely terrible at battle to begin with!
+						AND = {
+							martial <= low_skill_rating
+							prowess <= low_skill_rating
+						}
+					}
+					NOT = {
+						has_game_rule = very_easy_difficulty
+					}
+				}
+				modifier = {
+					factor = { # Prowess directly reduces chance of injury/death
+						value = 30 # Value at which 'immortality' happens
+						subtract = prowess
+						divide = 30
+						min = 0.1 # Everyone dies.
+					}
+				}
+				modifier = { # Reduce chance when outnumbering the enemy
+					factor = {
+						value = scope:combat_side.enemy_side.side_strength
+						divide = scope:combat_side.side_strength
+						multiply = 1.4 # Outnumbering 2-1 reduces chance by 30%
+						max = 1
+					}
+					scope:combat_side.side_strength > scope:combat_side.enemy_side.side_strength
+				}
+				modifier = { # No deaths when vastly outnumbering the enemy
+					factor = 0
+					scope:combat_side.side_strength > { value = scope:combat_side.enemy_side.side_strength multiply = 5 }
+				}
+				modifier = {
+					factor = 2
+					has_trait = brave
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = craven
+				}
+				modifier = {
+					factor = 0.2
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = pregnant
+				}
+				modifier = {
+					factor = 4
+					has_trait_rank = {
+						trait = wounded
+						rank = 3
+					}
+				}
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								this.prowess >= { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								this.prowess >= { value = root.prowess multiply = 0.8 }
+							}
+							save_scope_as = enemy_knight
+							add_prestige = knight_prestige_gain_on_kill_inverse
+							knight_increase_prowess_chance_effect = yes
+						}
+					}
+					scope:combat_side = {
+						battle_event = {
+							key = "commander_killed_by_enemy"
+							left_portrait = root
+							right_portrait = scope:enemy_knight
+							type = death
+						}
+					}
+					send_interface_toast = {
+						title = commander_killed_by_enemy_interface_friendly
+						left_icon = root
+						right_icon = scope:enemy_knight
+
+						# Kill the commander.
+						death = {
+							death_reason = death_battle
+							killer = scope:enemy_knight
+						}
+					}
+					
+				}
+				else = {
+					scope:combat_side = {
+						battle_event = {
+							key = "commander_killed_no_enemy"
+							left_portrait = root
+							type = death
+						}
+					}
+					send_interface_toast = {
+						title = commander_killed_no_enemy_interface_friendly
+						left_icon = root
+
+						# Kill the commander.
+						death = {
+							death_reason = death_battle
+						}
+					}
+				}
+			}
+			5 = { # Standard Commanders kill enemy knights
+				trigger = {
+					is_knight = no
+					health >= fine_health
+					prowess >= 15
+					NOR = {
+						has_trait = craven
+						has_trait = berserker
+						has_trait = shieldmaiden
+					}
+					scope:combat_side.enemy_side = {
+						any_side_knight = {
+							is_alive = yes
+							this.prowess < { value = root.prowess multiply = 0.8 }
+						}
+					}
+				}
+				modifier = {
+					add = 5
+					fp1_is_norse = yes
+				}
+				modifier = {
+					factor = 2
+					has_trait = gallant
+				}
+				modifier = {
+					factor = 2
+					has_focus = martial_chivalry_focus
+				}
+				modifier = {
+					factor = 1.5
+					has_perk = stalwart_leader_perk
+					is_ai = no
+				}
+				modifier = {
+					factor = 1.15
+					has_perk = stalwart_leader_perk
+					is_ai = yes
+				}
+				modifier = {
+					factor = 1.25
+					exists = dynasty
+					dynasty = {
+						has_dynasty_perk = warfare_legacy_3
+					}
+				}
+				modifier = {
+					factor = 1.5
+					is_ai = no
+					has_game_rule = easy_difficulty
+				}
+				modifier = {
+					factor = 2
+					is_ai = no
+					has_game_rule = very_easy_difficulty
+				}
+				modifier = {
+					factor = 3
+					has_trait = wrathful
+				}
+				modifier = {
+					factor = 2
+					has_trait = irritable
+				}
+				modifier = {
+					factor = 5
+					has_trait = giant
+				}
+				modifier = {
+					factor = 2
+					has_trait = impatient
+				}
+				modifier = {
+					factor = 3
+					has_trait = brave
+				}
+				modifier = {
+					factor = 3
+					has_trait = ambitious
+				}
+				modifier = {
+					factor = 2
+					has_trait = zealous
+				}
+				modifier = {
+					factor = 3
+					has_trait = sadistic
+				}
+				modifier = {
+					factor = 1.5
+					has_trait = vengeful
+				}
+				modifier = {
+					factor = 1.25
+					has_trait = athletic
+				}
+				modifier = {
+					factor = 2
+					has_trait = viking
+				}
+				modifier = {
+					factor = 2
+					has_culture = culture:norse
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = content
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = compassionate
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = temperate
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = lazy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = calm
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = patient
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = paranoid
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = forgiving
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = shy
+				}
+				modifier = {
+					factor = 0.5
+					has_trait = cynical
+				}
+				modifier = {
+					factor = 0.1
+					has_trait_rank = {
+						trait = wounded
+						rank = 1
+					}
+				}
+				modifier = {
+					factor = 0.05
+					has_trait_rank = {
+						trait = wounded
+						rank = 2
+					}
+				}
+				modifier = {
+					factor = 0.01
+					OR = {
+						has_trait_rank = {
+							trait = wounded
+							rank = 3
+						}
+						has_trait = maimed
+					}
+				}
+				modifier = {
+					factor = 0.1
+					OR = {
+						has_trait = one_legged
+						has_trait = disfigured
+						has_trait = one_eyed
+					}
+				}
+				modifier = {
+					factor = 2
+					has_trait = strong
+				}
+				modifier = {
+					add = 2
+					has_trait = physique_good
+				}
+				modifier = {
+					factor = 2
+					has_trait = physique_good_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = physique_good_3
+				}
+				modifier = {
+					add = 2
+					has_trait = lifestyle_blademaster
+				}
+				modifier = {
+					factor = 2
+					has_trait = blademaster_2
+				}
+				modifier = {
+					factor = 3
+					has_trait = blademaster_3
+				}
+				modifier = {
+					add = 4
+					has_trait = education_martial_prowess_4
+				}
+				modifier = {
+					add = 3
+					has_trait = education_martial_prowess_3
+				}
+				modifier = {
+					add = 2
+					has_trait = education_martial_prowess_2
+				}
+				modifier = {
+					add = 1
+					has_trait = education_martial_prowess_1
+				}
+				modifier = {
+					factor = 2
+					prowess >= 40
+				}
+				modifier = {
+					factor = 2
+					prowess >= 35
+				}
+				modifier = {
+					factor = 2
+					prowess >= 30
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 25
+				}
+				modifier = {
+					factor = 1.5
+					prowess >= 20
+				}
+				modifier = {
+					factor = 0.1
+					has_trait = pregnant
+				}
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								is_alive = yes
+								this.prowess < { value = root.prowess multiply = 0.8 }
+							}
+						}
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								is_alive = yes
+								this.prowess < { value = root.prowess multiply = 0.8 }
+							}
+							save_temporary_scope_as = enemy_knight
+						}
+					}
+					if = {
+						limit = {
+							root = {
+								is_alive = yes
+								OR = {
+									religion = religion:germanic_religion
+									fp1_is_norse = yes
+								}
+							}
+							scope:enemy_knight = { is_alive = yes }
+						}
+						add_prestige = knight_prestige_gain_on_kill
+						knight_increase_prowess_chance_effect = yes
+						shieldmaiden_kill_version_randomisation_effect = yes
+					}
+					if = {
+						limit = {
+							root = {
+								is_alive = yes
+								NOR = {
+									religion = religion:germanic_religion
+									fp1_is_norse = yes
+								}
+							}
+							scope:enemy_knight = { is_alive = yes }
+						}
+						scope:combat_side = {
+							battle_event = {
+								key = "commander_killed_enemy_knight"
+								left_portrait = root
+								right_portrait = scope:enemy_knight
+								type = death
+								target_right = yes
+							}
+							# For after-battle messaging
+							add_to_variable_list = {
+								name = slain_side_knights
+								target = scope:enemy_knight
+							}
+						}
+						add_prestige = knight_prestige_gain_on_kill
+						knight_increase_prowess_chance_effect = yes
+						scope:enemy_knight = {
+							death = {
+								death_reason = death_battle
+								killer = root
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

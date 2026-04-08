@@ -1,0 +1,4 @@
+﻿# Register cultivation GUI files
+
+gui/cultivation_window.gui = cultivation_window
+gui/cultivation_hud_button.gui = cultivation_hud_button

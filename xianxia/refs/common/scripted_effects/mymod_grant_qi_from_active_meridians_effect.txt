@@ -1,0 +1,27 @@
+﻿mymod_grant_qi_from_active_meridians_effect = {
+    this = {   # ← THIS LINE IS THE FIX
+        if = {
+            limit = {
+            OR = {
+			    has_trait = active_meridians
+                has_trait = poor_meridians
+                has_trait = normal_meridians
+                has_trait = good_meridians
+                has_trait = excellent_meridians
+                has_trait = heavenly_meridians
+            }
+        }
+
+        # Must not be at a cultivation realm already
+        if = {
+            limit = { NOT = { has_trait = cultivation_realm } }
+
+            # Must not already have qi gathering
+            if = {
+                limit = { NOT = { has_trait = qi_gathering } }
+
+                add_trait = qi_gathering
+            }
+        }
+    }
+}

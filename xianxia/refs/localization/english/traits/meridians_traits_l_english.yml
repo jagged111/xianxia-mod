@@ -1,0 +1,20 @@
+﻿l_english:
+ trait_poor_meridians:0 "Poor meridians"
+ trait_poor_meridians_desc:0 "Poor meridians, only allow for very basic cultivation. Can be upgraded with special events"
+ trait_poor_meridians_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has poor meridians, not allowing for good cultivation" 
+
+ trait_normal_meridians:0 "Normal meridians"
+ trait_normal_meridians_desc:0 "Normal meridians, only allow for very basic cultivation. Can be upgraded with special events"
+ trait_normal_meridians_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has poor meridians, not allowing for good cultivation" 
+
+ trait_good_meridians:0 "Good meridians"
+ trait_good_meridians_desc:0 "Good meridians, only allow for very basic cultivation. Can be upgraded with special events"
+ trait_good_meridians_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has poor meridians, not allowing for good cultivation" 
+
+ trait_excellent_meridians:0 "Excellent meridians"
+ trait_excellent_meridians_desc:0 "Excellent meridians, only allow for very basic cultivation. Can be upgraded with special events"
+ trait_excellent_meridians_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has poor meridians, not allowing for good cultivation" 
+
+ trait_heavenly_meridians:0 "Heavenly meridians"
+ trait_heavenly_meridians_desc:0 "Heavenly meridians, the pinaccle of ability in cultivation"
+ trait_heavenly_meridians_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has heavenly meridians, allowing [ROOT.GetCharacter.GetHerHim] to make it further than anyone else ever before" 

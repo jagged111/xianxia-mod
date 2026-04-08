@@ -1,0 +1,870 @@
+﻿######################################################
+############## CULTIVATION WINDOW ####################
+# Complete implementation with barbershop features
+######################################################
+
+types CultivationTypes {
+	# Portrait type
+	type cultivation_portrait = portrait_button {
+		using = portrait_base
+		size = { 1920 1400 }
+		alwaystransparent = yes
+		
+		blockoverride "grayscale" {}
+		blockoverride "portrait_button_template_onmouseenter" {}
+		blockoverride "portrait_button_template_onmouseleave" {}
+		blockoverride "portrait_button_template_onclick" {}
+		blockoverride "portrait_button_template_onrightclick" {}
+		blockoverride "portrait_button_template_tooltip" {}
+	}
+	
+	# Partner portrait type - smaller version
+	type cultivation_partner_portrait = portrait_button {
+		using = portrait_base
+		size = { 1200 900 }
+		alwaystransparent = yes
+		
+		blockoverride "grayscale" {}
+		blockoverride "portrait_button_template_onmouseenter" {}
+		blockoverride "portrait_button_template_onmouseleave" {}
+		blockoverride "portrait_button_template_onclick" {}
+		blockoverride "portrait_button_template_onrightclick" {}
+		blockoverride "portrait_button_template_tooltip" {}
+	}
+}
+
+window = {
+	name = "cultivation_window"
+	widgetid = "cultivation_window"
+	
+	datacontext = "[GetPlayer]"
+	
+	visible = "[GetVariableSystem.Exists('cultivation_window_visible')]"
+	
+	parentanchor = center
+	size = { 1700 900 }
+	layer = middle
+	movable = no
+	filter_mouse = all
+	
+	using = Window_Background
+	using = Window_Decoration_Spike
+	
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		using = Sound_WindowShow_Standard
+		on_start = "[GetScriptedGui('set_cultivation_defaults').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		using = Sound_WindowHide_Standard
+	}
+	
+	vbox = {
+		using = Window_Margins
+		
+		### HEADER ###
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+			
+			blockoverride "header_text" {
+				text = "CULTIVATION_WINDOW_TITLE"
+			}
+			
+			blockoverride "button_close" {
+				onclick = "[GetVariableSystem.Clear('cultivation_window_visible')]"
+			}
+		}
+		
+		### MAIN CONTENT - THREE PORTRAITS ###
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			spacing = 20
+					
+			### CENTER - PLAYER PORTRAIT ###
+			widget = {
+				size = { 1000 800 }
+				
+				background = {
+					using = Background_Area_Dark
+					margin = { 10 10 }
+				}
+				
+				### PORTRAIT SCENE ###		
+				widget = {
+					name = "left_partner_portrait_area"
+					position = { -200 -70 }
+					size = { 100% 650 }
+					parentanchor = top|hcenter
+					
+					# Shadow
+					icon = {
+						name = "portrait_shadow"
+						parentanchor = center
+						position = { 0 220 }
+						texture = "gfx/interface/frontend/portrait_main_menu_shadow.dds"
+						alpha = 0.4
+					}
+					
+					# Portrait - only visible if partner exists
+					widget = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet]"
+						datacontext = "[GetPlayer.MakeScope.Var('cultivation_left_partner').GetCharacter]"
+						size = { 100% 100% }
+						
+						cultivation_partner_portrait = {
+							name = "left_partner_portrait"
+							parentanchor = center
+							portrait_texture = "[Character.GetPortrait('environment_body', 'cultivation_camera_main', 'prayer', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
+							mask = "gfx/portraits/portrait_mask_solid.dds"
+						}
+					}
+					
+					# Empty state text
+					text_single = {
+						visible = "[Not(GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet)]"
+						parentanchor = center
+						text = "NO_LEFT_PARTNER"
+						default_format = "#weak"
+					}
+				}
+				
+				# Partner info and buttons
+					vbox = {
+						parentanchor = bottom|hcenter
+						position = { -300 300 }
+						spacing = 5
+						
+						margin = { 15 10 }
+					
+					# Find Partner button with icon (like Find Concubine)
+					button_round = {
+						visible = "[Not(GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet)]"
+						
+						onclick = "[Character.OpenPlayerInteraction( 'find_cultivation_left_partner' )]"
+						enabled = "[Character.IsPlayerInteractionValid( 'find_cultivation_left_partner' )]"
+						
+						button_change = {
+							parentanchor = center
+							alwaystransparent = yes
+							#size = { 25 25 }
+						}
+						
+						tooltip = "FIND_LEFT_PARTNER_TOOLTIP"
+					}
+					
+					# Change Partner button (if exists)
+					button_round = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet]"
+						#size = { 250 35 }
+						
+						button_change = {
+							parentanchor = center
+							alwaystransparent = yes
+							#size = { 25 25 }
+						}
+						
+						onclick = "[Character.OpenPlayerInteraction( 'find_cultivation_left_partner' )]"
+						enabled = "[Character.IsPlayerInteractionValid( 'find_cultivation_left_partner' )]"
+					}
+					
+					# Remove button (only if partner exists)
+					button_round = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet]"
+						#size = { 250 35 }
+						
+						button_clear = {
+							parentanchor = center
+							alwaystransparent = yes
+							#size = { 25 25 }
+						}
+						
+						onclick = "[GetScriptedGui('remove_left_partner').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				vbox = {
+					parentanchor = bottom|hcenter
+					position = { -200 300 }
+					# Partner name (if exists)
+					
+					background = {
+						using = Background_Area
+						margin = { -380 -380 }
+					}
+					
+					# Partner name (if exists)
+					text_single = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet]"
+						datacontext = "[GetPlayer.MakeScope.Var('cultivation_left_partner').GetCharacter]"
+						text = "[Character.GetUINameNoTooltip]"
+						default_format = "#high"
+						align = center
+						autoresize = yes
+						max_width = 350
+					}
+				}
+				
+				widget = {
+					name = "right_partner_portrait_area"
+					position = { 200 -70 }
+					size = { 100% 650 }
+					parentanchor = top|hcenter
+					
+					# Shadow
+					icon = {
+						name = "portrait_shadow"
+						parentanchor = center
+						position = { 0 220 }
+						texture = "gfx/interface/frontend/portrait_main_menu_shadow.dds"
+						alpha = 0.4
+					}
+					
+					# Portrait - only visible if partner exists
+					widget = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet]"
+						datacontext = "[GetPlayer.MakeScope.Var('cultivation_right_partner').GetCharacter]"
+						size = { 100% 100% }
+						
+						cultivation_partner_portrait = {
+							name = "right_partner_portrait"
+							parentanchor = center
+							portrait_texture = "[Character.GetPortrait('environment_body', 'cultivation_camera_main', 'prayer', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
+							mask = "gfx/portraits/portrait_mask_solid.dds"
+						}
+					}
+					
+					# Empty state text
+					text_single = {
+						visible = "[Not(GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet)]"
+						parentanchor = center
+						text = "NO_RIGHT_PARTNER"
+						default_format = "#weak"
+					}
+				}
+				
+				# Partner info and buttons
+				vbox = {
+					parentanchor = bottom|hcenter
+					position = { 300 300 }
+					margin = { -200 500 }
+					# Find Partner button with icon
+					button_round = {
+						visible = "[Not(GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet)]"
+						#size = { 35 35 }
+						
+						onclick = "[Character.OpenPlayerInteraction( 'find_cultivation_right_partner' )]"
+						enabled = "[Character.IsPlayerInteractionValid( 'find_cultivation_right_partner' )]"
+						button_change = {
+							parentanchor = center
+							alwaystransparent = yes
+							#size = { 25 25 }
+						}
+						tooltip = "FIND_RIGHT_PARTNER_TOOLTIP"
+					}
+					
+					# Change Partner button (if exists)
+					button_round = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet]"
+						#size = { 250 35 }
+						
+						button_change = {
+							parentanchor = center
+							alwaystransparent = yes
+							#size = { 25 25 }
+						}
+						
+						onclick = "[Character.OpenPlayerInteraction( 'find_cultivation_right_partner' )]"
+						enabled = "[Character.IsPlayerInteractionValid( 'find_cultivation_right_partner' )]"
+					}
+					
+					# Remove button (only if partner exists)
+					button_round = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet]"
+						#size = { 250 35 }
+						
+						button_clear = {
+							parentanchor = center
+							alwaystransparent = yes
+							#size = { 25 25 }
+						}
+						
+						onclick = "[GetScriptedGui('remove_right_partner').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+				}
+				vbox = {
+					parentanchor = bottom|hcenter
+					position = { 200 300 }
+					# Partner name (if exists)
+					
+					background = {
+						using = Background_Area
+						margin = { -380 -380 }
+					}
+					
+					text_single = {
+						visible = "[GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet]"
+						datacontext = "[GetPlayer.MakeScope.Var('cultivation_right_partner').GetCharacter]"
+						text = "[Character.GetUINameNoTooltip]"
+						default_format = "#high"
+						align = center
+						autoresize = yes
+						max_width = 350
+					}
+				}
+				widget = {
+					name = "portrait_scene"
+					size = { 100% 100% }
+					
+					# Shadow
+					icon = {
+						name = "portrait_shadow"
+						parentanchor = center
+						position = { 0 341 }
+						texture = "gfx/interface/frontend/portrait_main_menu_shadow.dds"
+						alpha = 0.5
+					}
+					
+					# PLAYER PORTRAIT
+					cultivation_portrait = {
+						name = "player_portrait"
+						parentanchor = center
+						size = { 100% 1000 }
+						position = { 0 -150 }
+						portrait_texture = "[Character.GetPortrait('environment_body', 'cultivation_camera_main', 'throne_room_ruler_3', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
+						mask = "gfx/portraits/portrait_mask_solid.dds"
+					}
+				}
+				### TEXT OVERLAY ###
+			}
+			### RIGHT SIDE - INFO & CONTROLS ###
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				spacing = 20
+				margin = { 20 20 }
+				
+				background = {
+					using = Background_Area
+					margin = { 10 10 }
+				}
+
+				### CHARACTER INFO ###
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					margin = { 20 20 }
+					
+					text_label_center = {
+						text = "[Character.GetUIName]"
+						using = Font_Size_Big
+						layoutpolicy_horizontal = expanding
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+							text_single = {
+								text = "CULTIVATION_GUI_SECT_LABEL"
+								min_width = 100
+							}
+						
+						text_single = {
+							text = "[Character.GetFaith.GetName]"
+							layoutpolicy_horizontal = expanding
+							default_format = "#high"
+						}
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+							text_single = {
+								text = "CULTIVATION_GUI_PROWESS_LABEL"
+								min_width = 100
+							}
+						
+						text_single = {
+							text = "[Character.GetProwess]"
+							layoutpolicy_horizontal = expanding
+							default_format = "#high"
+						}
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+							text_single = {
+								text = "CULTIVATION_GUI_REALM_LABEL"
+								min_width = 100
+							}
+						
+						# FLOWCONTAINER with ignoreinvisible = yes
+						# This makes invisible children not take up space!
+						flowcontainer = {
+							ignoreinvisible = yes
+							layoutpolicy_horizontal = expanding
+							
+								text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_true_immortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_true_immortal').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_entering_nirvana').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_entering_nirvana').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_sacred_vessel').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_sacred_vessel').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_star_shattering').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_star_shattering').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_integration').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_integration').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_four_axis').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_four_axis').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_heavenly_being').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_heavenly_being').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_nascent_soul').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_nascent_soul').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_core_formation').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_core_formation').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_building').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_building').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_refining').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_refining').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_gathering').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_gathering').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_mortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+									text = "CULTIVATION_GUI_MORTAL_LABEL"
+								}
+						}
+					}
+				}
+				
+				### CHARACTER INFO ###
+				vbox = {
+					visible = "[GetPlayer.MakeScope.Var('cultivation_left_partner').IsSet]"
+					datacontext = "[GetPlayer.MakeScope.Var('cultivation_left_partner').GetCharacter]"
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					margin = { 20 20 }
+					
+					text_label_center = {
+						text = "[Character.GetUIName]"
+						using = Font_Size_Big
+						layoutpolicy_horizontal = expanding
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+						text_single = {
+							text = "Sect:"
+							min_width = 100
+						}
+						
+						text_single = {
+							text = "[Character.GetFaith.GetName]"
+							layoutpolicy_horizontal = expanding
+							default_format = "#high"
+						}
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+						text_single = {
+							text = "Prowess:"
+							min_width = 100
+						}
+						
+						text_single = {
+							text = "[Character.GetProwess]"
+							layoutpolicy_horizontal = expanding
+							default_format = "#high"
+						}
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+						text_single = {
+							text = "Realm:"
+							min_width = 100
+						}
+						
+						# FLOWCONTAINER with ignoreinvisible = yes
+						# This makes invisible children not take up space!
+						flowcontainer = {
+							ignoreinvisible = yes
+							layoutpolicy_horizontal = expanding
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_true_immortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_true_immortal').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_entering_nirvana').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_entering_nirvana').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_sacred_vessel').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_sacred_vessel').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_star_shattering').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_star_shattering').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_integration').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_integration').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_four_axis').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_four_axis').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_heavenly_being').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_heavenly_being').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_nascent_soul').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_nascent_soul').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_core_formation').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_core_formation').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_building').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_building').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_refining').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_refining').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_gathering').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_gathering').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_mortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "Mortal"
+							}
+						}
+					}
+				}				
+				
+				### CHARACTER INFO ###
+				vbox = {
+					visible = "[GetPlayer.MakeScope.Var('cultivation_right_partner').IsSet]"
+					datacontext = "[GetPlayer.MakeScope.Var('cultivation_right_partner').GetCharacter]"
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					margin = { 20 20 }
+					
+					text_label_center = {
+						text = "[Character.GetUIName]"
+						using = Font_Size_Big
+						layoutpolicy_horizontal = expanding
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+						text_single = {
+							text = "Sect:"
+							min_width = 100
+						}
+						
+						text_single = {
+							text = "[Character.GetFaith.GetName]"
+							layoutpolicy_horizontal = expanding
+							default_format = "#high"
+						}
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+						text_single = {
+							text = "Prowess:"
+							min_width = 100
+						}
+						
+						text_single = {
+							text = "[Character.GetProwess]"
+							layoutpolicy_horizontal = expanding
+							default_format = "#high"
+						}
+					}
+					
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+						
+						text_single = {
+							text = "Realm:"
+							min_width = 100
+						}
+						
+						# FLOWCONTAINER with ignoreinvisible = yes
+						# This makes invisible children not take up space!
+						flowcontainer = {
+							ignoreinvisible = yes
+							layoutpolicy_horizontal = expanding
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_true_immortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_true_immortal').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_entering_nirvana').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_entering_nirvana').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_sacred_vessel').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_sacred_vessel').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_star_shattering').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_star_shattering').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_integration').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_integration').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_four_axis').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_four_axis').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_heavenly_being').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_heavenly_being').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_nascent_soul').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_nascent_soul').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_core_formation').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_core_formation').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_building').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_building').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_refining').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_refining').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_qi_gathering').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "[GetTrait('cultivation_qi_gathering').GetName( GetPlayer.Self )]"
+							}
+							
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								default_format = "#high"
+								
+								visible = "[GetScriptedGui('show_mortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
+								text = "Mortal"
+							}
+						}
+					}
+				}
+				
+				expand = {}
+				
+				### BREAKTHROUGH BUTTON ###
+				button_primary = {
+					layoutpolicy_horizontal = expanding
+					text = "BREAKTHROUGH"
+					onclick = "[GetVariableSystem.Set('cultivation_breakthrough', 'yes')]"
+				}
+			}
+		}
+		
+		expand = {}
+	}
+}

@@ -1,0 +1,1788 @@
+﻿namespace = cultivation_sect_visit
+
+# ============================================================================
+# ALL CULTIVATION SECT VISIT EVENTS - 67 SECTS
+# ============================================================================
+
+# ===== ORTHODOX SWORD DAO =====
+
+# Mount Hua Sect - Visit Event 1000
+cultivation_sect_visit.1000 = {
+    type = character_event
+    title = cultivation_sect_visit.1000.t
+    desc = cultivation_sect_visit.1000.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:mount_hua_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1000 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+		
+		custom_tooltip = sect_spar_option_tooltip
+		
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Heavenly Sword Pavilion - Visit Event 1001
+cultivation_sect_visit.1001 = {
+    type = character_event
+    title = cultivation_sect_visit.1001.t
+    desc = cultivation_sect_visit.1001.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:heavenly_sword_pavilion
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1001 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Ten Thousand Swords Valley - Visit Event 1003
+cultivation_sect_visit.1003 = {
+    type = character_event
+    title = cultivation_sect_visit.1003.t
+    desc = cultivation_sect_visit.1003.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:ten_thousand_swords_valley
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1003 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Violet Thunder Blade Sect - Visit Event 1004
+cultivation_sect_visit.1004 = {
+    type = character_event
+    title = cultivation_sect_visit.1004.t
+    desc = cultivation_sect_visit.1004.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:violet_thunder_blade_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1004 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Nine Star Formation Sect - Visit Event 1052
+cultivation_sect_visit.1052 = {
+    type = character_event
+    title = cultivation_sect_visit.1052.t
+    desc = cultivation_sect_visit.1052.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:nine_star_formation_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1052 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Mystic Seal Pavilion - Visit Event 1053
+cultivation_sect_visit.1053 = {
+    type = character_event
+    title = cultivation_sect_visit.1053.t
+    desc = cultivation_sect_visit.1053.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:mystic_seal_pavilion
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1053 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Wudang Sect - Visit Event 1100
+cultivation_sect_visit.1100 = {
+    type = character_event
+    title = cultivation_sect_visit.1100.t
+    desc = cultivation_sect_visit.1100.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:wudang_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1100 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Shaolin Temple - Visit Event 1101
+cultivation_sect_visit.1101 = {
+    type = character_event
+    title = cultivation_sect_visit.1101.t
+    desc = cultivation_sect_visit.1101.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:shaolin_temple
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1101 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Eternal Harmony Pavilion - Visit Event 1102
+cultivation_sect_visit.1102 = {
+    type = character_event
+    title = cultivation_sect_visit.1102.t
+    desc = cultivation_sect_visit.1102.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:eternal_harmony_pavilion
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1102 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# ===== ORTHODOX SPIRIT CONTRACT DAO =====
+
+# Divine Beast Mountain - Visit Event 1150
+cultivation_sect_visit.1150 = {
+    type = character_event
+    title = cultivation_sect_visit.1150.t
+    desc = cultivation_sect_visit.1150.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:divine_beast_mountain
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1150 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Thousand Beast Valley - Visit Event 1154
+cultivation_sect_visit.1154 = {
+    type = character_event
+    title = cultivation_sect_visit.1154.t
+    desc = cultivation_sect_visit.1154.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:thousand_beast_valley
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1154 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# ===== UNORTHODOX SABER DAO =====
+
+# Crimson Moon Blade Hall - Visit Event 2000
+cultivation_sect_visit.2000 = {
+    type = character_event
+    title = cultivation_sect_visit.2000.t
+    desc = cultivation_sect_visit.2000.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:crimson_moon_blade_hall
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2000 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Tyrant Saber Palace - Visit Event 2001
+cultivation_sect_visit.2001 = {
+    type = character_event
+    title = cultivation_sect_visit.2001.t
+    desc = cultivation_sect_visit.2001.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:tyrant_saber_palace
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2001 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Demon Suppressing Blade Clan - Visit Event 2003
+cultivation_sect_visit.2003 = {
+    type = character_event
+    title = cultivation_sect_visit.2003.t
+    desc = cultivation_sect_visit.2003.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:demon_suppressing_blade_clan
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2003 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Medicine King Valley - Visit Event 2051
+cultivation_sect_visit.2051 = {
+    type = character_event
+    title = cultivation_sect_visit.2051.t
+    desc = cultivation_sect_visit.2051.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:medicine_king_valley
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2051 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Hundred Herbs Pavilion - Visit Event 2052
+cultivation_sect_visit.2052 = {
+    type = character_event
+    title = cultivation_sect_visit.2052.t
+    desc = cultivation_sect_visit.2052.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:hundred_herbs_pavilion
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2052 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Jade Chamber Sect - Visit Event 2103
+cultivation_sect_visit.2103 = {
+    type = character_event
+    title = cultivation_sect_visit.2103.t
+    desc = cultivation_sect_visit.2103.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:jade_chamber_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2103 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Eternal Pleasure Hall - Visit Event 2104
+cultivation_sect_visit.2104 = {
+    type = character_event
+    title = cultivation_sect_visit.2104.t
+    desc = cultivation_sect_visit.2104.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:eternal_pleasure_hall
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2104 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# ===== UNORTHODOX JIANGSHI DAO =====
+
+# Moonless Night Pavilion - Visit Event 2150
+cultivation_sect_visit.2150 = {
+    type = character_event
+    title = cultivation_sect_visit.2150.t
+    desc = cultivation_sect_visit.2150.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:moonless_night_pavilion
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2150 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Pale Bone Hall - Visit Event 2151
+cultivation_sect_visit.2151 = {
+    type = character_event
+    title = cultivation_sect_visit.2151.t
+    desc = cultivation_sect_visit.2151.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:pale_bone_hall
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2151 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Eternal Rest Clan - Visit Event 2152
+cultivation_sect_visit.2152 = {
+    type = character_event
+    title = cultivation_sect_visit.2152.t
+    desc = cultivation_sect_visit.2152.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:eternal_rest_clan
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.2152 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Ten Thousand Corpse Valley - Visit Event 3001
+cultivation_sect_visit.3001 = {
+    type = character_event
+    title = cultivation_sect_visit.3001.t
+    desc = cultivation_sect_visit.3001.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:ten_thousand_corpse_valley
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.3001 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Venomous Serpent Valley - Visit Event 3051
+cultivation_sect_visit.3051 = {
+    type = character_event
+    title = cultivation_sect_visit.3051.t
+    desc = cultivation_sect_visit.3051.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:venomous_serpent_valley
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.3051 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Blood Yin Cult - Visit Event 3100
+cultivation_sect_visit.3100 = {
+    type = character_event
+    title = cultivation_sect_visit.3100.t
+    desc = cultivation_sect_visit.3100.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:blood_yin_cult
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.3100 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Blood Moon Demonic Sect - Visit Event 3101
+cultivation_sect_visit.3101 = {
+    type = character_event
+    title = cultivation_sect_visit.3101.t
+    desc = cultivation_sect_visit.3101.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:blood_moon_demonic_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.3101 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Succubus Palace - Visit Event 3150
+cultivation_sect_visit.3150 = {
+    type = character_event
+    title = cultivation_sect_visit.3150.t
+    desc = cultivation_sect_visit.3150.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:succubus_palace
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.3150 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# ===== VAGRANT WANDERING BLADE DAO =====
+
+# Lone Wolf Wanderers - Visit Event 4000
+cultivation_sect_visit.4000 = {
+    type = character_event
+    title = cultivation_sect_visit.4000.t
+    desc = cultivation_sect_visit.4000.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:lone_wolf_wanderers
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4000 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Vagrant Blade Brotherhood - Visit Event 4002
+cultivation_sect_visit.4002 = {
+    type = character_event
+    title = cultivation_sect_visit.4002.t
+    desc = cultivation_sect_visit.4002.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:vagrant_blade_brotherhood
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4002 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# ===== VAGRANT ARTIFACT DAO =====
+
+# Thousand Treasures Pavilion - Visit Event 4050
+cultivation_sect_visit.4050 = {
+    type = character_event
+    title = cultivation_sect_visit.4050.t
+    desc = cultivation_sect_visit.4050.desc
+    theme = stewardship
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:thousand_treasures_pavilion
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4050 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Mystic Forge Hall - Visit Event 4051
+cultivation_sect_visit.4051 = {
+    type = character_event
+    title = cultivation_sect_visit.4051.t
+    desc = cultivation_sect_visit.4051.desc
+    theme = stewardship
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:mystic_forge_hall
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4051 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Ancient Relic Sect - Visit Event 4052
+cultivation_sect_visit.4052 = {
+    type = character_event
+    title = cultivation_sect_visit.4052.t
+    desc = cultivation_sect_visit.4052.desc
+    theme = stewardship
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:ancient_relic_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4052 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Primal Beast Sect - Visit Event 4101
+cultivation_sect_visit.4101 = {
+    type = character_event
+    title = cultivation_sect_visit.4101.t
+    desc = cultivation_sect_visit.4101.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:primal_beast_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4101 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Primordial Chaos Hall - Visit Event 4102
+cultivation_sect_visit.4102 = {
+    type = character_event
+    title = cultivation_sect_visit.4102.t
+    desc = cultivation_sect_visit.4102.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:primordial_chaos_hall
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4102 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+# Feral Bond Sect - Visit Event 4152
+cultivation_sect_visit.4152 = {
+    type = character_event
+    title = cultivation_sect_visit.4152.t
+    desc = cultivation_sect_visit.4152.desc
+    theme = diplomacy
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:feral_bond_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }        
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    # JOIN SECT
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4152 }
+    }
+
+    # SPAR WITH DISCIPLES
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    # LEAVE
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}

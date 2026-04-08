@@ -1,0 +1,42 @@
+﻿### Can Recruit Triggers ###
+# Fixed typo and improved structure
+
+cultivation_martial_arts_can_recruit_cultivator = {
+    is_alive = yes
+    is_playable_character = yes
+    # Check for ANY cultivation trait
+	OR = {    
+		has_trait = cultivation_qi_gathering
+		has_trait = cultivation_qi_refining
+		has_trait = cultivation_qi_building
+		has_trait = cultivation_core_formation
+		has_trait = cultivation_nascent_soul
+		has_trait = cultivation_heavenly_being
+		has_trait = cultivation_four_axis
+		has_trait = cultivation_integration
+		has_trait = cultivation_star_shattering
+		has_trait = cultivation_sacred_vessel
+		has_trait = cultivation_entering_nirvana
+		has_trait = cultivation_true_immortal
+	}
+}
+
+cultivation_martial_arts_can_recruit_martial_artist = {
+    cultivation_martial_arts_can_recruit_cultivator = yes
+    cultivation_has_martial_arts_2 = yes
+}
+
+cultivation_martial_arts_can_recruit_seducer = {
+    cultivation_martial_arts_can_recruit_cultivator = yes
+    cultivation_has_martial_arts_3 = yes
+}
+
+cultivation_martial_arts_can_recruit_zombie = {
+    cultivation_martial_arts_can_recruit_cultivator = yes
+    cultivation_has_martial_arts_4 = yes
+}
+
+cultivation_martial_arts_can_recruit_immortal = {
+    cultivation_martial_arts_can_recruit_cultivator = yes
+    cultivation_has_martial_arts_5 = yes
+}

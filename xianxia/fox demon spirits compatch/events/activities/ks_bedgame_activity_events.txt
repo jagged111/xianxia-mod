@@ -1,0 +1,1517 @@
+﻿namespace = ks_bed_games
+
+##################################################
+# # Playing a BED Game
+##################################################
+
+
+
+
+
+
+
+
+
+
+##################################################
+# PLAYING BEDGAME
+
+##################################################
+# The Greatest Game
+# by Ewan Cowhig Croft
+# 0001 - 0010
+##################################################
+
+#	Main board game processing event.
+ks_bed_games.0001 = {
+	type = character_event
+	window = duel_event
+	title = ks_bed_games.0001.t
+	desc = {
+		# Intro section.
+		first_valid = {
+			# Is this our first move?
+			triggered_desc = {
+				trigger = {
+					scope:ks_bg_defender.var:ks_bg_current_round = 1
+					this = scope:ks_bg_defender
+				}
+				desc = ks_bed_games.0001.desc.intro.opening.defender
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ks_bg_defender.var:ks_bg_current_round = 1
+					this = scope:ks_bg_attacker
+				}
+				desc = ks_bed_games.0001.desc.intro.opening.attacker
+			}
+			# Otherwise, standard chained intro.
+			desc = ks_bed_games.0001.desc.intro.subsequent
+		}
+		# What did our opponent play?
+		first_valid = {
+			## Diplomacy
+			triggered_desc = {
+				trigger = {
+					OR = {
+						AND = {
+							exists = scope:ks_bg_defender
+							exists = scope:ks_bg_attacker_move
+							this = scope:ks_bg_defender
+							scope:ks_bg_attacker_move = flag:diplomacy
+						}
+						AND = {
+							exists = scope:ks_bg_attacker
+							exists = scope:ks_bg_defender_move
+							this = scope:ks_bg_attacker
+							scope:ks_bg_defender_move = flag:diplomacy
+						}
+					}
+				}
+				desc = {
+					first_valid = {
+						# Crit Success
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:crit_success
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:crit_success
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.diplomacy.crit_success
+						}
+						# Success
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:success
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:success
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.diplomacy.success
+						}
+						# Failure
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:failure
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:failure
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.diplomacy.failure
+						}
+						# Crit Failure
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:crit_failure
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:crit_failure
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.diplomacy.crit_failure
+						}
+					}
+				}
+			}
+			## Intrigue
+			triggered_desc = {
+				trigger = {
+					OR = {
+						AND = {
+							exists = scope:ks_bg_defender
+							exists = scope:ks_bg_attacker_move
+							this = scope:ks_bg_defender
+							scope:ks_bg_attacker_move = flag:intrigue
+						}
+						AND = {
+							exists = scope:ks_bg_attacker
+							exists = scope:ks_bg_defender_move
+							this = scope:ks_bg_attacker
+							scope:ks_bg_defender_move = flag:intrigue
+						}
+					}
+				}
+				desc = {
+					first_valid = {
+						# Crit Success
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:crit_success
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:crit_success
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.intrigue.crit_success
+						}
+						# Success
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:success
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:success
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.intrigue.success
+						}
+						# Failure
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:failure
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:failure
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.intrigue.failure
+						}
+						# Crit Failure
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:crit_failure
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:crit_failure
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.intrigue.crit_failure
+						}
+					}
+				}
+			}
+			## Prowess
+			triggered_desc = {
+				trigger = {
+					OR = {
+						AND = {
+							exists = scope:ks_bg_defender
+							exists = scope:ks_bg_attacker_move
+							this = scope:ks_bg_defender
+							scope:ks_bg_attacker_move = flag:prowess
+						}
+						AND = {
+							exists = scope:ks_bg_attacker
+							exists = scope:ks_bg_defender_move
+							this = scope:ks_bg_attacker
+							scope:ks_bg_defender_move = flag:prowess
+						}
+					}
+				}
+				desc = {
+					first_valid = {
+						# Crit Success
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:crit_success
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:crit_success
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.prowess.crit_success
+						}
+						# Success
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:success
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:success
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.prowess.success
+						}
+						# Failure
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:failure
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:failure
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.prowess.failure
+						}
+						# Crit Failure
+						triggered_desc = {
+							trigger = {
+								OR = {
+									AND = {
+										this = scope:ks_bg_defender
+										scope:ks_bg_attacker.var:ks_bg_move_result = flag:crit_failure
+									}
+									AND = {
+										this = scope:ks_bg_attacker
+										scope:ks_bg_defender.var:ks_bg_move_result = flag:crit_failure
+									}
+								}
+							}
+							desc = ks_bed_games.0001.desc.intro.prowess.crit_failure
+						}
+					}
+				}
+			}
+		}
+		# Was someone countered?
+		first_valid = {
+			# Yes! I countered them.
+			triggered_desc = {
+				trigger = {
+					exists = scope:ks_bg_counterer
+					this = scope:ks_bg_counterer
+				}
+				desc = ks_bed_games.0001.desc.i_have_countered
+			}
+			# Yes! I have been countered.
+			triggered_desc = {
+				trigger = {
+					exists = scope:ks_bg_counterer
+					this != scope:ks_bg_counterer
+				}
+				desc = ks_bed_games.0001.desc.i_am_countered
+			}
+			# Nope, just the page breaks please.
+			desc = ks_bed_games.0001.desc.no_counters
+		}
+		## How is the match going?
+		### Us relative to each other.
+		first_valid = {
+			# I'm winning by miles.
+			triggered_desc = {
+				trigger = { var:ks_bg_current_score >= ks_bg_relative_score_heavy_difference_threshold_value }
+				desc = ks_bed_games.0001.desc.relative_victory.winning_heavily
+			}
+			# I'm winning.
+			triggered_desc = {
+				trigger = { var:ks_bg_current_score >= ks_bg_relative_score_light_difference_threshold_value }
+				desc = ks_bed_games.0001.desc.relative_victory.winning_somewhat
+			}
+			# We're essentially equal.
+			triggered_desc = {
+				trigger = {
+					var:ks_bg_current_score >= scope:ks_bg_opponent.var:ks_bg_current_score
+				}
+				desc = ks_bed_games.0001.desc.relative_victory.drawing
+			}
+			# I'm losing.
+			triggered_desc = {
+				trigger = { var:ks_bg_current_score <= ks_bg_relative_score_heavy_difference_threshold_value }
+				desc = ks_bed_games.0001.desc.relative_victory.losing_somewhat
+			}
+			# I'm losing by miles.
+			triggered_desc = {
+				trigger = { var:ks_bg_current_score <= ks_bg_relative_score_light_difference_threshold_value }
+				desc = ks_bed_games.0001.desc.relative_victory.losing_heavily
+			}
+		}
+		### And either one of us towards actual victory.
+		first_valid = {
+			# Either of us could win.
+			triggered_desc = {
+				trigger = {
+					var:ks_bg_current_score >= ks_bg_close_to_winning_threshold_value
+					scope:ks_bg_opponent.var:ks_bg_current_score >= ks_bg_close_to_winning_threshold_value
+				}
+				desc = ks_bed_games.0001.desc.actual_victory.both_close
+			}
+			# I could win.
+			triggered_desc = {
+				trigger = { var:ks_bg_current_score >= ks_bg_close_to_winning_threshold_value }
+				desc = ks_bed_games.0001.desc.actual_victory.i_am_close
+			}
+			# They could win.
+			triggered_desc = {
+				trigger = { scope:ks_bg_opponent.var:ks_bg_current_score >= ks_bg_close_to_winning_threshold_value }
+				desc = ks_bed_games.0001.desc.actual_victory.they_are_close
+
+			}
+			# Sudden death is about to kick in.
+			triggered_desc = {
+				trigger = {
+					scope:ks_bg_defender.var:ks_bg_current_round >= ks_bg_round_cap_value
+				}
+				desc = ks_bed_games.0001.desc.actual_victory.sudden_death
+			}
+			# Neither of us are close.
+			desc = ks_bed_games.0001.desc.actual_victory.neither_close
+		}
+		## Fluff segment.
+		### Opponent Winning
+		triggered_desc = {
+			trigger = {
+				# Since we're processing a whole mess o'random valids here, and they're *all* fluff, we restrict this to AI only.
+				is_ai = no
+				# We let the other player be haughty by making them the tie-breaker.
+				#trigger_if = {
+				#	limit = { has_variable = ks_bg_gib_only_losing_locs }
+				#	always = yes
+				#}
+				trigger_if = {
+					var:ks_bg_current_score <= scope:ks_bg_opponent.var:ks_bg_current_score
+				}
+			}
+			desc = {
+				random_valid = {
+					# Categories
+					## Attributes
+					### Diplomacy
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.diplomacy <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.diplomacy.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.diplomacy > mediocre_skill_rating
+							scope:ks_bg_opponent.diplomacy < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.diplomacy.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.diplomacy >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.diplomacy.high
+					}
+					### Martial
+					#### These generally refer to the act of leading troops, so we put an extra filter on for being able to lead an army.
+					triggered_desc = {
+						trigger = {
+							can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:ks_bg_opponent }
+						}
+						desc = {
+							random_valid = {
+								triggered_desc = {
+									trigger = {scope:ks_bg_opponent.martial <= mediocre_skill_rating }
+									desc = ks_bed_games.0001.desc.opponent_winning.martial.low
+								}
+								triggered_desc = {
+									trigger = {
+										scope:ks_bg_opponent.martial > mediocre_skill_rating
+										scope:ks_bg_opponent.martial < high_skill_rating
+									}
+									desc = ks_bed_games.0001.desc.opponent_winning.martial.medium
+								}
+								triggered_desc = {
+									trigger = { scope:ks_bg_opponent.martial >= high_skill_rating }
+									desc = ks_bed_games.0001.desc.opponent_winning.martial.high
+								}
+							}
+						}
+					}
+					### Stewardship
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.stewardship <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.stewardship.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.stewardship > mediocre_skill_rating
+							scope:ks_bg_opponent.stewardship < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.stewardship.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.stewardship >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.stewardship.high
+					}
+					### Intrigue
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.intrigue <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.intrigue.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.intrigue > mediocre_skill_rating
+							scope:ks_bg_opponent.intrigue < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.intrigue.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.intrigue >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.intrigue.high
+					}
+					### Learning
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.learning <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.learning.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.learning > mediocre_skill_rating
+							scope:ks_bg_opponent.learning < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.learning.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.learning >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.opponent_winning.learning.high
+					}
+					## Trait Specifics
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = { has_trait = lustful }
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.trait.lustful
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = { has_trait = huxian_blood }
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.trait.huxian_blood
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = { has_trait = huxian_cultivation }
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.trait.huxian_cultivation
+					}
+					### Prior Matches
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = {
+								exists = var:ks_bg_recent_default_loss_to
+								var:ks_bg_recent_default_loss_to = scope:ks_bg_myself
+							}
+						}
+						desc = ks_bed_games.0001.desc.opponent_winning.match_history.recently_won_against.default
+					}
+				}
+			}
+		}
+		### Current Player Winning
+		triggered_desc = {
+			trigger = {
+				# Since we're processing a whole mess o'random valids here, and they're *all* fluff, we restrict this to AI only.
+				is_ai = no
+				# We let the other player be haughty by making them the tie-breaker.
+				#trigger_if = {
+				#	limit = { has_variable = ks_bg_gib_only_winning_locs }#这是debug标志
+				#	always = yes
+				#}
+				trigger_if = {
+					var:ks_bg_current_score > scope:ks_bg_opponent.var:ks_bg_current_score
+				}
+			}
+			desc = {
+				random_valid = {
+					# Categories
+					## Attributes
+					### Diplomacy
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.diplomacy <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.diplomacy.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.diplomacy > mediocre_skill_rating
+							scope:ks_bg_opponent.diplomacy < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.diplomacy.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.diplomacy >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.diplomacy.high
+					}
+					### Martial
+					#### These generally refer to the act of leading troops, so we put an extra filter on for being able to lead an army.
+					triggered_desc = {
+						trigger = {
+							can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:ks_bg_opponent }
+						}
+						desc = {
+							random_valid = {
+								triggered_desc = {
+									trigger = {scope:ks_bg_opponent.martial <= mediocre_skill_rating }
+									desc = ks_bed_games.0001.desc.i_am_winning.martial.low
+								}
+								triggered_desc = {
+									trigger = {
+										scope:ks_bg_opponent.martial > mediocre_skill_rating
+										scope:ks_bg_opponent.martial < high_skill_rating
+									}
+									desc = ks_bed_games.0001.desc.i_am_winning.martial.medium
+								}
+								triggered_desc = {
+									trigger = { scope:ks_bg_opponent.martial >= high_skill_rating }
+									desc = ks_bed_games.0001.desc.i_am_winning.martial.high
+								}
+							}
+						}
+					}
+					### Stewardship
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.stewardship <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.stewardship.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.stewardship > mediocre_skill_rating
+							scope:ks_bg_opponent.stewardship < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.stewardship.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.stewardship >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.stewardship.high
+					}
+					### Intrigue
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.intrigue <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.intrigue.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.intrigue > mediocre_skill_rating
+							scope:ks_bg_opponent.intrigue < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.intrigue.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.intrigue >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.intrigue.high
+					}
+					### Learning
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.learning <= mediocre_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.learning.low
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent.learning > mediocre_skill_rating
+							scope:ks_bg_opponent.learning < high_skill_rating
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.learning.medium
+					}
+					triggered_desc = {
+						trigger = { scope:ks_bg_opponent.learning >= high_skill_rating }
+						desc = ks_bed_games.0001.desc.i_am_winning.learning.high
+					}
+					## Trait Specifics
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = { has_trait = lustful }
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.trait.lustful
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = { has_trait = huxian_blood }
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.trait.huxian_blood
+					}
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = { has_trait = huxian_cultivation }
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.trait.huxian_cultivation
+					}
+
+					### Prior Matches
+					triggered_desc = {
+						trigger = {
+							scope:ks_bg_opponent = {
+								exists = var:ks_bg_recent_default_loss_to
+								var:ks_bg_recent_default_loss_to = scope:ks_bg_myself
+							}
+						}
+						desc = ks_bed_games.0001.desc.i_am_winning.match_history.recently_won_against.default
+					}
+					### Other
+					#### [tumbleweeds]
+				}
+			}
+		}
+	}
+	theme = seduce_scheme
+	left_portrait = {
+		character = scope:ks_bg_myself
+		triggered_animation = { # Winning by a large margin
+			trigger = {
+				scope:ks_bg_myself = {
+					NOT = { has_trait = humble }
+					OR = {
+						var:ks_bg_current_score >= ks_bg_relative_score_heavy_difference_threshold_value
+						var:ks_bg_current_score >= ks_bg_close_to_winning_threshold_value
+					}
+				}
+			}
+  			animation = ecstasy
+  		}
+		triggered_animation = { # Winning by any margin
+			trigger = {
+				scope:ks_bg_myself = {
+					NOT = { has_trait = humble }
+					var:ks_bg_current_score >= ks_bg_relative_score_light_difference_threshold_value
+				}
+			}
+  			animation = flirtation
+  		}
+		animation = scheme
+	}
+	right_portrait = {
+		character = scope:ks_bg_opponent
+		triggered_animation = {
+			trigger = {
+				scope:ks_bg_opponent = {
+					NOT = { has_trait = humble }
+				}
+				scope:ks_bg_myself.var:ks_bg_current_score < scope:ks_bg_opponent.var:ks_bg_current_score
+				scope:ks_bg_myself.var:ks_bg_current_score <= ks_bg_relative_score_heavy_difference_threshold_value
+			}
+  			animation = scheme
+  		}
+		triggered_animation = {
+			trigger = {
+				scope:ks_bg_opponent = {
+					NOT = { has_trait = humble }
+				}
+				scope:ks_bg_myself.var:ks_bg_current_score < scope:ks_bg_opponent.var:ks_bg_current_score
+				OR = {
+					scope:ks_bg_myself.var:ks_bg_current_score <= ks_bg_relative_score_light_difference_threshold_value
+					scope:ks_bg_opponent.var:ks_bg_current_score >= ks_bg_close_to_winning_threshold_value
+				}
+			}
+  			animation = ecstasy
+  		}
+		animation = admiration
+	}
+
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:terrain_scope }
+		reference = terrain_scope
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:wilderness_scope }
+		reference = wilderness_scope
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:battlefield }
+		reference = battlefield
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:temple }
+		reference = temple
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:council_chamber }
+		reference = council_chamber
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:courtyard }
+		reference = courtyard
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:dungeon }
+		reference = dungeon
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:docks }
+		reference = docks
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:feast }
+		reference = feast
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:gallows }
+		reference = gallows
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:garden }
+		reference = garden
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:market }
+		reference = market
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:sitting_room }
+		reference = sitting_room
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:bedchamber }
+		reference = bedchamber
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:study }
+		reference = study
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:physicians_study }
+		reference = physicians_study
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:tavern }
+		reference = tavern
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:throne_room }
+		reference = throne_room
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:army_camp }
+		reference = army_camp
+	}
+
+	trigger = {
+		scope:ks_bg_defender = { age >= 8 }
+		scope:ks_bg_attacker = { age >= 8 }
+	}
+	on_trigger_fail = { ks_bg_fire_clean_up_and_invalidate_effect = yes }
+
+	immediate = {
+		# Sort scopes for portraits & loc.
+		save_scope_as = ks_bg_myself
+		if = {
+			limit = { this = scope:ks_bg_defender }
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_opponent }
+		}
+		else = {
+			scope:ks_bg_defender = { save_scope_as = ks_bg_opponent }
+		}
+		# TIT-34135
+	}
+
+	# Diplomacy: fall back on social acumen.
+	option = {
+		name = {
+			text = {
+				random_valid = {
+					desc = ks_bed_games.0001.a.random.a
+					desc = ks_bed_games.0001.a.random.b
+					desc = ks_bed_games.0001.a.random.c
+					desc = ks_bed_games.0001.a.random.d
+				}
+			}
+		}
+		skill = diplomacy
+		trigger = {
+			OR = {
+				scope:ks_bg_skill_a = flag:diplomacy
+				scope:ks_bg_skill_b = flag:diplomacy
+				scope:ks_bg_skill_c = flag:diplomacy
+			}
+		}
+
+		# Notify the player of the counter type.
+		custom_tooltip = ks_bed_games.0001.a.tt
+		# Duel-'em-up.
+		ks_bg_play_move_type_effect = {
+			SKILL = diplomacy
+			LOC_KEY = a
+		}
+
+		# No stress impact for picking moves, but we apply stress impact in the post-game.
+		ai_chance = {
+			base = 0
+
+			ks_bg_ai_weight_choices_by_skill_modifier = {
+				SKILL = diplomacy
+				CHARACTER = this
+			}
+
+			ai_value_modifier = {
+				ai_sociability = 1
+				ai_vengefulness = -1
+			}
+		}
+	}
+
+	# Intrigue: play with cunning.
+	option = {
+		name = {
+			text = {
+				random_valid = {
+					desc = ks_bed_games.0001.d.random.a
+					desc = ks_bed_games.0001.d.random.b
+					desc = ks_bed_games.0001.d.random.c
+					desc = ks_bed_games.0001.d.random.d
+				}
+			}
+		}
+		skill = intrigue
+		trigger = {
+			OR = {
+				scope:ks_bg_skill_a = flag:intrigue
+				scope:ks_bg_skill_b = flag:intrigue
+				scope:ks_bg_skill_c = flag:intrigue
+			}
+		}
+
+		# Notify the player of the counter type.
+		custom_tooltip = ks_bed_games.0001.d.tt
+		# Duel-'em-up.
+		ks_bg_play_move_type_effect = {
+			SKILL = intrigue
+			LOC_KEY = d
+		}
+
+		# No stress impact for picking moves, but we apply stress impact in the post-game.
+		ai_chance = {
+			base = 100
+
+			ks_bg_ai_weight_choices_by_skill_modifier = {
+				SKILL = intrigue
+				CHARACTER = this
+			}
+
+			ai_value_modifier = {
+				ai_vengefulness = 1
+				ai_honor = -1
+			}
+		}
+	}
+
+	# Prowess: settle arguments over rules with fisticuffs mid-game.
+	option = {
+		name = {
+			text = {
+				random_valid = {
+					desc = ks_bed_games.0001.f.random.a
+					desc = ks_bed_games.0001.f.random.b
+					desc = ks_bed_games.0001.f.random.c
+					desc = ks_bed_games.0001.f.random.d
+				}
+			}
+		}
+		skill = prowess
+		trigger = {
+			OR = {
+				scope:ks_bg_skill_a = flag:prowess
+				scope:ks_bg_skill_b = flag:prowess
+				scope:ks_bg_skill_c = flag:prowess
+			}
+		}
+
+		# Notify the player of the counter type.
+		custom_tooltip = ks_bed_games.0001.f.tt
+		# Duel-'em-up.
+		ks_bg_play_move_type_effect = {
+			SKILL = prowess
+			LOC_KEY = e
+		}
+
+		# No stress impact for picking moves, but we apply stress impact in the post-game.
+		ai_chance = {
+			base = 100
+
+			ks_bg_ai_weight_choices_by_skill_modifier = {
+				SKILL = prowess
+				CHARACTER = this
+			}
+
+			ai_value_modifier = {
+				ai_boldness = 1
+				ai_vengefulness = 1
+			}
+		}
+	}
+
+	after = {
+		#If we're scope:ks_bg_defender, send scope:ks_bg_attacker their instance of the event.
+		if = {
+			limit = { this = scope:ks_bg_defender }
+			scope:ks_bg_attacker = { trigger_event = ks_bed_games.0001 }
+		}
+		#Otherwise we're scope:bg_attacker, so end the round.
+		else = { trigger_event = ks_bed_games.0011 }
+	}
+}
+
+##################################################
+# Round End Events
+# by Ewan Cowhig Croft
+# 0011 - 0020
+##################################################
+#	Both players have moved, work out results.
+ks_bed_games.0011 = {
+	hidden = yes
+
+	immediate = {
+		# Work out counterers.
+		## First, clear the prior counterer (if any).
+		clear_saved_scope = ks_bg_counterer
+		## Scope:bg_defender.
+		### Scope:bg_skill_a > scope:bg_skill_b.
+		if = {
+			limit = {
+				scope:ks_bg_defender_move = scope:ks_bg_skill_a
+				scope:ks_bg_attacker_move = scope:ks_bg_skill_b
+			}
+			scope:ks_bg_defender = { save_scope_as = ks_bg_counterer }
+		}
+		### Scope:bg_skill_b > scope:bg_skill_c.
+		else_if = {
+			limit = {
+				scope:ks_bg_defender_move = scope:ks_bg_skill_b
+				scope:ks_bg_attacker_move = scope:ks_bg_skill_c
+			}
+			scope:ks_bg_defender = { save_scope_as = ks_bg_counterer }
+		}
+		### Scope:bg_skill_c > scope:bg_skill_a.
+		else_if = {
+			limit = {
+				scope:ks_bg_defender_move = scope:ks_bg_skill_c
+				scope:ks_bg_attacker_move = scope:ks_bg_skill_a
+			}
+			scope:ks_bg_defender = { save_scope_as = ks_bg_counterer }
+		}
+		## Scope:bg_attacker.
+		### Scope:bg_skill_a > scope:bg_skill_b.
+		else_if = {
+			limit = {
+				scope:ks_bg_attacker_move = scope:ks_bg_skill_a
+				scope:ks_bg_defender_move = scope:ks_bg_skill_b
+			}
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_counterer }
+		}
+		### Scope:ks_bg_skill_b > scope:ks_bg_skill_c.
+		else_if = {
+			limit = {
+				scope:ks_bg_attacker_move = scope:ks_bg_skill_b
+				scope:ks_bg_defender_move = scope:ks_bg_skill_c
+			}
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_counterer }
+		}
+		### Scope:ks_bg_skill_c > scope:ks_bg_skill_a.
+		else_if = {
+			limit = {
+				scope:ks_bg_attacker_move = scope:ks_bg_skill_c
+				scope:ks_bg_defender_move = scope:ks_bg_skill_a
+			}
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_counterer }
+		}
+		# Calc new score totals.
+		ks_bg_calc_current_scores_effect = {
+			CURRENT_PLAYER = scope:ks_bg_defender
+			OTHER_PLAYER = scope:ks_bg_attacker
+		}
+		ks_bg_calc_current_scores_effect = {
+			CURRENT_PLAYER = scope:ks_bg_attacker
+			OTHER_PLAYER = scope:ks_bg_defender
+		}
+		# Has anyone managed to win?
+		## First we check scope:bg_defender.
+		if = {
+			limit = {
+				scope:ks_bg_defender.var:ks_bg_current_score > ks_bg_winning_threshold_value
+				scope:ks_bg_defender.var:ks_bg_current_score >= scope:ks_bg_attacker.var:ks_bg_current_score
+			}
+			scope:ks_bg_defender = { save_scope_as = ks_bg_victor }
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_loser }
+			save_scope_value_as = {
+				name = ks_bg_victory_type
+				value = flag:skill
+			}
+			ks_bg_finalise_match_end_effect = yes
+		}
+		## Then scope:bg_attacker.
+		else_if = {
+			limit = {
+				scope:ks_bg_attacker.var:ks_bg_current_score > ks_bg_winning_threshold_value
+				scope:ks_bg_attacker.var:ks_bg_current_score > scope:ks_bg_defender.var:ks_bg_current_score
+			}
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_victor }
+			scope:ks_bg_defender = { save_scope_as = ks_bg_loser }
+			save_scope_value_as = {
+				name = ks_bg_victory_type
+				value = flag:skill
+			}
+			ks_bg_finalise_match_end_effect = yes
+		}
+		## Then see if we're above the round limit and should default.
+		else_if = {
+			limit = {
+				scope:ks_bg_defender.var:ks_bg_current_round >= ks_bg_round_cap_value
+			}
+			scope:ks_bg_defender = { save_scope_as = ks_bg_victor }
+			scope:ks_bg_attacker = { save_scope_as = ks_bg_loser }
+			save_scope_value_as = {
+				name = ks_bg_victory_type
+				value = flag:sudden_death
+			}
+			ks_bg_finalise_match_end_effect = yes
+		}
+		## Finally, if none of that applies, we just want to spin on to the next event.
+		else = {
+			scope:ks_bg_defender = {
+				change_variable = {
+					name = ks_bg_current_round
+					add = 1
+				}
+				trigger_event = ks_bed_games.0001
+			}
+		}
+	}
+}
+
+##################################################
+# Default Invalidation Event
+# by Ewan Cowhig Croft
+# 0021 - 0030
+##################################################
+
+#	The game has invalidated, inform affected parties.
+ks_bed_games.0021 = {
+	hidden = yes
+
+	immediate = {
+		# Inform scope:bg_defender that the game has invalidated.
+		scope:ks_bg_defender = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = ks_bed_games.0021.trigger_failure.bg_defender
+				left_icon = scope:ks_bg_attacker
+			}
+		}
+		# If they're not the same person, inform scope:bg_initiator that the game scope:bg_attacker is playing has invalidated.
+		if = {
+			limit = {
+				scope:ks_bg_attacker != scope:ks_bg_initiator
+			}
+			scope:ks_bg_initiator = {
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ks_bed_games.0021.trigger_failure.bg_initiator
+					left_icon = scope:ks_bg_attacker
+					right_icon = scope:ks_bg_defender
+				}
+			}
+		}
+		# Now inform scope:bg_attacker.
+		scope:ks_bg_attacker = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = ks_bed_games.0021.trigger_failure.bg_attacker
+				left_icon = scope:ks_bg_defender
+			}
+		}
+		# Reset cooldowns if this was the interaction.
+		if = {
+			limit = {
+				exists = scope:actor
+				scope:actor = { has_character_flag = ks_taken_challenge_to_bedgame_interaction }
+			}
+			scope:actor = {
+				remove_interaction_cooldown = ks_challenge_to_2p_bed_interaction
+				remove_interaction_cooldown_against = {
+					interaction = ks_challenge_to_2p_bed_interaction
+					target = scope:recipient
+				}
+			}
+		}
+	}
+}
+
+##################################################
+# Conclusion Events
+# by Ewan Cowhig Croft
+# 0031 - 0050
+##################################################
+
+
+#	Scope:bg_victor notification event.
+ks_bed_games.0031 = {
+	type = character_event
+	window = duel_event
+	title = ks_bed_games.0031.t
+	desc = {
+		triggered_desc = { # This can be expanded upon with further content if desired, see MR/TIT-34157 comments for more details
+			trigger = { always = yes }
+			desc = { # To make it easy to modify and expand upon the dynamic description, it is divided into swappable chunks.
+				desc = { # SECTION ONE: Descriptor of how you feel/awesome you are >Maximum Word Count: 20<
+					random_valid = {
+						desc = ks_bed_games.0031.desc.intro.02
+						desc = ks_bed_games.0031.desc.intro.01
+						desc = ks_bed_games.0031.desc.intro.03
+					}
+				}
+				desc = { # SECTION TWO: Descriptor of what happened in the match >Maximum Word Count: 20<
+					random_valid = {
+						triggered_desc = {
+							trigger = {
+								intrigue > high_skill_rating
+								intrigue > scope:ks_bg_opponent.intrigue
+							}
+							desc = ks_bed_games.0031.desc.middle.02
+						}
+						triggered_desc = {
+							trigger = {
+								OR = {
+									has_trait = huxian_blood
+									has_trait = huxian_cultivation
+								}
+							}
+							desc = ks_bed_games.0031.desc.middle.03
+						}
+						desc = ks_bed_games.0031.desc.middle.01
+					}
+				}
+				desc = { # SECTION THREE: Descriptor of how the opponent feels/reacts >Maximum Word Count: 20<
+					random_valid = {
+						triggered_desc = {
+							trigger = { scope:ks_bg_opponent = 
+								{ 
+									OR = {
+										piety_level >= high_piety_level
+										has_trait = zealous
+										has_trait = holy_warrior
+									}
+								} 
+							}
+							desc = ks_bed_games.0031.desc.end.03
+						}
+						desc = ks_bed_games.0031.desc.end.01
+						desc = ks_bed_games.0031.desc.end.02
+					}
+				}
+			}
+		}
+	}
+	theme = seduce_scheme
+
+	left_portrait = {
+		character = scope:ks_bg_victor
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:ks_bg_loser
+		animation = admiration
+	}
+
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:terrain_scope }
+		reference = terrain_scope
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:wilderness_scope }
+		reference = wilderness_scope
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:battlefield }
+		reference = battlefield
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:temple }
+		reference = temple
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:council_chamber }
+		reference = council_chamber
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:courtyard }
+		reference = courtyard
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:dungeon }
+		reference = dungeon
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:docks }
+		reference = docks
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:feast }
+		reference = feast
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:gallows }
+		reference = gallows
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:garden }
+		reference = garden
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:market }
+		reference = market
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:sitting_room }
+		reference = sitting_room
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:bedchamber }
+		reference = bedchamber
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:study }
+		reference = study
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:physicians_study }
+		reference = physicians_study
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:tavern }
+		reference = tavern
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:throne_room }
+		reference = throne_room
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:army_camp }
+		reference = army_camp
+	}
+
+	immediate = {
+		
+	}
+
+	# Good game!
+	option = {
+		name = {
+			text = {
+				random_valid = {
+					desc = ks_bed_games.0031.a
+					desc = ks_bed_games.0031.a.a # Untested if this is working
+				}
+			}
+		}
+
+		# Display ending type.
+		ks_bg_victor_end_result_tooltip_effect = yes
+
+		#stress_impact = {
+		#	base = minor_stress_impact_gain
+		#}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_sociability = 1
+				ai_vengefulness = -1
+			}
+		}
+	}
+
+
+}
+
+#	Scope:bg_loser notification event.
+ks_bed_games.0041 = {
+	type = character_event
+	window = duel_event
+	title = ks_bed_games.0041.t
+	desc = {
+		triggered_desc = { # Same comment applies above. When adding new content, I recommend adding an equal amount for both winning and losing.
+			trigger = { always = yes }
+			desc = { # To make it easy to modify and expand upon the dynamic description, it is divided into swappable chunks.
+				desc = { # SECTION ONE: Descriptor of how the opponent feels/reacts >Maximum Word Count: 20<
+					random_valid = {
+						desc = ks_bed_games.0041.desc.intro.02
+						desc = ks_bed_games.0041.desc.intro.01
+						desc = ks_bed_games.0041.desc.intro.03
+					}
+				}
+				desc = { # SECTION TWO: Descriptor of what happened in the match >Maximum Word Count: 20<
+					random_valid = {
+						triggered_desc = {
+							trigger = { scope:ks_bg_opponent = { intrigue < low_skill_rating } }
+							desc = ks_bed_games.0041.desc.middle.02
+						}
+						triggered_desc = {
+							trigger = {
+								OR = {
+									has_trait = huxian_blood
+									has_trait = huxian_cultivation
+								}
+							}
+							desc = ks_bed_games.0041.desc.middle.03
+						}
+						desc = ks_bed_games.0041.desc.middle.01
+					}
+				}
+				desc = { # SECTION THREE: Descriptor of how you feel/terrible you are >Maximum Word Count: 20<
+					random_valid = {
+						triggered_desc = {
+							trigger = { 
+										OR = {
+											piety_level >= high_piety_level
+											has_trait = zealous
+											has_trait = holy_warrior
+										}
+									}
+							desc = ks_bed_games.0041.desc.end.03
+						}
+						desc = ks_bed_games.0041.desc.end.01
+						desc = ks_bed_games.0041.desc.end.02
+					}
+				}
+			}
+		}
+	}
+	theme = seduce_scheme
+
+	left_portrait = {
+		character = scope:ks_bg_loser
+		animation = admiration
+	}
+	right_portrait = {
+		character = scope:ks_bg_victor
+		animation = personality_bold
+	}
+
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:terrain_scope }
+		reference = terrain_scope
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:wilderness_scope }
+		reference = wilderness_scope
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:battlefield }
+		reference = battlefield
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:temple }
+		reference = temple
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:council_chamber }
+		reference = council_chamber
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:courtyard }
+		reference = courtyard
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:dungeon }
+		reference = dungeon
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:docks }
+		reference = docks
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:feast }
+		reference = feast
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:gallows }
+		reference = gallows
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:garden }
+		reference = garden
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:market }
+		reference = market
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:sitting_room }
+		reference = sitting_room
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:bedchamber }
+		reference = bedchamber
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:study }
+		reference = study
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:physicians_study }
+		reference = physicians_study
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:tavern }
+		reference = tavern
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:throne_room }
+		reference = throne_room
+	}
+	override_background = {
+		trigger = { scope:ks_bg_locale = flag:army_camp }
+		reference = army_camp
+	}
+
+	immediate = {
+			
+	}
+
+	# We'll see who wins next time...
+	option = {
+		name = ks_bed_games.0041.a
+
+		# Display ending type.
+		ks_bg_loser_end_result_tooltip_effect = yes
+
+		#stress_impact = {
+		#	base = minor_stress_impact_loss
+		#}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_sociability = 1
+				ai_vengefulness = -1
+			}
+		}
+	}
+
+}
+
+
+

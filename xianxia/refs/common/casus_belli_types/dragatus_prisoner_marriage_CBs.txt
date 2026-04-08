@@ -1,0 +1,211 @@
+dragatus_prisoner_marriage_reclaim_wife_war = {
+	group = dragatus_prisoner_marriage_personal
+	
+	allowed_against_character = {
+
+		# Improve performance by making the CB only usable by or against human players.
+		OR = {
+			scope:attacker = { is_ai = no }
+			scope:defender = { is_ai = no }
+		}
+
+		scope:defender = {
+			OR = {
+				is_independent_ruler = yes
+				scope:attacker.liege = scope:defender.liege
+			}
+
+			#Someone in defender's realm stole attacker's spouse.
+			any_realm_county = {
+				holder = {
+					# Stolen wife/husband must still be in a court somewhere in the realm.
+					OR = {
+						any_courtier = {
+							reverse_has_opinion_modifier = {
+								target = scope:attacker
+								modifier = dragatus_rightful_spouse_opinion
+							}
+						}
+						any_spouse = {
+							reverse_has_opinion_modifier = {
+								target = scope:attacker
+								modifier = dragatus_rightful_spouse_opinion
+							}
+						}
+					}
+				}
+			}
+		}
+
+		scope:attacker = {
+			# If you have max spouses you presumably gave up on getting back your old one.
+			allowed_more_spouses = yes
+			
+			#We can't DoW our own liege
+			NOT = {
+				liege = scope:defender
+			}
+		}
+	}
+
+	cost = {
+		prestige = {
+			add = {
+				value = 250
+				desc = CB_BASE_COST
+			}
+		}
+	}
+
+	target_de_jure_regions_above = yes
+
+	valid_to_start = {
+		always = yes
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+	}
+
+	on_victory_desc = {
+		desc = dragatus_prisoner_marriage_reclaim_wife_war_victory_desc
+	}
+
+	on_victory = {
+		scope:attacker = { add_prestige = 250 }
+
+		scope:defender = {
+			dragatus_PM_imprison_and_reclaim_wife_effect = yes
+			if = {
+				limit = {
+					highest_held_title_tier >= tier_county # Might even be emperor.
+				}
+				every_vassal = {
+					dragatus_PM_imprison_and_reclaim_wife_effect = yes
+					if = {
+						limit = {
+							highest_held_title_tier >= tier_county # Might be king.
+						}
+						every_vassal = {
+							dragatus_PM_imprison_and_reclaim_wife_effect = yes
+							if = {
+								limit = {
+									highest_held_title_tier >= tier_county # Can still be duke.
+								}
+								every_vassal = {
+									dragatus_PM_imprison_and_reclaim_wife_effect = yes
+									if = {
+										limit = {
+											highest_held_title_tier = tier_county
+										}
+										every_vassal = {
+											# These can only be barons, so we stop looking at lower vassals.
+											dragatus_PM_imprison_and_reclaim_wife_effect = yes
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# Truce
+		add_truce_attacker_victory_effect = yes
+
+	}
+
+	on_white_peace_desc = {
+		desc = dragatus_prisoner_marriage_reclaim_wife_war_white_peace_desc
+	}
+
+	on_white_peace = {
+		# Truce
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		desc = dragatus_prisoner_marriage_reclaim_wife_war_defeat_desc
+	}
+
+	on_defeat = {
+		scope:defender = {
+			imprison = {
+				target = scope:attacker
+				type = house_arrest
+			}
+		}
+
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+	}
+	
+	should_invalidate = {
+		OR = {
+			scope:attacker = {
+				# If you re-married you presumably got over losing your wife.
+				allowed_more_spouses = no
+			}
+			scope:defender = {
+				NOT = {
+					any_realm_county = {
+						holder = {
+							# Stolen wife/husband is not in any realm court.
+							OR = {
+								any_courtier = {
+									reverse_has_opinion_modifier = {
+										target = scope:attacker
+										modifier = dragatus_rightful_spouse_opinion
+									}
+								}
+								# Wives imprisoned by others don't register as courtiers in the above check, so we test for them 	separately.
+								any_spouse = {
+									reverse_has_opinion_modifier = {
+										target = scope:attacker
+										modifier = dragatus_rightful_spouse_opinion
+									}
+									is_imprisoned_by = scope:attacker
+								}
+							}
+						}
+					}
+
+				}
+			}
+		}
+	}
+
+	on_invalidated_desc = {
+		desc = msg_invalidate_war_title
+	}
+	
+	on_invalidated = {
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+
+	#transfer_behavior = transfer
+
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+
+	war_name = "DRAGATUS_PM_RECLAIM_WIFE_WAR_NAME"
+
+	interface_priority = 80
+
+	use_de_jure_wargoal_only = yes
+
+	attacker_wargoal_percentage = 0.8
+
+	attacker_score_from_occupation_scale = 50
+	defender_score_from_occupation_scale = 50
+	#attacker_score_from_battles_scale = 50
+	#defender_score_from_battles_scale = 50
+	max_attacker_score_from_battles = 100
+	max_defender_score_from_battles = 100
+
+	max_ai_diplo_distance_to_title = 500
+	#min_ai_score = 100
+}

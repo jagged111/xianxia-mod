@@ -1,0 +1,12 @@
+﻿
+fox_ears_01 = {
+
+	entity = { required_tags = ""  shared_pose_entity = head  entity = "fox_ears_entity" }
+
+}
+
+fox_ears_m_01 = {
+
+	entity = { required_tags = ""  shared_pose_entity = head  entity = "fox_ears_entity_m" }
+
+}

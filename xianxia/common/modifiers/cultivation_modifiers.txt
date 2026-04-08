@@ -1,0 +1,455 @@
+﻿# BREAKTHROUGH MODIFIERS
+# Add to: common/modifiers/cultivation_breakthrough_modifiers.txt
+
+contemplating_breakthrough = {
+	icon = learning_positive
+	
+	learning = 2
+	monthly_lifestyle_xp_gain_mult = 0.1
+	
+	# Visual indicator that you're preparing
+}
+
+failed_breakthrough_attempt = {
+	icon = learning_negative
+	
+	learning = -2
+	stress_gain_mult = 0.2
+	monthly_lifestyle_xp_gain_mult = -0.1
+	
+	# Penalty after failing, makes next attempt harder
+}
+
+# Future: Add these for items/elixirs
+# breakthrough_pill_consumed = {
+#     icon = learning_positive
+#     learning = 5
+#     # +15% breakthrough chance
+# }
+# 
+# enlightenment_tea = {
+#     icon = learning_positive
+#     learning = 3
+#     # +10% breakthrough chance
+# }
+
+# Cultivation Sect Modifiers
+
+# Failure modifier
+sect_join_failed = {
+    icon = stress_negative
+    prowess = -2
+}
+
+# Mount Hua Sect Modifiers
+mount_hua_technique = {
+    icon = learning_positive
+    prowess = 3
+    martial = 2
+    learning = 1
+}
+
+sect_spar_victory = {
+    icon = prowess_positive
+    prowess = 2
+    monthly_prestige = 0.2
+    monthly_prestige_gain_mult = 0.1
+}
+
+sect_spar_defeat = {
+    icon = prowess_negative
+    prowess = -1
+    monthly_prestige = -0.1
+}
+
+# Shaolin Temple Modifiers
+shaolin_teachings = {
+    icon = learning_positive
+    learning = 3
+    monthly_piety = 0.3
+    stress_loss_mult = 0.15
+}
+
+shaolin_martial_training = {
+    icon = prowess_positive
+    prowess = 4
+    martial = 2
+    health = 0.5
+}
+
+# Demonic Sect Modifiers
+demonic_cultivation_path = {
+    icon = dread_positive
+    monthly_dread = 20
+    dread_decay_mult = -0.3
+    prowess = 4
+    intrigue = 2
+    diplomacy = -2
+    monthly_piety = -0.5
+    stress_gain_mult = 0.2
+}
+
+forbidden_technique = {
+    icon = intrigue_positive
+    intrigue = 4
+    prowess = 3
+    monthly_dread = 15
+    monthly_prestige_gain_mult = -0.1
+}
+
+qi_deviation = {
+    icon = health_negative
+    health = -1.5
+    prowess = -3
+    stress_gain_mult = 0.3
+    fertility = -0.2
+}
+
+demonic_challenger_victor = {
+    icon = prowess_positive
+    prowess = 5
+    monthly_dread = 30
+    monthly_prestige = 0.5
+}
+
+demonic_challenger_defeated = {
+    icon = prowess_negative
+    prowess = -4
+    monthly_prestige = -0.3
+    monthly_prestige_gain_mult = -0.2
+}
+
+# Tang Sect Modifiers
+tang_poison_arts = {
+    icon = intrigue_positive
+    intrigue = 4
+    learning = 2
+    owned_personal_scheme_success_chance_add = 10
+}
+
+exotic_poisons = {
+    icon = intrigue_positive
+    intrigue = 2
+}
+
+# Dual Cultivation Modifiers
+dual_cultivation_boost = {
+    icon = fertility_positive
+    fertility = 0.2
+    prowess = 2
+    attraction_opinion = 10
+    stress_loss_mult = 0.1
+    monthly_lifestyle_xp_gain_mult = 0.10
+}
+
+
+
+dual_cultivation_insight = {
+    icon = learning_positive
+    learning = 1
+    monthly_lifestyle_xp_gain_mult = 0.20
+}
+
+dual_cultivation_yin_body_resonance = {
+    icon = learning_positive
+    monthly_lifestyle_xp_gain_mult = 0.10
+}
+
+dual_cultivation_yang_body_resonance = {
+    icon = learning_positive
+    monthly_lifestyle_xp_gain_mult = 0.10
+}
+
+dual_cultivation_yinyang_harmony = {
+    icon = learning_positive
+    learning = 1
+    monthly_lifestyle_xp_gain_mult = 0.15
+}
+
+# Cultivation Breakthrough Modifiers
+cultivation_breakthrough = {
+    icon = learning_positive
+    learning = 2
+    prowess = 1
+    monthly_prestige = 0.3
+}
+
+heavenly_tribulation_preparation = {
+    icon = piety_positive
+    health = -0.5
+    stress_gain_mult = 0.5
+    prowess = -2
+    learning = 3
+}
+
+# Sect Reputation Modifiers
+sect_elder_respect = {
+    icon = prestige_positive
+    monthly_prestige = 0.4
+    diplomacy = 2
+    general_opinion = 10
+}
+
+sect_disgrace = {
+    icon = prestige_negative
+    monthly_prestige = -0.5
+    diplomacy = -3
+    general_opinion = -15
+    stress_gain_mult = 0.2
+}
+
+# Immortal Realm Modifiers
+immortal_insight = {
+    icon = learning_positive
+    learning = 5
+    prowess = 3
+    monthly_prestige = 1.0
+    stress_loss_mult = 0.25
+    life_expectancy = 10
+}
+
+# Dynasty track completion modifier
+martial_arts_legacy_complete = {
+    icon = prestige_positive
+    monthly_dynasty_prestige = 1.0
+    general_opinion = 10
+}
+
+# Zombie/Undead Control Modifiers
+zombie_master = {
+    icon = dread_positive
+    monthly_dread = 10
+    monthly_prestige = 0.2
+    monthly_piety = -0.3
+}
+
+# Martial Arts Training Modifiers
+martial_arts_training = {
+    icon = prowess_positive
+    prowess = 3
+    martial = 1
+    health = 0.3
+}
+
+advanced_martial_arts = {
+    icon = prowess_positive
+    prowess = 5
+    martial = 2
+    knight_effectiveness_mult = 0.15
+}
+
+master_martial_artist = {
+    icon = prowess_positive
+    prowess = 8
+    martial = 3
+    knight_effectiveness_mult = 0.25
+    monthly_prestige = 0.5
+}
+
+# Cultivation Realm Stabilization
+realm_stabilization = {
+    icon = learning_positive
+    learning = 1
+    health = 0.5
+    stress_loss_mult = 0.1
+}
+
+# Sect-specific flavor granted once cultivators begin unlocking realm perks.
+orthodox_realm_insight = {
+    icon = learning_positive
+    learning = 2
+    monthly_piety = 0.25
+    stress_loss_mult = 0.08
+}
+
+unorthodox_realm_insight = {
+    icon = prowess_positive
+    prowess = 2
+    martial = 1
+    monthly_prestige = 0.2
+    knight_effectiveness_mult = 0.1
+}
+
+demonic_realm_insight = {
+    icon = dread_positive
+    prowess = 2
+    intrigue = 2
+    monthly_dread = 10
+    monthly_piety = -0.2
+}
+
+vagrant_realm_insight = {
+    icon = diplomacy_positive
+    diplomacy = 1
+    learning = 1
+    monthly_prestige = 0.15
+    monthly_lifestyle_xp_gain_mult = 0.05
+    travel_speed_mult = 0.1
+}
+
+# Signature sect legacies (faith-specific flavor).
+divine_beast_spirit_companion = {
+    icon = prowess_positive
+    prowess = 4
+    knight_effectiveness_mult = 0.12
+}
+
+wudang_taiji_harmony = {
+    icon = learning_positive
+    learning = 2
+    stress_loss_mult = 0.1
+}
+
+jade_chamber_alluring_presence = {
+    icon = diplomacy_positive
+    diplomacy = 2
+    attraction_opinion = 15
+    fertility = 0.05
+}
+
+blood_moon_killing_intent = {
+    icon = dread_positive
+    prowess = 3
+    monthly_dread = 12
+}
+
+ancient_relic_treasure_resonance = {
+    icon = stewardship_positive
+    stewardship = 2
+    learning = 1
+    monthly_prestige = 0.2
+}
+
+# Qi Gathering Focus
+qi_gathering_focus = {
+    icon = learning_positive
+    learning = 2
+    monthly_prestige = 0.1
+    stress_gain_mult = -0.1
+}
+
+# Core Formation Focus
+core_formation_focus = {
+    icon = learning_positive
+    learning = 3
+    prowess = 1
+    health = 0.3
+}
+
+# Golden Core Stability
+golden_core_stability = {
+    icon = health_positive
+    health = 1.0
+    prowess = 2
+    stress_loss_mult = 0.15
+}
+
+# Cultivation Sect Modifiers
+
+# Sect Spar Modifiers
+sect_spar_victory = {
+    icon = prowess_positive
+    prowess = 2
+    monthly_prestige = 0.2
+    monthly_prestige_gain_mult = 0.1
+}
+
+sect_spar_defeat = {
+    icon = prowess_negative
+    prowess = -1
+    monthly_prestige = -0.1
+}
+
+# Mount Hua Sect Modifiers
+mount_hua_technique = {
+    icon = learning_positive
+    prowess = 3
+    martial = 2
+    learning = 1
+}
+
+# Shaolin Temple Modifiers
+shaolin_teachings = {
+    icon = learning_positive
+    learning = 3
+    monthly_piety = 0.3
+    stress_loss_mult = 0.15
+}
+
+shaolin_martial_training = {
+    icon = prowess_positive
+    prowess = 4
+    martial = 2
+    health = 0.5
+}
+
+# Demonic Sect Modifiers
+demonic_cultivation_path = {
+    icon = dread_positive
+    monthly_dread = 20
+    dread_decay_mult = -0.3
+    prowess = 4
+    intrigue = 2
+    diplomacy = -2
+    monthly_piety = -0.5
+    stress_gain_mult = 0.2
+}
+
+forbidden_technique = {
+    icon = intrigue_positive
+    intrigue = 4
+    prowess = 3
+    monthly_dread = 15
+    monthly_prestige_gain_mult = -0.1
+}
+
+qi_deviation = {
+    icon = health_negative
+    health = -1.5
+    prowess = -3
+    stress_gain_mult = 0.3
+    fertility = -0.2
+}
+
+demonic_challenger_victor = {
+    icon = prowess_positive
+    prowess = 5
+    monthly_dread = 30
+    monthly_prestige = 0.5
+}
+
+demonic_challenger_defeated = {
+    icon = prowess_negative
+    prowess = -4
+    monthly_prestige = -0.3
+    monthly_prestige_gain_mult = -0.2
+}
+
+# Tang Sect Modifiers
+tang_poison_arts = {
+    icon = intrigue_positive
+    intrigue = 4
+    learning = 2
+    owned_personal_scheme_success_chance_add = 10
+}
+
+exotic_poisons = {
+    icon = intrigue_positive
+    intrigue = 2
+}
+
+fox_spirit_awakened = {
+    icon = intrigue_positive
+    intrigue = 3
+    diplomacy = 1
+    attraction_opinion = 15
+    monthly_prestige = 0.2
+    owned_personal_scheme_success_chance_add = 10
+}
+
+fox_spirit_disowned_child = {
+    icon = diplomacy_negative
+    diplomacy = -3
+    monthly_prestige = -0.2
+    stress_gain_mult = 0.1
+}

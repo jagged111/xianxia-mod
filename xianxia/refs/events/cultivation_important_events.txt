@@ -1,0 +1,740 @@
+﻿namespace = cultivation_important_event
+
+#Starting Events
+
+cultivation_important_event.001 = { # Get meridians
+	type = character_event
+	title = cultivation_important_event.001.title
+	desc = cultivation_important_event.001.desc
+
+	theme = faith
+	#content_source = xianxia_cultivation
+
+	left_portrait = {
+		character = ROOT
+		animation = thinking
+	}
+
+	option = { # Confirm
+        name = cultivation_important_event.001.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            100 = {}
+            100 = {add_trait = poor_meridians}
+            70 = {add_trait = normal_meridians}
+            40 = {add_trait = good_meridians}
+            8 = {add_trait = excellent_meridians}
+            1 = {add_trait = heavenly_meridians}
+        }
+	}
+    option = { #pay for better odds
+        name = cultivation_important_event.001.b
+
+        remove_short_term_gold = 5000
+        ai_chance = {
+			base = 0.1
+		}
+
+        random_list = {
+            80 = {}
+            30 = {add_trait = poor_meridians}
+            70 = {add_trait = normal_meridians}
+            100 = {add_trait = good_meridians}
+            15 = {add_trait = excellent_meridians}
+            1 = {add_trait = heavenly_meridians}
+        }
+    }
+    option = { # nvm
+        name = cultivation_important_event.001.c
+        ai_chance = {
+			base = 1
+		}
+    }
+}
+
+
+cultivation_important_event.002 = { #First cultivation
+    type = character_event
+    hidden = yes
+    trigger = {
+        has_trait = active_meridians
+        NOT = {
+            is_cultivator = yes
+        }
+    }
+
+    #TODO: figure out how to add a effect to character to reduce diplomacy and after a few days it gets the trait instead
+
+    immediate = {
+        
+        add_trait = qi_gathering
+    }
+}
+
+#Breakthrough Events
+
+cultivation_important_event.011 = {
+    type = character_event
+    title = cultivation_important_event.011.title
+    desc = cultivation_important_event.011.desc
+    trigger = {
+        is_cultivator = yes
+    }
+    theme = faith
+    right_portrait = {
+        character = ROOT
+        animation = happiness
+    }
+
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+		random_artifact = {
+			limit = {
+				artifact_owner = root
+				has_variable = is_breakthrough_herb
+			}
+			save_scope_as = breakthrough_herb
+		}
+	}
+
+    option = {
+        name = cultivation_important_event.011.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            15 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            83 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = { # Use a herb for better odds
+        name = cultivation_important_event.011.b
+        destroy_artifact = scope:breakthrough_herb
+        ai_chance = {
+			base = 10
+		}
+        trigger = {
+            scope:breakthrough_herb = {
+                root = artifact_owner #TODO: not a great check, figure out how to improve this later
+            }
+        }
+        random_list = {
+            5 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            94 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = {
+        name = cultivation_important_event.011.c
+    }
+}
+
+cultivation_important_event.012 = {
+    type = character_event
+    title = cultivation_important_event.012.title
+    desc = cultivation_important_event.012.desc
+    trigger = {
+        is_cultivator = yes
+    }
+    theme = faith
+    right_portrait = {
+        character = ROOT
+        animation = happiness
+    }
+    
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+		random_artifact = {
+			limit = {
+				artifact_owner = root
+				has_variable = is_breakthrough_herb
+			}
+			save_scope_as = breakthrough_herb
+		}
+	}
+
+    option = {
+        name = cultivation_important_event.012.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            15 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            83 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = { # Use a herb for better odds
+        name = cultivation_important_event.012.b
+        destroy_artifact = scope:breakthrough_herb
+        ai_chance = {
+			base = 10
+		}
+        trigger = {
+            scope:breakthrough_herb = {
+                root = artifact_owner #TODO: not a great check, figure out how to improve this later
+            }
+        }
+        random_list = {
+            5 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            94 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = {
+        name = cultivation_important_event.012.c
+    }
+}
+
+cultivation_important_event.013 = {
+    type = character_event
+    title = cultivation_important_event.013.title
+    desc = cultivation_important_event.013.desc
+    trigger = {
+        is_cultivator = yes
+    }
+    theme = faith
+    right_portrait = {
+        character = ROOT
+        animation = happiness
+    }
+
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+		random_artifact = {
+			limit = {
+				artifact_owner = root
+				has_variable = is_breakthrough_herb
+			}
+			save_scope_as = breakthrough_herb
+		}
+	}
+    
+    option = {
+        name = cultivation_important_event.013.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            15 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            83 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = { # Use a herb for better odds
+        name = cultivation_important_event.013.b
+        destroy_artifact = scope:breakthrough_herb
+        ai_chance = {
+			base = 10
+		}
+        trigger = {
+            scope:breakthrough_herb = {
+                root = artifact_owner #TODO: not a great check, figure out how to improve this later
+            }
+        }
+        random_list = {
+            5 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            94 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = {
+        name = cultivation_important_event.013.c
+    }
+}
+
+cultivation_important_event.014 = {
+    type = character_event
+    title = cultivation_important_event.014.title
+    desc = cultivation_important_event.014.desc
+    trigger = {
+        is_cultivator = yes
+    }
+    theme = faith
+    right_portrait = {
+        character = ROOT
+        animation = happiness
+    }
+
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+		random_artifact = {
+			limit = {
+				artifact_owner = root
+				has_variable = is_breakthrough_herb
+			}
+			save_scope_as = breakthrough_herb
+		}
+	}
+    
+    option = {
+        name = cultivation_important_event.014.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            15 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            83 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = { # Use a herb for better odds
+        name = cultivation_important_event.014.b
+        destroy_artifact = scope:breakthrough_herb
+        ai_chance = {
+			base = 10
+		}
+        trigger = {
+            scope:breakthrough_herb = {
+                root = artifact_owner #TODO: not a great check, figure out how to improve this later
+            }
+        }
+        random_list = {
+            5 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            94 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = {
+        name = cultivation_important_event.014.c
+    }
+}
+
+cultivation_important_event.015 = {
+    type = character_event
+    title = cultivation_important_event.015.title
+    desc = cultivation_important_event.015.desc
+    trigger = {
+        is_cultivator = yes
+    }
+    theme = faith
+    right_portrait = {
+        character = ROOT
+        animation = happiness
+    }
+    
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+		random_artifact = {
+			limit = {
+				artifact_owner = root
+				has_variable = is_breakthrough_herb
+			}
+			save_scope_as = breakthrough_herb
+		}
+	}
+    
+    option = {
+        name = cultivation_important_event.015.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            15 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            83 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = { # Use a herb for better odds
+        name = cultivation_important_event.015.b
+        destroy_artifact = scope:breakthrough_herb
+        ai_chance = {
+			base = 10
+		}
+        trigger = {
+            scope:breakthrough_herb = {
+                root = artifact_owner #TODO: not a great check, figure out how to improve this later
+            }
+        }
+        random_list = {
+            5 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            94 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = {
+        name = cultivation_important_event.015.c
+    }
+}
+
+cultivation_important_event.016 = {
+    type = character_event
+    title = cultivation_important_event.016.title
+    desc = cultivation_important_event.016.desc
+    trigger = {
+        is_cultivator = yes
+    }
+    theme = faith
+    right_portrait = {
+        character = ROOT
+        animation = happiness
+    }
+    
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+		random_artifact = {
+			limit = {
+				artifact_owner = root
+				has_variable = is_breakthrough_herb
+			}
+			save_scope_as = breakthrough_herb
+		}
+	}
+    
+    option = {
+        name = cultivation_important_event.016.a
+        ai_chance = {
+			base = 2
+		}
+        random_list = {
+            15 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            83 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = { # Use a herb for better odds
+        name = cultivation_important_event.016.b
+        destroy_artifact = scope:breakthrough_herb
+        ai_chance = {
+			base = 10
+		}
+        trigger = {
+            scope:breakthrough_herb = {
+                root = artifact_owner #TODO: not a great check, figure out how to improve this later
+            }
+        }
+        random_list = {
+            5 = {
+                add_trait_xp = {
+                    trait = qi_gathering
+                    value = -20
+                }
+            }
+            94 = {
+                breakthrough_effect = yes
+                modifier = {
+					add = breakthrough_difficulty_modifier
+				}
+            }
+            20 = {
+                death = {
+                    death_reason = death_breakthrough
+                }
+            }
+        }
+    }
+    option = {
+        name = cultivation_important_event.016.c
+    }
+}
+
+#Fix ailments on breakthroughs
+cultivation_important_event.999 = {
+    type = character_event
+
+    hidden = yes
+
+    immediate = {
+        if = {
+			limit = {
+				has_trait = infirm
+			}
+			remove_trait = infirm
+		}
+		if = {
+			limit = {
+				has_trait = incapable
+			}
+			remove_trait = incapable
+		}
+		if = {
+			limit = {
+				has_trait = beauty_bad_1
+			}
+			remove_trait = beauty_bad_1
+		}
+		if = {
+			limit = {
+				has_trait = beauty_bad_2
+			}
+			remove_trait = beauty_bad_2
+		}
+		if = {
+			limit = {
+				has_trait = beauty_bad_3
+			}
+			remove_trait = beauty_bad_3
+		}
+		if = {
+			limit = {
+				has_trait = physique_bad_1
+			}
+			remove_trait = physique_bad_1
+		}
+		if = {
+			limit = {
+				has_trait = physique_bad_2
+			}
+			remove_trait = physique_bad_2
+		}
+		if = {
+			limit = {
+				has_trait = physique_bad_3
+			}
+			remove_trait = physique_bad_3
+		}
+		if = {
+			limit = {
+				has_trait = weak
+			}
+			remove_trait = weak
+		}
+		if = {
+			limit = {
+				has_trait = spindly
+			}
+			remove_trait = spindly
+		}
+		if = {
+			limit = {
+				has_trait = scaly
+			}
+			remove_trait = scaly
+		}
+		if = {
+			limit = {
+				has_trait = wheezing
+			}
+			remove_trait = wheezing
+		}
+		if = {
+			limit = {
+				has_trait = infertile
+			}
+			remove_trait = infertile
+		}
+		if = {
+			limit = {
+				has_trait = bleeder
+			}
+			remove_trait = bleeder
+		}
+		if = {
+			limit = {
+				has_trait = dull
+			}
+			remove_trait = dull
+		}
+		if = {
+			limit = {
+				has_trait = intellect_bad
+			}
+			remove_trait = intellect_bad
+		}
+		if = {
+			limit = {
+				has_trait = intellect_bad_2
+			}
+			remove_trait = intellect_bad_2
+		}
+		if = {
+			limit = {
+				has_trait = intellect_bad_3
+			}
+			remove_trait = intellect_bad_3
+		}
+		if = {
+			limit = {
+				has_trait = hunchbacked
+			}
+			remove_trait = hunchbacked
+		}
+		if = {
+			limit = {
+				has_trait = clubfooted
+			}
+			remove_trait = clubfooted
+		}
+		if = {
+			limit = {
+				has_trait = dwarf
+			}
+			remove_trait = dwarf
+		}
+		if = {
+			limit = {
+				has_trait = lisping
+			}
+			remove_trait = lisping
+		}
+		if = {
+			limit = {
+				has_trait = stuttering
+			}
+			remove_trait = stuttering
+		}
+		if = {
+			limit = {
+				has_trait = maimed
+			}
+			remove_trait = maimed
+		}
+    }
+}

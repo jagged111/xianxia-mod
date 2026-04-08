@@ -1,0 +1,16 @@
+﻿l_english:
+ teach_cultivation_interaction:0 "Teach Cultivation"
+ teach_cultivation_interaction_desc:0 "Guide [recipient.GetShortUINameNoTooltip] onto the path of cultivation."
+ taught_me_cultivation_opinion:0 "Guided My Cultivation"
+ taught_them_cultivation_opinion:0 "Guided Their Cultivation"
+
+ cripple_cultivator_interaction:0 "Shatter Cultivation"
+ cripple_cultivator_interaction_desc:0 "Cripple [recipient.GetShortUINameNoTooltip]'s meridians, stripping all cultivation realms and perks and leaving them a powerless mortal."
+ recruit_disciple_interaction:0 "Recruit as Disciple"
+ recruit_disciple_interaction_desc:0 "Formally recruit [recipient.GetShortUINameNoTooltip] into your sect lineage as a personal disciple."
+ teach_technique_interaction:0 "Teach Technique"
+ teach_technique_interaction_desc:0 "Pass one of your cultivated techniques to [recipient.GetShortUINameNoTooltip], accelerating their growth."
+ inherit_manuals_interaction:0 "Pass Down Manuals"
+ inherit_manuals_interaction_desc:0 "Select [recipient.GetShortUINameNoTooltip] as a lineage inheritor and pass treasured manuals."
+ expel_or_betray_disciple_interaction:0 "Expel / Betray Disciple"
+ expel_or_betray_disciple_interaction_desc:0 "Cast [recipient.GetShortUINameNoTooltip] out of the sect line, risking future enmity."

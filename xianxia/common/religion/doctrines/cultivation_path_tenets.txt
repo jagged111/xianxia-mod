@@ -1,0 +1,103 @@
+﻿# Cultivation Path Tenets (WITH TEMPORARY VANILLA ICONS)
+# These tenets determine which cultivation focus a character can use
+# Path: common/religion/doctrines/cultivation_path_tenets.txt
+
+# Orthodox Cultivation Tenet
+doctrine_cultivation_tenets = {
+	group = "core_tenets"
+    #for now
+    number_of_picks = 1	
+
+	tenet_sect_empty_1 = {
+		icon = core_tenet_empty
+		piety_cost = {
+			value = 0
+		}
+
+		is_shown = {
+			always = yes
+		}
+
+		can_pick = {
+			always = yes
+		}
+	}
+
+	tenet_orthodox_cultivation = {
+		icon = core_tenet_orthodox  # TEMP: Using vanilla icon until custom icon ready
+				
+		character_modifier = {
+			monthly_prestige = 0.25
+			same_faith_opinion = 5
+			different_faith_opinion = -40
+		}
+		
+		piety_cost = {
+			value = faith_tenet_cost_massive
+			multiply = 5
+		}
+		
+		parameters = {
+			orthodox_cultivation = yes
+		}
+	}
+
+	# Unorthodox Cultivation Tenet
+	tenet_unorthodox_cultivation = {
+		icon = core_tenet_unorthodox  # TEMP: Using vanilla icon until custom icon ready
+		
+		piety_cost = {
+			value = faith_tenet_cost_massive
+			multiply = 5
+		}		
+		
+		parameters = {
+			unorthodox_cultivation = yes
+		}
+		
+		character_modifier = {
+			monthly_lifestyle_xp_gain_mult = 0.1
+			different_faith_opinion = -40
+		}
+	}
+
+	# Demonic Cultivation Tenet
+	tenet_demonic_cultivation = {
+		icon = core_tenet_demonic  # TEMP: Using vanilla icon until custom icon ready
+		
+		piety_cost = {
+			value = faith_tenet_cost_massive
+			multiply = 5
+		}		
+		
+		parameters = {
+			demonic_cultivation = yes
+		}
+		
+		character_modifier = {
+			dread_baseline_add = 10
+			monthly_lifestyle_xp_gain_mult = 0.15
+			different_faith_opinion = -60
+		}
+	}
+
+	# Vagrant Cultivation Tenet
+	tenet_vagrant_cultivation = {
+		icon = core_tenet_vagrant  # TEMP: Using vanilla icon until custom icon ready
+		
+		piety_cost = {
+			value = faith_tenet_cost_massive
+			multiply = 5
+		}		
+		
+		parameters = {
+			vagrant_cultivation = yes
+		}
+		
+		character_modifier = {
+			stress_loss_mult = 0.1
+			monthly_lifestyle_xp_gain_mult = 0.1
+			different_faith_opinion = -40
+		}
+	}
+}

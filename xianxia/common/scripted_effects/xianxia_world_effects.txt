@@ -1,0 +1,128 @@
+﻿xianxia_assign_sect_hierarchy_effect = {
+    if = {
+        limit = {
+            is_landed = yes
+            is_independent_ruler = yes
+            NOT = { has_trait = sect_leader }
+        }
+        add_trait = sect_leader
+        remove_trait = sect_disciple
+        remove_trait = sect_elder
+
+        every_courtier = {
+            limit = {
+                is_adult = yes
+                is_cultivator = yes
+                NOT = { has_trait = sect_leader }
+            }
+            random_list = {
+                25 = {
+                    add_trait = sect_elder
+                    remove_trait = sect_disciple
+                }
+                75 = {
+                    add_trait = sect_disciple
+                }
+            }
+        }
+    }
+}
+
+xianxia_apply_government_adaptation_effect = {
+    if = {
+        limit = { has_government = feudal_government }
+        add_character_modifier = {
+            modifier = sect_governance_feudal_adapted
+            days = 365
+        }
+    }
+    else_if = {
+        limit = { has_government = clan_government }
+        add_character_modifier = {
+            modifier = sect_governance_clan_adapted
+            days = 365
+        }
+    }
+    else_if = {
+        limit = { has_government = tribal_government }
+        add_character_modifier = {
+            modifier = sect_governance_tribal_adapted
+            days = 365
+        }
+    }
+    else_if = {
+        limit = { has_government = theocracy_government }
+        add_character_modifier = {
+            modifier = sect_governance_theocracy_adapted
+            days = 365
+        }
+    }
+    else_if = {
+        limit = { has_government = administrative_government }
+        add_character_modifier = {
+            modifier = sect_governance_administrative_adapted
+            days = 365
+        }
+    }
+    else_if = {
+        limit = { has_government = republic_government }
+        add_character_modifier = {
+            modifier = sect_governance_republic_adapted
+            days = 365
+        }
+    }
+
+    if = {
+        limit = {
+            is_landed = yes
+            is_cultivator = no
+            OR = {
+                has_government = feudal_government
+                has_government = clan_government
+                has_government = tribal_government
+                has_government = administrative_government
+                has_government = republic_government
+            }
+        }
+        add_character_modifier = {
+            modifier = jianghu_realm_friction
+            days = 365
+        }
+    }
+}
+
+xianxia_pick_weapon_path_effect = {
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    has_trait = weapon_path_sword
+                    has_trait = weapon_path_saber
+                    has_trait = weapon_path_spear
+                    has_trait = weapon_path_fist
+                }
+            }
+        }
+        random_list = {
+            35 = { add_trait = weapon_path_sword }
+            25 = { add_trait = weapon_path_saber }
+            20 = { add_trait = weapon_path_spear }
+            20 = { add_trait = weapon_path_fist }
+        }
+    }
+}
+
+
+xianxia_update_alchemy_lifestyle_trait_effect = {
+    if = { limit = { NOT = { exists = var:alchemy_lifestyle_xp } } set_variable = { name = alchemy_lifestyle_xp value = 0 } }
+    if = { limit = { var:alchemy_lifestyle_xp >= 40 } add_trait = alchemy_lifestyle_tier_3 }
+    else_if = { limit = { var:alchemy_lifestyle_xp >= 20 } add_trait = alchemy_lifestyle_tier_2 }
+    else_if = { limit = { var:alchemy_lifestyle_xp >= 8 } add_trait = alchemy_lifestyle_tier_1 }
+}
+
+xianxia_update_formation_master_trait_effect = {
+    if = { limit = { NOT = { exists = var:formation_mastery_xp } } set_variable = { name = formation_mastery_xp value = 0 } }
+    if = { limit = { var:formation_mastery_xp >= 36 } add_trait = formation_master_tier_3 }
+    else_if = { limit = { var:formation_mastery_xp >= 18 } add_trait = formation_master_tier_2 }
+    else_if = { limit = { var:formation_mastery_xp >= 6 } add_trait = formation_master_tier_1 }
+}

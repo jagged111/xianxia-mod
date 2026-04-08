@@ -1,0 +1,567 @@
+﻿accolade_prowess_requirement_value = {
+	if = {
+		limit = { has_character_modifier = msc_captured }
+		value = -10000
+	}
+	else = { value = 8 }
+}
+
+accolade_prowess_requirement_value_high = {
+	if = {
+		limit = { has_character_modifier = msc_captured }
+		value = -10000
+	}
+	else = { value = 15 }
+}
+
+msc_duel_cooldown_factor = {
+	if = {
+		limit = { NOT = { has_character_modifier = msc_duel_cooldown } }
+		value = 1
+	}
+	else_if = {
+		limit = { has_game_rule = msc_battlefield_cooldown_hard }
+		value = 0
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 27
+			}
+		}
+		value = 0.1
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 24
+			}
+		}
+		value = 0.2
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 21
+			}
+		}
+		value = 0.3
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 18
+			}
+		}
+		value = 0.4
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 15
+			}
+		}
+		value = 0.5
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 12
+			}
+		}
+		value = 0.6
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 9
+			}
+		}
+		value = 0.7
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 6
+			}
+		}
+		value = 0.8
+	}
+	else_if = {
+		limit = {
+			has_character_modifier_duration_remaining = {
+				modifier = msc_duel_cooldown
+				days > 0
+			}
+		}
+		value = 0.9
+	}
+	else = {
+		value = 1
+	}
+}
+
+msc_piety_value = {
+	value = miniscule_piety_gain
+	if = {
+		limit = {
+			exists = scope:sc_loser.primary_title
+			scope:sc_loser.primary_title.tier > 0
+		}
+		multiply = scope:sc_loser.primary_title.tier
+	}
+	else_if = {
+		limit = {
+			exists = scope:sc_loser
+			scope:sc_loser.piety_level > 1
+		}
+		multiply = scope:sc_loser.piety_level		
+	}
+	divide = 2
+}
+
+msc_dread_value = {
+	value = miniscule_dread_gain
+	if = {
+		limit = {
+			exists = scope:sc_loser.primary_title
+			scope:sc_loser.primary_title.tier > 0
+		}
+		multiply = scope:sc_loser.primary_title.tier
+	}
+	if = {
+		limit = {
+			exists = scope:sc_loser
+			scope:sc_loser = {
+				is_lowborn = yes
+			}
+		}
+		divide = 2
+	}	
+}
+
+msc_hostility_factor = {
+	value = 0
+	if = {
+		limit = { faith = { faith_hostility_level = { target = scope:sc_loser.faith value = faith_astray_level } } }
+		add = 1
+	}
+	else_if = {
+		limit = { faith = { faith_hostility_level = { target = scope:sc_loser.faith value = faith_hostile_level } } }
+		add = 2
+	}	
+	else_if = {
+		limit = { faith = { faith_hostility_level = { target = scope:sc_loser.faith value = faith_evil_level } } }
+		add = 3
+	}
+
+	#Piety factor for kills: Pluralist (-3, -2, -1, 0 ie straight -3 transform), Righteous (-2, -1, 1, 2), Fundamentalist (-1, 1, 2, 3)
+	#Piety factor for release: Pluralist (3, 2, 1, 0), Righteous (2, 1, -1, -2), Fundamentalist (1, -1, -2, -3)
+	if = {
+		limit = { faith = { has_doctrine = doctrine_pluralism_pluralistic } }
+		subtract = 3
+	}
+	else_if = {
+		limit = { faith = { has_doctrine = doctrine_pluralism_righteous } }
+		subtract = 2
+		if = {
+			limit = { faith = { faith_hostility_level = { target = scope:sc_loser.faith value >= faith_hostile_level } } }
+			add = 1
+		}
+	}
+	else_if = {
+		limit = { 
+			faith = { 
+				has_doctrine = doctrine_pluralism_fundamentalist 
+				faith_hostility_level = { target = scope:sc_loser.faith value = faith_fully_accepted_level }
+			} 						
+		}
+		subtract = 1
+	}	
+	
+	#Aggressive tenets (Warmonger) shift factor by 1	
+	if = {
+		limit = { faith = { has_doctrine_parameter = warmonger } }
+		add = 1
+	}
+}
+
+msc_maim_chance = {
+	value = 75 #nase
+	#physical state:
+	add = { #health/sturdiness
+		value = health
+		multiply = 4
+	}
+	#existing maimings
+	if = {
+		limit = { has_trait = one_legged }
+		add = 4		
+	}
+	if = {
+		limit = { has_trait = one_eyed }
+		add = 4		
+	}
+	if = {
+		limit = { has_trait = maimed }
+		add = 4		
+	}
+	if = {
+		limit = { has_trait = disfigured }
+		add = 4		
+	}
+	#prowess diff: preventing or mitigating blows that would maim
+	add = { 
+		value = prowess
+		subtract = scope:msc_opponent.prowess
+	}
+	#opponent style factors
+	if = {
+		limit = { 
+			scope:msc_opponent = { 
+				OR = {
+					has_trait = impatient 
+					AND = {
+						has_trait = lifestyle_blademaster
+						has_trait_xp = {
+							trait = lifestyle_blademaster
+							value < 50
+						}
+					}
+				}
+			} 
+		}
+		subtract = 5
+	}				
+	if = {
+		limit = { 
+			scope:msc_opponent = { 
+				OR = {
+					has_trait = wrathful
+					AND = {
+						has_trait = lifestyle_blademaster
+						has_trait_xp = {
+							trait = lifestyle_blademaster
+							value >= 50
+						}
+					}
+				}
+			} 
+		}
+		subtract = 10
+	}
+	if = {
+		limit = { 
+			scope:msc_opponent = { 
+				OR = {
+					has_trait = berserker
+					has_trait = sadistic					
+					AND = {
+						has_trait = lifestyle_blademaster
+						has_trait_xp = {
+							trait = lifestyle_blademaster
+							value >= 100
+						}
+					}
+				}
+			} 
+		}
+		subtract = 15
+	}
+	if = {
+		limit = { scope:msc_opponent = { has_trait = patient } }
+		add = 5
+	}				
+	if = {
+		limit = { scope:msc_opponent = { has_trait = calm } }
+		add = 10
+	}
+	if = {
+		limit = { scope:msc_opponent = { has_trait = compassionate } }
+		add = 15
+	}
+}
+
+msc_yield_chance = {
+	#game rules
+	if = {
+		limit = {
+			has_game_rule = msc_battlefield_deadly_more
+		}
+		value = 50
+	}
+	else_if = {
+		limit = {
+			has_game_rule = msc_battlefield_deadly_less
+		}
+		value = 150
+	}
+	else = {
+		value = 100	#base
+	}
+	#physical state:
+	add = { #health: surviving long enough to yield
+		value = health
+		multiply = 4
+	}
+	#less chance if already wounded
+	if = {
+		limit = { has_trait = wounded_1 }
+		subtract = 5
+	}
+	if = {
+		limit = { has_trait = cultivation_realm }
+		subtract = 150
+	}				
+	if = {
+		limit = { has_trait = wounded_2 }
+		subtract = 10
+	}
+	if = {
+		limit = { has_trait = wounded_3 }
+		subtract = 15
+	}
+	#prowess diff: preventing or mitigating blows that would kill
+	add = { 
+		value = prowess
+		subtract = scope:msc_opponent.prowess
+	}
+	#less chance if impatient, wrathful, stubborn or brave, rivals (especially with vengeful), religious enemies (especially with zealous)				
+	if = {
+		limit = { has_trait = impatient }
+		subtract = 5
+	}
+	if = {
+		limit = { has_trait = arrogant }
+		subtract = 10
+	}
+	if = {
+		limit = { has_trait = wrathful }
+		subtract = 10
+	}
+	if = {
+		limit = { has_trait = stubborn }
+		subtract = 15
+	}
+	if = {
+		limit = { has_trait = brave }
+		subtract = 15
+	}
+	if = {
+		limit = { has_relation_rival = scope:msc_opponent  }
+		subtract = {
+			value = 15
+			if = {
+				limit = { has_trait = vengeful }
+				multiply = 2
+			}
+		}
+	}
+	if = {
+		limit = { has_relation_nemesis = scope:msc_opponent }
+		subtract = {
+			value = 30
+			if = {
+				limit = { has_trait = vengeful }
+				multiply = 2
+			}
+		}
+	}
+	if = {
+		limit = {
+			faith = {
+				faith_hostility_level = {
+					target = scope:msc_opponent.faith
+					value = faith_hostile_level
+				}
+			}
+		}
+		subtract = {
+			value = 15
+			if = {
+				limit = { has_trait = zealous }
+				multiply = 2
+			}
+		}
+	}
+	if = {
+		limit = {
+			faith = {
+				faith_hostility_level = {
+					target = scope:msc_opponent.faith
+					value = faith_evil_level
+				}
+			}
+		}
+		subtract = {
+			value = 30
+			if = {
+				limit = { has_trait = zealous }
+				multiply = 2
+			}
+		}
+	}
+	#garuda warriors should yield way less often
+	if = {
+		limit = { has_court_position = garuda_court_position }
+		subtract = {
+			value = 30
+			multiply = {
+				#0-200 scale - -100 honour should zero this out, +100 honour should double it
+				value = ai_honor
+				add = 100
+				divide = 100
+			}
+		}
+	}
+	#more chance if calm, patient, craven, friends/spouses/lovers
+	if = {
+		limit = { has_trait = calm }
+		add = 5
+	}
+	if = {
+		limit = { has_trait = patient }
+		add = 5
+	}
+	if = {
+		limit = { has_trait = craven }
+		add = 15
+	}
+	#more chance if somehow fighting a friend/spouse/lover/soulmate/BFF
+	if = {
+		limit = { 
+			has_relation_friend = scope:msc_opponent						
+		}
+		add = 15
+	}
+	if = {
+		limit = { 
+			is_spouse_of = scope:msc_opponent			
+		}
+		add = 30
+	}
+	if = {
+		limit = { 
+			OR = {
+				has_relation_lover = scope:msc_opponent
+				has_relation_best_friend = scope:msc_opponent
+			}
+		}
+		add = 50
+	}
+	if = {
+		limit = { has_relation_soulmate = scope:msc_opponent }
+		add = 100
+	}
+	#warleaders or people who are worth ransoms are more likely to yield
+	if = {
+		limit = { 
+			any_character_war = {
+				#am I a warleader
+				is_war_leader = prev
+				#in a war with whoever is leading the opponent side in this combat?
+				is_participant = scope:msc_opponent_side.side_primary_participant
+			}
+		}
+		add = 100
+	}
+	if = { 
+		limit = { ransom_cost_value > 0}
+		add = {
+			value = ransom_cost_value
+			divide = 5
+			max = 50
+		}
+	}
+	# State Ransoms: characters are more likely to surrender if their liege will pay their ransom.
+	if = {		
+		limit = {
+			liege.culture = { has_cultural_parameter = knights_die_less_but_are_captured_more }
+			NOT = { top_liege = this }
+		}
+		add = 30
+	}	
+}
+
+knight_prestige_gain_on_wound = {
+	value = miniscule_prestige_gain
+	add = scope:sc_victor.var:msc_opponent_prowess
+	if = {
+		limit = {
+			exists = scope:sc_loser.primary_title
+			scope:sc_loser.primary_title.tier > 0
+		}
+		multiply = scope:sc_loser.primary_title.tier
+	}
+	else_if = {
+		limit = {
+			exists = scope:sc_loser
+			scope:sc_loser.prestige_level > 1
+		}
+		multiply = scope:sc_loser.prestige_level		
+	}
+	else_if = {
+		limit = {
+			exists = scope:sc_loser.dynasty
+			scope:sc_loser.dynasty.dynasty_prestige_level > 2
+		}
+		multiply = scope:sc_loser.dynasty.dynasty_prestige_level
+		divide = 2
+	}
+	if = {
+		limit = {
+			exists = scope:sc_loser
+			scope:sc_loser = {
+				is_lowborn = yes
+			}
+		}
+		divide = 2
+	}
+}
+
+knight_prestige_gain_on_kill = {
+	value = minor_prestige_gain
+	if = {
+		limit = { scope:sc_victor ?= { has_variable = msc_opponent_prowess } }
+		add = scope:sc_victor.var:msc_opponent_prowess
+	}
+	if = {
+		limit = {
+			exists = scope:sc_loser.primary_title
+			scope:sc_loser.primary_title.tier > 0
+		}
+		multiply = scope:sc_loser.primary_title.tier
+	}
+	else_if = {
+		limit = {
+			exists = scope:sc_loser
+			scope:sc_loser.prestige_level > 1
+		}
+		multiply = scope:sc_loser.prestige_level		
+	}
+	else_if = {
+		limit = {
+			exists = scope:sc_loser.dynasty
+			scope:sc_loser.dynasty.dynasty_prestige_level > 2
+		}
+		multiply = scope:sc_loser.dynasty.dynasty_prestige_level
+		divide = 2
+	}
+	if = {
+		limit = {
+			exists = scope:sc_loser
+			scope:sc_loser = {
+				is_lowborn = yes
+			}
+		}
+		divide = 2
+	}
+}

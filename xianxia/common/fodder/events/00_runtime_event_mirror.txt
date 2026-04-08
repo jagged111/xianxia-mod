@@ -1,0 +1,30 @@
+﻿# Runtime mirror snapshot for fodder sync.
+# Source of truth remains events/*.txt; update this mirror in the same commit.
+
+mirror_events = {
+    source = "events/cultivation_ai_events.txt"
+    source = "events/cultivation_character_initialization_events.txt"
+    source = "events/xianxia_world_events.txt"
+}
+# sync_update: added sect council + alchemy resource + branching arc events
+# sync_update: review hotpatch for startup init scope and sect office reroll exclusivity
+
+# sync_update: alchemy body tiers, elder realm gating, AI pill-request pulse, and council/resource activity bridge updates
+# sync_update: appended cultivation_ai.2240 AI breakthrough pill-request event
+
+# sync_update: alchemy craft enlightenment proc + alchemy body lottery integration in initialization event
+
+# sync_update: added alchemy lifestyle xp progression and formation mastery/defense-array event hooks
+# sync_update: added cultivation_ai.2250 huxian yin-body sync + fox-spirit awakening/reaction mapping pulse
+# sync_update: expanded fox-spirit compatch with child awakening/disown event + purge pulse
+# sync_update: fox spirits now auto-upgrade to beauty_good_3 on awakening
+# sync_update: added xianxia_world.2260/2261 fox-spirit predation and mortal-hunt backlash events
+# sync_update: fixed duplicated fox-spirit global pulse triggering and added AI-mother pending-state resolution
+# sync_update: fixed AI parent disown/accept scope targets to reference actual parent scope
+# sync_update: bound cultivation_ai.2261 title/desc keys for visible parent response event UI
+# sync_update: defer AI parent auto-resolution when player-parent event notification is pending
+# sync_update: fixed reincarnation holder lottery gating + fox-spirit sect routing for huxian children
+# sync_update: fox-spirit vessel spawning now prioritizes noble children of rulers and uses higher follow-up cadence
+# sync_update: added cultivation_ai.3001 lightweight monthly sect-pact maintenance pulse to restore alliances without full monthly global sweep
+# sync_update: increased cultivation_ai.3001 monthly pact maintenance attempts per pulse to improve visible sect alliance formation
+# sync_update: forced fox-spirit vessel awakenings now invoke shared parent accept/disown flow (including player-parent event trigger)

@@ -1,0 +1,642 @@
+﻿namespace = ttk_travel_event_duel
+
+#clean event ## theme done
+ttk_travel_event_duel.0001 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:ttk_duel_init = {
+						has_relation_nemesis = scope:ttk_duel_target
+					}
+				}
+				desc = ttk_travel_event_duel.0001.nemesis
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ttk_duel_init = {
+						has_relation_rival = scope:ttk_duel_target
+					}
+				}
+				desc = ttk_travel_event_duel.0001.rival
+			}
+		}
+	}
+	override_background = { reference = terrain_scope }
+	left_portrait = {
+		character = scope:ttk_duel_init
+		animation = survey
+		camera = camera_event_very_left
+		}
+	right_portrait = {
+		character = scope:ttk_duel_target
+		animation = jockey_walk 
+		camera = camera_event_horse_right
+		}
+	trigger = {
+		trigger_if = { 
+			limit = {
+				scope:ttk_duel_target = { is_travel_leader = no }
+			}
+			scope:ttk_duel_target.current_travel_plan.travel_plan_owner = {
+				trigger_if = {
+					limit  = { exists = involved_activity }
+					NOT = { scope:ttk_duel_target.location = involved_activity.activity_location }
+				}
+				trigger_else = {
+					always = yes
+				}
+			}
+		}
+		trigger_else = {
+			scope:ttk_duel_target = {
+				trigger_if = {
+					limit = { exists = involved_activity }
+					NOT = { scope:ttk_duel_target.location = involved_activity.activity_location }
+				}
+				trigger_else = {
+					always = yes
+				}
+			}
+		}		
+	}			
+	immediate = {
+		if = {
+			limit = {
+				scope:ttk_duel_target = { is_travel_leader = no }
+			}
+			scope:ttk_duel_target = {
+				current_travel_plan.travel_plan_owner = { save_scope_as = ttk_duel_target_tl }
+			}
+		}
+		hidden_effect = {
+			scope:ttk_duel_init = {
+				add_character_flag = ttk_duel_can_pass
+				current_travel_plan ?= { delay_travel_plan = { days = 3} }
+			}
+			scope:ttk_duel_target = {
+				current_travel_plan ?= { delay_travel_plan = { days = 3} }
+			}
+			scope:ttk_duel_target_tl ?= {
+				current_travel_plan ?= { delay_travel_plan = { days = 3} }
+			}
+		}
+	}		
+	option = {
+		name = ttk_travel_event_duel.0001.a
+		trigger_event = {
+			id = ttk_travel_event_duel.0020
+			days = 2
+		}
+	}
+	option = {
+		name = ttk_travel_event_duel.0001.b
+		hidden_effect = {
+			trigger_event = ttk_travel_event_duel.0008
+		}
+	}
+}
+
+#output for event
+ttk_travel_event_duel.0003 = {
+	type = character_event
+	theme = rival_relation
+	hidden = yes
+	trigger = {
+		scope:ttk_duel_target = { is_alive = yes }
+		scope:ttk_duel_init = { is_alive = yes }
+	}
+	immediate = {
+		if = {
+			limit = {
+				scope:sc_victor = scope:ttk_duel_init
+			}
+			trigger_event = ttk_travel_event_duel.0004
+		}
+		else = {
+			trigger_event = ttk_travel_event_duel.0005
+		}
+	}
+}
+
+#you win choose ## theme done
+ttk_travel_event_duel.0004 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0004.t
+	desc = ttk_travel_event_duel.0004.desc
+	override_background = { reference = terrain_scope }		
+	left_portrait = {
+		character = scope:ttk_duel_init
+		scripted_animation = duel_celebrate   
+		}
+	right_portrait = {
+		character = scope:ttk_duel_target
+		animation = severelywounded 
+		}
+	immediate = {
+		scope:ttk_duel_target = {
+			house ?= {
+				change_house_relation_effect = {
+					HOUSE = scope:ttk_duel_init.house
+					VALUE = house_relation_damage_minor_value
+					REASON = duel
+					CHAR = scope:ttk_duel_init
+					TARGET_CHAR = scope:ttk_duel_target
+					TITLE = scope:dummy_gender
+				}
+			}
+		}
+	}
+	option = {
+		name = ttk_travel_event_duel.0004.a
+		ttk_execute_prisoner_effect = {
+			VICTIM = scope:ttk_duel_target
+			EXECUTIONER = scope:ttk_duel_init
+		}
+	}
+	option = {
+		name = ttk_travel_event_duel.0004.b
+		scope:ttk_duel_init = {
+			add_prestige = medium_prestige_gain
+		}
+		scope:ttk_duel_target = {
+			add_prestige = medium_prestige_loss
+		}
+		if = {
+			limit = {
+				has_personality_benevolent_trigger = no
+			}
+			add_stress = medium_stress_gain
+		}
+		else_if = {
+			limit = {
+				has_personality_benevolent_trigger = yes
+			}
+			add_stress = medium_stress_loss
+		}
+	}
+}
+
+#AI win choice
+ttk_travel_event_duel.0005 = {
+	hidden = yes
+	override_background = { reference = terrain_scope }		
+	#execute player
+	option = {
+		trigger_event = ttk_travel_event_duel.0006
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.5
+				ai_compassion = -0.25
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 0.5
+				is_close_family_of = scope:ttk_duel_target
+			}
+		}
+	}
+	#let player go
+	option = {
+		trigger_event = ttk_travel_event_duel.0007
+		ai_chance = {
+			base = 60
+			ai_value_modifier = {
+				ai_vengefulness = -0.25
+				ai_compassion = 0.5
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = vengeful
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = compassionate
+			}
+			modifier = {
+				factor = 1.5
+				is_close_family_of = scope:ttk_duel_target
+			}
+		}
+	}
+}
+
+#you die
+ttk_travel_event_duel.0006 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0006.t
+	desc = ttk_travel_event_duel.0006.desc
+	override_background = { reference = terrain_scope }		
+	left_portrait = {
+		character = scope:ttk_duel_target
+		scripted_animation = duel_wield_weapon 
+		}
+	right_portrait = {
+		character = scope:ttk_duel_init
+		animation = loss_1
+		}
+	immediate = {
+		scope:ttk_duel_target = {
+			house ?= {
+				change_house_relation_effect = {
+					HOUSE = scope:ttk_duel_init.house
+					VALUE = house_relation_damage_minor_value
+					REASON = duel
+					CHAR = scope:ttk_duel_init
+					TARGET_CHAR = scope:ttk_duel_target
+					TITLE = scope:dummy_gender
+				}
+			}
+		}
+	}
+	option = {
+		name = ttk_travel_event_duel.0006.a
+		ttk_execute_prisoner_effect = {
+			VICTIM = scope:ttk_duel_init
+			EXECUTIONER = scope:ttk_duel_target
+		}
+	}
+}
+
+#you live
+ttk_travel_event_duel.0007 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0007.t
+	desc = ttk_travel_event_duel.0007.desc
+	override_background = { reference = terrain_scope }		
+	left_portrait = {
+		character = scope:ttk_duel_target
+		animation = dismissal  
+		camera = camera_event_very_left
+		}
+	right_portrait = {
+		character = scope:ttk_duel_init
+		animation = beg
+		}
+	immediate = {
+		scope:ttk_duel_target = {
+			house ?= {
+				change_house_relation_effect = {
+					HOUSE = scope:ttk_duel_init.house
+					VALUE = house_relation_damage_minor_value
+					REASON = duel
+					CHAR = scope:ttk_duel_init
+					TARGET_CHAR = scope:ttk_duel_target
+					TITLE = scope:dummy_gender
+				}
+			}
+		}
+	}	
+	option = {
+		name = ttk_travel_event_duel.0007.a
+		scope:ttk_duel_target = {
+			add_prestige = medium_prestige_gain
+		}
+		scope:ttk_duel_init = {
+			add_prestige = medium_prestige_loss
+		}
+		scope:ttk_duel_target = {
+			if = {
+				limit = {
+					has_personality_benevolent_trigger = no
+				}
+				add_stress = medium_stress_gain
+			}
+			else_if = {
+				limit = {
+					has_personality_benevolent_trigger = yes
+				}
+				add_stress = medium_stress_loss
+			}
+		}
+	}
+}
+
+
+ttk_travel_event_duel.0008 = {
+	hidden = yes
+}
+
+#AI refuse ## theme done
+ttk_travel_event_duel.0009 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0009.t
+	desc = ttk_travel_event_duel.0009.desc
+	override_background = { reference = terrain_scope }		
+	left_portrait = {
+		character = scope:ttk_duel_init
+		animation =  dismissal   
+		camera = camera_event_very_left
+		}
+	right_portrait = {
+		character = scope:ttk_duel_target
+		animation =  personality_coward  
+		camera = camera_event_very_right
+		}
+	option = {
+		name = ttk_travel_event_duel.0009.a
+		scope:ttk_duel_init = {
+			add_prestige = medium_prestige_gain
+		}
+		scope:ttk_duel_target = {
+			add_prestige = medium_prestige_loss
+		}
+	}
+}
+
+ttk_travel_event_duel.0010 = {
+	hidden = yes
+	immediate = {
+		trigger_event = {
+			id = ttk_travel_event_duel.0003
+			days = 1
+		}
+	}
+}
+
+#AI choice accept or not
+ttk_travel_event_duel.0020 = {
+	hidden = yes
+	#go duel
+	trigger = {
+		scope:ttk_duel_target = { is_alive = yes }
+		scope:ttk_duel_init = { is_alive = yes }
+	}
+	option = {
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = scope:ttk_duel_init
+			SC_ATTACKER = scope:ttk_duel_init
+			SC_DEFENDER = scope:ttk_duel_target
+			FATALITY = no
+			FIXED = no
+			LOCALE = terrain_scope
+			OUTPUT_EVENT = ttk_travel_event_duel.0010
+			INVALIDATION_EVENT = ttk_travel_event_duel.0008
+		}
+		hidden_effect = {
+			scope:ttk_duel_init = {
+				add_character_flag = {
+					flag = need_military_outfit
+					days = 2
+				}
+				add_character_flag = {
+					flag = ttk_no_cloak
+					days = 2
+				}
+				add_character_flag = {
+					flag = ttk_pwhd_compat
+					days = 2
+				}
+			}
+			scope:ttk_duel_target = {
+				add_character_flag = {
+					flag = need_military_outfit
+					days = 2
+				}
+				add_character_flag = {
+					flag = ttk_no_cloak
+					days = 2
+				}
+				add_character_flag = {
+					flag = ttk_pwhd_compat
+					days = 2
+				}
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_vengefulness = 0.25
+				ai_honor = 0.25
+				ai_energy = 0.25
+				ai_compassion = -0.5
+			}
+			modifier = {
+				factor = 0.5
+				scope:ttk_duel_init.prowess > scope:ttk_duel_target.prowess
+			}
+			modifier = {
+				factor = 0
+				has_trait = craven
+			}
+			modifier = {
+				factor = 1.5
+				has_trait = brave
+			}
+			modifier = {
+				factor = 0.5
+				is_close_family_of = scope:ttk_duel_target
+			}
+		}
+	}
+	#nop
+	option = {
+		trigger_event = ttk_travel_event_duel.0009
+		ai_chance = {
+			base = 60
+			ai_value_modifier = {
+				ai_vengefulness = -0.25
+				ai_honor = -0.25
+				ai_energy = -0.25
+				ai_compassion = 0.5
+			}
+			modifier = {
+				factor = 2
+				scope:ttk_duel_init.prowess > scope:ttk_duel_target.prowess
+			}
+			modifier = {
+				factor = 2
+				has_trait = craven
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				is_close_family_of = scope:ttk_duel_target
+			}
+		}
+	}
+}
+
+
+
+
+#war opening challenge between cultivators
+ttk_travel_event_duel.0100 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0100.t
+	desc = ttk_travel_event_duel.0100.desc
+	override_background = { reference = battlefield }
+	left_portrait = {
+		character = scope:ttk_war_duel_challenger
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:ttk_war_duel_target
+		animation = idle
+	}
+	trigger = {
+		scope:ttk_war_duel_challenger = { is_alive = yes }
+		scope:ttk_war_duel_target = { is_alive = yes }
+	}
+	option = {
+		name = ttk_travel_event_duel.0100.a
+		hidden_effect = {
+			scope:ttk_war_duel_target = {
+				trigger_event = ttk_travel_event_duel.0101
+			}
+		}
+	}
+	option = {
+		name = ttk_travel_event_duel.0100.b
+	}
+}
+
+ttk_travel_event_duel.0101 = {
+	hidden = yes
+	trigger = {
+		scope:ttk_war_duel_challenger = { is_alive = yes }
+		scope:ttk_war_duel_target = { is_alive = yes }
+	}
+	option = {
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = scope:ttk_war_duel_challenger
+			SC_ATTACKER = scope:ttk_war_duel_challenger
+			SC_DEFENDER = scope:ttk_war_duel_target
+			FATALITY = yes
+			FIXED = yes
+			LOCALE = battlefield
+			OUTPUT_EVENT = ttk_travel_event_duel.0110
+			INVALIDATION_EVENT = ttk_travel_event_duel.0008
+		}
+		hidden_effect = {
+			scope:ttk_war_duel_challenger = {
+				add_character_flag = { flag = need_military_outfit days = 3 }
+			}
+			scope:ttk_war_duel_target = {
+				add_character_flag = { flag = need_military_outfit days = 3 }
+			}
+		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				factor = 0
+				has_trait = craven
+			}
+			modifier = {
+				factor = 1.75
+				has_trait = brave
+			}
+			modifier = {
+				factor = 0.5
+				scope:ttk_war_duel_challenger.prowess > scope:ttk_war_duel_target.prowess
+			}
+		}
+	}
+	option = {
+		trigger_event = ttk_travel_event_duel.0102
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 2
+				has_trait = craven
+			}
+			modifier = {
+				factor = 0.25
+				has_trait = brave
+			}
+		}
+	}
+}
+
+ttk_travel_event_duel.0102 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0102.t
+	desc = ttk_travel_event_duel.0102.desc
+	override_background = { reference = battlefield }
+	left_portrait = {
+		character = scope:ttk_war_duel_challenger
+		animation = personality_righteous
+	}
+	right_portrait = {
+		character = scope:ttk_war_duel_target
+		animation = personality_coward
+	}
+	option = {
+		name = ttk_travel_event_duel.0102.a
+		scope:ttk_war_duel_challenger = { add_prestige = medium_prestige_gain }
+		scope:ttk_war_duel_target = { add_prestige = medium_prestige_loss }
+	}
+}
+
+ttk_travel_event_duel.0110 = {
+	hidden = yes
+	immediate = {
+		if = {
+			limit = { scope:sc_victor = scope:ttk_war_duel_challenger }
+			trigger_event = ttk_travel_event_duel.0111
+		}
+		else = {
+			trigger_event = ttk_travel_event_duel.0112
+		}
+	}
+}
+
+ttk_travel_event_duel.0111 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0111.t
+	desc = ttk_travel_event_duel.0111.desc
+	override_background = { reference = battlefield }
+	left_portrait = {
+		character = scope:ttk_war_duel_challenger
+		scripted_animation = duel_celebrate
+	}
+	right_portrait = {
+		character = scope:ttk_war_duel_target
+		animation = loss_1
+	}
+	option = {
+		name = ttk_travel_event_duel.0111.a
+		scope:ttk_war_duel_challenger = { add_prestige = massive_prestige_gain }
+	}
+}
+
+ttk_travel_event_duel.0112 = {
+	type = character_event
+	theme = rival_relation
+	title = ttk_travel_event_duel.0112.t
+	desc = ttk_travel_event_duel.0112.desc
+	override_background = { reference = battlefield }
+	left_portrait = {
+		character = scope:ttk_war_duel_target
+		scripted_animation = duel_celebrate
+	}
+	right_portrait = {
+		character = scope:ttk_war_duel_challenger
+		animation = loss_1
+	}
+	option = {
+		name = ttk_travel_event_duel.0112.a
+		scope:ttk_war_duel_target = { add_prestige = massive_prestige_gain }
+	}
+}

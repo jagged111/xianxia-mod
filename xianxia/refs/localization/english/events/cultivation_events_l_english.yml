@@ -1,0 +1,61 @@
+﻿l_english:
+#Spiritual roots
+  cultivation_important_event.001.title:0 "A Blessing from the Heavens"
+  cultivation_important_event.001.desc:0 "You decide to open your meridians"
+  cultivation_important_event.001.a:0 "Test your luck"
+  cultivation_important_event.001.b:0 "Purchase materials to increase your odds"
+  cultivation_important_event.001.c:0 "Try again later"
+
+#Cultivation
+  
+  cultivation_important_event.011.title:0 "Building your Foundation"
+  cultivation_important_event.011.desc:0 "You build your Foundation and break through into the Foundation Establishment Realm."
+  cultivation_important_event.011.a:0 "Attempt to breakthrough"
+  cultivation_important_event.011.b:0 "Attempt to breakthrough with a breakthrough herb"
+  cultivation_important_event.011.c:0 "I need more time to prepare"
+
+  cultivation_important_event.012.title:0 "Forming your Core"
+  cultivation_important_event.012.desc:0 "You form your Core and break through into the Core Formation Realm."
+  cultivation_important_event.012.a:0 "Attempt to breakthrough"
+  cultivation_important_event.012.b:0 "Attempt to breakthrough with a breakthrough herb"
+  cultivation_important_event.012.c:0 "I need more time to prepare"
+
+  cultivation_important_event.013.title:0 "Manifesting your Soul"
+  cultivation_important_event.013.desc:0 "You manifest your Soul and break through into the Nascent Soul Realm."
+  cultivation_important_event.013.a:0 "Attempt to breakthrough"
+  cultivation_important_event.013.b:0 "Attempt to breakthrough with a breakthrough herb"
+  cultivation_important_event.013.c:0 "I need more time to prepare"
+
+  cultivation_important_event.014.title:0 "Severing your Spirit"
+  cultivation_important_event.014.desc:0 "You sever your Spirit and break through into the Spirit Severing Realm."
+  cultivation_important_event.014.a:0 "Attempt to breakthrough"
+  cultivation_important_event.014.b:0 "Attempt to breakthrough with a breakthrough herb"
+  cultivation_important_event.014.c:0 "I need more time to prepare"
+
+  cultivation_important_event.015.title:0 "Seeking the Dao"
+  cultivation_important_event.015.desc:0 "You seek the Dao and break through into the Dao Seeking Realm."
+  cultivation_important_event.015.a:0 "Attempt to breakthrough"
+  cultivation_important_event.015.b:0 "Attempt to breakthrough with a breakthrough herb"
+  cultivation_important_event.015.c:0 "I need more time to prepare"
+
+  cultivation_important_event.016.title:0 "Ascending to Immortality"
+  cultivation_important_event.016.desc:0 "You ascend to Immortality and break through into the Immortal Ascension Realm."
+  cultivation_important_event.016.a:0 "Attempt to breakthrough"
+  cultivation_important_event.016.b:0 "Attempt to breakthrough with a breakthrough herb"
+  cultivation_important_event.016.c:0 "I need more time to prepare"
+
+#Regular events
+  cultivation_regular_event.101.t:0 "Mysterious seller"
+  cultivation_regular_event.101.desc:0 "A cultivator approaches looking to sell one of his items. He claims he has a mystical herb, capable of aiding you with your cultivation."
+  cultivation_regular_event.101.a:0 "Steal it and consume the herb"
+  cultivation_regular_event.101.b:0 "Steal it and save the herb"
+  cultivation_regular_event.101.c:0 "Buy it and consume the herb"
+  cultivation_regular_event.101.d:0 "Buy it and save the herb"
+  cultivation_regular_event.101.e:0 "Send him away"
+
+  cultivation_regular_event.102.t:0 "Pocket dimension"
+  cultivation_regular_event.102.desc:0 "While wandering your domain, you spot what looks like the entrance to a pocket dimension with a time dilation. While it should be stable for the next hour, anything beyond that is uncertain, and you know you would not survive an unstable pocket dimension. However, you could use it to cultivate faster..."
+  cultivation_regular_event.102.a:0 "Cultivate for only 1 hour."
+  cultivation_regular_event.102.b:0 "Risk it and cutltivate for 3 hours."
+  cultivation_regular_event.102.c:0 "No pain no gain, go for 5 hours."
+  cultivation_regular_event.102.d:0 "Ignore it."

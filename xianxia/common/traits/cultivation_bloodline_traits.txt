@@ -1,0 +1,1820 @@
+﻿# A Regressor's Tale of Cultivation - Traits
+# Path: common/traits/cultivation_traits.txt
+
+# Standard compatibility values  
+@pos_compat_high = 30
+@pos_compat_medium = 15
+@pos_compat_low = 5
+
+@neg_compat_high = -30
+@neg_compat_medium = -15
+@neg_compat_low = -5
+
+##################################################
+# 1. Pure Yin Blood
+##################################################
+
+yin_bloodline_1 = {
+	opposites = {
+		yin_bloodline_2
+		yin_bloodline_3	
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = n_yin_body_1.dds
+			}
+			desc = n_yin_body_1.dds
+		}
+	}
+	birth = 0.1
+	random_creation = 0.1
+	
+	group = yin_bloodline
+	level = 1
+	
+	physical = yes
+	genetic = yes
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_yin_bloodline_desc
+			}
+			desc = trait_yin_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	compatibility = {
+		cultivation_qi_gathering = @pos_compat_low
+	}
+}
+
+yin_bloodline_2 = {
+	opposites = {
+		yin_bloodline_1
+		yin_bloodline_3	
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = n_yin_body_2.dds
+			}
+			desc = n_yin_body_2.dds
+		}
+	}
+	group = yin_bloodline
+	level = 2
+	
+	physical = yes
+	genetic = yes
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_yin_bloodline_desc
+			}
+			desc = trait_yin_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	compatibility = {
+		cultivation_qi_gathering = @pos_compat_low
+	}
+}
+
+yin_bloodline_3 = {
+	opposites = {
+		yin_bloodline_1
+		yin_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = n_yin_body_3.dds
+			}
+			desc = n_yin_body_3.dds
+		}
+	}
+	group = yin_bloodline
+	level = 3
+	
+	physical = yes
+	genetic = yes
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_yin_bloodline_desc
+			}
+			desc = trait_yin_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	compatibility = {
+		cultivation_qi_gathering = @pos_compat_low
+	}
+}
+
+##################################################
+# 2. Pure Yang Blood
+##################################################
+
+yang_bloodline_1 = {
+	opposites = {
+		yang_bloodline_2
+		yang_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = n_yang_body_1.dds
+			}
+			desc = n_yang_body_1.dds
+		}
+	}
+	birth = 0.1
+	random_creation = 0.1
+	
+	group = yang_bloodline
+	level = 1
+	
+	inherit_chance = 5
+	both_parent_has_trait_inherit_chance = 25
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	ruler_designer_cost = 200
+	
+	compatibility = {
+		yang_bloodline_1 = @pos_compat_medium
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_yang_bloodline_desc
+			}
+			desc = trait_yang_bloodline_character_desc
+		}
+	}
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+}
+
+yang_bloodline_2 = {
+	opposites = {
+		yang_bloodline_1
+		yang_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = n_yang_body_2.dds
+			}
+			desc = n_yang_body_2.dds
+		}
+	}
+	group = yang_bloodline
+	level = 2
+	
+	inherit_chance = 5
+	both_parent_has_trait_inherit_chance = 25
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	ruler_designer_cost = 200
+	
+	compatibility = {
+		yang_bloodline_1 = @pos_compat_medium
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_yang_bloodline_desc
+			}
+			desc = trait_yang_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+}
+
+yang_bloodline_3 = {
+	opposites = {
+		yang_bloodline_1
+		yang_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = n_yang_body_3.dds
+			}
+			desc = n_yang_body_3.dds
+		}
+	}
+	group = yang_bloodline
+	level = 3
+	
+	inherit_chance = 5
+	both_parent_has_trait_inherit_chance = 25
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	ruler_designer_cost = 200
+	
+	compatibility = {
+		yang_bloodline_1 = @pos_compat_medium
+	}
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_yang_bloodline_desc
+			}
+			desc = trait_yang_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+}
+
+##################################################
+# 3. Dragon Blood
+##################################################
+
+dragon_bloodline_1 = {
+	opposites = {
+		dragon_bloodline_2
+		dragon_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = dragon_bloodline.dds
+			}
+			desc = dragon_bloodline.dds
+		}
+	}
+	group = dragon_bloodline
+	level = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_dragon_bloodline_desc
+			}
+			desc = trait_dragon_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+dragon_bloodline_2 = {
+	opposites = {
+		dragon_bloodline_1
+		dragon_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = dragon_bloodline.dds
+			}
+			desc = dragon_bloodline.dds
+		}
+	}
+	group = dragon_bloodline
+	level = 2
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_dragon_bloodline_desc
+			}
+			desc = trait_dragon_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+dragon_bloodline_3 = {
+	opposites = {
+		dragon_bloodline_1
+		dragon_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = dragon_bloodline.dds
+			}
+			desc = dragon_bloodline.dds
+		}
+	}
+	group = dragon_bloodline
+	level = 3
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_dragon_bloodline_desc
+			}
+			desc = trait_dragon_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+##################################################
+# 4. Phoenix Blood
+##################################################
+
+phoenix_bloodline_1 = {
+	opposites = {
+		phoenix_bloodline_2
+		phoenix_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = heavenly_root.dds
+			}
+			desc = heavenly_root.dds
+		}
+	}
+	group = phoenix_bloodline
+	level = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_phoenix_bloodline_desc
+			}
+			desc = trait_phoenix_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+phoenix_bloodline_2 = {
+	opposites = {
+		phoenix_bloodline_1
+		phoenix_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = heavenly_root.dds
+			}
+			desc = heavenly_root.dds
+		}
+	}
+	group = phoenix_bloodline
+	level = 2
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_phoenix_bloodline_desc
+			}
+			desc = trait_phoenix_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+phoenix_bloodline_3 = {
+	opposites = {
+		phoenix_bloodline_1
+		phoenix_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = heavenly_root.dds
+			}
+			desc = heavenly_root.dds
+		}
+	}
+	group = phoenix_bloodline
+	level = 3
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_phoenix_bloodline_desc
+			}
+			desc = trait_phoenix_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+##################################################
+# 5. Anchestor Blood
+##################################################
+
+anchestor_bloodline_1 = {
+	opposites = {
+		anchestor_bloodline_2
+		anchestor_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = variant_root.dds
+			}
+			desc = variant_root.dds
+		}
+	}
+	group = anchestor_bloodline
+	level = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_anchestor_bloodline_desc
+			}
+			desc = trait_anchestor_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+anchestor_bloodline_2 = {
+	opposites = {
+		anchestor_bloodline_1
+		anchestor_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = variant_root.dds
+			}
+			desc = variant_root.dds
+		}
+	}
+	group = anchestor_bloodline
+	level = 2
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_anchestor_bloodline_desc
+			}
+			desc = trait_anchestor_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+anchestor_bloodline_3 = {
+	opposites = {
+		anchestor_bloodline_1
+		anchestor_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = variant_root.dds
+			}
+			desc = variant_root.dds
+		}
+	}
+	group = anchestor_bloodline
+	level = 3
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_anchestor_bloodline_desc
+			}
+			desc = trait_anchestor_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+##################################################
+# 6. Venom Blood
+##################################################
+
+poison_bloodline_1 = {
+	opposites = {
+		poison_bloodline_2
+		poison_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = poison_constitution.dds
+			}
+			desc = poison_constitution.dds
+		}
+	}
+	group = poison_bloodline
+	level = 1
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_poison_bloodline_desc
+			}
+			desc = trait_poison_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+poison_bloodline_2 = {
+	opposites = {
+		poison_bloodline_1
+		poison_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = poison_constitution.dds
+			}
+			desc = poison_constitution.dds
+		}
+	}
+	group = poison_bloodline
+	level = 2
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_poison_bloodline_desc
+			}
+			desc = trait_poison_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+poison_bloodline_3 = {
+	opposites = {
+		poison_bloodline_1
+		poison_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = poison_constitution.dds
+			}
+			desc = poison_constitution.dds
+		}
+	}
+	group = poison_bloodline
+	level = 3
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_poison_bloodline_desc
+			}
+			desc = trait_poison_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+##################################################
+# 7. Cursed Blood
+##################################################
+
+cursed_bloodline_1 = {
+	opposites = {
+		cursed_bloodline_2
+		cursed_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_blood.dds
+			}
+			desc = huxian_blood.dds
+		}
+	}
+	group = cursed_bloodline
+	level = 1
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_cursed_bloodline_desc
+			}
+			desc = trait_cursed_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+cursed_bloodline_2 = {
+	opposites = {
+		cursed_bloodline_1
+		cursed_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_blood.dds
+			}
+			desc = huxian_blood.dds
+		}
+	}
+	group = cursed_bloodline
+	level = 2
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_cursed_bloodline_desc
+			}
+			desc = trait_cursed_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+cursed_bloodline_3 = {
+	opposites = {
+		cursed_bloodline_1
+		cursed_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_blood.dds
+			}
+			desc = huxian_blood.dds
+		}
+	}
+	group = cursed_bloodline
+	level = 3
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_cursed_bloodline_desc
+			}
+			desc = trait_cursed_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+##################################################
+# 8. Demon Blood
+##################################################
+
+demon_bloodline_1 = {
+	opposites = {
+		demon_bloodline_2
+		demon_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation_d.dds
+			}
+			desc = huxian_cultivation_d.dds
+		}
+	}
+	group = demon_bloodline
+	level = 1
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_demon_bloodline_desc
+			}
+			desc = trait_demon_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+demon_bloodline_2 = {
+	opposites = {
+		demon_bloodline_1
+		demon_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation_d.dds
+			}
+			desc = huxian_cultivation_d.dds
+		}
+	}
+	group = demon_bloodline
+	level = 2
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_demon_bloodline_desc
+			}
+			desc = trait_demon_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+demon_bloodline_3 = {
+	opposites = {
+		demon_bloodline_1
+		demon_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation_d.dds
+			}
+			desc = huxian_cultivation_d.dds
+		}
+	}
+	group = demon_bloodline
+	level = 3
+	
+	physical = yes
+	genetic = yes	
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+	good = yes
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_demon_bloodline_desc
+			}
+			desc = trait_demon_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+}
+
+##################################################
+# 9. Primal Blood
+##################################################
+
+primal_bloodline_1 = {
+	opposites = {
+		primal_bloodline_2
+		primal_bloodline_3
+	}
+		
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = dragon_body_constitution.dds
+			}
+			desc = dragon_body_constitution.dds
+		}
+	}
+	group = primal_bloodline
+	level = 1
+	
+	birth = 0.1
+	random_creation = 0.1
+	
+	martial = 1
+	prowess = 1
+	learning = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+				triggered_desc = {
+					trigger = { NOT = { exists = this } }
+					desc = trait_primal_bloodline_desc
+				}
+				desc = trait_primal_bloodline_character_desc
+			}
+		}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	# Note: Resurrection would need custom on_action event
+	
+}
+
+primal_bloodline_2 = {
+	opposites = {
+		primal_bloodline_1
+		primal_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = dragon_body_constitution.dds
+			}
+			desc = dragon_body_constitution.dds
+		}
+	}
+	group = primal_bloodline
+	level = 2
+	
+	martial = 1
+	prowess = 1
+	learning = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+				triggered_desc = {
+					trigger = { NOT = { exists = this } }
+					desc = trait_primal_bloodline_desc
+				}
+				desc = trait_primal_bloodline_character_desc
+			}
+		}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	# Note: Resurrection would need custom on_action event
+	
+}
+
+primal_bloodline_3 = {
+	opposites = {
+		primal_bloodline_1
+		primal_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = dragon_body_constitution.dds
+			}
+			desc = dragon_body_constitution.dds
+		}
+	}
+	group = primal_bloodline
+	level = 3
+	
+	martial = 1
+	prowess = 1
+	learning = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+				triggered_desc = {
+					trigger = { NOT = { exists = this } }
+					desc = trait_primal_bloodline_desc
+				}
+				desc = trait_primal_bloodline_character_desc
+			}
+		}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	# Note: Resurrection would need custom on_action event
+	
+}
+##################################################
+# 10. Spirit Blood
+##################################################
+
+spirit_bloodline_1 = {
+	opposites = {
+		spirit_bloodline_2
+		spirit_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation.dds
+			}
+			desc = huxian_cultivation.dds
+		}
+	}
+	group = spirit_bloodline
+	level = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_spirit_bloodline_desc
+			}
+			desc = trait_spirit_bloodline_character_desc
+		}
+	}
+	
+	martial = 15
+	prowess = 22
+	learning = 12
+	health = 6.0
+	advantage = 70
+	monthly_prestige = 3.0
+	dread_gain_mult = 0.75
+	
+	# +200 years lifespan
+	health = -0.40
+	
+}
+
+spirit_bloodline_2 = {
+	opposites = {
+		spirit_bloodline_1
+		spirit_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation.dds
+			}
+			desc = huxian_cultivation.dds
+		}
+	}
+	group = spirit_bloodline
+	level = 2
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_spirit_bloodline_desc
+			}
+			desc = trait_spirit_bloodline_character_desc
+		}
+	}
+	
+	martial = 15
+	prowess = 22
+	learning = 12
+	health = 6.0
+	advantage = 70
+	monthly_prestige = 3.0
+	dread_gain_mult = 0.75
+	
+	# +200 years lifespan
+	health = -0.40
+	
+}
+
+spirit_bloodline_3 = {
+	opposites = {
+		spirit_bloodline_1
+		spirit_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = huxian_cultivation.dds
+			}
+			desc = huxian_cultivation.dds
+		}
+	}
+	group = spirit_bloodline
+	level = 3
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_spirit_bloodline_desc
+			}
+			desc = trait_spirit_bloodline_character_desc
+		}
+	}
+	
+	martial = 15
+	prowess = 22
+	learning = 12
+	health = 6.0
+	advantage = 70
+	monthly_prestige = 3.0
+	dread_gain_mult = 0.75
+	
+	# +200 years lifespan
+	health = -0.40
+	
+}
+
+##################################################
+# 11. Shurima Blood
+##################################################
+
+sun_bloodline_1 = {
+	opposites = {
+		primal_bloodline_2
+		primal_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = lightning_constitution.dds
+			}
+			desc = lightning_constitution.dds
+		}
+	}
+	birth = 0.1
+	random_creation = 0.1
+	
+	martial = 1
+	prowess = 1
+	learning = 1
+
+	group = sun_bloodline
+	level = 1
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_sun_bloodline_desc
+			}
+			desc = trait_sun_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	# Note: Resurrection would need custom on_action event
+	
+}
+
+sun_bloodline_2 = {
+	opposites = {
+		primal_bloodline_1
+		primal_bloodline_3
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = lightning_constitution.dds
+			}
+			desc = lightning_constitution.dds
+		}
+	}
+	martial = 1
+	prowess = 1
+	learning = 1
+
+	group = sun_bloodline
+	level = 2
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_sun_bloodline_desc
+			}
+			desc = trait_sun_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	# Note: Resurrection would need custom on_action event
+	
+}
+
+sun_bloodline_3 = {
+	opposites = {
+		primal_bloodline_1
+		primal_bloodline_2
+	}
+	
+	shown_in_ruler_designer = no
+	
+
+	icon = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = lightning_constitution.dds
+			}
+			desc = lightning_constitution.dds
+		}
+	}
+	martial = 1
+	prowess = 1
+	learning = 1
+
+	group = sun_bloodline
+	level = 3
+	
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+		
+	genetic = yes
+	good = yes
+	physical = yes
+	
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_sun_bloodline_desc
+			}
+			desc = trait_sun_bloodline_character_desc
+		}
+	}
+	
+	martial = 1
+	prowess = 5
+	learning = 1
+	health = 0.2
+	advantage = 5
+	monthly_prestige = 0.5
+	dread_gain_mult = 0.1
+	
+	# +150 years lifespan + Resurrection mechanic
+	#health = -0.30
+	
+	# Note: Resurrection would need custom on_action event
+	
+}

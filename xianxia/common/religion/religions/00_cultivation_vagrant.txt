@@ -1,0 +1,138 @@
+﻿# Vagrant
+cultivation_vagrant = {
+    family = rf_cultivation_vagrant
+	doctrine_background_icon = core_tenet_banner_eastern.dds
+	doctrine = pagan_hostility_doctrine
+	pagan_roots = yes
+	
+	doctrine = doctrine_gender_equal
+	doctrine = doctrine_pluralism_fundamentalist
+	doctrine = doctrine_no_head
+	doctrine = doctrine_theocracy_temporal
+	doctrine = doctrine_concubines
+	doctrine = doctrine_divorce_allowed
+	doctrine = doctrine_bastardry_legitimization
+	doctrine = doctrine_consanguinity_unrestricted
+	doctrine = doctrine_homosexuality_accepted
+	doctrine = doctrine_adultery_men_accepted
+	doctrine = doctrine_adultery_women_accepted
+	doctrine = doctrine_deviancy_accepted
+	doctrine = doctrine_witchcraft_accepted
+	doctrine = doctrine_kinslaying_extended_family_crime
+	doctrine = doctrine_clerical_function_recruitment
+	doctrine = doctrine_clerical_gender_either
+	doctrine = doctrine_clerical_marriage_allowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+	doctrine = doctrine_funeral_bewailment
+
+	traits = {
+		virtues = { brave ambitious gregarious adventurer }
+		sins = { craven content shy }
+	}
+
+	custom_faith_icons = {
+		custom_faith_1 custom_faith_2 custom_faith_3 custom_faith_4 custom_faith_5
+	}
+
+	holy_order_names = {
+		{ name = "holy_order_wandering_blades" }
+	}
+	holy_order_maa = { martial_artist_cultivator }
+
+	localization = {
+		HighGodName = cultivation_high_god_name
+		HouseOfWorship = vagrant_temple
+		DevoteeMale = vagrant_cultivator_male
+		DevoteeFemale = vagrant_cultivator_female
+	}
+
+	faiths = {
+		lone_wolf_wanderers = {
+			color = { 0.5 0.5 0.5 }
+			icon = cultivation
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_adaptive
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_vagrant_cultivation
+		}
+
+		vagrant_blade_brotherhood = {
+			color = { 0.4 0.4 0.4 }
+			icon = cultivation_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_adaptive
+			doctrine = tenet_warmonger
+			doctrine = tenet_astrology
+			doctrine = tenet_vagrant_cultivation
+		}
+
+		thousand_treasures_pavilion = {
+			color = { 0.8 0.7 0.3 }
+			icon = kunlun_sect_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_vagrant_cultivation
+		}
+
+		mystic_forge_hall = {
+			color = { 0.7 0.4 0.2 }
+			icon = kongtong_sect_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_vagrant_cultivation
+		}
+
+		ancient_relic_sect = {
+			color = { 0.6 0.5 0.4 }
+			icon = mount_hua_sect_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_vagrant_cultivation
+		}
+
+		primal_beast_sect = {
+			color = { 0.5 0.4 0.3 }
+			icon = hainan_sect_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_astrology
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_vagrant_cultivation
+		}
+
+		primordial_chaos_hall = {
+			color = { 0.4 0.4 0.5 }
+			icon = wudang_sect_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_adaptive
+			doctrine = tenet_astrology
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_vagrant_cultivation
+		}
+		
+		feral_bond_sect = {
+			color = { 0.4 0.5 0.4 }
+			icon = diancang_sect_reformed
+			holy_site = chang_an
+			holy_site = luoyang
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_vagrant_cultivation
+		}
+	}
+}

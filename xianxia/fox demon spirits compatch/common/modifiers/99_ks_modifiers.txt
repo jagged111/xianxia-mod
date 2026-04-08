@@ -1,0 +1,38 @@
+﻿ks_night_cultivation_modifier = {
+	icon = health_negative
+	health = -1.0
+	stress_gain_mult = 0.25
+}
+
+ks_human_like_fox_modifier = {
+	icon = love_positive
+	general_opinion = 15
+}
+
+ks_good_sexual_dream_modifier = {
+	icon = love_positive
+	stress_gain_mult = -0.25
+	fertility = 0.2
+}
+
+ks_possessed_by_a_huxian_modifier = {
+	icon = health_negative
+	health = -1.0
+	stress_gain_mult = 0.25
+}
+
+ks_amulet_modifier = {
+	icon = piety_positive
+	general_opinion = 15
+	clergy_opinion = 25
+	attraction_opinion = -40
+	tax_mult = -0.1
+}
+
+ks_ritual_modifier = {
+	icon = piety_positive
+	general_opinion = 20
+	clergy_opinion = 30
+	attraction_opinion = -50
+	zealot_opinion = 20
+}

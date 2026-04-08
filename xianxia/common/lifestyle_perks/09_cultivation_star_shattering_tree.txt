@@ -1,0 +1,160 @@
+﻿##################################################
+# STAR SHATTERING REALM (Y: 42-48) +200 years
+# Tree: star_shattering_tree
+##################################################
+
+star_shattering_explode_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 1 0.7 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+
+	
+	character_modifier = {
+		prowess = 18
+		health = 1.0
+		dread_baseline_add = 5
+	}
+}
+
+# Stage 1 (5 branches)
+star_shattering_1a_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 0 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+	parent = star_shattering_explode_perk
+	
+	character_modifier = {
+		prowess = 15
+		advantage = 10
+	}
+}
+
+star_shattering_1b_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 2 0 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+	parent = star_shattering_explode_perk
+	
+	character_modifier = {
+		martial = 8
+		advantage = 10
+	}
+}
+
+star_shattering_1d_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 2 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+	parent = star_shattering_1b_perk
+	
+	character_modifier = {
+		health = 1.5
+		advantage = 10
+	}
+}
+
+star_shattering_1e_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 0 1 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+	parent = star_shattering_1a_perk
+
+	character_modifier = {
+		prowess = 12
+		health = 1.0
+		advantage = 10
+	}
+}
+
+star_shattering_1c_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 1 2 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+	parent = star_shattering_1e_perk
+	parent = star_shattering_1d_perk
+	
+	character_modifier = {
+		learning = 4
+		advantage = 10
+	}
+}
+
+# Becoming Star (merges all 5)
+star_shattering_becoming_star_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 1 3 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = node_cultivation
+	parent = star_shattering_1c_perk
+	
+	character_modifier = {
+		prowess = 27
+		martial = 12
+		learning = 6
+		health = 2.0
+		advantage = 30
+	}
+}
+
+# Sacred Vessel Breakthrough
+star_shattering_sacred_vessel_breakthrough_perk = {
+	lifestyle = cultivation_lifestyle
+	tree = star_shattering_tree
+	position = { 1 4 }
+	
+	can_be_picked = {
+		has_trait = cultivation_star_shattering
+	}
+	icon = cultivation_sacred_vessel_f
+	parent = star_shattering_becoming_star_perk
+	
+	trait = cultivation_sacred_vessel
+	
+	effect = {
+		add_character_flag = can_attempt_sacred_vessel_breakthrough
+		trigger_event = cultivation_breakthrough.1900
+	}
+	
+	character_modifier = {
+		prowess = 81
+		learning = 15
+		health = 10.0
+		advantage = 90
+		monthly_prestige = 5.0
+		dread_baseline_add = 30
+	}
+}

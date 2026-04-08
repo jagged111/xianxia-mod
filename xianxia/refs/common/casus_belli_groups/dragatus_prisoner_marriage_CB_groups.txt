@@ -1,0 +1,2 @@
+﻿dragatus_prisoner_marriage_personal = {
+}

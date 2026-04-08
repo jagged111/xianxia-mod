@@ -1,0 +1,9 @@
+#############################
+# ON_ACTION
+#############################
+
+on_death = {
+	events = {
+		cultivation_constitutions_events.001 # Call phoenix resurrection event
+	}
+}

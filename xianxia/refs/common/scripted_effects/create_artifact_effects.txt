@@ -1,0 +1,21 @@
+﻿create_breakthrough_artifact = {
+	$OWNER$ = { save_scope_as = owner }
+
+	create_artifact = {	
+		name = breakthrough_herb
+		description = breakthrough_herb_desc
+		template = breakthrough_herb_template
+		type = miscellaneous
+		visuals = breakthrough_herb
+		modifier = breakthrough_herb_modifier
+		rarity = famed
+		decaying = no
+		history = {
+			#type = history_portal_components
+		}
+		save_scope_as = newly_created_artifact
+	}
+	scope:newly_created_artifact = {
+		set_variable = is_breakthrough_herb
+	}
+}

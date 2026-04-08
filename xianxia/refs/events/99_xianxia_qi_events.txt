@@ -1,0 +1,13 @@
+﻿namespace = xianxia_qi
+
+xianxia_qi.0001 = {
+	hidden = yes
+	
+	trigger = {
+		can_gain_qi_gathering = yes
+	}
+	
+	immediate = {
+		add_trait = trait_qi_gathering
+	}
+}

@@ -1,0 +1,562 @@
+xianxia_realm_transformation = {
+	heavenly_being_transformation = {
+		traits = { cultivation_heavenly_being }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.10
+					y = 0.55
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.06
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.94
+				}
+			}
+		}
+	}
+
+	four_axis_transformation = {
+		traits = { cultivation_four_axis }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.12
+					y = 0.62
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.08
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.92
+				}
+			}
+		}
+	}
+
+	integration_transformation = {
+		traits = { cultivation_integration }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.14
+					y = 0.68
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.1
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.9
+				}
+			}
+		}
+	}
+
+	star_shattering_transformation = {
+		traits = { cultivation_star_shattering }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.16
+					y = 0.74
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.15
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.86
+				}
+			}
+		}
+	}
+
+	sacred_vessel_transformation = {
+		traits = { cultivation_sacred_vessel }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.18
+					y = 0.80
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.18
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.82
+				}
+			}
+		}
+	}
+
+	entering_nirvana_transformation = {
+		traits = { cultivation_entering_nirvana }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.20
+					y = 0.86
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.2
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.78
+				}
+			}
+		}
+	}
+
+	true_immortal_transformation = {
+		traits = { cultivation_true_immortal }
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.22
+					y = 0.92
+				}
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.24
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.72
+				}
+			}
+		}
+	}
+}
+
+xianxia_fox_spirit_appearance = {
+	huxian_white_hair = {
+		traits = { huxian_blood }
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					faith = { has_doctrine_parameter = unorthodox_cultivation }
+					AND = {
+						faith = { has_doctrine_parameter = demonic_cultivation }
+						NOT = { has_trait = wrathful }
+						NOT = { has_trait = sadistic }
+						NOT = { has_trait = vengeful }
+					}
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = hair_color
+					mode = modify
+					x = -1.0
+					y = -1.0
+				}
+			}
+		}
+	}
+}
+
+xianxia_faith_eye_aspects = {
+	demonic_cultivator_red_eyes = {
+		traits = {
+			cultivation_qi_gathering
+			cultivation_qi_refining
+			cultivation_qi_building
+			cultivation_core_formation
+			cultivation_nascent_soul
+			cultivation_heavenly_being
+			cultivation_four_axis
+			cultivation_integration
+			cultivation_star_shattering
+			cultivation_sacred_vessel
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				faith = { has_doctrine_parameter = demonic_cultivation }
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.95
+					y = 0.05
+				}
+			}
+		}
+	}
+
+	unorthodox_cultivator_purple_eyes = {
+		traits = {
+			cultivation_qi_gathering
+			cultivation_qi_refining
+			cultivation_qi_building
+			cultivation_core_formation
+			cultivation_nascent_soul
+			cultivation_heavenly_being
+			cultivation_four_axis
+			cultivation_integration
+			cultivation_star_shattering
+			cultivation_sacred_vessel
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				faith = { has_doctrine_parameter = unorthodox_cultivation }
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = eye_color
+					mode = modify
+					x = 0.72
+					y = 0.93
+				}
+			}
+		}
+	}
+}
+
+xianxia_faith_hair_aspects = {
+	unorthodox_demonic_nirvana_white_hair = {
+		traits = { cultivation_entering_nirvana }
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					faith = { has_doctrine_parameter = unorthodox_cultivation }
+					AND = {
+						faith = { has_doctrine_parameter = demonic_cultivation }
+						NOT = { has_trait = wrathful }
+						NOT = { has_trait = sadistic }
+						NOT = { has_trait = vengeful }
+					}
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = hair_color
+					mode = modify
+					x = -0.8
+					y = -0.8
+				}
+			}
+		}
+	}
+
+	unorthodox_demonic_true_immortal_white_hair = {
+		traits = { cultivation_true_immortal }
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					faith = { has_doctrine_parameter = unorthodox_cultivation }
+					AND = {
+						faith = { has_doctrine_parameter = demonic_cultivation }
+						NOT = { has_trait = wrathful }
+						NOT = { has_trait = sadistic }
+						NOT = { has_trait = vengeful }
+					}
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = hair_color
+					mode = modify
+					x = -1.0
+					y = -1.0
+				}
+			}
+		}
+	}
+
+	demonic_high_realm_blood_red_hair = {
+		traits = {
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				faith = { has_doctrine_parameter = demonic_cultivation }
+				OR = {
+					has_trait = wrathful
+					has_trait = sadistic
+					has_trait = vengeful
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = hair_color
+					mode = modify
+					x = 0.95
+					y = 0.08
+				}
+			}
+		}
+	}
+
+	demonic_huxian_blood_red_hair = {
+		traits = { huxian_blood }
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				faith = { has_doctrine_parameter = demonic_cultivation }
+				OR = {
+					has_trait = wrathful
+					has_trait = sadistic
+					has_trait = vengeful
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = hair_color
+					mode = modify
+					x = 0.95
+					y = 0.08
+				}
+			}
+		}
+	}
+}
+
+xianxia_cultivator_body_archetypes = {
+	xianxia_disciplined_immortal_frame = {
+		traits = {
+			cultivation_qi_gathering
+			cultivation_qi_refining
+			cultivation_qi_building
+			cultivation_core_formation
+			cultivation_nascent_soul
+			cultivation_heavenly_being
+			cultivation_four_axis
+			cultivation_integration
+			cultivation_star_shattering
+			cultivation_sacred_vessel
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					has_trait = temperate
+					has_trait = diligent
+					has_trait = athletic
+					has_trait = whole_of_body
+					has_trait = education_learning_3
+					has_trait = education_learning_4
+					has_trait = education_stewardship_3
+					has_trait = education_stewardship_4
+				}
+				NOT = {
+					OR = {
+						has_trait = gluttonous
+						has_trait = lazy
+						has_trait = drunkard
+					}
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.91
+				}
+			}
+		}
+	}
+
+	xianxia_martial_hero_frame = {
+		traits = {
+			cultivation_qi_gathering
+			cultivation_qi_refining
+			cultivation_qi_building
+			cultivation_core_formation
+			cultivation_nascent_soul
+			cultivation_heavenly_being
+			cultivation_four_axis
+			cultivation_integration
+			cultivation_star_shattering
+			cultivation_sacred_vessel
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					has_trait = brave
+					has_trait = wrathful
+					has_trait = blademaster_2
+					has_trait = blademaster_3
+					has_trait = hunter_2
+					has_trait = hunter_3
+					has_trait = education_martial_3
+					has_trait = education_martial_4
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				morph = {
+					mode = modify
+					gene = gene_height
+					value = 0.04
+				}
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 1.07
+				}
+			}
+		}
+	}
+
+	xianxia_refined_sage_frame = {
+		traits = {
+			cultivation_qi_gathering
+			cultivation_qi_refining
+			cultivation_qi_building
+			cultivation_core_formation
+			cultivation_nascent_soul
+			cultivation_heavenly_being
+			cultivation_four_axis
+			cultivation_integration
+			cultivation_star_shattering
+			cultivation_sacred_vessel
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					has_trait = calm
+					has_trait = patient
+					has_trait = humble
+					has_trait = scholar
+					has_trait = theologian
+					has_trait = mystic
+					has_trait = education_learning_2
+					has_trait = education_learning_3
+					has_trait = education_learning_4
+				}
+				NOT = { has_trait = wrathful }
+			}
+		}
+		dna_modifiers = {
+			human = {
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 0.87
+				}
+			}
+		}
+	}
+
+	xianxia_indulgent_deviation_frame = {
+		traits = {
+			cultivation_qi_gathering
+			cultivation_qi_refining
+			cultivation_qi_building
+			cultivation_core_formation
+			cultivation_nascent_soul
+			cultivation_heavenly_being
+			cultivation_four_axis
+			cultivation_integration
+			cultivation_star_shattering
+			cultivation_sacred_vessel
+			cultivation_entering_nirvana
+			cultivation_true_immortal
+		}
+		trigger = {
+			trigger_if = {
+				limit = { exists = root }
+				OR = {
+					has_trait = gluttonous
+					has_trait = lazy
+					has_trait = drunkard
+					has_trait = hashishiyah
+					has_trait = reveler_3
+				}
+				NOT = {
+					OR = {
+						has_trait = athletic
+						has_trait = whole_of_body
+						has_trait = blademaster_3
+					}
+				}
+			}
+		}
+		dna_modifiers = {
+			human = {
+				morph = {
+					mode = modify_multiply
+					gene = gene_bs_body_type
+					value = 1.12
+				}
+			}
+		}
+	}
+}

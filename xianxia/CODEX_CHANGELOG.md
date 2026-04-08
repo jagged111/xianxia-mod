@@ -169,10 +169,10 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Marked `cultivation_sect_spar_results.1000` hidden to suppress missing desc/options event errors for this internal resolution event.
 - Removed duplicate `FOUNDER_BASED_NAME_POSTFIX` localization override from fox-spirit compatch dynasty names.
 
-### 24) Reincarnation true-immortal completion + fox portrait trigger safety (2026-04-08)
+### 24) Reincarnation true-immortal completion + hair modifier load-path fix (2026-04-08)
 - Expanded reincarnation lottery reward payload in `cultivation_ai.2270` so the selected single ruler receives the *entire* cultivation perk progression (all branch nodes across mortal -> true immortal trees), not a partial branch path.
 - Preserved singleton-holder design: only one active landed reincarnation holder exists at a time, and that ruler remains the designated maxed "true immortal" vessel.
-- Fixed fox-spirit portrait trigger validation by removing the invalid dynamic clothing-gfx flag check from `portrait_fox_ears_trigger`, keeping stable trait/tradition-based gating (`huxian_blood` or `tradition_ks_huxian`).
+- Added `common/trait_portrait_modifiers/zz_xianxia_trait_modifiers.txt` so xianxia hair/eye/body portrait DNA modifiers load from the actual CK3 runtime path (instead of only existing under the `activities/` reference mirror).
 
 ## Practical guidance for future Codex instances
 

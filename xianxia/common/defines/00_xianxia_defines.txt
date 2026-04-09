@@ -1,0 +1,4 @@
+﻿NCombat = {
+	# Force battle knight event pulses to fire daily for maximum duel density.
+	COMBAT_EVENT_DAYS = 1
+}

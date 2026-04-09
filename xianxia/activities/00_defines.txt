@@ -571,7 +571,7 @@ NActionPoints = {
 NCombat = {
 	UNRAISED_LEVY_REGIMENTS_SPEED = 40.0			# How many distance units do unraised regiments travel per day when gathering
 	COMBAT_ROLL_DAYS = 3							# How many days are there between rolls?
-	COMBAT_EVENT_DAYS = 5							# How many days are there between knight events?
+	COMBAT_EVENT_DAYS = 1							# Daily knight event pulse for maximum duel frequency
 
 	WAR_ATTACKER_COMBAT_SCORE_SCALE = 50			# Scale factor for how much war score battles give to the war attacker. Can be overriden by CB
 	WAR_DEFENDER_COMBAT_SCORE_SCALE = 50			# Scale factor for how much war score battles give to the war defender. Can be overriden by CB

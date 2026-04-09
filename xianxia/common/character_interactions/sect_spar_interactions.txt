@@ -169,7 +169,31 @@
 	# Should auto-accept if arranging spar in own court
 
 	ai_accept = {
-		base = 50
+		base = 35
+
+		modifier = {
+			add = 55
+			scope:recipient = {
+				opinion = { target = scope:actor value >= 40 }
+			}
+			desc = AI_OPINION_REASON
+		}
+
+		modifier = {
+			add = 25
+			scope:recipient = {
+				opinion = { target = scope:actor value >= 10 }
+			}
+			desc = AI_OPINION_REASON
+		}
+
+		modifier = {
+			add = -60
+			scope:recipient = {
+				opinion = { target = scope:actor value <= -40 }
+			}
+			desc = AI_OPINION_REASON
+		}
 
 		# More likely to accept if good fighter
 		modifier = {

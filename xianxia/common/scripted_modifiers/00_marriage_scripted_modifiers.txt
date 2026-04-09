@@ -74,13 +74,8 @@
 				OR = {
 					exists = liege
 									}
-				OR = {
-					liege = {
-						opinion = { target = scope:actor value <= -1 }
-					}
-					guardian = {
-						opinion = { target = scope:actor value <= -1 }
-					}
+				liege = {
+					opinion = { target = scope:actor value <= -1 }
 				}
 			}
 		}
@@ -179,7 +174,7 @@
 			scope:actor = { is_ai = yes }  # AI must be the one offering/proposing
 			scope:secondary_recipient = {
 				is_female = yes
-				is_virgin_trigger = yes
+				is_virgin = yes
 			}
 		}
 
@@ -192,7 +187,7 @@
 			}
 			scope:secondary_recipient = {
 				is_female = yes
-				is_virgin_trigger = no # Ensure the recipient is not a virgin
+				is_virgin = no # Ensure the recipient is not a virgin
 			}
 			scope:recipient = {
 				is_ai = yes # Ensure this applies to AI characters
@@ -211,7 +206,7 @@
 			}
 			scope:secondary_recipient = {
 				is_female = yes
-				is_virgin_trigger = no # Ensure the recipient is not a virgin
+				is_virgin = no # Ensure the recipient is not a virgin
 			}
 			scope:recipient = {
 				is_ai = yes # Ensure this applies to AI characters

@@ -337,3 +337,22 @@ has_higher_cultivation_realm_than_liege = {
 		}
 	}
 }
+
+# ROOT and target must share the exact same cultivation realm trait.
+has_equal_cultivation_realm_with_target = {
+	exists = scope:target
+	OR = {
+		AND = { has_trait = cultivation_qi_gathering scope:target = { has_trait = cultivation_qi_gathering } }
+		AND = { has_trait = cultivation_qi_refining scope:target = { has_trait = cultivation_qi_refining } }
+		AND = { has_trait = cultivation_qi_building scope:target = { has_trait = cultivation_qi_building } }
+		AND = { has_trait = cultivation_core_formation scope:target = { has_trait = cultivation_core_formation } }
+		AND = { has_trait = cultivation_nascent_soul scope:target = { has_trait = cultivation_nascent_soul } }
+		AND = { has_trait = cultivation_heavenly_being scope:target = { has_trait = cultivation_heavenly_being } }
+		AND = { has_trait = cultivation_four_axis scope:target = { has_trait = cultivation_four_axis } }
+		AND = { has_trait = cultivation_integration scope:target = { has_trait = cultivation_integration } }
+		AND = { has_trait = cultivation_star_shattering scope:target = { has_trait = cultivation_star_shattering } }
+		AND = { has_trait = cultivation_sacred_vessel scope:target = { has_trait = cultivation_sacred_vessel } }
+		AND = { has_trait = cultivation_entering_nirvana scope:target = { has_trait = cultivation_entering_nirvana } }
+		AND = { has_trait = cultivation_true_immortal scope:target = { has_trait = cultivation_true_immortal } }
+	}
+}

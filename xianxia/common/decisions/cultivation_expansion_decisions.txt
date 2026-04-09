@@ -251,6 +251,24 @@ cleanse_remnant_sects_decision = {
         any_held_title = {
             tier = tier_county
             NOT = { faith = root.faith }
+            OR = {
+                AND = {
+                    root.faith = { has_doctrine_parameter = orthodox_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+                }
+                AND = {
+                    root.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+                }
+                AND = {
+                    root.faith = { has_doctrine_parameter = demonic_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = demonic_cultivation } }
+                }
+                AND = {
+                    root.faith = { has_doctrine_parameter = vagrant_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+                }
+            }
         }
         NOT = { has_character_flag = cleanse_remnant_sects_cooldown }
     }
@@ -259,6 +277,24 @@ cleanse_remnant_sects_decision = {
         any_held_title = {
             tier = tier_county
             NOT = { faith = root.faith }
+            OR = {
+                AND = {
+                    root.faith = { has_doctrine_parameter = orthodox_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+                }
+                AND = {
+                    root.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+                }
+                AND = {
+                    root.faith = { has_doctrine_parameter = demonic_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = demonic_cultivation } }
+                }
+                AND = {
+                    root.faith = { has_doctrine_parameter = vagrant_cultivation }
+                    NOT = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+                }
+            }
         }
     }
 
@@ -271,6 +307,24 @@ cleanse_remnant_sects_decision = {
             limit = {
                 tier = tier_county
                 NOT = { faith = root.faith }
+                OR = {
+                    AND = {
+                        root.faith = { has_doctrine_parameter = orthodox_cultivation }
+                        NOT = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+                    }
+                    AND = {
+                        root.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                        NOT = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+                    }
+                    AND = {
+                        root.faith = { has_doctrine_parameter = demonic_cultivation }
+                        NOT = { faith = { has_doctrine_parameter = demonic_cultivation } }
+                    }
+                    AND = {
+                        root.faith = { has_doctrine_parameter = vagrant_cultivation }
+                        NOT = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+                    }
+                }
             }
             faith = { save_temporary_scope_as = former_sect_faith }
 

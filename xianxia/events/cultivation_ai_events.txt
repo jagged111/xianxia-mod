@@ -231,7 +231,8 @@ cultivation_ai.2280 = {
     hidden = yes
 
     immediate = {
-        every_ruler = {
+        # Performance-safe: normalize only among independent rulers in diplomatic reach.
+        every_independent_ruler = {
             limit = {
                 is_alive = yes
                 is_adult = yes
@@ -239,14 +240,19 @@ cultivation_ai.2280 = {
                 has_cultivation_sect_faith = yes
             }
 
-            every_ruler = {
+            every_independent_ruler = {
                 limit = {
                     is_alive = yes
                     is_adult = yes
                     is_cultivator = yes
                     has_cultivation_sect_faith = yes
                     NOT = { this = root }
+                    is_within_diplo_range = root
                 }
+
+                # Clear stale path-opinion state before applying current relationship.
+                remove_opinion = { target = root modifier = opinion_cultivation_path_peer }
+                remove_opinion = { target = root modifier = opinion_cultivation_path_rival }
 
                 if = {
                     limit = {

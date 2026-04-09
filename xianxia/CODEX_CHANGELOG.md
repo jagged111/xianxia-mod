@@ -454,3 +454,5 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added monthly identity refresh event `cultivation_ai.2295` (hooked to monthly pulse) so sect/path backend identity stays synchronized for AI and player states.
 - Updated representative perks in Mortal, Qi Gathering, Qi Refining, Four Axis, and Integration trees to grant hidden path identities and add AI branch-selection bias aligned to sect signatures.
 - Added anti-conflict guard with random sect lottery assignment (`cultivation_random_sect_lottery_assigned`) so game-start Han mandate seeding does not override rulers already assigned by sect lottery effects.
+
+- Path-opinion yearly pass performance fix: `cultivation_ai.2280` now scopes to independent rulers in diplomatic range (avoids global O(n²) ruler pairing), and clears stale `opinion_cultivation_path_peer`/`opinion_cultivation_path_rival` before applying the current path relationship.

@@ -348,3 +348,57 @@ xianxia_world.2260.a:0 "I accept the predation dao."
 xianxia_world.2261.t:0 "Moonlit Mortal Hunt"
 xianxia_world.2261.desc:0 "Under cover of night, you harvest mortal vitality in your own domain. Power surges, but rumors spread like wildfire."
 xianxia_world.2261.a:0 "Let fear feed my path."
+
+ declare_heavenly_demon_decision:0 "Proclaim Yourself the Heavenly Demon"
+ declare_heavenly_demon_decision_desc:0 "Your sect has conquered enough under heaven to stand as an empire. Announce your mandate and let the Jianghu acknowledge your demonic supremacy."
+ declare_heavenly_demon_decision_tooltip:0 "Requires the Heavenly Demon Sect and empire-scale conquest. Grants a permanent same-faith opinion surge and major cultivation learning momentum."
+ declare_heavenly_demon_decision_confirm:0 "Let all under heaven witness the Heavenly Demon."
+
+ heavenly_demon_proclaimed:0 "The Heavenly Demon Proclaimed"
+ heavenly_demon_proclaimed_desc:0 "After conquering an empire-scale realm, this ruler has proclaimed the Heavenly Demon mandate. Sect peers rally with awe and fear while cultivation insight accelerates."
+
+
+ proclaim_great_sect_hegemon_decision:0 "Proclaim Great Sect Hegemony"
+ proclaim_great_sect_hegemon_decision_desc:0 "As your sect-domain dominates counties and duchies, declare your line as one of the Great Sects of the era."
+ proclaim_great_sect_hegemon_decision_tooltip:0 "Establish a long-term Great Sect mandate and secure prestige among sect peers."
+ proclaim_great_sect_hegemon_decision_confirm:0 "Raise the Great Sect banner."
+
+ found_martial_confederation_decision:0 "Found a Martial Confederation"
+ found_martial_confederation_decision_desc:0 "Invite same-path sect rulers into a loose defensive confederation to stabilize the Jianghu balance of power."
+ found_martial_confederation_decision_tooltip:0 "Creates cross-sect alliances among rulers following your cultivation path and establishes future confederation groundwork."
+ found_martial_confederation_decision_confirm:0 "Summon the path leaders."
+
+ sect_hegemon_mandate:0 "Great Sect Hegemon Mandate"
+ sect_hegemon_mandate_desc:0 "This ruler has publicly established their line as a Great Sect mandate holder of the age."
+ martial_confederation_founder:0 "Martial Confederation Founder"
+ martial_confederation_founder_desc:0 "This ruler convened same-path sect leaders into a loose martial confederation framework."
+
+
+ proclaim_orthodox_alliance_leader_decision:0 "Proclaim Orthodox Alliance Leadership"
+ proclaim_orthodox_alliance_leader_decision_desc:0 "Under banners of righteousness and order, call the orthodox sects to recognize your leadership."
+ proclaim_orthodox_alliance_leader_decision_tooltip:0 "Establishes an Orthodox Alliance leader and strengthens same-path confederation ties."
+ proclaim_orthodox_alliance_leader_decision_confirm:0 "Let the righteous banners gather."
+
+ proclaim_demonic_alliance_leader_decision:0 "Proclaim Demonic Alliance Leadership"
+ proclaim_demonic_alliance_leader_decision_desc:0 "Crush rival halls and force demonic sects to acknowledge your supremacy."
+ proclaim_demonic_alliance_leader_decision_tooltip:0 "Establishes a Demonic Alliance leader and pushes same-path confederation dominance."
+ proclaim_demonic_alliance_leader_decision_confirm:0 "All under the demonic banner will submit."
+
+ convene_martial_alliance_decision:0 "Convene the Martial Alliance"
+ convene_martial_alliance_decision_desc:0 "Host a grand Jianghu assembly to establish arbitration, tournament authority, and a practical alliance framework."
+ convene_martial_alliance_decision_tooltip:0 "Creates a baseline Martial Alliance leadership layer and improves cross-sect stability for your path."
+ convene_martial_alliance_decision_confirm:0 "Open the Martial Alliance assembly."
+
+ establish_heavenly_mandate_bureau_decision:0 "Establish Heavenly Mandate Bureau"
+ establish_heavenly_mandate_bureau_decision_desc:0 "With imperial mandate and Han heartland legitimacy, formalize an orthodox sect under the throne's protection."
+ establish_heavenly_mandate_bureau_decision_tooltip:0 "Restricted to Han-culture rulers or holders of e_china; converts faith to Heavenly Mandate Bureau."
+ establish_heavenly_mandate_bureau_decision_confirm:0 "Bind sect and empire together."
+
+ orthodox_alliance_leader:0 "Orthodox Alliance Leader"
+ orthodox_alliance_leader_desc:0 "Recognized by righteous sects as a foremost defender of orthodox order."
+ demonic_alliance_leader:0 "Demonic Alliance Leader"
+ demonic_alliance_leader_desc:0 "Feared and obeyed as a dominant power among demonic path factions."
+ martial_alliance_leader:0 "Martial Alliance Leader"
+ martial_alliance_leader_desc:0 "This ruler presides over a broad Jianghu alliance framework and arbitration order."
+ imperial_patron_sect:0 "Imperial Patron Sect"
+ imperial_patron_sect_desc:0 "This sect is formally tied to imperial patronage and Han court legitimacy."

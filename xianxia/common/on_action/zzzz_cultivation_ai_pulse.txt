@@ -3,6 +3,8 @@
         cultivation_ai.1000
         cultivation_ai.2250
         cultivation_ai.2270
+        cultivation_ai.2295
+        cultivation_ai.2290
         cultivation_ai.3000
         xianxia_world.1000
         xianxia_world.1700
@@ -21,7 +23,9 @@ on_monthly_pulse = {
         cultivation_ai.2250
         cultivation_ai.2260
         cultivation_ai.2270
+        cultivation_ai.2295
         cultivation_ai.3001
+        cultivation_ai.3002
         xianxia_world.1710
     }
 }
@@ -29,6 +33,7 @@ on_monthly_pulse = {
 # Lower-frequency heavy realm adaptation / institution refresh.
 on_yearly_pulse = {
     events = {
+        cultivation_ai.2280
         cultivation_ai.3000
         xianxia_world.1000
         xianxia_world.1700

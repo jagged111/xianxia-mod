@@ -50,6 +50,15 @@ qi_gathering_meridian_3a_perk = {
 	icon = node_cultivation
 	parent = qi_gathering_meridian_2_perk
 	
+	effect = {
+		cultivation_set_path_balanced_effect = yes
+	}
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_orthodox_hidden } multiply = 1.5 }
+		if = { limit = { has_character_modifier = sect_signature_vagrant_hidden } multiply = 1.3 }
+	}
+
 	character_modifier = {
 		learning = 1
 		health = 0.25
@@ -68,6 +77,15 @@ qi_gathering_meridian_3b_perk = {
 	icon = node_cultivation
 	parent = qi_gathering_meridian_2_perk
 	
+	effect = {
+		cultivation_set_path_tyrannical_effect = yes
+	}
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_demonic_hidden } multiply = 1.7 }
+		if = { limit = { has_character_modifier = sect_signature_unorthodox_hidden } multiply = 1.3 }
+	}
+
 	character_modifier = {
 		prowess = 6
 		health = 0.25

@@ -224,6 +224,108 @@ cultivation_ai.2230 = {
 }
 
 
+# Yearly path-opinion normalization: same path (even cross-sect) gets goodwill, different paths get rivalry.
+cultivation_ai.2280 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+
+            every_ruler = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    has_cultivation_sect_faith = yes
+                    NOT = { this = root }
+                }
+
+                if = {
+                    limit = {
+                        OR = {
+                            AND = {
+                                faith = { has_doctrine_parameter = orthodox_cultivation }
+                                root.faith = { has_doctrine_parameter = orthodox_cultivation }
+                            }
+                            AND = {
+                                faith = { has_doctrine_parameter = unorthodox_cultivation }
+                                root.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                            }
+                            AND = {
+                                faith = { has_doctrine_parameter = demonic_cultivation }
+                                root.faith = { has_doctrine_parameter = demonic_cultivation }
+                            }
+                            AND = {
+                                faith = { has_doctrine_parameter = vagrant_cultivation }
+                                root.faith = { has_doctrine_parameter = vagrant_cultivation }
+                            }
+                        }
+                    }
+                    add_opinion = { target = root modifier = opinion_cultivation_path_peer years = 20 }
+                }
+                else = {
+                    add_opinion = { target = root modifier = opinion_cultivation_path_rival years = 20 }
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+
+# Game-start Han alignment pass: seed Heavenly Mandate Bureau across the Han majority, and force e_china holder alignment.
+cultivation_ai.2290 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        # Ensure the e_china holder always follows the Heavenly Mandate Bureau if eligible.
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                has_title = title:e_china
+                has_cultivation_sect_faith = yes
+                faith = { has_doctrine_parameter = orthodox_cultivation }
+                NOT = { faith = faith:heavenly_mandate_bureau }
+                NOT = { has_character_flag = cultivation_random_sect_lottery_assigned }
+            }
+            set_character_faith = faith:heavenly_mandate_bureau
+            add_character_modifier = { modifier = imperial_patron_sect days = -1 }
+        }
+
+        # Convert a majority of Han-culture sect rulers at game start.
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                culture = culture:han
+                has_cultivation_sect_faith = yes
+                faith = { has_doctrine_parameter = orthodox_cultivation }
+                NOT = { faith = faith:heavenly_mandate_bureau }
+                NOT = { has_character_flag = cultivation_random_sect_lottery_assigned }
+            }
+            random = {
+                chance = 70
+                set_character_faith = faith:heavenly_mandate_bureau
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+
 # Startup bootstrap so AI cultivation is never player-gated.
 cultivation_ai.1000 = {
     type = character_event
@@ -876,6 +978,37 @@ cultivation_ai.3001 = {
 }
 
 
+# Light monthly cross-sect confederation maintenance by cultivation path.
+cultivation_ai.3002 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_path_confederation_pacts_effect = yes
+        }
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_path_confederation_pacts_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
+
 # AI requests breakthrough pills from better alchemists before breakthroughs.
 cultivation_ai.2240 = {
     type = character_event
@@ -1472,6 +1605,28 @@ cultivation_ai.2261 = {
     }
 }
 
+# Monthly hidden identity refresh: sect signatures and path identities stay synchronized safely.
+cultivation_ai.2295 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_refresh_sect_signature_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
+
 # Singular reincarnation lottery:
 # exactly one landed count+ ruler can hold this "heaven-sent monster" state at a time.
 cultivation_ai.2270 = {
@@ -1533,6 +1688,7 @@ cultivation_ai.2270 = {
                     is_alive = yes
                     is_adult = yes
                     is_landed = yes
+                    has_trait = ambitious
                     OR = {
                         highest_held_title_tier = tier_county
                         highest_held_title_tier = tier_duchy
@@ -1568,7 +1724,7 @@ cultivation_ai.2270 = {
                 remove_trait = excellent_meridians
                 add_trait = heavenly_meridians
 
-                # Grant the full cultivation perk progression.
+                # Grant the full cultivation perk progression (all nodes/branches).
                 add_perk = mortal_muscle_reconstruction_perk
                 add_perk = mortal_bone_reconstruction_perk
                 add_perk = mortal_internal_reconstruction_perk
@@ -1583,29 +1739,86 @@ cultivation_ai.2270 = {
                 add_perk = qi_gathering_qi_refining_breakthrough_perk
                 add_perk = qi_refining_1a_star_perk
                 add_perk = qi_refining_1b_star_perk
+                add_perk = qi_refining_middle_perk
+                add_perk = qi_refining_2a_star_perk
+                add_perk = qi_refining_2b_star_perk
+                add_perk = qi_refining_2c_star_perk
+                add_perk = qi_refining_2d_star_perk
+                add_perk = qi_refining_higher_perk
+                add_perk = qi_refining_3a_star_perk
+                add_perk = qi_refining_3b_star_perk
+                add_perk = qi_refining_3c_star_perk
+                add_perk = qi_refining_peak_perk
                 add_perk = qi_refining_qi_building_breakthrough_perk
                 add_perk = qi_building_1_perk
+                add_perk = qi_building_early_perk
+                add_perk = qi_building_2_perk
+                add_perk = qi_building_mid_perk
+                add_perk = qi_building_3_perk
+                add_perk = qi_building_late_perk
+                add_perk = qi_building_4_perk
+                add_perk = qi_building_peak_perk
+                add_perk = qi_building_5_perk
                 add_perk = qi_building_core_formation_breakthrough_perk
                 add_perk = core_formation_qi1_perk
+                add_perk = core_formation_early_perk
+                add_perk = core_formation_qi2_perk
+                add_perk = core_formation_mid_perk
+                add_perk = core_formation_qi3_perk
+                add_perk = core_formation_late_perk
+                add_perk = core_formation_qi4_perk
+                add_perk = core_formation_peak_perk
+                add_perk = core_formation_qi5_perk
                 add_perk = core_formation_nascent_soul_breakthrough_perk
                 add_perk = nascent_soul_early_perk
+                add_perk = nascent_soul_mid_perk
+                add_perk = nascent_soul_late_perk
+                add_perk = nascent_soul_peak_perk
                 add_perk = nascent_soul_heavenly_being_breakthrough_perk
                 add_perk = heavenly_being_1_perk
+                add_perk = heavenly_being_early_perk
+                add_perk = heavenly_being_2_perk
+                add_perk = heavenly_being_mid_perk
+                add_perk = heavenly_being_3_perk
+                add_perk = heavenly_being_late_perk
+                add_perk = heavenly_being_4_perk
+                add_perk = heavenly_being_peak_perk
+                add_perk = heavenly_being_5_perk
                 add_perk = heavenly_being_four_axis_breakthrough_perk
                 add_perk = four_axis_axis_1a_perk
                 add_perk = four_axis_axis_1b_perk
                 add_perk = four_axis_axis_1c_perk
                 add_perk = four_axis_axis_1d_perk
+                add_perk = four_axis_axis_2_perk
                 add_perk = four_axis_integration_breakthrough_perk
                 add_perk = integration_1a_perk
                 add_perk = integration_1b_perk
                 add_perk = integration_1c_perk
                 add_perk = integration_1d_perk
                 add_perk = integration_1e_perk
+                add_perk = integration_2a_perk
+                add_perk = integration_2b_perk
+                add_perk = integration_2c_perk
+                add_perk = integration_2d_perk
+                add_perk = integration_2e_perk
                 add_perk = integration_star_shattering_breakthrough_perk
                 add_perk = star_shattering_explode_perk
+                add_perk = star_shattering_1a_perk
+                add_perk = star_shattering_1b_perk
+                add_perk = star_shattering_1c_perk
+                add_perk = star_shattering_1d_perk
+                add_perk = star_shattering_1e_perk
+                add_perk = star_shattering_becoming_star_perk
                 add_perk = star_shattering_sacred_vessel_breakthrough_perk
                 add_perk = sacred_vessel_hour_perk
+                add_perk = sacred_vessel_day_perk
+                add_perk = sacred_vessel_month_perk
+                add_perk = sacred_vessel_year_perk
+                add_perk = sacred_vessel_calendar_perk
+                add_perk = sacred_vessel_fixed_star_perk
+                add_perk = sacred_vessel_correctness_perk
+                add_perk = sacred_vessel_strongness_perk
+                add_perk = sacred_vessel_mildness_perk
                 add_perk = sacred_vessel_entering_nirvana_breakthrough_perk
                 add_perk = entering_nirvana_life_perk
                 add_perk = entering_nirvana_death_perk

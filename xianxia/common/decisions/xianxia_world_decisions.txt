@@ -415,3 +415,242 @@ raise_formation_barriers_decision = {
     ai_check_interval = 24
     ai_will_do = { base = 15 }
 }
+
+
+declare_heavenly_demon_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_become_chakravarti.dds" }
+    decision_group_type = major
+    sort_order = 531
+
+    title = declare_heavenly_demon_decision
+    desc = declare_heavenly_demon_decision_desc
+    selection_tooltip = declare_heavenly_demon_decision_tooltip
+    confirm_text = declare_heavenly_demon_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        faith = faith:blood_moon_demonic_sect
+    }
+
+    is_valid = {
+        realm_size >= 80
+        NOT = {
+            any_living_character = {
+                has_character_modifier = heavenly_demon_proclaimed
+            }
+        }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = heavenly_demon_proclaimed days = -1 }
+        give_nickname = nick_the_heavenly_demon
+        add_prestige = 1500
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 20 }
+}
+
+
+proclaim_great_sect_hegemon_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_found_holy_order.dds" }
+    decision_group_type = major
+    sort_order = 532
+
+    title = proclaim_great_sect_hegemon_decision
+    desc = proclaim_great_sect_hegemon_decision_desc
+    selection_tooltip = proclaim_great_sect_hegemon_decision_tooltip
+    confirm_text = proclaim_great_sect_hegemon_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        has_cultivation_sect_faith = yes
+    }
+
+    is_valid = {
+        realm_size >= 40
+        NOT = { has_character_modifier = sect_hegemon_mandate }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = sect_hegemon_mandate days = -1 }
+        cultivation_assign_high_realm_sect_nickname_effect = yes
+        add_prestige = 800
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 18 }
+}
+
+found_martial_confederation_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_court.dds" }
+    decision_group_type = major
+    sort_order = 533
+
+    title = found_martial_confederation_decision
+    desc = found_martial_confederation_decision_desc
+    selection_tooltip = found_martial_confederation_decision_tooltip
+    confirm_text = found_martial_confederation_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        has_cultivation_sect_faith = yes
+    }
+
+    is_valid = {
+        realm_size >= 35
+        NOT = { has_character_modifier = martial_confederation_founder }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = martial_confederation_founder days = -1 }
+        cultivation_form_path_confederation_pacts_effect = yes
+        add_character_flag = { flag = martial_confederation_organizer_cooldown days = 1825 }
+        add_prestige = 600
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 14 }
+}
+
+
+proclaim_orthodox_alliance_leader_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_court.dds" }
+    decision_group_type = major
+    sort_order = 534
+
+    title = proclaim_orthodox_alliance_leader_decision
+    desc = proclaim_orthodox_alliance_leader_decision_desc
+    selection_tooltip = proclaim_orthodox_alliance_leader_decision_tooltip
+    confirm_text = proclaim_orthodox_alliance_leader_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        faith = { has_doctrine_parameter = orthodox_cultivation }
+    }
+
+    is_valid = {
+        realm_size >= 55
+        NOT = { has_character_modifier = orthodox_alliance_leader }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = orthodox_alliance_leader days = -1 }
+        cultivation_form_path_confederation_pacts_effect = yes
+        add_prestige = 1000
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 16 }
+}
+
+proclaim_demonic_alliance_leader_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_torture_prisoner.dds" }
+    decision_group_type = major
+    sort_order = 535
+
+    title = proclaim_demonic_alliance_leader_decision
+    desc = proclaim_demonic_alliance_leader_decision_desc
+    selection_tooltip = proclaim_demonic_alliance_leader_decision_tooltip
+    confirm_text = proclaim_demonic_alliance_leader_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        faith = { has_doctrine_parameter = demonic_cultivation }
+    }
+
+    is_valid = {
+        realm_size >= 55
+        NOT = { has_character_modifier = demonic_alliance_leader }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = demonic_alliance_leader days = -1 }
+        cultivation_form_path_confederation_pacts_effect = yes
+        add_prestige = 1000
+        add_dread = 20
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 16 }
+}
+
+convene_martial_alliance_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_grant_vassal.dds" }
+    decision_group_type = major
+    sort_order = 536
+
+    title = convene_martial_alliance_decision
+    desc = convene_martial_alliance_decision_desc
+    selection_tooltip = convene_martial_alliance_decision_tooltip
+    confirm_text = convene_martial_alliance_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        has_cultivation_sect_faith = yes
+    }
+
+    is_valid = {
+        realm_size >= 45
+        NOT = { has_character_modifier = martial_alliance_leader }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = martial_alliance_leader days = -1 }
+        cultivation_form_path_confederation_pacts_effect = yes
+        add_character_modifier = { modifier = sect_council_consensus days = 1825 }
+        add_prestige = 900
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 14 }
+}
+
+establish_heavenly_mandate_bureau_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_become_chakravarti.dds" }
+    decision_group_type = major
+    sort_order = 537
+
+    title = establish_heavenly_mandate_bureau_decision
+    desc = establish_heavenly_mandate_bureau_decision_desc
+    selection_tooltip = establish_heavenly_mandate_bureau_decision_tooltip
+    confirm_text = establish_heavenly_mandate_bureau_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        faith = { has_doctrine_parameter = orthodox_cultivation }
+        OR = {
+            has_title = title:e_china
+            culture = culture:han
+        }
+    }
+
+    is_valid = {
+        NOT = { faith = faith:heavenly_mandate_bureau }
+        realm_size >= 20
+    }
+
+    effect = {
+        set_character_faith = faith:heavenly_mandate_bureau
+        add_character_modifier = { modifier = imperial_patron_sect days = -1 }
+        add_prestige = 700
+        add_piety = 400
+    }
+
+    ai_check_interval = 48
+    ai_will_do = { base = 10 }
+}

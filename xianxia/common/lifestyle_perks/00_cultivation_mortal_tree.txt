@@ -82,6 +82,16 @@ mortal_internal_reconstruction_perk = {
 	icon = node_cultivation
 	parent = mortal_muscle_reconstruction_perk
 	
+	effect = {
+		cultivation_set_path_internal_effect = yes
+	}
+
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_orthodox_hidden } multiply = 1.6 }
+		if = { limit = { has_character_modifier = sect_signature_imperial_guard_hidden } multiply = 1.8 }
+	}
+
 	character_modifier = {
 		prowess = 9
 		health = 0.5
@@ -106,6 +116,16 @@ mortal_external_reconstruction_perk = {
 	icon = node_cultivation
 	parent = mortal_bone_reconstruction_perk
 	
+	effect = {
+		cultivation_set_path_external_effect = yes
+	}
+
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_demonic_hidden } multiply = 1.8 }
+		if = { limit = { has_character_modifier = sect_signature_unorthodox_hidden } multiply = 1.4 }
+	}
+
 	character_modifier = {
 		prowess = 9
 		health = 0.5

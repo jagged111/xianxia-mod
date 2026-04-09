@@ -67,3 +67,14 @@ opinion_fox_spirit_mortal_hunter = {
 	opinion = -80
 	months = 240
 }
+
+
+opinion_cultivation_path_peer = {
+	opinion = 12
+	months = 240
+}
+
+opinion_cultivation_path_rival = {
+	opinion = -40
+	months = 240
+}

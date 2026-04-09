@@ -31,14 +31,22 @@
     ai_check_interval = 60
     ai_potential = { always = yes }
     ai_will_do = {
-        base = 0
+        base = 25
         modifier = {
-            add = 100
+            add = 90
             OR = {
                 has_trait = wrathful
                 has_trait = ambitious
                 has_trait = sadistic
                 has_trait = callous
+            }
+        }
+        modifier = {
+            add = 110
+            OR = {
+                has_trait = cultivation_sacred_vessel
+                has_trait = cultivation_entering_nirvana
+                has_trait = cultivation_true_immortal
             }
         }
     }
@@ -83,14 +91,22 @@ claim_heavenly_mandate_independent_decision = {
     ai_check_interval = 60
     ai_potential = { always = yes }
     ai_will_do = {
-        base = 0
+        base = 20
         modifier = {
-            add = 100
+            add = 90
             OR = {
                 has_trait = wrathful
                 has_trait = ambitious
                 has_trait = sadistic
                 has_trait = callous
+            }
+        }
+        modifier = {
+            add = 110
+            OR = {
+                has_trait = cultivation_sacred_vessel
+                has_trait = cultivation_entering_nirvana
+                has_trait = cultivation_true_immortal
             }
         }
     }

@@ -651,6 +651,21 @@ establish_heavenly_mandate_bureau_decision = {
         add_piety = 400
     }
 
-    ai_check_interval = 48
-    ai_will_do = { base = 10 }
+    ai_check_interval = 24
+    ai_potential = { always = yes }
+    ai_will_do = {
+        base = 20
+        modifier = {
+            add = 180
+            has_title = title:e_china
+        }
+        modifier = {
+            add = 85
+            culture = culture:han
+        }
+        modifier = {
+            add = 45
+            has_trait = ambitious
+        }
+    }
 }

@@ -410,7 +410,7 @@ raise_formation_barriers_decision = {
     effect = {
         add_character_flag = { flag = raise_formation_barriers_cooldown days = 365 }
         add_character_modifier = { modifier = formation_barrier_network days = 730 }
-        capital_county = { add_county_modifier = { name = formation_warded_county duration = 1825 } }
+        capital_county = { add_county_modifier = { modifier = formation_warded_county days = 1825 } }
 
         change_variable = { name = formation_mastery_xp add = 1 }
         xianxia_update_formation_master_trait_effect = yes

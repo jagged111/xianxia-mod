@@ -414,3 +414,45 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added `xianxia_refined_sage_frame` for calm/patient/humble/scholar-theologian-mystic leaning cultivators, emphasizing an elegant refined immortal body line.
 - Added `xianxia_indulgent_deviation_frame` so indulgent paths (gluttonous/lazy/drunkard/hashishiyah/reveler) visibly diverge from orthodox cultivation physiques unless counterbalanced by elite body-discipline traits.
 - Follow-up regression fix (same date): moved Nirvana/True Immortal demonic/unorthodox white-hair gating into dedicated hair-aspect modifiers so high-realm eye/body/height transformation progression now applies to all faith paths again.
+
+
+### 37) Heavenly Demon proclamation + path-based sect opinion cleanup (2026-04-09)
+- Added a new major decision `declare_heavenly_demon_decision` for rulers of `blood_moon_demonic_sect` (Heavenly Demon Sect) who reach empire-scale conquest (`realm_size >= 80`) to proclaim themselves the Heavenly Demon.
+- Proclamation now grants permanent modifier `heavenly_demon_proclaimed` with very high same-faith opinion boost and strong learning/lifestyle growth bonuses, plus `nick_the_heavenly_demon`.
+- Updated cultivation path tenets so `different_faith_opinion` penalties from path tenets are no longer applied at sect level (`0`), preventing same-path/different-sect cultivators from receiving automatic hostility just for sect mismatch.
+- Added yearly path-opinion normalization pulse `cultivation_ai.2280` with explicit path-based relationship outcomes: same-path cultivators receive `opinion_cultivation_path_peer`, while different-path cultivators receive `opinion_cultivation_path_rival` (`-40`).
+
+- Decision availability now checks for any living existing Heavenly Demon holder (`heavenly_demon_proclaimed`); once no living Heavenly Demon remains, a new qualified ruler can proclaim again.
+
+
+### 38) Great sect titles + martial confederation groundwork (2026-04-09)
+- Added new orthodox sect faith seeds for future Jianghu expansion: `beggar_sect`, `tang_clan`, and `emei_sword_sect` under `cultivation_orthodox`.
+- Added two new major decisions:
+  - `proclaim_great_sect_hegemon_decision` (great-sect title framework for independent sect rulers),
+  - `found_martial_confederation_decision` (path-level confederation foundation).
+- Added new persistent modifiers `sect_hegemon_mandate` and `martial_confederation_founder` with prestige/opinion/lifestyle support.
+- Added scripted effect `cultivation_form_path_confederation_pacts_effect` and new maintenance event `cultivation_ai.3002` to form/repair cross-sect same-path alliances over time.
+- Hooked `cultivation_ai.3002` into monthly pulse as a low-cost confederation baseline for future path-level alliance systems.
+
+
+### 39) Orthodox/Demonic alliance leadership and imperial-sect gate (2026-04-09)
+- Added additional classic Jianghu sect faith seeds (Qingcheng, Kunlun, Kongtong, Diancang) plus `heavenly_mandate_bureau` as an imperial-backed orthodox lane.
+- Added demonic alliance faith seeds (`yin_yang_harmony_sect`) to mirror common xianxia/manhua faction structures.
+- Added alliance leadership decisions: `proclaim_orthodox_alliance_leader_decision`, `proclaim_demonic_alliance_leader_decision`, and `convene_martial_alliance_decision`.
+- Added `establish_heavenly_mandate_bureau_decision`, gated to rulers with `primary_title = e_china` or `culture = han`, to tie imperial sect identity to requested imperial/Han constraints.
+- Added supporting alliance/imperial modifiers and localization so this set functions as a foundation for deeper confederation and Jianghu institution systems.
+
+
+### 40) Heavenly Mandate Bureau Han-majority startup alignment (2026-04-09)
+- Added startup event `cultivation_ai.2290` to align the `e_china` holder to `heavenly_mandate_bureau` on game start when eligible.
+- Added Han-majority seeding on game start: Han-culture orthodox sect rulers now convert to `heavenly_mandate_bureau` at a 70% pass, establishing a clear majority baseline for the Imperial/Heavenly Mandate lane.
+
+
+### 41) Hidden sect/path identity backend for shared cultivation trees (2026-04-09)
+- Added hidden sect signature modifiers (`sect_signature_orthodox_hidden`, `sect_signature_demonic_hidden`, `sect_signature_unorthodox_hidden`, `sect_signature_vagrant_hidden`, `sect_signature_imperial_guard_hidden`) and hidden path identity modifiers (`path_internal_cultivation_hidden`, `path_external_cultivation_hidden`, `path_balanced_cultivation_hidden`, `path_tyrannical_cultivation_hidden`, `path_longevity_cultivation_hidden`).
+- Added CK3-safe scripted-effect glue to refresh sect signatures by faith and to assign mutually-exclusive path identities through perk effects (`cultivation_set_path_*_effect`).
+- Added monthly identity refresh event `cultivation_ai.2295` (hooked to monthly pulse) so sect/path backend identity stays synchronized for AI and player states.
+- Updated representative perks in Mortal, Qi Gathering, Qi Refining, Four Axis, and Integration trees to grant hidden path identities and add AI branch-selection bias aligned to sect signatures.
+- Added anti-conflict guard with random sect lottery assignment (`cultivation_random_sect_lottery_assigned`) so game-start Han mandate seeding does not override rulers already assigned by sect lottery effects.
+
+- Path-opinion yearly pass performance fix: `cultivation_ai.2280` now scopes to independent rulers in diplomatic range (avoids global O(n²) ruler pairing), and clears stale `opinion_cultivation_path_peer`/`opinion_cultivation_path_rival` before applying the current path relationship.

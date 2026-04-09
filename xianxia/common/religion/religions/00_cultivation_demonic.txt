@@ -90,6 +90,19 @@ cultivation_demonic = {
 			doctrine = tenet_demonic_cultivation
 		}
 
+
+		yin_yang_harmony_sect = {
+			color = { 0.6 0.2 0.45 }
+			icon = demonic_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_astrology
+			doctrine = tenet_human_sacrifice
+			doctrine = tenet_demonic_cultivation
+		}
+
 		blood_moon_demonic_sect = {
 			color = { 0.6 0.1 0.2 }
 			icon = demonic_sect

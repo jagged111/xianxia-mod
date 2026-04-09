@@ -176,6 +176,104 @@ cultivation_orthodox = {
 			doctrine = tenet_orthodox_cultivation
 		}
 
+
+		beggar_sect = {
+			color = { 0.45 0.38 0.25 }
+			icon = shaolin_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_communal_identity
+			doctrine = tenet_orthodox_cultivation
+		}
+
+		tang_clan = {
+			color = { 0.18 0.42 0.2 }
+			icon = tang_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_orthodox_cultivation
+		}
+
+		emei_sword_sect = {
+			color = { 0.82 0.72 0.85 }
+			icon = diancang_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_orthodox_cultivation
+		}
+
+
+		qingcheng_sect = {
+			color = { 0.32 0.46 0.38 }
+			icon = qingcheng_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_orthodox_cultivation
+		}
+
+		kunlun_sect = {
+			color = { 0.55 0.56 0.67 }
+			icon = kunlun_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_sanctity_of_nature
+			doctrine = tenet_orthodox_cultivation
+		}
+
+		kongtong_sect = {
+			color = { 0.48 0.4 0.35 }
+			icon = kongtong_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_communal_identity
+			doctrine = tenet_orthodox_cultivation
+		}
+
+		diancang_sect = {
+			color = { 0.72 0.78 0.85 }
+			icon = diancang_sect
+			holy_site = chang_an
+			holy_site = hiei
+			holy_site = luoyang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_adaptive
+			doctrine = tenet_orthodox_cultivation
+		}
+
+		heavenly_mandate_bureau = {
+			color = { 0.75 0.62 0.28 }
+			icon = wudang_sect
+			holy_site = chang_an
+			holy_site = luoyang
+			holy_site = bianliang
+			doctrine = tenet_ancestor_worship
+			doctrine = tenet_astrology
+			doctrine = tenet_communal_identity
+			doctrine = tenet_orthodox_cultivation
+		}
+
 		thousand_beast_valley = {
 			color = { 0.5 0.6 0.3 }
 			icon = tang_sect

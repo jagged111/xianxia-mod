@@ -15,7 +15,14 @@ four_axis_axis_1a_perk = {
 	}
 	icon = node_cultivation
 
-	
+	effect = {
+		cultivation_set_path_tyrannical_effect = yes
+	}
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_demonic_hidden } multiply = 1.7 }
+	}
+
 	character_modifier = {
 		prowess = 12
 		advantage = 5
@@ -48,7 +55,16 @@ four_axis_axis_1c_perk = {
 		has_trait = cultivation_four_axis
 	}
 	icon = node_cultivation
-	
+
+	effect = {
+		cultivation_set_path_balanced_effect = yes
+	}
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_orthodox_hidden } multiply = 1.5 }
+		if = { limit = { has_character_modifier = sect_signature_imperial_guard_hidden } multiply = 1.5 }
+	}
+
 	character_modifier = {
 		learning = 3
 		advantage = 5

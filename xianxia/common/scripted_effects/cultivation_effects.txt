@@ -26,6 +26,7 @@ cultivation_ai_join_orthodox_sect_effect = {
 		7 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
 		6 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
 	}
+	add_character_flag = cultivation_random_sect_lottery_assigned
 }
 
 cultivation_ai_join_unorthodox_sect_effect = {
@@ -41,6 +42,7 @@ cultivation_ai_join_unorthodox_sect_effect = {
 		8 = { set_character_faith = faith:pale_bone_hall cultivation_convert_direct_domain_faith_effect = yes }
 		8 = { set_character_faith = faith:eternal_rest_clan cultivation_convert_direct_domain_faith_effect = yes }
 	}
+	add_character_flag = cultivation_random_sect_lottery_assigned
 }
 
 cultivation_ai_join_demonic_sect_effect = {
@@ -51,6 +53,7 @@ cultivation_ai_join_demonic_sect_effect = {
 		10 = { set_character_faith = faith:blood_moon_demonic_sect cultivation_convert_direct_domain_faith_effect = yes }
 		10 = { set_character_faith = faith:succubus_palace cultivation_convert_direct_domain_faith_effect = yes }
 	}
+	add_character_flag = cultivation_random_sect_lottery_assigned
 }
 
 cultivation_ai_join_vagrant_sect_effect = {
@@ -64,6 +67,7 @@ cultivation_ai_join_vagrant_sect_effect = {
 		7 = { set_character_faith = faith:primordial_chaos_hall cultivation_convert_direct_domain_faith_effect = yes }
 		6 = { set_character_faith = faith:feral_bond_sect cultivation_convert_direct_domain_faith_effect = yes }
 	}
+	add_character_flag = cultivation_random_sect_lottery_assigned
 }
 
 
@@ -883,4 +887,162 @@ cultivation_form_sect_defensive_pacts_effect = {
             add_alliance = root
         }
     }
+}
+
+
+# Build cross-sect defensive confederation pacts for rulers on the same cultivation path.
+cultivation_form_path_confederation_pacts_effect = {
+    if = {
+        limit = {
+            is_alive = yes
+            is_adult = yes
+            NOT = { exists = liege }
+            is_cultivator = yes
+            has_cultivation_sect_faith = yes
+        }
+
+        every_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+                NOT = { this = root }
+                NOT = { is_allied_to = root }
+                OR = {
+                    is_within_diplo_range = root
+                    AND = {
+                        root = { NOT = { has_trait = cultivation_qi_gathering } }
+                        NOT = { has_trait = cultivation_qi_gathering }
+                    }
+                }
+                OR = {
+                    AND = {
+                        faith = { has_doctrine_parameter = orthodox_cultivation }
+                        root.faith = { has_doctrine_parameter = orthodox_cultivation }
+                    }
+                    AND = {
+                        faith = { has_doctrine_parameter = unorthodox_cultivation }
+                        root.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                    }
+                    AND = {
+                        faith = { has_doctrine_parameter = demonic_cultivation }
+                        root.faith = { has_doctrine_parameter = demonic_cultivation }
+                    }
+                    AND = {
+                        faith = { has_doctrine_parameter = vagrant_cultivation }
+                        root.faith = { has_doctrine_parameter = vagrant_cultivation }
+                    }
+                }
+            }
+            add_alliance = root
+        }
+    }
+}
+
+
+# Refresh hidden sect-signature backend markers from current faith path.
+cultivation_refresh_sect_signature_effect = {
+    remove_character_modifier = sect_signature_orthodox_hidden
+    remove_character_modifier = sect_signature_demonic_hidden
+    remove_character_modifier = sect_signature_unorthodox_hidden
+    remove_character_modifier = sect_signature_vagrant_hidden
+    remove_character_modifier = sect_signature_imperial_guard_hidden
+
+    if = {
+        limit = { faith = faith:heavenly_mandate_bureau }
+        add_character_modifier = { modifier = sect_signature_imperial_guard_hidden days = -1 }
+    }
+    else_if = {
+        limit = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+        add_character_modifier = { modifier = sect_signature_orthodox_hidden days = -1 }
+    }
+    else_if = {
+        limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
+        add_character_modifier = { modifier = sect_signature_demonic_hidden days = -1 }
+    }
+    else_if = {
+        limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+        add_character_modifier = { modifier = sect_signature_unorthodox_hidden days = -1 }
+    }
+    else_if = {
+        limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+        add_character_modifier = { modifier = sect_signature_vagrant_hidden days = -1 }
+    }
+}
+
+# Path identity assignment helpers (set one active path identity at a time).
+cultivation_set_path_internal_effect = {
+    remove_character_flag = path_internal_cultivation
+    remove_character_flag = path_external_cultivation
+    remove_character_flag = path_balanced_cultivation
+    remove_character_flag = path_tyrannical_cultivation
+    remove_character_flag = path_longevity_cultivation
+    remove_character_modifier = path_internal_cultivation_hidden
+    remove_character_modifier = path_external_cultivation_hidden
+    remove_character_modifier = path_balanced_cultivation_hidden
+    remove_character_modifier = path_tyrannical_cultivation_hidden
+    remove_character_modifier = path_longevity_cultivation_hidden
+    add_character_flag = path_internal_cultivation
+    add_character_modifier = { modifier = path_internal_cultivation_hidden days = -1 }
+}
+
+cultivation_set_path_external_effect = {
+    remove_character_flag = path_internal_cultivation
+    remove_character_flag = path_external_cultivation
+    remove_character_flag = path_balanced_cultivation
+    remove_character_flag = path_tyrannical_cultivation
+    remove_character_flag = path_longevity_cultivation
+    remove_character_modifier = path_internal_cultivation_hidden
+    remove_character_modifier = path_external_cultivation_hidden
+    remove_character_modifier = path_balanced_cultivation_hidden
+    remove_character_modifier = path_tyrannical_cultivation_hidden
+    remove_character_modifier = path_longevity_cultivation_hidden
+    add_character_flag = path_external_cultivation
+    add_character_modifier = { modifier = path_external_cultivation_hidden days = -1 }
+}
+
+cultivation_set_path_balanced_effect = {
+    remove_character_flag = path_internal_cultivation
+    remove_character_flag = path_external_cultivation
+    remove_character_flag = path_balanced_cultivation
+    remove_character_flag = path_tyrannical_cultivation
+    remove_character_flag = path_longevity_cultivation
+    remove_character_modifier = path_internal_cultivation_hidden
+    remove_character_modifier = path_external_cultivation_hidden
+    remove_character_modifier = path_balanced_cultivation_hidden
+    remove_character_modifier = path_tyrannical_cultivation_hidden
+    remove_character_modifier = path_longevity_cultivation_hidden
+    add_character_flag = path_balanced_cultivation
+    add_character_modifier = { modifier = path_balanced_cultivation_hidden days = -1 }
+}
+
+cultivation_set_path_tyrannical_effect = {
+    remove_character_flag = path_internal_cultivation
+    remove_character_flag = path_external_cultivation
+    remove_character_flag = path_balanced_cultivation
+    remove_character_flag = path_tyrannical_cultivation
+    remove_character_flag = path_longevity_cultivation
+    remove_character_modifier = path_internal_cultivation_hidden
+    remove_character_modifier = path_external_cultivation_hidden
+    remove_character_modifier = path_balanced_cultivation_hidden
+    remove_character_modifier = path_tyrannical_cultivation_hidden
+    remove_character_modifier = path_longevity_cultivation_hidden
+    add_character_flag = path_tyrannical_cultivation
+    add_character_modifier = { modifier = path_tyrannical_cultivation_hidden days = -1 }
+}
+
+cultivation_set_path_longevity_effect = {
+    remove_character_flag = path_internal_cultivation
+    remove_character_flag = path_external_cultivation
+    remove_character_flag = path_balanced_cultivation
+    remove_character_flag = path_tyrannical_cultivation
+    remove_character_flag = path_longevity_cultivation
+    remove_character_modifier = path_internal_cultivation_hidden
+    remove_character_modifier = path_external_cultivation_hidden
+    remove_character_modifier = path_balanced_cultivation_hidden
+    remove_character_modifier = path_tyrannical_cultivation_hidden
+    remove_character_modifier = path_longevity_cultivation_hidden
+    add_character_flag = path_longevity_cultivation
+    add_character_modifier = { modifier = path_longevity_cultivation_hidden days = -1 }
 }

@@ -224,6 +224,114 @@ cultivation_ai.2230 = {
 }
 
 
+# Yearly path-opinion normalization: same path (even cross-sect) gets goodwill, different paths get rivalry.
+cultivation_ai.2280 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        # Performance-safe: normalize only among independent rulers in diplomatic reach.
+        every_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+
+            every_independent_ruler = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    has_cultivation_sect_faith = yes
+                    NOT = { this = root }
+                    is_within_diplo_range = root
+                }
+
+                # Clear stale path-opinion state before applying current relationship.
+                remove_opinion = { target = root modifier = opinion_cultivation_path_peer }
+                remove_opinion = { target = root modifier = opinion_cultivation_path_rival }
+
+                if = {
+                    limit = {
+                        OR = {
+                            AND = {
+                                faith = { has_doctrine_parameter = orthodox_cultivation }
+                                root.faith = { has_doctrine_parameter = orthodox_cultivation }
+                            }
+                            AND = {
+                                faith = { has_doctrine_parameter = unorthodox_cultivation }
+                                root.faith = { has_doctrine_parameter = unorthodox_cultivation }
+                            }
+                            AND = {
+                                faith = { has_doctrine_parameter = demonic_cultivation }
+                                root.faith = { has_doctrine_parameter = demonic_cultivation }
+                            }
+                            AND = {
+                                faith = { has_doctrine_parameter = vagrant_cultivation }
+                                root.faith = { has_doctrine_parameter = vagrant_cultivation }
+                            }
+                        }
+                    }
+                    add_opinion = { target = root modifier = opinion_cultivation_path_peer years = 20 }
+                }
+                else = {
+                    add_opinion = { target = root modifier = opinion_cultivation_path_rival years = 20 }
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+
+# Game-start Han alignment pass: seed Heavenly Mandate Bureau across the Han majority, and force e_china holder alignment.
+cultivation_ai.2290 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        # Ensure the e_china holder always follows the Heavenly Mandate Bureau if eligible.
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                has_title = title:e_china
+                has_cultivation_sect_faith = yes
+                faith = { has_doctrine_parameter = orthodox_cultivation }
+                NOT = { faith = faith:heavenly_mandate_bureau }
+                NOT = { has_character_flag = cultivation_random_sect_lottery_assigned }
+            }
+            set_character_faith = faith:heavenly_mandate_bureau
+            add_character_modifier = { modifier = imperial_patron_sect days = -1 }
+        }
+
+        # Convert a majority of Han-culture sect rulers at game start.
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                culture = culture:han
+                has_cultivation_sect_faith = yes
+                faith = { has_doctrine_parameter = orthodox_cultivation }
+                NOT = { faith = faith:heavenly_mandate_bureau }
+                NOT = { has_character_flag = cultivation_random_sect_lottery_assigned }
+            }
+            random = {
+                chance = 70
+                set_character_faith = faith:heavenly_mandate_bureau
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+
 # Startup bootstrap so AI cultivation is never player-gated.
 cultivation_ai.1000 = {
     type = character_event
@@ -876,6 +984,37 @@ cultivation_ai.3001 = {
 }
 
 
+# Light monthly cross-sect confederation maintenance by cultivation path.
+cultivation_ai.3002 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_path_confederation_pacts_effect = yes
+        }
+        random_independent_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_form_path_confederation_pacts_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
+
 # AI requests breakthrough pills from better alchemists before breakthroughs.
 cultivation_ai.2240 = {
     type = character_event
@@ -1471,6 +1610,28 @@ cultivation_ai.2261 = {
         add_stress = -30
     }
 }
+
+# Monthly hidden identity refresh: sect signatures and path identities stay synchronized safely.
+cultivation_ai.2295 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+            cultivation_refresh_sect_signature_effect = yes
+        }
+    }
+
+    option = { name = OK }
+}
+
 
 # Singular reincarnation lottery:
 # exactly one landed count+ ruler can hold this "heaven-sent monster" state at a time.

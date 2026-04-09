@@ -49,7 +49,15 @@ integration_1c_perk = {
 	}
 	icon = node_cultivation
 
-	
+	effect = {
+		cultivation_set_path_longevity_effect = yes
+	}
+	auto_selection_weight = {
+		value = 100
+		if = { limit = { has_character_modifier = sect_signature_orthodox_hidden } multiply = 1.4 }
+		if = { limit = { has_character_modifier = sect_signature_vagrant_hidden } multiply = 1.2 }
+	}
+
 	character_modifier = {
 		learning = 4
 		health = 0.5

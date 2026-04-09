@@ -39,8 +39,18 @@ cultivation_character_initialization.0002 = {
 				is_adult = no
 				exists = mother
 				exists = father
-				mother = { has_active_meridians = yes }
-				father = { has_active_meridians = yes }
+				mother = {
+					OR = {
+						has_active_meridians = yes
+						has_trait = crippled_meridians
+					}
+				}
+				father = {
+					OR = {
+						has_active_meridians = yes
+						has_trait = crippled_meridians
+					}
+				}
 			}
 			if = {
 				# Two normal parents: mostly normal, rare upside, rare poor/blocked.

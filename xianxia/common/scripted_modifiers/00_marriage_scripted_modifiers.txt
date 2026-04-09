@@ -72,15 +72,14 @@
 			desc = liege_disapproves_marriage
 			scope:recipient = {
 				OR = {
-					exists = liege
-									}
-				OR = {
 					liege = {
 						opinion = { target = scope:actor value <= -1 }
 					}
-					exists = guardian
-					guardian = {
-						opinion = { target = scope:actor value <= -1 }
+					AND = {
+						exists = guardian
+						guardian = {
+							opinion = { target = scope:actor value <= -1 }
+						}
 					}
 				}
 			}

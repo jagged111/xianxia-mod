@@ -13,18 +13,58 @@ cultivation_convert_direct_domain_faith_effect = {
 }
 
 cultivation_ai_join_orthodox_sect_effect = {
-	random_list = {
-		10 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
-		10 = { set_character_faith = faith:heavenly_sword_pavilion cultivation_convert_direct_domain_faith_effect = yes }
-		9 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
-		8 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
-		8 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
-		8 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
-		10 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
-		8 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
-		7 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
-		7 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
-		6 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+	# Historical-location anchoring (jianghu/xianxia): keep iconic sects near their famed mountain seats where possible.
+	if = {
+		limit = {
+			capital_county = {
+				title_province = { has_building_or_higher = shaolin_monastery_01 }
+			}
+		}
+		set_character_faith = faith:shaolin_temple
+		cultivation_convert_direct_domain_faith_effect = yes
+	}
+	else_if = {
+		limit = {
+			capital_county = {
+				title_province = { has_building_or_higher = wudang_mountain_temples_01 }
+			}
+		}
+		set_character_faith = faith:wudang_sect
+		cultivation_convert_direct_domain_faith_effect = yes
+	}
+	else_if = {
+		limit = {
+			culture = culture:han
+			OR = {
+				has_title = title:e_china
+				top_liege = { has_title = title:e_china }
+			}
+		}
+		# Han heartland rulers are biased toward orthodox "central plains" lineages from classic wuxia/xianxia canon.
+		random_list = {
+			20 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			20 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+			18 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			14 = { set_character_faith = faith:heavenly_sword_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			10 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			10 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			8 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+		}
+	}
+	else = {
+		random_list = {
+			10 = { set_character_faith = faith:mount_hua_sect cultivation_convert_direct_domain_faith_effect = yes }
+			10 = { set_character_faith = faith:heavenly_sword_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			9 = { set_character_faith = faith:ten_thousand_swords_valley cultivation_convert_direct_domain_faith_effect = yes }
+			8 = { set_character_faith = faith:violet_thunder_blade_sect cultivation_convert_direct_domain_faith_effect = yes }
+			8 = { set_character_faith = faith:nine_star_formation_sect cultivation_convert_direct_domain_faith_effect = yes }
+			8 = { set_character_faith = faith:mystic_seal_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			10 = { set_character_faith = faith:wudang_sect cultivation_convert_direct_domain_faith_effect = yes }
+			8 = { set_character_faith = faith:shaolin_temple cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:eternal_harmony_pavilion cultivation_convert_direct_domain_faith_effect = yes }
+			7 = { set_character_faith = faith:divine_beast_mountain cultivation_convert_direct_domain_faith_effect = yes }
+			6 = { set_character_faith = faith:thousand_beast_valley cultivation_convert_direct_domain_faith_effect = yes }
+		}
 	}
 	add_character_flag = cultivation_random_sect_lottery_assigned
 }

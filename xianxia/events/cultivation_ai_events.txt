@@ -160,7 +160,7 @@ cultivation_ai.2220 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = root }
+                        NOT = { this = scope:root }
                         is_allied_to = root
                         NOT = { has_relation_friend = root }
                         NOT = { has_relation_best_friend = root }
@@ -201,7 +201,7 @@ cultivation_ai.2230 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = root }
+                        NOT = { this = scope:root }
                         is_at_war_with = root
                         NOT = { has_relation_nemesis = root }
                         NOT = { has_relation_rival = root }
@@ -246,8 +246,8 @@ cultivation_ai.2280 = {
                     is_adult = yes
                     is_cultivator = yes
                     has_cultivation_sect_faith = yes
-                    NOT = { this = root }
-                    is_within_diplo_range = root
+                    NOT = { this = scope:root }
+                    is_within_diplo_range = scope:root
                 }
 
                 # Clear stale path-opinion state before applying current relationship.
@@ -304,7 +304,6 @@ cultivation_ai.2290 = {
                 has_cultivation_sect_faith = yes
                 faith = { has_doctrine_parameter = orthodox_cultivation }
                 NOT = { faith = faith:heavenly_mandate_bureau }
-                NOT = { has_character_flag = cultivation_random_sect_lottery_assigned }
             }
             set_character_faith = faith:heavenly_mandate_bureau
             add_character_modifier = { modifier = imperial_patron_sect days = -1 }
@@ -319,7 +318,6 @@ cultivation_ai.2290 = {
                 has_cultivation_sect_faith = yes
                 faith = { has_doctrine_parameter = orthodox_cultivation }
                 NOT = { faith = faith:heavenly_mandate_bureau }
-                NOT = { has_character_flag = cultivation_random_sect_lottery_assigned }
             }
             random = {
                 chance = 70
@@ -1090,17 +1088,17 @@ cultivation_ai.2250 = {
                 }
             }
 
+            # Fox spirits are unnaturally alluring, even before full awakening.
+            if = {
+                limit = { NOT = { has_trait = beauty_good_3 } }
+                remove_trait = beauty_good_1
+                remove_trait = beauty_good_2
+                add_trait = beauty_good_3
+            }
+
             # Fox spirits gain additional spiritual constitutions to offset social hate.
             if = {
                 limit = { has_character_flag = fox_spirit_awakening_complete }
-
-                # Fox spirits are unnaturally alluring.
-                if = {
-                    limit = { NOT = { has_trait = beauty_good_3 } }
-                    remove_trait = beauty_good_1
-                    remove_trait = beauty_good_2
-                    add_trait = beauty_good_3
-                }
 
                 if = {
                     limit = { NOT = { has_trait = spirit_bloodline_3 } }
@@ -1191,7 +1189,7 @@ cultivation_ai.2250 = {
                         limit = {
                             is_alive = yes
                             is_adult = yes
-                            NOT = { this = root }
+                            NOT = { this = scope:root }
                         }
 
                         if = {
@@ -1268,7 +1266,7 @@ cultivation_ai.2250 = {
                         is_alive = yes
                         is_ai = yes
                         is_adult = no
-                        is_noble = yes
+                        NOT = { is_lowborn = yes }
                         age >= 6
                         age <= 13
                         NOT = { has_trait = huxian_blood }
@@ -1291,7 +1289,7 @@ cultivation_ai.2250 = {
                         is_alive = yes
                         is_ai = yes
                         is_adult = no
-                        is_noble = yes
+                        NOT = { is_lowborn = yes }
                         age >= 6
                         age <= 13
                         NOT = { has_trait = huxian_blood }
@@ -1403,7 +1401,7 @@ cultivation_ai.2250 = {
                                 is_alive = yes
                                 is_ai = yes
                                 is_adult = no
-                                is_noble = yes
+                                NOT = { is_lowborn = yes }
                                 age >= 6
                                 age <= 13
                                 NOT = { has_trait = huxian_blood }
@@ -1426,7 +1424,7 @@ cultivation_ai.2250 = {
                                 is_alive = yes
                                 is_ai = yes
                                 is_adult = no
-                                is_noble = yes
+                                NOT = { is_lowborn = yes }
                                 age >= 6
                                 age <= 13
                                 NOT = { has_trait = huxian_blood }
@@ -1832,6 +1830,10 @@ cultivation_ai.2270 = {
                 add_perk = true_immortal_final_perk
 
                 give_nickname = nick_the_reincarnator
+                if = {
+                    limit = { NOT = { has_trait = conqueror } }
+                    add_trait = conqueror
+                }
                 add_character_flag = cultivation_reincarnation_holder
                 }
             }

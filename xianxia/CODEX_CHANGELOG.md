@@ -437,7 +437,7 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 
 ### 39) Orthodox/Demonic alliance leadership and imperial-sect gate (2026-04-09)
 - Added additional classic Jianghu sect faith seeds (Qingcheng, Kunlun, Kongtong, Diancang) plus `heavenly_mandate_bureau` as an imperial-backed orthodox lane.
-- Added demonic alliance faith seeds (`demonic_holy_cult`, `blood_dao_sect`, `yin_yang_harmony_sect`) to mirror common xianxia/manhua faction structures.
+- Added demonic alliance faith seeds (`yin_yang_harmony_sect`) to mirror common xianxia/manhua faction structures.
 - Added alliance leadership decisions: `proclaim_orthodox_alliance_leader_decision`, `proclaim_demonic_alliance_leader_decision`, and `convene_martial_alliance_decision`.
 - Added `establish_heavenly_mandate_bureau_decision`, gated to rulers with `primary_title = e_china` or `culture = han`, to tie imperial sect identity to requested imperial/Han constraints.
 - Added supporting alliance/imperial modifiers and localization so this set functions as a foundation for deeper confederation and Jianghu institution systems.

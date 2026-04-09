@@ -1,0 +1,14 @@
+NSkills = {
+	# Xianxia characters routinely exceed mortal caps.
+	MAX_DIPLOMACY = 999
+	MAX_MARTIAL = 999
+	MAX_STEWARDSHIP = 999
+	MAX_INTRIGUE = 999
+	MAX_LEARNING = 999
+	MAX_PROWESS = 999
+}
+
+NChild = {
+	# Keep inherited growth uncapped for cultivation-focused bloodlines.
+	BASE_MAX_SKILL = 999
+}

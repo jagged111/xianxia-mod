@@ -1,0 +1,113 @@
+face_slap_interaction = {
+    category = interaction_category_hostile
+    interface_priority = 110
+    icon = icon_antagonize
+    common_interaction = yes
+
+    popup_on_receive = yes
+    pause_on_receive = yes
+
+    desc = face_slap_interaction_desc
+
+    is_shown = {
+        scope:actor = {
+            is_adult = yes
+            is_alive = yes
+        }
+        scope:recipient = {
+            is_adult = yes
+            is_alive = yes
+            is_ruler = yes
+        }
+        NOT = { scope:actor = scope:recipient }
+        OR = {
+            scope:actor = { is_at_war_with = scope:recipient }
+            scope:actor = { has_relation_rival = scope:recipient }
+            scope:actor = { has_relation_nemesis = scope:recipient }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        scope:actor = {
+            is_imprisoned = no
+            is_incapable = no
+        }
+        scope:recipient = {
+            is_imprisoned = no
+            is_incapable = no
+        }
+        custom_description = {
+            text = FACE_SLAP_REQUIRES_WAR_OR_GRUDGE
+            OR = {
+                scope:actor = { is_at_war_with = scope:recipient }
+                scope:actor = { has_relation_rival = scope:recipient }
+                scope:actor = { has_relation_nemesis = scope:recipient }
+            }
+        }
+    }
+
+    on_accept = {
+        if = {
+            limit = {
+                scope:actor.diplomacy >= scope:recipient.diplomacy
+            }
+            scope:recipient = {
+                add_opinion = { target = scope:actor modifier = face_slapped_humiliation_opinion years = 10 }
+                add_stress = 40
+                add_character_modifier = { modifier = face_slapped_shaken days = 1095 }
+            }
+            scope:actor = {
+                add_prestige = 125
+                add_stress = -20
+            }
+        }
+        else = {
+            scope:actor = {
+                add_opinion = { target = scope:recipient modifier = face_slap_backfired_opinion years = 8 }
+                add_stress = 45
+                add_character_modifier = { modifier = face_slapped_shaken days = 1095 }
+            }
+            scope:recipient = {
+                add_prestige = 75
+                add_stress = -15
+            }
+        }
+    }
+
+    ai_accept = {
+        base = -30
+
+        modifier = {
+            add = 80
+            scope:recipient.diplomacy >= scope:actor.diplomacy
+            desc = face_slap_diplomacy_contest_reason
+        }
+        modifier = {
+            add = 20
+            scope:recipient = { has_trait = arrogant }
+            desc = face_slap_pride_reason
+        }
+        modifier = {
+            add = 20
+            scope:recipient = { has_trait = wrathful }
+            desc = face_slap_pride_reason
+        }
+        modifier = {
+            add = -60
+            scope:recipient = { has_trait = craven }
+            desc = face_slap_cowardice_reason
+        }
+    }
+
+    ai_will_do = {
+        base = 3
+        modifier = {
+            add = 10
+            scope:actor = { has_relation_nemesis = scope:recipient }
+        }
+        modifier = {
+            add = 6
+            scope:actor = { is_at_war_with = scope:recipient }
+        }
+    }
+}

@@ -534,3 +534,9 @@ path_longevity_cultivation_hidden = {
     fertility = -0.05
     prowess = -1
 }
+
+reincarnator_unbound = {
+    icon = tyranny_negative
+    liege_opinion = -120
+    same_faith_opinion = -5
+}

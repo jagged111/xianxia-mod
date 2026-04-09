@@ -130,12 +130,13 @@
  xianxia_world.1120.desc:0 "In the final exchange, your side claims victory and secures sect prestige, resources, and new oaths."
  xianxia_world.1120.a:0 "Claim the Jianghu laurels."
 
- xianxia_world.1510.t:0 "Secret Realm - Midway Trial"
- xianxia_world.1510.desc:0 "Your expedition pushes deeper through arrays and spirit beasts. Progress comes steadily, but each step risks collapse."
- xianxia_world.1510.a:0 "Continue deeper."
- xianxia_world.1520.t:0 "Secret Realm - Final Inheritance"
- xianxia_world.1520.desc:0 "At the heart of the realm, inheritance altars flicker. Wealth, scriptures, or deviation await based on your path."
- xianxia_world.1520.a:0 "Take the final reward."
+xianxia_world.1510.t:0 "Secret Realm - Midway Trial"
+xianxia_world.1510.desc:0 "Your expedition pushes deeper through arrays and spirit beasts. Progress comes steadily, but each step risks collapse."
+xianxia_world.1510.a:0 "Continue deeper."
+xianxia_world.1510.c:0 "Enter the most deadly core zone for supreme insight."
+xianxia_world.1520.t:0 "Secret Realm - Final Inheritance"
+xianxia_world.1520.desc:0 "At the heart of the realm, inheritance altars flicker. Wealth, scriptures, or deviation await based on your path."
+xianxia_world.1520.a:0 "Take the final reward."
 
  xianxia_world.1310.t:0 "Alchemy Furnace Preparation"
  xianxia_world.1310.desc:0 "Herbs, ore, spirit cores, and furnace arrays are set in graded order. Furnace quality and your control will decide this batch's rank."
@@ -181,7 +182,22 @@
  alchemy_qi_deviation_wound:0 "Alchemy Deviation Wound"
  alchemy_qi_deviation_wound_desc:0 "Furnace backlash injured meridians and left lasting qi instability."
  xianxia_world.1110.b:0 "Push an aggressive bracket and court rivalries."
- xianxia_world.1510.b:0 "Force a dangerous shortcut through the trial."
+xianxia_world.1510.b:0 "Force a dangerous shortcut through the trial."
+
+face_slapped_shaken:0 "Face-Slapped Setback"
+face_slapped_shaken_desc:0 "Humiliation has shaken this cultivator's heart and slowed their cultivation rhythm for a time."
+
+secret_realm_meridian_damage_1:0 "Secret Realm Meridian Damage (Minor)"
+secret_realm_meridian_damage_1_desc:0 "The spirit pressure of a secret realm damaged this cultivator's meridians, leaving temporary inefficiency."
+secret_realm_meridian_damage_2:0 "Secret Realm Meridian Damage (Severe)"
+secret_realm_meridian_damage_2_desc:0 "A catastrophic backlash in a secret realm left this cultivator's meridians heavily damaged."
+
+secret_realm_lifestyle_overdrive_1:0 "Secret Realm Insight Surge"
+secret_realm_lifestyle_overdrive_1_desc:0 "A moderate inheritance surge accelerates cultivation comprehension."
+secret_realm_lifestyle_overdrive_2:0 "Secret Realm Insight Breakthrough"
+secret_realm_lifestyle_overdrive_2_desc:0 "A dangerous inheritance breakthrough grants exceptional cultivation speed."
+secret_realm_lifestyle_overdrive_3:0 "Secret Realm Forbidden Overdrive"
+secret_realm_lifestyle_overdrive_3_desc:0 "At the deadliest depths, this cultivator seized forbidden insight and now cultivates at terrifying speed."
 
  xianxia_world.1720.t:0 "Sect Council Assembly"
  xianxia_world.1720.desc:0 "Inner hall, outer hall, and enforcement elders gather to contest doctrine, resources, and punishment policy."
@@ -402,3 +418,19 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  martial_alliance_leader_desc:0 "This ruler presides over a broad Jianghu alliance framework and arbitration order."
  imperial_patron_sect:0 "Imperial Patron Sect"
  imperial_patron_sect_desc:0 "This sect is formally tied to imperial patronage and Han court legitimacy."
+
+ buy_flying_sword_or_saber_decision:0 "Buy a Flying Sword or Saber"
+ buy_flying_sword_or_saber_decision_desc:0 "Commission a spirit-forged flying blade attuned to your martial path. It greatly improves travel and makes you deadlier in open battle."
+ buy_flying_sword_or_saber_decision_tooltip:0 "Requires Sword or Saber weapon path. Grants permanent flying-sword mobility and battle bonuses."
+ buy_flying_sword_or_saber_decision_confirm:0 "Commission the flying blade."
+
+ buy_flying_mount_decision:0 "Buy a Flying Mount"
+ buy_flying_mount_decision_desc:0 "Acquire a trained flying spirit mount to traverse long distances quickly between sect domains and battlefields."
+ buy_flying_mount_decision_tooltip:0 "For non-sword/saber cultivators. Grants permanent travel-speed mobility."
+ buy_flying_mount_decision_confirm:0 "Purchase the mount."
+
+ flying_sword_rider:0 "Flying Sword Rider"
+ flying_sword_rider_desc:0 "Riding a refined flying sword or saber, this cultivator travels like lightning and strikes with superior battlefield momentum."
+
+ flying_spirit_mount:0 "Flying Spirit Mount"
+ flying_spirit_mount_desc:0 "A trained aerial mount carries this cultivator swiftly across great distances."

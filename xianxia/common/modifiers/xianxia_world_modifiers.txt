@@ -277,3 +277,51 @@ imperial_patron_sect = {
     same_faith_opinion = 12
     legitimacy_gain_mult = 0.1
 }
+
+flying_sword_rider = {
+    icon = martial_positive
+    travel_speed_mult = 0.35
+    prowess = 4
+    advantage = 8
+    knight_effectiveness_mult = 0.1
+}
+
+flying_spirit_mount = {
+    icon = martial_positive
+    travel_speed_mult = 0.25
+}
+
+face_slapped_shaken = {
+    icon = learning_negative
+    monthly_lifestyle_xp_gain_mult = -0.2
+    stress_gain_mult = 0.1
+}
+
+secret_realm_meridian_damage_1 = {
+    icon = health_negative
+    monthly_lifestyle_xp_gain_mult = -0.05
+    prowess = -1
+}
+
+secret_realm_meridian_damage_2 = {
+    icon = health_negative
+    monthly_lifestyle_xp_gain_mult = -0.12
+    prowess = -2
+    health = -0.3
+}
+
+secret_realm_lifestyle_overdrive_1 = {
+    icon = learning_positive
+    monthly_lifestyle_xp_gain_mult = 0.15
+}
+
+secret_realm_lifestyle_overdrive_2 = {
+    icon = learning_positive
+    monthly_lifestyle_xp_gain_mult = 0.3
+}
+
+secret_realm_lifestyle_overdrive_3 = {
+    icon = learning_positive
+    monthly_lifestyle_xp_gain_mult = 0.5
+    learning = 2
+}

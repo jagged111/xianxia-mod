@@ -55,6 +55,8 @@ weapon_path_sword = {
     group = commander
     prowess = 3
     martial = 1
+    advantage = 4
+    hostile_scheme_resistance_add = 6
 }
 
 weapon_path_saber = {
@@ -64,6 +66,8 @@ weapon_path_saber = {
     group = commander
     prowess = 3
     martial = 1
+    knight_effectiveness_mult = 0.08
+    dread_gain_mult = 0.05
 }
 
 weapon_path_spear = {
@@ -73,6 +77,8 @@ weapon_path_spear = {
     group = commander
     prowess = 2
     martial = 2
+    controlled_province_advantage = 4
+    enemy_fatal_casualties_mult = 0.05
 }
 
 weapon_path_fist = {
@@ -81,6 +87,8 @@ weapon_path_fist = {
     desc = trait_weapon_path_fist_desc
     group = physical
     prowess = 4
+    health = 0.25
+    attraction_opinion = 5
 }
 
 sect_inner_hall_elder = {
@@ -129,6 +137,7 @@ alchemy_body_tier_1 = {
     group = alchemy_body
     level = 1
     learning = 1
+    health = 0.15
     monthly_lifestyle_xp_gain_mult = 0.02
 }
 
@@ -139,6 +148,7 @@ alchemy_body_tier_2 = {
     group = alchemy_body
     level = 2
     learning = 2
+    health = 0.35
     monthly_lifestyle_xp_gain_mult = 0.04
 }
 
@@ -149,6 +159,7 @@ alchemy_body_tier_3 = {
     group = alchemy_body
     level = 3
     learning = 3
+    health = 0.60
     monthly_lifestyle_xp_gain_mult = 0.06
 }
 

@@ -476,7 +476,9 @@ proclaim_great_sect_hegemon_decision = {
     }
 
     is_valid = {
-        realm_size >= 40
+        realm_size >= 90
+        prestige >= 5000
+        piety >= 3000
         NOT = { has_character_modifier = sect_hegemon_mandate }
     }
 
@@ -508,7 +510,9 @@ found_martial_confederation_decision = {
     }
 
     is_valid = {
-        realm_size >= 35
+        realm_size >= 70
+        prestige >= 3000
+        piety >= 1500
         NOT = { has_character_modifier = martial_confederation_founder }
     }
 
@@ -542,7 +546,9 @@ proclaim_orthodox_alliance_leader_decision = {
     }
 
     is_valid = {
-        realm_size >= 55
+        realm_size >= 100
+        prestige >= 6000
+        piety >= 4000
         NOT = { has_character_modifier = orthodox_alliance_leader }
     }
 
@@ -574,7 +580,9 @@ proclaim_demonic_alliance_leader_decision = {
     }
 
     is_valid = {
-        realm_size >= 55
+        realm_size >= 100
+        prestige >= 6000
+        piety >= 4000
         NOT = { has_character_modifier = demonic_alliance_leader }
     }
 
@@ -672,4 +680,75 @@ establish_heavenly_mandate_bureau_decision = {
             has_trait = ambitious
         }
     }
+}
+
+buy_flying_sword_or_saber_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hire_court_physician.dds" }
+    decision_group_type = major
+    sort_order = 538
+
+    title = buy_flying_sword_or_saber_decision
+    desc = buy_flying_sword_or_saber_decision_desc
+    selection_tooltip = buy_flying_sword_or_saber_decision_tooltip
+    confirm_text = buy_flying_sword_or_saber_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = weapon_path_sword
+            has_trait = weapon_path_saber
+        }
+    }
+
+    is_valid = {
+        gold >= 300
+        NOT = { has_character_modifier = flying_sword_rider }
+    }
+
+    effect = {
+        add_gold = { add = 300 multiply = -1 }
+        remove_character_modifier = flying_spirit_mount
+        add_character_modifier = { modifier = flying_sword_rider days = -1 }
+        add_prestige = 150
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 18 }
+}
+
+buy_flying_mount_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hire_court_physician.dds" }
+    decision_group_type = major
+    sort_order = 539
+
+    title = buy_flying_mount_decision
+    desc = buy_flying_mount_decision_desc
+    selection_tooltip = buy_flying_mount_decision_tooltip
+    confirm_text = buy_flying_mount_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        NOT = {
+            OR = {
+                has_trait = weapon_path_sword
+                has_trait = weapon_path_saber
+            }
+        }
+    }
+
+    is_valid = {
+        gold >= 220
+        NOT = { has_character_modifier = flying_spirit_mount }
+    }
+
+    effect = {
+        add_gold = { add = 220 multiply = -1 }
+        add_character_modifier = { modifier = flying_spirit_mount days = -1 }
+        add_prestige = 75
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 14 }
 }

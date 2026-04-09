@@ -78,3 +78,13 @@ opinion_cultivation_path_rival = {
 	opinion = -40
 	months = 240
 }
+
+face_slapped_humiliation_opinion = {
+	opinion = -45
+	months = 120
+}
+
+face_slap_backfired_opinion = {
+	opinion = -20
+	months = 96
+}

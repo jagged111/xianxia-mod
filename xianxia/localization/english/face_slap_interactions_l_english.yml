@@ -1,0 +1,13 @@
+l_english:
+ face_slap_interaction:0 "Face-Slap Challenge"
+ face_slap_interaction_desc:0 "Challenge [recipient.GetShortUINameNoTooltip] to a public exchange of words and status in classic jianghu fashion. Victory is decided primarily by [diplomacy|E]."
+ FACE_SLAP_REQUIRES_WAR_OR_GRUDGE:0 "You must be at war with this ruler or have a deep grudge (Rival/Nemesis)."
+
+ face_slap_diplomacy_contest_reason:0 "Diplomacy in verbal contest"
+ face_slap_pride_reason:0 "Prideful temperament"
+ face_slap_cowardice_reason:0 "Cowardice"
+
+ face_slapped_humiliation_opinion:0 "Publicly Face-Slapped"
+ face_slapped_humiliation_opinion_desc:0 "This character was publicly humiliated in a verbal/status clash and cannot forget the shame."
+ face_slap_backfired_opinion:0 "Face-Slap Backfired"
+ face_slap_backfired_opinion_desc:0 "This character attempted to humiliate their rival but lost face instead."

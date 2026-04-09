@@ -295,21 +295,41 @@ cultivation_ai.2290 = {
     hidden = yes
 
     immediate = {
-        # Ensure the e_china holder always follows the Heavenly Mandate Bureau if eligible.
+        # Align rulers that directly hold iconic sect-seat provinces to matching sect faiths.
+        # Imperial throne holder is explicitly excluded.
         every_ruler = {
             limit = {
                 is_alive = yes
                 is_adult = yes
-                has_title = title:e_china
+                is_landed = yes
+                NOT = { has_title = title:e_china }
                 has_cultivation_sect_faith = yes
-                faith = { has_doctrine_parameter = orthodox_cultivation }
-                NOT = { faith = faith:heavenly_mandate_bureau }
             }
-            set_character_faith = faith:heavenly_mandate_bureau
-            add_character_modifier = { modifier = imperial_patron_sect days = -1 }
+
+            if = {
+                limit = {
+                    capital_county = {
+                        title_province = { has_building_or_higher = shaolin_monastery_01 }
+                    }
+                    NOT = { faith = faith:shaolin_temple }
+                }
+                set_character_faith = faith:shaolin_temple
+                cultivation_convert_direct_domain_faith_effect = yes
+            }
+            else_if = {
+                limit = {
+                    capital_county = {
+                        title_province = { has_building_or_higher = wudang_mountain_temples_01 }
+                    }
+                    NOT = { faith = faith:wudang_sect }
+                }
+                set_character_faith = faith:wudang_sect
+                cultivation_convert_direct_domain_faith_effect = yes
+            }
         }
 
         # Convert a majority of Han-culture sect rulers at game start.
+        # Explicitly exclude the e_china holder so the imperial throne does not get auto-routed.
         every_ruler = {
             limit = {
                 is_alive = yes
@@ -318,6 +338,7 @@ cultivation_ai.2290 = {
                 has_cultivation_sect_faith = yes
                 faith = { has_doctrine_parameter = orthodox_cultivation }
                 NOT = { faith = faith:heavenly_mandate_bureau }
+                NOT = { has_title = title:e_china }
             }
             random = {
                 chance = 70
@@ -1569,6 +1590,7 @@ cultivation_ai.2261 = {
     type = character_event
     title = cultivation_ai.2261.t
     desc = cultivation_ai.2261.desc
+    theme = learning
 
     trigger = {
         is_alive = yes
@@ -1830,6 +1852,7 @@ cultivation_ai.2270 = {
                 add_perk = true_immortal_final_perk
 
                 give_nickname = nick_the_reincarnator
+                add_character_modifier = { modifier = reincarnator_unbound days = -1 }
                 if = {
                     limit = { NOT = { has_trait = conqueror } }
                     add_trait = conqueror

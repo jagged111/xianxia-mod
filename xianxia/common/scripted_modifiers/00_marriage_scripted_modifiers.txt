@@ -78,6 +78,7 @@
 					liege = {
 						opinion = { target = scope:actor value <= -1 }
 					}
+					exists = guardian
 					guardian = {
 						opinion = { target = scope:actor value <= -1 }
 					}
@@ -104,8 +105,8 @@
 						limit = {
 							scope:secondary_recipient = {
 								OR = {
-									is_primary_heir = yes
-									any_claim = { }
+									has_primary_title = yes
+									any_claim = { always = yes }
 								}
 							}
 						}
@@ -120,14 +121,6 @@
 							}
 						}
 						add = 400  # Huge boost for desperate heirless old AI
-					}
-					else_if = {
-						limit = {
-							scope:actor = {
-								NOT = { any_eligible_noble_match_in_range_trigger = yes }
-							}
-						}
-						add = 50  # Small boost for very limited options
 					}
 				}
 				else_if = {
@@ -179,7 +172,7 @@
 			scope:actor = { is_ai = yes }  # AI must be the one offering/proposing
 			scope:secondary_recipient = {
 				is_female = yes
-				is_virgin_trigger = yes
+				is_virgin = yes
 			}
 		}
 
@@ -192,12 +185,12 @@
 			}
 			scope:secondary_recipient = {
 				is_female = yes
-				is_virgin_trigger = no # Ensure the recipient is not a virgin
+				is_virgin = no # Ensure the recipient is not a virgin
 			}
 			scope:recipient = {
 				is_ai = yes # Ensure this applies to AI characters
 				OR = {
-					is_noble = yes # Apply only if the recipient is a noble (high status)
+					is_lowborn = no # Apply only if the recipient is a noble (high status)
 				}
 			}
 		}
@@ -211,12 +204,12 @@
 			}
 			scope:secondary_recipient = {
 				is_female = yes
-				is_virgin_trigger = no # Ensure the recipient is not a virgin
+				is_virgin = no # Ensure the recipient is not a virgin
 			}
 			scope:recipient = {
 				is_ai = yes # Ensure this applies to AI characters
 				OR = {
-					is_noble = no # Apply only if the recipient is a commoner (low status)
+					is_lowborn = yes # Apply only if the recipient is a commoner (low status)
 				}
 			}
 		}

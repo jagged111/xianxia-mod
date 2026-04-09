@@ -96,6 +96,62 @@ cultivation_character_initialization.0002 = {
 				}
 			}
 			else_if = {
+				# If one parent is roughly two meridian tiers above the other, bias to average-to-improved offspring.
+				limit = {
+					OR = {
+						AND = {
+							mother = { has_trait = heavenly_meridians }
+							father = { has_trait = good_meridians }
+						}
+						AND = {
+							father = { has_trait = heavenly_meridians }
+							mother = { has_trait = good_meridians }
+						}
+						AND = {
+							mother = { has_trait = excellent_meridians }
+							father = { has_trait = normal_meridians }
+						}
+						AND = {
+							father = { has_trait = excellent_meridians }
+							mother = { has_trait = normal_meridians }
+						}
+						AND = {
+							mother = { has_trait = good_meridians }
+							father = { has_trait = poor_meridians }
+						}
+						AND = {
+							father = { has_trait = good_meridians }
+							mother = { has_trait = poor_meridians }
+						}
+					}
+				}
+				random_list = {
+					430 = { add_trait = normal_meridians }
+					360 = { add_trait = good_meridians }
+					150 = { add_trait = excellent_meridians }
+					30 = { add_trait = heavenly_meridians }
+					25 = { add_trait = poor_meridians }
+					5 = { add_trait = crippled_meridians }
+				}
+			}
+			else_if = {
+				# One blocked + one heavenly parent: child usually normal/good, occasional excellent.
+				limit = {
+					OR = {
+						AND = { mother = { has_trait = crippled_meridians } father = { has_trait = heavenly_meridians } }
+						AND = { father = { has_trait = crippled_meridians } mother = { has_trait = heavenly_meridians } }
+					}
+				}
+				random_list = {
+					540 = { add_trait = normal_meridians }
+					300 = { add_trait = good_meridians }
+					120 = { add_trait = excellent_meridians }
+					35 = { add_trait = heavenly_meridians }
+					5 = { add_trait = poor_meridians }
+				}
+			}
+
+			else_if = {
 				# Two poor parents: still mostly poor/normal.
 				limit = {
 					mother = { has_trait = poor_meridians }

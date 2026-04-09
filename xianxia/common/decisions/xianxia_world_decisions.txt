@@ -392,8 +392,12 @@ raise_formation_barriers_decision = {
             has_trait = cultivation_qi_building
             has_trait = cultivation_core_formation
             has_trait = cultivation_nascent_soul
-            has_trait = cultivation_soul_formation
-            has_trait = cultivation_saint_realm
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
             has_trait = cultivation_true_immortal
         }
     }

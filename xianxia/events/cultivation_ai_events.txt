@@ -160,7 +160,7 @@ cultivation_ai.2220 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = root }
+                        NOT = { this = scope:root }
                         is_allied_to = root
                         NOT = { has_relation_friend = root }
                         NOT = { has_relation_best_friend = root }
@@ -201,7 +201,7 @@ cultivation_ai.2230 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = root }
+                        NOT = { this = scope:root }
                         is_at_war_with = root
                         NOT = { has_relation_nemesis = root }
                         NOT = { has_relation_rival = root }
@@ -246,8 +246,8 @@ cultivation_ai.2280 = {
                     is_adult = yes
                     is_cultivator = yes
                     has_cultivation_sect_faith = yes
-                    NOT = { this = root }
-                    is_within_diplo_range = root
+                    NOT = { this = scope:root }
+                    is_within_diplo_range = scope:root
                 }
 
                 # Clear stale path-opinion state before applying current relationship.
@@ -1189,7 +1189,7 @@ cultivation_ai.2250 = {
                         limit = {
                             is_alive = yes
                             is_adult = yes
-                            NOT = { this = root }
+                            NOT = { this = scope:root }
                         }
 
                         if = {
@@ -1266,7 +1266,7 @@ cultivation_ai.2250 = {
                         is_alive = yes
                         is_ai = yes
                         is_adult = no
-                        is_noble = yes
+                        NOT = { is_lowborn = yes }
                         age >= 6
                         age <= 13
                         NOT = { has_trait = huxian_blood }
@@ -1289,7 +1289,7 @@ cultivation_ai.2250 = {
                         is_alive = yes
                         is_ai = yes
                         is_adult = no
-                        is_noble = yes
+                        NOT = { is_lowborn = yes }
                         age >= 6
                         age <= 13
                         NOT = { has_trait = huxian_blood }
@@ -1401,7 +1401,7 @@ cultivation_ai.2250 = {
                                 is_alive = yes
                                 is_ai = yes
                                 is_adult = no
-                                is_noble = yes
+                                NOT = { is_lowborn = yes }
                                 age >= 6
                                 age <= 13
                                 NOT = { has_trait = huxian_blood }
@@ -1424,7 +1424,7 @@ cultivation_ai.2250 = {
                                 is_alive = yes
                                 is_ai = yes
                                 is_adult = no
-                                is_noble = yes
+                                NOT = { is_lowborn = yes }
                                 age >= 6
                                 age <= 13
                                 NOT = { has_trait = huxian_blood }

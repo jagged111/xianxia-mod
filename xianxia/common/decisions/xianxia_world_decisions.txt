@@ -843,3 +843,34 @@ study_magic_treasure_crafting_decision = {
     ai_check_interval = 30
     ai_will_do = { base = 22 }
 }
+
+invite_path_cultivators_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_invite_knights.dds" }
+    decision_group_type = major
+    sort_order = 536
+
+    title = invite_path_cultivators_decision
+    desc = invite_path_cultivators_decision_desc
+    selection_tooltip = invite_path_cultivators_decision_tooltip
+    confirm_text = invite_path_cultivators_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_cultivator = yes
+    }
+
+    is_valid = {
+        gold >= 120
+        NOT = { has_character_flag = invite_path_cultivators_cooldown }
+    }
+
+    effect = {
+        add_gold = -120
+        add_character_flag = { flag = invite_path_cultivators_cooldown days = 730 }
+        trigger_event = xianxia_world.1850
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 20 }
+}

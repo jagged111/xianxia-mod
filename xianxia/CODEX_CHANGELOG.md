@@ -514,3 +514,5 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added a rare Legendary Breakthrough Pill discovery hook to the legendary artifact/auction chains; when found, it guarantees the holder's next breakthrough attempt (100% success) and is consumed on use.
 - Added `study_magic_treasure_crafting_decision` + `xianxia_world.1840` so Magic Treasure Crafter tiers can be earned in normal gameplay instead of requiring external trait injection.
 - Updated auction sell branch to actually destroy one owned artifact before granting sale payout, restoring real tradeoff economics.
+- Added `invite_path_cultivators_decision` + `xianxia_world.1850` to recruit path-aligned wandering cultivators into court champions, with character generation fallback only when no suitable wanderers exist.
+- Added spirit-stone economy pressure to breakthrough decisions: attempts now require minimum gold and apply longer resource cooldowns at low reserves, slowing both player and AI progression when poor.

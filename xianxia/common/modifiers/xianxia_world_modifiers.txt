@@ -345,3 +345,8 @@ auction_renowned_seller = {
     monthly_prestige = 0.18
     vassal_opinion = 4
 }
+
+invited_path_guardian = {
+    prowess = 3
+    monthly_prestige = 0.08
+}

@@ -2225,3 +2225,5 @@ yin_yang_harmony_sect_desc:0 "A demonic-leaning dual-cultivation faction that mi
  cultivation_breakthrough.9000.t:0 "Legendary Pill Resonance"
  cultivation_breakthrough.9000.desc:0 "The legendary breakthrough pill dissolves into pure dao-light. Your bottleneck shatters without resistance, and your realm advances with absolute certainty."
  cultivation_breakthrough.9000.a:0 "The heavens cannot bar my path."
+ cultivation_breakthrough_resource_cooldown:0 "Spirit Stone Bottleneck"
+ cultivation_breakthrough_resource_cooldown_desc:0 "Breakthrough preparations consumed scarce spirit stones. Progress is slowed until resources are restored."

@@ -853,3 +853,155 @@ xianxia_world.1840 = {
         add_learning_lifestyle_xp = medium_lifestyle_xp
     }
 }
+
+xianxia_world.1850 = {
+    type = character_event
+    title = xianxia_world.1850.t
+    desc = xianxia_world.1850.desc
+
+    option = {
+        name = xianxia_world.1850.a
+
+        remove_character_flag = recruited_path_wanderer_this_event
+
+        if = {
+            limit = {
+                faith = { has_doctrine_parameter = orthodox_cultivation }
+                any_character = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = orthodox_cultivation }
+                }
+            }
+            random_character = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = orthodox_cultivation }
+                }
+                save_scope_as = invited_path_cultivator
+            }
+            add_character_flag = recruited_path_wanderer_this_event
+        }
+        else_if = {
+            limit = {
+                faith = { has_doctrine_parameter = unorthodox_cultivation }
+                any_character = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = unorthodox_cultivation }
+                }
+            }
+            random_character = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = unorthodox_cultivation }
+                }
+                save_scope_as = invited_path_cultivator
+            }
+            add_character_flag = recruited_path_wanderer_this_event
+        }
+        else_if = {
+            limit = {
+                faith = { has_doctrine_parameter = demonic_cultivation }
+                any_character = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = demonic_cultivation }
+                }
+            }
+            random_character = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = demonic_cultivation }
+                }
+                save_scope_as = invited_path_cultivator
+            }
+            add_character_flag = recruited_path_wanderer_this_event
+        }
+        else_if = {
+            limit = {
+                faith = { has_doctrine_parameter = vagrant_cultivation }
+                any_character = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = vagrant_cultivation }
+                }
+            }
+            random_character = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_cultivator = yes
+                    is_landed = no
+                    is_courtier = no
+                    is_prisoner = no
+                    faith = { has_doctrine_parameter = vagrant_cultivation }
+                }
+                save_scope_as = invited_path_cultivator
+            }
+            add_character_flag = recruited_path_wanderer_this_event
+        }
+
+        if = {
+            limit = { has_character_flag = recruited_path_wanderer_this_event }
+            add_courtier = scope:invited_path_cultivator
+            scope:invited_path_cultivator = {
+                add_character_modifier = { modifier = invited_path_guardian days = 1825 }
+            }
+        }
+        else = {
+            create_character = {
+                age = { 24 42 }
+                gender_female_chance = 20
+                employer = root
+                faith = root.faith
+                culture = root.culture
+                save_scope_as = invited_path_cultivator
+                dynasty = none
+                trait = cultivation_qi_building
+                trait = good_meridians
+            }
+            scope:invited_path_cultivator = {
+                add_character_modifier = { modifier = invited_path_guardian days = 1825 }
+            }
+        }
+
+        add_prestige = 100
+        remove_character_flag = recruited_path_wanderer_this_event
+    }
+
+    option = {
+        name = xianxia_world.1850.b
+    }
+}

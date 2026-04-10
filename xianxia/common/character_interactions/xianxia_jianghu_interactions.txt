@@ -122,6 +122,7 @@ jianghu_set_ambush_interaction = {
 				is_respected_cultivator = yes
 				is_immortal_cultivator = yes
 			}
+			add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
 		}
 		scope:recipient = {
 			is_alive = yes
@@ -273,8 +274,8 @@ jianghu_demand_prisoner_release_interaction = {
 					}
 				}
 				release_from_prison = yes
-				add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
 			}
+			add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
 		}
 	}
 }
@@ -311,6 +312,7 @@ jianghu_swear_blood_vengeance_interaction = {
 					killer = { this = scope:recipient }
 				}
 			}
+			add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
 		}
 		scope:recipient = { is_alive = yes is_adult = yes }
 	}

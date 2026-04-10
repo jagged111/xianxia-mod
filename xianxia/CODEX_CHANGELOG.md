@@ -482,3 +482,7 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Extended jianghu social opinion durations (humiliation, ambush, rescue coercion, blood vengeance, inherited friendship/rivalry) from short mortal-scale timers to long cultivation-scale windows.
 - Increased interaction-applied opinion durations to multi-decade/century-scale values so major slights and blood-oaths persist across long-lived cultivator lifespans.
 - Increased inheritable social fallout event durations so predecessor alliances/feuds remain politically relevant through long cultivation reigns.
+
+### 45) Jianghu rescue-opinion target fix + localization BOM compliance (2026-04-10)
+- Fixed `jianghu_demand_prisoner_release_interaction` so `opinion_jianghu_forced_rescue` is applied by the jailer (`scope:recipient`) toward the rescuer (`scope:actor`) after release, rather than accidentally by the released prisoner scope.
+- Re-encoded `xianxia_jianghu_interactions_l_english.yml` with UTF-8 BOM to match CK3 localization loading expectations and in-repo localization conventions.

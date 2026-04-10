@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  jianghu_face_slap_interaction:0 "Public Face Slap"
  jianghu_face_slap_interaction_desc:0 "Publicly humiliate [recipient.GetShortUINameNoTooltip], making it clear who stands higher on the jianghu ladder."
  jianghu_set_ambush_interaction:0 "Arrange Cultivator Ambush"

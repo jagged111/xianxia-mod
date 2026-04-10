@@ -15,28 +15,32 @@ xianxia_world.1000 = {
             xianxia_apply_government_adaptation_effect = yes
         }
 
-        # Startup guard: keep e_china vassal bloc in orthodox great-sect sphere.
-        title:e_china = {
-            if = {
-                limit = { exists = holder }
-                holder = {
-                    every_vassal = {
-                        limit = {
-                            is_alive = yes
-                            is_adult = yes
-                            is_landed = yes
-                            NOT = { faith = { has_doctrine_parameter = orthodox_cultivation } }
-                        }
-                        random_list = {
-                            20 = { set_character_faith = faith:mount_hua_sect }
-                            20 = { set_character_faith = faith:wudang_sect }
-                            20 = { set_character_faith = faith:shaolin_temple }
-                            20 = { set_character_faith = faith:heavenly_sword_pavilion }
-                            20 = { set_character_faith = faith:kunlun_sect }
+        # One-time startup guard: keep e_china vassal bloc in orthodox great-sect sphere.
+        if = {
+            limit = { NOT = { has_global_flag = xianxia_e_china_orthodox_seeded } }
+            title:e_china = {
+                if = {
+                    limit = { exists = holder }
+                    holder = {
+                        every_vassal = {
+                            limit = {
+                                is_alive = yes
+                                is_adult = yes
+                                is_landed = yes
+                                NOT = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+                            }
+                            random_list = {
+                                20 = { set_character_faith = faith:mount_hua_sect }
+                                20 = { set_character_faith = faith:wudang_sect }
+                                20 = { set_character_faith = faith:shaolin_temple }
+                                20 = { set_character_faith = faith:heavenly_sword_pavilion }
+                                20 = { set_character_faith = faith:kunlun_sect }
+                            }
                         }
                     }
                 }
             }
+            add_global_flag = xianxia_e_china_orthodox_seeded
         }
 
         every_ruler = {
@@ -320,9 +324,8 @@ xianxia_world.1800 = {
             is_adult = yes
             is_cultivator = yes
             is_war_leader = yes
-            save_temporary_scope_as = dao_war_target
             root = {
-                has_equal_cultivation_realm_with_target = { target = scope:dao_war_target }
+                has_equal_cultivation_realm_with_target = { target = prev }
             }
         }
     }

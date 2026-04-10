@@ -494,3 +494,18 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added dedicated letter event `xianxia_jianghu_letters.1000` using an Insult to Injuries-style letter-event structure (sender/opening/branching desc/options) for player-facing humiliation messaging.
 - Cleaned and rebuilt `xianxia_jianghu_interactions.txt` to remove accidental stray scope effects from prior merge/edit churn.
 - Rebuilt English localization with UTF-8 BOM and added missing opinion localization keys (including compatibility alias for typoed key `opinion_jianghu_public_humilation`) to prevent raw-key display in UI.
+
+### 25) Magic Treasure crafting framework + xuanhuan artifact pool (2026-04-10)
+- Added a new major decision, `craft_magic_treasure_decision`, available to cultivators with the new `magic_treasure_crafter` trait track.
+- Implemented a 3-tier crafter trait progression (`magic_treasure_crafter_1/2/3`) where higher tiers improve artifact quality/wealth rolls and reduce cooldown burden per craft.
+- Added `xianxia_world.1800` forge event that presents a clear craftable artifact roster and ties decision flow into event-driven artifact generation.
+- Added `xianxia_magic_treasure_craft_effect` plus ten xianxia/xuanhuan-themed artifact creation effects (blade, gourd, cauldron, robe, banner, etc.) using CK3 artifact creation scripting patterns.
+- Added dedicated artifact template + new artifact modifiers file for generated relic bonuses, along with full English localization for decision/event/traits/artifact names and descriptions.
+
+### 47) Legendary world-artifact death-run decision chain (2026-04-10)
+- Added `seek_legendary_world_artifact_decision` for high-realm cultivators seeking forbidden world relics.
+- Decision starts event `xianxia_world.1810` with an explicit ultra-lethal design: if the player forces entry without extreme stats, outcome is near-certain death (92% fatal).
+- Added high-stat pass gate option requiring extreme personal attributes (Learning/Prowess 45+ or Intrigue/Stewardship 35+), allowing a survivable branch with large rewards.
+- Added two new state modifiers: `legendary_artifact_finder` (major success boon) and `legendary_artifact_escape_wounds` (severe failed-attempt penalty).
+
+- Expanded magic treasure pool with 30 additional craftable artifacts (total pool now 40) and wired all new artifact creation effects/modifiers/localization into the existing craft decision flow.

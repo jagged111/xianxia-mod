@@ -585,3 +585,85 @@ xianxia_world.2261 = {
         }
     }
 }
+
+xianxia_world.1800 = {
+    type = character_event
+    title = xianxia_world.1800.t
+    desc = xianxia_world.1800.desc
+
+    option = {
+        name = xianxia_world.1800.a
+        trigger = { gold >= 100 }
+
+        if = {
+            limit = { has_trait = magic_treasure_crafter_3 }
+            add_gold = -350
+            add_character_flag = { flag = craft_magic_treasure_cooldown days = 365 }
+        }
+        else_if = {
+            limit = { has_trait = magic_treasure_crafter_2 }
+            add_gold = -225
+            add_character_flag = { flag = craft_magic_treasure_cooldown days = 425 }
+        }
+        else = {
+            add_gold = -100
+            add_character_flag = { flag = craft_magic_treasure_cooldown days = 500 }
+        }
+
+        xianxia_magic_treasure_craft_effect = yes
+    }
+
+    option = {
+        name = xianxia_world.1800.b
+    }
+}
+
+xianxia_world.1810 = {
+    type = character_event
+    title = xianxia_world.1810.t
+    desc = xianxia_world.1810.desc
+
+    option = {
+        name = xianxia_world.1810.a
+        trigger = {
+            OR = {
+                learning >= 45
+                prowess >= 45
+                intrigue >= 35
+                stewardship >= 35
+            }
+        }
+        random_list = {
+            60 = {
+                xianxia_magic_treasure_craft_effect = yes
+                xianxia_magic_treasure_craft_effect = yes
+                add_prestige = 500
+                add_character_modifier = { modifier = legendary_artifact_finder days = 3650 }
+            }
+            40 = {
+                add_character_modifier = { modifier = legendary_artifact_escape_wounds days = 1460 }
+                add_prestige = 120
+                add_stress = 80
+            }
+        }
+    }
+
+    option = {
+        name = xianxia_world.1810.b
+        random_list = {
+            92 = {
+                death = { death_reason = death_cultivation_failure }
+            }
+            8 = {
+                add_character_modifier = { modifier = legendary_artifact_escape_wounds days = 1825 }
+                add_stress = 180
+                add_prestige = -200
+            }
+        }
+    }
+
+    option = {
+        name = xianxia_world.1810.c
+        add_prestige = -75
+    }
+}

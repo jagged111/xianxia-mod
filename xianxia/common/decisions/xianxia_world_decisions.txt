@@ -673,3 +673,76 @@ establish_heavenly_mandate_bureau_decision = {
         }
     }
 }
+
+craft_magic_treasure_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_write_diplomatic_treatise.dds" }
+    decision_group_type = major
+    sort_order = 531
+
+    title = craft_magic_treasure_decision
+    desc = craft_magic_treasure_decision_desc
+    selection_tooltip = craft_magic_treasure_decision_tooltip
+    confirm_text = craft_magic_treasure_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = magic_treasure_crafter_1
+            has_trait = magic_treasure_crafter_2
+            has_trait = magic_treasure_crafter_3
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = craft_magic_treasure_cooldown }
+        gold >= 100
+    }
+
+    effect = {
+        trigger_event = xianxia_world.1800
+    }
+
+    ai_check_interval = 18
+    ai_will_do = { base = 30 }
+}
+
+seek_legendary_world_artifact_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_search_for_secrets.dds" }
+    decision_group_type = major
+    sort_order = 532
+
+    title = seek_legendary_world_artifact_decision
+    desc = seek_legendary_world_artifact_decision_desc
+    selection_tooltip = seek_legendary_world_artifact_decision_tooltip
+    confirm_text = seek_legendary_world_artifact_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = seek_legendary_world_artifact_cooldown }
+        gold >= 250
+    }
+
+    effect = {
+        add_gold = -250
+        add_character_flag = { flag = seek_legendary_world_artifact_cooldown days = 1460 }
+        trigger_event = xianxia_world.1810
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 8 }
+}

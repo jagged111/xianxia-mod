@@ -42,26 +42,12 @@ jianghu_face_slap_interaction = {
 
 	ai_will_do = {
 		base = 0
-		modifier = {
-			add = 55
-			has_relation_rival = scope:recipient
-		}
-		modifier = {
-			add = 25
-			has_trait = arrogant
-		}
-		modifier = {
-			add = 15
-			has_trait = wrathful
-		}
+		modifier = { add = 55 has_relation_rival = scope:recipient }
+		modifier = { add = 25 has_trait = arrogant }
+		modifier = { add = 15 has_trait = wrathful }
 		modifier = {
 			factor = 0
-			scope:actor = {
-				opinion = {
-					target = scope:recipient
-					value > 15
-				}
-			}
+			scope:actor = { opinion = { target = scope:recipient value > 15 } }
 			NOT = { has_relation_rival = scope:recipient }
 		}
 	}
@@ -78,6 +64,7 @@ jianghu_face_slap_interaction = {
 				modifier = opinion_jianghu_public_humiliation
 				years = 80
 			}
+			add_character_modifier = { modifier = jianghu_face_loss days = 3650 }
 			add_stress = 25
 
 			if = {
@@ -94,6 +81,12 @@ jianghu_face_slap_interaction = {
 					modifier = opinion_jianghu_face_grudge
 					years = 120
 				}
+			}
+
+			if = {
+				limit = { is_ai = no }
+				scope:actor = { save_scope_as = xianxia_face_slap_sender }
+				trigger_event = { id = xianxia_jianghu_letters.1000 days = 1 }
 			}
 		}
 	}
@@ -118,11 +111,7 @@ jianghu_set_ambush_interaction = {
 			is_alive = yes
 			is_adult = yes
 			is_cultivator = yes
-			OR = {
-				is_respected_cultivator = yes
-				is_immortal_cultivator = yes
-			}
-			add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
+			OR = { is_respected_cultivator = yes is_immortal_cultivator = yes }
 		}
 		scope:recipient = {
 			is_alive = yes
@@ -138,35 +127,18 @@ jianghu_set_ambush_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
-		scope:actor = {
-			NOT = { has_character_flag = jianghu_ambush_cooldown }
-		}
+		scope:actor = { NOT = { has_character_flag = jianghu_ambush_cooldown } }
 	}
 
-	cost = {
-		gold = minor_gold_value
-	}
-
+	cost = { gold = minor_gold_value }
 	auto_accept = yes
 
 	ai_will_do = {
 		base = 0
-		modifier = {
-			add = 60
-			has_relation_rival = scope:recipient
-		}
-		modifier = {
-			add = 35
-			has_trait = vengeful
-		}
-		modifier = {
-			add = 25
-			has_trait = deceitful
-		}
-		modifier = {
-			factor = 0
-			has_trait = honest
-		}
+		modifier = { add = 60 has_relation_rival = scope:recipient }
+		modifier = { add = 35 has_trait = vengeful }
+		modifier = { add = 25 has_trait = deceitful }
+		modifier = { factor = 0 has_trait = honest }
 	}
 
 	on_accept = {
@@ -179,19 +151,11 @@ jianghu_set_ambush_interaction = {
 			random_list = {
 				55 = {
 					add_trait = wounded_1
-					add_opinion = {
-						target = scope:actor
-						modifier = opinion_jianghu_ambushed_me
-						years = 120
-					}
+					add_opinion = { target = scope:actor modifier = opinion_jianghu_ambushed_me years = 120 }
 				}
 				30 = {
 					add_trait = wounded_2
-					add_opinion = {
-						target = scope:actor
-						modifier = opinion_jianghu_ambushed_me
-						years = 150
-					}
+					add_opinion = { target = scope:actor modifier = opinion_jianghu_ambushed_me years = 150 }
 					add_stress = 35
 				}
 				15 = {
@@ -199,18 +163,13 @@ jianghu_set_ambush_interaction = {
 						limit = { is_cultivator = yes }
 						add_trait = crippled_meridians
 					}
-					add_opinion = {
-						target = scope:actor
-						modifier = opinion_jianghu_ambushed_me
-						years = 240
-					}
+					add_opinion = { target = scope:actor modifier = opinion_jianghu_ambushed_me years = 240 }
 				}
 			}
 		}
 	}
 }
 
-# Rescue & Vengeance adaptation: cultivators can pressure rivals to release captured kin/disciple-line relations.
 jianghu_demand_prisoner_release_interaction = {
 	category = interaction_category_diplomacy
 	interface_priority = 122
@@ -220,11 +179,7 @@ jianghu_demand_prisoner_release_interaction = {
 
 	is_shown = {
 		scope:recipient != scope:actor
-		scope:actor = {
-			is_alive = yes
-			is_adult = yes
-			is_cultivator = yes
-		}
+		scope:actor = { is_alive = yes is_adult = yes is_cultivator = yes }
 		scope:recipient = {
 			is_alive = yes
 			any_prisoner = {
@@ -250,9 +205,7 @@ jianghu_demand_prisoner_release_interaction = {
 		modifier = { add = 25 has_trait = brave }
 		modifier = {
 			add = 40
-			scope:actor = {
-				opinion = { target = scope:recipient value <= -40 }
-			}
+			scope:actor = { opinion = { target = scope:recipient value <= -40 } }
 		}
 	}
 
@@ -280,7 +233,6 @@ jianghu_demand_prisoner_release_interaction = {
 	}
 }
 
-# Rescue & Vengeance adaptation: formalize revenge intent against known killers.
 jianghu_swear_blood_vengeance_interaction = {
 	category = interaction_category_hostile
 	interface_priority = 123
@@ -312,7 +264,6 @@ jianghu_swear_blood_vengeance_interaction = {
 					killer = { this = scope:recipient }
 				}
 			}
-			add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
 		}
 		scope:recipient = { is_alive = yes is_adult = yes }
 	}

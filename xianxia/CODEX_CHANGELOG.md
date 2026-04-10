@@ -486,3 +486,9 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 ### 45) Jianghu rescue-opinion target fix + localization BOM compliance (2026-04-10)
 - Fixed `jianghu_demand_prisoner_release_interaction` so `opinion_jianghu_forced_rescue` is applied by the jailer (`scope:recipient`) toward the rescuer (`scope:actor`) after release, rather than accidentally by the released prisoner scope.
 - Re-encoded `xianxia_jianghu_interactions_l_english.yml` with UTF-8 BOM to match CK3 localization loading expectations and in-repo localization conventions.
+
+### 46) Face-slap system polish from Insult to Injuries pattern + localization recovery (2026-04-10)
+- Reworked `jianghu_face_slap_interaction` to include a direct lifestyle progression debuff modifier (`jianghu_face_loss`) so public humiliation impacts long-term cultivation growth, not only opinion/stress.
+- Added dedicated letter event `xianxia_jianghu_letters.1000` using an Insult to Injuries-style letter-event structure (sender/opening/branching desc/options) for player-facing humiliation messaging.
+- Cleaned and rebuilt `xianxia_jianghu_interactions.txt` to remove accidental stray scope effects from prior merge/edit churn.
+- Rebuilt English localization with UTF-8 BOM and added missing opinion localization keys (including compatibility alias for typoed key `opinion_jianghu_public_humilation`) to prevent raw-key display in UI.

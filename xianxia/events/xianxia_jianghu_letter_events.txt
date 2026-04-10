@@ -1,0 +1,55 @@
+namespace = xianxia_jianghu_letters
+
+# Inspired by Insult to Injuries letter formatting, adapted for xianxia face-slapping etiquette.
+xianxia_jianghu_letters.1000 = {
+	type = letter_event
+	sender = scope:xianxia_face_slap_sender
+
+	opening = { desc = xianxia_jianghu_letters.1000.opening }
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					has_relation_rival = scope:xianxia_face_slap_sender
+				}
+				desc = xianxia_jianghu_letters.1000.desc_rival
+			}
+			triggered_desc = {
+				trigger = {
+					exists = dynasty
+					exists = scope:xianxia_face_slap_sender.dynasty
+					dynasty = scope:xianxia_face_slap_sender.dynasty
+				}
+				desc = xianxia_jianghu_letters.1000.desc_family
+			}
+			desc = xianxia_jianghu_letters.1000.desc
+		}
+	}
+
+	trigger = {
+		is_ai = no
+		is_alive = yes
+		exists = scope:xianxia_face_slap_sender
+		scope:xianxia_face_slap_sender = { is_alive = yes }
+	}
+
+	option = {
+		name = xianxia_jianghu_letters.1000.a
+		add_stress = 15
+	}
+
+	option = {
+		name = xianxia_jianghu_letters.1000.b
+		if = {
+			limit = {
+				can_set_relation_potential_rival_trigger = { CHARACTER = scope:xianxia_face_slap_sender }
+			}
+			set_relation_potential_rival = scope:xianxia_face_slap_sender
+		}
+		add_opinion = {
+			target = scope:xianxia_face_slap_sender
+			modifier = opinion_jianghu_face_grudge
+			years = 150
+		}
+	}
+}

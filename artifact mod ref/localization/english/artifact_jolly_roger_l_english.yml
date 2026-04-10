@@ -1,0 +1,66 @@
+﻿l_english:
+### Stuff specific to the Jolly Roger events
+
+artifact_jolly_roger_name: "Jolly Roger"
+artifact_dolly_roger_desc: "The Black Flag of the Jolly Roger"
+
+artifact_jollyroger_modifier: "Jolly Roger"
+
+wave_jolly_roger_decision: "Wave the Jolly Roger"
+wave_jolly_roger_decision_tooltip: "You stand on the beach and wave the Jolly Roger.  Arrr!"
+wave_jolly_roger_decision_desc: "We pillage, we plunder, we rifle and loot.\nWe kidnap and ravage and don't give a hoot.\nWe extort and pilfer, we filch and sack.\nMaraud and embezzle and even hijack."
+wave_jolly_roger_decision_confirm: "Drink up me 'earties Yo Ho!"
+
+god_artifacts_decisions.0011: "Waving the Jolly Roger"
+god_artifacts_decisions.0011.t: "Standing on the beach, you wave the Jolly Roger!"
+god_artifacts_decisions.0011.desc: ""
+
+# The choice of description will be triggered, and should go in order.
+god_artifacts_decisions.0011.desc.01: "When I was just a lad, looking for my true vocation,\nMy father said "Now son, this choice deserves deliberation\nThough you could be a doctor... or perhaps a financier...\nMy boy, why not consider a more challenging career?"\n\nHey ho ho!\nYou'll cruise to foreign shores!\nAnd you'll keep your mind and body sound,\nBy working out of doors!\nTrue friendship and adventure are what we can't live without,\nAnd when you're a professional pirate,\nThat's what the job's about!"
+god_artifacts_decisions.0011.desc.02: "Now take Sir Francis Drake, the Spanish all despise him!\nBut to the British, he's a hero and they idolize him.\nIt's how you look at buccaneers that makes them bad or good.\nAnd I see us as members of a noble brotherhood!\n\nHey ho ho!\nWe're just and honorable men!\nAnd before we lose our tempers, we will\nAlways count to ten!\nOn occasion, there may be someone you have to execute\nBut when you're a professional pirate\nYou don't have to wear a suit!"
+god_artifacts_decisions.0011.desc.03: "Some say that pirates steal and should be feared and hated.\nI say we're victims of bad press that's all exaggerated!\nWe never stab you in the back, we never lie or cheat!\nWe're just, in fact, the nicest guy you ever want to meet!\n\nHey ho ho!\nIt's one for all for one!\nAnd we'll share and share alike with you\nAnd love you like a son!\nWe're gentlemen of fortune and that's what we're bound to be,\nAnd when you're a professional pirate ...\nYou'll be honest, brave, and free!\nThe soul of decency!\nYou'll be loyal and fair and on the square\nBut most importantly\n\nWhen you're a professional pirate\nYou are always in the best of company!"
+god_artifacts_decisions.0011.desc.04: "Ohhhh!\nA pirate's life is a wonderful life,\nA-rovin' over the sea.\nGive me a career as a buccaneer\nAs the life of a pirate for me\nOhhhh!\nThe life of a pirate for me\n\nOhhhh!\nA pirate's life is a wonderful life\nThey never bury your bones,\nFor when it's all over, a jolly sea rover\nDrops in on his friend Davy Jones!\nOhhhh!\nHis very good friend Davy Jones!\n\nOhhhh!\nA pirate's life is a wonderful life,\nYou'll find adventure and sport.\nBut live every minute... for all that is in it\nThe life of a pirate is short!\nOhhhh!\nThe life of a pirate is short!"
+god_artifacts_decisions.0011.desc.05: "Shiver my timbers, shiver my soul\nYo ho heave ho\nThere are men whose hearts are as black as coal\nYo ho heave ho\n\nAnd they sailed their ship cross the ocean blue\nA blood-thirsty captain and a cut-throat crew\nIt's as dark a tale as was ever told\nOf the lust for treasure and the love of gold"
+god_artifacts_decisions.0011.desc.06: "Shiver my timbers, shiver my sides\nYo ho heave ho\nThere are hungers as strong as the wind and tides\nYo ho heave ho\n\nAnd those buccaneers drowned their sins in rum\nThe devil himself would have to call them scum\nEvery man aboard would have killed his mate\nFor a bag of guineas or a piece of eight"
+god_artifacts_decisions.0011.desc.07: "Hoola wacka, oola wacka, something not right\nMany wicked icky things gonna happen tonight\nHoola wacka, oola wacka, sailor man beware\nWhen there's money in the ground there's murder in the air\n\nShiver my timbers, shiver my bones\nYo ho heave ho\nThere are secrets that sleep with old Davy Jones\nYo ho heave ho\n\nWhen the mainsail's set and the anchor's weighed\nThere's no turning back from any course that's laid\nAnd when greed and villainy sail the sea\nYou can bet your boots there'll be treachery\n\nShiver my timbers, shiver my sails\nDead men tell no tales!"
+
+god_artifacts_decisions.0011.desc.08: "Yes I am a pirate,\nTwo hundred years too late.\nCannons don't thunder; there's nothing to pluder,\nI'm an over-forty victim of fate.\nArriving too late\nArriving too late.\n\nI've a bit of smuggling.\nI've run my share of grass.\nI made enough money to buy Miami, but I pissed it away so fast!\nNever meant to last.\nWas never meant to last."
+
+god_artifacts_decisions.0011.desc.09: "I used to be a farmer, and I made a living fine\nI had a little stretch of land along the CP line\nBut times were hard and though I tried, the money wasn't there\nAnd the bankers came and took my land and told me "fair is fair"\n\nI looked for every kind of job, the answer always no\n"Hire you now?" they'd always laugh, "We just let twenty go!"\nThe government, the promised me a measly little sum\nBut I've got too much pride to end up just another bum.\n\nThen I thought, who gives a damn if all the jobs are gone?\nI'm gonna be a pirate on the river Saskatchewan!\n\nAnd it's a heave-ho, hi-ho, comin' down the plains\nStealin' wheat and barley and all the other grains\nIt's a ho-hey, hi-hey farmers bar yer doors\nWhen ya see the Jolly Roger on Regina's mighty shores!"
+god_artifacts_decisions.0011.desc.10: "Well, you'd think the local farmers would know that I'm at large\nBut just the other day I found an unprotected barge\nI snuck up right behind them and they were none the wiser,\nI rammed their ship and sank it and I stole their fertilizer!\n\nA bridge outside of Moose Jaw spans a mighty river\nFarmers cross in so much fear their stomachs are a'quiver\nCause they know that Tractor Jack is hidin' in the bay\nI'll jump the bridge and knock them cold and sail off with their hay!\n\nAnd it's a heave-ho, hi-ho, comin' down the plains\nStealin' wheat and barley and all the other grains\nIt's a ho-hey, hi-hey farmers bar yer doors\nWhen ya see the Jolly Roger on Regina's mighty shores!"
+god_artifacts_decisions.0011.desc.11: "Well, Mountie Bob he chased me, he was always at my throat\nHe followed on the shoreline cause he didn't own a boat\nBut cutbacks were a'coming and the Mountie lost his job\nSo now he's sailing with us, and we call him Salty Bob!\n\nA swingin' sword, a skull and bones and pleasant company\nI never pay my income tax and screw the GST\nSailin' down to Saskatoon, the terror of the seas\nIf you wanna reach the co-op, boy, you gotta get by me!\n\n'Cause it's a heave-ho, hi-ho, comin' down the plains\nStealin' wheat and barley and all the other grains\nIt's a ho-hey, hi-hey farmers bar yer doors\nWhen ya see the Jolly Roger on Regina's mighty shores!"
+god_artifacts_decisions.0011.desc.12: "Well, pirate life's appealing but you just don't find it here\nI hear in North Alberta there's a band of buccaneers\nThey roam the Athabaska from Smith to Fort McKay\nAnd you're gonna lose your Stetson if you have to pass their way!\n\nWell, winter is a'comin' and a chill is in the breeze\nMy sailing days are over once the river starts to freeze\nI'll be back in springtime but now I have to go\nI hear there's lots of plunderin' down in New Mexico!\n\n'Cause it's a heave-ho, hi-ho, comin' down the plains\nStealin' wheat and barley and all the other grains\nIt's a ho-hey, hi-hey farmers bar yer doors\nWhen ya see the Jolly Roger on Regina's mighty shores!"
+
+god_artifacts_decisions.0011.a: "Time to go a viking!"
+god_artifacts_decisions.0011.b: "Recruit me 'earties!"
+god_artifacts_decisions.0011.c: "Make me an awesome pirate!"
+god_artifacts_decisions.0011.d: "Recruit Pirate Champion"
+god_artifacts_decisions.0011.e: "Give loot to capital!"
+god_artifacts_decisions.0011.f: "Cancel Truces"
+god_artifacts_decisions.0011.g: "Give Pirate Legacies"
+god_artifacts_decisions.0011.h: "Add Tradeports to Counties"
+god_artifacts_decisions.0011.i: "Add Dread"
+
+jolly_roger_recruit_champions_effect_tooltip: "Recruit a pirate champion."
+msg_artifact_jolly_roger_raider_title: "Excellent Raider Recruited"
+msg_artifact_jolly_roger_raider_desc: "[the_raider.GetFirstName] has flocked to the Jolly Roger.  [the_raider.GetSheHe|U] would make an excellent $knight_culture_player$!"
+
+
+
+
+
+# Name Ideas: Pirates, Pirates of [random title held by owner],
+# Really Bad Eggs, Sea-Wolves, Barnacles, Puffypants Pirates,
+# Buccaneers, Connie's Cut-Throats, Former Fishmongers,
+# Darkwater Sharkes, Special Salvage Squad, Vicious Valkyries,
+# Fiends, Serpents, Reapers, The White Wolves,
+# Pirates of Penzance, Black Sheep, Loved by our Mommies and Dads,
+# Hell's Angels - [random title held by owner] Chapter,
+# The Banshees, Jolly Jackals, The Salty Scots
+
+jolly_roger_troops.1: "Jolly Pirates"
+jolly_roger_troops.2: "Really Bad Eggs"
+jolly_roger_troops.3: "Sea-Wolves"
+jolly_roger_troops.4: "Horsemen of the Apocalypse"
+jolly_roger_troops.5: "Barnacles"
+jolly_roger_troops.6: "Puffypants Pirates"

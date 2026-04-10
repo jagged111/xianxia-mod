@@ -1,0 +1,23 @@
+﻿### Template for achilles armor
+# Should only benefit root
+artifact_achilles_template = {
+
+	can_equip = {
+		always = yes
+	}
+
+	# Only the active player can benefit
+	can_benefit = {
+		this = root
+	}
+
+	fallback = {
+		#dynasty_opinion = 10
+		monthly_prestige = 0.05
+		prowess = 10
+		#court_grandeur_baseline_add = 10
+	}
+
+	unique = yes
+
+} # end artifact_achilles_template

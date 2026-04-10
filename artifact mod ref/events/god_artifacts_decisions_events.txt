@@ -1,0 +1,503 @@
+﻿namespace = god_artifacts_decisions
+
+### Spawn the artifacts
+#
+#	Rummage in the attic
+#god_artifacts_decisions.0001 = {
+#	type = character_event
+
+#	title = god_artifacts_decisions.0001.t
+#	desc = god_artifacts_decisions.0001.desc
+
+
+
+### The Jolly Roger
+#  Waving the Jolly Roger should give you an interface (with
+#  either the banner or the longboat graphic) with the following
+#  options:
+#   * Give Dynasty Modifier: gives fp1_legacy_of_piracy_modifier
+#     to your dynasty, enabling raiding as feudal, ocean raiding,
+#     and river traversing
+#   * Spawn pirate army!  With pirates, hurscarls, vagnarian
+#     vets, bondi, some light horseman raiders (like the celtic
+#     ones), and maybe something else
+#   * Give raiding traits: viking, berserker, shieldmaiden, 
+#     reaver, winter_soldier
+#   * Give raiding knights: spawn two knights with those
+#     raiding traits, with high prowness and a few pirate vices
+#   * Give fp1_mann_pirate_capital_modifier (stolen city) to 
+#     the capital.
+#	* Cancel Truces... we are pirates, after all!
+
+god_artifacts_decisions.0011 = {
+	type = character_event
+
+	title = god_artifacts_decisions.0011.t
+
+	#immediate = {
+		#play_music_cue = "mx_cue_war_declared"
+		#play_music_cue = "mx_raid"
+		#send_interface_toast = {
+		#	type = event_generic_neutral
+		#	title = msg_recruited_guest_to_court_interaction_title
+		#	left_icon = scope:the_waver
+
+		#}
+	#}
+
+	theme = war
+	#if = {
+	#	limit = {global_var:jolly_roger_use_counter = 1}
+	#	desc = god_artifacts_decisions.0011.desc.01
+	#}
+
+	desc = { #god_artifacts_decisions.0011.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 1 }
+				desc = god_artifacts_decisions.0011.desc.01
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 2 }
+				desc = god_artifacts_decisions.0011.desc.02
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 3 }
+				desc = god_artifacts_decisions.0011.desc.03
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 4 }
+				desc = god_artifacts_decisions.0011.desc.04
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 5 }
+				desc = god_artifacts_decisions.0011.desc.05
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 6 }
+				desc = god_artifacts_decisions.0011.desc.06
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 7 }
+				desc = god_artifacts_decisions.0011.desc.07
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 8 }
+				desc = god_artifacts_decisions.0011.desc.08
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 9 }
+				desc = god_artifacts_decisions.0011.desc.09
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 10 }
+				desc = god_artifacts_decisions.0011.desc.10
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 11 }
+				desc = god_artifacts_decisions.0011.desc.11
+			}
+			triggered_desc = {
+				trigger = { global_var:jolly_roger_use_counter = 12 }
+				desc = god_artifacts_decisions.0011.desc.12
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = war_attacker
+	}
+	
+	override_background = { reference = fp1_beached_longships }
+
+	# Give the Piracy Modifier... Time to Go a Viking!
+	option = {
+		name = god_artifacts_decisions.0011.a
+
+		ai_chance = {
+			#Doesn't especially matter.
+			base = 100
+		}
+
+		scope:the_waver = {
+			dynasty = {
+				add_dynasty_modifier = {
+					modifier = fp1_legacy_of_piracy_modifier
+					years = 10 #  give it a short time, 
+					#             so that dynasty members cannot go nuts
+					#             when you want it peaceful.
+				}
+			}
+		}
+
+	}
+
+	# Give me a pirate army!
+	option = {
+		name = god_artifacts_decisions.0011.b
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+		jolly_roger_recruit_pirates_effect = yes
+	}
+
+	# Give raiding traits
+	option = {
+		name = god_artifacts_decisions.0011.c
+
+		# if you have all these traits, do not show
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+
+		trigger = {
+			artifact_jolly_roger_train_me_trigger = yes
+		}
+
+		artifact_jolly_roger_train_me_effect = yes
+		
+	}
+
+	# give raiding knights
+	option = {
+		name = god_artifacts_decisions.0011.d
+		
+		jolly_roger_recruit_champions_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# give stolen city modifier to capital
+	option = {
+		name = god_artifacts_decisions.0011.e
+		
+		# check to see if you already have the modifier.  If you do, do not show.
+		trigger = {
+			artifact_jolly_roger_stolen_city_trigger = yes
+		}
+		artifact_jolly_roger_stolen_city_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# cancel truces
+	option = {
+		name = god_artifacts_decisions.0011.f
+		
+		#do not show if you have no truces
+		trigger = {
+			artifact_jolly_roger_cancel_truces_trigger = yes
+		}
+
+		artifact_jolly_roger_cancel_truces_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Get first tier dynasty perks for raiders
+	option = {
+		name = god_artifacts_decisions.0011.g
+		
+		artifact_jolly_roger_add_dynasty_perks_effect = yes
+
+		# do not show if you already have them
+		trigger = {
+			artifact_jolly_roger_add_dynasty_perks_trigger = yes
+		}
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Build Ports
+	option = {
+		name = god_artifacts_decisions.0011.h
+
+		trigger = {
+			artifact_jolly_roger_build_ports_trigger = yes
+		}
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+		
+		artifact_jolly_roger_build_ports_effect = yes
+
+	}
+
+	# Add Dread
+	option = {
+		name = god_artifacts_decisions.0011.i
+		
+		trigger = {
+			dread < 100
+		}
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+		
+		jolly_dread_effect = yes
+	}
+
+	#	never mind
+	option = {
+		name = god_artifacts_decisions.never_mind
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+}
+
+## The Rod of Asclepius
+#	Options
+#	- Recruit doctor (create character) artifact_asclepius_recruit_doctor
+#	- Heal me (all deseases and injuries) artifact_asclepius_heal_me
+#	- Fix Mental Issies artifact_asclepius_take_prozac
+#	- Heal me (fix genes) artifact_asclepius_fix_genes
+#	- Make my physique better (remove _bad, then upgrade _good each time) artifact_asclepius_pump_me_up
+#	- Make fecund artifact_asclepius_like_rabbits
+#	- Heal my court (remove deseases) artifact_asclepius_heal_court
+#	- Remove stds from lovers, consorts, etc. artifact_asclepius_heal_stds
+#	- Teach me artifact_asclepius_teach_me
+god_artifacts_decisions.0021 = {
+	type = character_event
+
+	title = god_artifacts_decisions.0021.t
+	desc = god_artifacts_decisions.0021.desc
+
+	immediate = {
+		#play_music_cue = "mx_cue_positive_effect"
+		#send_interface_toast = {
+		#	type = event_generic_neutral
+		#	title = msg_recruited_guest_to_court_interaction_title
+		#	left_icon = scope:the_waver
+
+		#}
+	}
+
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	override_background = { reference = physicians_study }
+
+	# Recruit doctor (create character) artifact_asclepius_recruit_doctor
+	option = {
+		name = god_artifacts_decisions.0021.a
+
+		artifact_asclepius_recruit_doctor_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Recruit wet nurse (create character) artifact_asclepius_recruit_wetnurse
+	option = {
+		name = god_artifacts_decisions.0021.j
+
+		artifact_asclepius_recruit_wetnurse_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+	
+
+	# Heal me (all deseases and injuries) artifact_asclepius_heal_me
+	option = {
+		name = god_artifacts_decisions.0021.b
+
+		trigger = {
+			# you should have something worth curing
+			artifact_asclepius_heal_me_trigger = yes
+			
+		}
+
+		artifact_asclepius_heal_me_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Fix Mental Issies artifact_asclepius_take_prozac
+	option = {
+		name = god_artifacts_decisions.0021.c
+
+		trigger = {
+			artifact_asclepius_take_prozac_trigger = yes
+		}
+
+		artifact_asclepius_take_prozac_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	#Fix Genetic Issues
+	option = {
+		name = god_artifacts_decisions.0021.d
+
+		trigger = {
+			artifact_asclepius_fix_genes_trigger = yes
+		}
+
+		artifact_asclepius_fix_genes_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Make my physique better (remove _bad, then upgrade _good each time) artifact_asclepius_pump_me_up
+	option = {
+		name = god_artifacts_decisions.0021.e
+
+		trigger = {
+			artifact_asclepius_pump_me_up_trigger = yes
+		}
+
+		artifact_asclepius_pump_me_up_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Make fecund artifact_asclepius_like_rabbits_effect
+	option = {
+		name = god_artifacts_decisions.0021.f
+
+		trigger = {
+			artifact_asclepius_like_rabbits_trigger = yes
+		}
+
+		artifact_asclepius_like_rabbits_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Heal my court (remove deseases) artifact_asclepius_heal_court
+	option = {
+		name = god_artifacts_decisions.0021.g
+
+		trigger = { # someone should need curing
+			artifact_asclepius_heal_court_trigger = yes
+		}
+
+		artifact_asclepius_heal_court_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	# Remove stds from lovers, consorts, etc. artifact_asclepius_heal_stds
+	option = {
+		name = god_artifacts_decisions.0021.h
+
+		trigger = { # someone should need curing
+			artifact_asclepius_heal_stds_trigger = yes
+		}
+
+		artifact_asclepius_heal_stds_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}	
+	
+	# Teach me physician stuff
+	option = {
+		name = god_artifacts_decisions.0021.i
+
+		trigger = { # Have something worth learining
+			artifact_asclepius_teach_me_trigger = yes
+		}
+
+		artifact_asclepius_teach_me_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+}
+
+### The Archimedes Codex #########
+god_artifacts_decisions.0041 = {
+	type = character_event
+	title = god_artifacts_decisions.0041.title
+	desc = god_artifacts_decisions.0041.desc
+
+	theme = learning_scholarship_focus
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	#override_background = { reference = sitting_room }
+	# Recruit Tutor
+	option = {
+		name = god_artifacts_decisions.0041.a
+		artifact_archimedes_book_recruit_tutor_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+	# Teach me
+	option = {
+		name = god_artifacts_decisions.0041.b
+		trigger = {
+			artifact_archimedes_book_teach_me_trigger = yes
+		}
+		artifact_archimedes_book_teach_me_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	# Recruit Toy Army
+	option = {
+		name = god_artifacts_decisions.0041.c
+		artifact_archimedes_book_toy_army_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.0041.d
+		trigger = {
+			artifact_archimedes_book_build_walls_trigger = yes
+		}
+		artifact_archimedes_book_build_walls_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.0041.e
+		trigger = {
+			artifact_archimedes_book_build_mines_trigger = yes
+		}
+		artifact_archimedes_book_build_mines_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.0041.f
+		trigger = {
+			artifact_archimedes_book_build_glass_trigger = yes
+		}
+		artifact_archimedes_book_build_glass_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.0041.g
+		trigger = {
+			artifact_archimedes_book_develop_university_areas_trigger = yes
+		}
+		artifact_archimedes_book_develop_university_areas_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+}

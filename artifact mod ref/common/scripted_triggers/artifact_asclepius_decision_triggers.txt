@@ -1,0 +1,184 @@
+﻿#################################################
+# TRIGGER LIST 									#
+#################################################
+
+artifact_asclepius_fix_genes_trigger = {
+	scope:the_artifact_user = {
+		OR = { # you should have something worth curing
+			has_trait = clubfooted
+			has_trait = hunchbacked
+			has_trait = lisping
+			has_trait = stuttering
+			has_trait = inbred
+			has_trait = spindly
+			has_trait = wheezing
+			has_trait = bleeder
+			NOT = { has_trait = pure_blooded }
+		}
+	}
+}
+
+
+artifact_asclepius_pump_me_up_trigger = {
+	scope:the_artifact_user = {
+		NOT = { # you should not already be superman
+			has_trait = physique_good_3
+			has_trait = strong
+		}
+	}
+}
+
+artifact_asclepius_like_rabbits_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			has_trait = infertile
+			has_trait = impotent
+			NOT = { has_trait = fecund }
+		}
+	}
+}
+
+artifact_asclepius_take_prozac_trigger = {
+	scope:the_artifact_user = {
+		OR = { # you should have something worth curing
+			has_trait = drunkard
+			has_trait = hashishiyah
+			has_trait = rakish
+			has_trait = reclusive
+			has_trait = irritable
+			has_trait = flagellant
+			has_trait = profligate
+			has_trait = improvident
+			has_trait = contrite
+			has_trait = comfort_eater
+			has_trait = inappetetic
+			has_trait = depressed_1
+			has_trait = depressed_genetic
+			has_trait = lunatic_1
+			has_trait = lunatic_genetic
+			has_trait = possessed_1
+			has_trait = possessed_genetic
+			NOT = { has_trait = journaller }
+			NOT = { has_trait = athletic }
+			NOT = { has_trait = confider }
+			stress_level > 0
+		}
+	}
+}
+
+artifact_asclepius_heal_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			has_trait = pneumonic
+			has_trait = great_pox
+			has_trait = early_great_pox
+			has_trait = lovers_pox
+			
+			has_trait = leper
+			has_trait = wounded_1
+			has_trait = wounded_2
+			has_trait = wounded_3
+
+			has_trait = maimed
+			has_trait = one_eyed
+			has_trait = one_legged
+			has_trait = disfigured
+
+			has_trait = infirm
+			has_trait = incapable
+			has_trait = gout_ridden
+			has_trait = consumption
+
+			has_trait = cancer
+			has_trait = typhus
+			has_trait = bubonic_plague
+			has_trait = smallpox
+
+			has_trait = sickly
+			has_trait = blind
+			has_trait = ill
+
+			has_trait = measles
+			has_trait = dysentery
+			has_trait = ergotism
+		}
+	}
+}
+
+artifact_asclepius_heal_court_trigger = {
+	# someone should need curing
+	scope:the_artifact_user = {
+		any_courtier_or_guest = {
+			OR = { 
+				has_trait = pneumonic 
+				has_trait = great_pox 
+				has_trait = early_great_pox 
+				has_trait = lovers_pox 
+				has_trait = leper 
+				has_trait = wounded_1 
+				has_trait = wounded_2
+				has_trait = wounded_3
+				has_trait = maimed
+				has_trait = one_eyed
+				has_trait = one_legged
+				has_trait = disfigured
+				has_trait = infirm
+				has_trait = incapable
+				has_trait = gout_ridden
+				has_trait = consumption
+
+				has_trait = cancer
+				has_trait = typhus
+				has_trait = bubonic_plague
+				has_trait = smallpox
+				has_trait = sickly
+				has_trait = blind
+				has_trait = ill
+
+				has_trait = measles
+				has_trait = dysentery
+				has_trait = ergotism
+			}
+		}
+	} 
+}
+artifact_asclepius_heal_stds_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			any_relation = {
+				type = lover
+				type = soulmate
+
+				OR = {
+					has_trait = great_pox
+					has_trait = early_great_pox
+					has_trait = lovers_pox
+					has_trait = leper
+				}
+			}
+			any_consort = {
+				OR = {
+					has_trait = great_pox
+					has_trait = early_great_pox
+					has_trait = lovers_pox
+					has_trait = leper
+				}
+			}
+		}
+	}
+}
+
+artifact_asclepius_teach_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			NOT = {
+				has_trait_xp = {
+					trait = lifestyle_mystic
+					value >= 100
+				}
+			}
+			NOT = { has_trait = lifestyle_herbalist }
+			NOT = { has_trait = lifestyle_gardener }
+		}
+	}
+}

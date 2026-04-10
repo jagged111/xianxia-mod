@@ -1,0 +1,23 @@
+﻿l_english:
+
+artifact_sangrail_name: "The Sangrail"
+artifact_sangrail_desc: "My golden spurs now bring to me,\nAnd bring to me my richest mail,\nFor to-morrow I go over land and sea\nIn search of the Holy Grail."
+artifact_use_sangrail_decision: "Drink from the Cup"
+artifact_use_sangrail_decision_tooltip: "Drink from the Cup."
+artifact_use_sangrail_decision_desc: "But choose wisely."
+artifact_use_sangrail_decision_confirm: "Drink from the Cup."
+
+artifact_sangrail_decision.01: "Drink from the Cup"
+artifact_sangrail_decision.01.title: "Drink from the Cup"
+artifact_sangrail_decision.01.desc: "The Holy Grail Awaits"
+artifact_sangrail_decision.01.tooltip: "Drink from the Cup."
+
+
+artifact_sangrail_decision.01.a: "Improve Bishop"
+artifact_sangrail_improve_bishop_effect: "Improve Bishop"
+artifact_sangrail_decision.01.b: "Finish Conversion"
+artifact_sangrail_decision: "Leader Improved"
+artifact_sangrail_finish_convert_religion_effect_tooltip: "Finish Conversion"
+artifact_sangrail_decision.01.c: "Become Immortal"
+artifact_sangrail_decision.01.d: "Build Economic Buildings"
+artifact_sangrail_decision.01.e: "Increase Development"

@@ -1,0 +1,18 @@
+﻿artifact_illiad_scroll_modifier = {
+	#languages, diplomacy, and reach
+	diplomacy = 70
+	monthly_diplomacy_lifestyle_xp_gain_mult = 2.5
+	monthly_intrigue_lifestyle_xp_gain_mult = 2.5
+	monthly_lifestyle_xp_gain_mult = 2.5
+	monthly_wanderer_lifestyle_xp_gain_mult = 2.5
+	diplomatic_range_mult = 2.25
+	learn_language_scheme_phase_duration_add = -200
+	max_learn_language_schemes_add = 10
+	max_contract_schemes_add = 20
+	contract_scheme_phase_duration_add = -60
+	
+
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+
+}

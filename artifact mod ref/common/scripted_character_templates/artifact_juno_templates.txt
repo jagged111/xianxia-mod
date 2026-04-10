@@ -1,0 +1,1121 @@
+﻿# Template for poet recruited by iliad
+# needs scope:the_poet_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_juno_food_taster = {
+	age = { 16 25 }
+
+	gender_female_chance = 0
+
+	culture = scope:the_food_taster_culture
+	faith = scope:the_artifact_user.faith
+
+	# Good Food Taster Traits
+	trait = education_intrigue_4
+	trait = comfort_eater
+	trait = gluttonous
+	trait = lifestyle_herbalist
+	trait = schemer
+
+	trait = gregarious
+	trait = loyal
+	trait = content
+
+	trait = intrigue_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		strong = {}
+		scarred = {}
+		shrewd = {}
+		fecund = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		poet = {}
+		lifestyle_gardener = {}
+		whole_of_body = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		#temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 0 10 }
+	intrigue = { 10 20 }
+	stewardship = { 0 10 }
+	learning = { 0 10 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 20
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_juno_food_taster
+
+artifact_juno_cup_bearer = {
+	age = { 16 25 }
+
+	gender_female_chance = 75
+
+	culture = scope:the_cup_bearer_culture
+	faith = scope:the_artifact_user.faith
+
+	# Good Food Taster Traits
+	trait = education_diplomacy_4
+	trait = honest
+	trait = trusting
+	
+	trait = gregarious
+	trait = loyal
+	trait = content
+
+	trait = diplomatic_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		strong = {}
+		comfort_eater = {}
+		gluttonous = {}
+		scarred = {}
+		shrewd = {}
+		fecund = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		poet = {}
+		lifestyle_gardener = {}
+		whole_of_body = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		lifestyle_herbalist = {}
+		cynical = {}
+		#honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+		#reveler_1 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 10 20 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 0 10 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 20
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_random_tiered_trait_xp_effect = {
+					TRAIT = lifestyle_blademaster
+					LEVEL_1 = yes
+					LEVEL_3 = yes
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_juno_cup_bearer
+
+artifact_juno_lady_in_waiting = {
+	age = { 16 25 }
+
+	gender_female_chance = 100
+
+	culture = scope:the_lady_in_waiting_culture
+	faith = scope:the_artifact_user.faith
+
+	# Good Lady in Waiting Traits
+	trait = education_diplomacy_4
+	trait = honest
+	
+	trait = gregarious
+	trait = loyal
+	trait = content
+
+	trait = diplomatic_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		strong = {}
+		comfort_eater = {}
+		gluttonous = {}
+		scarred = {}
+		shrewd = {}
+		fecund = {}
+		#reveler_1 = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		poet = {}
+		lifestyle_gardener = {}
+		whole_of_body = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		lifestyle_herbalist = {}
+		cynical = {}
+		#honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		beauty_good_3 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 10 20 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 0 10 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			random_list = {
+				10 = {
+					add_trait = dwarf
+				}
+				10 = {
+					add_trait = giant
+				}
+			}
+			
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 20
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_juno_lady_in_waiting
+
+artifact_juno_chief_eunuch = {
+	age = { 16 25 }
+
+	gender = male
+
+	culture = scope:the_chief_eunuch_culture
+	faith = scope:the_artifact_user.faith
+
+	# Good Eunuch Traits
+	trait = education_diplomacy_5
+	random_traits_list = {
+		count = 1
+		beardless_eunuch = {}
+		eunuch_1 = {}
+	}
+		
+	trait = gregarious
+	trait = loyal
+	trait = content
+
+	trait = diplomatic_court_2
+	trait = intrigue_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		strong = {}
+		comfort_eater = {}
+		gluttonous = {}
+		scarred = {}
+		shrewd = {}
+		fecund = {}
+		#reveler_1 = {}
+		poet = {}
+		lifestyle_gardener = {}
+		whole_of_body = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		lifestyle_herbalist = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 10 20 }
+	intrigue = { 10 20 }
+	stewardship = { 0 10 }
+	learning = { 5 15 }
+	prowess = { 0 5 }
+
+	after_creation = {
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 10
+			add_trait = dwarf
+		}
+	} # end after_creation
+} # end artifact_juno_chief_eunuch
+
+artifact_juno_jester = {
+	age = { 16 25 }
+
+	gender_female_chance = 50
+
+	culture = scope:the_jester_culture
+	faith = scope:the_artifact_user.faith
+
+	# Good Jester Traits
+	trait = education_diplomacy_4
+	
+	trait = gregarious
+	trait = stubborn
+	trait = shrewd
+	trait = poet
+	trait = athletic
+
+	trait = loyal
+	trait = content
+
+	trait = diplomatic_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		strong = {}
+		comfort_eater = {}
+		gluttonous = {}
+		scarred = {}
+		#shrewd = {}
+		fecund = {}
+		lifestyle_reveler = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		#poet = {}
+		lifestyle_gardener = {}
+		whole_of_body = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		lifestyle_herbalist = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		#athletic = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		#beauty_good_3 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 10 20 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 0 10 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 60
+			add_trait = adventurer
+		}
+		random = {
+			chance = 50
+			add_trait = dwarf
+		}
+	} # end after_creation
+} # end artifact_juno_jester
+
+artifact_juno_musician = {
+	age = { 16 18 }
+
+	gender_female_chance = 95
+
+	culture = scope:the_musician_culture
+	faith = scope:the_artifact_user.faith
+
+	#good musician traits
+	trait = education_diplomacy_4
+
+	trait = gregarious
+	trait = loyal
+	trait = content
+	trait = journaller
+	trait = poet
+
+	trait = scholarly_court_2
+	trait = diplomatic_court_2
+
+	#would make a good cultural emmissary too
+	trait = just
+	trait = diplomat
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		#just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 15 25 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 10 20 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		# Learn a bunch of languages
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_arabic
+				}
+			}
+			learn_language = language_arabic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_latin
+				}
+			}
+			learn_language = language_latin
+		}			
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_italian
+				}
+			}
+			learn_language = language_italian
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_aramaic
+				}
+			}
+			learn_language = language_aramaic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_juno_musician
+
+artifact_juno_high_almoner = {
+	age = { 16 25 }
+
+	gender_female_chance = 50
+
+	culture = scope:the_high_almoner_culture
+	faith = scope:the_artifact_user.faith
+
+	# Good high_almoner Traits
+	trait = education_learning_4
+	trait = scholarly_court_2
+	trait = generous
+	trait = compassionate
+	trait = zealous
+	trait = devoted
+
+	trait = loyal
+	trait = content
+
+	# Add some traits, only if they are virtues
+	random_traits_list = {
+		count = { 1 4 }
+		lustful = {
+			trigger = {
+				root.faith = { trait_is_virtue = lustful }
+			}
+		}
+		chaste = {
+			trigger = {
+				root.faith = { trait_is_virtue = chaste }
+			}
+		}
+		gluttonous = {
+			trigger = {
+				root.faith = { trait_is_virtue = gluttonous }
+			}
+		}
+		temperate = {
+			trigger = {
+				root.faith = { trait_is_virtue = temperate }
+			}
+		}
+		wrathful = {
+			trigger = {
+				root.faith = { trait_is_virtue = wrathful }
+			}
+		}
+		calm = {
+			trigger = {
+				root.faith = { trait_is_virtue = calm }
+			}
+		}
+		patient = {
+			trigger = {
+				root.faith = { trait_is_virtue = patient }
+			}
+		}
+		impatient = {
+			trigger = {
+				root.faith = { trait_is_virtue = impatient }
+			}
+		}
+		arrogant = {
+			trigger = {
+				root.faith = { trait_is_virtue = arrogant }
+			}
+		}
+		humble = {
+			trigger = {
+				root.faith = { trait_is_virtue = humble }
+			}
+		}
+		deceitful = {
+			trigger = {
+				root.faith = { trait_is_virtue = deceitful }
+			}
+		}
+		honest = {
+			trigger = {
+				root.faith = { trait_is_virtue = honest }
+			}
+		}
+		craven = {
+			trigger = {
+				root.faith = { trait_is_virtue = craven }
+			}
+		}
+		brave = {
+			trigger = {
+				root.faith = { trait_is_virtue = brave }
+			}
+		}
+		arbitrary = {
+			trigger = {
+				root.faith = { trait_is_virtue = arbitrary }
+			}
+		}
+		just = {
+			trigger = {
+				root.faith = { trait_is_virtue = just }
+			}
+		}
+		paranoid = {
+			trigger = {
+				root.faith = { trait_is_virtue = paranoid }
+			}
+		}
+		trusting = {
+			trigger = {
+				root.faith = { trait_is_virtue = trusting }
+			}
+		}
+		stubborn = {
+			trigger = {
+				root.faith = { trait_is_virtue = stubborn }
+			}
+		}
+		fickle = {
+			trigger = {
+				root.faith = { trait_is_virtue = fickle }
+			}
+		}
+		vengeful = {
+			trigger = {
+				root.faith = { trait_is_virtue = vengeful }
+			}
+		}
+		forgiving = {
+			trigger = {
+				root.faith = { trait_is_virtue = forgiving }
+			}
+		}
+	}
+
+	trait = diplomatic_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 1 3 }
+		scholar = {}
+		strong = {}
+		comfort_eater = {}
+		#gluttonous = {}
+		scarred = {}
+		shrewd = {}
+		fecund = {}
+		lifestyle_reveler = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		poet = {}
+		lifestyle_gardener = {}
+		whole_of_body = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		#generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		lifestyle_herbalist = {}
+		#cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		#athletic = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		#beauty_good_3 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 0 10 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 10 20 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		add_piety_level = 2
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		random = {
+			chance = 5
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+		random = {
+			chance = 25
+			add_trait = devoted
+		}
+	} # end after_creation
+} # end artifact_juno_high_almoner
+
+artifact_juno_gardener = {
+	age = { 16 18 }
+
+	gender_female_chance = 95
+
+	culture = scope:the_recruit_culture
+	faith = scope:the_artifact_user.faith
+
+	#good gardener traits
+	trait = education_stewardship_4
+
+	trait = lifestyle_gardener
+	trait = lifestyle_herbalist
+	trait = patient
+	trait = architect
+
+	trait = loyal
+	trait = content
+
+	trait = administrative_court_2
+
+	trait = gregarious
+	trait = loyal
+	trait = content
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		administrator = {}
+		overseer = {}
+		scholar = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		#patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 0 10 }
+	intrigue = { 0 10 }
+	stewardship = { 15 20 }
+	learning = { 10 20 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 50
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				OR = {
+					this.culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+					scope:the_artifact_user.culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+				}
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_juno_gardener

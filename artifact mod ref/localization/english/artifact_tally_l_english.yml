@@ -1,0 +1,27 @@
+﻿l_english:
+
+artifact_tally_name: "The Original Tally Stick"
+artifact_tally_desc: "Tally sticks are used to keep track of records with a mostly illiterate population.  Markings are made on the stick, and then the stick is split length-wise so that both participants have a record of the transaction.\n\nThese two matching, small pieces of petrified wood, bearing tally markings, purport to be the original tally stick from ancient times."
+
+artifact_use_tally_decision: "Original Tally Stick"
+artifact_use_tally_decision_tooltip: "Rub your fingers on the notches."
+artifact_use_tally_decision_desc: "Tally sticks are used to keep track of records with a mostly illiterate population.  Markings are made on the stick, and then the stick is split length-wise so that both participants have a record of the transaction.\n\nThese two matching, small pieces of petrified wood, bearing tally markings, purport to be the original tally stick from ancient times."
+artifact_use_tally_decision_confirm: "Rub your fingers on the notches."
+
+artifact_tally_decision.01: "Use the Original Tally Stick"
+artifact_tally_decision.01.title: "Use the Original Tally Stick"
+artifact_tally_decision.01.desc: "\"The manner of cutting is as follows. At the top of the tally a cut is made, the thickness of the palm of the hand, to represent a thousand pounds; then a hundred pounds by a cut the breadth of a thumb; twenty pounds, the breadth of the little finger; a single pound, the width of a swollen barleycorn; a shilling rather narrower; then a penny is marked by a single cut without removing any wood.\"\nRichard FitzNeal, Dialogue Concerning the Exchequer"
+artifact_tally_decision.01.tooltip: "Rub your fingers on the notches."
+
+
+artifact_tally_decision.01.a: "Teach Me Stewardship"
+artifact_tally_decision.01.b: "Improve My Steward"
+artifact_tally_improve_steward_effect_tt: "Improves my Steward"
+
+artifact_tally_decision.01.c: "Recruit [GetCourtPositionType('seneschal_court_position').GetName()|U]"
+artifact_tally_recruit_seneschal_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('seneschal_court_position').GetName()]."
+msg_artifact_tally_recruit_seneschal_effect_title: "[GetCourtPositionType('seneschal_court_position').GetName()] Candidate Recruited"
+msg_artifact_tally_recruit_seneschal_effect_desc: "[the_recruit.GetFirstName] has come to see the Original Tally Stick.  [the_recruit.GetSheHe|U] would make a good [GetCourtPositionType('seneschal_court_position').GetName()]."
+
+artifact_tally_decision.01.d: "Build Economic Buildings"
+artifact_tally_decision.01.e: "Increase Development"

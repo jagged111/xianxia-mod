@@ -1,0 +1,72 @@
+﻿# there exists some culture where relations could be improved... because
+#	someone will manage to cycle through them all.
+artifact_iliad_scroll_increase_cultural_acceptance_trigger = {
+	any_culture_global = {
+		NOT = { this = scope:the_artifact_user.culture }
+		cultural_acceptance = {
+			target = scope:the_artifact_user.culture
+			value < 100
+		}
+	}
+}
+
+artifact_iliad_scroll_finish_convert_culture_trigger = {
+	scope:the_artifact_user = {
+		# get steward
+		exists = cp:councillor_steward
+		cp:councillor_steward = {
+			is_performing_council_task = task_promote_culture
+		}
+	}
+}
+
+artifact_iliad_scroll_teach_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			NOT = { has_trait = education_diplomacy_5 }
+			NOT = { has_trait = diplomatic_court_2 }
+			NOT = { has_perk = diplomat_perk }
+			NOT = { has_perk = august_perk }
+			NOT = { has_perk = family_man_perk }
+			diplomacy < 100
+		}
+	}
+} # end artifact_iliad_scroll_teach_me_trigger
+
+artifact_iliad_scroll_teach_me_travel_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			NOT = { has_perk = wayfarer_perk }
+			NOT = { has_perk = surveyor_perk }
+			NOT = { has_perk = voyager_perk }
+		}
+	}
+} # end artifact_iliad_scroll_teach_me_trigger
+
+artifact_iliad_improve_chancellor_trigger = {
+	scope:the_artifact_user = {
+		cp:councillor_chancellor = {
+			OR = {
+				NOT = { has_trait = education_diplomacy_5 }
+				NOT = { has_trait = diplomatic_court_2 }
+				NOT = { has_trait = diplomat }
+				diplomacy < 100
+			}
+		}
+	}
+} # end artifact_iliad_improve_chancellor_trigger
+
+artifact_iliad_reset_epic_cooldown_trigger = {
+	scope:the_artifact_user = {
+		is_decision_on_cooldown = commission_epic_decision
+	}
+} # end artifact_iliad_reset_epic_cooldown_trigger
+
+# It appears we cannot check for interaction cooldowns...
+#artifact_iliad_reset_challenge_duel_cooldown_trigger = {
+#	scope:the_artifact_user = {
+#		OR = {
+#			
+#		}
+#	}
+#} # end artifact_iliad_reset_challenge_duel_cooldown_trigger

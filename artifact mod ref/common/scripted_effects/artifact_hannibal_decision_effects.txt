@@ -1,0 +1,698 @@
+﻿# Skull of Hannibal
+artifact_hannibal_create_effect = {
+	create_artifact = {
+		name = artifact_hannibal_skull_name
+		description = artifact_hannibal_skull_desc
+		rarity = illustrious
+
+		visuals = human_skull
+		#type = pedestal
+		#Start as trinkit
+		type = miscellaneous
+
+		modifier = artifact_monthly_prestige_8_modifier
+		#modifier = artifact_court_grandeur_baseline_add_6_modifier
+		modifier = artifact_hannibal_modifier
+
+		quality = 1000
+		wealth = 1000
+
+		save_scope_as = newly_created_artifact
+		decaying = no
+
+		history = {
+			type = created_before_history
+			date = 100.1.1
+		}
+	}
+}
+
+# add general
+artifact_hannibal_recruit_general_effect = {
+
+	custom_tooltip = artifact_hannibal_recruit_general_effect_tooltip
+
+	#Compute culture
+	hidden_effect = {
+		random_list = {
+			10 = {
+				scope:the_artifact_user.culture = {
+					save_scope_as = the_recruit_culture
+				}
+			}
+			10 = {
+				random_character_to_title_neighboring_and_across_water_county = {
+					this.culture = {
+						save_scope_as = the_recruit_culture
+					}
+				}
+			}
+			20 = {
+				random_culture_global = {
+					limit = { # Traits with better commanders
+						has_cultural_parameter = commanders_likelier_to_gain_commander_traits
+					}
+					save_scope_as = the_recruit_culture
+				}				
+			}				
+			10 = {
+				random_culture_global = {
+					limit = {
+						has_cultural_parameter = has_access_to_shieldmaidens
+					}
+					save_scope_as = the_recruit_culture
+				}				
+			}
+			
+		} #end random_list	
+		
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_hannibal_general
+			save_scope_as = the_general
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_general = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_hannibal_general_title
+		desc = msg_artifact_hannibal_general_desc
+		left_icon = scope:the_general
+	}
+}
+
+# add military traits
+artifact_hannibal_teach_me_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			50 = {
+				trigger = {
+					age >= 16
+					NOT = { has_trait = education_martial }
+				}
+				add_trait = education_martial_1
+			}
+			40 = {
+				trigger = {
+					age >= 16
+					has_trait = education_martial
+					NOT = { has_trait = education_martial_5 } 
+				}
+				change_trait_rank = {
+					trait = education_martial
+					rank = 1
+					max = 5
+				}
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = logistician }}
+				add_trait = logistician
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = military_engineer }}
+				add_trait = military_engineer
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = aggressive_attacker }}
+				add_trait = aggressive_attacker
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = unyielding_defender }}
+				add_trait = unyielding_defender
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = forder }}
+				add_trait = forder
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = flexible_leader }}
+				add_trait = flexible_leader
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = desert_warrior }}
+				add_trait = desert_warrior
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = jungle_stalker }}
+				add_trait = jungle_stalker
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = reaver }}
+				add_trait = reaver
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = reckless }}
+				add_trait_force_tooltip = reckless
+				hidden_effect = { 
+					remove_trait = cautious_leader
+					add_trait = reckless
+				}
+			}
+
+			10 = { 
+				trigger = { NOT = { has_trait = holy_warrior }}
+				add_trait = holy_warrior
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = open_terrain_expert }}
+				add_trait = open_terrain_expert
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = rough_terrain_expert }}
+				add_trait = rough_terrain_expert
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = forest_fighter }}
+				add_trait = forest_fighter
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = organizer }}
+				add_trait = organizer
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = winter_soldier }}
+				add_trait = winter_soldier
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = faith_warrior }}
+				add_trait = faith_warrior
+			}
+			10 = { 
+				trigger = { NOT = { has_trait = viking }}
+				add_trait = viking
+			}
+			10 = { 
+				trigger = { 
+					NOT = { has_trait = warlike_court_1 }
+					NOT = { has_trait = warlike_court_2 }
+				}
+				#add_trait_force_tooltip = warlike_court_1
+				add_trait = warlike_court_1					
+			}
+			10 = { 
+				trigger = { has_trait = warlike_court_1 }
+				add_trait_force_tooltip = warlike_court_2
+				hidden_effect = { 
+					remove_trait = warlike_court_1
+					add_trait = warlike_court_2
+				}						
+			}
+			20 = { 
+				trigger = { martial < 99 }
+				send_interface_toast = {
+					title = consult_hannibal_skull_decision
+					scope:the_artifact_user = {
+						add_martial_skill = 10
+					}
+				}					
+			}					
+			20 = {
+				trigger = {
+					OR = {
+						NOT = { has_perk = strategist_perk }
+						NOT = { has_perk = overseer_perk }
+						NOT = { has_perk = gallant_perk }
+					}
+				}
+				send_interface_toast = {
+					title = consult_hannibal_skull_decision
+					scope:the_artifact_user = {
+						add_martial_lifestyle_perk_points = 1
+					}
+				}
+			}
+		} # end random_list
+		force_character_skill_recalculation = yes
+	}
+}
+
+# add elephant unit
+artifact_hannibal_recruit_elephants_effect = {
+	scope:the_artifact_user ={
+		spawn_army = {
+			levies = 0
+			
+			men_at_arms = {
+				type = war_elephant
+				stacks = 4
+			}
+			men_at_arms = {
+				type = praetorian
+				stacks = 3
+			}
+			men_at_arms = {
+				type = caballero
+				stacks = 2
+			}
+			men_at_arms = {
+				type = cataphract
+				stacks = 2
+			}		
+			location = scope:the_artifact_user.capital_province
+			name = hannibal_troops.1
+
+			uses_supply = no
+			inheritable = yes
+		}
+	}
+}
+
+# add barracks and camps
+artifact_hannibal_build_camps_effect = {
+	scope:the_artifact_user = {
+		every_sub_realm_county = {
+			every_county_province = {
+				# Tribals first
+				if = {
+					limit = {
+						has_holding_type = tribal_holding				
+					}
+					if = {
+						limit = {
+							NOT = { has_building_or_higher = longhouses_01 }
+							NOT = { free_building_slots = 0 }
+						}
+						add_building = longhouses_02
+					}
+					if = {
+						limit = {
+							NOT = { has_building_or_higher = war_camps_01 }
+							NOT = { free_building_slots = 0 }
+						}
+						add_building = war_camps_02
+					}
+				}
+
+				# Military Camps
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = military_camps_01 }
+						building_military_camps_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								#building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = military_camps_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = regimental_grounds_01 }
+						building_regimental_grounds_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								#building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = regimental_grounds_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = barracks_01 }
+						building_barracks_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								#building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = barracks_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = camel_farms_01 }
+						building_camel_farms_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								#building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = camel_farms_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = elephant_pens_01 }
+						building_elephant_pens_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								#building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = elephant_pens_02
+				}
+			}
+		}
+	}
+}
+
+# improve my marshal
+artifact_hannibal_improve_marshal_effect = {
+	# add martial, or add a marshal effect
+	
+	scope:the_artifact_user = {
+		# get marshal
+		cp:councillor_marshal = {
+			random_list = {
+				50 = {
+					trigger = {
+						NOT = { has_trait = education_martial }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = education_martial_1
+							}
+						}
+					}
+					
+				}
+				40 = {
+					trigger = {
+						has_trait = education_martial
+						NOT = { has_trait = education_martial_5 }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								change_trait_rank = {
+									trait = education_martial
+									rank = 1
+									max = 5
+								}
+							}
+						} # end send_interface_toast
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = logistician }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = logistician
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = military_engineer }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = military_engineer
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = aggressive_attacker }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = aggressive_attacker
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = unyielding_defender }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = unyielding_defender
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = forder }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = forder
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = flexible_leader }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = flexible_leader
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = desert_warrior }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = desert_warrior
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = jungle_stalker }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = jungle_stalker
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = reaver }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = reaver
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = reckless }}
+					add_trait_force_tooltip = reckless 
+					hidden_effect = { remove_trait = cautious_leader }				
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = reckless
+							}
+						}
+					}					
+				}
+	
+				10 = { 
+					trigger = { NOT = { has_trait = holy_warrior }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = holy_warrior
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = open_terrain_expert }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = open_terrain_expert
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = rough_terrain_expert }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = rough_terrain_expert
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = forest_fighter }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = forest_fighter
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = organizer }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = organizer
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = winter_soldier }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = winter_soldier
+							}
+						}
+					}					
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = faith_warrior }}		
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = faith_warrior
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = viking }}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = viking
+							}
+						}
+					}				
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = warlike_court_2 }}
+					add_trait_force_tooltip = warlike_court_2 
+					hidden_effect = { remove_trait = warlike_court_1 }				
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_trait = warlike_court_2
+							}
+						}
+					}
+				}
+				50 = { # Almost always pick this, or one of the education traits 
+					trigger = { martial < 99 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = consult_hannibal_skull_decision
+							left_icon = cp:councillor_marshal
+							cp:councillor_marshal = {
+								add_martial_skill = 10 
+							}
+						}
+					}
+				}
+				#1 = {} # Nothing, just in case there are mods that affect the councillor position in some weird way.
+			} # end random_list
+		}
+	}
+}
+
+# Finish Marshal Task
+artifact_hannibal_marshal_finish_effect = {
+	scope:the_artifact_user = {
+		# get marshal
+		cp:councillor_marshal = {
+			councillor_task_target.county = {
+				change_county_control = 100
+			}
+
+			finish_council_task = yes
+		}
+	}
+}

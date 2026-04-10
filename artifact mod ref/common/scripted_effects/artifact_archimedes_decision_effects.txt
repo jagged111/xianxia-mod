@@ -1,0 +1,464 @@
+﻿### The Archimedes Codex #########
+#
+#   Learning and Engineering Themed Artifact
+#	Decision Options:
+#	- Recruit Tutor (knows four languages, genius, patient, also poet, and journaler, with high traits,	intellect_good_3, shrewd)
+#	- Teach me (learning traits)
+#	- Build Siege Engines (Trebs and Crossbows)
+#	- Build Walls (builds defensive structures all over realm)
+#	- Build Quarries and Sawmills
+#	- Build a Greenhouse
+#	- Develop university area (add 20 development if development is < 40, for the university zones)
+
+artifact_archimedes_book_create_effect = {
+	create_artifact = {
+		name = artifact_archimedes_book_name
+		description = artifact_archimedes_book_desc
+
+		rarity = illustrious
+		visuals = book
+		type = miscellaneous
+
+		history = {
+			type = created_before_history
+			date = 200.12.1
+		}
+
+		quality = 1000
+		wealth = 1000				
+
+		save_scope_as = newly_created_artifact		
+
+		modifier = artifact_monthly_prestige_8_modifier
+		modifier = artifact_archimedes_modifier
+
+		decaying = no
+	}
+}
+
+artifact_archimedes_book_recruit_tutor_effect = {
+
+	custom_tooltip = artifact_archimedes_recruit_tutor_effect_tooltip
+
+	hidden_effect = {
+		# Grab a culture for the doctor
+		#	This should favor close cultures, cultures with compassion, and cultures
+		#	with herbalists
+		scope:the_artifact_user = {
+			every_sub_realm_county = {
+				this.culture = {
+					add_to_list = nearby_cultures	
+				}
+				
+			}
+			every_character_to_title_neighboring_and_across_water_county = {
+				this.culture = {
+					add_to_list = nearby_cultures
+				}
+			}
+		} # end scope reader
+		every_culture_global = {
+			limit = {
+				OR = {
+					has_cultural_parameter = pensive_trait_more_common						
+				}
+			}
+			add_to_list = nearby_cultures
+		}
+		every_culture_global = {
+			limit = {
+				OR = {
+					has_cultural_tradition = tradition_philosopher_culture						
+				}
+			}
+			add_to_list = nearby_cultures
+		}
+
+		culture:greek = { add_to_list = nearby_cultures	}
+			
+		random_in_list = {
+			list = nearby_cultures
+			save_scope_as = the_tutor_culture
+		}
+		
+		# clear the list
+		clear_variable_list = nearby_cultures
+
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_archimedes_tutor		
+			save_scope_as = the_tutor
+			employer = scope:the_artifact_user
+			dynasty = none
+		} # End create character
+		
+		scope:the_tutor = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} # end hidden_effect
+
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_archimedes_recruited_tutor_title
+		desc = msg_artifact_archimedes_recruited_tutor_desc
+		left_icon = scope:the_tutor
+	}
+}
+
+artifact_archimedes_book_teach_me_effect = {
+
+	scope:the_artifact_user = {
+		if = {
+			limit = {
+				has_trait = intellect_bad_3
+			}
+			add_trait_force_tooltip = intellect_bad_2
+			remove_trait = intellect_bad_3
+			add_trait = intellect_bad_2
+		}
+		else_if = {
+			limit = {
+				has_trait = intellect_bad_2
+			}
+			add_trait_force_tooltip = intellect_bad_1
+			remove_trait = intellect_bad_2
+			add_trait = intellect_bad_1
+		}
+		else_if = {
+			limit = {
+				has_trait = intellect_bad_1
+			}
+			remove_trait = intellect_bad_1
+		}
+		else_if = {
+			limit = {
+				has_trait = dull
+			}
+			remove_trait = dull
+		}
+		else = {
+			random_list = {
+				10 = {
+					trigger = {
+						NOT = { has_trait = intellect_good_1 }
+						NOT = { has_trait = intellect_good_2 }
+						NOT = { has_trait = intellect_good_3 }
+					}
+					add_trait = intellect_good_1
+				}
+				10 = {
+					trigger = { has_trait = intellect_good_1 }
+					add_trait_force_tooltip = intellect_good_2
+					hidden_effect = {
+						remove_trait = intellect_good_1
+						add_trait = intellect_good_2
+					}
+				}
+				10 = {
+					trigger = { has_trait = intellect_good_2 }
+					add_trait_force_tooltip = intellect_good_3
+					hidden_effect = {
+						remove_trait = intellect_good_2
+						add_trait = intellect_good_3
+					}
+				}			
+				10 = {
+					trigger = { 
+						OR = {
+							has_trait = intellect_good_1 
+							has_trait = intellect_good_2
+							has_trait = intellect_good_3
+						}
+						NOT = {
+							has_trait = shrewd
+						}
+					}
+					add_trait = shrewd
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = scholarly_court_1 }
+						NOT = { has_trait = scholarly_court_2 }
+					}
+					add_trait = scholarly_court_1
+				}
+				10 = {
+					trigger = {
+						has_trait = scholarly_court_1
+					}
+					add_trait_force_tooltip = scholarly_court_2
+					hidden_effect = {
+						remove_trait = scholarly_court_1
+						add_trait = scholarly_court_2
+					}
+				}
+				50 = {
+					trigger = {
+						age >= 16
+						NOT = { has_trait = education_learning }
+					}
+					add_trait = education_learning_1
+				}
+				40 = {
+					trigger = {
+						age >= 16
+						has_trait = education_learning
+						NOT = { has_trait = education_learning_5 }
+					}
+					change_trait_rank = {
+						trait = education_learning
+						rank = 1
+						max = 5
+					}
+				}
+				20 = { 
+					trigger = { learning < 100 }
+					send_interface_toast = {
+						title = artifact_archimedes_decision
+						scope:the_artifact_user = {
+							add_learning_skill = 10
+						}
+					}					
+				}					
+				20 = {
+					trigger = {
+						OR = {
+							NOT = { has_perk = whole_of_body_perk }
+							NOT = { has_perk = scholar_perk }
+							NOT = { has_perk = theologian_perk }
+						}
+					}
+					send_interface_toast = {
+						title = artifact_archimedes_decision
+						scope:the_artifact_user = {
+							add_learning_lifestyle_perk_points = 1
+						}
+					}
+				}
+			}
+		}
+		
+		force_character_skill_recalculation = yes
+	}
+
+}
+
+# Trebuchets and Crossbows
+artifact_archimedes_book_toy_army_effect = {
+	scope:the_artifact_user = {
+		spawn_army = {
+			levies = 0
+			
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			men_at_arms = {
+				type = crossbowmen
+				stacks = 5
+			}
+			men_at_arms = {
+				type = chu_ko_nu
+				stacks = 5
+			}	
+			location = scope:the_artifact_user.capital_province
+			name = archimedes_troops.1
+
+			uses_supply = no
+			inheritable = yes
+		}
+	}
+}
+
+artifact_archimedes_book_build_walls_effect = {
+	scope:the_artifact_user = {
+		every_sub_realm_county = {
+			every_county_province = {
+				# Tribals first
+				if = {
+					limit = {
+						has_holding_type = tribal_holding
+						NOT = { has_building_or_higher = palisades_01 }
+						NOT = { free_building_slots = 0 }				
+					}
+					add_building = palisades_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = ramparts_01 }
+						has_holding_type = castle_holding
+						building_ramparts_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = ramparts_02
+				}			
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = curtain_walls_01 }
+						has_holding_type = castle_holding
+						building_curtain_walls_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = curtain_walls_02
+				}
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = watchtowers_01 }
+						building_watchtowers_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = watchtowers_02
+				}
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = outposts_01 }
+						building_outposts_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = outposts_02
+				}
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = hill_forts_01 }
+						has_holding_type = castle_holding
+						building_hill_forts_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = hill_forts_02
+				}
+			}
+		}
+	}
+}
+
+artifact_archimedes_book_build_mines_effect = {
+	scope:the_artifact_user = {
+		every_sub_realm_county = {
+			every_county_province = {	
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = quarries_01 }
+						building_quarries_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = quarries_02
+				}
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = logging_camps_01 }
+						building_logging_camps_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = logging_camps_04
+				}
+			}
+		}
+	}
+}
+
+artifact_archimedes_book_build_glass_effect = {
+	scope:the_artifact_user = {
+		random_sub_realm_county = {
+			limit = {
+				holder = scope:the_artifact_user # must be mine  this line is fine
+				any_county_province = {
+					province_owner = scope:the_artifact_user # I want this to only allow me as the barron, but it is throwing a scope error.  holder only applies to titles.
+					#is_county_capital = yes # must be capital barony of county
+					NOT = { has_building_or_higher = special_greenhouse_01 }
+					NOT = { has_special_building_slot = yes }
+				}
+			}
+			random_county_province = {
+				limit = { 
+					province_owner = scope:the_artifact_user # must be mine
+					NOT = { has_building_or_higher = special_greenhouse_01 }
+					NOT = { has_special_building_slot = yes }			
+				}
+				set_variable = { name = variable_greenhouse value = yes }
+				add_special_building_slot = special_greenhouse_01
+				add_special_building = special_greenhouse_01
+			}
+		}
+	}
+}
+
+artifact_archimedes_book_develop_university_areas_effect = {
+	scope:the_artifact_user = {
+		every_sub_realm_county = {
+			if = {
+				limit = {
+					development_level < 40
+					has_university_building_trigger = yes
+				}
+				# Add 10 to development level
+				change_development_level = minor_development_level_gain
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+﻿l_english:
+
+artifact_iliad_scroll_name: "The Iliad and Odyssey"
+artifact_iliad_scroll_desc: "Early scroll of the Iliad and Odyssey by Homer."
+artifact_illiad_scroll_modifier: "The Iliad and Odyssey"
+
+artifact_iliad_scroll_decision: "Read Iliad and Odyssey"
+# Can you replace "court reader" with either the name of the court poet, musician, or tutor?
+artifact_iliad_scroll_decision_desc: "Your court reader opens a scroll and begins to read, poetically."
+
+artifact_iliad_scroll_decision_tooltip: "Read Iliad and Odyssey"
+artifact_iliad_scroll_decision_confirm: "Listen to the Grand Poet"
+
+artifact_iliad_scroll_increase_cultural_acceptance_effect: "Relations with that guy have improved!"
+msg_artifact_iliad_recruited_poet_title: "Potential Poet Recruited"
+msg_artifact_iliad_recruited_poet_desc: "[the_poet.GetFirstName] has heard the Iliad's call.  [the_poet.GetSheHe|U] would make a good [GetCourtPositionType('court_poet_court_position').GetName()]."
+msg_artifact_iliad_improve_cultural_acceptance_title: "Improved Cultural Relations"
+msg_artifact_iliad_improve_cultural_acceptance_tooltip: "Relations with that guy's culture have improved."
+msg_artifact_iliad_improve_cultural_acceptance_desc: "Mutual respect and understanding between the [the_artifact_user_culture.GetName] and the [target_culture.GetName] cultures has dramatically improved."
+artifact_iliad_decision.01.title: "Listen to the Grand Poet"
+#TODO replace with a cycle of quotes, like jolly roger does
+artifact_iliad_decision.01.desc: "Hateful to me as the gates of Hades is that man who hides one thing in his heart and speaks another."
+
+artifact_iliad_decision.01.a: "Recruit Court Poet"
+artifact_iliad_scroll_recruit_poet_effect_tooltip: "Recruits a courtier that would make an excellent court poet."
+
+artifact_iliad_decision.01.b: "Improve My Diplomacy Skill"
+
+artifact_iliad_decision.01.c: "Improve My Wandering"
+
+artifact_iliad_decision.01.d: "Finish Convert Culture"
+artifact_iliad_scroll_finish_convert_culture_effect_tooltip: "Steward will finish the current task."
+
+artifact_iliad_decision.01.e: "Teach me Diplomacy"
+artifact_iliad_decision.01.f: "Improve my Chanceller"
+artifact_iliad_decision.01.g: "Reset Commission Epic Cooldown"
+artifact_iliad_decision.01.h: "Reset General Challenge Cooldowns"
+artifact_iliad_reset_challenge_duel_cooldown_effect_tooltip: "Note: this only removes the general cooldowns.  The target-specific cooldowns will remain."
+
+artifact_iliad_decision.01.i: "Increase Cultural Acceptance"
+artifact_iliad_decision.01.j: "Recruit Adventurer"
+artifact_iliad_scroll_recruit_quester_effect_tooltip: "Recruits a character to your court, ready to go on an adventure!"
+msg_artifact_iliad_recruited_quester_title: "Potential Adventurer Recruited"
+msg_artifact_iliad_recruited_quester_desc: "[the_quester.GetFirstName] has heard the Iliad's call.  [the_quester.GetSheHe|U] is ready to set out on a grand adventure!"
+
+iliad_troops.1: "Greek Adventurers"
+
+artifact_iliad_scroll_decision_effect_tooltip: "The wrath sing, goddess, of Peleus' son, Achilles, that destructive wrath which brought countless woes upon the Achaeans, and sent forth to Hades many valiant souls of heroes, and made them themselves spoil for dogs and every bird; thus the plan of Zeus came to fulfillment, from the time when first they parted in strife Atreus' son, king of men, and brilliant Achilles."

@@ -1,0 +1,474 @@
+﻿###	Illiad and Odysey Artifact
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+#
+#	Options
+# 	- Recruit Poet
+#	- Finish "convert culture"
+#	- Teach me Diplomacy
+#	- Improve my Chanceller
+#	- Reset Epic Cooldown
+#	- Remove General Challenge Cooldown
+#	- Increase cultural acceptance (random culture in realm, or neighboring culture)
+#	- Recruit Adventurer
+
+artifact_iliad_scroll_create_effect = {
+	create_artifact = {
+		name = artifact_iliad_scroll_name
+		description = artifact_iliad_scroll_desc
+
+		rarity = illustrious
+		visuals = indian_book
+		type = miscellaneous
+
+		history = {
+			type = created_before_history
+			date = 100.1.1
+		}
+		quality = 100
+		wealth = 100
+		decaying = no
+		
+		save_scope_as = newly_created_artifact		
+
+		modifier = artifact_monthly_prestige_8_modifier
+		modifier = artifact_illiad_scroll_modifier
+		
+	}
+}
+
+artifact_iliad_scroll_recruit_poet_effect = {
+	
+	custom_tooltip = artifact_iliad_scroll_recruit_poet_effect_tooltip
+
+
+	hidden_effect = {
+		# Poet should come from poetic culture
+		random_culture_global = {
+			limit = {
+				has_cultural_parameter = characters_are_better_court_poets
+			}
+			save_scope_as = the_poet_culture
+		}
+
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_iliad_poet
+			save_scope_as = the_poet
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_poet = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} # end hidden effect
+
+	scope:the_artifact_user = {
+		send_interface_toast = {
+			type = character_arrived
+			title = msg_artifact_iliad_recruited_poet_title
+			desc = msg_artifact_iliad_recruited_poet_desc
+			left_icon = scope:the_poet
+		}		
+	}
+}
+
+artifact_iliad_scroll_finish_convert_culture_effect = {
+	custom_tooltip = artifact_iliad_scroll_finish_convert_culture_effect_tooltip
+
+	scope:the_artifact_user = {
+		# get steward
+		cp:councillor_steward = {
+			finish_council_task = yes
+		}
+	}
+}
+
+# Improve my diplomacy skill
+artifact_iliad_scroll_teach_me_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			50 = {
+				trigger = {
+					age >= 16
+					NOT = { has_trait = education_diplomacy }
+				}
+				add_trait = education_diplomacy_1
+			}
+			40 = {
+				trigger = {
+					age >= 16
+					has_trait = education_diplomacy
+					NOT = { has_trait = education_diplomacy_5 } 
+				}
+				change_trait_rank = {
+					trait = education_diplomacy
+					rank = 1
+					max = 5
+				}
+			}
+			10 = {
+				trigger = { diplomacy < 100 }
+				send_interface_toast = {
+					title = artifact_iliad_scroll_decision
+					scope:the_artifact_user = {
+						add_diplomacy_skill = 10
+					}
+				}	
+			}
+			10 = { 
+				trigger = { 
+					NOT = { has_trait = diplomatic_court_1 }
+					NOT = { has_trait = diplomatic_court_2 }
+				}
+				#add_trait_force_tooltip = diplomatic_court_1
+				add_trait = diplomatic_court_1					
+			}
+			10 = { 
+				trigger = { has_trait = diplomatic_court_1 }
+				add_trait_force_tooltip = diplomatic_court_2
+				hidden_effect = { 
+					remove_trait = diplomatic_court_1
+					add_trait = diplomatic_court_2
+				}						
+			}
+			20 = {
+				trigger = {
+					OR = {
+						NOT = { has_perk = diplomat_perk }
+						NOT = { has_perk = august_perk }
+						NOT = { has_perk = family_man_perk }
+					}
+				}
+				send_interface_toast = {
+					title = artifact_iliad_scroll_decision
+					scope:the_artifact_user = {
+						add_diplomacy_lifestyle_perk_points = 1
+					}
+				}
+			}
+		} # End random_list
+		force_character_skill_recalculation = yes
+	}
+} # End artifact_iliad_scroll_teach_me_effect
+
+# Improve my diplomacy skill
+artifact_iliad_scroll_teach_me_travel_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			20 = {
+				trigger = {
+					OR = {
+						NOT = { has_perk = wayfarer_perk }
+						NOT = { has_perk = surveyor_perk }
+						NOT = { has_perk = voyager_perk }
+					}
+				}
+				send_interface_toast = {
+					title = artifact_iliad_scroll_decision
+					scope:the_artifact_user = {
+						add_wanderer_lifestyle_perk_points = 1
+					}
+				}
+			}
+		} # End random_list
+		force_character_skill_recalculation = yes
+	}
+} # End artifact_iliad_scroll_teach_me_travel_effect
+
+
+# Improve my Chanceller
+artifact_iliad_improve_chancellor_effect = {
+	# add chancellor, or add a chancellor effect
+	
+	scope:the_artifact_user = {
+		# get chancellor
+		cp:councillor_chancellor = {
+			random_list = {
+				50 = {
+					trigger = {
+						NOT = { has_trait = education_diplomacy }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_iliad_scroll_decision
+							left_icon = cp:councillor_chancellor
+							cp:councillor_chancellor = {
+								add_trait = education_diplomacy_1
+							}
+						}
+					}
+					
+				}
+				40 = {
+					trigger = {
+						has_trait = education_diplomacy
+						NOT = { has_trait = education_diplomacy_5 }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_iliad_scroll_decision
+							left_icon = cp:councillor_chancellor
+							cp:councillor_chancellor = {
+								change_trait_rank = {
+									trait = education_diplomacy
+									rank = 1
+									max = 5
+								}
+							}
+						}
+					}
+				}
+				10 = {
+					trigger = { diplomacy < 100 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_iliad_scroll_decision
+							left_icon = cp:councillor_chancellor
+							cp:councillor_chancellor = {
+								add_diplomacy_skill = 10
+							}
+						}
+					}
+				}
+				10 = { 
+					trigger = { 
+						NOT = { has_trait = diplomatic_court_1 }
+						NOT = { has_trait = diplomatic_court_2 }
+					}
+					#add_trait_force_tooltip = diplomatic_court_1
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_iliad_scroll_decision
+							left_icon = cp:councillor_chancellor
+							cp:councillor_chancellor = {
+								add_trait = diplomatic_court_1
+							}
+						}
+					}										
+				}
+				10 = { 
+					trigger = { has_trait = diplomatic_court_1 }
+					add_trait_force_tooltip = diplomatic_court_2
+					hidden_effect = {
+						remove_trait = diplomatic_court_1
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_iliad_scroll_decision
+							left_icon = cp:councillor_chancellor
+							cp:councillor_chancellor = {
+								add_trait = diplomatic_court_2
+							}
+						}
+					}									
+				}
+				10 = {
+					trigger = {
+						NOT = { has_trait = diplomat }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_iliad_scroll_decision
+							left_icon = cp:councillor_chancellor
+							cp:councillor_chancellor = {
+								add_trait = diplomat
+							}
+						}
+					}
+				}
+			} # end random_list
+		} # end cp:councillor_chancellor
+	} # end scope:the_artifact_user
+} # end artifact_iliad_improve_chancellor_effect
+
+artifact_iliad_reset_epic_cooldown_effect = {
+	scope:the_artifact_user = {
+		remove_decision_cooldown = commission_epic_decision
+	}
+} #end artifact_iliad_reset_epic_cooldown_effect
+
+artifact_iliad_reset_challenge_duel_cooldown_effect = {
+	
+	custom_tooltip = artifact_iliad_reset_challenge_duel_cooldown_effect_tooltip
+	
+	scope:the_artifact_user = {
+		remove_interaction_cooldown = challenge_for_artifact_interaction
+		remove_interaction_cooldown = challenge_to_single_combat_interaction
+		remove_interaction_cooldown = challenge_to_trial_by_combat_interaction
+		remove_interaction_cooldown = challenge_to_2p_chess_interaction
+		remove_decision_cooldown = tribal_challenge_ruler_decision
+	}
+} #end artifact_iliad_reset_challenge_duel_cooldown_effect
+
+# Set a random culture's acceptance to 100
+artifact_iliad_scroll_increase_cultural_acceptance_effect = {
+	scope:the_artifact_user = {
+		culture = {
+			save_scope_as = the_artifact_user_culture # For localization
+		}
+		# If one of our realm's cultures is not 100, do that one
+		if = {
+			limit = {
+				any_sub_realm_county = {
+					NOT = { culture = scope:the_artifact_user.culture }
+					culture = {
+						cultural_acceptance = {
+							target = scope:the_artifact_user.culture
+							value < 100
+						}
+					}
+				}
+			}
+			random_sub_realm_county = {
+				# current acceptance is not yet 100
+				limit = {
+					NOT = { culture = scope:the_artifact_user.culture }
+					culture = {
+						cultural_acceptance = {
+							target = scope:the_artifact_user.culture
+							value < 100
+						}
+					}
+				}
+				culture = {
+					save_scope_as = target_culture
+					scope:the_artifact_user = {
+						send_interface_message = {
+							type = iliad_cultural_acceptance_msg
+							title = msg_artifact_iliad_improve_cultural_acceptance_title
+							right_icon = scope:target_culture.culture_head	
+							left_icon = scope:the_artifact_user
+							desc = msg_artifact_iliad_improve_cultural_acceptance_desc
+							culture = {
+								set_cultural_acceptance = {
+									target = scope:target_culture
+									value = 100
+								}
+							}
+						}
+					}
+				}
+			}
+		} # end if that picks a realm culture that is not 100%
+		# otherwise, pick a neighbor
+		else_if = {
+			limit = {
+				any_character_to_title_neighboring_and_across_water_county = {
+					NOT = { culture = scope:the_artifact_user.culture }
+					culture = {
+						cultural_acceptance = {
+							target = scope:the_artifact_user.culture
+							value < 100
+						}
+					}
+				}
+			}
+			random_character_to_title_neighboring_and_across_water_county = {
+				limit = {
+					NOT = { culture = scope:the_artifact_user.culture }
+					culture = {
+						cultural_acceptance = {
+							target = scope:the_artifact_user.culture
+							value < 100
+						}
+					}
+				}
+				culture = {
+					save_scope_as = target_culture
+					scope:the_artifact_user = {
+						send_interface_message = {
+							type = iliad_cultural_acceptance_msg
+							title = msg_artifact_iliad_improve_cultural_acceptance_title
+							right_icon = scope:target_culture.culture_head
+							left_icon = scope:the_artifact_user
+							desc = msg_artifact_iliad_improve_cultural_acceptance_desc
+							tooltip = msg_artifact_iliad_improve_cultural_acceptance_desc
+							culture = {
+								set_cultural_acceptance = {
+									target = scope:target_culture
+									value = 100
+								}
+							}
+							
+						}
+					}
+				}				
+			}
+		} # end else_if, picking a neighbor culture
+		# Otherwise, pick a random culture
+		else = {
+			random_culture_global = {
+				limit = {
+					NOT = { this = scope:the_artifact_user.culture }
+					cultural_acceptance = {
+						target = scope:the_artifact_user.culture
+						value < 100
+					}
+				}
+				save_scope_as = target_culture
+				scope:the_artifact_user = {
+					send_interface_message = {
+						type = iliad_cultural_acceptance_msg
+						title = msg_artifact_iliad_improve_cultural_acceptance_title
+						right_icon = scope:target_culture.culture_head	
+						left_icon = scope:the_artifact_user
+						desc = msg_artifact_iliad_improve_cultural_acceptance_desc
+						tooltip = msg_artifact_iliad_improve_cultural_acceptance_desc
+						culture = {
+							set_cultural_acceptance = {
+								target = scope:target_culture
+								value = 100
+							}
+						}
+					}
+				}
+			}
+		} # end else
+	} # end scope:the_artifact_user
+} # end artifact_iliad_scroll_increase_cultural_acceptance_effect
+
+# Recruit inspired adventurer
+artifact_iliad_scroll_recruit_quester_effect = {
+	custom_tooltip = artifact_iliad_scroll_recruit_quester_effect_tooltip
+	
+	hidden_effect = {	
+
+		#Compute culture
+		random_culture_global = {
+			limit = {
+				OR = {
+					has_cultural_parameter = has_access_to_shieldmaidens
+					has_cultural_parameter = next_level_trade_ports
+					has_cultural_parameter = characters_are_better_court_poets
+					has_cultural_parameter = characters_are_better_court_musicians
+					has_cultural_parameter = easier_to_hybridize
+					has_cultural_parameter = learns_more_languages
+					has_cultural_parameter = wanderers_learn_languages	
+				}
+			}
+			save_scope_as = the_quester_culture
+		} #end random_culture_global
+
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_iliad_quester
+			save_scope_as = the_quester
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_quester = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} # end hidden effect
+
+	scope:the_artifact_user = {
+		send_interface_toast = {
+			type = character_arrived
+			title = msg_artifact_iliad_recruited_quester_title
+			desc = msg_artifact_iliad_recruited_quester_desc
+			left_icon = scope:the_quester
+		}
+	}
+} # end artifact_iliad_scroll_recruit_quester_effect

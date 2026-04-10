@@ -1,0 +1,21 @@
+﻿### Template for perseus shield
+# Should only benefit root
+artifact_perseus_template = {
+
+	can_equip = {
+		always = yes
+	}
+
+	# Only the active player can benefit
+	can_benefit = {
+		this = root
+	}
+
+	fallback = {
+		dynasty_opinion = 10
+		court_grandeur_baseline_add = 10
+	}
+
+	unique = yes
+
+} # end artifact_asclepius_template

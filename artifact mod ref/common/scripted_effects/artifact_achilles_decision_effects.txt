@@ -1,0 +1,65 @@
+﻿artifact_achilles_armor_create_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	
+	hidden_effect = {
+		random_county_in_region = {
+			region = world_asia_minor
+			random_county_province = {
+				save_scope_as = artifact_found_here
+			}
+		}
+	} # end hidden_effect	
+	
+	hidden_effect_new_object = {
+		scope:owner = {
+			save_scope_value_as = {
+				name = wealth
+				value = 500
+			}
+			save_scope_value_as = {
+				name = quality
+				value = 500
+			}
+			create_artifact = {
+				name = artifact_achilles_armor_name
+				description = artifact_achilles_armor_desc
+				
+				rarity = illustrious
+				
+				type = armor_plate
+				
+				template = artifact_achilles_template
+
+				modifier = artifact_monthly_prestige_8_modifier
+				modifier = artifact_armourachilles_modifier
+				
+				visuals = armor
+
+				quality = scope:quality
+				wealth = scope:wealth
+				
+				history = {
+					location = scope:artifact_found_here
+					actor = scope:owner
+					recipient = scope:owner
+					type = discovered
+				}
+
+				decaying = no
+
+				save_scope_as = newly_created_artifact
+			} # end create_artifact
+		} # end scope:owner
+		scope:newly_created_artifact = {
+			set_variable = {
+				name = quality
+				value = scope:quality
+			}
+			set_variable = {
+				name = wealth
+				value = scope:wealth
+			}
+			get_artifact_feature_references_effect = yes
+		} # end scope:newly_created_artifact
+	} # end hidden_effect_new_object	
+} # end artifact_achilles_armor_create_effect

@@ -1,0 +1,442 @@
+﻿## The Jolly Roger Artifact!
+
+
+artifact_jolly_roger_create_effect = {
+	# Sets up the variable that changes the description for the jolly roger event,
+	#	so it can cycle between several different songs.
+	set_global_variable = {
+		name = jolly_roger_use_counter
+		value = 0
+	}
+
+	create_artifact = {	
+		name = artifact_jolly_roger_name
+		description = artifact_dolly_roger_desc
+		rarity = illustrious
+		type = wall_big
+
+		#visuals = banner
+		visuals = jolly_banner_07 # This makes it always the triangular banner
+		visuals_source = title:k_pirates
+		
+		modifier = artifact_court_grandeur_baseline_add_6_modifier
+		modifier = artifact_jollyroger_modifier
+		
+		save_scope_as = newly_created_artifact
+		decaying = no
+
+		quality = 1000
+		wealth = 1000
+	}
+} # end artifact_jolly_roger_create_effect
+
+artifact_jolly_roger_build_ports_effect = {
+
+	#desc = "Gives free ports."
+	#custom_tooltip = "Ports."
+
+	#builds a free port in the area
+	scope:the_waver = {
+		every_sub_realm_county = {
+			every_county_province = {
+				limit = {
+					building_common_tradeport_requirement_terrain = yes
+					building_requirement_castle_city_church = { LEVEL = 01 }				## does not have tradeport
+					NOT = { has_building_or_higher = common_tradeport_01 }
+				}
+				add_province_modifier = extra_building_slot
+
+				add_building = common_tradeport_02
+			}
+		}
+	}
+} # end artifact_jolly_roger_build_ports_effect
+
+artifact_jolly_roger_train_me_effect = {
+	scope:the_waver = {
+		random_list = {
+			20 = {
+				trigger = { NOT = { has_trait = reaver }}
+				add_trait = reaver
+			}
+			20 = {
+				trigger = { NOT = { has_trait = viking }}
+				add_trait = viking
+			}
+			20 = {
+				trigger = { NOT = { has_trait = berserker }}
+				add_trait = berserker
+			}
+			10 = {
+				trigger = { NOT = { has_trait = shieldmaiden }}
+				add_trait = shieldmaiden
+			}
+			10 = {
+				trigger = { NOT = { has_trait = winter_soldier }}
+				add_trait = winter_soldier
+			}
+
+			20 = {
+				trigger = { 
+					NOT = { has_trait = education_martial_prowess_1 }
+					NOT = { has_trait = education_martial_prowess_2 }
+					NOT = { has_trait = education_martial_prowess_3 }
+					NOT = { has_trait = education_martial_prowess_4 }
+				}
+				add_trait = education_martial_prowess_1
+			}
+			20 = {
+				trigger = { has_trait = education_martial_prowess_1 }
+				add_trait_force_tooltip = education_martial_prowess_2
+				hidden_effect = {
+					remove_trait = education_martial_prowess_1
+					add_trait = education_martial_prowess_2	
+				}
+			}
+			10 = {
+				trigger = { has_trait = education_martial_prowess_2 }
+				add_trait_force_tooltip = education_martial_prowess_3
+				hidden_effect = {
+					remove_trait = education_martial_prowess_2
+					add_trait = education_martial_prowess_3
+				}
+			}
+			5 = {
+				trigger = { has_trait = education_martial_prowess_3 }
+				add_trait_force_tooltip = education_martial_prowess_4
+				hidden_effect = {
+					remove_trait = education_martial_prowess_3
+					add_trait = education_martial_prowess_4
+				}
+			}
+			10 = {
+				trigger = { 
+					NOT = { has_trait = lifestyle_blademaster }
+				}
+				add_trait = lifestyle_blademaster				
+			}
+			10 = {
+				trigger = { 
+					AND = {
+						has_trait = lifestyle_blademaster 
+						has_trait_xp = {
+							trait = lifestyle_blademaster
+							value < 100
+						}
+					}
+				}
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { prowess <= 99 }
+				send_interface_toast = {
+					title = wave_jolly_roger_decision
+					scope:the_waver = {
+						add_prowess_skill = 10
+					}
+				}	
+			}
+		}
+	}	
+} # end artifact_jolly_roger_train_me_effect
+
+jolly_roger_recruit_pirates_effect = {
+	#TODO: make the names random.
+	# Name Ideas: Pirates, Pirates of [random title held by owner],
+	# 	Really Bad Eggs, Sea-Wolves, Barnacles, Puffypants Pirates,
+	#	Buccaneers, Connie's Cut-Throats, Former Fishmongers,
+	#	Darkwater Sharkes, Special Salvage Squad, Vicious Valkyries,
+	#	Fiends, Serpents, Reapers, The White Wolves,
+	#	Pirates of Penzance, Black Sheep, Loved by our Mommies and Dads,
+	#	Hell's Angels - [random title held by owner] Chapter,
+	#	The Banshees, Jolly Jackals, The Salty Scots
+	#
+	#	Look at ep1_court_position_events to see triggered descriptions.
+	#	Will something like that work?
+	#
+	# also, can you randomize the army you get?
+
+	scope:the_waver = {
+		
+		random_list = {
+			10 = {
+				spawn_army = {
+					levies = 0
+					
+					men_at_arms = {  #TODO Make armies toast
+						type = huscarl
+						stacks = 1
+					}
+					men_at_arms = {
+						type = jomsviking_pirates
+						stacks = 3
+					}
+					men_at_arms = {
+						type = varangian_veterans
+						stacks = 2
+					}
+					men_at_arms = {
+						type = bondi
+						stacks = 1
+					}
+					
+					location = scope:the_waver.capital_province
+					name = jolly_roger_troops.1
+		
+					uses_supply = no
+					inheritable = yes
+		
+				}
+			}
+
+			10 = {
+				spawn_army = {
+					levies = 0
+					
+					men_at_arms = {
+						type = huscarl
+						stacks = 2
+					}
+					men_at_arms = {
+						type = jomsviking_pirates
+						stacks = 2
+					}
+					men_at_arms = {
+						type = varangian_veterans
+						stacks = 1
+					}
+					men_at_arms = {
+						type = bondi
+						stacks = 4
+					}
+					
+					location = scope:the_waver.capital_province
+					name = jolly_roger_troops.2
+		
+					uses_supply = no
+					inheritable = yes
+		
+				}
+			}
+			10 = {
+				spawn_army = {
+					levies = 0
+					
+					men_at_arms = {
+						type = varangian_veterans
+						stacks = 5
+					}
+					men_at_arms = {
+						type = monaspa
+						stacks = 5
+					}
+					
+					location = scope:the_waver.capital_province
+					name = jolly_roger_troops.3
+		
+					uses_supply = no
+					inheritable = yes
+		
+				}
+			}
+			10 = {
+				spawn_army = {
+					levies = 0
+					
+					men_at_arms = {
+						type = horse_archers
+						stacks = 5
+					}
+					men_at_arms = {
+						type = monaspa
+						stacks = 5
+					}
+					men_at_arms = {
+						type = hobelar
+						stacks = 5
+					}					
+					
+					location = scope:the_waver.capital_province
+					name = jolly_roger_troops.4
+		
+					uses_supply = no
+					inheritable = yes
+		
+				}
+			}
+			10 = {
+				spawn_army = {
+					levies = 0
+					
+					men_at_arms = {
+						type = huscarl
+						stacks = 3
+					}
+					men_at_arms = {
+						type = jomsviking_pirates
+						stacks = 3
+					}
+					men_at_arms = {
+						type = varangian_veterans
+						stacks = 3
+					}
+					men_at_arms = {
+						type = bondi
+						stacks = 3
+					}
+
+					location = scope:the_waver.capital_province
+					name = jolly_roger_troops.5
+		
+					uses_supply = no
+					inheritable = yes
+		
+				}
+			}
+			
+			10 = {
+				spawn_army = {
+					levies = 0
+					
+					men_at_arms = {
+						type = huscarl
+						stacks = 3
+					}
+					men_at_arms = {
+						type = jomsviking_pirates
+						stacks = 3
+					}
+					men_at_arms = {
+						type = varangian_veterans
+						stacks = 3
+					}
+					men_at_arms = {
+						type = bondi
+						stacks = 3
+					}
+					men_at_arms = {
+						type = hobelar
+						stacks = 3
+					}
+					location = scope:the_waver.capital_province
+					name = jolly_roger_troops.6
+		
+					uses_supply = no
+					inheritable = yes
+		
+				}
+			}
+
+		} # end random_list
+	} # end scope:the_waver
+} # end jolly_roger_recruit_pirates_effect
+
+jolly_roger_recruit_champions_effect = {
+	custom_tooltip = jolly_roger_recruit_champions_effect_tooltip
+
+	hidden_effect = {
+		#Compute culture
+		random_list = {
+			30 = {
+				scope:the_waver.culture = {
+					save_scope_as = the_raider_culture
+				}
+			}
+			10 = {
+				scope:the_waver = { # Sometimes a culture next door.
+					random_character_to_title_neighboring_and_across_water_county = {
+						this.culture = {
+							save_scope_as = the_raider_culture
+						}
+					}
+				}
+			}
+			20 = {
+				random_culture_global = {
+					limit = { # Rowdy cultures should be more likely to generate raiders.
+						OR = {
+							has_cultural_parameter = rowdy_trait_more_common
+							has_cultural_parameter = has_access_to_shieldmaidens
+						}
+					}
+					save_scope_as = the_raider_culture
+				}				
+			}				
+		} # end random_list
+
+		create_character = {
+			#location = scope:the_waver.capital_province
+			template = artifact_jolly_roger_champion
+			dynasty = none
+			employer = scope:the_waver
+			save_scope_as = the_raider
+		}
+
+		scope:the_raider = {
+			set_relation_friend = scope:the_waver
+		}
+	}
+
+	scope:the_waver = {
+		send_interface_toast = {
+			type = character_arrived
+			title = msg_artifact_jolly_roger_raider_title
+			desc = msg_artifact_jolly_roger_raider_desc
+			left_icon = scope:the_raider
+		}		
+	}
+} # end jolly_roger_recruit_champions_effect
+
+artifact_jolly_roger_stolen_city_effect = {
+	if = {
+		limit = {
+			NOT = {
+				scope:the_waver.capital_county = {
+					has_county_modifier = fp1_mann_pirate_capital_modifier
+				}
+			}
+		}
+		scope:the_waver.capital_county = {
+			add_county_modifier = {
+				modifier = fp1_mann_pirate_capital_modifier
+			}
+		}
+	} # fi
+	else = {
+		random_sub_realm_county = {
+			limit = { 
+				holder = scope:the_waver #only directly heald counties
+				NOT = { has_county_modifier = fp1_mann_pirate_capital_modifier }
+			} 
+			add_county_modifier = {
+				modifier = fp1_mann_pirate_capital_modifier
+			}
+		}
+	} # end else
+} # artifact_jolly_roger_stolen_city_effect
+
+# adds dread
+jolly_dread_effect = {
+	scope:the_waver = {
+		add_dread = 100
+	}
+}
+
+artifact_jolly_roger_cancel_truces_effect = {
+	scope:the_waver = {
+		every_truce_target = { 
+			save_temporary_scope_as = dude
+			scope:the_waver = { cancel_truce_one_way = scope:dude }
+		}
+	}
+}
+
+artifact_jolly_roger_add_dynasty_perks_effect = {
+	scope:the_waver.dynasty ={
+		add_dynasty_perk = fp1_adventure_legacy_1
+		add_dynasty_perk = fp1_pillage_legacy_1	
+	}
+}

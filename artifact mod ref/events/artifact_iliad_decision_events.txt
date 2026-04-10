@@ -1,0 +1,107 @@
+﻿namespace = artifact_iliad_decision
+
+# Iliad and Odyssey
+artifact_iliad_decision.01 = {
+	type = character_event
+	title = artifact_iliad_decision.01.title
+	desc = artifact_iliad_decision.01.desc
+	
+#	immediate = {
+#		play_music_cue_once = "mx_cue_in_taberna_instrumental"
+#	}
+	theme = court
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	# Recruit Poet
+	option = {
+		name = artifact_iliad_decision.01.a
+		artifact_iliad_scroll_recruit_poet_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Improve my diplomacy
+	option = {
+		name = artifact_iliad_decision.01.b
+		trigger = {
+			artifact_iliad_scroll_teach_me_trigger = yes
+		}
+		artifact_iliad_scroll_teach_me_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}
+
+	# Improve my wandering
+	option = {
+		name = artifact_iliad_decision.01.c
+		trigger = {
+			artifact_iliad_scroll_teach_me_travel_trigger = yes
+		}
+		artifact_iliad_scroll_teach_me_travel_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}
+
+	# Finish convert culture
+	option = {
+		name = artifact_iliad_decision.01.d
+		trigger = {
+			artifact_iliad_scroll_finish_convert_culture_trigger = yes
+		}
+		artifact_iliad_scroll_finish_convert_culture_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}
+
+	# Improve my chanceller
+	option = {
+		name = artifact_iliad_decision.01.f
+		trigger = {
+			artifact_iliad_improve_chancellor_trigger = yes
+		}
+		artifact_iliad_improve_chancellor_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}	
+	
+	# Reset Commission Epic Cooldown
+	option = {
+		name = artifact_iliad_decision.01.g
+		trigger = {
+			artifact_iliad_reset_epic_cooldown_trigger = yes
+		}
+		artifact_iliad_reset_epic_cooldown_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}	
+
+	# Reset General Challenge Cooldowns
+	option = {
+		name = artifact_iliad_decision.01.h
+		#trigger = {
+		#	artifact_iliad_reset_epic_cooldown_trigger = yes
+		#}
+		artifact_iliad_reset_challenge_duel_cooldown_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}	
+
+
+	# Increase cultural acceptance
+	option = {
+		name = artifact_iliad_decision.01.i
+		trigger = {
+			artifact_iliad_scroll_increase_cultural_acceptance_trigger = yes
+		}
+		artifact_iliad_scroll_increase_cultural_acceptance_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.		
+	}
+
+	# Recruit Quester
+	option = {
+		name = artifact_iliad_decision.01.j
+		artifact_iliad_scroll_recruit_quester_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+}

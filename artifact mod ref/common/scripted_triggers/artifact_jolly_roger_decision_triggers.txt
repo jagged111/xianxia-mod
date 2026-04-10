@@ -1,0 +1,56 @@
+﻿artifact_jolly_roger_build_ports_trigger = {
+	# somewhere needs a port
+	scope:the_waver = {
+		any_sub_realm_county = {
+			any_county_province = {
+				building_common_tradeport_requirement_terrain = yes
+				building_requirement_castle_city_church = { LEVEL = 01 }				## does not have tradeport
+				NOT = { has_building_or_higher = common_tradeport_01 }
+			}
+		}
+	}
+}
+
+artifact_jolly_roger_train_me_trigger = {
+	scope:the_waver = {
+		OR = {
+			NOT = { has_trait = reaver }
+			NOT = { has_trait = viking }
+			NOT = { has_trait = berserker }
+			NOT = { has_trait = shieldmaiden }
+			NOT = { has_trait = winter_soldier }
+			NOT = { 
+				has_trait_xp = {
+					trait = lifestyle_blademaster
+					value >= 300
+				}
+			}
+			NOT = { has_trait = education_martial_prowess_4 }
+			prowess <= 99
+		}
+	}
+}
+
+artifact_jolly_roger_stolen_city_trigger = {
+	any_sub_realm_county = {
+		holder = scope:the_waver
+		NOT = { has_county_modifier = fp1_mann_pirate_capital_modifier }
+	}
+} # end artifact_jolly_roger_stolen_city_trigger
+
+artifact_jolly_roger_cancel_truces_trigger = {
+	scope:the_waver = {
+		any_truce_target = {
+			realm_size > 0 # should always return true, if the character has any truce targets.
+		}
+	}
+}
+
+artifact_jolly_roger_add_dynasty_perks_trigger = {
+	scope:the_waver.dynasty ={
+		OR = {
+			NOT = { has_dynasty_perk = fp1_adventure_legacy_1 }
+			NOT = { has_dynasty_perk = fp1_pillage_legacy_1 }
+		}
+	}
+}

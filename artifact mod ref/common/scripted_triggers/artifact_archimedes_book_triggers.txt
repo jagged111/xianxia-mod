@@ -1,0 +1,106 @@
+﻿artifact_archimedes_book_teach_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			NOT = { has_trait = intellect_good_3 }
+			NOT = { has_trait = shrewd }
+			NOT = { has_trait = scholarly_court_2 }
+			NOT = { has_trait = education_learning_5 }
+			NOT = { has_perk = whole_of_body_perk }
+			NOT = { has_perk = scholar_perk }
+			NOT = { has_perk = theologian_perk }
+			learning < 100
+		}
+	}
+}
+
+artifact_archimedes_book_build_walls_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			any_county_province = {
+				OR = {
+					AND = {
+						has_holding_type = tribal_holding
+						NOT = { has_building_or_higher = palisades_01 }
+						NOT = { free_building_slots = 0 }
+					}
+					AND = {
+						NOT = { has_building_or_higher = ramparts_01 }
+						has_holding_type = castle_holding
+						building_ramparts_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}					
+					AND = {
+						NOT = { has_building_or_higher = curtain_walls_01 }
+						has_holding_type = castle_holding
+						building_curtain_walls_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						NOT = { has_building_or_higher = watchtowers_01 }
+						building_watchtowers_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }		
+					}
+					AND = {
+						NOT = { has_building_or_higher = outposts_01 }
+						building_outposts_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						NOT = { has_building_or_higher = hill_forts_01 }
+						has_holding_type = castle_holding
+						building_hill_forts_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+				}
+			}
+		}
+	}
+}
+
+artifact_archimedes_book_build_mines_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			any_county_province = {
+				OR = {
+					AND = {
+						NOT = { has_building_or_higher = quarries_01 }
+						building_quarries_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						NOT = { has_building_or_higher = logging_camps_01 }
+						building_logging_camps_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+				}
+			}
+		}
+	}
+}
+
+
+artifact_archimedes_book_build_glass_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			holder = scope:the_artifact_user # must be mine
+			any_county_province = {
+				province_owner = scope:the_artifact_user # must be mine
+				## also make sure there is no special building that this will displace, and
+				# check to make sure there is a holding it can be built in 
+				# (ie... a castle ... not a tribe)
+				NOT = { has_building_or_higher = special_greenhouse_01 }
+			}
+		}
+	}
+}
+
+artifact_archimedes_book_develop_university_areas_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			development_level < 40
+			any_county_province = { 
+				has_university_building_trigger = yes
+			}
+		}
+	}
+}

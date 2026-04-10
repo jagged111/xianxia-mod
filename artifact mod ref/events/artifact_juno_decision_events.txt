@@ -1,0 +1,76 @@
+﻿namespace = artifact_juno_decision
+
+# Juno's Crown
+artifact_juno_decision.01 = {
+	type = character_event
+	title =artifact_juno_decision.01.title
+	desc = artifact_juno_decision.01.desc
+	
+	theme = court
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	# Recruit food taster
+	option = {
+		name = artifact_juno_decision.01.j
+		artifact_juno_recruit_food_taster_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Recruit cup bearer
+	option = {
+		name = artifact_juno_decision.01.k
+		artifact_juno_recruit_cup_bearer_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Recruit Lady in Waiting
+	option = {
+		name = artifact_juno_decision.01.l
+		artifact_juno_recruit_lady_in_waiting_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Recruit Chief Eunuch
+	option = {
+		name = artifact_juno_decision.01.m
+		artifact_juno_recruit_chief_eunuch_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	#	Recruit Jester
+	option = {
+		name = artifact_juno_decision.01.n
+		artifact_juno_recruit_jester_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	#	Recruit Musician
+	option = {
+		name = artifact_juno_decision.01.o
+		artifact_juno_recruit_musician_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	#	Recruit High Almaner
+	option = {
+		name = artifact_juno_decision.01.p
+		artifact_juno_recruit_high_almoner_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	#	Recruit Gardener
+	option = {
+		name = artifact_juno_decision.01.q
+		artifact_juno_recruit_gardener_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+}
+

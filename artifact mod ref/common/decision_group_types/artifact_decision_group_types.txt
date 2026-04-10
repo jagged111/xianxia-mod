@@ -1,0 +1,21 @@
+﻿############################################
+# Decisions roughly at the top
+# (201-300 )
+
+
+
+############################################
+# Decisions roughly in the middle
+# (101-200 )
+
+
+
+############################################
+# Decisions roughly at the bottom
+# (001-100 )
+
+artifactdecisions = {
+	sort_order = 15
+}
+
+#decision_group_type = artifactdecisions

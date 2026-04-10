@@ -1,0 +1,811 @@
+﻿## God Artifacts Decision (Rummage in the Attic)
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+#
+# TODO: Make this an event that generates each artifact on its own
+# TODO: If the artifact exists (someone else inherits them, for example), steal them
+#	back instead of creating new ones.
+# TODO: Move the individual artifact creations into each's effects file, as you
+#	create events for each artifact.
+
+generate_god_artifacts_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	# major = yes
+	decision_group_type = artifactdecisions
+	ai_check_interval = 0
+
+	desc = generate_god_artifacts_decision_desc
+	selection_tooltip = generate_god_artifacts_decision_tooltip
+
+	is_shown = { 
+		this = root #only the player
+		OR = { # artifacts do not already exist.
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_jollyroger_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_horse_ring_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_archimedes_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_junocrown_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_asclepius_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_harpesword_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_armourachilles_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_cleopatra_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_illiad_scroll_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_hannibal_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_greekgodshield_modifier
+				}				
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_tally_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_sangrail_modifier
+				}	
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		this = root #only the player
+		# Do not already have the artifacts.
+		OR = { # Do not already have all of the artifacts.
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_jollyroger_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_horse_ring_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_archimedes_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_junocrown_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_asclepius_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_harpesword_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_armourachilles_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_cleopatra_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_illiad_scroll_modifier
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_hannibal_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_greekgodshield_modifier
+				}				
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_tally_modifier
+				}	
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_modifier = artifact_sangrail_modifier
+				}	
+			}
+		}
+	}
+
+	effect = {
+		# Weapon
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_harpesword_modifier
+					}
+				}
+			}
+			artifact_harpe_create_effect = yes
+		}
+		
+		# Armor
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_armourachilles_modifier
+					}
+				}
+			}
+			artifact_achilles_armor_create_effect = {
+				OWNER = root
+			}
+		}		
+		
+		# Regellia
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_asclepius_modifier
+					}
+				}
+			}
+			artifact_asclepius_create_effect = {
+				OWNER = root
+			}
+		}
+		
+		# Crown
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_junocrown_modifier
+					}
+				}
+			}
+			artifact_juno_diadem_create_effect = yes
+		}
+
+		
+		# Brooch
+		
+
+		# diplomacy book
+		# TODO create event that recruits diplomat, one that recruits poet
+		#  and one that clears the write epic cooldown
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_illiad_scroll_modifier
+					}
+				}
+			}
+			artifact_iliad_scroll_create_effect = yes
+		}
+
+		# Learning Book
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_archimedes_modifier
+					}
+				}
+			}
+			artifact_archimedes_book_create_effect = yes
+		}
+		
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_horse_ring_modifier
+					}
+				}
+			}
+			artifact_balius_xanthos_ring_create_effect = yes
+		}
+		
+		
+		# The Jolly Roger Banner
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_jollyroger_modifier
+					}
+				}
+			}
+			artifact_jolly_roger_create_effect = yes
+		}
+
+		# Hannibal's Skull
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_hannibal_modifier
+					}
+				}
+			}
+			artifact_hannibal_create_effect = yes
+		}
+
+		# Cleopatra's Couch
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_cleopatra_modifier
+					}
+				}
+			}
+			artifact_cleopatra_couch_create_effect = yes
+		}
+
+		# Shield of perseus
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_greekgodshield_modifier
+					}
+				}
+			}
+			artifact_perseus_shield_create_effect = {
+				OWNER = root
+			}
+		}
+		# First Tally Stick
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_tally_modifier
+					}
+				}
+			}
+			artifact_tally_create_effect = {
+				OWNER = root
+			}
+		}
+
+		# The Holy Grail
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						has_artifact_modifier = artifact_sangrail_modifier
+					}
+				}
+			}
+			artifact_sangrail_create_effect = {
+				OWNER = root
+			}
+		}		
+
+	}
+} # end generate_god_artifacts_decision
+
+steal_god_artifacts_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	# major = yes
+	decision_group_type = artifactdecisions
+	ai_check_interval = 0
+
+	desc = steal_god_artifacts_decision_desc
+	selection_tooltip = steal_god_artifacts_decision_tooltip
+
+	is_shown = { 
+		this = root #only the player
+		OR = { # artifacts do not already exist.
+			any_artifact = {
+				has_artifact_modifier = artifact_jollyroger_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_horse_ring_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_archimedes_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_junocrown_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}	
+
+			any_artifact = {
+				has_artifact_modifier = artifact_asclepius_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_harpesword_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_armourachilles_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_cleopatra_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}	
+
+			any_artifact = {
+				has_artifact_modifier = artifact_illiad_scroll_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+
+			any_artifact = {
+				has_artifact_modifier = artifact_hannibal_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}	
+
+			any_artifact = {
+				has_artifact_modifier = artifact_greekgodshield_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}				
+			any_artifact = {
+				has_artifact_modifier = artifact_tally_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_sangrail_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+		} # end OR
+	} # end is_shown
+
+	is_valid_showing_failures_only = {
+		this = root #only the player
+		# Do not already have the artifacts.
+		OR = { # Do not already have all of the artifacts.
+			any_artifact = {
+				has_artifact_modifier = artifact_jollyroger_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_horse_ring_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_archimedes_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_junocrown_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_asclepius_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_harpesword_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_armourachilles_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_cleopatra_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_illiad_scroll_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_hannibal_modifier
+				NOT = { artifact_owner = { this = root } }
+			}	
+			any_artifact = {
+				has_artifact_modifier = artifact_greekgodshield_modifier
+				NOT = { artifact_owner = { this = root } }
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_tally_modifier
+				NOT = { artifact_owner = { this = root } }
+			}
+			any_artifact = {
+				has_artifact_modifier = artifact_sangrail_modifier
+				NOT = { 
+					artifact_owner = {
+						this = root
+					}
+				}
+			}	
+		} # end OR
+	} # end is_valid_showing_failures_only
+
+	effect = {
+		# Weapon
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_harpesword_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_harpesword_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		
+		# Armor
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_armourachilles_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_armourachilles_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		
+		# Regellia
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_asclepius_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_asclepius_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		
+		# Crown
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_junocrown_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_junocrown_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_illiad_scroll_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_illiad_scroll_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+
+		# Learning Book
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_archimedes_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_archimedes_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_horse_ring_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_horse_ring_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		# The Jolly Roger Banner
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_jollyroger_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_jollyroger_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		# Hannibal's Skull
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_hannibal_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_hannibal_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		# Cleopatra's Couch
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_cleopatra_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_cleopatra_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		# Shield of perseus
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_greekgodshield_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_greekgodshield_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+		# Original Tally Stick
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_tally_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_tally_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+
+		# Holy Grail
+		if = {
+			limit = {
+				any_artifact = {
+					has_artifact_modifier = artifact_sangrail_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+			}
+			random_artifact = {
+				limit = {
+					has_artifact_modifier = artifact_sangrail_modifier
+					NOT = { artifact_owner = { this = root } }
+				}
+				set_owner = {
+					target = root
+				}
+			}
+		}
+
+	} # end effect
+} # end steal_god_artifacts_decision

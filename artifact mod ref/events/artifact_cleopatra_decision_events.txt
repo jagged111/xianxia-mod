@@ -1,0 +1,113 @@
+﻿namespace = artifact_cleopatra_decision
+
+# Cleopatra's Couch
+artifact_cleopatra_decision.01 = {
+	type = character_event
+	title =artifact_cleopatra_decision.01.title
+	desc = artifact_cleopatra_decision.01.desc
+	
+#	immediate = {
+#		play_music_cue_once = "mx_cue_in_taberna_instrumental"
+#	}
+	theme = court
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	right_portrait = {
+		character = cp:councillor_spymaster
+		animation = reading
+	}
+
+	# Recruit Poet
+#	option = {
+#		name = artifact_iliad_decision.01.a
+#		artifact_iliad_scroll_recruit_poet_effect = yes
+#		ai_chance = { base = 100 } #Doesn't especially matter.
+#	}
+
+	# Make me desirable
+	option = {
+		name = artifact_cleopatra_decision.01.a
+		trigger = {
+			artifact_cleopatra_improve_me_trigger = yes
+		}
+		artifact_cleopatra_improve_me_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}
+
+	# Make me desirable
+	option = {
+		name = artifact_cleopatra_decision.01.b
+		trigger = {
+			artifact_cleopatra_teach_me_trigger = yes
+		}
+		artifact_cleopatra_teach_me_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}
+
+	# Improve Spymaster
+	option = {
+		name = artifact_cleopatra_decision.01.c
+		trigger = {
+			artifact_cleopatra_improve_spymaster_trigger = yes
+		}
+		artifact_cleopatra_improve_spymaster_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.			
+	}
+
+	# Make court loyal
+	option = {
+		name = artifact_cleopatra_decision.01.d
+		artifact_cleopatra_make_court_loyal_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Make vassals loyal
+	option = {
+		name = artifact_cleopatra_decision.01.e
+		artifact_cleopatra_make_vassals_loyal_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Give court secrets
+	option = {
+		name = artifact_cleopatra_decision.01.f
+		artifact_cleopatra_give_court_secrets_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Give vassal secrets
+	option = {
+		name = artifact_cleopatra_decision.01.g
+		artifact_cleopatra_give_vassal_secrets_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Give me some secrets
+	option = {
+		name = artifact_cleopatra_decision.01.h
+		artifact_cleopatra_give_me_some_secrets_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Remove court rivalries
+	option = {
+		name = artifact_cleopatra_decision.01.i
+		artifact_cleopatra_remove_court_rivalries_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+	# Remove hooks
+	option = {
+		name = artifact_cleopatra_decision.01.j
+		artifact_cleopatra_remove_hooks_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+}
+

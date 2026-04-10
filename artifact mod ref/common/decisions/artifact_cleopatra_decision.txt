@@ -1,0 +1,35 @@
+﻿###	Illiad and Odysey Artifact
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+
+artifact_use_cleopatra_couch_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
+	decision_group_type = artifactdecisions
+	ai_check_interval = 0
+
+	desc = artifact_use_cleopatra_couch_decision_desc
+	selection_tooltip = artifact_use_cleopatra_couch_decision_tooltip
+
+	is_shown = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_cleopatra_modifier
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_cleopatra_modifier
+		}
+	}
+
+	effect = {
+		custom_tooltip = artifact_use_cleopatra_couch_decision_tooltip
+		hidden_effect = {
+			save_scope_as = the_artifact_user
+
+			trigger_event = { id = artifact_cleopatra_decision.01 }			
+		}
+
+	}
+}

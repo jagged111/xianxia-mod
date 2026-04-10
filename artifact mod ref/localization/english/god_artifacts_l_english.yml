@@ -1,0 +1,18 @@
+﻿l_english:
+
+generate_god_artifacts_decision: "Rummage in the Attic"
+generate_god_artifacts_decision_desc: "Rummaging in the attic, you find several old artifacts once owned by your family."
+generate_god_artifacts_decision_tooltip: "Rummage in the Attic"
+generate_god_artifacts_decision_confirm: "Rummage in the Attic"
+
+steal_god_artifacts_decision: "Reclaim my Artifacts"
+steal_god_artifacts_decision_desc: "I reclaim my special artifacts."
+steal_god_artifacts_decision_tooltip: "Reclaim Artifacts"
+steal_god_artifacts_decision_confirm: "Reclaim Artifacts"
+
+# There are no localizations for these things, but they do not work.
+# All of the requirements should be replaced with hidden conditions.
+any_character_artifact: "Any of your artifacts"
+has_artifact_modifier: "has the modifier"
+
+decision_group_type_artifactdecisions: "Artifact Decisions"

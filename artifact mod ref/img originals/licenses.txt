@@ -1,0 +1,9 @@
+Description: Skull (pirate-jack-rackham.svg)
+Source: https://en.wikipedia.org/wiki/Jolly_Roger#/media/File:Pirate_Flag_of_Jack_Rackham.svg
+Author: Unknown
+License:  CC0 (Public Domain)
+
+Description: Medusa Head (Blason_ville_be_Ferrières_(Belgique).svg)
+Source: https://commons.wikimedia.org/wiki/File:Blason_ville_be_Ferri%C3%A8res_(Belgique).svg
+Author: Tretinville
+License: CC BY-SA 3.0

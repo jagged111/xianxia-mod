@@ -1,0 +1,408 @@
+﻿#### Perseus Shield (Dynasty Artifact)
+# Add dynasty fame
+# Make potential friends of dynasty memebers
+# Mitigate stress for all dynasty members (stop death cascade)
+# Add loyalty hooks to dynasty members
+# Remove rivalries between all dynasty members
+# Claim all dynasty children into dynasty (watch out for bastard-founders)
+# Legitimize all bastards
+# Claim nice artifacts (all purple and blue, not owned by dynasty members)
+
+artifact_perseus_shield_create_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	
+	custom_tooltip = artifact_perseus_shield_create_effect_tooltip
+
+	hidden_effect = {
+		random_county_in_region = {
+			region = world_europe_south_east
+			random_county_province = {
+				save_scope_as = perseus_found_here
+			}
+		}
+	} # end hidden_effect
+
+	hidden_effect_new_object = {
+		scope:owner = {
+			create_artifact = {
+				name = perseus_shield_artifact_name
+				description = perseus_shield_artifact_desc
+				
+				rarity = illustrious
+		
+				visuals = wall_shield
+				visuals_source = title:k_mountolympus
+				type = wall_shield
+				template = artifact_perseus_template
+
+				quality = 1000
+				wealth = 1000
+			
+				history = {
+					location = scope:perseus_found_here
+					actor = scope:owner
+					recipient = scope:owner
+					type = discovered
+				}
+
+				modifier = artifact_court_grandeur_baseline_add_6_modifier
+				modifier = artifact_greekgodshield_modifier
+				save_scope_as = newly_created_artifact
+				decaying = no
+			} # end create_artifact
+		} # end scope:owner
+	} # end hidden_effect_new_object
+} # end artifact_perseus_shield_create_effect
+
+# Adds a little dynasty fame
+artifact_perseus_add_dyn_fame_effect = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			add_dynasty_prestige = 1500
+		}
+	}
+} # end artifact_perseus_add_dyn_fame_effect
+
+# Make potential friends
+artifact_perseus_make_dyn_friends_effect = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			every_dynasty_member = {
+				limit = { NOT = { this = scope:the_artifact_user } } # not me
+				
+				save_temporary_scope_as = dude
+
+				if = {
+					limit = { has_relation_rival = scope:the_artifact_user }
+					remove_relation_rival = scope:the_artifact_user
+				}
+				if = {
+					limit = { has_relation_potential_rival = scope:the_artifact_user }
+					remove_relation_potential_rival = scope:the_artifact_user
+				}				
+	
+				if = {
+					limit = { 
+						NOT = { has_relation_potential_friend = scope:the_artifact_user }
+						NOT = { has_relation_best_friend = scope:the_artifact_user }
+						NOT = { has_relation_friend = scope:the_artifact_user }
+						NOT = { has_relation_nemesis = scope:the_artifact_user }
+					}
+					set_relation_potential_friend = scope:the_artifact_user
+				}
+			} # end every_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_make_dyn_friends_effect
+
+# Mitigate stress for all dynasty members (stop death cascade)
+artifact_perseus_dyn_stress_relief_effect = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			every_dynasty_member = {
+				limit = { NOT = { this = scope:the_artifact_user } } # not me
+				
+				save_temporary_scope_as = dude
+
+				# -25% stress gain
+				if = {
+					limit = { 
+						NOT = { has_character_modifier = feast_scholarly_confidence_modifier } 
+					}
+					add_character_modifier = {
+						modifier = feast_scholarly_confidence_modifier
+						years = 1
+					}
+				}				
+
+				# -25% stress gain
+				if = {
+					limit = { 
+						NOT = { has_character_modifier = feast_gratifying_complaints_modifier } 
+					}
+					add_character_modifier = {
+						modifier = feast_gratifying_complaints_modifier
+						years = 1
+					}
+				}
+
+				# -50% stress gain
+				if = {
+					limit = { 
+						NOT = { has_character_modifier = feast_life_reaffirmed_modifier } 
+					}
+					add_character_modifier = {
+						modifier = feast_life_reaffirmed_modifier
+						years = 1
+					}
+				}
+
+				# -20% stress gain
+				if = {
+					limit = { 
+						NOT = { has_character_modifier = feast_raucous_entertainment_modifier } 
+					}
+					add_character_modifier = {
+						modifier = feast_raucous_entertainment_modifier
+						years = 1
+					}
+				}
+
+				# -25% stress gain
+				if = {
+					limit = { 
+						NOT = { has_character_modifier = feast_livestock_at_feast_modifier } 
+					}
+					add_character_modifier = {
+						modifier = feast_livestock_at_feast_modifier
+						years = 1
+					}
+				}				
+
+			} # end every_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_dyn_stress_relief_effect
+
+# adds loyalty hooks to all dynasty members
+artifact_perseus_dyn_make_loyal_effect = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			every_dynasty_member = {
+				limit = { NOT = { this = scope:the_artifact_user } } # not me
+				save_temporary_scope_as = dude
+				
+				scope:the_artifact_user = {
+					if = {
+						limit = {
+							NOT = { 
+								has_hook_of_type = {
+									target = scope:dude
+									type = loyalty_hook
+								}
+							}
+							can_add_hook = {
+								target = scope:dude
+								type = loyalty_hook
+							}
+						} # end limit
+						add_hook = {
+							type = loyalty_hook
+							target = scope:dude
+						}
+					} # fi
+				} # end scope:the_artifact_user
+			} # end every_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_dyn_make_loyal_effect
+
+# Remove rivalries between all dynasty members
+artifact_perseus_dyn_remove_rivalries_effect = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			ordered_dynasty_member = {
+				order_by = age
+
+				save_scope_as = dude1
+
+				this.dynasty = {
+					ordered_dynasty_member = {
+						order_by = age
+						min = scope:dude1.age
+						
+						if = {
+							limit = { has_relation_potential_rival = scope:dude1 }
+							remove_relation_potential_rival = scope:dude1
+						}
+						if = {
+							limit = { has_relation_rival = scope:dude1 }
+							remove_relation_rival = scope:dude1
+						}
+						if = {
+							limit = { 
+								NOT = { has_relation_potential_friend = scope:dude1 }
+								NOT = { has_relation_best_friend = scope:dude1 }
+								NOT = { has_relation_friend = scope:dude1 }
+							}
+							set_relation_potential_friend = scope:dude1
+						}
+					}
+				} # end this.dynasty
+			} # end ordered_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_dyn_remove_rivalries_effect
+
+# Claim all dynasty children into dynasty (watch out for bastard-founders)
+# Claim all dynasty children into dynasty (watch out for bastard-founders)
+artifact_perseus_dyn_claim_children_effect = {
+	custom_tooltip = artifact_perseus_dyn_claim_children_effect_tooltip
+
+	scope:the_artifact_user = {
+		this.dynasty = {
+			every_dynasty_member = {
+				save_temporary_scope_as = dude
+
+				## Put children in my house, if they are not in my dynasty
+				every_child = { 
+					limit = {
+						NOT = { dynasty = scope:dude.dynasty } # prevents messing up branch houses
+						NOT = { has_trait = bastard_founder } # TODO if you have a bastard founder, you should un-bastard him/her first, and then make a new house for him/her that is part of the dynasty.
+					}
+					# TODO make this chime
+					save_scope_as = the_joiner # for the message
+					this.house = {
+						save_temporary_scope_as = old_house
+					}
+					this.dynasty = {
+						save_temporary_scope_as = old_dynasty
+					}
+
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = perseus_join_dynasty_msg
+							title = msg_artifact_perseus_join_dynasty_title
+							desc = msg_artifact_perseus_join_dynasty_desc
+							left_icon = scope:dude
+							right_icon = scope:the_joiner
+
+							scope:the_joiner = {
+								set_house = scope:dude.house
+							}
+						}
+					} # end scope:the_artifact_user
+				} # end every_child
+			} # end every_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_dyn_claim_children
+
+# Legitimize all bastards - legitimizes, but disinherits all bastards.
+artifact_perseus_dyn_claim_bastards_effect = {
+	#custom_tooltip = artifact_perseus_dyn_claim_children_effect_tooltip
+
+	scope:the_artifact_user = {
+		this.dynasty = {
+			every_dynasty_member = {
+				limit = {
+					has_trait = bastard
+				}
+				remove_trait = bastard
+				add_trait = legitimized_bastard
+				add_trait = disinherited
+				#TODO see if there is a way to make it so you reveal secrets, setting real fathers to fathers.
+			} #end every_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_dyn_claim_bastards_effect
+
+# Go through dynasty members and if they have real fathers, set them to fathers and reveal
+artifact_perseus_dyn_clear_weeds_effect = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			every_dynasty_member = {
+				if = {
+					limit = {
+						NOT = { this.father = this.real_father }
+					}
+					#this.mother = { 
+					#	expose_lover_secret_or_run_consequence_effect = {
+					#		TARGET = this.real_father
+					#		EXPOSER = this.real_father
+					#	}
+					#}
+
+					# We will now remove the child from the old father's house
+					# If house came from mom, do nothing
+					# else if mom is in our dynasty, then child gets mom's house
+					# else if real dad is in our dynasty, get dad's house
+					# else if mom has a house, take mom's house
+					# else if real dad has a house, take real dad's house
+					# else create new house and dynasty for brat, and make bastard founder ... or just set to lowborn
+					if = { # if house came from mom, do nothing.
+						limit = { 
+							exists = this.mother.house
+							this.house = this.mother.house
+						}
+						# do nothing
+					}
+					else_if = { # if mom is in our dynasty, get that dynasty.
+						limit = { 
+							exists = this.mother.house
+							this.mother.dynasty = scope:the_artifact_user.dynasty 
+						}
+						set_house = this.mother.house
+					}
+					else_if = { # else if real dad is in our dynasty, get dad's house
+						limit = {
+							exists = this.real_father.house
+							this.real_father.dynasty = scope:the_artifact_user.dynasty
+						}
+						set_house = this.real_father.house
+					}
+					else_if = { # else if mom has a house, take mom's house
+						limit = {
+							exists = this.mother.house
+						}
+						set_house = this.mother.house
+					}
+					else_if = { # else if real dad has a house, take real dad's house
+						limit = {
+							exists = this.real_father.house
+						}
+						set_house = this.real_father.house
+					}
+					else = {
+						# else create new house and dynasty for brat, and make bastard founder
+						# or just set to lowborn
+						set_to_lowborn = yes
+					}
+
+					set_father = this.real_father
+						
+					remove_inherited_descendent_traits_effect = yes					
+				} # fi
+			} #end every_dynasty_member
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # end artifact_perseus_dyn_clear_weeds_effect
+
+# Claim nice artifacts (all purple and blue, and all relics, not owned by dynasty members)
+artifact_perseus_claim_artifacts_effect = {
+	## iterate over all artifacts
+	every_artifact = {
+		## how nice is it?  Is it owned by family?
+		limit = { 
+			artifact_rarity > 3
+			NOT = { 
+				artifact_owner = {
+					dynasty = scope:the_artifact_user.dynasty 
+				}
+			}
+		}
+		save_scope_as = this_artifact
+
+		scope:the_artifact_user = {
+			if = {
+				limit = { NOT = { has_artifact_claim = scope:this_artifact } }
+				add_personal_artifact_claim = scope:this_artifact
+				#add_house_artifact_claim = scope:this_artifact
+			} # fi
+		} # end scope:the_artifact_user
+	} # end every_artifact
+} # end artifact_perseus_claim_artifacts_effect
+
+artifact_perseus_reset_runestone_cooldown_effect = {
+	scope:the_artifact_user = {
+		if = {
+			limit = { is_decision_on_cooldown = raise_stele_decision }
+			remove_decision_cooldown = raise_stele_decision
+		}
+	
+		else_if = {
+			limit = { is_decision_on_cooldown = raise_runestone_decision }
+			remove_decision_cooldown = raise_runestone_decision
+		}
+	}
+} # end artifact_perseus_reset_runestone_cooldown_effect

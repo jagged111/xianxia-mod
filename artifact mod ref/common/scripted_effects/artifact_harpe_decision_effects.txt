@@ -1,0 +1,28 @@
+﻿artifact_harpe_create_effect = {
+	create_artifact = {
+		name = artifact_harpe_name
+		description = artifact_harpe_desc
+		
+		rarity = illustrious
+		
+		type = sword
+		
+		modifier = artifact_monthly_prestige_8_modifier
+		modifier = artifact_harpesword_modifier
+		
+		visuals = sword
+
+		history = {
+			location = root.capital_province
+			actor = root
+			recipient = root
+			type = created
+		}
+		quality = 100
+		wealth = 100
+
+		decaying = no
+		
+		save_scope_as = newly_created_artifact
+	}
+}

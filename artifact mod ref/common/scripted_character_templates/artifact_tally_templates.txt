@@ -1,0 +1,139 @@
+﻿# needs scope:the_recruit_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_tally_seneschal = {
+	age = { 16 18 }
+
+	gender_female_chance = 75
+
+	culture = scope:the_recruit_culture
+	faith = scope:the_artifact_user.faith
+
+	#good seneschal traits
+	trait = education_stewardship_4
+	trait = administrator
+	trait = overseer
+
+	trait = loyal
+	trait = content
+
+	trait = administrative_court_2
+
+	trait = just
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		#intellect_good_1 = {}
+		#intellect_good_2 = {}
+		intellect_good_3 = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		#just = {}
+		poet = {}
+		journaller = {}
+		gregarious = {}
+		diplomat = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 5 10 }
+	intrigue = { 0 10 }
+	stewardship = { 15 25 }
+	learning = { 5 10 }
+	prowess = { 5 15 }
+
+	after_creation = {
+
+		# Learn a bunch of languages
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_arabic
+				}
+			}
+			learn_language = language_arabic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 20
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 50
+			add_trait = dwarf
+			add_trait = intellect_good_2
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = { 0 75 }
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_juno_musician

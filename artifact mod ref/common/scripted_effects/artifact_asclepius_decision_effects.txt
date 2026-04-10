@@ -1,0 +1,1257 @@
+﻿artifact_asclepius_create_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	
+	hidden_effect = {
+		random_county_in_region = {
+			region = world_europe_south_east
+			random_county_province = {
+				save_scope_as = artifact_found_here
+			}
+		}
+	} # end hidden_effect
+	
+	hidden_effect_new_object = {
+		scope:owner = {
+			save_scope_value_as = {
+				name = wealth
+				value = 500
+			}
+			save_scope_value_as = {
+				name = quality
+				value = 500
+			}
+			create_artifact = {
+				name = artifact_asclepius_name
+				description = artifact_asclepius_desc
+
+				rarity = illustrious
+				
+				type = regalia
+				
+				# big health, fertility, etc boosts
+				
+				visuals = regalia
+		
+				template = artifact_asclepius_template
+		
+				modifier = artifact_monthly_prestige_8_modifier
+				modifier = artifact_asclepius_modifier
+		
+				quality = scope:quality
+				wealth = scope:wealth
+		
+				history = {
+					location = scope:artifact_found_here
+					actor = scope:owner
+					recipient = scope:owner
+					type = discovered
+				}
+
+				decaying = no
+				save_scope_as = newly_created_artifact
+			} # end create_artifact
+		} # end scope:owner
+		scope:newly_created_artifact = {
+			set_variable = {
+				name = quality
+				value = scope:quality
+			}
+			set_variable = {
+				name = wealth
+				value = scope:wealth
+			}
+			get_artifact_feature_references_effect = yes
+		}
+
+	} # end hidden_effect_new_object
+} # end artifact_asclepius_create_effect
+
+
+# Recruit Doctor
+artifact_asclepius_recruit_doctor_effect = {
+
+	custom_tooltip = artifact_asclepius_recruit_doctor_effect_tooltip
+
+	hidden_effect = {
+		# Grab a culture for the doctor
+		#	This should favor close cultures, cultures with compassion, and cultures
+		#	with herbalists
+		scope:the_artifact_user = {
+			every_sub_realm_county = {
+				this.culture = {
+					add_to_list = nearby_cultures	
+				}
+				
+			}
+			every_character_to_title_neighboring_and_across_water_county = {
+				this.culture = {
+					add_to_list = nearby_cultures
+				}
+			}
+		} # end scope:the_artifact_user
+		every_culture_global = {
+			limit = {
+				OR = {
+					has_cultural_parameter = herbalist_traits_more_common
+					has_cultural_parameter = compassionate_trait_more_common
+				}
+			}
+			add_to_list = nearby_cultures
+		}
+
+		random_in_list = {
+			list = nearby_cultures
+			save_scope_as = the_doctor_culture
+		}
+		# clear the list
+		clear_variable_list = nearby_cultures
+		
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_asclepius_doctor
+			save_scope_as = the_doctor
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_doctor = {
+			#make my friend
+			set_relation_friend = scope:the_artifact_user
+		}		
+	} #end hidden_effect
+
+	# send a toast
+	scope:the_artifact_user = {
+		send_interface_toast = {
+			type = character_arrived
+			title = msg_artifact_asclepius_recruited_doctor_title
+			desc = msg_artifact_asclepius_recruited_doctor_desc
+			left_icon = scope:the_doctor
+		}
+	}
+}
+
+# Recruit Wet Nurse
+artifact_asclepius_recruit_wetnurse_effect = {
+
+	custom_tooltip = artifact_asclepius_recruit_wetnurse_effect_tooltip
+
+	hidden_effect = {
+		# Grab a culture for the wet nurse
+		#	This should favor close cultures, cultures with compassion, and cultures
+		#	with herbalists
+		scope:the_artifact_user = {
+			every_sub_realm_county = {
+				this.culture = {
+					add_to_list = nearby_cultures	
+				}
+				
+			}
+			every_character_to_title_neighboring_and_across_water_county = {
+				this.culture = {
+					add_to_list = nearby_cultures
+				}
+			}
+		} # end scope:the_artifact_user
+		every_culture_global = {
+			limit = {
+				OR = {
+					has_cultural_parameter = herbalist_traits_more_common
+					has_cultural_parameter = compassionate_trait_more_common
+				}
+			}
+			add_to_list = nearby_cultures
+		}
+
+		random_in_list = {
+			list = nearby_cultures
+			save_scope_as = the_wetnurse_culture
+		}
+		# clear the list
+		clear_variable_list = nearby_cultures
+		
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_asclepius_wetnurse
+			save_scope_as = the_wetnurse
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_wetnurse = {
+			#make my friend
+			set_relation_friend = scope:the_artifact_user
+		}		
+	} #end hidden_effect
+
+	# send a toast
+	scope:the_artifact_user = {
+		send_interface_toast = {
+			type = character_arrived
+			title = msg_artifact_asclepius_recruited_wetnurse_title
+			desc = msg_artifact_asclepius_recruited_wetnurse_desc
+			left_icon = scope:the_wetnurse
+		}
+	}
+}
+
+# Make pure blooded / remove some bad genes
+# Should only be availible if you have one of the bad genes, or do not have pure blood.
+artifact_asclepius_fix_genes_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			10 = {
+				trigger = { has_trait = clubfooted }
+				remove_trait = clubfooted
+			}
+			10 = {
+				trigger = { has_trait = hunchbacked }
+				remove_trait = hunchbacked
+			}
+			10 = {
+				trigger = { has_trait = lisping }
+				remove_trait = lisping
+			}
+			10 = {
+				trigger = { has_trait = stuttering }
+				remove_trait = stuttering
+			}
+			# dwarf and giant are okay
+			10 = {
+				trigger = { has_trait = inbred }
+				remove_trait = inbred
+			}
+			10 = {
+				trigger = { has_trait = spindly }
+				remove_trait = spindly
+			}
+			#albino and scaly are okay
+			10 = {
+				trigger = { has_trait = wheezing }
+				remove_trait = wheezing
+			}
+			10 = {
+				trigger = { has_trait = bleeder }
+				remove_trait = bleeder
+			}
+			10 = {
+				trigger = {
+					NOT = {
+						OR = {
+							has_trait = clubfooted
+							has_trait = hunchbacked
+							has_trait = lisping
+							has_trait = stuttering
+							has_trait = inbred
+							has_trait = spindly
+							has_trait = wheezing
+							has_trait = bleeder
+						}
+					}
+				}
+				add_trait = pure_blooded
+			}
+		}
+	}
+}
+
+
+# Adds one level of good physique
+artifact_asclepius_pump_me_up_effect = {
+	scope:the_artifact_user = {
+		if = {
+			limit = { has_trait = weak }
+			remove_trait = weak
+		}
+		else_if = {
+			limit = { has_trait = physique_bad_1 }
+			remove_trait = physique_bad_1
+		}
+		else_if = {
+			limit = { has_trait = physique_bad_2 }
+			add_trait_force_tooltip = physique_bad_1
+			remove_trait = physique_bad_2
+			add_trait = physique_bad_1
+		}
+		else_if = {
+			limit = { has_trait = physique_bad_3 }
+			add_trait_force_tooltip = physique_bad_2
+			remove_trait = physique_bad_3
+			add_trait = physique_bad_2
+		}		
+		else_if = {
+			limit = { has_trait = physique_good_1 }
+			add_trait_force_tooltip = physique_good_2
+			hidden_effect = { remove_trait = physique_good_1 }
+			add_trait = physique_good_2
+		}
+		else_if = {
+			limit = { has_trait = physique_good_2 }
+			add_trait_force_tooltip =  physique_good_3
+			hidden_effect = { remove_trait = physique_good_2 }
+			add_trait = physique_good_3
+		}
+		else_if = {
+			# If you have both physique_good_3 and strong, 
+			#  the event should not show up at all.
+			limit = { 
+				has_trait = physique_good_3
+				NOT = { has_trait = strong } 
+			}
+			add_trait = strong
+		}
+		else = {
+			add_trait = physique_good_1
+		}
+	}
+}
+
+# add fecund (little blue pill)
+artifact_asclepius_like_rabbits_effect = {
+	scope:the_artifact_user = {
+		if = {
+			limit = { has_trait = infertile }
+			remove_trait = infertile
+		}
+		else_if = {
+			limit = { has_trait = impotent }
+			remove_trait = impotent
+		}
+		else_if = {
+			limit = { has_trait = eunuch_1 }
+			remove_trait = eunuch_1
+		}
+		else_if = {
+			limit = { has_trait = beardless_eunuch }
+			remove_trait = beardless_eunuch
+		}
+		else = {
+			add_trait = fecund
+		}
+	}
+}
+
+# take prozac (happy pills)
+artifact_asclepius_take_prozac_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			10 = {
+				trigger = { has_trait = drunkard }
+				remove_trait = drunkard
+			}
+			10 = {
+				trigger = { has_trait = hashishiyah }
+				remove_trait = hashishiyah
+			}
+			10 = {
+				trigger = { has_trait = rakish }
+				remove_trait = rakish
+			}
+			10 = {
+				trigger = { has_trait = reclusive }
+				remove_trait = reclusive
+			}
+			10 = {
+				trigger = { has_trait = irritable }
+				remove_trait = irritable
+			}
+			10 = {
+				trigger = { has_trait = flagellant }
+				remove_trait = flagellant
+			}
+			10 = {
+				trigger = { has_trait = profligate }
+				remove_trait = profligate
+			}
+			10 = {
+				trigger = { has_trait = improvident }
+				remove_trait = improvident
+			}
+			10 = {
+				trigger = { has_trait = contrite }
+				remove_trait = contrite
+			}
+			10 = {
+				trigger = { has_trait = comfort_eater }
+				remove_trait = comfort_eater
+			}
+			10 = {
+				trigger = { has_trait = inappetetic }
+				remove_trait = inappetetic
+			}			
+			10 = {
+				trigger = { has_trait = depressed_1 }
+				remove_trait = depressed_1
+			}
+			10 = {
+				trigger = { has_trait = depressed_genetic }
+				remove_trait = depressed_genetic
+			}
+			10 = {
+				trigger = { has_trait = lunatic_1 }
+				remove_trait = lunatic_1
+			}
+			10 = {
+				trigger = { has_trait = lunatic_genetic }
+				remove_trait = lunatic_genetic
+			}
+			10 = {
+				trigger = { has_trait = possessed_1 }
+				remove_trait = possessed_1
+			}
+			10 = {
+				trigger = { has_trait = possessed_genetic }
+				remove_trait = possessed_genetic
+			}
+			# Healty ways to deal with stress
+			# Journaller, confider, and athletic are okay
+			10 = {
+				trigger = { NOT = { has_trait = journaller }}
+				add_trait = journaller
+			}
+			10 = {
+				trigger = { NOT = { has_trait = athletic }}
+				add_trait = athletic
+			}
+			10 = {
+				trigger = { NOT = { has_trait = confider }}
+				add_trait = confider
+			}
+
+			10 = {
+				trigger = { stress > 50 }
+				add_stress = -50
+			}
+		}
+	}
+}
+
+artifact_asclepius_heal_me_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			10 = {
+				trigger = { has_trait = pneumonic }
+				recover_from_disease_effect = { DISEASE = pneumonic }
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = pneumonic
+			}
+			10 = {
+				trigger = { has_trait = great_pox }
+				recover_from_disease_effect = { DISEASE = great_pox } #Removes the trait, sends event "health.2202" to those who care & sexual partners
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = great_pox
+			}
+			10 = {
+				trigger = { has_trait = early_great_pox }
+				remove_trait = early_great_pox
+			}
+			10 = {
+				trigger = { has_trait = lovers_pox }
+				remove_trait = lovers_pox
+			}
+			10 = {
+				trigger = { has_trait = leper }
+				remove_trait = leper
+			}
+			10 = {
+				trigger = { has_trait = wounded_1 }
+				remove_trait = wounded_1
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = wounded_2 }
+				remove_trait = wounded_2
+				add_trait = wounded_1
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = wounded_3 }
+				remove_trait = wounded_3
+				add_trait = wounded_2
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = maimed }
+				remove_trait = maimed
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = one_eyed }
+				remove_trait = one_eyed
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = one_legged }
+				remove_trait = one_legged
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = disfigured }
+				remove_trait = disfigured
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = infirm }
+				remove_trait = infirm
+			}
+			10 = {
+				trigger = { has_trait = incapable }
+				remove_trait = incapable
+				if = {
+					limit = { NOT = { has_trait = scarred }}
+					add_trait = scarred
+				}
+				add_trait_xp = {
+					trait = scarred
+					track = scarred
+					value = 25
+				}
+			}
+			10 = {
+				trigger = { has_trait = gout_ridden }
+				recover_from_disease_effect = { DISEASE = gout_ridden } #Removes the trait, sends event "health.2202" to those who care
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = gout_ridden
+				}
+			10 = {
+				trigger = { has_trait = consumption }
+				remove_trait = consumption
+			}
+			10 = {
+				trigger = { has_trait = cancer }
+				recover_from_disease_effect = { DISEASE = cancer } #Removes the trait, sends event "health.2202" to those who care
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = cancer
+			}
+			10 = {
+				trigger = { has_trait = typhus }
+				recover_from_disease_effect = { DISEASE = typhus } #Removes the trait, sends event "health.2202" to those who care
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = typhus
+			}
+			10 = {
+				trigger = { has_trait = bubonic_plague }
+				recover_from_disease_effect = { DISEASE = bubonic_plague } #Removes the trait, sends event "health.2202" to those who care & liege/host/imprisoner, adds immunity flag
+				remove_disease_treatment_effect = yes
+				if = {
+					limit = { is_ai = no }
+					add_achievement_global_variable_effect = {
+						VARIABLE = ce1_not_today_achievement_unlocked
+						VALUE = yes
+					}
+				}
+				remove_trait_force_tooltip = bubonic_plague
+			}
+			10 = {
+				trigger = { has_trait = smallpox }
+				recover_from_disease_effect = { DISEASE = smallpox } #Removes the trait, sends event "health.2202" to those who care & liege/host/imprisoner, adds immunity flag
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = smallpox
+			}
+			10 = {
+				trigger = { has_trait = measles }
+				recover_from_disease_effect = { DISEASE = measles } #Removes the trait, sends event "health.2202" to those who care & liege/host/imprisoner, adds immunity flag
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = measles
+			}
+			10 = {
+				trigger = { has_trait = dysentery }
+				recover_from_disease_effect = { DISEASE = dysentery } #Removes the trait, sends event "health.2202" to those who care & liege/host/imprisoner, adds immunity flag
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = dysentery
+			}
+			10 = {
+				trigger = { has_trait = ergotism }
+				recover_from_disease_effect = { DISEASE = ergotism } #Removes the trait, sends event "health.2202" to those who care & liege/host/imprisoner, adds immunity flag
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = ergotism
+			}
+
+			10 = {
+				trigger = { has_trait = sickly }
+				remove_trait = sickly
+			}
+			10 = {
+				trigger = { has_trait = blind }
+				remove_trait = blind
+				add_trait = one_eyed
+			}
+			10 = {
+				trigger = { has_trait = ill }
+				recover_from_disease_effect = { DISEASE = ill } #Removes the trait, sends event "health.2202" to those who care
+				remove_disease_treatment_effect = yes
+				remove_trait_force_tooltip = ill
+			}
+		}
+	}
+}
+
+artifact_asclepius_heal_court_effect = {
+	scope:the_artifact_user = {
+		every_courtier_or_guest = {
+			save_scope_as = the_patient
+			# Always remove stds
+			if = {
+				limit = { has_trait = great_pox }
+				
+				scope:the_artifact_user = {
+					send_interface_toast = {
+						type = event_court_physician_good
+						title = msg_artifact_asclepius_healed_title
+						desc = msg_artifact_asclepius_healed_desc
+						left_icon = scope:the_patient
+
+						scope:the_patient = {
+							remove_trait = great_pox
+						}
+					}
+				}
+			}
+			if = {
+				limit = { has_trait = early_great_pox }
+				scope:the_artifact_user = {
+					send_interface_toast = {
+						type = event_court_physician_good
+						title = msg_artifact_asclepius_healed_title
+						desc = msg_artifact_asclepius_healed_desc
+						left_icon = scope:the_patient
+
+						scope:the_patient = {
+							remove_trait = early_great_pox
+						}
+					}
+				}
+			}
+			if = {
+				limit = { has_trait = lovers_pox }
+				scope:the_artifact_user = {
+					send_interface_toast = {
+						type = event_court_physician_good
+						title = msg_artifact_asclepius_healed_title
+						desc = msg_artifact_asclepius_healed_desc
+						left_icon = scope:the_patient
+
+						scope:the_patient = {
+							remove_trait = lovers_pox
+						}
+					}
+				}
+			}
+			if = {
+				limit = { has_trait = leper }
+				scope:the_artifact_user = {
+					send_interface_toast = {
+						type = event_court_physician_good
+						title = msg_artifact_asclepius_healed_title
+						desc = msg_artifact_asclepius_healed_desc
+						left_icon = scope:the_patient
+
+						scope:the_patient = {
+							recover_from_disease_effect = { DISEASE = leper } 
+							remove_disease_treatment_effect = yes
+						}
+					}
+				}
+			}
+
+
+			random_list = {
+				10 = {
+					trigger = { has_trait = pneumonic }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = pneumonic
+							}
+						}
+					}					
+				}
+
+				10 = {
+					trigger = { has_trait = measles }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = measles
+							}
+						}
+					}					
+				}
+				10 = {
+					trigger = { has_trait = dysentery }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = dysentery
+							}
+						}
+					}					
+				}
+				10 = {
+					trigger = { has_trait = ergotism }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = ergotism
+							}
+						}
+					}					
+				}
+
+				10 = {
+					trigger = { has_trait = wounded_1 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = wounded_1
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}						
+					
+				}
+				10 = {
+					trigger = { has_trait = wounded_2 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = wounded_2
+								add_trait = wounded_1
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}	
+
+				}
+				10 = {
+					trigger = { has_trait = wounded_3 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = wounded_3
+								add_trait = wounded_2
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}	
+					
+				}
+				10 = {
+					trigger = { has_trait = maimed }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = maimed
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = one_eyed }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = one_eyed
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = one_legged }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = one_legged
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = disfigured }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = disfigured
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = infirm }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = infirm
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = incapable }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = incapable
+								if = {
+									limit = { NOT = { has_trait = scarred }}
+									add_trait = scarred
+								}
+								add_trait_xp = {
+									trait = scarred
+									track = scarred
+									value = 25
+								}
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = gout_ridden }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = gout_ridden
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = consumption }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = consumption
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = cancer }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								recover_from_disease_effect = { DISEASE = cancer } 
+								remove_disease_treatment_effect = yes							
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = typhus }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								recover_from_disease_effect = { DISEASE = typhus } 
+								remove_disease_treatment_effect = yes							
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = bubonic_plague }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								recover_from_disease_effect = { DISEASE = bubonic_plague } 
+								remove_disease_treatment_effect = yes							
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = smallpox }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								recover_from_disease_effect = { DISEASE = smallpox } 
+								remove_disease_treatment_effect = yes							
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = sickly }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = sickly
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = blind }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+	
+							scope:the_patient = {
+								remove_trait = blind
+							}
+						}
+					}						
+				}
+				10 = {
+					trigger = { has_trait = ill }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							type = event_court_physician_good
+							title = msg_artifact_asclepius_healed_title
+							desc = msg_artifact_asclepius_healed_desc
+							left_icon = scope:the_patient
+
+							scope:the_patient = {
+								remove_trait = ill
+							}
+						}
+					}						
+				}
+			}
+		}
+	}
+}
+
+# Just remove all stds, without doing the "remove one" thing
+artifact_asclepius_heal_stds_effect = {
+	# Instead of running this on and on, build a list... and include
+	#  consorts of lovers on it.
+	scope:the_artifact_user = {
+		every_consort = {
+			add_to_list = peeps_to_heal
+		}
+		every_relation = {
+			type = lover
+			add_to_list = peeps_to_heal
+
+			every_consort = {  #all your lover's consorts
+				limit = {
+					NOT = { this = scope:the_artifact_user }
+				}
+				add_to_list = peeps_to_heal
+			}
+		}
+		every_relation = {
+			type = soulmate
+			add_to_list = peeps_to_heal
+
+			every_consort = {  #all your lover's consorts
+				limit = {
+					NOT = { this = scope:the_artifact_user }
+				}
+				add_to_list = peeps_to_heal
+			}
+		}
+	}
+
+	every_in_list = {
+		list = peeps_to_heal
+		save_scope_as = the_patient
+		if = {
+			limit = { has_trait = great_pox }
+			scope:the_artifact_user = {
+				send_interface_toast = {
+					type = event_court_physician_good
+					title = msg_artifact_asclepius_healed_title
+					desc = msg_artifact_asclepius_healed_desc
+					left_icon = scope:the_patient
+
+					scope:the_patient = {
+						remove_trait = great_pox
+					}
+				}
+			}					
+		}
+		if = {
+			limit = { has_trait = early_great_pox }
+			scope:the_artifact_user = {
+				send_interface_toast = {
+					type = event_court_physician_good
+					title = msg_artifact_asclepius_healed_title
+					desc = msg_artifact_asclepius_healed_desc
+					left_icon = scope:the_patient
+
+					scope:the_patient = {
+						remove_trait = early_great_pox
+					}
+				}
+			}				
+		}
+		if = {
+			limit = { has_trait = lovers_pox }
+			scope:the_artifact_user = {
+				send_interface_toast = {
+					type = event_court_physician_good
+					title = msg_artifact_asclepius_healed_title
+					desc = msg_artifact_asclepius_healed_desc
+					left_icon = scope:the_patient
+
+					scope:the_patient = {
+						remove_trait = lovers_pox
+					}
+				}
+			}				
+		}
+		if = {
+			limit = { has_trait = leper }
+			scope:the_artifact_user = {
+				send_interface_toast = {
+					type = event_court_physician_good
+					title = msg_artifact_asclepius_healed_title
+					desc = msg_artifact_asclepius_healed_desc
+					left_icon = scope:the_patient
+
+					scope:the_patient = {
+						remove_trait = leper
+					}
+				}
+			}				
+		}
+	}
+}
+
+artifact_asclepius_teach_me_effect = {
+	scope:the_artifact_user = {
+		if = {
+			limit = { NOT = { has_trait = lifestyle_herbalist } }
+			add_trait = lifestyle_herbalist
+		}
+		else_if = {
+			limit = {
+				NOT = { has_trait = lifestyle_physician } 
+			}
+			add_trait = lifestyle_physician
+		}
+		else_if = {
+			limit = { 
+				NOT = { has_trait = lifestyle_gardener } 
+				has_trait = lifestyle_physician
+			}
+			add_trait = lifestyle_gardener
+		}
+		else = { #Add some physician experiance
+			add_trait_xp = {
+				trait = lifestyle_physician
+				value = 25
+			}
+		}
+	}
+}

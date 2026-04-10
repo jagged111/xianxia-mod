@@ -1,0 +1,10 @@
+﻿k_pirates = { # King of Pirates
+	color = { 140 45 165 }
+	landless = yes
+	destroy_on_succession = no
+	can_be_named_after_dynasty = no
+	capital = c_isle_of_man # De-Jure capital has to be somewhere
+
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+}

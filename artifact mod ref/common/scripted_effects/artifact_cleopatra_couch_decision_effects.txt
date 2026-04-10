@@ -1,0 +1,535 @@
+﻿### Cleopatra's Couch (Intrigue Artifact)
+# Options
+#	Make me desirable (traits)	a
+#	Teach me (intrigue)			b
+#	Improve my spymaster		c
+#	Demand loyalty from courtiers (adds loyalty hooks)
+#	Demand loyalty from vassals
+#	Remove court rivalries
+#	Give me all court secrets
+#	Give me all vassal secrets
+#	Give me someone's secrets
+#	Remove hooks on me
+
+artifact_cleopatra_couch_create_effect = {
+	create_artifact = {
+		name = cleopatra_couch_artifact_name
+		description = cleopatra_couch_artifact_desc
+
+		rarity = illustrious
+
+		visuals = diwan
+		type = cabinet
+	
+		quality = 1000
+		wealth = 1000
+	
+		modifier = artifact_court_grandeur_baseline_add_6_modifier
+		modifier = artifact_cleopatra_modifier
+
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+} # end artifact_cleopatra_couch_create_effect
+
+#make me desirable... beauty and other effects on me
+artifact_cleopatra_improve_me_effect = {
+	scope:the_artifact_user = {
+		if = {
+			limit = {
+				OR = {
+					has_trait = beauty_bad_3
+					has_trait = beauty_bad_2
+				}
+			}
+			change_trait_rank = {
+				trait = beauty_bad
+				rank = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = beauty_bad_1
+			}
+			remove_trait = beauty_bad_1
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_trait = beauty_good_1
+					has_trait = beauty_good_2
+				}
+			}
+			change_trait_rank = {
+				trait = beauty_good
+				rank = 1
+			}
+		}
+		else = {
+			add_trait = beauty_good_1
+		}
+	} # end scope:the_artifact_user
+} # end artifact_cleopatra_improve_me_effect
+
+artifact_cleopatra_teach_me_effect = {
+	custom_tooltip = artifact_cleopatra_teach_me_effect_tooltip
+	scope:the_artifact_user = {
+		random_list = {
+			50 = {
+				trigger = {
+					age >= 16
+					NOT = { has_trait = education_intrigue }
+				}
+				add_trait = education_intrigue_1
+			}
+			40 = {
+				trigger = {
+					age >= 16
+					AND = {
+						has_trait = education_intrigue
+						NOT = { has_trait = education_intrigue_5 }
+					}
+				}
+				change_trait_rank = {
+					trait = education_intrigue
+					rank = 1
+					max = 5
+				}
+			}
+			10 = { 
+				trigger = { 
+					NOT = { has_trait = intrigue_court_1 }
+					NOT = { has_trait = intrigue_court_2 }
+				}
+				add_trait = intrigue_court_1					
+			}
+			10 = { 
+				trigger = { has_trait = intrigue_court_1 }
+				change_trait_rank = {
+					trait = intrigue_court
+					rank = 1
+					max = 2
+				}					
+			}
+			20 = { 
+				trigger = { intrigue <= 99 }
+				send_interface_toast = {
+					title = artifact_use_cleopatra_couch_decision
+					scope:the_artifact_user = {
+						add_intrigue_skill = 10
+					}
+				}					
+			}					
+			20 = {
+				trigger = {
+					OR = {
+						NOT = { has_perk = schemer_perk }
+						NOT = { has_perk = seducer_perk }
+						NOT = { has_perk = torturer_perk }
+					}
+				}
+				send_interface_toast = {
+					title = artifact_use_cleopatra_couch_decision
+					scope:the_artifact_user = {
+						add_intrigue_lifestyle_perk_points = 1
+					}
+				}
+			}
+		} # end random_list
+		force_character_skill_recalculation = yes
+	} # end scope:artifact_user
+} # end artifact_cleopatra_teach_me_effect
+
+artifact_cleopatra_improve_spymaster_effect = {
+	custom_tooltip = artifact_cleopatra_improve_spymaster_effect_tooltip
+	
+	scope:the_artifact_user = {
+		# get spymaster
+		cp:councillor_spymaster = {
+			random_list = {
+				50 = {
+					trigger = {
+						NOT = { has_trait = education_intrigue }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_cleopatra_couch_decision
+							left_icon = cp:councillor_spymaster
+							cp:councillor_spymaster = {
+								add_trait = education_intrigue_1
+							}
+						}
+					}
+					
+				}
+				40 = {
+					trigger = {
+						has_trait = education_intrigue
+						NOT = { has_trait = education_intrigue_5 }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_cleopatra_couch_decision
+							left_icon = cp:councillor_spymaster
+							cp:councillor_spymaster = {
+								change_trait_rank = {
+									trait = education_intrigue
+									rank = 1
+									max = 5
+								}
+							}
+						} # end send_interface_toast
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = intrigue_court_2 }}
+					add_trait_force_tooltip = intrigue_court_2 
+					hidden_effect = { remove_trait = intrigue_court_1 }				
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_cleopatra_couch_decision
+							left_icon = cp:councillor_spymaster
+							cp:councillor_spymaster = {
+								add_trait = intrigue_court_2
+							}
+						}
+					}
+				}
+				50 = { # Almost always pick this, or one of the education traits 
+					trigger = { intrigue <= 99 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_cleopatra_couch_decision
+							left_icon = cp:councillor_spymaster
+							cp:councillor_spymaster = {
+								add_intrigue_skill = 10 
+							}
+						}
+					}
+				}
+			} # end random_list
+		}
+	}
+} # end artifact_cleopatra_improve_spymaster_effect
+
+# Make court loyal...
+#	add loyal and content personality to all court members and vassals
+#	removes rivals and potential rivals amoung court and vassals
+#	makes all courtiers and vassals potential friends
+artifact_cleopatra_make_court_loyal_effect = {
+	scope:the_artifact_user = {
+		every_courtier = {
+			# Adults only
+			limit = { age >= 16 }
+
+			#save scope for later
+			save_temporary_scope_as = dude
+
+			if = {
+				limit = { NOT = { has_trait = content } }
+				add_trait_force_tooltip = content
+				hidden_effect = {
+					remove_trait = ambitious
+					add_trait = content
+				}
+			}
+			if = {
+				limit = { NOT = { has_trait = loyal } }
+				add_trait_force_tooltip = loyal
+				hidden_effect = {
+					remove_trait = disloyal
+					add_trait = loyal
+				}
+			}
+
+			# Remove rivalries against me from court and vassals (but not nemesis)
+			if = {
+				limit = { has_relation_rival = scope:the_artifact_user }
+				remove_relation_rival = scope:the_artifact_user
+			}
+			if = {
+				limit = { has_relation_potential_rival = scope:the_artifact_user }
+				remove_relation_potential_rival = scope:the_artifact_user
+			}				
+
+			if = {
+				limit = { 
+					NOT = { has_relation_potential_friend = scope:the_artifact_user }
+					NOT = { has_relation_best_friend = scope:the_artifact_user }
+					NOT = { has_relation_friend = scope:the_artifact_user }
+					NOT = { has_relation_nemesis = scope:the_artifact_user }
+				}
+				set_relation_potential_friend = scope:the_artifact_user
+			}
+
+			# add loyalty hook (if does not have)
+			scope:the_artifact_user = {
+				if = {
+					limit = {
+						NOT = { 
+							has_hook_of_type = {
+								target = scope:dude
+								type = loyalty_hook
+							}
+						}
+						can_add_hook = {
+							target = scope:dude
+							type = loyalty_hook
+						}
+					} # end limit
+					add_hook = {
+						type = loyalty_hook
+						target = scope:dude
+					}
+				}
+			} # end scope:the_artifact_user
+		} # end every_courtier
+	} # scope:the_artifact_user
+} # end artifact_cleopatra_make_court_loyal
+
+artifact_cleopatra_make_vassals_loyal_effect = {
+	scope:the_artifact_user = {
+		every_vassal_or_below = {
+			# Adults only
+			limit = { age >= 16 }
+
+			#save scope for later
+			save_temporary_scope_as = dude
+
+			if = {
+				limit = { NOT = { has_trait = content } }
+				add_trait_force_tooltip = content
+				hidden_effect = {
+					remove_trait = ambitious
+					add_trait = content
+				}
+			}
+			if = {
+				limit = { NOT = { has_trait = loyal } }
+				add_trait_force_tooltip = loyal
+				hidden_effect = {
+					remove_trait = disloyal
+					add_trait = loyal
+				}
+			}
+
+			# Remove rivalries against me from vassals (but not nemesis)
+			if = {
+				limit = { has_relation_rival = scope:the_artifact_user }
+				remove_relation_rival = scope:the_artifact_user
+			}
+			if = {
+				limit = { has_relation_potential_rival = scope:the_artifact_user }
+				remove_relation_potential_rival = scope:the_artifact_user
+			}				
+
+			if = {
+				limit = { 
+					NOT = { has_relation_potential_friend = scope:the_artifact_user }
+					NOT = { has_relation_best_friend = scope:the_artifact_user }
+					NOT = { has_relation_friend = scope:the_artifact_user }
+					NOT = { has_relation_nemesis = scope:the_artifact_user }
+				}
+				set_relation_potential_friend = scope:the_artifact_user
+			}
+
+			# add loyalty hook (if does not have)
+			scope:the_artifact_user = {
+				if = {
+					limit = {
+						NOT = { 
+							has_hook_of_type = {
+								target = scope:dude
+								type = loyalty_hook
+							}
+						}
+						can_add_hook = {
+							target = scope:dude
+							type = loyalty_hook
+						}
+					} # end limit
+					add_hook = {
+						type = loyalty_hook
+						target = scope:dude
+					}
+				}
+			} # end scope:the_artifact_user
+		} # end every_courtier
+	} # scope:the_artifact_user
+} # end artifact_cleopatra_make_court_loyal
+
+# Give me all court secrets
+artifact_cleopatra_give_court_secrets_effect = {
+	scope:the_artifact_user = {
+		every_courtier_or_guest = {
+			every_secret = {
+				limit = { NOT = {
+					is_known_by = scope:the_artifact_user
+				}}
+				reveal_to = scope:the_artifact_user
+			}
+		}
+	}
+} # end artifact_cleopatra_give_court_secrets
+
+# Give me all court vassal
+artifact_cleopatra_give_vassal_secrets_effect = {
+	scope:the_artifact_user = {
+		every_vassal_or_below = {
+			every_secret = {
+				limit = { NOT = {
+					is_known_by = scope:the_artifact_user
+				}}
+				reveal_to = scope:the_artifact_user
+			}
+			every_courtier_or_guest = {
+				every_secret = {
+					limit = { NOT = {
+						is_known_by = scope:the_artifact_user
+					}}
+					reveal_to = scope:the_artifact_user
+				}				
+			}
+		}
+	}
+} # end artifact_cleopatra_give_vassal_secrets
+
+# Give me some secrets
+artifact_cleopatra_give_me_some_secrets_effect = {
+	random_independent_ruler = {
+		every_secret = {
+			limit = { NOT = {
+				is_known_by = scope:the_artifact_user
+			}}
+			reveal_to = scope:the_artifact_user
+		}
+		every_courtier_or_guest = {
+			every_secret = {
+				limit = { NOT = {
+					is_known_by = scope:the_artifact_user
+				}}
+				reveal_to = scope:the_artifact_user
+			}				
+		}
+		every_vassal_or_below = {
+			every_secret = {
+				limit = { NOT = {
+					is_known_by = scope:the_artifact_user
+				}}
+				reveal_to = scope:the_artifact_user
+			}
+			every_courtier_or_guest = {
+				every_secret = {
+					limit = { NOT = {
+						is_known_by = scope:the_artifact_user
+					}}
+					reveal_to = scope:the_artifact_user
+				}				
+			}
+		}
+	}
+} # end artifact_cleopatra_give_me_some_secrets
+
+# removes rivalries and potential rivalries between courtiers and vassals
+artifact_cleopatra_remove_court_rivalries_effect = {
+	scope:the_artifact_user = {
+		every_courtier = {
+			save_temporary_scope_as = dude
+			every_relation = {
+				type = rival
+				limit = {
+					OR = {
+						is_courtier_of = scope:the_artifact_user
+						is_vassal_or_below_of = scope:the_artifact_user
+					}
+				}
+				remove_relation_rival = scope:dude
+			} # end every_relation
+			every_relation = {
+				type = potential_rival
+				limit = {
+					OR = {
+						is_courtier_of = scope:the_artifact_user
+						is_vassal_or_below_of = scope:the_artifact_user
+					}
+				}
+				remove_relation_potential_rival = scope:dude				
+			} # end every_relation
+			every_relation = {
+				type = nemesis
+				limit = {
+					OR = {
+						is_courtier_of = scope:the_artifact_user
+						is_vassal_or_below_of = scope:the_artifact_user
+					}
+				}
+				remove_relation_nemesis = scope:dude				
+			} # end every_relation`
+		} # end every_courtier
+		
+		every_vassal_or_below = {
+			save_temporary_scope_as = dude
+			every_relation = {
+				type = rival
+				limit = {
+					OR = {
+						is_courtier_of = scope:the_artifact_user
+						is_vassal_or_below_of = scope:the_artifact_user
+					}
+				}
+				remove_relation_rival = scope:dude
+			} # end every_relation
+			every_relation = {
+				type = potential_rival
+				limit = {
+					OR = {
+						is_courtier_of = scope:the_artifact_user
+						is_vassal_or_below_of = scope:the_artifact_user
+					}
+				}
+				remove_relation_potential_rival = scope:dude				
+			} # end every_relation
+			every_relation = {
+				type = nemesis
+				limit = {
+					OR = {
+						is_courtier_of = scope:the_artifact_user
+						is_vassal_or_below_of = scope:the_artifact_user
+					}
+				}
+				remove_relation_nemesis = scope:dude				
+			} # end every_relation				
+		} # every_vassal_or_below
+
+	} # scope:the_artifact_user
+} # artifact_cleopatra_remove_court_rivalries
+
+# remove court or vassal hooks on me
+artifact_cleopatra_remove_hooks_effect = {
+	scope:the_artifact_user = {
+		every_courtier_or_guest = {
+			limit = {
+				has_hook = scope:the_artifact_user
+			}
+			remove_hook = { target = scope:the_artifact_user }
+		}
+		every_vassal_or_below = {
+			limit = {
+				has_hook = scope:the_artifact_user
+			}
+			remove_hook = { target = scope:the_artifact_user }
+		}
+		every_dynasty_member = {
+			limit = {
+				has_hook = scope:the_artifact_user
+			}
+			remove_hook = { target = scope:the_artifact_user }
+		}
+		every_independent_ruler = {
+			limit = {
+				has_hook = scope:the_artifact_user
+			}
+			remove_hook = { target = scope:the_artifact_user }
+		}
+	} # end scope:the_artifact_user
+} # end artifact_cleopatra_remove_hooks_effect

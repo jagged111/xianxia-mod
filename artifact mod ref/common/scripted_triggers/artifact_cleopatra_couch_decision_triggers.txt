@@ -1,0 +1,39 @@
+﻿#################################################
+# TRIGGER LIST 									#
+#################################################
+
+artifact_cleopatra_improve_me_trigger = {
+	scope:the_artifact_user = {
+		NOT = { has_trait = beauty_good_3 }
+	}
+} # end artifact_cleopatra_improve_me_trigger
+
+artifact_cleopatra_teach_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			AND = { #since you cannot teach someone under 16
+				age >= 16 #TODO change all references to age to a refernce to game variable, just in case someone has a mod that changes adult age.
+				NOT = { has_trait = education_intrigue_5 }
+			}
+			NOT = { has_trait = intrigue_court_2 }
+			intrigue <= 99
+			NOT = { has_perk = schemer_perk }
+			NOT = { has_perk = seducer_perk }
+			NOT = { has_perk = torturer_perk }			
+		}
+	}
+} # end artifact_cleopatra_teach_me_trigger
+
+artifact_cleopatra_improve_spymaster_trigger = {
+	scope:the_artifact_user = {
+		# get spymaster
+		exists = scope:the_artifact_user.cp:councillor_spymaster
+		cp:councillor_spymaster = {
+			OR = {
+				NOT = { has_trait = education_intrigue_5 }
+				NOT = { has_trait = intrigue_court_2 }
+				intrigue <= 99
+			}
+		}
+	}
+} # end artifact_cleopatra_improve_spymaster_trigger

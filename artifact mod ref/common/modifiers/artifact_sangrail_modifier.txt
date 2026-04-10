@@ -1,0 +1,12 @@
+﻿artifact_sangrail_modifier = {
+	icon = learning_positive
+	learning = major_skill_bonus
+	
+	artifact_decay_reduction_mult = -0.75
+	domain_limit = 150
+
+	epidemic_resistance = 200
+
+	owned_legend_spread_mult = 20
+	
+}

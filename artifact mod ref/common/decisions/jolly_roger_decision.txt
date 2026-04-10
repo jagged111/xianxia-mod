@@ -1,0 +1,77 @@
+﻿## Wave the Jolly Roger
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+#
+#  Waving the Jolly Roger should give you an interface (with
+#  either the banner or the longboat graphic) with the following
+#  options:
+#   * Give Dynasty Modifier: gives fp1_legacy_of_piracy_modifier
+#     to your dynasty, enabling raiding as feudal, ocean raiding,
+#     and river traversing
+#   * Spawn pirate army!  With pirates, hurscarls, vagnarian
+#     vets, bondi, some light horseman raiders (like the celtic
+#     ones), and maybe something else
+#   * Give raiding traits: viking, berserker, shieldmaiden, 
+#     reaver, winter_soldier
+#   * Give raiding knights: spawn two knights with those
+#     raiding traits, with high prowness and a few pirate vices
+#   * Give fp1_mann_pirate_capital_modifier (stolen city) to 
+#     the capital.
+#	* Cancel Truces... we are pirates, after all!
+
+wave_jolly_roger_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_forge_jomsvikings.dds"
+	}
+	ai_check_interval = 0
+
+	desc = wave_jolly_roger_decision_desc
+	selection_tooltip = wave_jolly_roger_decision_tooltip
+	decision_group_type = artifactdecisions
+	is_shown = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_jollyroger_modifier
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_jollyroger_modifier
+		}
+	}
+
+	effect = {
+		# This variable counts the use of the jolly roger, so the song can change
+		# every time you use it.
+
+		# first time, set the variable
+		if = { # Variable should have already been setup when you initialized the artifact.
+			limit = { exists = global_var:jolly_roger_use_counter }
+			change_global_variable = {
+				name = jolly_roger_use_counter
+				add = 1
+			}
+		}
+		else = {
+			set_global_variable = {
+				name = jolly_roger_use_counter
+				value = 1
+			}
+		}
+
+		# restart if we went too far
+		if = {
+			limit = { global_var:jolly_roger_use_counter > 12 }
+			set_global_variable = {
+				name = jolly_roger_use_counter
+				value = 1
+			}
+		}
+		
+		save_scope_as = the_waver
+		
+		trigger_event = { id = god_artifacts_decisions.0011 }
+
+
+	}
+
+}

@@ -1,0 +1,20 @@
+﻿artifact_tally_modifier = {
+	icon = stewardship_positive
+
+	domain_limit = 25
+	vassal_limit = 250
+
+	domain_tax_mult = 0.5
+	vassal_tax_mult = 0.5
+	monthly_income_mult = 0.5
+
+	#monthly_county_control_change_add = 5
+	development_growth_factor = 1.5
+	development_growth = 1.25
+	
+	build_gold_cost = -0.85
+	holding_build_gold_cost = -0.85
+	build_speed = -0.85
+	holding_build_gold_cost = -0.85
+
+}

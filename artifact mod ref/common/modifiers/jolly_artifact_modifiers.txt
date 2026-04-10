@@ -1,0 +1,74 @@
+﻿artifact_jollyroger_modifier = {
+	icon = dread_positive
+	
+	men_at_arms_maintenance = -0.10
+	dread_baseline_add = 75
+	dread_gain_mult = 1.5
+	raid_speed = 2.50
+	naval_movement_speed_mult = 2.75
+	embarkation_cost_mult = -0.95
+
+	hostile_county_attrition = -1
+
+	max_loot_mult = 2.5
+
+	coastal_advantage = 25
+	
+	#cannot unlock here, so we will make a scripted event
+	#unlock_maa = huscarl
+	#unlock_maa = varangian_veterans
+	#unlock_maa = jomsviking_pirates
+
+}
+
+artifact_harpesword_modifier = {
+
+	icon = prowess_positive
+	prowess = 70
+	attacker_advantage = 20
+	min_combat_roll = 10
+	knight_effectiveness_mult = 2.50
+	knight_limit = 30
+	
+	#flag = can_duel_anyone_interaction
+
+	army_damage_mult = 2.50
+	enemy_hard_casualty_modifier = 2.50
+
+}
+
+artifact_armourachilles_modifier = {
+	
+	defender_advantage = 20
+
+	hard_casualty_modifier = -0.60
+
+	hostile_raid_time = 10
+
+	additional_fort_level = 15
+	garrison_size = 5.00
+
+	men_at_arms_cap = 2
+	men_at_arms_recruitment_cost = -0.99
+	men_at_arms_maintenance = -0.99
+
+	mercenary_hire_cost_mult = -0.99
+
+	#flag = lower_chance_of_dying_in_combat
+
+	levy_reinforcement_rate = 8.00
+
+}
+
+artifact_greekgodshield_modifier = {
+
+	dynasty_opinion = 25
+	monthly_dynasty_prestige_mult = 0.05
+	monthly_dynasty_prestige = 100
+
+	monthly_piety = 10.50
+
+	domain_limit = 100
+	vassal_limit = 500
+
+}

@@ -1,0 +1,111 @@
+﻿namespace = artifact_hannibal_decision
+
+## The Skull of Hannibal
+#	Options
+#	- Recruit general
+#	- Teach Me
+#	- Recruit War Elephants
+#	- Add Barracks and Camps
+#	- Improve Marshal
+#	- Finish Marshal Task
+#	- Never Mind
+artifact_hannibal_decision.01 = {
+	type = character_event
+
+	title = artifact_hannibal_decision.01.title
+	desc = artifact_hannibal_decision.01.desc
+
+	theme = war
+	left_portrait = {
+		character = scope:the_artifact_user
+		animation = personality_content
+	}
+
+	right_portrait = {
+		character = cp:councillor_marshal
+		animation = reading 
+    }
+	
+	override_background = { reference = sitting_room }
+
+	# Recruit general
+	option = {
+		name = artifact_hannibal_decision.01.a
+
+		artifact_hannibal_recruit_general_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+
+
+
+	# Recruit War Elephants
+	option = {
+		name = artifact_hannibal_decision.01.b
+
+		artifact_hannibal_recruit_elephants_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}	
+	# Teach me
+	option = {
+		name = artifact_hannibal_decision.01.c
+
+		trigger = {
+			artifact_hannibal_teach_me_trigger = yes
+		}
+
+		artifact_hannibal_teach_me_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+	# Build Camps and Barracks
+	option = {
+		name = artifact_hannibal_decision.01.d
+
+		trigger = {
+			artifact_hannibal_build_camps_trigger = yes
+		}
+
+		artifact_hannibal_build_camps_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Improve my Marshal
+	option = {
+		name = artifact_hannibal_decision.01.e
+
+		trigger = {
+			artifact_hannibal_improve_marshal_trigger = yes
+		}
+
+		artifact_hannibal_improve_marshal_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	# Marshal finish task (Hurry my Marshal)
+	option = {
+		name = artifact_hannibal_decision.01.f
+
+		trigger = {
+			artifact_hannibal_marshal_finish_trigger = yes
+		}
+
+		artifact_hannibal_marshal_finish_effect = yes
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}	
+
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+
+		ai_chance = { base = 100 } #Doesn't especially matter.
+
+	}
+}

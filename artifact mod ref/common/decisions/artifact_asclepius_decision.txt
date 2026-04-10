@@ -1,0 +1,34 @@
+﻿## Consult the Rod of Asclepius
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+
+consult_rod_of_asclepius = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	}
+	decision_group_type = artifactdecisions
+	ai_check_interval = 0
+	ai_goal = no
+
+	desc = consult_rod_of_asclepius_desc
+	selection_tooltip = consult_rod_of_asclepius_tooltip
+
+	is_shown = {
+		this = root
+		any_character_artifact = {
+			has_artifact_modifier = artifact_asclepius_modifier
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_asclepius_modifier
+		}
+	}
+
+	effect = {
+		custom_tooltip = artifact_asclepius_decision_effect_tooltip
+		save_scope_as = the_artifact_user
+
+		trigger_event = { id = god_artifacts_decisions.0021 }
+	}
+}

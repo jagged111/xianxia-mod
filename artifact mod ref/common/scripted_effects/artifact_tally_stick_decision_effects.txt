@@ -1,0 +1,478 @@
+﻿#### The Original Tally Stick
+# Teach Me
+# Recruit Seneschal
+# Improve my Steward
+# Build Economic Buildings (Farms, Pastures, Markets, etc)
+# Add realm development
+
+artifact_tally_create_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	
+	hidden_effect = {
+		random_county_in_region = {
+			region = world_africa_sahara
+			random_county_province = {
+				save_scope_as = tally_found_here
+			}
+		}
+	}
+
+	hidden_effect_new_object = {
+		scope:owner = {
+			create_artifact = {
+				name = artifact_tally_name
+				description = artifact_tally_desc
+				rarity = illustrious
+				visuals = pedestal_branch_relic_germanic
+				type = pedestal
+				template = artifact_tally_template
+
+				history = {
+					location = scope:tally_found_here
+					actor = root
+					recipient = root
+					type = discovered
+				}
+				decaying = no
+				
+				quality = 1000
+				wealth = 1000
+
+				save_scope_as = newly_created_artifact
+				modifier = artifact_court_grandeur_baseline_add_6_modifier
+				modifier = artifact_tally_modifier
+			}
+		}
+	}
+
+	#scope:newly_created_artifact = {
+		#get_artifact_feature_references_effect = yes
+		#set_artifact_feature_group = decoration_material_wire
+		#set_artifact_feature_group = decoration_material_gem
+	#}
+} # end artifact_tally_create_effect
+
+artifact_tally_teach_me_effect = {
+	scope:the_artifact_user = {
+		random_list = {
+			50 = {
+				trigger = {
+					age >= 16
+					NOT = { has_trait = education_stewardship }
+				}
+				add_trait = education_stewardship_1
+			}
+			40 = {
+				trigger = {
+					age >= 16
+					AND = {
+						has_trait = education_stewardship
+						NOT = { has_trait = education_stewardship_5 }
+					}
+				}
+				change_trait_rank = {
+					trait = education_stewardship
+					rank = 1
+					max = 5
+				}
+			}
+			30 = {
+				trigger = {
+					age >= 16
+					NOT = { has_trait = education_republican_knowledge }
+				}
+				add_trait = education_republican_knowledge_1
+			}
+			30 = {
+				trigger = {
+					age = 16
+					NOT = { has_trait = education_republican_knowledge_4 }
+					has_trait = education_republican_knowledge
+				}
+			
+				change_trait_rank = {
+					trait = education_republican_knowledge
+					rank = 1
+					max = 4
+				}
+			}
+			10 = { 
+				trigger = { 
+					NOT = { has_trait = administrative_court_2 }
+					NOT = { has_trait = administrative_court_1 }
+				}
+				add_trait = administrative_court_1					
+			}
+			10 = { 
+				trigger = { has_trait = administrative_court_1 }
+				change_trait_rank = {
+					trait = administrative_court
+					rank = 1
+					max = 2
+				}					
+			}
+			20 = { 
+				trigger = { stewardship <= 99 }
+				send_interface_toast = {
+					title = artifact_use_tally_decision
+					scope:the_artifact_user = {
+						add_stewardship_skill = 10
+					}
+				}					
+			}					
+			20 = {
+				trigger = {
+					OR = {
+						NOT = { has_perk = avaricious_perk }
+						NOT = { has_perk = architect_perk }
+						NOT = { has_perk = administrator_perk }
+					}
+				}
+				send_interface_toast = {
+					title = artifact_use_tally_decision
+					scope:the_artifact_user = {
+						add_stewardship_lifestyle_perk_points = 1
+					}
+				}
+			}
+		} # end random_list
+		force_character_skill_recalculation = yes
+	} # end scope:artifact_user
+} # end artifact_tally_teach_me_effect
+
+artifact_tally_improve_steward_effect = {
+	custom_tooltip = artifact_tally_improve_steward_effect_tt
+	
+	scope:the_artifact_user = {
+		# get steward
+		cp:councillor_steward = {
+			random_list = {
+				500 = {
+					trigger = {
+						NOT = { has_trait = education_stewardship }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_tally_decision
+							left_icon = cp:councillor_steward
+							cp:councillor_steward = {
+								add_trait = education_stewardship_1
+							}
+						} # end send_interface_toast
+					}
+				}					
+				500 = {
+					trigger = {
+						has_trait = education_stewardship
+						NOT = { has_trait = education_stewardship_5 }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_tally_decision
+							left_icon = cp:councillor_steward
+							cp:councillor_steward = {
+								change_trait_rank = {
+									trait = education_stewardship
+									rank = 1
+									max = 5
+								}
+							}
+						} # end send_interface_toast
+					}
+				}
+				10 = { 
+					trigger = { NOT = { has_trait = administrative_court_2 }}
+					add_trait_force_tooltip = administrative_court_2 
+					hidden_effect = { remove_trait = administrative_court_1 }				
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_tally_decision
+							left_icon = cp:councillor_steward
+							cp:councillor_steward = {
+								add_trait = administrative_court_2
+							}
+						}
+					}
+				}
+				1000 = { # Almost always pick this, or one of the education traits 
+					trigger = { stewardship <= 99 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_use_tally_decision
+							left_icon = cp:councillor_steward
+							cp:councillor_steward = {
+								add_stewardship_skill = 10 
+							}
+						}
+					}
+				}
+			} # end random_list
+			force_character_skill_recalculation = yes
+		} # end cp:councillor_steward
+	}
+} # end artifact_tally_improve_steward_effect
+
+# Recruit Seneschal
+artifact_tally_recruit_seneschal_effect = {
+	custom_tooltip = artifact_tally_recruit_seneschal_effect_tooltip
+
+	hidden_effect = {
+		scope:the_artifact_user = {
+			every_sub_realm_county = {
+				this.culture = {
+					add_to_list = nearby_cultures	
+				}
+			}
+			every_character_to_title_neighboring_and_across_water_county = {
+				this.culture = {
+					add_to_list = nearby_cultures
+				}
+			}
+		} # end scope:the_artifact_user
+		every_culture_global = {
+			limit = {
+				OR = {
+					has_cultural_parameter = next_level_trade_ports						
+				}
+			}
+			add_to_list = nearby_cultures
+		}
+
+		culture:greek = { add_to_list = nearby_cultures	}
+			
+		random_in_list = {
+			list = nearby_cultures
+			save_scope_as = the_recruit_culture
+		}
+		
+		# clear the list
+		clear_variable_list = nearby_cultures
+
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_tally_seneschal		
+			save_scope_as = the_recruit
+			employer = scope:the_artifact_user
+			dynasty = none
+		} # End create character
+		
+		scope:the_recruit = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} # end hidden_effect
+
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_tally_recruit_seneschal_effect_title
+		desc = msg_artifact_tally_recruit_seneschal_effect_desc
+		left_icon = scope:the_recruit
+	}
+
+} # end artifact_tally_recruit_seneschal_effect
+
+artifact_tally_econ_buildings_effect = {
+
+	scope:the_artifact_user = {
+		every_sub_realm_county = {
+			every_county_province = {
+				if = {
+					limit = {
+						has_holding_type = tribal_holding
+						NOT = { has_building_or_higher = market_villages_01 }
+						NOT = { free_building_slots = 0 }
+					}
+					add_building = market_villages_02
+				}
+
+				else_if = {
+					limit = {
+						has_holding_type = city_holding
+						NOT = { has_building_or_higher = guild_halls_01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = guild_halls_04
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = pastures_01 }
+						building_pastures_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+					}
+					add_building = pastures_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = hunting_grounds_01 }
+						building_hunting_grounds_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = hunting_grounds_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = orchards_01 }
+						building_orchards_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = orchards_02
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = farm_estates_01 }
+						building_farm_estates_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = farm_estates_04
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = cereal_fields_01 }
+						building_cereal_fields_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = cereal_fields_04
+				}
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = peat_quarries_01 }
+						building_peat_quarries_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = peat_quarries_04
+				}	
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = hill_farms_01 }
+						building_hill_farms_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = hill_farms_04
+				}	
+
+				if = {
+					limit = {
+						NOT = { has_building_or_higher = plantations_01 }
+						building_plantations_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					if = {
+						limit = {
+							OR = {
+								free_building_slots = 0
+								building_slots < 6
+							}
+						}
+						add_province_modifier = extra_building_slot
+
+					}
+					add_building = plantations_04
+				}
+			} # end every_county_province
+		} # end every_sub_realm_county
+	} # end scope:the_artifact_user
+
+} # end artifact_tally_econ_buildings_effect
+
+artifact_tally_add_development_effect = {
+	scope:the_artifact_user = {
+		every_sub_realm_county = {
+			if = {
+				limit = { 
+					holder = scope:the_artifact_user
+					development_level <= 99
+				}
+				change_development_progress_with_overflow = 50
+			}
+			else_if = {
+				limit = { 
+					development_level <= 99
+				}
+				change_development_progress_with_overflow = 25				
+			}
+		}
+	}
+} # end artifact_tally_add_development_effect

@@ -1,0 +1,89 @@
+﻿namespace = artifact_perseus_decision
+
+# perseus 
+artifact_perseus_decision.01 = {
+	type = character_event
+
+	title = artifact_perseus_decision.01.title
+	desc = artifact_perseus_decision.01.desc
+	
+	theme = court
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	# 
+	option = {
+		name = artifact_perseus_decision.01.a
+		artifact_perseus_add_dyn_fame_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.b
+		trigger = { artifact_perseus_make_dyn_friends_trigger = yes }
+		artifact_perseus_make_dyn_friends_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.c
+		trigger = { artifact_perseus_dyn_stress_relief_trigger = yes }
+		artifact_perseus_dyn_stress_relief_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.d
+		trigger = { artifact_perseus_dyn_make_loyal_trigger = yes }
+		artifact_perseus_dyn_make_loyal_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.e
+		artifact_perseus_dyn_remove_rivalries_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+	option = {
+		name = artifact_perseus_decision.01.f
+		trigger = { artifact_perseus_dyn_claim_children_trigger = yes }
+		artifact_perseus_dyn_claim_children_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.g
+		trigger = { artifact_perseus_dyn_claim_bastards_trigger = yes }
+		artifact_perseus_dyn_claim_bastards_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.h
+		trigger = { artifact_perseus_dyn_clear_weeds_trigger = yes }
+		artifact_perseus_dyn_clear_weeds_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.i
+		trigger = { artifact_perseus_claim_artifacts_trigger = yes }
+		artifact_perseus_claim_artifacts_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_perseus_decision.01.j
+		trigger = { artifact_perseus_reset_runestone_cooldown_trigger = yes }
+		artifact_perseus_reset_runestone_cooldown_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+}
+

@@ -1,0 +1,242 @@
+﻿# Template for general recruited by hannibal's skill
+# needs scope:the_general_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_hannibal_general = {
+	age = { 16 25 }
+
+	culture = scope:the_recruit_culture
+	faith = scope:the_artifact_user.faith
+
+	#good general traits
+
+	trait = education_martial_4
+	trait = warlike_court_2
+
+	# major general traits
+	random_traits_list = {
+		count = { 5 10 }
+		logistician = {}
+		strategist = {}
+		military_engineer = {}
+		aggressive_attacker = {}
+		unyielding_defender = {}
+		forder = {}
+		flexible_leader = {}
+		desert_warrior = {}
+		jungle_stalker = {}
+		reaver = {}
+		reckless = {}
+		holy_warrior = {}
+		open_terrain_expert = {}
+		rough_terrain_expert = {}
+		forest_fighter = {}
+		organizer = {}
+		winter_soldier = {}
+		faith_warrior = {}
+		viking = {}
+		shrewd = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		education_martial_prowess_1 = {}
+		education_martial_prowess_2 = {}
+		education_martial_prowess_3 = {}
+		education_martial_prowess_4 = {}
+	}
+
+	random_traits_list = {
+		count = {0 1}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+	}
+
+	# personality
+	trait = content
+	trait = loyal
+	random_traits_list = {
+		count = { 2 5 }
+		#reveler_1 = {}
+		#hunter_1 = {}
+		temperate = {}
+		lustful = {}
+		gluttonous = {}
+		patient = {}
+		brave = {}
+		diligent = {}
+		calm = {}
+		gregarious = {}
+		just = {}
+		wrathful = {}
+		arrogant = {}
+		humble = {}
+		honest = {}
+		cynical = {}
+		zealous = {}
+		compassionate = {}
+		vengeful = {}
+		athletic = {}
+		forgiving = {}
+		poet = {}
+		adventurer = {}
+	}
+
+	# give some nice base stats
+	martial = { 10 20 }
+	diplomacy = { 0 5 }
+	intrigue = { 0 5 }
+	stewardship = { 0 10 }
+	learning = { 0 10 }
+	prowess = { 5 15 } 
+
+	## Compute gender (compute female chance)
+	# if military is male, add 0
+	#	if military is male, but the_general_culture has access to shieldmaidens, add 25
+	# if military is female, add 100
+	# 	if military is female, but the_general_culture has access to shieldmaidens, subtract 25
+	# if military is equal, add 50
+	gender_female_chance = {
+		if = {
+			limit = { 
+				scope:the_recruit_culture = {
+					has_cultural_parameter = martial_custom_male_only_combatant
+				}
+			} 
+			add = 0
+
+			if = {
+				limit = {
+					scope:the_recruit_culture = {
+						has_cultural_parameter = has_access_to_shieldmaidens
+					}
+				}
+				add = 25
+			}
+		}
+		else_if = {
+			limit = { 
+				scope:the_recruit_culture = {
+					has_cultural_parameter = martial_custom_female_only_combatant
+				}
+			}
+			add = 100
+			if = {
+				limit = {
+					scope:the_recruit_culture = {
+						has_cultural_parameter = has_access_to_shieldmaidens
+					}
+				}
+				add = -25
+			}
+		}
+		else = { add = 50 }					
+	} # end gender_female_chance
+
+	after_creation = {
+
+		# add shieldmaiden trait if justified
+		if = {
+			limit = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:the_artifact_user }
+				}
+			}
+			add_trait = shieldmaiden
+		}
+
+		# Learn language of employer, if needed.
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 20
+			add_trait = giant
+		}
+		random = {
+			chance = 10
+			add_trait = lifestyle_mystic
+		}
+
+
+		#if general's culture has any special terrain traits, like forest fighters, add them after creation.
+		if = {
+			limit = {
+				scope:the_recruit_culture = {
+					has_cultural_parameter = can_recruit_winter_specialist
+				}
+			}
+			add_trait = winter_soldier
+		}
+		if = {
+			limit = {
+				scope:the_recruit_culture = {
+					has_cultural_parameter = can_recruit_forest_specialist
+				}
+			}
+			add_trait = forest_fighter			
+		}
+		if = {
+			limit = {
+				scope:the_recruit_culture = {
+					OR = {
+						has_cultural_parameter = can_recruit_mountain_specialist
+						has_cultural_parameter = can_recruit_hill_specialist
+					}
+				}
+			}
+			add_trait = rough_terrain_expert			
+		}
+		if = {
+			limit = {
+				scope:the_recruit_culture = {
+						has_cultural_parameter = can_recruit_dry_specialist
+				}
+			}
+			add_trait = desert_warrior			
+		}
+		if = {
+			limit = {
+				scope:the_recruit_culture = {
+						has_cultural_parameter = can_recruit_jungle_specialist
+				}
+			}
+			add_trait = jungle_stalker			
+		}
+		if = {
+			limit = {
+				scope:the_recruit_culture = {
+						has_cultural_parameter = can_recruit_open_specialist
+				}
+			}
+			add_trait = open_terrain_expert			
+		}
+	} # end after_creation
+}

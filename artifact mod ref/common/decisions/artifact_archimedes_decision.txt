@@ -1,0 +1,30 @@
+﻿artifact_archimedes_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_forge_jomsvikings.dds"
+	}
+
+	ai_check_interval = 0
+	ai_goal = no
+	decision_group_type = artifactdecisions
+	desc = artifact_archimedes_decision_desc
+	selection_tooltip = artifact_archimedes_decision_tooltip
+
+	is_shown = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_jollyroger_modifier
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_jollyroger_modifier
+		}
+	}
+
+	effect = {
+		custom_tooltip = artifact_archimedes_decision_effect_tooltip
+		save_scope_as = the_artifact_user
+		trigger_event = { id = god_artifacts_decisions.0041 }
+	}
+
+}

@@ -1,0 +1,18 @@
+﻿## For the shield of Persius
+k_mountolympus={
+	#custom=yes
+	pattern="pattern__solid_designer.dds"
+	color1=black
+	color2=white
+	color3=red
+	colored_emblem={
+		color1=yellow_light
+		color2=red
+		texture="ce_medusahead.dds"
+		instance={
+			scale={ 0.700000 0.700000 }
+		}
+
+	}
+
+}

@@ -1,0 +1,21 @@
+﻿### Template for the tally stick artifact
+# Should only benefit root
+artifact_tally_template = {
+
+	can_equip = {
+		always = yes
+	}
+
+	# Only the active player can benefit
+	can_benefit = {
+		this = root
+	}
+
+	fallback = {
+		courtier_and_guest_opinion = 10
+		court_grandeur_baseline_add = 3
+	}
+
+	unique = yes
+
+} # end artifact_tally_template

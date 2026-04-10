@@ -1,0 +1,169 @@
+﻿# Template for champion recruited by the jolly roger
+# needs scope:the_raider_culture to be defined.
+# needs scope:the_waver to be defined
+artifact_jolly_roger_champion = {
+	age = { 16 25 }
+
+	#good pirate traits
+	trait = reaver
+	trait = viking
+	trait = berserker
+	
+	#trait = shieldmaiden #now dependant upon culture
+	trait = brave
+
+	trait = content
+	trait = loyal
+	trait = lifestyle_blademaster
+
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {}
+		education_martial_2 = {}
+		education_martial_3 = {}
+		education_martial_4 = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		education_martial_prowess_1 = {}
+		education_martial_prowess_2 = {}
+		education_martial_prowess_3 = {}
+		education_martial_prowess_4 = {}
+	}
+
+	random_traits_list = {
+		count = 1
+		physique_good_1 = {}
+		physique_good_2 = {}
+		physique_good_3 = {}
+	}
+
+	# give some nice base stats
+	martial = { 5 15 }
+	diplomacy = { 0 5 }
+	intrigue = { 0 5 }
+	stewardship = { 0 5 }
+	learning = { 0 5 }
+	prowess = { 15 30 } # good knight please
+
+	#pirate personality
+	random_traits_list = {
+		count = { 1 3 }
+		vengeful = {}
+		wrathful = {}
+		impatient = {}
+		gregarious = {}
+		callous = {}
+		arrogant = {}
+		fickle = {}
+		cynical = {}
+		zealous = {}
+		lustful = {}
+		gluttonous = {}
+		irritable = {}
+		rakish = {}
+		athletic = {}
+		diligent = {}				
+	}
+
+	culture = scope:the_raider_culture
+	faith = scope:the_waver.faith
+
+	## Compute gender (compute female chance)
+	# if military is male, add 0
+	#	if military is male, but the_raider_culture has access to shieldmaidens, add 25
+	# if military is female, add 100
+	# 	if military is female, but the_raider_culture has access to shieldmaidens, subtract 25
+	# if military is equal, add 50
+	#later, if chance is between 20 and 80, we will add shieldmaiden trait
+	gender_female_chance = {
+		if = {
+			limit = { 
+				scope:the_raider_culture = {
+					has_cultural_parameter = martial_custom_male_only_combatant
+				}
+			} 
+			add = 0
+
+			if = {
+				limit = {
+					scope:the_raider_culture = {
+						has_cultural_parameter = has_access_to_shieldmaidens
+					}
+				}
+				add = 50
+			}
+		}
+		else_if = {
+			limit = { 
+				scope:the_raider_culture = {
+					has_cultural_parameter = martial_custom_female_only_combatant
+				}
+			}
+			add = 100
+			if = {
+				limit = {
+					scope:the_raider_culture = {
+						has_cultural_parameter = has_access_to_shieldmaidens
+					}
+				}
+				add = -50
+			}
+		}
+		else = { add = 50 }					
+	}
+
+	after_creation = {
+
+		# add shieldmaiden trait if justified
+		if = {
+			limit = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:the_waver }
+				}
+			}
+			add_trait = shieldmaiden
+		}
+
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_waver.culture
+				}
+			}
+			learn_language_of_culture = scope:the_waver.culture
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 20
+			add_trait = giant
+		}
+		random = {
+			chance = 10
+			add_trait = lifestyle_mystic
+		}
+
+	}
+}

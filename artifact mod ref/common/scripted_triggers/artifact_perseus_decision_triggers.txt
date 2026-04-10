@@ -1,0 +1,118 @@
+﻿#################################################
+# TRIGGER LIST 									#
+#################################################
+
+# There should be someone who is not my potential friend
+artifact_perseus_make_dyn_friends_trigger = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			any_dynasty_member = {
+				NOT = { this = scope:the_artifact_user } # not me
+				has_relation_rival = scope:the_artifact_user
+				has_relation_potential_rival = scope:the_artifact_user
+				NOT = { has_relation_nemesis = scope:the_artifact_user }
+				NOT = { has_relation_friend = scope:the_artifact_user }
+				NOT = { has_relation_best_friend = scope:the_artifact_user }
+				NOT = { has_relation_potential_friend = scope:the_artifact_user }
+			}
+		}
+	}
+} # end artifact_perseus_make_dyn_friends_trigger
+
+# Someone should not have the modifiers
+artifact_perseus_dyn_stress_relief_trigger = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			any_dynasty_member = {
+				NOT = {
+					this = scope:the_artifact_user
+					has_character_modifier = feast_scholarly_confidence_modifier
+					has_character_modifier = feast_gratifying_complaints_modifier
+					has_character_modifier = feast_life_reaffirmed_modifier
+					has_character_modifier = feast_raucous_entertainment_modifier
+					has_character_modifier = feast_livestock_at_feast_modifier
+				}
+			}
+		}
+	}
+} # end artifact_perseus_dyn_stress_relief_trigger
+
+artifact_perseus_dyn_make_loyal_trigger = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			custom_tooltip = {
+				text = artifact_perseus_dyn_make_loyal_trigger_tt
+				
+				any_dynasty_member = {
+					save_temporary_scope_as = dude
+					NOT = { this = scope:the_artifact_user }  # not me
+					scope:the_artifact_user = {
+						NOT = { has_hook = scope:dude }
+						can_add_hook = {
+							target = scope:dude
+							type = loyalty_hook
+						}
+					} # end scope:the_artifact_user
+				} # end every_dynasty_member
+			} # end custom_tooltip
+		} # end this.dynasty
+	} # end scope:the_artifact_user
+} # artifact_perseus_dyn_make_loyal_trigger
+
+# Should only be visable if there are children to steal.
+artifact_perseus_dyn_claim_children_trigger = {
+	scope:the_artifact_user = {
+		this.dynasty = {
+			any_dynasty_member = {
+				save_temporary_scope_as = dude
+				any_child = {
+					NOT = { has_trait = bastard_founder }
+					NOT = { dynasty = scope:dude.dynasty }
+				}
+			}
+		}
+	}
+} # end artifact_perseus_dyn_claim_children_trigger
+
+artifact_perseus_dyn_claim_bastards_trigger = {
+	scope:the_artifact_user.dynasty = {
+		any_dynasty_member = {
+			has_trait = bastard
+		}
+	}
+} # end artifact_perseus_dyn_claim_bastards_trigger
+
+artifact_perseus_dyn_clear_weeds_trigger = {
+	scope:the_artifact_user.dynasty = {
+		any_dynasty_member = {
+			NOT = { this.father = this.real_father }
+		}
+	}
+} # end artifact_perseus_dyn_clear_weeds_trigger
+
+
+artifact_perseus_claim_artifacts_trigger = {
+	custom_tooltip = {
+		text = artifact_perseus_claim_artifacts_trigger_custom_tooltip
+		any_artifact = {
+			NOT = { artifact_owner.dynasty = scope:the_artifact_user.dynasty }
+			save_temporary_scope_as = this_artifact
+			artifact_rarity > 3
+			
+			scope:the_artifact_user = {
+				NOT = { has_artifact_claim = scope:this_artifact }
+			}
+		}
+	}
+} # end artifact_perseus_claim_artifacts_trigger
+
+artifact_perseus_reset_runestone_cooldown_trigger = {
+	scope:the_artifact_user = {
+		#fp1_can_raise_stele_trigger = yes
+		OR = {
+			is_decision_on_cooldown = raise_runestone_decision
+			is_decision_on_cooldown = raise_stele_decision
+		}
+		
+	}
+}

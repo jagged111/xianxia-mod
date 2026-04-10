@@ -1,0 +1,25 @@
+﻿l_english:
+
+artifact_hannibal_skull_name: "Skull of Hannibal of Carthage"
+artifact_hannibal_skull_desc: "The skull of history's most famous general."
+
+consult_hannibal_skull_decision: "Consult Hannibal's Skull"
+consult_hannibal_skull_decision_desc: "Hannibal's Skull looks at you, expectantly."
+consult_hannibal_skull_decision_tooltip: "Talk to the skull of Hannibal."
+consult_hannibal_skull_decision_confirm: "Talk to the skull."
+
+artifact_hannibal_decision.01.title: "Talk to Hannibal's Skull"
+artifact_hannibal_decision.01.desc: "Strangely, Hannibal talks back accross the ages."
+
+artifact_hannibal_decision.01.a: "Recruit New General"
+artifact_hannibal_decision.01.b: "Recruit War Elephants"
+artifact_hannibal_decision.01.c: "Teach me Strategy"
+artifact_hannibal_decision.01.d: "Build Barracks and Camps"
+artifact_hannibal_decision.01.e: "Improve my Marshal"
+artifact_hannibal_decision.01.f: "Hurry my Marshal"
+
+hannibal_troops.1: "Hannibal's Elephants"
+
+artifact_hannibal_recruit_general_effect_tooltip: "Recruit a general."
+msg_artifact_hannibal_general_title: "Excellent General Recruited"
+msg_artifact_hannibal_general_desc: "[the_general.GetFirstName] has answered the call of Hannibal.  [the_general.GetSheHe|U] would make an excellent general!"

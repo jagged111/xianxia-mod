@@ -1,0 +1,42 @@
+﻿l_english:
+
+perseus_shield_artifact_name: "Shield of Perseus"
+perseus_shield_artifact_desc: "The posessor of this shield, forged by Athena, can make a claim to be the descendants of the gods."
+artifact_perseus_shield_create_effect_tooltip: "You discover the Shield of Perseus."
+
+artifact_use_perseus_decision: "Grasp the Shield of Perseus"
+artifact_use_perseus_decision_desc: "While Perseus, the brave son of Jupiter,\nsurrounded at the feast by Cepheus' lords,\nnarrated this, a raging multitude\nwith sudden outcry filled the royal courts—\nnot with the clamours of a wedding feast\nbut boisterous rage, portentous of dread war.\n\n- Ovid, Metamorphoses"
+artifact_use_perseus_decision_tooltip: "The snakes want to talk to you."
+artifact_use_perseus_decision_confirm: "Talk to the snakes."
+
+artifact_perseus_decision.01.title: "Talk to the Snakes on Perseus's Shield"
+artifact_perseus_decision.01.desc: ""
+
+artifact_perseus_decision.01.a: "Add Dynasty Fame"
+artifact_perseus_decision.01.b: "Make Dynasty Members Friendly Towards Me"
+
+artifact_perseus_decision.01.c: "Mitigate stress for all Dynasty Members"
+artifact_perseus_dyn_stress_relief_tooltip: "Stops death cascade by giving all dynasty members short-term stress gain buffs."
+
+artifact_perseus_decision.01.d: "Ensure Loyalty of all Dynasty Members"
+artifact_perseus_dyn_make_loyal_effect_tooltip: "Add loyalty hooks."
+
+artifact_perseus_decision.01.e: "Spread Harmony within Dynasty"
+artifact_perseus_dyn_remove_rivalries_effect_tooltip: "Remove pairwise rivalries (but not nemisis) between dynasty members."
+
+artifact_perseus_decision.01.f: "Claim All Dynsastic Children for Dynasty"
+artifact_perseus_dyn_claim_children_effect_tooltip: "Puts any non-dynasty children of dynasty members in the house of their parent, overriding any marrage contracts."
+msg_artifact_perseus_join_dynasty_tooltip: "Child of Dynasty Member Joins Dynasty"
+msg_artifact_perseus_join_dynasty_title: "[the_joiner.GetFirstName] Joins [dude.GetHouse.GetBaseName]"
+msg_artifact_perseus_join_dynasty_desc: "[the_joiner.GetFirstName], formally of House [old_house.GetBaseName] in Dynasty [old_dynasty.GetBaseName], joins House [dude.GetHouse.GetBaseName] of Dynasty [dude.GetDynasty.GetBaseName] as the child of [dude.GetFirstName]."
+
+artifact_perseus_decision.01.g: "Claim Bastards"
+
+artifact_perseus_decision.01.h: "Clear Weeds"
+
+artifact_perseus_decision.01.i: "Claim Artifacts"
+
+artifact_perseus_decision.01.j: "Reset Runestone Cooldown"
+
+artifact_perseus_claim_artifacts_trigger_custom_tooltip: "I have a haunting fear that someone, somewhere, has a cool artifact."
+artifact_perseus_dyn_make_loyal_trigger_tt: "Someone in my dynasty is not loyal yet."

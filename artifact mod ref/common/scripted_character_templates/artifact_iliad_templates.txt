@@ -1,0 +1,301 @@
+﻿# Template for poet recruited by iliad
+# needs scope:the_poet_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_iliad_poet = {
+	age = { 16 25 }
+
+	gender_female_chance = 75
+
+	culture = scope:the_poet_culture
+	faith = scope:the_artifact_user.faith
+
+	#good poet traits
+	random_traits_list = {
+		education_diplomacy_4 = {}
+		education_learning_4 = {}
+	}
+	trait = gregarious
+	trait = loyal
+	trait = content
+	trait = journaller
+
+	trait = scholarly_court_2
+
+	trait = poet
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		scholar = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 10 25 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 10 25 }
+	prowess = { 0 10 }
+
+	after_creation = {
+
+		# Learn a bunch of languages
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_arabic
+				}
+			}
+			learn_language = language_arabic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_latin
+				}
+			}
+			learn_language = language_latin
+		}			
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_italian
+				}
+			}
+			learn_language = language_italian
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_aramaic
+				}
+			}
+			learn_language = language_aramaic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+	} # end after_creation
+} # end artifact_iliad_poet
+
+### Quester
+# Creates a person to go on an adventure (with inspiration)
+# needs scope:the_quester_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_iliad_quester = {
+	age = { 16 25 }
+
+	gender_female_chance = 75
+
+	culture = scope:the_quester_culture
+	faith = scope:the_artifact_user.faith
+
+	#good adventure inspiration traits
+	random_traits_list = {
+		education_diplomacy_4 = {}
+		education_learning_4 = {}
+	}
+	random_traits_list = {
+		education_martial_prowess_2 = {}
+		education_martial_prowess_3 = {}
+		education_martial_prowess_4 = {}
+	}
+
+	trait = loyal
+	trait = content
+	trait = adventurer
+
+	trait = scholarly_court_2
+	trait = diplomatic_court_2
+
+	#some random traits
+	random_traits_list = {
+		count = { 4 6 }
+		gregarious = {}
+		organizer = {}
+		shy = {}
+		varangian = {}
+		journaller = {}
+		scholar = {}
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		shrewd = {}
+		lustful = {}
+		chaste = {}
+		temperate = {}
+		generous = {}
+		patient = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		brave = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		poet = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+		physique_good_3 = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 15 25 }
+	intrigue = { 0 10 }
+	stewardship = { 0 10 }
+	learning = { 15 25 }
+	prowess = { 15 25 }
+
+	after_creation = {
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 10
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 30
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 10
+			random_list = {
+				10 = {
+					add_trait = dwarf
+				}
+				10 = {
+					add_trait = giant
+				}
+			}
+		}
+		random = {
+			chance = 10
+			add_trait = peasant_leader
+		}
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 25
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+
+		# Inspire to go on an adventure
+		create_inspiration = adventure_inspiration
+	} # end after_creation
+}

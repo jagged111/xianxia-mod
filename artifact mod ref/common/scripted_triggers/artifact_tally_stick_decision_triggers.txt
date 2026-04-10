@@ -1,0 +1,111 @@
+﻿#################################################
+# TRIGGER LIST 									#
+#################################################
+
+
+artifact_tally_teach_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			AND = { #since you cannot teach someone under 16
+				age >= 16 #TODO change all references to age to a refernce to game variable, just in case someone has a mod that changes adult age.
+				NOT = { has_trait = education_stewardship_5 }
+			}
+			NOT = { has_trait = administrative_court_2 }
+			stewardship <= 99
+			NOT = { has_perk = avaricious_perk }
+			NOT = { has_perk = architect_perk }
+			NOT = { has_perk = administrator_perk }			
+		}
+	}
+} # end artifact_tally_teach_me_trigger
+
+artifact_tally_improve_steward_trigger = {
+	scope:the_artifact_user = {
+		# get steward
+		cp:councillor_steward = {
+			OR = {
+				NOT = { has_trait = education_stewardship_5 }
+				NOT = { has_trait = administrative_court_2 }
+				stewardship <= 99
+			}
+		}
+	}
+} # end artifact_tally_improve_steward_trigger
+
+artifact_tally_econ_buildings_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			any_county_province = {
+				OR = {
+					AND = {
+						# could build markets
+						has_holding_type = tribal_holding
+						NOT = { has_building_or_higher = market_villages_01 }
+						NOT = { free_building_slots = 0 }
+					}
+					AND = {
+						# could build guild halls
+						has_holding_type = city_holding
+						NOT = { has_building_or_higher = guild_halls_01 }
+					}					
+					AND = {
+						# Pastures
+						NOT = { has_building_or_higher = pastures_01 }
+						building_pastures_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Hunting Grounds
+						NOT = { has_building_or_higher = hunting_grounds_01 }
+						building_hunting_grounds_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }	
+					}
+					AND = {
+						# Orchards
+						NOT = { has_building_or_higher = orchards_01 }
+						building_orchards_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Farm Estates
+						NOT = { has_building_or_higher = farm_estates_01 }
+						building_farm_estates_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Fields
+						NOT = { has_building_or_higher = cereal_fields_01 }
+						building_cereal_fields_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }	
+					}
+					AND = {
+						# Wetland Farms
+						NOT = { has_building_or_higher = peat_quarries_01 }
+						building_peat_quarries_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }	
+					}
+					AND = {
+						# Hill Farms
+						NOT = { has_building_or_higher = hill_farms_01 }
+						building_hill_farms_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Plantations
+						NOT = { has_building_or_higher = plantations_01 }
+						building_plantations_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }	
+					}
+				}
+			} # end any_county_province
+		} # end any_sub_realm_county
+	} # end scope:the_artifact_user
+} # end artifact_tally_econ_buildings_trigger
+
+artifact_tally_add_development_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			development_level <= 99
+		}
+	}
+} # end artifact_tally_add_development_trigger

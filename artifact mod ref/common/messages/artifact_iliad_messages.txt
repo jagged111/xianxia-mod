@@ -1,0 +1,11 @@
+﻿iliad_cultural_acceptance_msg = {
+	display = feed
+	#title = msg_artifact_iliad_improve_cultural_acceptance_title
+	#desc = msg_artifact_iliad_improve_cultural_acceptance_desc
+	title = event_message_title
+	desc = event_message_text
+	tooltip = msg_artifact_iliad_improve_cultural_acceptance_tooltip
+	soundeffect = @msg_good_soundeffect
+	icon = "learning"
+	style = good
+}

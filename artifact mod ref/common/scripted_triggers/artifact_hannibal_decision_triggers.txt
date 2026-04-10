@@ -1,0 +1,125 @@
+﻿# Make sure we don't already have all the military traits
+artifact_hannibal_teach_me_trigger = {
+	scope:the_artifact_user = {
+		OR = {
+			NOT = { has_trait = education_martial_5 }
+			NOT = { has_trait = logistician }
+			NOT = { has_trait = military_engineer }
+			NOT = { has_trait = aggressive_attacker }
+			NOT = { has_trait = unyielding_defender }
+			NOT = { has_trait = forder }
+			NOT = { has_trait = flexible_leader }
+			NOT = { has_trait = desert_warrior }
+			NOT = { has_trait = jungle_stalker }
+			NOT = { has_trait = reaver }
+			NOT = { has_trait = reckless }
+			NOT = { has_trait = holy_warrior }
+			NOT = { has_trait = open_terrain_expert }
+			NOT = { has_trait = rough_terrain_expert }
+			NOT = { has_trait = forest_fighter }
+			NOT = { has_trait = organizer }
+			NOT = { has_trait = winter_soldier }
+			NOT = { has_trait = faith_warrior }
+			NOT = { has_trait = viking }
+			NOT = { has_trait = warlike_court_2 }
+			NOT = { has_perk = strategist_perk }
+			NOT = { has_perk = overseer_perk }
+			NOT = { has_perk = gallant_perk }
+			martial < 100
+		}
+	}
+}
+
+artifact_hannibal_build_camps_trigger = {
+	scope:the_artifact_user = {
+		any_sub_realm_county = {
+			any_county_province = {
+				OR = {
+					AND = {
+						# could build longhouses
+						has_holding_type = tribal_holding
+						NOT = { has_building_or_higher = longhouses_01 }
+						NOT = { free_building_slots = 0 }
+					}
+					AND = {
+						# could build war camps
+						has_holding_type = tribal_holding
+						NOT = { has_building_or_higher = war_camps_01 }
+						NOT = { free_building_slots = 0 }
+					}					
+					AND = {
+						# Military Camps
+						NOT = { has_building_or_higher = military_camps_01 }
+						building_military_camps_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Regimental Grounds
+						NOT = { has_building_or_higher = regimental_grounds_01 }
+						building_regimental_grounds_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }		
+					}
+					AND = {
+						# Barracks
+						NOT = { has_building_or_higher = barracks_01 }
+						building_barracks_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Camel Farms
+						NOT = { has_building_or_higher = camel_farms_01 }
+						building_camel_farms_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }
+					}
+					AND = {
+						# Elephant Pens
+						NOT = { has_building_or_higher = elephant_pens_01 }
+						building_elephant_pens_requirement_terrain = yes
+						building_requirement_castle_city_church = { LEVEL = 01 }	
+					}
+				}
+			}
+		}
+	}
+}
+
+artifact_hannibal_improve_marshal_trigger = {
+	scope:the_artifact_user = {
+		exists = cp:councillor_marshal
+		cp:councillor_marshal = {
+			OR = {
+				NOT = { has_trait = education_martial_5 }
+				NOT = { has_trait = logistician }
+				NOT = { has_trait = military_engineer }
+				NOT = { has_trait = aggressive_attacker }
+				NOT = { has_trait = unyielding_defender }
+				NOT = { has_trait = forder }
+				NOT = { has_trait = flexible_leader }
+				NOT = { has_trait = desert_warrior }
+				NOT = { has_trait = jungle_stalker }
+				NOT = { has_trait = reaver }
+				NOT = { has_trait = reckless }
+				NOT = { has_trait = holy_warrior }
+				NOT = { has_trait = open_terrain_expert }
+				NOT = { has_trait = rough_terrain_expert }
+				NOT = { has_trait = forest_fighter }
+				NOT = { has_trait = organizer }
+				NOT = { has_trait = winter_soldier }
+				NOT = { has_trait = faith_warrior }
+				NOT = { has_trait = viking }
+				NOT = { has_trait = warlike_court_2 }
+				martial < 100
+			}
+		}
+	}
+}
+
+# Finish increase control
+artifact_hannibal_marshal_finish_trigger = {
+	scope:the_artifact_user = {
+		exists = cp:councillor_marshal
+		cp:councillor_marshal = {
+			is_performing_council_task = task_increase_control
+		}
+	}
+}

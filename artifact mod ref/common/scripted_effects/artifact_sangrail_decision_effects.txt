@@ -1,0 +1,164 @@
+﻿###	Sangrail Artifact
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+#
+#	Options
+# 	- 
+#	- Finish "convert religion"
+#	- 
+#	- Improve my Priest
+#	- Kill the priest
+#	- 
+
+artifact_sangrail_create_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	
+	hidden_effect = {
+		random_county_in_region = {
+			region = world_africa_sahara
+			random_county_province = {
+				save_scope_as = sangrail_found_here
+			}
+		}
+	}
+
+	hidden_effect_new_object = {
+		scope:owner = {
+			create_artifact = {
+				name = artifact_sangrail_name
+				description = artifact_sangrail_desc
+				rarity = illustrious
+				visuals = goblet
+				type = goblet
+				template = artifact_sangrail_template
+
+				history = {
+					location = scope:sangrail_found_here
+					actor = root
+					recipient = root
+					type = discovered
+				}
+				decaying = no
+				
+				quality = 1000
+				wealth = 1000
+
+				save_scope_as = newly_created_artifact
+				modifier = artifact_court_grandeur_baseline_add_6_modifier
+				modifier = artifact_sangrail_modifier
+			}
+		}
+	}
+} # end artifact_sangrail_create_effect
+
+artifact_sangrail_finish_convert_religion_effect = {
+	custom_tooltip = artifact_sangrail_finish_convert_religion_effect_tooltip
+
+	scope:the_artifact_user = {
+		# get bishop
+		cp:councillor_court_chaplain = {
+			finish_council_task = yes
+		}
+	}
+}
+
+# Improve my Bishop
+artifact_sangrail_improve_bishop_effect = {
+	# add chancellor, or add a chancellor effect
+	
+	scope:the_artifact_user = {
+		# get bishop
+		cp:councillor_court_chaplain = {
+			random_list = {
+				500 = {
+					trigger = {
+						NOT = { has_trait = education_learning }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_sangrail_decision
+							left_icon = cp:councillor_court_chaplain
+							cp:councillor_court_chaplain = {
+								add_trait = education_learning_1
+							}
+						}
+					}
+					
+				}
+				500 = {
+					trigger = {
+						has_trait = education_learning
+						NOT = { has_trait = education_learning_5 }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_sangrail_decision
+							left_icon = cp:councillor_court_chaplain
+							cp:councillor_court_chaplain = {
+								change_trait_rank = {
+									trait = education_learning
+									rank = 1
+									max = 5
+								}
+							}
+						} # end send_interface_toast
+					}
+				}
+				100 = {
+					trigger = { learning < 99 }
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_sangrail_decision
+							left_icon = cp:councillor_court_chaplain
+							cp:councillor_court_chaplain = {
+								add_learning_skill = 10
+							}
+						}
+					}
+				}
+				100 = { 
+					trigger = { 
+						NOT = { has_trait = scholarly_court }
+					}
+					#add_trait_force_tooltip = diplomatic_court_1
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_sangrail_decision
+							left_icon = cp:councillor_court_chaplain
+							cp:councillor_court_chaplain = {
+								add_trait = scholarly_court_1
+							}
+						}
+					}										
+				}
+				100 = { 
+					trigger = { 
+						has_trait = scholarly_court
+						NOT = { has_trait = scholarly_court_2 }
+					}
+					scope:the_artifact_user = {
+						send_interface_toast = {
+							title = artifact_sangrail_decision
+							left_icon = cp:councillor_court_chaplain
+							cp:councillor_court_chaplain = {
+								change_trait_rank = {
+									trait = scholarly_court
+									rank = 1
+									max = 2
+								}
+							}
+						} # end send_interface_toast
+					}								
+				}
+			} # end random_list
+		} # end cp:councillor_court_chaplain
+	} # end scope:the_artifact_user
+} # end artifact_sangrail_improve_bishop_effect
+
+
+# Ignore Three Site Rule
+#  Allows reformation without the three sites
+#  add_character_flag = ignore_3_holy_site_rule
+
+# During pilgraqmage, make pilgramage more pious or more wordly
+
+# Give Piety

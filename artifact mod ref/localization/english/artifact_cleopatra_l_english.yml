@@ -1,0 +1,33 @@
+﻿l_english:
+
+cleopatra_couch_artifact_name: "Chaise Lounge of Cleopatra"
+cleopatra_couch_artifact_desc: "Behold, the couch of Cleopatra, where she seduced Julius Caesar and Marc Antony.  I don't know what those stains are... could be blood, or snake venom, or something else."
+
+artifact_use_cleopatra_couch_decision: "Recline on Cleopatra's Chaise Longue"
+artifact_use_cleopatra_couch_decision_tooltip: ""
+artifact_use_cleopatra_couch_decision_desc: ""
+artifact_use_cleopatra_couch_decision_confirm: "Put your feet up."
+
+artifact_cleopatra_decision.01: "Recline on Cleopatra's Couch"
+artifact_cleopatra_decision.01.title: "Recline on Cleopatra's Couch"
+artifact_cleopatra_decision.01.tooltip: ""
+artifact_cleopatra_decision.01.desc: ""
+
+artifact_cleopatra_decision.01.a: "Make me desirable."
+
+artifact_cleopatra_decision.01.b: "Teach Me, Cleopatra"
+artifact_cleopatra_teach_me_effect_tooltip: "Teaches intrigue."
+
+artifact_cleopatra_decision.01.c: "Improve my Spymaster"
+artifact_cleopatra_improve_spymaster_effect_tooltip: "Improves my spymaster."
+
+artifact_cleopatra_decision.01.d: "Make courtiers loyal."
+artifact_cleopatra_decision.01.e: "Make vassals loyal."
+
+artifact_cleopatra_decision.01.f: "Learn Court Secrets"
+artifact_cleopatra_decision.01.g: "Learn Vassal Secrets"
+artifact_cleopatra_decision.01.h: "Learn Some Secrets"
+
+artifact_cleopatra_decision.01.i: "Remove rivalries among my courtiers and vassals."
+
+artifact_cleopatra_decision.01.j: "Remove most hooks held on me."

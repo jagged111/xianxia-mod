@@ -1,0 +1,36 @@
+﻿artifact_horse_ring_modifier = {
+	
+	winter_movement_speed = 0.5
+	movement_speed = 2.25
+	
+	men_at_arms_cap = 2
+	men_at_arms_limit = 2
+
+	light_cavalry_max_size_add = 2
+	light_cavalry_pursuit_mult = 0.2
+	light_cavalry_maintenance_mult = -0.5
+	light_cavalry_damage_mult = 2
+	light_cavalry_toughness_mult = 2
+	light_cavalry_screen_mult = 2
+	
+	heavy_cavalry_max_size_add = 2
+	heavy_cavalry_pursuit_mult = 2
+	heavy_cavalry_maintenance_mult = -0.5
+	heavy_cavalry_damage_mult = 2
+	heavy_cavalry_toughness_mult = 2
+
+	camel_cavalry_damage_mult = 2
+	camel_cavalry_toughness_mult = 2
+	camel_cavalry_screen_mult = 2
+	camel_cavalry_pursuit_mult = 2
+
+	archer_cavalry_screen_mult = 2
+	archer_cavalry_damage_mult = 2
+	archer_cavalry_toughness_mult = 2
+	archer_cavalry_pursuit_mult = 2
+
+	domicile_travel_speed = 8
+	character_travel_speed_mult = 8
+	provisions_use_mult = -0.9
+
+}

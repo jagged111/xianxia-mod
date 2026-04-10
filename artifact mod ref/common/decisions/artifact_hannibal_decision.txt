@@ -1,0 +1,31 @@
+﻿## Consult the Rod of Asclepius
+#  @author Scott Grizzard <scott@scottgrizzard.com>
+
+consult_hannibal_skull_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+	}
+	decision_group_type = artifactdecisions
+	ai_check_interval = 0
+
+	desc = consult_hannibal_skull_decision_desc
+	selection_tooltip = consult_hannibal_skull_decision_tooltip
+
+	is_shown = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_hannibal_modifier
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		any_character_artifact = {
+			has_artifact_modifier = artifact_hannibal_modifier
+		}
+	}
+
+	effect = {
+		save_scope_as = the_artifact_user
+
+		trigger_event = { id = artifact_hannibal_decision.01 }
+	}
+}

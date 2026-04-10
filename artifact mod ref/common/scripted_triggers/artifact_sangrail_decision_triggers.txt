@@ -1,0 +1,26 @@
+﻿#################################################
+# TRIGGER LIST 									#
+#################################################
+
+artifact_sangrail_improve_bishop_trigger = {
+	scope:the_artifact_user = {
+		# get steward
+		cp:councillor_court_chaplain = {
+			OR = {
+				NOT = { has_trait = education_learning_5 }
+				NOT = { has_trait = scholarly_court_2 }
+				learning <= 99
+			}
+		}
+	}
+} # end artifact_sangrail_improve_bishop_trigger
+
+artifact_sangrail_finish_convert_religion_trigger = {
+	scope:the_artifact_user = {
+		# get steward
+		exists = cp:councillor_court_chaplain
+		cp:councillor_court_chaplain = {
+			is_performing_council_task = task_conversion
+		}
+	}
+} # end artifact_sangrail_finish_convert_religion_trigger

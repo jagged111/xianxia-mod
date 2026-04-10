@@ -1,0 +1,43 @@
+﻿l_english:
+
+artifact_asclepius_name: "Rod of Asclepius"
+artifact_asclepius_desc: "Known alternatively as the Asklepain or the Staff of Medicine, the Rod of Asclepius features a single serpant wrapping around a simple wooden staff.  As you stare at the rod, you swear the snake stares back."
+
+artifact_asclepius_decision_effect_tooltip: "Known alternatively as the Asklepain or the Staff of Medicine, the Rod of Asclepius features a single serpant wrapping around a simple wooden staff.  As you stare at the rod, you swear the snake stares back."
+
+consult_rod_of_asclepius: "Consult the Rod of Asclepius"
+consult_rod_of_asclepius_desc: "Asclepius is the Greek god of Medicine.  His staff, entwined by a single snake, represents the healing arts."
+consult_rod_of_asclepius_tooltip: "The snake looks at you expectantly."
+consult_rod_of_asclepius_confirm: "Stare at the Snake"
+
+god_artifacts_decisions.0021.t: "Consult the Rod of Asclepius"
+god_artifacts_decisions.0021.desc: "The snake whispers in your ear, "What do you wish of the God of Medicine?""
+
+# Recruit Doctor
+god_artifacts_decisions.0021.a: "Recruit Therapeutes of Asclepius"
+artifact_asclepius_recruit_doctor_effect_tooltip: "Recruits an excellent physician candidate to your court."
+msg_artifact_asclepius_recruited_doctor_title: "Potential Physician Recruited"
+msg_artifact_asclepius_recruited_doctor_desc: "[the_doctor.GetFirstName] has been summoned by Asclepius.  [the_doctor.GetSheHe|U] would make a good [GetCourtPositionType('court_physician_court_position').GetName()]."
+
+god_artifacts_decisions.0021.j: "Recruit Wet Nurse"
+artifact_asclepius_recruit_wetnurse_effect_tooltip: "Recruits an excellent wet nurse candidate to your court."
+msg_artifact_asclepius_recruited_wetnurse_title: "Potential Wet Nurse Recruited"
+msg_artifact_asclepius_recruited_wetnurse_desc: "[the_wetnurse.GetFirstName] has been summoned by Asclepius.  [the_wetnurse.GetSheHe|U] would make a good [GetCourtPositionType('wet_nurse_court_position').GetName()]."
+
+god_artifacts_decisions.0021.b: "Heal Me"
+god_artifacts_decisions.0021.c: "Seek Mental Health"
+god_artifacts_decisions.0021.d: "Fix my Genes"
+god_artifacts_decisions.0021.e: "Pump <clap> ME UP!"
+god_artifacts_decisions.0021.f: "Little Blue Plant Extract?"
+
+# Heal peeps
+god_artifacts_decisions.0021.g: "Heal Court"
+god_artifacts_decisions.0021.h: "Heal Partner STD's"
+
+
+msg_artifact_asclepius_healed_title: "Be Healed!"
+msg_artifact_asclepius_healed_desc: "[the_patient.GetFirstName] is witness to the healing power of The Rod of Asclepius!"
+
+
+god_artifacts_decisions.0021.i: "Teach me, O Asclepius"
+god_artifacts_decisions.never_mind: "Never Mind"

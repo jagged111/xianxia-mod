@@ -1,0 +1,30 @@
+﻿l_english:
+
+artifact_archimedes_book_name: "Archimedes Codex"
+artifact_archimedes_book_desc: "A diligent and insightful monk has copied the mathematical and engineering writings of Archimedes of Syracuse and collected them in a single codex.  Of course, real understandings of the genious of Archimedes will have to wait until an apple falls on the head of a Cambridge student."
+
+artifact_archimedes_decision: "Read Archimedes Codex"
+artifact_archimedes_decision_desc: "You open the codex, reveling in the knowledge within."
+artifact_archimedes_decision_tooltip: "Read Archimedes Codex"
+artifact_archimedes_decision_confirm: "Eureka!"
+
+artifact_archimedes_decision_effect_tooltip: "Mathematics reveals its secrets only to those who approach it with pure love, for its own beauty.\n     - Archimedes"
+
+god_artifacts_decisions.0041.title: "Read Archimedes Codex"
+god_artifacts_decisions.0041.desc: "You flip through the pages of great learning."
+
+# Recruit Court Tutor
+god_artifacts_decisions.0041.a: "Recruit Court Tutor"
+msg_artifact_archimedes_recruited_tutor_title: "Potential Tutor Recruited"
+msg_artifact_archimedes_recruited_tutor_desc: "[the_tutor.GetFirstName] has heard of your facination with Archimedes, and has journeyed to your court.  [the_tutor.GetSheHe|U] would make a good [GetCourtPositionType('court_tutor_court_position').GetName()]."
+artifact_archimedes_recruit_tutor_effect_tooltip: "Recruits an excellent tutor candidate to your court."
+
+
+god_artifacts_decisions.0041.b: "Improve My Brain"
+god_artifacts_decisions.0041.c: "Build Siege Engines"
+god_artifacts_decisions.0041.d: "Build Defenses"
+god_artifacts_decisions.0041.e: "Build Mines and Sawmills"
+god_artifacts_decisions.0041.f: "Build a Glass House"
+god_artifacts_decisions.0041.g: "Develop University County"
+
+archimedes_troops.1: "Archimedes Siege Engines"

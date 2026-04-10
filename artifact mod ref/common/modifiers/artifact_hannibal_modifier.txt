@@ -1,0 +1,52 @@
+﻿artifact_hannibal_modifier = {
+
+	icon = martial_positive
+	martial = 70
+	monthly_martial_lifestyle_xp_gain_mult = 2.5
+	max_combat_roll = 6
+
+	# War Elephants!
+	#unlock_maa = war_elephant
+	# get all the elephant mods, like size, strength, seige
+	elephant_cavalry_damage_mult = 0.75	
+	elephant_cavalry_toughness_mult = 0.75
+	elephant_cavalry_pursuit_mult = 0.75
+	elephant_cavalry_screen_add = 15
+	#elephant_cavalry_siege_value_add = 15
+
+	# Basically, every military trait effect
+	enemy_hard_casualty_modifier = 0.5
+	no_water_crossing_penalty = yes
+	enemy_terrain_advantage = -0.5
+
+
+	supply_duration = 5
+
+	desert_cancel_negative_supply = yes
+	jungle_cancel_negative_supply = yes
+
+
+	# I invaded italy with ELEPHANTS... quand the fucii
+	plains_attrition_mult = -0.95
+	forest_attrition_mult = -0.95
+	taiga_attrition_mult = -0.95
+	jungle_attrition_mult = -0.95
+	wetlands_attrition_mult = -0.95
+	mountains_attrition_mult= -0.95
+	desert_mountains_attrition_mult = -0.95
+	drylands_attrition_mult = -0.95
+	desert_attrition_mult = -0.95
+	hills_attrition_mult = -0.95
+	steppe_attrition_mult = -0.95
+	floodplains_attrition_mult = -0.95
+
+	pursue_efficiency = 2.00
+
+	levy_reinforcement_rate = 2.00
+
+	owned_legend_spread_mult = 25
+
+	advantage = 50
+	maa_toughness_mult = 1.00
+	martial_scheme_phase_duration = -50
+}

@@ -1,0 +1,41 @@
+﻿namespace = artifact_sangrail_decision
+
+# Sangrail
+artifact_sangrail_decision.01 = {
+	type = character_event
+
+	title = artifact_sangrail_decision.01.title
+	desc = artifact_sangrail_decision.01.desc
+	
+	theme = faith
+	left_portrait = {
+		character = scope:the_artifact_user
+		animation = personality_content
+	}
+
+	right_portrait = {
+	 	character = cp:councillor_court_chaplain
+	 	animation = reading 
+	}
+
+	# 
+	option = {
+		name = artifact_sangrail_decision.01.a
+		trigger = { artifact_sangrail_improve_bishop_trigger = yes }
+		artifact_sangrail_improve_bishop_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_sangrail_decision.01.b
+		trigger = { artifact_sangrail_finish_convert_religion_trigger = yes }
+		artifact_sangrail_finish_convert_religion_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+}

@@ -1,0 +1,399 @@
+﻿#	Recruit Food Taster
+#	Recruit Cup-Bearer
+#	Recruit Lady in Waiting
+#	Recruit Chief Eunuch
+#	Recruit Jester
+#	Recruit Musician
+#	Recruit High Almaner
+
+artifact_juno_diadem_create_effect = {
+	hidden_effect = {
+		title:c_roma = {
+			random_county_province = {
+				save_scope_as = juno_found_here
+			}
+		}
+		
+	}
+
+	create_artifact = {
+		name = artifact_juno_diadem_name
+		description = artifact_juno_diadem_desc
+		rarity = illustrious
+		visuals = crown
+		type = helmet
+
+		history = {
+			location = scope:juno_found_here
+			actor = root
+			recipient = root
+			type = discovered
+		}
+		decaying = no
+		
+		quality = 100
+		wealth = 100
+
+		save_scope_as = newly_created_artifact
+		modifier = artifact_monthly_prestige_8_modifier
+		modifier = artifact_junocrown_modifier
+
+		#set_artifact_feature_group = decoration_material_wire
+		#set_artifact_feature_group = crown_decoration
+
+		#set_artifact_rarity_masterwork = yes
+	}
+
+	scope:newly_created_artifact = {
+		#get_artifact_feature_references_effect = yes
+		set_artifact_feature_group = decoration_material_wire
+		set_artifact_feature_group = decoration_material_gem
+	}
+} # artifact_juno_diadem_create_effect
+
+# Recruit Food Taster
+artifact_juno_recruit_food_taster_effect = {
+	
+	custom_tooltip = artifact_juno_recruit_food_taster_tooltip
+	
+	hidden_effect = {		
+		random_culture_global = {
+			limit = {
+				has_cultural_parameter = characters_are_better_food_tasters
+			}
+			save_scope_as = the_food_taster_culture
+		}
+	
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_juno_food_taster
+			save_scope_as = the_food_taster
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_food_taster = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_food_taster_title
+		desc = msg_artifact_juno_recruit_food_taster_desc
+		left_icon = scope:the_food_taster
+	}
+
+
+} # end artifact_juno_recruit_food_taster
+
+#	Recruit Cup-Bearer
+artifact_juno_recruit_cup_bearer_effect = {
+	custom_tooltip = artifact_juno_recruit_cup_bearer_tooltip
+	
+	hidden_effect = {		
+		random_list = {
+			20 = {
+				scope:the_artifact_user.culture = {
+					save_scope_as = the_cup_bearer_culture
+				}
+			}
+			20 = {
+				scope:the_artifact_user = {
+					random_character_to_title_neighboring_and_across_water_county = {
+						this.culture = {
+							save_scope_as = the_cup_bearer_culture
+						}
+					}
+				}
+			}
+			5 = {
+				random_culture_global = { save_scope_as = the_cup_bearer_culture }				
+			}		
+		} #end random_list
+
+		create_character = {
+			#location = scope:the_artifact_user.capital_province
+			template = artifact_juno_cup_bearer
+			save_scope_as = the_cup_bearer
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_cup_bearer = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_cup_bearer_title
+		desc = msg_artifact_juno_recruit_cup_bearer_desc
+		left_icon = scope:the_cup_bearer
+	}
+
+} # end artifact_juno_recruit_cup_bearer
+
+#	Recruit Lady in Waiting
+artifact_juno_recruit_lady_in_waiting_effect = {
+	custom_tooltip = artifact_juno_recruit_lady_in_waiting_effect_tooltip
+	
+	hidden_effect = {		
+		random_list = {
+			20 = {
+				scope:the_artifact_user.culture = {
+					save_scope_as = the_lady_in_waiting_culture
+				}
+			}
+			20 = {
+				random_character_to_title_neighboring_and_across_water_county = {
+					this.culture = {
+						save_scope_as = the_lady_in_waiting_culture
+					}
+				}
+			}
+			5 = {
+				random_culture_global = { save_scope_as = the_lady_in_waiting_culture }				
+			}			
+		} #end random_list
+
+		create_character = {
+			template = artifact_juno_lady_in_waiting
+			save_scope_as = the_lady_in_waiting
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_lady_in_waiting = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_lady_in_waiting_effect_title
+		desc = msg_artifact_juno_recruit_lady_in_waiting_effect_desc
+		left_icon = scope:the_lady_in_waiting
+	}
+} # end artifact_juno_recruit_lady_in_waiting_effect
+
+#	Recruit Chief Eunuch
+artifact_juno_recruit_chief_eunuch_effect = {
+	custom_tooltip = artifact_juno_recruit_chief_eunuch_effect_tooltip
+
+	hidden_effect = {
+		random_list = { # eunuchs should be from catrating cultures, or cultures next to them.
+			10 = {
+				random_culture_global = {
+					limit = {
+						has_cultural_parameter = can_castrate_prisoners
+					}
+					save_scope_as = the_chief_eunuch_culture
+				} # end random_culture_global
+			}
+			10 = {
+				random_culture_global = { 
+					limit = {
+						has_cultural_parameter = can_castrate_prisoners
+					}
+					random_culture_county = {
+						random_title_to_title_neighboring_and_across_water_county = {
+							this.culture = { # the culture of some neighbor of a castrating culture
+								save_scope_as = the_chief_eunuch_culture
+							}
+						}
+					}
+				} # end random_culture_global
+			}
+		} # end random_list
+
+		create_character = {
+			template = artifact_juno_chief_eunuch
+			save_scope_as = the_chief_eunuch
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_chief_eunuch = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_chief_eunuch_effect_title
+		desc = msg_artifact_juno_recruit_chief_eunuch_effect_desc
+		left_icon = scope:the_chief_eunuch
+	}
+} # end artifact_juno_recruit_chief_eunuch_effect
+
+#	Recruit Jester
+artifact_juno_recruit_jester_effect = {
+	custom_tooltip = artifact_juno_recruit_jester_effect_tooltip
+	
+	hidden_effect = {		
+		random_list = {
+			20 = {
+				scope:the_artifact_user.culture = {
+					save_scope_as = the_jester_culture
+				}
+			}
+			20 = {
+				scope:the_artifact_user = {
+					random_character_to_title_neighboring_and_across_water_county = {
+						this.culture = {
+							save_scope_as = the_jester_culture
+						}
+					}
+				}
+			}
+			5 = {
+				random_culture_global = { 
+					save_scope_as = the_jester_culture 
+				}
+			}	
+			2 = {
+				random_culture_global = {
+					limit = {
+						has_cultural_tradition = tradition_life_is_just_a_joke
+					}
+					save_scope_as = the_jester_culture 
+				}
+			}			
+		} #end random_list
+
+		create_character = {
+			template = artifact_juno_jester
+			save_scope_as = the_jester
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_jester = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_jester_effect_title
+		desc = msg_artifact_juno_recruit_jester_effect_desc
+		left_icon = scope:the_jester
+	}
+} # end artifact_juno_recruit_jester_effect
+
+#	Recruit Musician
+artifact_juno_recruit_musician_effect = {
+	custom_tooltip = artifact_juno_recruit_musician_effect_tooltip
+	
+	hidden_effect = {		
+		random_culture_global = {
+			limit = {
+				has_cultural_parameter = characters_are_better_court_musicians
+			}
+			save_scope_as = the_musician_culture
+		}
+
+		create_character = {
+			template = artifact_juno_musician
+			save_scope_as = the_musician
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_musician = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_musician_effect_title
+		desc = msg_artifact_juno_recruit_musician_effect_desc
+		left_icon = scope:the_musician
+	}
+} # end artifact_juno_recruit_musician_effect
+
+artifact_juno_recruit_high_almoner_effect = {
+
+	custom_tooltip = artifact_juno_recruit_high_almoner_effect_tooltip
+
+	hidden_effect = {
+		random_list = {
+			95 = {
+				random_culture_global = {
+					limit = { has_cultural_parameter = devoted_trait_bonuses }
+				}
+				save_scope_as = the_high_almoner_culture
+			}
+			5 = {
+				scope:the_artifact_user.culture = {
+					save_scope_as = the_high_almoner_culture
+				}
+			}
+		}
+			
+		create_character = {
+			template = artifact_juno_high_almoner
+			save_scope_as = the_high_almoner
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_high_almoner = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_high_almoner_effect_title
+		desc = msg_artifact_juno_recruit_high_almoner_effect_desc
+		left_icon = scope:the_high_almoner
+	}
+
+} # end artifact_juno_recruit_high_almoner_effect
+
+artifact_juno_recruit_gardener_effect = {
+
+	custom_tooltip = artifact_juno_recruit_gardener_effect_tooltip
+
+	hidden_effect = {
+		random_culture_global = {
+			limit = { has_cultural_parameter = can_appoint_court_gardener }
+		}
+		save_scope_as = the_recruit_culture
+
+		
+		create_character = {
+			template = artifact_juno_gardener
+			save_scope_as = the_recruit
+			employer = scope:the_artifact_user
+			dynasty = none
+		}
+
+		scope:the_recruit = {
+			set_relation_friend = scope:the_artifact_user
+		}
+	} #end hidden_effect
+
+	# send a toast
+	send_interface_toast = {
+		type = character_arrived
+		title = msg_artifact_juno_recruit_gardener_effect_title
+		desc = msg_artifact_juno_recruit_gardener_effect_desc
+		left_icon = scope:the_recruit
+	}
+
+} # end artifact_juno_recruit_gardener_effect
+
+#artifact_juno_improve_spouse_effect = {
+#
+#}

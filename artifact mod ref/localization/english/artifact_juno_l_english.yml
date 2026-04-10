@@ -1,0 +1,52 @@
+﻿l_english:
+
+artifact_juno_diadem_name: "Diadem of Juno"
+artifact_juno_diadem_desc: "A simple crown of gold, elaborately engraved in Greek and Latin.  This band quietly projects the authority and unobtainable desirablitly of its wearer."
+
+artifact_use_juno_crown_decision: "Polish Juno's Diadem"
+artifact_use_juno_crown_decision_desc: ""
+artifact_use_juno_crown_decision_tooltip: ""
+artifact_use_juno_crown_decision_confirm: "Yes, rub the crown."
+
+artifact_juno_decision.01.title: "Juno Speaks to me as I Polish"
+artifact_juno_decision.01.desc: ""
+
+artifact_juno_decision.01.j: "Recruit [GetCourtPositionType('food_taster_court_position').GetName()|U]"
+artifact_juno_recruit_food_taster_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('food_taster_court_position').GetName()]."
+msg_artifact_juno_recruit_food_taster_title: "Food Taster Candidate Recruited"
+msg_artifact_juno_recruit_food_taster_desc: "[the_food_taster.GetFirstName] has heard Juno's call.  [the_food_taster.GetSheHe|U] would make a good [GetCourtPositionType('food_taster_court_position').GetName()]."
+
+artifact_juno_decision.01.k: "Recruit [GetCourtPositionType('cupbearer_court_position').GetName()|U]"
+artifact_juno_recruit_cup_bearer_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('cupbearer_court_position').GetName()]."
+msg_artifact_juno_recruit_cup_bearer_title: "Cup Bearer Candidate Recruited"
+msg_artifact_juno_recruit_cup_bearer_desc: "[the_cup_bearer.GetFirstName] has heard Juno's call.  [the_cup_bearer.GetSheHe|U] would make a good [GetCourtPositionType('cupbearer_court_position').GetName()]."
+
+artifact_juno_decision.01.l: "Recruit [GetCourtPositionType('lady_in_waiting_court_position').GetName()|U]"
+artifact_juno_recruit_lady_in_waiting_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('lady_in_waiting_court_position').GetName()]."
+msg_artifact_juno_recruit_lady_in_waiting_effect_title: "[GetCourtPositionType('lady_in_waiting_court_position').GetName()] Candidate Recruited"
+msg_artifact_juno_recruit_lady_in_waiting_effect_desc: "[the_lady_in_waiting.GetFirstName] has heard Juno's call.  [the_lady_in_waiting.GetSheHe|U] would make a good [GetCourtPositionType('lady_in_waiting_court_position').GetName()]."
+
+artifact_juno_decision.01.m: "Recruit [GetCourtPositionType('chief_eunuch_court_position').GetName()|U]"
+artifact_juno_recruit_chief_eunuch_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('chief_eunuch_court_position').GetName()]."
+msg_artifact_juno_recruit_chief_eunuch_effect_title: "[GetCourtPositionType('chief_eunuch_court_position').GetName()] Candidate Recruited"
+msg_artifact_juno_recruit_chief_eunuch_effect_desc: "[the_chief_eunuch.GetFirstName] has heard Juno's call.  [the_chief_eunuch.GetSheHe|U] would make a good [GetCourtPositionType('chief_eunuch_court_position').GetName()]."
+
+artifact_juno_decision.01.n: "Recruit [GetCourtPositionType('court_jester_court_position').GetName()|U]"
+artifact_juno_recruit_jester_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('court_jester_court_position').GetName()]."
+msg_artifact_juno_recruit_jester_effect_title: "[GetCourtPositionType('court_jester_court_position').GetName()] Candidate Recruited"
+msg_artifact_juno_recruit_jester_effect_desc: "[the_jester.GetFirstName] has heard Juno's call.  [the_jester.GetSheHe|U] would make a good [GetCourtPositionType('court_jester_court_position').GetName()]."
+
+artifact_juno_decision.01.o: "Recruit [GetCourtPositionType('court_musician_court_position').GetName()|U]"
+artifact_juno_recruit_musician_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('court_musician_court_position').GetName()]."
+msg_artifact_juno_recruit_musician_effect_title: "[GetCourtPositionType('court_musician_court_position').GetName()] Candidate Recruited"
+msg_artifact_juno_recruit_musician_effect_desc: "[the_musician.GetFirstName] has heard Juno's call.  [the_musician.GetSheHe|U] would make a good [GetCourtPositionType('court_musician_court_position').GetName()]."
+
+artifact_juno_decision.01.p: "Recruit [GetCourtPositionType('high_almoner_court_position').GetName()|U]"
+artifact_juno_recruit_high_almoner_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('high_almoner_court_position').GetName()]."
+msg_artifact_juno_recruit_high_almoner_effect_title: "[GetCourtPositionType('high_almoner_court_position').GetName()] Candidate Recruited"
+msg_artifact_juno_recruit_high_almoner_effect_desc: "[the_high_almoner.GetFirstName] has heard Juno's call.  [the_high_almoner.GetSheHe|U] would make a good [GetCourtPositionType('high_almoner_court_position').GetName()]."
+
+artifact_juno_decision.01.q: "Recruit [GetCourtPositionType('court_gardener_court_position').GetName()|U]"
+artifact_juno_recruit_gardener_effect_tooltip: "Recruits a courtier that would make an excellent [GetCourtPositionType('court_gardener_court_position').GetName()]."
+msg_artifact_juno_recruit_gardener_effect_title: "[GetCourtPositionType('court_gardener_court_position').GetName()] Candidate Recruited"
+msg_artifact_juno_recruit_gardener_effect_desc: "[the_recruit.GetFirstName] has heard Juno's call.  [the_recruit.GetSheHe|U] would make a good [GetCourtPositionType('court_gardener_court_position').GetName()]."

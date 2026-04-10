@@ -1,0 +1,24 @@
+﻿artifact_balius_xanthos_ring_create_effect = {
+	create_artifact = {
+		name = artifact_balius_xanthos_ring_name
+		description = artifact_balius_xanthos_ring_desc
+
+		rarity = illustrious
+		visuals = ring
+		type = miscellaneous
+
+		history = {
+			type = created_before_history
+			date = 100.1.1
+		}
+		quality = 100
+		wealth = 100
+		decaying = no
+		
+		save_scope_as = newly_created_artifact		
+
+		modifier = artifact_monthly_prestige_8_modifier
+		modifier = artifact_knight_limit_2_modifier
+		modifier = artifact_horse_ring_modifier
+	}	
+}

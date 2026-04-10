@@ -1,0 +1,173 @@
+﻿# Template for general recruited by hannibal's skill
+# needs scope:the_tutor_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_archimedes_tutor = {
+	age = { 16 25 }
+
+	gender_female_chance = 75
+
+	#culture = scope:the_tutor_culture
+	culture = scope:the_artifact_user.culture
+	faith = scope:the_artifact_user.faith
+
+	#good tutor traits
+	trait = education_learning_5
+	trait = education_martial_5
+	trait = education_stewardship_5
+	trait = education_diplomacy_5
+	trait = education_intrigue_5
+	trait = education_martial_prowess_4
+	trait = education_republican_knowledge_4
+
+	trait = scholar
+
+	trait = patient
+	trait = loyal
+	trait = content
+	trait = journaller
+
+	trait = intellect_good_3
+	trait = shrewd
+	trait = scholarly_court_2
+
+	# personality
+	trait = content
+	trait = loyal
+	random_traits_list = {
+		count = { 2 5 }
+		#reveler_1 = {}
+		#hunter_1 = {}
+		temperate = {}
+		lustful = {}
+		chaste = {}
+		generous = {}
+		gregarious = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		compassionate = {}
+		forgiving = {}
+		athletic = {}
+		poet = {}
+		beauty_good_1 = {}
+		physique_good_1 = {}
+		lifestyle_mystic = {}
+		humble = {}
+		brave = {}
+		zealous = {}
+		athletic = {}
+		forgiving = {}
+		adventurer = {}
+	}
+
+	# give some nice base stats
+	martial = { 5 15 }
+	diplomacy = { 5 15 }
+	intrigue = { 5 15 }
+	stewardship = { 5 15 }
+	learning = { 15 25 }
+	prowess = { 15 35 }
+
+	after_creation = {
+
+		# Learn a bunch of languages
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_arabic
+				}
+			}
+			learn_language = language_arabic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_latin
+				}
+			}
+			learn_language = language_latin
+		}			
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_italian
+				}
+			}
+			learn_language = language_italian
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_aramaic
+				}
+			}
+			learn_language = language_aramaic
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 30
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 60
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 20
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+
+	} # end after_creation
+}

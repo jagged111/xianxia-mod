@@ -1,0 +1,56 @@
+﻿namespace = artifact_tally_decision
+
+# Original Tally Stick
+artifact_tally_decision.01 = {
+	type = character_event
+
+	title =artifact_tally_decision.01.title
+	desc = artifact_tally_decision.01.desc
+	
+	theme = court
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	# 
+	option = {
+		name = artifact_tally_decision.01.a
+		trigger = { artifact_tally_teach_me_trigger = yes }
+		artifact_tally_teach_me_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_tally_decision.01.b
+		trigger = { artifact_tally_improve_steward_trigger = yes }
+		artifact_tally_improve_steward_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_tally_decision.01.c
+		artifact_tally_recruit_seneschal_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_tally_decision.01.d
+		trigger = { artifact_tally_econ_buildings_trigger = yes }
+		artifact_tally_econ_buildings_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = artifact_tally_decision.01.e
+		trigger = { artifact_tally_add_development_trigger = yes }
+		artifact_tally_add_development_effect = yes
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+
+	option = {
+		name = god_artifacts_decisions.never_mind
+		ai_chance = { base = 100 } #Doesn't especially matter.
+	}
+}
+

@@ -1,0 +1,71 @@
+﻿jolly_banner_01 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_western_banner_01_entity
+		#the short one with all the gold tassles on the bottom
+	}
+}
+
+jolly_banner_02 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_western_banner_02_entity
+		#shield on white background
+	}
+}
+
+jolly_banner_03 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_western_banner_03_entity
+		# forked bottom
+	}
+}
+
+jolly_banner_04 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_western_banner_04_entity
+		# shield on white, shortened, with the four short tear-tags on the bottom
+	}
+}
+
+jolly_banner_05 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_western_banner_05_entity
+		# all bg color (no shield) with three tear-tags on the bottom
+	}
+}
+
+jolly_banner_06 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_mena_banner_01_entity
+		# all bg color (no shield) with two tear-tags on the bottom
+	}
+}
+
+jolly_banner_07 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_mena_banner_02_entity
+		# all bg color, triangle
+	}
+}
+
+jolly_banner_08 = {
+	default_type = wall_big
+	icon = "artifact_banner.dds"
+	asset = {
+		reference = ep1_mena_banner_03_entity
+		# short, mediteranian one
+	}
+}

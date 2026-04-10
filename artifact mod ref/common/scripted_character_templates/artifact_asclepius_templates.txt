@@ -1,0 +1,304 @@
+﻿# Template for general recruited by hannibal's skill
+# needs scope:the_doctor_culture to be defined.
+# needs scope:the_artifact_user to be defined
+artifact_asclepius_doctor = {
+	age = { 16 25 }
+
+	gender_female_chance = 75
+
+	culture = scope:the_doctor_culture
+	faith = scope:the_artifact_user.faith
+
+	#good doctor traits
+	trait = education_learning_4
+	trait = whole_of_body
+	trait = scholar
+	trait = lifestyle_mystic
+	trait = lifestyle_physician
+	trait = lifestyle_gardener
+	trait = lifestyle_herbalist
+	trait = scholar
+
+
+	trait = shrewd
+	trait = scholarly_court_2
+
+	random_traits_list = {
+		count = 1
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+	}	
+
+	# personality
+	trait = patient
+	trait = content
+	trait = compassionate
+	trait = loyal
+	random_traits_list = {
+		count = { 2 5 }
+		#reveler_1 = {}
+		#hunter_1 = {}
+		temperate = {}
+		lustful = {}
+		chaste = {}
+		generous = {}
+		gregarious = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		arrogant = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		forgiving = {}
+		athletic = {}
+		shy = {}
+		fecund = {}
+		poet = {}
+		beauty_good_1 = {}
+		physique_good_1 = {}
+		pure_blooded = {}
+		humble = {}
+		brave = {}
+		zealous = {}
+		athletic = {}
+		forgiving = {}
+		adventurer = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 5 10 }
+	intrigue = { 0 5 }
+	stewardship = { 0 10 }
+	learning = { 15 25 }
+	prowess = { 0 15 } 
+
+	after_creation = {
+
+		add_trait_xp = {
+			trait = lifestyle_physician
+			value = 300
+		}
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = { 100 200 }
+		}
+
+
+		# Learn a bunch of languages
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 30
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 50
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 10
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+
+	} # end after_creation
+}
+
+artifact_asclepius_wetnurse = {
+	age = { 16 18 }
+
+	gender_female_chance = 100
+
+	culture = scope:the_wetnurse_culture
+	faith = scope:the_artifact_user.faith
+
+	#good wet nurse traits
+	trait = physique_good_3
+	trait = strong
+
+	trait = education_learning_4
+	trait = whole_of_body
+	trait = lifestyle_mystic
+	trait = lifestyle_physician
+	trait = lifestyle_gardener
+	trait = lifestyle_herbalist
+
+	random_traits_list = {
+		count = 1
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+	}	
+
+	# personality
+	trait = patient
+	trait = content
+	trait = compassionate
+	trait = loyal
+	trait = temperate
+
+	random_traits_list = {
+		count = { 2 5 }
+		lustful = {}
+		chaste = {}
+		generous = {}
+		gregarious = {}
+		diligent = {}
+		calm = {}
+		humble = {}
+		arrogant = {}
+		cynical = {}
+		honest = {}
+		just = {}
+		forgiving = {}
+		shy = {}
+		fecund = {}
+		poet = {}
+		beauty_good_1 = {}
+		pure_blooded = {}
+		humble = {}
+		brave = {}
+		zealous = {}
+		athletic = {}
+		forgiving = {}
+		adventurer = {}
+	}
+
+	# give some nice base stats
+	martial = { 0 10 }
+	diplomacy = { 5 10 }
+	intrigue = { 0 5 }
+	stewardship = { 0 10 }
+	learning = { 15 25 }
+	prowess = { 0 15 } 
+
+	after_creation = {
+
+		add_trait_xp = {
+			trait = lifestyle_physician
+			value = 300
+		}
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = { 100 200 }
+		}
+
+
+		# Learn a bunch of languages
+		if = {
+			limit = {
+				NOT = {
+					knows_language_of_culture = scope:the_artifact_user.culture
+				}
+			}
+			learn_language_of_culture = scope:the_artifact_user.culture
+		}
+		if = {
+			limit = {
+				NOT = {
+					knows_language = language_greek
+				}
+			}
+			learn_language = language_greek
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = zealous }
+			}
+			random = {
+				chance = 30
+				add_secret = { type = secret_non_believer }
+			}
+		}
+		random = {
+			chance = 50
+			add_secret = { type = secret_witch }
+		}
+		random = {
+			chance = 10
+			add_secret = { type = secret_deviant }
+		}
+		random = {
+			chance = 10
+			add_trait = adventurer
+		}
+		random = {
+			chance = 5
+			add_trait = dwarf
+		}
+
+		if = {
+			limit = {
+				culture = { has_cultural_parameter = has_access_to_shieldmaidens }
+			}
+			random = {
+				chance = 15
+				add_trait = shieldmaiden
+				add_trait = strong
+				hidden_effect = {
+					remove_trait = physique_good_1
+					remove_trait = physique_good_2
+				}
+				add_trait = physique_good_3
+				add_trait = lifestyle_blademaster
+				add_trait_xp = {
+					trait = lifestyle_blademaster
+					value = 50
+				}
+			}
+		}
+
+	} # end after_creation
+}

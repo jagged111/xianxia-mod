@@ -1,0 +1,9 @@
+﻿ir_best_friend_to_heir_friend = {
+	default = ir_best_friend_to_heir_friend_allowed
+	
+	ir_best_friend_to_heir_friend_allowed = {
+	}
+	
+	ir_best_friend_to_heir_friend_blocked = {
+	}
+}

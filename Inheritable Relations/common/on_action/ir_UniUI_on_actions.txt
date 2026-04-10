@@ -1,0 +1,14 @@
+﻿on_game_start = {
+    on_actions = {
+        inheritable_relations_start
+    }
+}
+
+inheritable_relations_start = {
+    effect = {
+        set_global_variable = {
+			name = ir_is_loaded
+			value = yes
+		}
+    }
+}

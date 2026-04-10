@@ -1,0 +1,9 @@
+﻿l_simp_chinese:
+ ir_predecessor_friend:0 "前任的[friend|E]"
+ ir_friend_heir:0 "[friend|E]的[heir|E]"
+ ir_predecessor_best_friend:0 "前任的[best_friend|E]"
+ ir_best_friend_heir:0 "[best_friend|E]的[heir|E]"
+ ir_predecessor_rival:0 "前任的[rival|E]"
+ ir_rival_heir:0 "[rival|E]的[heir|E]"
+ ir_predecessor_nemesis:0 "前任的[nemesis|E]"
+ ir_nemesis_heir:0 "[nemesis|E]的[heir|E]"

@@ -1,0 +1,10 @@
+﻿l_english:
+
+ir_predecessor_friend:0 "[friend|E] du prédécesseur"
+ir_friend_heir:0 "[heir|E] d'un [friend|El]"
+ir_predecessor_best_friend:0 "[best_friend|E] du prédécesseur"
+ir_best_friend_heir:0 "[heir|E] d'un [best_friend|El]"
+ir_predecessor_rival:0 "[rival|E] du prédécesseur"
+ir_rival_heir:0 "[heir|E] d'un [rival|El]"
+ir_predecessor_nemesis:0 "[nemesis|E] du prédécesseur"
+ir_nemesis_heir:0 "[heir|E] d'un [nemesis|El]"

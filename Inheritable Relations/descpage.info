@@ -1,0 +1,87 @@
+Updated for [b]1.7.0[/b]
+
+aka "Unfinished Business"...
+*Though the "Business" is "Unfinished", the [b]mod itself is[/b] in fact [b]Finished[/b].
+
+[h1][i]Saddened by your best friend's indifference towards your heir?[/i][/h1]
+
+This mod enables the possibility of an heir to [b]inherit their predecessors' relations[/b] when the time comes.
+Now taking a crown comes with its unique [b]diplomatic benefits and challenges[/b], depending on the previous holder's relations and how close you two are related.
+
+[img]https://imgur.com/p7Fv1Z6.gif[/img]
+
+[h1][b]🩸 Cross-Generational Friends & Rivals[/b][/h1]
+A character's friend will be marked as a [b]potential friend[/b] of your heir after succession, along with a [b]+30 opinion boost[/b]. 
+They would be much more likely to become friends assuming they don't have a particularly bad relationship prior to the succession.
+While certainly not guaranteed, with some effort and luck, one could maintain friendships between two lineages for several generations. 
+The same goes for the [b]predecessor's rivals[/b] (Marked as [b]potential rivals[/b] with a [b]-30 opinion penalty[/b])
+
+Note: only the [b]primary heir[/b] of a character will inherit their relations. A character can only get their relations inherited [b]once per lifetime[/b]. However, one could inherit the relations of [b]multiple predecessors[/b].
+All opinion modifier, positive or negative, lasts for [b]10 years[/b] (values decays over time)
+
+[h1][b]🤝🏼 Life-Long Relations[/b] have [b]Larger Impacts[/b][/h1]
+Best friends and nemesis are much rarer than their ordinary counterparts (In vanilla, Less than 5% of friends will later become best friends). Thus, it is only fair for the characters involved to value these special relations more.
+A character's [b]Best Friend[/b] will become the [b]friend[/b] of their heir after succession, provided they don't have a particularly bad prior relationship (E.g. rivalry or opinions lower than -30).
+If they cannot become friends because their opinions of each other are too low, they will become [b]potential friends[/b] instead. (Along with a mutual [b]+60 opinion boost[/b] to help them get along)
+The same logic is also applied to [b]nemesis[/b], just the negative version.
+
+*Only adult heirs can directly inherit friendships (become friends on succession) to simulate child heirs' lack of exposure to the relations of their predecessors
+*Direct inheritance of friendship can be turned off in Game Rules if you feel it's not balanced due to Ritualized Friendship tradition.
+
+[h1]🔗 [b]Tiered Inheritance Rules[/b] based on [b]Predecessor-Heir[/b] relation[/h1] 
+[b]Not all heirs are judged equally[/b]. The rules stated above [b]only apply[/b] to those who are perceived to be [b]closely-related[/b] to their predecessors.
+
+-[b]Closely-Related[/b]: A character's [b]non-rival Close Families[/b], [b]Spouses[/b], [b]Best Friends[/b] and [b]Soulmates[/b] are considered to be [b]closely-related[/b] to that character. In addition, their [b]heir's opinion of them[/b] also needs to be [b]greater than -30[/b] for them to be willing to take up the mantle.
+
+-[b]Loosely-Related[/b]: An heir would be considered as [b]loosely-related[/b] to their predecessor if they are of the [b]same dynasty[/b] or are [b]extended families[/b] to each other. Those who would otherwise be considered [b]closely-related[/b] but [b]don't like their predecessor enough[/b] would also fall into this tier.
+Loosely-related heirs are not favored/judged to the same extent. They would get [b]+10[/b] and [b]+20 opinion[/b] of their predecessor's [b]friends[/b] and [b]best friends[/b] respectively. Same logic for [b]rivals and nemesis[/b].
+
+-[b]Unrelated[/b]: Those don't fit into the previous two tiers are viewed as unrelated to their predecessors. Their predecessor's relations [b]will not have an effect on them[/b].
+
+[h1]🎭 Exceptions due to [b]Personality Traits[/b][/h1] 
+[b]Nemesis[/b] and [b]Rivals[/b] with [b]forgiving[/b] trait will not become [b]rival[/b] or be marked as [b]potential rival[/b] on succession. However, [b]relevant opinion penalties still apply[/b].
+
+[hr][/hr]
+[h1]This mod is best used with [u][b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url][/b][/u].[/h1]
+It adds over [b]60[/b] opinion modifiers related to character [b]relations[/b] and [b]interactions[/b] to [b]make AI characters feel more real[/b].
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309][img]https://i.imgur.com/iCDADdU.png[/img][/url]
+[hr][/hr]
+
+[h1][b]Load order[/b][/h1]
+-Other mods
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url]
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2829009590]Unfinished Business[/url] (This mod)
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825975085]Social Relations Expanded Lite[/url] (optional)
+-Other mechanical mods / Overhaul
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2768734977]UniUI[/url] (optional)
+-end of the load order
+
+[h1][b]Compatibility[/b][/h1]
+Compatible with practically [b]any mod[/b].
+🏆❌ This mod is [b][u]not achievement[/u] compatible[/b].
+
+[hr][/hr]
+[h1][b]📅 Future Plans[/b][/h1]
+- Cover more relations introduced in [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url][/b]
+- Make opinions modifiers dynamically change with traits
+[img]https://imgur.com/p7Fv1Z6.gif[/img]
+
+[url=https://steamcommunity.com:/linkfilter/?url=discord.com/invite/yhgAGuhY]Join Expanded Mod Series Discord[/url] for future updates
+[url=https://steamcommunity.com:/linkfilter/?url=discord.com/invite/yhgAGuhY][img]https://i.imgur.com/YkvRbPA.png[/img][/url]
+
+[hr][/hr]
+[h1][b]📢 Credits[/b][/h1]
+[b]Translations:[/b]
+Simplified Chinese (Special thanks to [b][url=https://steamcommunity.com/profiles/76561198255881425/myworkshopfiles/]牛奶大魔王[/url][/b])
+French (Special thanks to grobubon)
+
+[h1]Big Uncle's other mods (1.6.1):[/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2847318957]Show Me Your Personality[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815382549]Dynamic UI Themes[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790980257]Show Me Your Council[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2796111001]Show Me Your Court Positions[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790457557]Stress Bar for All[/url]
+
+[url=https://steamcommunity.com/workshop/filedetails/?id=2819265426][img]https://i.imgur.com/SMfVN1b.png[/img][/url]

@@ -1869,3 +1869,68 @@ cultivation_ai.2300 = {
 
     option = { name = OK }
 }
+
+# Reincarnation-faith sects: elder souls can pass part of their essence to children of the same faith.
+cultivation_ai.2310 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                faith = { has_doctrine = tenet_reincarnation }
+            }
+
+            random = {
+                chance = 10
+
+                random_courtier = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        faith = root.faith
+                        NOT = { has_trait = incapable }
+                    }
+                    save_scope_as = reincarnation_donor
+                }
+
+                random_child = {
+                    limit = {
+                        is_alive = yes
+                        age < 12
+                        faith = root.faith
+                    }
+                    save_scope_as = reincarnation_vessel
+                }
+
+                if = {
+                    limit = {
+                        exists = scope:reincarnation_donor
+                        exists = scope:reincarnation_vessel
+                    }
+
+                    scope:reincarnation_donor = {
+                        add_character_modifier = {
+                            modifier = soul_essence_diminished
+                            days = 365
+                        }
+                    }
+
+                    scope:reincarnation_vessel = {
+                        add_character_modifier = {
+                            modifier = reincarnation_awakening
+                            days = 1825
+                        }
+                        add_prestige = 75
+                        add_piety = 75
+                    }
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}

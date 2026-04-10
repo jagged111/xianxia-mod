@@ -530,3 +530,18 @@ path_longevity_cultivation_hidden = {
     fertility = -0.05
     prowess = -1
 }
+
+# Reincarnation transfer system modifiers.
+reincarnation_awakening = {
+    icon = learning_positive
+    learning = 2
+    prowess = 2
+    monthly_lifestyle_xp_gain_mult = 0.12
+}
+
+soul_essence_diminished = {
+    icon = learning_negative
+    learning = -1
+    prowess = -1
+    monthly_lifestyle_xp_gain_mult = -0.05
+}

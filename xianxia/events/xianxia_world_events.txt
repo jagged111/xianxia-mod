@@ -13,6 +13,23 @@ xianxia_world.1000 = {
                 is_adult = yes
             }
             xianxia_apply_government_adaptation_effect = yes
+            xianxia_non_cultivator_stat_cap_effect = yes
+
+            every_courtier = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                }
+                xianxia_non_cultivator_stat_cap_effect = yes
+            }
+
+            every_vassal = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                }
+                xianxia_non_cultivator_stat_cap_effect = yes
+            }
         }
 
         every_ruler = {

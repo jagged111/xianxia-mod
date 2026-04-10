@@ -516,3 +516,4 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Updated auction sell branch to actually destroy one owned artifact before granting sale payout, restoring real tradeoff economics.
 - Added `invite_path_cultivators_decision` + `xianxia_world.1850` to recruit path-aligned wandering cultivators into court champions, with character generation fallback only when no suitable wanderers exist.
 - Added spirit-stone economy pressure to breakthrough decisions: attempts now require minimum gold and apply longer resource cooldowns at low reserves, slowing both player and AI progression when poor.
+- Added non-cultivator stat cap enforcement effect (`xianxia_non_cultivator_stat_cap_effect`) that clamps diplomacy/martial/stewardship/intrigue/learning/prowess to 9 for non-cultivators during world maintenance pulses.

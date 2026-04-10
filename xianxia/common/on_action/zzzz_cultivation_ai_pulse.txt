@@ -8,6 +8,7 @@
         cultivation_ai.3000
         xianxia_world.1000
         xianxia_world.1700
+        xianxia_health.0001
     }
 }
 
@@ -29,6 +30,7 @@ on_monthly_pulse = {
         xianxia_world.1710
         xianxia_social.1000
         xianxia_social.1100
+        xianxia_health.0001
     }
 }
 

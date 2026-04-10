@@ -534,3 +534,8 @@ path_longevity_cultivation_hidden = {
     fertility = -0.05
     prowess = -1
 }
+
+legendary_breakthrough_pill_ready = {
+    monthly_lifestyle_xp_gain_mult = 0.08
+    health = 0.1
+}

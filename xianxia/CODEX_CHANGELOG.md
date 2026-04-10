@@ -494,3 +494,29 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added dedicated letter event `xianxia_jianghu_letters.1000` using an Insult to Injuries-style letter-event structure (sender/opening/branching desc/options) for player-facing humiliation messaging.
 - Cleaned and rebuilt `xianxia_jianghu_interactions.txt` to remove accidental stray scope effects from prior merge/edit churn.
 - Rebuilt English localization with UTF-8 BOM and added missing opinion localization keys (including compatibility alias for typoed key `opinion_jianghu_public_humilation`) to prevent raw-key display in UI.
+
+### 25) Magic Treasure crafting framework + xuanhuan artifact pool (2026-04-10)
+- Added a new major decision, `craft_magic_treasure_decision`, available to cultivators with the new `magic_treasure_crafter` trait track.
+- Implemented a 3-tier crafter trait progression (`magic_treasure_crafter_1/2/3`) where higher tiers improve artifact quality/wealth rolls and reduce cooldown burden per craft.
+- Added `xianxia_world.1800` forge event that presents a clear craftable artifact roster and ties decision flow into event-driven artifact generation.
+- Added `xianxia_magic_treasure_craft_effect` plus ten xianxia/xuanhuan-themed artifact creation effects (blade, gourd, cauldron, robe, banner, etc.) using CK3 artifact creation scripting patterns.
+- Added dedicated artifact template + new artifact modifiers file for generated relic bonuses, along with full English localization for decision/event/traits/artifact names and descriptions.
+
+### 47) Legendary world-artifact death-run decision chain (2026-04-10)
+- Added `seek_legendary_world_artifact_decision` for high-realm cultivators seeking forbidden world relics.
+- Decision starts event `xianxia_world.1810` with an explicit ultra-lethal design: if the player forces entry without extreme stats, outcome is near-certain death (92% fatal).
+- Added high-stat pass gate option requiring extreme personal attributes (Learning/Prowess 45+ or Intrigue/Stewardship 35+), allowing a survivable branch with large rewards.
+- Added two new state modifiers: `legendary_artifact_finder` (major success boon) and `legendary_artifact_escape_wounds` (severe failed-attempt penalty).
+
+- Expanded magic treasure pool with 30 additional craftable artifacts (total pool now 40) and wired all new artifact creation effects/modifiers/localization into the existing craft decision flow.
+- Expanded pill creation system with multi-formula grand refinement via `refine_grand_spirit_pills_decision` and event `xianxia_world.1830` (Body Tempering, Soul Clarity, Tribulation Guard, Blood Ignition).
+- Added `host_jianghu_artifact_auction_decision` and event `xianxia_world.1820` to run tiered artifact bidding (mortal/profound/heaven) or sell your own treasures for gold/prestige.
+- Added a rare Legendary Breakthrough Pill discovery hook to the legendary artifact/auction chains; when found, it guarantees the holder's next breakthrough attempt (100% success) and is consumed on use.
+- Added `study_magic_treasure_crafting_decision` + `xianxia_world.1840` so Magic Treasure Crafter tiers can be earned in normal gameplay instead of requiring external trait injection.
+- Updated auction sell branch to actually destroy one owned artifact before granting sale payout, restoring real tradeoff economics.
+- Added `invite_path_cultivators_decision` + `xianxia_world.1850` to recruit path-aligned wandering cultivators into court champions, with character generation fallback only when no suitable wanderers exist.
+- Added spirit-stone economy pressure to breakthrough decisions: attempts now require minimum gold and apply longer resource cooldowns at low reserves, slowing both player and AI progression when poor.
+- Added non-cultivator stat cap enforcement effect (`xianxia_non_cultivator_stat_cap_effect`) that clamps diplomacy/martial/stewardship/intrigue/learning/prowess to 9 for non-cultivators during world maintenance pulses.
+- Added a disciple-assignment activity-style chain (`disciple_assignment_activity_decision` -> `xianxia_world.1860`) that assigns talented non-adult disciples to cultivator mentors, generating a mentor only when none exist.
+- Revamped jianghu gathering into a staged activity-style event chain (`jianghu_grand_gathering_activity_decision` -> `xianxia_world.1870/1871/1872`) with tournament-like phased outcomes and hosting momentum rewards.
+- Added `host_same_path_dao_exchange_activity_decision` with staged events (`xianxia_world.1880/1881`) as a feast-like same-path sect meeting that concludes with lifestyle speed buffs from Dao exchange for host and participants.

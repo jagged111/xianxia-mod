@@ -24,6 +24,7 @@ on_monthly_pulse = {
         cultivation_ai.2260
         cultivation_ai.2270
         cultivation_ai.2295
+        cultivation_ai.2300
         cultivation_ai.3001
         cultivation_ai.3002
         xianxia_world.1710
@@ -37,5 +38,11 @@ on_yearly_pulse = {
         cultivation_ai.3000
         xianxia_world.1000
         xianxia_world.1700
+    }
+}
+
+on_war_started = {
+    events = {
+        xianxia_world.1800
     }
 }

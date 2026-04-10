@@ -1,0 +1,166 @@
+tradition_stg_court_machinations = {
+	category = regional
+
+	layers = {
+		0 = intrigue
+		1 = indian
+		4 = officials.dds
+	}
+
+	can_pick = {
+		custom_tooltip = {
+			text = only_one_marriage_tradition_allowed
+			trigger_if = {
+				limit = {
+					OR = {
+						NOT = { exists = scope:replacing }
+						NOR = {
+							scope:replacing = culture_tradition:tradition_monogamous
+							scope:replacing = culture_tradition:tradition_polygamous
+							scope:replacing = culture_tradition:tradition_concubines
+							scope:replacing = culture_tradition:tradition_court_eunuchs
+							scope:replacing = culture_tradition:tradition_tgp_court_machinations
+						}
+					}
+				}
+				NOR = {
+					culture_tradition:tradition_monogamous = { is_in_list = traits }
+					culture_tradition:tradition_polygamous = { is_in_list = traits }
+					culture_tradition:tradition_concubines = { is_in_list = traits }
+					culture_tradition:tradition_court_eunuchs = { is_in_list = traits }
+					culture_tradition:tradition_tgp_court_machinations = { is_in_list = traits }
+				}
+			}
+		}
+		
+	}
+	
+	can_pick_for_hybridization = {
+		custom_tooltip = {
+			text = only_one_marriage_tradition_allowed
+			NOT = { # Only blocks monogamous to avoid duplicate warnings, but is blocked by polygamous
+				culture_tradition:tradition_monogamous = { is_in_list = traits }
+			}
+		}
+	}
+
+	parameters = {
+		number_of_consorts_hegemony = 999
+		number_of_consorts_empire = 20
+		number_of_consorts = 0
+		number_of_spouses = 1
+		can_appoint_chief_eunuch = yes
+		can_blind_prisoners = yes
+		can_castrate_prisoners = yes
+		court_machinations_eunuch_trait_bonuses = yes
+		courtiers_more_likely_to_join_hostile_schemes_in_court = yes
+		eunuch_powerful_scheme_agents = yes 
+		cultrad_unlocks_t4_bounties_for_whispers = yes
+		consanguinity_unrestricted_marriage = yes
+		consanguinity_unrestricted_incest = yes
+		allows_cousin_marriage = yes
+		allows_aunt_nephew_and_uncle_niece_marriage = yes
+		allows_unrestricted_marriage = yes
+	}
+
+	character_modifier = {
+		owned_political_scheme_success_chance_add = 10
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_double_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = { value = 0 }
+}
+
+tradition_stg2_court_machinations = {
+	category = regional
+
+	layers = {
+		0 = intrigue
+		1 = indian
+		4 = officials.dds
+	}
+
+	can_pick = {
+		custom_tooltip = {
+			text = only_one_marriage_tradition_allowed
+			trigger_if = {
+				limit = {
+					OR = {
+						NOT = { exists = scope:replacing }
+						NOR = {
+							scope:replacing = culture_tradition:tradition_monogamous
+							scope:replacing = culture_tradition:tradition_polygamous
+							scope:replacing = culture_tradition:tradition_concubines
+							scope:replacing = culture_tradition:tradition_court_eunuchs
+							scope:replacing = culture_tradition:tradition_tgp_court_machinations
+						}
+					}
+				}
+				NOR = {
+					culture_tradition:tradition_monogamous = { is_in_list = traits }
+					culture_tradition:tradition_polygamous = { is_in_list = traits }
+					culture_tradition:tradition_concubines = { is_in_list = traits }
+					culture_tradition:tradition_court_eunuchs = { is_in_list = traits }
+					culture_tradition:tradition_tgp_court_machinations = { is_in_list = traits }
+				}
+			}
+		}
+		
+	}
+	
+	can_pick_for_hybridization = {
+		custom_tooltip = {
+			text = only_one_marriage_tradition_allowed
+			NOT = { # Only blocks monogamous to avoid duplicate warnings, but is blocked by polygamous
+				culture_tradition:tradition_monogamous = { is_in_list = traits }
+			}
+		}
+	}
+
+	parameters = {
+		number_of_consorts_hegemony = 999
+		number_of_consorts = 0
+		number_of_spouses = 1
+		can_appoint_chief_eunuch = yes
+		can_blind_prisoners = yes
+		can_castrate_prisoners = yes
+		court_machinations_eunuch_trait_bonuses = yes
+		courtiers_more_likely_to_join_hostile_schemes_in_court = yes
+		eunuch_powerful_scheme_agents = yes 
+		cultrad_unlocks_t4_bounties_for_whispers = yes
+		consanguinity_unrestricted_marriage = yes
+		consanguinity_unrestricted_incest = yes
+		allows_cousin_marriage = yes
+		allows_aunt_nephew_and_uncle_niece_marriage = yes
+		allows_unrestricted_marriage = yes
+	}
+
+	character_modifier = {
+		owned_political_scheme_success_chance_add = 10
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_double_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = { value = 0 }
+}

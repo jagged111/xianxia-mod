@@ -1,0 +1,10 @@
+﻿l_english:
+ tradition_stg_court_machinations_name:0 "Wanton Court"
+ tradition_stg_court_machinations_desc:"In the court's veiled sanctums, a thousand consorts chase the emperor's fleeting grace, kin bloodlines tangle wildly in imperial halls, taboo vows murmuring like ghosts on jade thresholds—defying earthly fetters in royal abandon, forging dynasties of lavish, undying splendor. This tradition summons harems without end, sharpens intrigue's blade, bestowing rulers absolute sway over bloodline's ecstatic rites."
+ culture_parameter_allows_unrestricted_marriage:0 "Marriage between all family members is allowed and sexual relations between any family members will not give the incest [secret|E]"
+ culture_parameter_allows_cousin_marriage:0 "Allow marriage of cousins."
+ culture_parameter_allows_aunt_nephew_and_uncle_niece_marriage:0 "Allow marriage of aunts and nephews and uncles and nieces."
+ culture_parameter_consanguinity_unrestricted_incest:0 "Allow incest of close relatives."
+ culture_parameter_consanguinity_unrestricted_marriage:0 "Allow marriage of close relatives."
+ tradition_stg2_court_machinations_name:0 "Hegemonic Court"
+ tradition_stg2_court_machinations_desc:"In the court's veiled sanctums, a thousand consorts chase the emperor's fleeting grace, kin bloodlines tangle wildly in imperial halls, taboo vows murmuring like ghosts on jade thresholds—defying earthly fetters in royal abandon, forging dynasties of lavish, undying splendor. This tradition summons harems without end, sharpens intrigue's blade, bestowing rulers absolute sway over bloodline's ecstatic rites."

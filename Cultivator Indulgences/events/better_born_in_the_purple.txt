@@ -1,0 +1,16 @@
+namespace = betterborninthepurple
+
+betterborninthepurple.1 = {
+	type = character_event
+	hidden = yes
+	
+	trigger = {
+		any_parent = {
+            highest_held_title_tier = 6
+		}
+	}
+
+	immediate = { add_trait = born_in_the_purple }
+}
+
+

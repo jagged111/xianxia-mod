@@ -1,0 +1,10 @@
+﻿l_simp_chinese:
+ tradition_stg_court_machinations_name:0 "狂野宫廷"
+ tradition_stg_court_machinations_desc:"深宫禁苑中，千妃竞逐帝恩，近亲血脉在紫禁城肆意交织，禁忌联姻如玉阶私语——帝王放纵无视世俗枷锁，将王朝铸就奢靡永乐土。此传统豢养无数侍妾，深化宫闱权谋，赋予帝王绝对权柄，操控血统的狂欢盛宴。"
+ culture_parameter_allows_unrestricted_marriage:0 "所有家庭成员之间的婚姻是允许的，任何家庭成员之间的性关系都不会产生乱伦[secret|E]"
+ culture_parameter_allows_cousin_marriage:0 "允许表兄妹结婚。"
+ culture_parameter_allows_aunt_nephew_and_uncle_niece_marriage:0 "允许姑姑侄子和叔叔侄女结婚。"
+ culture_parameter_consanguinity_unrestricted_incest:0 "近亲乱伦不受限制。"
+ culture_parameter_consanguinity_unrestricted_marriage:0 "近亲结婚不受限制。"
+ tradition_stg2_court_machinations_name:0 "霸王宫廷"
+ tradition_stg2_court_machinations_desc:"深宫禁苑中，千妃竞逐帝恩，近亲血脉在紫禁城肆意交织，禁忌联姻如玉阶私语——帝王放纵无视世俗枷锁，将王朝铸就奢靡永乐土。此传统豢养无数侍妾，深化宫闱权谋，赋予帝王绝对权柄，操控血统的狂欢盛宴。"

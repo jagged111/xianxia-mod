@@ -36,11 +36,11 @@
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {
@@ -92,11 +92,11 @@ summon_nine_heavens_sword_intent_decision = {
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {
@@ -147,11 +147,11 @@ summon_golden_core_flame_lotus_decision = {
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {
@@ -202,11 +202,11 @@ summon_nascent_soul_phantom_decision = {
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {
@@ -257,11 +257,11 @@ summon_heaven_severing_blade_decision = {
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {
@@ -312,11 +312,11 @@ summon_myriad_dao_suppression_domain_decision = {
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {
@@ -367,11 +367,11 @@ summon_heavenly_tribulation_descent_decision = {
 	
 	ai_check_interval_by_tier = {
 		barony = 0
-		county = 60
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
+		county = 1
+		duchy = 1
+		kingdom = 1
+		empire = 1
+		hegemony = 1
 	}
 
 	ai_potential = {

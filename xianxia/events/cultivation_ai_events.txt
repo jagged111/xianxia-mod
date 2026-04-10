@@ -160,7 +160,7 @@ cultivation_ai.2220 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = scope:root }
+                        NOT = { this = root }
                         is_allied_to = root
                         NOT = { has_relation_friend = root }
                         NOT = { has_relation_best_friend = root }
@@ -201,7 +201,7 @@ cultivation_ai.2230 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = scope:root }
+                        NOT = { this = root }
                         is_at_war_with = root
                         NOT = { has_relation_nemesis = root }
                         NOT = { has_relation_rival = root }
@@ -246,8 +246,8 @@ cultivation_ai.2280 = {
                     is_adult = yes
                     is_cultivator = yes
                     has_cultivation_sect_faith = yes
-                    NOT = { this = scope:root }
-                    is_within_diplo_range = scope:root
+                    NOT = { this = root }
+                    is_within_diplo_range = root
                 }
 
                 # Clear stale path-opinion state before applying current relationship.
@@ -622,10 +622,10 @@ cultivation_ai.0003 = {
         has_higher_cultivation_realm_than_liege = yes
         NOT = {
             OR = {
-                liege = { is_parent_of = scope:root }
+                liege = { is_parent_of = root }
                 liege = {
-                    dynasty = scope:root.dynasty
-                    is_close_or_extended_family_of = scope:root
+                    dynasty = root.dynasty
+                    is_close_or_extended_family_of = root
                 }
             }
         }
@@ -714,7 +714,7 @@ cultivation_ai.0004 = {
                     }
                 }
                 add_opinion = {
-                    target = scope:root
+                    target = root
                     modifier = cultivation_views_me_as_future_threat_opinion
                     years = 10
                 }
@@ -740,7 +740,7 @@ cultivation_ai.0004 = {
                     }
                 }
                 add_opinion = {
-                    target = scope:root
+                    target = root
                     modifier = cultivation_views_me_as_future_threat_opinion
                     years = 10
                 }
@@ -785,7 +785,7 @@ cultivation_ai.0004 = {
                     }
                 }
                 add_opinion = {
-                    target = scope:root
+                    target = root
                     modifier = cultivation_invests_in_my_talent_opinion
                     years = 10
                 }
@@ -814,7 +814,7 @@ cultivation_ai.0004 = {
                     }
                 }
                 add_opinion = {
-                    target = scope:root
+                    target = root
                     modifier = cultivation_invests_in_my_talent_opinion
                     years = 10
                 }
@@ -1189,7 +1189,7 @@ cultivation_ai.2250 = {
                         limit = {
                             is_alive = yes
                             is_adult = yes
-                            NOT = { this = scope:root }
+                            NOT = { this = root }
                         }
 
                         if = {
@@ -1834,7 +1834,99 @@ cultivation_ai.2270 = {
                     limit = { NOT = { has_trait = conqueror } }
                     add_trait = conqueror
                 }
+                if = {
+                    limit = { NOT = { has_trait = reincarnator_ascendant } }
+                    add_trait = reincarnator_ascendant
+                }
                 add_character_flag = cultivation_reincarnation_holder
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Keep reincarnator-liege disdain active so the malus does not silently fall off.
+cultivation_ai.2300 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                has_trait = reincarnator_ascendant
+                exists = liege
+            }
+            add_opinion = {
+                target = liege
+                modifier = opinion_reincarnator_disdains_liege
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Reincarnation-faith sects: elder souls can pass part of their essence to children of the same faith.
+cultivation_ai.2310 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                faith = { has_doctrine = tenet_reincarnation }
+            }
+
+            random = {
+                chance = 10
+
+                random_courtier = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        faith = root.faith
+                        NOT = { has_trait = incapable }
+                    }
+                    save_scope_as = reincarnation_donor
+                }
+
+                random_child = {
+                    limit = {
+                        is_alive = yes
+                        age < 12
+                        faith = root.faith
+                    }
+                    save_scope_as = reincarnation_vessel
+                }
+
+                if = {
+                    limit = {
+                        exists = scope:reincarnation_donor
+                        exists = scope:reincarnation_vessel
+                    }
+
+                    scope:reincarnation_donor = {
+                        add_character_modifier = {
+                            modifier = soul_essence_diminished
+                            days = 365
+                        }
+                    }
+
+                    scope:reincarnation_vessel = {
+                        add_character_modifier = {
+                            modifier = reincarnation_awakening
+                            days = 1825
+                        }
+                        add_prestige = 75
+                        add_piety = 75
+                    }
                 }
             }
         }

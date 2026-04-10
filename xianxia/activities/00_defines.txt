@@ -79,11 +79,11 @@ NJominiMap = {
 
 NSkills = {
 	MAX_DIPLOMACY = 100		# Maximum possible diplomacy skill points per character
-	MAX_MARTIAL = 100		# Maximum possible martial skill points per character
+	MAX_MARTIAL = 200		# Maximum possible martial skill points per character
 	MAX_STEWARDSHIP = 100	# Maximum possible stewardship skill points per character
 	MAX_INTRIGUE = 100		# Maximum possible intrigue skill points per character
-	MAX_LEARNING = 100		# Maximum possible learning skill points per character
-	MAX_PROWESS = 100		# Maximum possible prowess skill points per character
+	MAX_LEARNING = 200		# Maximum possible learning skill points per character
+	MAX_PROWESS = 300		# Maximum possible prowess skill points per character
 }
 
 NCharacter = {
@@ -157,9 +157,9 @@ NCharacter = {
 	LEVELS_MERIT = { 100 1000 2000 3500 5500 8500 12000 17000 23000 }
 	
 	# default max level index (0-based) for governments. Can be overridden with field currency_levels_cap in the government type
-	DEFAULT_PIETY_LEVEL_CAP = 5
-	DEFAULT_PRESTIGE_LEVEL_CAP = 5
-	DEFAULT_INFLUENCE_LEVEL_CAP = 5
+	DEFAULT_PIETY_LEVEL_CAP = 7
+	DEFAULT_PRESTIGE_LEVEL_CAP = 7
+	DEFAULT_INFLUENCE_LEVEL_CAP = 7
 	DEFAULT_MERIT_LEVEL_CAP = 1
 	# when characters drop a level in piety/prestige/influence, they retain progress toward new level, capped by these values
 	LEVEL_DROP_MAX_RETAINED_PROGRESS_PIETY = 0.5
@@ -570,8 +570,8 @@ NActionPoints = {
 
 NCombat = {
 	UNRAISED_LEVY_REGIMENTS_SPEED = 40.0			# How many distance units do unraised regiments travel per day when gathering
-	COMBAT_ROLL_DAYS = 3							# How many days are there between rolls?
-	COMBAT_EVENT_DAYS = 5							# How many days are there between knight events?
+	COMBAT_ROLL_DAYS = 1							# How many days are there between rolls?
+	COMBAT_EVENT_DAYS = 1							# Daily knight event pulse for maximum duel frequency
 
 	WAR_ATTACKER_COMBAT_SCORE_SCALE = 50			# Scale factor for how much war score battles give to the war attacker. Can be overriden by CB
 	WAR_DEFENDER_COMBAT_SCORE_SCALE = 50			# Scale factor for how much war score battles give to the war defender. Can be overriden by CB
@@ -586,13 +586,13 @@ NCombat = {
 	DAMAGE_SCALING_FACTOR = 0.03					# Scaling factor for dealing damage in combat
 	BASE_RATIO_CASUALTIES_CONVERSION = 0.3			# How many of the soft casualties should be converted to hard casualties during the main phase
 	PURSUIT_PHASE_DAYS = 3							# How many days should the pursuit phase be
-	ADVANTAGE_DAMAGE_SCALING_FACTOR = 5				# How much should the advantage affect damage given
+	ADVANTAGE_DAMAGE_SCALING_FACTOR = 8				# How much should the advantage affect damage given
 	BASE_WIDTH_RATIO = 1							# The base combat width is set by multiplying the size of the defender by this ratio
 	COMMANDER_MIN_ROLL = 0
 	COMMANDER_MAX_ROLL = 10
 	MEN_AT_ARMS_MAX_COUNTER = 0.9					# When RATIO_FOR_MAX_COUNTER is hit, the damage output for the MaA will be reduced by this much. For values lower, it'll be linear between 0 and this value
 	RATIO_FOR_MAX_COUNTER = 2.0						# You need this many effective regiment chunks to counter a single regiment chunk. Modified by counter effectiveness (E.G., = 2.0 in the MaA's counter section means twice as effective countering). So if stack size is 100, 50 men from a regiment with 2x counter will produce one point of countering. Thus if the ratio for max counter is 1.0, they'd fully counter a full-strength MaA chunk, or halfway counter two, etc.
-	MIN_DAYS_BEFORE_MANUAL_RETREAT = 14				# Number of days before a retreat can be ordered
+	MIN_DAYS_BEFORE_MANUAL_RETREAT = 30				# Number of days before a retreat can be ordered
 
 	MINIMUM_COMBAT_WIDTH = 100						# Combat width cannot be smaller than this
 	BASE_RATIO_CASUALTIES_CONVERSION_PURSUIT = 1	# How many of the hard casualties inflicted on the retreating side should be converted to hard casualties during retreat. Interacts with BASE_TOUGHNESS_TO_PURSUIT and such
@@ -600,8 +600,8 @@ NCombat = {
 	BASE_TOUGHNESS_TO_PURSUIT = 0.05				# This many % of the toughness of the retreater's soft casualties will turn into pursuit (during the full pursuit, not per day). Essentially, this means if neither side has screen or pursuit, 5% of the soft casualties will become hard casualties. More if the pursuer has more pursuit than the defender has screen, and vice versa
 	MINIMUM_PURSUIT_DAMAGE = 0.01					# High screen can't bring casualties below 1% in the pursuit phase
 	DISEMBARK_PENALTY_DAYS = 30						# How long does an army have a penalty after disembarking?
-	KNIGHT_DAMAGE_PER_PROWESS = 50					# How much "Damage" stat does a knight get per prowess?
-	KNIGHT_TOUGHNESS_PER_PROWESS = 10				# How much "Toughness" stat does a knight get per prowess?
+	KNIGHT_DAMAGE_PER_PROWESS = 120					# How much "Damage" stat does a knight get per prowess?
+	KNIGHT_TOUGHNESS_PER_PROWESS = 30				# How much "Toughness" stat does a knight get per prowess?
 
 	### Brief: KNIGHT_AVERAGE_PROWESS_FOR_AI_POWER_CALCULATION ( int32 )
 	# How much prowess do we assume a knight to have for the purpose
@@ -614,7 +614,7 @@ NCombat = {
 	# With game defaults this means an AI will evaluate a ruler's
 	# knight's military power at 1100 per knight.
 	#
-	KNIGHT_AVERAGE_PROWESS_FOR_AI_POWER_CALCULATION = 10
+	KNIGHT_AVERAGE_PROWESS_FOR_AI_POWER_CALCULATION = 18
 	COMBAT_RESULT_MONTHS_TO_TIMEOUT = 12			# Combat results timeout after this many months
 }
 
@@ -1485,7 +1485,7 @@ NInventory = {
 }
 
 NRoyalCourt = {
-	MIN_ROYAL_COURT_TIER = "kingdom" # Min tier for a character to have a royal court if their government allows it
+	MIN_ROYAL_COURT_TIER = "duchy" # Min tier for a character to have a royal court if their government allows it
 
 	COURT_GRANDEUR_MIN = 0 # Minimum court grandeur value
 	COURT_GRANDEUR_MAX = 100 # Maximum court grandeur value

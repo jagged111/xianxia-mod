@@ -472,7 +472,7 @@ proclaim_great_sect_hegemon_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
-        has_cultivation_sect_faith = yes
+        faith = { has_doctrine_parameter = orthodox_cultivation }
     }
 
     is_valid = {
@@ -504,7 +504,7 @@ found_martial_confederation_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
-        has_cultivation_sect_faith = yes
+        faith = { has_doctrine_parameter = orthodox_cultivation }
     }
 
     is_valid = {
@@ -603,7 +603,73 @@ convene_martial_alliance_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
-        has_cultivation_sect_faith = yes
+        faith = { has_doctrine_parameter = orthodox_cultivation }
+    }
+
+    is_valid = {
+        realm_size >= 45
+        NOT = { has_character_modifier = martial_alliance_leader }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = martial_alliance_leader days = -1 }
+        cultivation_form_path_confederation_pacts_effect = yes
+        add_character_modifier = { modifier = sect_council_consensus days = 1825 }
+        add_prestige = 900
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 14 }
+}
+
+convene_unorthodox_alliance_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_grant_vassal.dds" }
+    decision_group_type = major
+    sort_order = 536
+
+    title = convene_unorthodox_alliance_decision
+    desc = convene_unorthodox_alliance_decision_desc
+    selection_tooltip = convene_unorthodox_alliance_decision_tooltip
+    confirm_text = convene_unorthodox_alliance_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        faith = { has_doctrine_parameter = unorthodox_cultivation }
+    }
+
+    is_valid = {
+        realm_size >= 45
+        NOT = { has_character_modifier = martial_alliance_leader }
+    }
+
+    effect = {
+        add_character_modifier = { modifier = martial_alliance_leader days = -1 }
+        cultivation_form_path_confederation_pacts_effect = yes
+        add_character_modifier = { modifier = sect_council_consensus days = 1825 }
+        add_prestige = 900
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 14 }
+}
+
+convene_vagrant_alliance_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_grant_vassal.dds" }
+    decision_group_type = major
+    sort_order = 536
+
+    title = convene_vagrant_alliance_decision
+    desc = convene_vagrant_alliance_decision_desc
+    selection_tooltip = convene_vagrant_alliance_decision_tooltip
+    confirm_text = convene_vagrant_alliance_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        faith = { has_doctrine_parameter = vagrant_cultivation }
     }
 
     is_valid = {

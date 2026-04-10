@@ -233,6 +233,162 @@ jianghu_demand_prisoner_release_interaction = {
 	}
 }
 
+jianghu_extinguish_noble_family_roots_interaction = {
+	category = interaction_category_prison
+	interface_priority = 124
+	icon = extinguish_noble_family
+	desc = jianghu_extinguish_noble_family_roots_interaction_desc
+	use_diplomatic_range = yes
+
+	is_shown = {
+		can_use_jianghu_extinguish_noble_family_interaction = yes
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_character_flag = jianghu_extinguish_family_cooldown } }
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:actor = { add_character_flag = { flag = jianghu_extinguish_family_cooldown days = 365 } }
+		scope:recipient = {
+			if = {
+				limit = {
+					is_imprisoned_by = scope:actor
+					OR = {
+						AND = { has_trait = cultivation_qi_refining scope:actor = { has_trait = cultivation_qi_gathering } }
+						AND = { has_trait = cultivation_qi_building scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining } } }
+						AND = { has_trait = cultivation_core_formation scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building } } }
+						AND = { has_trait = cultivation_nascent_soul scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation } } }
+						AND = { has_trait = cultivation_heavenly_being scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul } } }
+						AND = { has_trait = cultivation_four_axis scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being } } }
+						AND = { has_trait = cultivation_integration scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis } } }
+						AND = { has_trait = cultivation_star_shattering scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration } } }
+						AND = { has_trait = cultivation_sacred_vessel scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering } } }
+						AND = { has_trait = cultivation_entering_nirvana scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel } } }
+						AND = { has_trait = cultivation_true_immortal scope:actor = { NOT = { has_trait = cultivation_true_immortal } } }
+					}
+				}
+				random_list = {
+					70 = {
+						release_from_prison = yes
+						scope:actor = { add_stress = 35 }
+					}
+					30 = {
+						death = { death_reason = death_execution killer = scope:actor }
+						every_close_or_extended_family_member = {
+							limit = {
+								this != scope:recipient
+								house = scope:recipient.house
+								top_liege = scope:actor.top_liege
+							}
+							death = { death_reason = death_execution killer = scope:actor }
+						}
+						every_held_title = {
+							limit = { is_noble_family_title = yes }
+							scope:recipient = { destroy_title = prev }
+						}
+					}
+				}
+			}
+			else = {
+				death = { death_reason = death_execution killer = scope:actor }
+				every_close_or_extended_family_member = {
+					limit = {
+						this != scope:recipient
+						house = scope:recipient.house
+						top_liege = scope:actor.top_liege
+					}
+					death = { death_reason = death_execution killer = scope:actor }
+				}
+				every_held_title = {
+					limit = { is_noble_family_title = yes }
+					scope:recipient = { destroy_title = prev }
+				}
+			}
+		}
+	}
+}
+
+jianghu_extinguish_noble_family_spare_children_interaction = {
+	category = interaction_category_prison
+	interface_priority = 125
+	icon = extinguish_noble_family
+	desc = jianghu_extinguish_noble_family_spare_children_interaction_desc
+	use_diplomatic_range = yes
+
+	is_shown = { can_use_jianghu_extinguish_noble_family_interaction = yes }
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_character_flag = jianghu_extinguish_family_cooldown } }
+	}
+
+	auto_accept = yes
+
+	on_accept = {
+		scope:actor = { add_character_flag = { flag = jianghu_extinguish_family_cooldown days = 365 } }
+		scope:recipient = {
+			if = {
+				limit = {
+					is_imprisoned_by = scope:actor
+					OR = {
+						AND = { has_trait = cultivation_qi_refining scope:actor = { has_trait = cultivation_qi_gathering } }
+						AND = { has_trait = cultivation_qi_building scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining } } }
+						AND = { has_trait = cultivation_core_formation scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building } } }
+						AND = { has_trait = cultivation_nascent_soul scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation } } }
+						AND = { has_trait = cultivation_heavenly_being scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul } } }
+						AND = { has_trait = cultivation_four_axis scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being } } }
+						AND = { has_trait = cultivation_integration scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis } } }
+						AND = { has_trait = cultivation_star_shattering scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration } } }
+						AND = { has_trait = cultivation_sacred_vessel scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering } } }
+						AND = { has_trait = cultivation_entering_nirvana scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel } } }
+						AND = { has_trait = cultivation_true_immortal scope:actor = { NOT = { has_trait = cultivation_true_immortal } } }
+					}
+				}
+				random_list = {
+					70 = {
+						release_from_prison = yes
+						scope:actor = { add_stress = 25 }
+					}
+					30 = {
+						death = { death_reason = death_execution killer = scope:actor }
+						every_close_or_extended_family_member = {
+							limit = {
+								this != scope:recipient
+								house = scope:recipient.house
+								top_liege = scope:actor.top_liege
+								is_adult = yes
+							}
+							death = { death_reason = death_execution killer = scope:actor }
+						}
+						every_held_title = {
+							limit = { is_noble_family_title = yes }
+							scope:recipient = { destroy_title = prev }
+						}
+					}
+				}
+			}
+			else = {
+				death = { death_reason = death_execution killer = scope:actor }
+				every_close_or_extended_family_member = {
+					limit = {
+						this != scope:recipient
+						house = scope:recipient.house
+						top_liege = scope:actor.top_liege
+						is_adult = yes
+					}
+					death = { death_reason = death_execution killer = scope:actor }
+				}
+				every_held_title = {
+					limit = { is_noble_family_title = yes }
+					scope:recipient = { destroy_title = prev }
+				}
+			}
+		}
+	}
+}
+
 jianghu_swear_blood_vengeance_interaction = {
 	category = interaction_category_hostile
 	interface_priority = 123

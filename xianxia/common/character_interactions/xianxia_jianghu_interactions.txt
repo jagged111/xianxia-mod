@@ -276,6 +276,10 @@ jianghu_extinguish_noble_family_roots_interaction = {
 						scope:actor = { add_stress = 35 }
 					}
 					30 = {
+						every_held_title = {
+							limit = { is_noble_family_title = yes }
+							scope:recipient = { destroy_title = prev }
+						}
 						death = { death_reason = death_execution killer = scope:actor }
 						every_close_or_extended_family_member = {
 							limit = {
@@ -285,14 +289,14 @@ jianghu_extinguish_noble_family_roots_interaction = {
 							}
 							death = { death_reason = death_execution killer = scope:actor }
 						}
-						every_held_title = {
-							limit = { is_noble_family_title = yes }
-							scope:recipient = { destroy_title = prev }
-						}
 					}
 				}
 			}
 			else = {
+				every_held_title = {
+					limit = { is_noble_family_title = yes }
+					scope:recipient = { destroy_title = prev }
+				}
 				death = { death_reason = death_execution killer = scope:actor }
 				every_close_or_extended_family_member = {
 					limit = {
@@ -301,10 +305,6 @@ jianghu_extinguish_noble_family_roots_interaction = {
 						top_liege = scope:actor.top_liege
 					}
 					death = { death_reason = death_execution killer = scope:actor }
-				}
-				every_held_title = {
-					limit = { is_noble_family_title = yes }
-					scope:recipient = { destroy_title = prev }
 				}
 			}
 		}
@@ -352,6 +352,10 @@ jianghu_extinguish_noble_family_spare_children_interaction = {
 						scope:actor = { add_stress = 25 }
 					}
 					30 = {
+						every_held_title = {
+							limit = { is_noble_family_title = yes }
+							scope:recipient = { destroy_title = prev }
+						}
 						death = { death_reason = death_execution killer = scope:actor }
 						every_close_or_extended_family_member = {
 							limit = {
@@ -362,14 +366,14 @@ jianghu_extinguish_noble_family_spare_children_interaction = {
 							}
 							death = { death_reason = death_execution killer = scope:actor }
 						}
-						every_held_title = {
-							limit = { is_noble_family_title = yes }
-							scope:recipient = { destroy_title = prev }
-						}
 					}
 				}
 			}
 			else = {
+				every_held_title = {
+					limit = { is_noble_family_title = yes }
+					scope:recipient = { destroy_title = prev }
+				}
 				death = { death_reason = death_execution killer = scope:actor }
 				every_close_or_extended_family_member = {
 					limit = {
@@ -379,10 +383,6 @@ jianghu_extinguish_noble_family_spare_children_interaction = {
 						is_adult = yes
 					}
 					death = { death_reason = death_execution killer = scope:actor }
-				}
-				every_held_title = {
-					limit = { is_noble_family_title = yes }
-					scope:recipient = { destroy_title = prev }
 				}
 			}
 		}

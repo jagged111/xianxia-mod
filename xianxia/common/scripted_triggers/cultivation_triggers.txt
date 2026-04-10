@@ -337,3 +337,53 @@ has_higher_cultivation_realm_than_liege = {
 		}
 	}
 }
+
+can_use_jianghu_extinguish_noble_family_interaction = {
+	scope:recipient != scope:actor
+	scope:actor = {
+		is_alive = yes
+		is_adult = yes
+		is_ruler = yes
+		is_cultivator = yes
+	}
+	scope:recipient = {
+		is_alive = yes
+		is_adult = yes
+		is_cultivator = yes
+		any_held_title = { is_noble_family_title = yes }
+		OR = {
+			AND = {
+				top_liege = scope:actor.top_liege
+				OR = {
+					AND = { has_trait = cultivation_qi_gathering scope:actor = { OR = { has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_qi_refining scope:actor = { OR = { has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_qi_building scope:actor = { OR = { has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_core_formation scope:actor = { OR = { has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_nascent_soul scope:actor = { OR = { has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_heavenly_being scope:actor = { OR = { has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_four_axis scope:actor = { OR = { has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_integration scope:actor = { OR = { has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_star_shattering scope:actor = { OR = { has_trait = cultivation_sacred_vessel has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_sacred_vessel scope:actor = { OR = { has_trait = cultivation_entering_nirvana has_trait = cultivation_true_immortal } } }
+					AND = { has_trait = cultivation_entering_nirvana scope:actor = { has_trait = cultivation_true_immortal } }
+				}
+			}
+			AND = {
+				is_imprisoned_by = scope:actor
+				OR = {
+					AND = { has_trait = cultivation_qi_refining scope:actor = { has_trait = cultivation_qi_gathering } }
+					AND = { has_trait = cultivation_qi_building scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining } } }
+					AND = { has_trait = cultivation_core_formation scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building } } }
+					AND = { has_trait = cultivation_nascent_soul scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation } } }
+					AND = { has_trait = cultivation_heavenly_being scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul } } }
+					AND = { has_trait = cultivation_four_axis scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being } } }
+					AND = { has_trait = cultivation_integration scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis } } }
+					AND = { has_trait = cultivation_star_shattering scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration } } }
+					AND = { has_trait = cultivation_sacred_vessel scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering } } }
+					AND = { has_trait = cultivation_entering_nirvana scope:actor = { OR = { has_trait = cultivation_qi_gathering has_trait = cultivation_qi_refining has_trait = cultivation_qi_building has_trait = cultivation_core_formation has_trait = cultivation_nascent_soul has_trait = cultivation_heavenly_being has_trait = cultivation_four_axis has_trait = cultivation_integration has_trait = cultivation_star_shattering has_trait = cultivation_sacred_vessel } } }
+					AND = { has_trait = cultivation_true_immortal scope:actor = { NOT = { has_trait = cultivation_true_immortal } } }
+				}
+			}
+		}
+	}
+}

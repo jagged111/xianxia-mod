@@ -610,7 +610,13 @@ xianxia_world.1800 = {
 
     option = {
         name = xianxia_world.1800.a
-        trigger = { gold >= 100 }
+        trigger = {
+            OR = {
+                AND = { has_trait = magic_treasure_crafter_3 gold >= 350 }
+                AND = { has_trait = magic_treasure_crafter_2 gold >= 225 }
+                AND = { has_trait = magic_treasure_crafter_1 gold >= 100 }
+            }
+        }
 
         if = {
             limit = { has_trait = magic_treasure_crafter_3 }

@@ -696,7 +696,11 @@ craft_magic_treasure_decision = {
 
     is_valid = {
         NOT = { has_character_flag = craft_magic_treasure_cooldown }
-        gold >= 100
+        OR = {
+            AND = { has_trait = magic_treasure_crafter_3 gold >= 350 }
+            AND = { has_trait = magic_treasure_crafter_2 gold >= 225 }
+            AND = { has_trait = magic_treasure_crafter_1 gold >= 100 }
+        }
     }
 
     effect = {

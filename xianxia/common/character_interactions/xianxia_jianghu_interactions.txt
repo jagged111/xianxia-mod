@@ -1,0 +1,299 @@
+jianghu_face_slap_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 120
+	icon = icon_tyranny
+	desc = jianghu_face_slap_interaction_desc
+	use_diplomatic_range = yes
+
+	ai_frequency = 36
+	ai_targets = {
+		ai_recipients = neighboring_rulers
+		ai_recipients = peer_vassals
+		max = 3
+	}
+
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:actor = {
+			is_alive = yes
+			is_adult = yes
+			is_cultivator = yes
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_adult = yes
+			OR = {
+				is_cultivator = no
+				has_trait = cultivation_qi_gathering
+				has_trait = cultivation_qi_refining
+				has_trait = cultivation_qi_building
+				has_trait = cultivation_core_formation
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			NOT = { has_character_flag = jianghu_face_slap_cooldown }
+		}
+	}
+
+	auto_accept = yes
+
+	ai_will_do = {
+		base = 0
+		modifier = { add = 55 has_relation_rival = scope:recipient }
+		modifier = { add = 25 has_trait = arrogant }
+		modifier = { add = 15 has_trait = wrathful }
+		modifier = {
+			factor = 0
+			scope:actor = { opinion = { target = scope:recipient value > 15 } }
+			NOT = { has_relation_rival = scope:recipient }
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_flag = { flag = jianghu_face_slap_cooldown days = 180 }
+			add_prestige = 40
+		}
+
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = opinion_jianghu_public_humiliation
+				years = 80
+			}
+			add_character_modifier = { modifier = jianghu_face_loss days = 3650 }
+			add_stress = 25
+
+			if = {
+				limit = {
+					is_cultivator = yes
+					OR = {
+						has_trait = wrathful
+						has_trait = vengeful
+						has_trait = ambitious
+					}
+				}
+				add_opinion = {
+					target = scope:actor
+					modifier = opinion_jianghu_face_grudge
+					years = 120
+				}
+			}
+
+			if = {
+				limit = { is_ai = no }
+				scope:actor = { save_scope_as = xianxia_face_slap_sender }
+				trigger_event = { id = xianxia_jianghu_letters.1000 days = 1 }
+			}
+		}
+	}
+}
+
+jianghu_set_ambush_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 121
+	icon = icon_tyranny
+	desc = jianghu_set_ambush_interaction_desc
+	use_diplomatic_range = yes
+
+	ai_frequency = 48
+	ai_targets = {
+		ai_recipients = neighboring_rulers
+		max = 2
+	}
+
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:actor = {
+			is_alive = yes
+			is_adult = yes
+			is_cultivator = yes
+			OR = { is_respected_cultivator = yes is_immortal_cultivator = yes }
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_adult = yes
+			OR = {
+				is_cultivator = no
+				has_trait = cultivation_qi_gathering
+				has_trait = cultivation_qi_refining
+				has_trait = cultivation_qi_building
+				has_trait = cultivation_core_formation
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_character_flag = jianghu_ambush_cooldown } }
+	}
+
+	cost = { gold = minor_gold_value }
+	auto_accept = yes
+
+	ai_will_do = {
+		base = 0
+		modifier = { add = 60 has_relation_rival = scope:recipient }
+		modifier = { add = 35 has_trait = vengeful }
+		modifier = { add = 25 has_trait = deceitful }
+		modifier = { factor = 0 has_trait = honest }
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_flag = { flag = jianghu_ambush_cooldown days = 365 }
+			add_prestige = 75
+		}
+
+		scope:recipient = {
+			random_list = {
+				55 = {
+					add_trait = wounded_1
+					add_opinion = { target = scope:actor modifier = opinion_jianghu_ambushed_me years = 120 }
+				}
+				30 = {
+					add_trait = wounded_2
+					add_opinion = { target = scope:actor modifier = opinion_jianghu_ambushed_me years = 150 }
+					add_stress = 35
+				}
+				15 = {
+					if = {
+						limit = { is_cultivator = yes }
+						add_trait = crippled_meridians
+					}
+					add_opinion = { target = scope:actor modifier = opinion_jianghu_ambushed_me years = 240 }
+				}
+			}
+		}
+	}
+}
+
+jianghu_demand_prisoner_release_interaction = {
+	category = interaction_category_diplomacy
+	interface_priority = 122
+	icon = icon_diplomacy
+	desc = jianghu_demand_prisoner_release_interaction_desc
+	use_diplomatic_range = yes
+
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:actor = { is_alive = yes is_adult = yes is_cultivator = yes }
+		scope:recipient = {
+			is_alive = yes
+			any_prisoner = {
+				OR = {
+					is_close_or_extended_family_of = scope:actor
+					has_relation_friend = scope:actor
+					has_relation_best_friend = scope:actor
+					has_relation_lover = scope:actor
+					has_relation_soulmate = scope:actor
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_character_flag = jianghu_prisoner_release_cooldown } }
+	}
+
+	ai_will_do = {
+		base = 0
+		modifier = { add = 50 has_trait = compassionate }
+		modifier = { add = 35 has_trait = just }
+		modifier = { add = 25 has_trait = brave }
+		modifier = {
+			add = 40
+			scope:actor = { opinion = { target = scope:recipient value <= -40 } }
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_flag = { flag = jianghu_prisoner_release_cooldown days = 365 }
+			add_prestige = 75
+		}
+
+		scope:recipient = {
+			random_prisoner = {
+				limit = {
+					OR = {
+						is_close_or_extended_family_of = scope:actor
+						has_relation_friend = scope:actor
+						has_relation_best_friend = scope:actor
+						has_relation_lover = scope:actor
+						has_relation_soulmate = scope:actor
+					}
+				}
+				release_from_prison = yes
+			}
+			add_opinion = { target = scope:actor modifier = opinion_jianghu_forced_rescue years = 120 }
+		}
+	}
+}
+
+jianghu_swear_blood_vengeance_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 123
+	icon = icon_tyranny
+	desc = jianghu_swear_blood_vengeance_interaction_desc
+	use_diplomatic_range = yes
+
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:actor = {
+			is_alive = yes
+			is_adult = yes
+			OR = {
+				is_cultivator = yes
+				has_trait = brave
+				has_trait = vengeful
+			}
+			any_memory = {
+				OR = {
+					has_memory_type = spouse_died
+					has_memory_type = friend_died
+					has_memory_type = best_friend_died
+					has_memory_type = lover_died
+					has_memory_type = soulmate_died
+				}
+				exists = memory_participant:dead_relation
+				memory_participant:dead_relation = {
+					exists = killer
+					killer = { this = scope:recipient }
+				}
+			}
+		}
+		scope:recipient = { is_alive = yes is_adult = yes }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = { NOT = { has_character_flag = jianghu_blood_vengeance_cooldown } }
+	}
+
+	auto_accept = yes
+
+	ai_will_do = {
+		base = 0
+		modifier = { add = 90 has_trait = vengeful }
+		modifier = { add = 45 has_trait = wrathful }
+		modifier = { add = 20 has_trait = brave }
+		modifier = { factor = 0 has_trait = forgiving }
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_flag = { flag = jianghu_blood_vengeance_cooldown days = 1825 }
+			if = {
+				limit = { can_set_relation_potential_rival_trigger = { CHARACTER = scope:recipient } }
+				set_relation_potential_rival = scope:recipient
+			}
+			add_character_modifier = { modifier = sect_power_struggle days = 1095 }
+			add_opinion = { target = scope:recipient modifier = opinion_jianghu_blood_vengeance years = 200 }
+		}
+		scope:recipient = {
+			add_opinion = { target = scope:actor modifier = opinion_jianghu_blood_vengeance years = 200 }
+		}
+	}
+}

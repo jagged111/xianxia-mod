@@ -251,6 +251,25 @@ cleanse_remnant_sects_decision = {
         any_held_title = {
             tier = tier_county
             NOT = { faith = root.faith }
+            NOT = { faith.religion = root.faith.religion }
+            NOR = {
+                AND = {
+                    root.faith = { has_doctrine = tenet_orthodox_cultivation }
+                    faith = { has_doctrine = tenet_orthodox_cultivation }
+                }
+                AND = {
+                    root.faith = { has_doctrine = tenet_unorthodox_cultivation }
+                    faith = { has_doctrine = tenet_unorthodox_cultivation }
+                }
+                AND = {
+                    root.faith = { has_doctrine = tenet_demonic_cultivation }
+                    faith = { has_doctrine = tenet_demonic_cultivation }
+                }
+                AND = {
+                    root.faith = { has_doctrine = tenet_vagrant_cultivation }
+                    faith = { has_doctrine = tenet_vagrant_cultivation }
+                }
+            }
         }
         NOT = { has_character_flag = cleanse_remnant_sects_cooldown }
     }
@@ -259,6 +278,25 @@ cleanse_remnant_sects_decision = {
         any_held_title = {
             tier = tier_county
             NOT = { faith = root.faith }
+            NOT = { faith.religion = root.faith.religion }
+            NOR = {
+                AND = {
+                    root.faith = { has_doctrine = tenet_orthodox_cultivation }
+                    faith = { has_doctrine = tenet_orthodox_cultivation }
+                }
+                AND = {
+                    root.faith = { has_doctrine = tenet_unorthodox_cultivation }
+                    faith = { has_doctrine = tenet_unorthodox_cultivation }
+                }
+                AND = {
+                    root.faith = { has_doctrine = tenet_demonic_cultivation }
+                    faith = { has_doctrine = tenet_demonic_cultivation }
+                }
+                AND = {
+                    root.faith = { has_doctrine = tenet_vagrant_cultivation }
+                    faith = { has_doctrine = tenet_vagrant_cultivation }
+                }
+            }
         }
     }
 
@@ -271,6 +309,25 @@ cleanse_remnant_sects_decision = {
             limit = {
                 tier = tier_county
                 NOT = { faith = root.faith }
+                NOT = { faith.religion = root.faith.religion }
+                NOR = {
+                    AND = {
+                        root.faith = { has_doctrine = tenet_orthodox_cultivation }
+                        faith = { has_doctrine = tenet_orthodox_cultivation }
+                    }
+                    AND = {
+                        root.faith = { has_doctrine = tenet_unorthodox_cultivation }
+                        faith = { has_doctrine = tenet_unorthodox_cultivation }
+                    }
+                    AND = {
+                        root.faith = { has_doctrine = tenet_demonic_cultivation }
+                        faith = { has_doctrine = tenet_demonic_cultivation }
+                    }
+                    AND = {
+                        root.faith = { has_doctrine = tenet_vagrant_cultivation }
+                        faith = { has_doctrine = tenet_vagrant_cultivation }
+                    }
+                }
             }
             faith = { save_temporary_scope_as = former_sect_faith }
 

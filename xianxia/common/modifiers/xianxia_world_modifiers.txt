@@ -277,3 +277,9 @@ imperial_patron_sect = {
     same_faith_opinion = 12
     legitimacy_gain_mult = 0.1
 }
+
+jianghu_face_loss = {
+    diplomacy = -2
+    monthly_lifestyle_xp_gain_mult = -0.25
+    general_opinion = -5
+}

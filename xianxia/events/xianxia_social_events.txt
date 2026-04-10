@@ -1,0 +1,95 @@
+namespace = xianxia_social
+
+# Inheritable Relations adaptation: heirs inherit some of predecessor's social legacy.
+xianxia_social.1000 = {
+	type = character_event
+	scope = none
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_landed = yes
+				exists = primary_heir
+				primary_heir = { is_alive = yes is_adult = yes }
+			}
+
+			save_scope_as = xianxia_social_predecessor
+			primary_heir = { save_scope_as = xianxia_social_heir }
+
+			every_relation = {
+				type = friend
+				limit = {
+					NOT = { this = scope:xianxia_social_heir }
+					is_alive = yes
+				}
+				reverse_add_opinion = {
+					target = scope:xianxia_social_heir
+					modifier = opinion_jianghu_inherited_friendship
+					years = 180
+				}
+				add_opinion = {
+					target = scope:xianxia_social_heir
+					modifier = opinion_jianghu_inherited_friendship
+					years = 180
+				}
+			}
+
+			every_relation = {
+				type = rival
+				limit = {
+					NOT = { this = scope:xianxia_social_heir }
+					is_alive = yes
+				}
+				reverse_add_opinion = {
+					target = scope:xianxia_social_heir
+					modifier = opinion_jianghu_inherited_rivalry
+					years = 200
+				}
+				add_opinion = {
+					target = scope:xianxia_social_heir
+					modifier = opinion_jianghu_inherited_rivalry
+					years = 200
+				}
+			}
+		}
+	}
+
+	option = { name = OK }
+}
+
+# SRE-inspired social pressure pulse: reputations snowball for connected/pariah rulers.
+xianxia_social.1100 = {
+	type = character_event
+	scope = none
+	hidden = yes
+
+	immediate = {
+		every_ruler = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_landed = yes
+			}
+
+			if = {
+				limit = {
+					any_relation = { type = friend }
+					NOT = { any_relation = { type = rival } }
+				}
+				add_character_modifier = { modifier = sect_resource_surplus days = 365 }
+			}
+			else_if = {
+				limit = {
+					any_relation = { type = rival }
+					NOT = { any_relation = { type = friend } }
+				}
+				add_character_modifier = { modifier = sect_internal_dispute days = 365 }
+			}
+		}
+	}
+
+	option = { name = OK }
+}

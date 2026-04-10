@@ -1,0 +1,19 @@
+﻿l_english:
+ jianghu_face_slap_interaction:0 "Public Face Slap"
+ jianghu_face_slap_interaction_desc:0 "Publicly humiliate [recipient.GetShortUINameNoTooltip], shattering face and momentum in the jianghu."
+ jianghu_set_ambush_interaction:0 "Arrange Cultivator Ambush"
+ jianghu_set_ambush_interaction_desc:0 "Set an ambush for [recipient.GetShortUINameNoTooltip] outside city walls and sect roads, punishing weaker foes through hidden force."
+ jianghu_demand_prisoner_release_interaction:0 "Demand Captive Release"
+ jianghu_demand_prisoner_release_interaction_desc:0 "Invoke sect honor and martial pressure to force [recipient.GetShortUINameNoTooltip] to release one of your captured kin or sworn companions."
+ jianghu_swear_blood_vengeance_interaction:0 "Swear Blood Vengeance"
+ jianghu_swear_blood_vengeance_interaction_desc:0 "Swear a jianghu blood oath against [recipient.GetShortUINameNoTooltip] for slain loved ones, turning grief into a lasting feud."
+
+ jianghu_face_loss:0 "Face Shattered Before Jianghu"
+ jianghu_face_loss_desc:0 "Public humiliation has damaged this cultivator's reputation and disrupted their cultivation rhythm."
+
+ xianxia_jianghu_letters.1000.opening:0 "A jade slip arrives, its qi imprint cold and mocking."
+ xianxia_jianghu_letters.1000.desc:0 "[sender.GetFirstName] spread word across inns, markets, and sect gates that your face was slapped in public and your dignity broken before the jianghu."
+ xianxia_jianghu_letters.1000.desc_rival:0 "Your rival [sender.GetFirstName] openly mocked your defeat, proclaiming your dao-heart too brittle to withstand a single slap before the crowd."
+ xianxia_jianghu_letters.1000.desc_family:0 "Even within your own bloodline, [sender.GetFirstName] has spread this humiliation, saying your branch has lost all face."
+ xianxia_jianghu_letters.1000.a:0 "Swallow this humiliation... for now."
+ xianxia_jianghu_letters.1000.b:0 "This feud will be remembered for centuries."

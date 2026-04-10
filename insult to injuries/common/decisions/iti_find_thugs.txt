@@ -1,0 +1,79 @@
+﻿iti_find_thugs_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/iti_decision_tavern.dds"
+	}
+	
+	desc = iti_find_thugs_decision_desc
+	selection_tooltip = iti_find_thugs_decision_tooltip
+
+	is_shown = {
+		is_playable_character = yes
+		is_ruler = yes
+	}
+
+	is_valid = {
+		is_adult = yes
+		is_imprisoned = no
+		custom_tooltip = {
+			text = iti_recently_visited_tavern_tt
+			NOT = { has_character_flag = iti_recently_visited_tavern }
+		}
+	}
+
+	cost = {
+		gold = minor_gold_value
+	}
+
+	effect = {
+		add_character_flag = {
+			flag = iti_recently_visited_tavern
+			years = 1
+		}
+		
+		trigger_event = iti_find_thugs.1000
+	}
+	
+	ai_check_interval = 24
+	
+	ai_will_do = {
+		base = 10
+
+		# Massive boost if they have 0 thugs
+		modifier = {
+			add = 100
+			NOT = {
+				any_court_position_holder = {
+					has_court_position = iti_thug_court_position
+				}
+			}
+		}
+
+		# boost if they have 1 or 2 thugs (less than the max of 3)
+		modifier = {
+			add = 50
+			any_court_position_holder = {
+				has_court_position = iti_thug_court_position
+				count < 3
+			}
+		}
+
+		# Aggressive/Paranoid AI should want them more
+		modifier = {
+			add = 25
+			OR = {
+				has_trait = sadistic
+				has_trait = paranoid
+				has_trait = callous
+			}
+		}
+
+		# If they already have 3 thugs, don't take the decision
+		modifier = {
+			factor = 0
+			any_court_position_holder = {
+				has_court_position = iti_thug_court_position
+				count >= 3
+			}
+		}
+	}
+}

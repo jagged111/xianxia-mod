@@ -1,0 +1,60 @@
+﻿namespace = iti_debug
+
+iti_debug.0001 = {
+	type = character_event
+	title = iti_debug.0001.t
+	desc = iti_debug.0001.desc
+	theme = physical_health
+	
+	left_portrait = root
+	right_portrait = scope:iti_thug_victim 
+
+	immediate = {
+		
+		create_character = {
+			template = generic_peasant_character
+                        location = root
+			save_scope_as = iti_thug_victim
+		}
+	}
+
+	option = {
+		name = iti_debug.0001.b
+
+		hidden_effect = {
+			# Create the artifact
+			create_artifact = {
+				name = iti_thug_tooth_name
+				description = iti_thug_tooth_description
+				modifier = artifact_learning_1_modifier
+				type = miscellaneous
+				visuals = iti_tooth
+				save_scope_as = iti_thug_souvenir
+				# Sets the creator history to the peasant before they die
+				creator = scope:iti_thug_victim 
+			}
+			
+			
+			scope:iti_thug_victim = {
+				death = { death_reason = death_vanished }
+			}
+		}
+
+		remove_short_term_gold = tiny_gold_value
+
+		send_interface_toast = {
+			title = iti_debug.b.equipped_tt
+			left_icon = root
+			right_icon = scope:iti_thug_souvenir
+			
+			scope:iti_thug_souvenir = {
+				set_variable = {
+					name = suppress_artifact_notifications
+					value = yes
+					days = 1
+				}
+				set_owner = root
+			}
+		}
+	}
+}

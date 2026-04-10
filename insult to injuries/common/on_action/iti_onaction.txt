@@ -1,0 +1,148 @@
+﻿# ============================================================
+# PULSE HOOK
+# ============================================================
+yearly_playable_pulse = {
+	on_actions = {
+		iti_insult_exchange_pulse
+		iti_thug_ambush_check
+                iti_travel_thug_ambush_check
+	}
+}
+
+# ============================================================
+# RANDOM INSULTS
+# ============================================================
+iti_insult_exchange_pulse = {
+	trigger = {
+		is_alive = yes
+		is_ai = yes
+		is_available_ai_adult = yes
+		
+		OR = {
+			has_trait = wrathful
+			has_trait = arrogant
+			has_trait = sadistic
+			has_trait = vengeful
+		}
+		
+		# Only trigger if the AI has a Player neighbor they dislike
+		any_neighboring_top_liege_realm_owner = {
+			is_ai = no # Target must be a player
+			is_landed = yes
+			is_adult = yes
+			NOT = { is_at_war_with = root }
+			root = {
+				opinion = {
+					target = prev
+					value < -30
+				}
+			}
+		}
+	}
+
+	effect = {
+		random_list = {
+			5 = {
+				# Specifically pick a neighboring Player
+				random_neighboring_top_liege_realm_owner = {
+					limit = {
+						is_ai = no # Target must be a player
+						is_landed = yes
+						is_adult = yes
+						NOT = { is_at_war_with = root }
+						root = {
+							opinion = {
+								target = prev
+								value < -30
+							}
+						}
+					}
+					
+					# Save the Aggressor (the AI) for the event
+					root = { save_scope_as = iti_insult_ruler }
+
+					# Trigger the Player-specific insult event
+					trigger_event = {
+						id = iti_event.1000
+						days = { 1 3 }
+					}
+				}
+			}
+			95 = { }
+		}
+	}
+}
+# ============================================================
+# THUG AMBUSH LOGIC
+# ============================================================
+iti_thug_ambush_check = {
+	trigger = {
+		is_alive = yes
+		any_ruler = {
+			is_alive = yes
+			is_adult = yes
+			is_incapable = no
+			in_diplomatic_range = root
+			
+			# 1. Hostility Check
+			OR = {
+				has_relation_rival = root
+				opinion = {
+					target = root
+					value <= -30
+				}
+			}
+
+			# 2. Personality Check (Bad Traits)
+			OR = {
+				has_trait = callous
+				has_trait = sadistic
+				has_trait = vengeful
+				has_trait = deceitful
+				has_trait = wrathful
+			}
+
+			# 3. Resource Check (Employs Thugs)
+			has_court_position = iti_thug_court_position
+		}
+	}
+
+	random_events = {
+		95 = 0
+		5 = iti_thug_event.2000
+	}
+}
+
+# ============================================================
+# TRAVELLING RULER AMBUSH LOGIC
+# ============================================================
+
+iti_travel_thug_ambush_check = {
+	trigger = {
+		is_alive = yes
+		is_landless_adventurer = yes
+		intrigue >= 10
+		
+		# Resource Check (User has a Thug)
+		any_court_position_holder = {
+			has_court_position = iti_thug_court_position
+		}
+
+		# Target Check: Is there a vulnerable traveling ruler in our province?
+		any_ruler = {
+			is_alive = yes
+			is_adult = yes
+			is_incapable = no
+			is_travelling = yes
+			highest_held_title_tier < tier_kingdom
+			location = root.location
+			in_diplomatic_range = root
+			NOT = { this = root }
+		}
+	}
+
+	random_events = {
+		90 = 0
+		10 = iti_travel_thug_event.1000
+	}
+}

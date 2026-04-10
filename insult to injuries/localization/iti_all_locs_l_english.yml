@@ -1,0 +1,370 @@
+﻿l_english:
+ # ============================================================
+ # 500: THE OPENER
+ # ============================================================
+ iti_event.500.opening: "To [ROOT.Char.GetFirstNameNoTooltip],"
+ iti_event.500.desc: "I previously received a letter bearing your seal. It depicted myself in some very unsavoury way. The letter also called my mother a rodent and that my father smelt fruity. I'm sure there has been a misunderstanding, and I await your prompt explanation."
+ iti_event.500.a: "'Let me tell you what I think about the [iti_insult_ruler.GetDynastyName]..'"
+ iti_event.500.desc_family: "I am unsure what has prompted this.. provocation, but I do recommend you retract your words, otherwise this may end up costly for the both of us. We are both [root.GetDynastyName] after all."
+ iti_event.500.b: "Wasn't me!"
+ iti_event_500_reply_tt: "This will lead to further developments..."
+ iti_event_500_disregard_tt: "You ignore the letter entirely."
+ iti_insult_escalation_tt: "This will lead to possible consequences."
+ # ============================================================
+ # 1000 SERIES: THE INITIAL INSULT
+ # ============================================================
+ iti_event.1000.opening: "To the [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.GetTitledFirstName],"
+ # Event Descriptions
+ iti_event.1000.desc_standard: "You [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. Everyone knows you are a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. A lecherous [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. I find myself curious how long a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] such as you can persist before being properly corrected."
+ iti_event.1000.desc_rival: "Hate. Let me tell you how much I have come to hate you since I first laid eyes upon your [ROOT.Char.Custom('InsultAdjective')] face. There are 12,562 stones that line the foundation of my castle. If the word 'Hate' were engraved upon every hairsbreadth of those rocks, it would not equal one one-billionth of the hate I feel for the [ROOT.Char.GetDynastyName] at this very moment. For you. You [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. Hate. Hate."
+ iti_event.1000.desc_family: "I always knew you were a [ROOT.Char.Custom('InsultAdjective')] bastard, [ROOT.Char.GetFirstNameNoTooltip]. To think that we share the same blood! Our ancestors surely turn in their graves to see a member of the [ROOT.Char.GetDynasty.GetBaseName] house act like such a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [ROOT.Char.Custom('InsultAdjective')]. You are a stain on our lineage."
+ iti_event.1000.desc_negative_opinion: "I find it a sad comedy that a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] so utterly [ROOT.Char.Custom('InsultAdjective')] has been permitted to draw breath in high circles for this long. Rest assured, the world has a way of scouring away such stains, and I believe your time for a thorough scrubbing is long overdue, you [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]."
+ # Options
+ iti_event.1000.a: "Hah. Let's see how you respond to this.."
+ iti_event.1000.a.tt: "You reply with a scathing response. #high You say some really, really mean things!#! The recipient may react poorly."
+ iti_event.1000.b: "Other pressing matters call my attention.."
+ iti_event.1000.b.tt: "You choose not to dignify the insult with a response."
+ # EVENT 1001: General Insult Notification
+ iti_event.1001.opening: "To my most... [ROOT.Char.Custom('InsultAdjective')] neighbor,"
+ iti_event.1001.desc: "I received a letter today, the letter smelled like piss. Not sure if I want to read it."
+ iti_event.1001.a: "I will not lower myself to respond to this."
+ # ============================================================
+ # 3000 SERIES: THE RESPONSE
+ # ============================================================
+ iti_event.3000.opening: "To the [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [ROOT.Char.GetTitledFirstName],"
+ iti_event.3000.desc: "What did you say about me, you little [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]? I'll have you know I graduated top of my class in the [iti_insult_ruler.GetPrimaryTitle.GetBaseName] and I've been involved in numerous secret raids on [ROOT.Char.GetDynastyName] lands, and I have over 300 confirmed kills!"
+ iti_event.3000.desc_dead: "The person you're looking for is no longer alive. Their hatred died with them."
+ # Specific Retorts
+ iti_event.3000.a_lifestyle_diplomat: "'To the [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [iti_insult_ruler.GetTitledFirstName]..'"
+ iti_event.3000.a_lifestyle_general: "That [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. I need to hit something before I reply.."
+ iti_event.3000.a_lifestyle_administrator: "You mother.. smelt of elderberries?"
+ iti_event.3000.a_lifestyle_schemer: "I will send a turd along with my response.."
+ iti_event.3000.a_lifestyle_scholar: "Your father is a.. gerbil?"
+ # Options
+ iti_event.3000.a.tt: "You wrack your brain and come up with a most devastating insult."
+ iti_event.3000.b: "Attempt to de-escalate."
+ iti_event.3000.b.tt: "You try to calm tensions and avoid escalation."
+ iti_event.3000.c: "Send them a 'gift'."
+ iti_event.3000.c.tt: "You send them a turd in a box."
+ # ============================================================
+ # 7000-8000 SERIES: ESCALATION & BACKING DOWN
+ # ============================================================
+ iti_event.7000.opening: "To the [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [ROOT.Char.GetTitledFirstName],"
+ iti_event.7000.desc: "I hate you. I hate you. I hate you. I hate you.  You're a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. A [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. You are ugly. A hideous beast. A [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]. Piss on your house. The [ROOT.Char.GetDynastyName] are nothing but dogs."
+ iti_event.7000.a: "I'll just pretend I didn't see this.."
+ iti_event.7000.a.tt: "You lose the game of chicken."
+ iti_event.7000.b: "You're not going to like what I have to say about you.."
+ iti_event.7000.b.tt: "You compose a truly heinous response. #N This will lead to further escalation#!."
+ iti_event.8000.opening: "To the [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [ROOT.Char.GetTitledFirstName],"
+ iti_event.8000.desc: "I shall spend no more time on a whelp like you. You've shown your back today, dog. Whatever pride a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] such as you believes it holds is of no concern to me."
+ iti_event.8000.a: "So be it."
+ iti_event.8000.a.tt: "You breathe a sigh of relief."
+ # ============================================================
+ # 9000 SERIES: THE WAR & CHALLENGE
+ # ============================================================
+ iti_event.9000.opening: "To the [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.GetTitledFirstName],"
+ iti_event.9000.desc: "Your words cut deep indeed.\n\n NOT. You mistake my previous restraint for weakness, fool. I will correct that misunderstanding in due course. One day you will be out and about your business, and it will come. My retribution. When you are laying in the dirt, mind and body equally mangled, you will know it was me, [iti_insult_ruler.GetTitledFirstName]. Piss be upon your house."
+ iti_event.9000.a: "This has gone far enough. Send for my Marshal."
+ iti_event.9000.a.tt: "You assemble your armies for war."
+ iti_event.9000.b: "This has gone too far.. Send for my Chancellor."
+ iti_event.9000.b.tt: "They are too strong. Too cool. You give up."
+ iti_event.9000.c: "We will settle this, now."
+ iti_event.9000.c.tt: "You force a confrontation to settle your grievances. Losing this duel could have dire consequences."
+ # Field Challenge
+ iti_event.9001.opening: "To the [ROOT.Char.Custom('InsultAdjective')], [ROOT.Char.Custom('InsultAdjective')], [ROOT.Char.Custom('InsultAdjective')],  [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [ROOT.Char.GetTitledFirstName] ,"
+ iti_event.9001.desc: "You mongrel. You absolute sad piece of [ROOT.Char.Custom('InsultAdjective')] filth. Your [ROOT.Char.Custom('InsultAdjective')] tongue has wagged for the last time, and I find that mere ink is no longer sufficient to answer your insolence. \n\n As you read these words, my banners are assembling to march on your lands. I will crush you and have you driven before me and I will hear the lamentations of your women. I am coming for your head. \n\n Prepare yourself. I shall see you on the field, or I shall drag you from your kennel myself."
+ iti_event.9001.a: "I'm going to kill that bastard myself!"
+ iti_event.9001.a.tt: "The time for talk has ended."
+ # The Final Confrontation
+ iti_event.9002.t: "Insults To Injuries"
+ iti_event.9002.desc: "Words have led to violence as I assault their keep with my retinue, killing several men as I make my way inside. I am here for blood, and I will not leave without.\n\n  I caroused and jostled some servants until they pointed me to a room at the end of the hall. There, I see the loathsome [iti_insult_ruler.GetTitledFirstName], hidden behind some maiden's skirt. Infront of [iti_insult_ruler.GetHerHim] are 3 sorry goons, most likely scrounged up from the gutter, or maybe a nearby village tavern. 'Fight me yourself, [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]!' I shouted. If the [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] does not accept, I'll have to force a confrontation if I want a crack at him myself.\n\n My champions stand ready:\n[p_knight_1.GetFirstNameNoTooltip] (Prowess: [p_knight_1.GetSkill('prowess')])\n[p_knight_2.GetFirstNameNoTooltip] (Prowess: [p_knight_2.GetSkill('prowess')])\n[p_knight_3.GetFirstNameNoTooltip] (Prowess: [p_knight_3.GetSkill('prowess')])\n\nThey face off against the enemy's thugs:\n[e_knight_1.GetFirstNameNoTooltip] (Prowess: [e_knight_1.GetSkill('prowess')])\n[e_knight_2.GetFirstNameNoTooltip] (Prowess: [e_knight_2.GetSkill('prowess')])\n[e_knight_3.GetFirstNameNoTooltip] (Prowess: [e_knight_3.GetSkill('prowess')])"
+ iti_event.9002.a: "Face me!"
+ iti_event.9002.a.tt: "You will enter a #high Single Combat Duel#! with [iti_insult_ruler.GetTitledFirstName]. Your #high Prowess#! will determine your success."
+
+ iti_event.9002.b: "Wait..I hear my mother calling me.."
+ iti_event.9002.b.tt: "By backing out of a direct challenge of honor, you will be branded a #N coward#! in the eyes of your peers."
+
+ iti_event.9010.t: "A Matter Of Honor"
+ iti_event.9010.a: "I can't cut your head off without getting closer!"
+ iti_event.9010.desc: "My champions quickly dispatch the imbeciles sent to confront us. The beaten and wounded scatter as I advance, my head tilted up to the ceiling and arms swinging in dominance. Approaching my destination, I cleaved a grunt in half with one mighty swing, and then it was just me, and [iti_insult_ruler.GetTitledFirstName].\n\n 'Oh? You are approaching me? Instead of running away, you are coming right to me?' [iti_insult_ruler.GetSheHe] said. \n\n Time to get what I came for. \n\n Or.. Maybe it's best to retreat?"
+# ============================================================
+ # DUEL EVENT 1001: THE CHALLENGER
+ # ============================================================
+ iti_duel_event.1001.t: "A Challenger At The Gates"
+ iti_duel_event.1001.desc: "My councillor rushes into the room, full of panic. [iti_insult_ruler.GetTitledFirstName] has arrived, and is causing mayhem outside. The [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] is seeking retribution for the heinous insult I sent. Is it because I said [iti_insult_ruler.GetSheHe] is a [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]? Or maybe because I said [iti_insult_ruler.GetHerHis] mother is a [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]? \n\n Either way, that [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] is here and is demanding to face me in an epic duel for [iti_insult_ruler.GetHerHis] honor! \n\n Maybe it would be best to send some knights to take care of it? \n\n My champions stand ready:\n[p_knight_1.GetFirstNameNoTooltip] (Prowess: [p_knight_1.GetSkill('prowess')])\n[p_knight_2.GetFirstNameNoTooltip] (Prowess: [p_knight_2.GetSkill('prowess')])\n[p_knight_3.GetFirstNameNoTooltip] (Prowess: [p_knight_3.GetSkill('prowess')])\n\nThey face off against the enemy's thugs:\n[e_knight_1.GetFirstNameNoTooltip] (Prowess: [e_knight_1.GetSkill('prowess')])\n[e_knight_2.GetFirstNameNoTooltip] (Prowess: [e_knight_2.GetSkill('prowess')])\n[e_knight_3.GetFirstNameNoTooltip] (Prowess: [e_knight_3.GetSkill('prowess')])"
+ iti_duel_event.1001.a: "Call a medicus... But not for me!"
+ iti_duel_event.1001.b: "Bar the gates! #N cough cough#! I.. I'm not feeling well today."
+ iti_duel_event.1001.c: "Let the lads know someone is looking for them."
+ 
+ # Tooltips
+ iti_duel_event.1001.a.tt: "You face your opponent in non-lethal combat. Losing will have consequences, but you will survive."
+ iti_duel_event.1001.b.tt: "You hide in your room like a pretty maiden. Everyone will hear of this."
+ iti_duel_event.1001.c.tt: "You send your knights to repel the intruders. The chance of success depends on the prowess of your knights. If they lose, #high [iti_insult_ruler.GetFirstNameNoTooltip] will force the confrontation!#!"
+ iti_duel_ai_refuses_force_3v3_tt: "The coward will refuse the challenge! #N I will have to force the issue#!."
+ iti_duel_3v3_win_tt: "Based on my side's prowess, we will most likely win this fight."
+ iti_duel_3v3_loss_tt: "Based on their superior skill, we will most likely lose this fight."
+# ============================================================
+ # DUEL EVENT 1001: MY KNIGHTS LOST
+ # ============================================================
+ iti_duel_event.1002.t: "A Crushing Defeat"
+ iti_duel_event.1002.desc: "My champions lie groaning on the floor, battered and broken by the enemy forces. [iti_insult_ruler.GetFirstNameNoTooltip] steps over their bodies, a wicked grin plastered across [iti_insult_ruler.GetHerHis] face as [iti_insult_ruler.GetSheHe] kick one of the defeated in the head.\n\n\"Your lackeys couldn't save you,\" [iti_insult_ruler.GetSheHe] sneers, twirling [iti_insult_ruler.GetHerHis] weapon. \"No where left to run.\""
+ iti_duel_event.1002.a: "Oh? You are approaching me?"
+
+ iti_duel_event.1003.t: "Assault Repelled!"
+ iti_duel_event.1003.desc: "The sound of clashing steel finally fades, replaced by the hurried footsteps of wailing men. [councillor.GetTitledFirstName] approaches me with a satisfied smirk. \n\n 'It is over, [ROOT.Char.GetFirstNameNoTooltip]. Our knights proved more than a match for the rabble [iti_insult_ruler.GetTitledFirstName] brought to our gates. I watched from the ramparts as [iti_insult_ruler.GetSheHe] realized the day was lost. The bastard looked more like a frightened maiden than a ruler as [iti_insult_ruler.GetSheHe] scrambled back to [iti_insult_ruler.GetHerHis] horse.'\n\n[iti_insult_ruler.GetTitledFirstName] leaves my lands in shame, [iti_insult_ruler.GetHerHis] pride as wounded as [iti_insult_ruler.GetHerHis] men."
+ iti_duel_event.1003.a: "All shall fear The [ROOT.Char.GetPrimaryTitle.GetBaseName]!"
+ # ============================================================
+ # DUEL EVENT 9004: HONOR DUEL CONFIGURATION
+ # ============================================================
+ iti_duel_event.9004.t: "It's time to D-D-D-uel!"
+ iti_duel_event.9004.desc: "The moment simmers as my opponent and I lock eyes like two feral beasts. I can tell [iti_insult_ruler.GetFirstNameNoTooltip] is feeling as nervous as I, [iti_insult_ruler.GetHerHis] palms sweaty, knees buckling, arms heavy. I can even tell there's a bit of vomit on his gambeson already, mom's pottage. A crowd has gathered to witness what promises to be an epic duel.\n\n My opponent, [iti_insult_ruler.GetTitledFirstName], glares at me with hateful eyes.\n\n One of us will leave this field with our honor intact. The other will leave it in the dirt."
+ iti_duel_event.9004.a: "This is going to hurt.."
+ # ============================================================
+ # EVENT 9005: PLAYER VICTORIOUS
+ # ============================================================
+ iti_event.9005.t: "Who's Next?!"
+ iti_event.9005.desc_winner: "The crowd roars in ecstasy as [iti_insult_ruler.GetTitledFirstName] collapses into the dust. I stand over [iti_insult_ruler.GetHerHis] battered body, equally battered. My weapon steady and my resolve unbroken, I know what I must do. The crowd holds its breath, waiting for me to deliver the final judgment.\n\nI raise my weapon and.. "
+ iti_event.9005.a: "RAAAARRRGGGGGHHH!"
+ iti_event.9005.a.tt: "Bring it down on [iti_insult_ruler.GetHerHis] head. You end [iti_insult_ruler.GetTitledFirstName] here and now. Their story is over."
+ iti_event.9005.b: "..ARRRRRGGGGHHHHH!"
+ iti_event.9005.b.tt: "Slam it on the ground really dramatically. You spare [iti_insult_ruler.GetTitledFirstName]'s life, hopefully [iti_insult_ruler.GetSheHe] will remember this mercy."
+ # ============================================================
+ # EVENT 9006: PLAYER DEFEATED
+ # ============================================================
+ iti_event.9006.t: "Ouch"
+ iti_event.9006.desc_loser: "The duel has concluded, and the outcome is undeniable. I have been undeniably, unmistakably, #N UNEQUIVOCABLY#!, trounced.. [iti_insult_ruler.GetTitledFirstName] towers over me, breathing heavily. The duel is over, and I have lost everything but my life.. \n\nI am scared. Will [iti_insult_ruler.GetSheHe] really kill me? \n\n#N I don't want to die..#!"
+ iti_event.9006.c: "I think I broke something.."
+ iti_event.9006.desc_toast: "[iti_insult_ruler.GetTitledFirstName] beat you up very, very, badly."
+
+ iti_event.9011.t: "A Terrible Day"
+ iti_event.9011.desc: "My knights were soundly defeated by [iti_insult_ruler.GetTitledFirstName]'s forces, the vile [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]! I am forced to stand alone against [iti_insult_ruler.GetHerHis] warriors. Their onslaught prove too much, even for me. They punched, kicked, slash, prodded, and tickled me until I was a mushy mess on the floor.."
+ iti_event.9011.a: "I didn't hear no bell.."
+# ============================================================
+ # DUEL EVENT 9008: RESULTS (Shared keys for 9007 and 9008)
+ # ============================================================
+ iti_duel_event.9008.t: "Aftermath"
+ iti_duel_event.9008.desc_winner: "The melee comes to a finale as I expertly dodge the clumsy stabs and pokes headed my way. With a precise quickness, I deliver a crushing counter, fast as lightning. [iti_insult_ruler.GetTitledFirstName] was unable to dodge my ultimate attack, and I my weapon smashes into their body with a thunderous #N KLANG #! sending  [iti_insult_ruler.GetHerHim] flying off to the side.\n\nAnd then it was over.\n\n [iti_insult_ruler.GetTitledFirstName] lies defeated at my feet, gasping for air through a ruined helm. My honor is restored, and the weight of my hate feels, for a fleeting moment, lightened."
+ iti_duel_event.9008.a_victor: "It was never in doubt!"
+ iti_duel_event.9008.desc_loser: "The melee comes to a finale as [iti_insult_ruler.GetTitledFirstName] expertly dodge the clumsy stabs and pokes I threw. With a precise quickness, [iti_insult_ruler.GetSheHe] delivered a crushing counter, fast as lightning, sending me reeling to the dirt. I look up through the dust to see [iti_insult_ruler.GetTitledFirstName] standing over me, the undisputed victor. My pride is shattered, and my body feels like it has been trampled by a stampede of destriers."
+ iti_duel_event.9008.a_loser: "So.. no hard feelings?"
+ # Fatality & Mercy
+ iti_event.9008.t: "The Final Insult"
+ iti_event.9008.desc: "My vision blurs as [iti_insult_ruler.GetTitledFirstName] stands over me. There is no mercy in [iti_insult_ruler.GetHerHis] eyes. With a devious grin, [iti_insult_ruler.GetSheHe] raises [iti_insult_ruler.GetHerHis] weapon.."
+ iti_event.9008.a: "Curtains.."
+ iti_event.9009.t: "A Bitter Mercy"
+ iti_event.9009.desc: "[iti_insult_ruler.GetTitledFirstName] scoffs, sheathing [iti_insult_ruler.GetHerHis] sword. [iti_insult_ruler.GetSheHe] has chosen to let me live.. [iti_insult_ruler.GetSheHe] bid me remember who has spared my wretched life today.\n\n The shame."
+ iti_event.9009.a: "Somebody carry me away from here.."
+ iti_event.9009.b: "[iti_insult_ruler.GetTitledFirstName] has decided to give you an extra beating before sending you on your way."
+ # Duel Flavors
+ iti_diplomacy_duel: "A clash of silver tongues"
+ iti_martial_duel: "A clash of strategic threats"
+ iti_stewardship_duel: "A clash of administrative insults"
+ iti_intrigue_duel: "A clash of venomous secrets"
+ iti_learning_duel: "A clash of theological condemnations"
+ # ============================================================
+ # THUGGERY SYSTEM
+ # ============================================================
+ iti_send_thugs_interaction: "Send Hired Thugs"
+ iti_send_thugs_interaction_desc: "Hire a group of local ruffians to intercept this character in a dark alley and give them a proper 'lesson' in humility."
+ iti_send_thugs_interaction_tt: "The group of troublemakers you hire maybe untrustworthy. The success of this interaction depends on your Intrigue skill vs the Target's. It is greatly buffed by the A Job Done Right perk."
+ iti_send_thugs_cooldown_tt: "This character has recently had an encounter with a group of hooligans. They are on high alert."
+ interaction_requires_thug_tt: "You must have at least one character in your employ with the @iti_send_thugs_interaction! #V Thug#! court position."
+ iti_hire_as_thug_interaction: "Hire as Thug"
+ iti_hire_as_thug_interaction_desc: "Recruit [recipient.GetFirstNameNoTooltip] to your court to serve as your personal muscle. They will be officially appointed as a Thug, allowing you to send them to teach your enemies a lesson."
+ # ============================================================
+ # COURT POSITION
+ # ============================================================
+ iti_thug_court_position: "Thug"
+ iti_thug_court_position_desc: "A brute kept on retainer to handle the 'unsavory' aspects of court life. Their presence makes rivals think twice and helps your more... delicate plans succeed."
+ thug_court_position_court_view_desc: "As a Thug, [CHARACTER.GetFirstNameNoTooltip] provides physical intimidation and assists in hostile schemes."
+
+# Personality (Positive)
+ court_position_vengeful_trait: "This character holds a grudge."
+# Physique
+ court_position_giant_trait: "This character is one #high big#! character."
+
+# Intimidation / Appearance
+ court_position_beauty_bad_3_trait: "This character is an anomaly. Absolutely hideous."
+ court_position_beauty_bad_2_trait: "This character will not win any beauty contests. Ever."
+ court_position_beauty_bad_1_trait: "This character is someone people don't look at very long."
+ court_position_gallowsbait_trait: "This character is a menace to society."
+ court_position_scarred_trait: "This character has scars all over."
+ court_position_disfigured_trait: "This character's face causes nausea and high blood pressure."
+ court_position_one_eyed_trait: "This character only has one eye-ball. Creepy."
+ court_position_scaly_trait: "This character is an unfortunate miscreation."
+ court_position_lunatic_trait: "This character is insane."
+ # ============================================================
+ # DECISION
+ # ============================================================
+ iti_find_thugs_decision: "Peruse the Local Tavern"
+ iti_find_thugs_decision_desc: "Check out the local tavern for some truly unsavoury characters to join your gang."
+ iti_find_thugs_decision_tooltip: "Go to the local village tavern and check out some recruits."
+ iti_find_thugs_decision_confirm: "Find me some henchmen!"
+ iti_recently_visited_tavern_tt: "You have not been in close proximity with peasants recently."
+ # ============================================================
+ # THUG EVENTS (BEING AMBUSHED)
+ # ============================================================
+ iti_find_thugs.1000.t: "A Horrible Place"
+ iti_find_thugs.1000.desc: "The tavern is dark, thick with smoke, grog, and..#high something else#!.\n\n In a dimly lit corner, three creatures sit apart from the rest of the crowd. \n\n'Three of The [ROOT.Char.GetPrimaryTitle.GetBaseName]'s finest lads!' I think to myself.\n\n For the right price, their skills and services can be bought."
+ iti_find_thugs.1000.a: "Hire [thug_1.GetFirstNameNoTooltip] to be my friend."
+ iti_find_thugs.1000.b: "[thug_2.GetFirstNameNoTooltip] seems like bestfriend material."
+ iti_find_thugs.1000.c: "[thug_3.GetFirstNameNoTooltip] looks like he knows how to have a good time!"
+ iti_find_thugs.1000.d: "[ROOT.Char.GetFirstNameNoTooltip] Gang, assemble!"
+ iti_find_thugs.1000.e: "All of you are horrible to look at."
+ # Thug Reports (Sender Side)
+ iti_thug_event.1001.t: "A Medieval Jumping!"
+ iti_thug_event.1001.desc_success: "I was just stabbing a drawing of that [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [iti_thug_victim.GetTitledFirstName] with a knife when [iti_thug_messenger.GetShortUIName] came waltzing into my quarters, chipper as a kipper. \n\n It seems [iti_thug_victim.GetTitledFirstName] was without [iti_thug_victim.GetHerHis] weapon and was caught lacking in protection. The lads did their solemn duty and gave [iti_thug_victim.GetTitledFirstName] a most righteous beating. They rummaged through [iti_thug_victim.GetHerHis] pockets as [iti_thug_victim.GetSheHe] lay crying in the dirt. The [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] won't be walking straight for a week. \n\n The world is brighter once more."
+ iti_thug_event.1001.desc_fail: "I was just dreaming up more ways to torment that [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [iti_thug_victim.GetTitledFirstName] when [iti_thug_messenger.GetShortUIName] came crawling into my quarters, battered and bruised. \n\n 'I'm sorry, [ROOT.Char.GetFirstNameNoTooltip]... We had [iti_thug_victim.GetTitledFirstName] cornered, but the [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] fought like a [ROOT.Char.Custom('InsultAdjective')] [ROOT.Char.Custom2('InsultNoun', ROOT.Char)]! I couldn't believe it myself! The [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] sent some of the boys to the healer and the rest of us ran out of there screaming. We kept our mouths shut as best we could, but some of the boys shouted '[ROOT.Char.GetDynastyName]!' as he was running away. I'm not sure why. The [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] probably suspects your involvement, though [iti_thug_victim.GetSheHe] cannot know for sure.'"
+ iti_thug_event.1001.desc_brutal: "I was just stabbing nails into a doll of that [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [iti_thug_victim.GetTitledFirstName] when [iti_thug_messenger.GetShortUIName] knocked on my door and sheepishly entered my quarters. \n\n 'We might have gone a bit far, boss. [iti_thug_victim.GetTitledFirstName] didn't just take a beating; We left [iti_thug_victim.GetHerHim] all messed up, bleeding in the gutter. I think we knocked some of [iti_thug_victim.GetHerHis] teeth out. [iti_thug_victim.GetFirstName] is still alive, but barely. It was a bloodbath.'\n\n'We also robbed [iti_thug_victim.GetHerHim] blind.'"
+ iti_thug_event.1001.desc_exposed: "I was just screaming at the top of my lungs about how much I hate that [ROOT.Char.Custom2('InsultNoun', ROOT.Char)] [iti_thug_victim.GetTitledFirstName] when [iti_thug_messenger.GetShortUIName] staggered into the hall, collapsing before me, clearly wounded from a vicious fight. \n\n 'Boss!' he squealed. 'It's a disaster, boss! The boys were captured by [iti_thug_victim.GetTitledFirstName]'s men. Under... intensive questioning... one of them squealed. They know you're the one who paid them. Everybody in the county is whispering your name.'\n\n  Shit."
+ iti_thug_event.1001.a_success: "Well done lads! Wish I was there to see it."
+ iti_thug_event.1001.a_fail: "What do I even pay you for.."
+ iti_thug_event.1001.a_brutal: "You know what they say about cracking a few eggs!"
+ iti_thug_event.1001.a_exposed: "What do you mean.. everybody?"
+ iti_thug_event.1001.b_execute: "Let them speak of something else then!"
+ iti_thug_event.1001.c_bribe: "There goes this month's feast budget.."
+ iti_thug_event.1001.c_bribe.tt: "You spend a [major_gold_value|E] to ensure the rumors of your thuggery are not public knowledge."
+ # The Ambush (Victim Side)
+ iti_thug_event.2000.t: "A Medieval Jumping..For You!"
+ iti_thug_event.2000.desc: "I was contemplating life and death when suddenly, the shadows move. A group of masked men step forward, brandishing clubs and jagged blades. One of them snarls, 'Looks like we caught you at a bad time, friend! \n\n 'Guards!, Guards!' I hollered. A melee ensues, steel upon steel. My allies are doing their best to hold off the thugs while I attempt to retreat. One of the thugs, bigger and stronger than the others, somersaulted in front of me and blocked my path!"
+ iti_thug_event.2000.a: "Looks like we have a volunteer!"
+ iti_thug_event.2000.a.tt: "You prepare to defend yourself against the unknown assailant!"
+ iti_thug_event.2000.b: "No, not the face!"
+ iti_thug_event.2000.b.tt: "You beg for mercy and empty your purse. #N They run your pockets and let you off with a light beating#!."
+ iti_thug_event.2003.desc: "The thugs didn't expect such finesse. Such prowess. After the big bastard falls, the rest of them tucked tail and ran.  I am well-bruised and lightly-battered, but victorious nonetheless!"
+ iti_thug_event.2003.a: "I feel so good, I don't even care who sent you!"
+ iti_thug_event.2003.interrogate: "I'm going to enjoy this."
+ iti_thug_event.2003.duel.success: "You break their will and they confess the perpetrator."
+ iti_thug_event.2003.duel.failure: "They refuse to speak a word."
+ iti_thug_event.2003.wound_light: "The prisoner is wounded."
+ iti_thug_event.2003.wound_heavy: "The prisoner is severely wounded."
+ iti_thug_event.2004.desc: "The big bastard was too big. I struggled as hard as I could, but he swatted me like a fly and sent me spiraling into darkness. When I woke up, they were gone, and my body was a map of pain. \n\n #N Seems like they robbed me blind and put a stick up my bum#!."
+ iti_thug_event.2004.a: "Somebody will hang for this.."
+ # Interrogation & Exposure
+ iti_thug_event.2005.t: "Perpetrator Exposed!"
+ iti_thug_event.2005.desc: "The henchman whimpers under the blade, his resolve breaking as the steel bites. 'Uncle! Uncle! Please! I was just paid! It was [ai_thug_sender.GetTitledFirstName]! [ai_thug_sender.GetSheHe] sent us to give you a beating, the bastard! I never liked him I promise!'"
+ iti_thug_event.2005.a: "I knew it was [ai_thug_sender.GetTitledFirstName]!"
+ iti_thug_event.2005.b: "So.. no hard feelings?"
+ iti_thug_event.2006.t: "Woops"
+ iti_thug_event.2006.desc: "The air is thick with the scent of iron and sweat. '... sent me..' the thug whispered. 'What? Speak louder! Tell me!' I shout. I press harder, and the thug lets out a desperate, raspy moan. \n\n With a final, ragged breath, they slump forward, taking their secrets to the grave."
+ iti_thug_event.2006.a: "REEEEEEEEEEEEEE!!"
+ # ============================================================
+ # THUG EVENTS (AMBUSHING)
+ # ============================================================
+ # EVENT 1000: THE AMBUSH
+ iti_travel_thug_event.1000.t: "Roadside Ambush"
+ iti_travel_thug_event.1000.desc: "I watch from a distance as a horse drawn carriage approaches. [traveling_victim.GetTitledFirstName] is headed my way, and is looking like a succulent meal. My companions tighten their grip on their weapons, waiting for my signal."
+ iti_travel_thug_event.1000.a: "You picked a bad time to get lost, friend!"
+ iti_travel_thug_event.1000.b: "Let [traveling_victim.GetHerHim] pass. [traveling_victim.GetSheHe] is slim pickings."
+
+ # EVENT 2000: THE BRAWL
+ iti_travel_thug_event.2000.t: "The Scuffle"
+ iti_travel_thug_event.2000.desc: "It seems like [traveling_victim.GetTitledFirstName] does not intend to go down without a fight, and [traveling_victim.GetHerHis] defenders are already drawing their weapons. \n\n They will bleed for their gold.\n\n My champions stand ready:\n[p_knight_1.GetFirstNameNoTooltip] (Prowess: [p_knight_1.GetSkill('prowess')])\n[p_knight_2.GetFirstNameNoTooltip] (Prowess: [p_knight_2.GetSkill('prowess')])\n[p_knight_3.GetFirstNameNoTooltip] (Prowess: [p_knight_3.GetSkill('prowess')])\n\nThey face off against the enemy's thugs:\n[e_knight_1.GetFirstNameNoTooltip] (Prowess: [e_knight_1.GetSkill('prowess')])\n[e_knight_2.GetFirstNameNoTooltip] (Prowess: [e_knight_2.GetSkill('prowess')])\n[e_knight_3.GetFirstNameNoTooltip] (Prowess: [e_knight_3.GetSkill('prowess')])"
+ iti_travel_thug_event.2000.a: "Never should have come here!"
+
+ # EVENT 3000: VICTORY
+ iti_travel_thug_event.3000.t: "Victory on the Road"
+ iti_travel_thug_event.3000.desc: "The dust settles, [traveling_victim.GetTitledFirstName] is flat on the ground, crawling away from me. The rest of [traveling_victim.GetHerHis] defenders have fled, and everything [recipient.GetSheHe] carries is now mine for the taking."
+ iti_travel_thug_event.3000.a: "Can't wait to count out your coin!"
+ iti_travel_thug_event.3000.b: "Go.. And tell everyone how great I am!"
+
+ # EVENT 4000: FAILURE
+ iti_travel_thug_event.4000.t: "A Humiliating Defeat"
+ iti_travel_thug_event.4000.desc: "The ambush was a disaster. [traveling_victim.GetTitledFirstName] and [traveling_victim.GetHerHis] companions fought with a ferocity we did not expect. \n\n My retinue is forced to retreat, our tails tucked, screaming like maidens."
+ iti_travel_thug_event.4000.a: "I cannot best you!"
+
+ # TOOLTIPS
+ iti_travel_thug_event.1000.a.tt: "You will attempt to mug [traveling_victim.GetTitledFirstName]."
+ iti_mugging_win_tt: "You successfully overpower the victim and their guards."
+ iti_mugging_loss_tt: "The victim's defenders drive you off!"
+ # ============================================================
+ # INTERFACE & INTERACTIONS
+ # ============================================================
+ iti_insult_interaction: "Send An Insult"
+ insult_interaction_desc: "Deliver a personalized, vitriolic insult to a neighboring ruler. Be warned: a warrior may choose to answer insults with steel!"
+ send_insult_effect_tt: "You deliver a calculated insult, ensuring they will respond in kind."
+ WAR_REPLY_TO_INSULT: "War Of Words"
+ WAR_REPLY_TO_INSULT_BASE: "Answer [DEFENDER.GetShortUIName]'s Insult"
+ iti_reply_to_insult_cb: "Retribution for Insult"
+ iti_reply_to_insult_cb_desc: "A war sparked by wounded pride and escalating insults between rulers."
+ # ============================================================
+ # TOOLTIPS & ERROR MESSAGES
+ # ============================================================
+ too_many_thugs_error: "You already have the maximum number of Thugs (3) allowed in your court."
+ iti_thug_limit_reached: "You already have the maximum of 3 hired thugs."
+ iti_thug_user_cooldown_tt: "You have not had anyone beaten recently."
+ iti_thug_victim_cooldown_tt: "[target.GetTitledFirstName] has not been taught a lesson recently."
+ iti_duel_start_tt: "You will enter a single combat duel. Your Prowess will determine your survival."
+ iti_duel_active_cooldown_tt: "The target has not recently been insulted by you or fought a duel."
+ iti_insult_cooldown_tt: "You have not insulted anyone recently."
+ iti_insult_no_retort_tt: "The target is offended but will do nothing about it."
+ iti_insult_retort_tt: "The target is enraged and may challenge you to an honor duel!"
+ iti_perk_bonus_tt: "A Job Done Right Perk"
+ # ============================================================
+ # OPINION MODIFIERS & MODIFIERS
+ # ============================================================
+ escalated_insult_opinion: "Sent me a most horrible insult!"
+ insulted_interaction_opinion: "Sent me an insulting letter!"
+ iti_disregard_letter_opinion: "Sent me a nice letter!"
+ aggravated_insult_opinion: "You called me a WHAT?!"
+ rival_insult: "Insulted by my hated Rival"
+ humiliated_dynasty_opinion: "Humiliated our House"
+ humiliated_dynasty_opinion_desc: "This character's petty feud and subsequent military failure has brought shame upon the entire dynasty."
+ iti_thugs_failed_opinion: "Suspected of sending thugs after me"
+ attempted_medieval_jumping_opinion: "Sent a gang of thugs to beat me up!"
+ suspected_involvement_opinion: "There are strange people following me around.."
+ hired_thug_opinion: "I'll clobber anyone for you, boss."
+ iti_hired_muscle_modifier: "Hired Muscle"
+ humiliated_by_knights_opinion: "Humiliated by Knights"
+ # ============================================================
+ # NOTIFICATIONS (TOASTS & BANNERS)
+ # ============================================================
+ iti_thug_exposed_message_title: "Word has leaked that my men were involved in the assault on [recipient.GetShortUIName]!"
+ iti_thug_brutal_message_title: "Your men beat the ever-living daylight out of [recipient.GetShortUIName]. "
+ iti_thug_fail_toast_title: "Your men got beaten up and ran away."
+ iti_thug_success_toast_title: "Your men successfully delivered an adequately humble beatdown on your behalf."
+ # ============================================================
+ # ARTIFACTS
+ # ============================================================
+ iti_thug_tooth_name: "Tooth of [iti_thug_victim.GetFirstNameNoTooltip]"
+ iti_thug_tooth_description: "A gruesome trophy taken from the mouth of [iti_thug_victim.GetTitledFirstName] during an ambush. It serves as a reminder of a job well done."
+ iti_thug_artifact_steal_chance_standard_tt: "The thugs brought back something valuable from the victim for you!"
+ iti_thug_event.1003.toast: "Thugs gave you a nasty souvenir. Enjoy."
+ iti_thug_event.1004.toast: "The thugs got something for you as a souvenir from the beating!"
+ # ============================================================
+ # SECRETS & SCHEMES
+ # ============================================================
+ secret_thug_assault: "Thuggery"
+ secret_thug_assault_type_desc: "This character is a troublemaker who sent thugs to give someone a beatdown."
+ secret_thug_assault_desc: "Sent thugs to teach [target.GetTitledFirstName] a lesson."
+ iti_secrets.1000.t: "Scary Guy"
+ iti_secrets.1000.desc: "I was staring at the wall menacingly when [councillor.GetTitledFirstName] tapped my shoulders and pulled me aside, glancing nervously at the shadows. 'My lord, unfortunately, it seems someone talked. Everybody knows you sent thugs to beat the meat and potatoes out of [victim.GetTitledFirstName]. I'm usually not one to talk but you're quite a scary person!'"
+ iti_secrets.1000.a: "It's a bad man's world.."
+ thuggery: "Thuggery"
+ thuggery_scheme_desc: "Send the target a medieval knuckle sandwich."
+ thuggery_scheme_invalidated_title: "Thuggery Aborted"
+ thuggery_target_died: "No use beating up a corpse."
+ thuggery_target_not_in_diplomatic_range: "The target has gone beyond the reach of our Thugs. Bummer."
+ thuggery_target_imprisoned: "The target is imprisoned! Maybe we beat up their jailor instead?"
+ thuggery_scheme_success_desc: "The lads instilled the fear of [ROOT.Char.GetDynastyName] into the target."
+ thuggery_scheme_discovery_desc: "Word has reached the ears of [target.GetTitledFirstName] that a [ROOT.Char.GetDynastyName] is out to get them!"
+ icon_scheme_thuggery: "Thuggery"
+ thuggery_action: "Ambush"
+ thuggery_desc: "Have your Thugs intercept the target in a dark alley. They will have a very bad day."
+ thuggery_no_thugs_left_tt: "You don't have enough Thugs to finish the job."
+ thuggery_desc_general: "Your thugs are currently stalking the target."
+ # ============================================================
+ # SCHEME TOOLTIPS
+ # ============================================================
+ SCHEME_OWNER_PROWESS: "Your physical presence and training"
+ SCHEME_TARGET_PROWESS: "[target.GetFirstNameNoTooltip]'s ability to fight back"
+ SCHEME_TARGET_IS_RULER: "Target is someone important"
+ iti_extra_thugs_bonus_tt: "The Boys"
+ iti_large_gang_bonus_tt: "The Gang"
+ SCHEME_HAS_MULTIPLE_THUGS: "There are at least 2 knuckleheads on this mission."
+ SCHEME_HAS_FULL_GANG: "The Gang's all here!"
+
+ iti_debug.0001.t: "Toothache"
+ iti_debug.0001.desc: "'Are you here for a tooth extraction?'\n\n 'Yes, lord!' he replied." 
+ iti_debug.0001.b: "Let us begin."
+ iti_debug.b.equipped_tt: "Toothache Gone!"

@@ -1,0 +1,228 @@
+﻿##########
+# Humiliation CB
+##########
+
+iti_reply_to_insult_cb = {
+	icon = humiliation_cb
+	group = humiliation
+	
+	ai_only_against_neighbors = yes
+
+	allow_hostages = no
+	allowed_for_character = {
+		is_landed = yes
+	}
+
+	allowed_against_character = {
+		scope:defender = {
+			is_landed = yes
+                        has_character_flag = iti_war_flag_target
+			# If they've become Genghis it's too late for this
+		}
+	}
+		
+	ignore_effect = change_title_holder
+
+	should_invalidate = {
+		OR = {
+			scope:defender = { is_landed = no }
+		}
+	}
+
+	on_invalidated_desc = msg_remove_humiliation_cb_invalidated_message
+
+	cost = {
+		prestige = {
+			add = {
+				value = 75
+				desc = CB_BASE_COST
+			}
+		}
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+	}
+
+	on_victory_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:attacker = { is_local_player = yes } }
+				desc = humiliation_cb_victory_desc_attacker
+			}
+			desc = humiliation_cb_victory_desc
+		}
+	}
+
+	on_victory = {
+		scope:attacker = {
+			add_prestige = 750
+			add_stress = -40
+			remove_character_flag = iti_war_flag
+		}
+		
+		scope:defender = {
+			add_prestige = -750
+			add_stress = 100
+			remove_character_flag = iti_war_flag_target
+			
+			
+			pay_short_term_gold_reparations_effect = { GOLD_VALUE = 2 }
+
+			every_house_member = {
+				limit = { NOT = { this = scope:defender } }
+				add_opinion = {
+					target = scope:defender
+					modifier = humiliated_dynasty_opinion
+				}
+			}
+		}
+	
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		# Legitimacy
+		add_legitimacy_attacker_victory_effect = yes
+
+		# EP2 accolade glory gain for winning against higher ranked enemy
+		scope:attacker = { accolade_attacker_war_end_glory_gain_med_effect = yes }
+
+		scope:attacker = { play_sound_effect = "event:/DLC/CE2/UI/Notifications/ce2_ui_notifications_migration_positive" }
+		scope:defender = { play_sound_effect = "event:/DLC/CE2/UI/Notifications/ce2_ui_notifications_migration_negative" }
+
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = medium_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
+		}
+
+		# Truce
+		add_truce_attacker_victory_effect = yes
+
+		# FP1: note the victory for future memorialisation via stele (if applicable).
+		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+	}
+
+	on_white_peace_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = humiliation_cb_white_peace_desc_defender
+			}
+			desc = humiliation_cb_white_peace_desc
+		}
+	}
+
+	on_white_peace = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		# EP2 accolade glory gain for doing pretty good against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+
+		scope:attacker = {
+			add_prestige = {
+				value = minor_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # not impactful as the scale are identical
+			FAME_BASE = medium_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
+		}
+
+		add_truce_white_peace_effect = yes
+	}
+
+	on_defeat_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:defender = { is_local_player = yes } }
+				desc = humiliation_cb_defeat_desc_defender
+			}
+			desc = humiliation_cb_defeat_desc
+		}
+	}
+
+	on_defeat = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+		
+		scope:attacker = { play_sound_effect = "event:/DLC/CE2/UI/Notifications/ce2_ui_notifications_migration_negative" }
+		scope:defender = { play_sound_effect = "event:/DLC/CE2/UI/Notifications/ce2_ui_notifications_migration_positive" }
+
+		# Legitimacy
+		add_legitimacy_attacker_defeat_effect = yes
+
+		scope:defender = { 
+			mandala_peacemaker_perk_serenity_effect = yes
+			# EP2 accolade glory gain for winning against higher ranked enemy
+			accolade_defender_war_end_glory_gain_high_effect = yes
+			# Prestige for Defender
+			add_prestige_war_defender_effect = {
+				PRESTIGE_VALUE = medium_prestige_value
+			}
+		}
+
+		# Prestige loss for the attacker
+		scope:attacker = {
+			pay_short_term_gold_reparations_effect = {
+				GOLD_VALUE = 3
+			}
+			add_prestige = {
+				value = major_prestige_value
+				multiply = -1.0
+			}
+		}
+
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = medium_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
+		}
+
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = {
+			save_temporary_scope_as = loser
+		}
+		on_lost_aggression_war_discontent_loss = yes
+	}
+
+	transfer_behavior = transfer
+
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+
+	war_name = "WAR_REPLY_TO_INSULT"
+	war_name_base = "WAR_REPLY_TO_INSULT_BASE"
+	cb_name = "WAR_REPLY_TO_INSULT"
+
+	interface_priority = 79
+
+	attacker_wargoal_percentage = 0.8
+
+	max_defender_score_from_battles = 150
+	max_attacker_score_from_battles = 150
+
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
+
+	ai_score = {
+		value = {
+			value = 25
+			multiply = scope:attacker.ai_boldness
+		}
+	}
+}

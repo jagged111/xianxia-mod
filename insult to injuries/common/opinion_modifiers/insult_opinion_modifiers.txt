@@ -1,0 +1,72 @@
+﻿insulted_interaction_opinion = {
+	opinion = -40
+	monthly_change = 0.42
+	decaying = yes
+}
+
+escalated_insult_opinion = {
+	opinion = -15
+	monthly_change = 0.25
+	decaying = yes
+}
+
+aggravated_insult_opinion = {
+	opinion = -50
+	monthly_change = 0.25
+	decaying = yes
+}
+
+humiliated_dynasty_opinion = {
+	opinion = -40
+	monthly_change = 0.25
+	decaying = yes
+}
+
+refused_duel_opinion = {
+	opinion = -20
+	monthly_change = 0.25
+	decaying = yes
+}
+
+iti_thugs_failed_opinion = {
+	opinion = -10
+	monthly_change = 0.25
+	decaying = yes
+}
+
+iti_thugs_exposed_opinion = {
+	opinion = -50
+	monthly_change = 0.10
+	decaying = yes
+}
+
+suspected_involvement_opinion = {
+	opinion = -5
+	monthly_change = 0.10
+	decaying = yes
+}
+
+attempted_medieval_jumping_opinion = {
+	opinion = -20
+	decaying = yes
+	years = 10
+	imprisonment_reason = yes
+}
+
+hired_thug_opinion = {
+	opinion = 30
+	monthly_change = 0.10
+	decaying = yes
+}
+
+iti_disregard_letter_opinion = {
+	opinion = 30
+	monthly_change = 0.50
+	decaying = yes
+}
+
+humiliated_by_knights_opinion = {
+	opinion = -30
+	monthly_change = 0.30
+	decaying = yes
+}

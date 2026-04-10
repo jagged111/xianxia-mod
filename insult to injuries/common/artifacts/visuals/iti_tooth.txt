@@ -1,0 +1,4 @@
+﻿iti_tooth = {
+	icon = "iti_tooth.dds"
+	asset = ep1_western_pouch_basic_01_a_entity
+}

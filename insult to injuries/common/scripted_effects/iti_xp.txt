@@ -1,0 +1,16 @@
+﻿iti_mugging_xp = {
+	#  Check if they are missing the trait, and add it if so
+	if = {
+		limit = {
+			NOT = { has_trait = gallowsbait }
+		}
+		add_trait = gallowsbait
+	}
+
+	# 
+	add_trait_xp = {
+		trait = gallowsbait
+		track = bandit
+		value = $XP$
+	}
+}

@@ -1,0 +1,315 @@
+﻿namespace = iti_duel_event
+
+# ============================================================
+# EVENT 1001: RULER ASSAULT MY CASTLE!
+# ============================================================
+iti_duel_event.1001 = {
+	type = character_event
+	title = iti_duel_event.1001.t
+	desc = iti_duel_event.1001.desc
+	theme = court
+	
+	immediate = {
+		save_scope_as = actor
+		scope:iti_insult_ruler = { save_scope_as = recipient }
+
+		# Identify the Councillor for the portrait
+		random_councillor = {
+			limit = {
+				OR = {
+					has_council_position = councillor_chancellor
+					has_council_position = councillor_steward
+					has_council_position = councillor_court_chaplain
+					has_council_position = councillor_marshal
+					has_council_position = councillor_spymaster
+				}
+			}
+			save_scope_as = councillor
+		}
+
+		
+		# Find Player's best 3 (Knights > Thugs > Male Courtiers)
+		iti_get_best_champions_effect = yes
+
+		# Find AI's best 3 (Knights > Thugs > Male Courtiers > Peasants)
+		scope:recipient = {
+			iti_get_best_ai_champions_effect = yes
+		}
+	}
+	
+	left_portrait = { character = scope:councillor animation = fear }
+	right_portrait = { character = scope:recipient animation = random_weapon_aggressive }
+
+	lower_left_portrait = { character = scope:p_knight_1 }
+	lower_center_portrait = { character = scope:p_knight_2 }
+	lower_right_portrait = { character = scope:p_knight_3 }
+
+	# OPTION A: COME TO PAPA
+	option = {
+		name = iti_duel_event.1001.a
+		custom_tooltip = iti_duel_event.1001.a.tt
+		
+		add_prestige = minor_prestige_gain
+		
+		hidden_effect = {
+			add_character_flag = { flag = iti_duel_cooldown days = 1825 }
+			scope:recipient = {
+				add_character_flag = { flag = iti_duel_cooldown days = 1825 }
+			}
+			trigger_event = iti_duel_event.9004
+		}
+	}
+
+	# OPTION C: GET'IM BOYS
+	option = {
+		name = iti_duel_event.1001.c
+		custom_tooltip = iti_duel_event.1001.c.tt
+		
+		hidden_effect = {
+			# 1. Run the external combat math
+			iti_calculate_knight_duel_effect = yes
+			
+			# 2. Evaluate the results specific to Event 1001
+			if = {
+				limit = { var:iti_knight_wins >= 2 }
+				add_prestige = minor_prestige_gain
+				trigger_event = iti_duel_event.1003 # Repelled Confirmation
+			}
+			else = {
+				add_prestige = medium_prestige_loss
+				trigger_event = iti_duel_event.1002 # Breach/Loss
+			}
+			
+			# 3. Clean up the variable
+			remove_variable = iti_knight_wins
+		}
+	}
+
+	# OPTION B: Hide in room like a maiden
+	option = {
+		name = iti_duel_event.1001.b
+		custom_tooltip = iti_duel_event.1001.b.tt
+		
+		add_prestige = medium_prestige_loss
+		add_stress = medium_stress_impact_gain
+		
+		random = {
+			chance = 50
+			add_trait = craven
+		}
+		
+		hidden_effect = {
+			add_character_flag = { flag = iti_duel_cooldown days = 365 }
+			scope:recipient = {
+				add_character_flag = { flag = iti_duel_cooldown days = 365 }
+				trigger_event = { id = iti_event.8000 days = { 1 2 } }
+			}
+		}
+	}
+}
+
+# ============================================================
+# EVENT 1002: OH LAWD HE COMIN
+# ============================================================
+iti_duel_event.1002 = {
+	type = character_event
+	title = iti_duel_event.1002.t
+	desc = iti_duel_event.1002.desc
+	theme = martial
+	
+	left_portrait = { 
+		character = root 
+		animation = random_weapon_aggressive 
+	}
+	right_portrait = { 
+		character = scope:recipient 
+		animation = random_weapon_celebrate 
+	}
+
+	# OPTION A: Time to fight them yourself
+	option = {
+		name = iti_duel_event.1002.a
+		
+		# Apply the cooldown flags since you are now entering the duel
+		add_character_flag = { flag = iti_duel_cooldown days = 1825 }
+		scope:recipient = {
+			add_character_flag = { flag = iti_duel_cooldown days = 1825 }
+		}
+		
+		# Proceed to the actual duel event
+		trigger_event = iti_duel_event.9004
+	}
+}
+
+
+# ============================================================
+# EVENT 1003: THE REPULSION (Victory Confirmation)
+# ============================================================
+iti_duel_event.1003 = {
+	type = character_event
+	title = iti_duel_event.1003.t
+	desc = iti_duel_event.1003.desc
+	theme = court
+	
+	left_portrait = {
+		character = root
+		animation = random_weapon_celebrate
+	}
+	right_portrait = {
+		character = scope:recipient
+		
+		animation = severelywounded 
+	}
+
+	immediate = {
+		
+		add_character_flag = { flag = iti_duel_repelled_recently days = 365 }
+		scope:recipient = {
+			add_character_flag = { flag = iti_duel_failed_assault days = 365 }
+		}
+	}
+
+	option = {
+		name = iti_duel_event.1003.a 
+		add_prestige = minor_prestige_gain
+		
+		scope:recipient = {
+			add_prestige = medium_prestige_loss
+			add_opinion = {
+				target = root
+				modifier = humiliated_by_knights_opinion
+			}
+		}
+
+		
+		scope:recipient = {
+			random = {
+				chance = 10
+				add_trait = craven
+			}
+		}
+	}
+}
+# ============================================================
+# EVENT 9004: HONOR DUEL CONFIG
+# ============================================================
+iti_duel_event.9004 = {
+	type = character_event
+	title = iti_duel_event.9004.t
+	desc = iti_duel_event.9004.desc
+	theme = martial
+
+	immediate = {
+		save_scope_as = actor
+		# recipient was saved in 1001.a
+		scope:recipient = { save_scope_as = recipient }
+	}
+
+	left_portrait = {
+		character = root
+		animation = random_weapon_aggressive
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = random_weapon_aggressive
+	}
+
+	option = {
+		name = iti_duel_event.9004.a
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = root
+			SC_ATTACKER = root
+			SC_DEFENDER = scope:recipient
+			FATALITY = no
+			FIXED = no
+			LOCALE = throne_room
+			OUTPUT_EVENT = iti_duel_event.9005
+			INVALIDATION_EVENT = iti_duel_event.9006	
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9005: ROUTER (Hidden)
+# ============================================================
+iti_duel_event.9005 = {
+	hidden = yes
+
+	immediate = {
+		single_combat_clean_shirtlessness_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+		}
+
+		if = {
+			limit = { scope:sc_victor = scope:actor }
+			trigger_event = { id = iti_duel_event.9007 days = 1 }
+		}
+		else = {
+			trigger_event = { id = iti_duel_event.9008 days = 1 }
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9006: INVALIDATION
+# ============================================================
+iti_duel_event.9006 = {
+	hidden = yes
+	immediate = {
+		single_combat_clean_shirtlessness_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9007: ALL WE DO IS WIN WIN WIN
+# ============================================================
+iti_duel_event.9007 = {
+	type = character_event
+	title = iti_duel_event.9008.t
+	desc = iti_duel_event.9008.desc_winner
+	theme = healthcare
+	
+	left_portrait = {
+		character = root
+		animation = random_weapon_celebrate
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = stunned
+	}
+
+	option = {
+		name = iti_duel_event.9008.a_victor
+		add_prestige = medium_prestige_value
+		add_stress = -40
+	}
+}
+
+# ============================================================
+# EVENT 9008: GIT GUD
+# ============================================================
+iti_duel_event.9008 = {
+	type = character_event
+	title = iti_duel_event.9008.t
+	desc = iti_duel_event.9008.desc_loser
+	theme = healthcare
+	
+	left_portrait = {
+		character = root
+		animation = pain
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = random_weapon_aggressive
+	}
+
+	option = {
+		name = iti_duel_event.9008.a_loser
+		add_prestige = medium_prestige_loss
+		add_stress = medium_stress_gain
+	}
+}

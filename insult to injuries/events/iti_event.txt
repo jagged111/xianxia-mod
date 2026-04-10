@@ -1,0 +1,1549 @@
+﻿namespace = iti_event
+
+# ============================================================
+# SCRIPTED TRIGGERS 
+# ============================================================
+scripted_trigger iti_character_trigger = {
+	is_ai = yes
+	is_adult = yes
+	is_incapable = no
+	is_landed = yes  
+	opinion = { target = root value < -30 }
+}
+
+scripted_trigger iti_rank_trigger = {
+	iti_character_trigger = yes
+	in_diplomatic_range = root
+}
+
+# ============================================================
+# EVENT 500: PLAYER INSULT AI (AI RESPONSE)
+# ============================================================
+iti_event.500 = {
+	type = letter_event
+	sender = scope:iti_insult_ruler
+	
+	opening = { desc = iti_event.500.opening }
+	
+	desc = {
+		first_valid = {
+			# 1. Same Dynasty Variant
+			triggered_desc = {
+				trigger = {
+					exists = dynasty
+					exists = scope:iti_insult_ruler.dynasty
+					dynasty = scope:iti_insult_ruler.dynasty
+				}
+				desc = iti_event.500.desc_family
+			}
+			
+			# 2. Default Fallback
+			desc = iti_event.500.desc
+		}
+	}
+
+	trigger = {
+		exists = scope:iti_insult_ruler
+		scope:iti_insult_ruler = { iti_rank_trigger = yes }
+	}
+
+	# Option 1: Reply
+	option = {
+		name = iti_event.500.a
+		custom_tooltip = iti_event_500_reply_tt
+		trigger_event = {
+			id = iti_event.1000
+			days = { 30 60 }
+		}
+	}
+
+	# Option 2: Disregard
+	option = {
+		name = iti_event.500.b
+		custom_tooltip = iti_event_500_disregard_tt
+		
+		scope:iti_insult_ruler = {
+			add_opinion = {
+				target = root
+				modifier = iti_disregard_letter_opinion
+			}
+		}
+	}
+}
+
+# ============================================================
+# EVENT 1000: AI INSULT PLAYER
+# ============================================================
+iti_event.1000 = {
+	type = letter_event
+	sender = scope:iti_insult_ruler
+	
+	opening = { desc = iti_event.1000.opening }
+
+	desc = {
+		first_valid = {
+			# 1. Family / Same Dynasty
+			triggered_desc = {
+				trigger = {
+					exists = dynasty
+					exists = scope:iti_insult_ruler.dynasty
+					dynasty = scope:iti_insult_ruler.dynasty
+				}
+				desc = iti_event.1000.desc_family
+			}
+			# 2. Rivalry
+			triggered_desc = {
+				trigger = { has_relation_rival = scope:iti_insult_ruler }
+				desc = iti_event.1000.desc_rival
+			}
+			# 3. Negative Opinion
+			triggered_desc = {
+				trigger = {
+					scope:iti_insult_ruler = {
+						opinion = { target = root value < 0 }
+					}
+				}
+				desc = iti_event.1000.desc_negative_opinion
+			}
+			# 4. Standard Fallback
+			desc = iti_event.1000.desc_standard
+		}
+	}
+
+	trigger = {
+		is_ai = no
+		is_alive = yes
+		OR = {
+			exists = scope:iti_insult_ruler
+			any_ruler = {
+				is_alive = yes
+				is_adult = yes
+				is_incapable = no
+				is_ai = yes
+				in_diplomatic_range = root
+				OR = {
+					has_relation_rival = root
+					opinion = { target = root value <= -30 }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { NOT = { exists = scope:iti_insult_ruler } }
+			random_ruler = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					is_incapable = no
+					is_ai = yes
+					in_diplomatic_range = root
+					OR = {
+						has_relation_rival = root
+						opinion = { target = root value <= -30 }
+					}
+					iti_rank_trigger = yes
+				}
+				save_scope_as = iti_insult_ruler
+			}
+		}
+		save_scope_as = iti_ruler
+	}
+
+	option = { # Reciprocate the insult
+		name = iti_event.1000.a
+
+		scope:iti_insult_ruler = {
+			add_opinion = {
+				target = root
+				modifier = escalated_insult_opinion
+			}
+			hidden_effect = {
+				reverse_add_opinion = {
+					target = root
+					modifier = escalated_insult_opinion
+				}
+			}
+		}
+
+		custom_tooltip = iti_event.1000.a.tt
+		trigger_event = { id = iti_event.3000 days = { 30 60 } }
+
+		stress_impact = {
+			shy = medium_stress_impact_gain
+			dull = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 100
+				OR = {
+					has_trait = wrathful
+					has_trait = arrogant
+					has_trait = brave
+				}
+			}
+		}
+	}
+
+	option = { # Ignore it
+		name = iti_event.1000.b
+		add_prestige = minor_prestige_loss
+
+		scope:iti_insult_ruler = {
+			trigger_event = {
+				id = iti_event.1001
+				days = { 30 60 }
+			}
+		}
+
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 100
+				OR = {
+					has_trait = humble
+					has_trait = lazy
+					has_trait = craven
+				}
+			}
+		}
+
+		stress_impact = {
+			humble = minor_stress_impact_loss
+			craven = minor_stress_impact_loss
+		}
+	}
+}
+
+# ============================================================
+# EVENT 1005: SIMPLE AI EVENT CALCULATION (THIS IS REALLY SIMPLE RIGHT NOW WILL NEED TO IMPROVE)
+# ============================================================
+iti_event.1005 = {
+	hidden = yes
+
+	immediate = {
+		# ROOT is the Victim, scope:iti_insult_ruler is the Aggressor
+		
+		# 1. Apply the Opinion Hit
+		add_opinion = {
+			target = scope:iti_insult_ruler
+			modifier = insulted_interaction_opinion
+		}
+
+		# 2. Flag the Victim
+		add_character_flag = {
+			flag = insulted_by_ai
+			days = 365
+		}
+
+		# 3. Escalation Chance: Rivalry
+		random_list = {
+			95 = { }
+			5 = {
+				modifier = { add = 10 has_trait = vengeful }
+				modifier = { add = 10 scope:iti_insult_ruler = { has_trait = vengeful } }
+				
+				set_relation_rival = {
+					target = scope:iti_insult_ruler
+					reason = rival_insult
+				}
+			}
+		}
+
+		# 4. Personality-Based Counter-Strike Flag
+		if = {
+			limit = {
+				OR = {
+					has_trait = wrathful
+					has_trait = brave
+				}
+			}
+			scope:iti_insult_ruler = {
+				add_character_flag = {
+					flag = insulted_by_ai_back
+					days = 365
+				}
+			}
+		}
+
+		# 5. NOTHING, DUEL, OR WAR
+		random_list = {
+			# OUTCOME A: DO NOTHING (Base weight 89)
+			89 = { } 
+
+			# OUTCOME B: BACKGROUND DUEL (Base weight 10)
+			10 = { 
+				modifier = {
+					add = 20
+					OR = {
+						has_trait = wrathful
+						has_trait = brave
+					}
+				}
+				
+				# Execute Duel Logic
+				if = {
+					limit = { prowess >= scope:iti_insult_ruler.prowess }
+					# THE VICTIM (ROOT) WINS
+					scope:iti_insult_ruler = {
+						random_list = {
+							60 = { add_trait = wounded_1 }
+							30 = { add_trait = maimed }
+							10 = { 
+								death = { 
+									death_reason = death_duel 
+									killer = root 
+								} 
+							}
+						}
+						add_prestige = medium_prestige_loss
+					}
+					root = { add_prestige = medium_prestige_gain }
+				}
+				else = {
+					# THE AGGRESSOR (scope:iti_insult_ruler) WINS
+					root = {
+						random_list = {
+							60 = { add_trait = wounded_1 }
+							30 = { add_trait = maimed }
+							10 = { 
+								death = { 
+									death_reason = death_duel 
+									killer = scope:iti_insult_ruler 
+								} 
+							}
+						}
+						add_prestige = medium_prestige_loss
+					}
+					scope:iti_insult_ruler = { add_prestige = medium_prestige_gain }
+				}
+			}
+
+			# OUTCOME C: DECLARE WAR (Base weight 1)
+			1 = {
+				modifier = { add = 4 has_trait = wrathful }
+				modifier = { add = 4 has_trait = vengeful }
+				modifier = { add = 2 has_trait = arrogant }
+				
+				# Logic check: don't start a war if we're already in one
+				modifier = {
+					factor = 0
+					is_at_war_with = scope:iti_insult_ruler
+				}
+
+				# Execute War Logic
+				start_war = {
+					cb = iti_reply_to_insult_cb
+					target = scope:iti_insult_ruler 
+				}
+			}
+		}
+	}
+}
+
+# ============================================================
+# EVENT 3000: ESCALATION
+# ============================================================
+
+iti_event.3000 = {
+	type = letter_event
+	opening = {
+		desc = iti_event.3000.opening
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:iti_dead_ruler
+				}
+				desc = iti_event.3000.desc_dead
+			}
+			desc = iti_event.3000.desc
+		}
+	}
+	sender = scope:iti_insult_ruler
+
+	trigger = {
+		exists = capital_county #In case you're an ai who lost their land
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				scope:iti_insult_ruler = {
+					is_alive = no
+				}
+			}
+			scope:iti_insult_ruler = {
+				save_scope_as = iti_dead_ruler
+				primary_title = {
+					holder = {
+						save_scope_as = iti_insult_ruler
+						add_opinion = {
+							target = root
+							modifier = aggravated_insult_opinion
+						}
+						reverse_add_opinion = {
+							target = root
+							modifier = aggravated_insult_opinion
+						}
+					}
+				}
+			}
+		}
+
+		capital_county = {
+			save_scope_as = capital_iti
+		}
+
+		hidden_effect = {
+			random_list = {
+				1 = {
+					modifier = {
+						add = 100
+						OR = {
+							has_diplomacy_lifestyle_trait_trigger = yes
+							has_lifestyle = diplomacy_lifestyle
+							diplomacy >= high_skill_rating
+						}
+					}
+					save_scope_value_as = {
+						name = insulting_thing_to_say
+						value = flag:lifestyle_diplomat
+					}
+				}
+				1 = {
+					modifier = {
+						add = 100
+						OR = {
+							has_martial_lifestyle_trait_trigger = yes
+							has_lifestyle = martial_lifestyle
+							martial >= decent_skill_rating
+						}
+					}
+					save_scope_value_as = {
+						name = insulting_thing_to_say
+						value = flag:lifestyle_general
+					}
+				}
+				1 = {
+					modifier = {
+						add = 100
+						OR = {
+							has_stewardship_lifestyle_trait_trigger = yes
+							has_lifestyle = stewardship_lifestyle
+							stewardship >= decent_skill_rating
+						}
+					}
+					save_scope_value_as = {
+						name = insulting_thing_to_say
+						value = flag:lifestyle_administrator
+					}
+				}
+				1 = {
+					modifier = {
+						add = 100
+						OR = {
+							has_intrigue_lifestyle_trait_trigger = yes
+							has_lifestyle = intrigue_lifestyle
+							intrigue >= decent_skill_rating
+						}
+					}
+					save_scope_value_as = {
+						name = insulting_thing_to_say
+						value = flag:lifestyle_schemer
+					}
+				}
+				1 = {
+					modifier = {
+						add = 100
+						OR = {
+							has_learning_lifestyle_trait_trigger = yes
+							has_lifestyle = learning_lifestyle
+							learning >= decent_skill_rating
+						}
+					}
+					save_scope_value_as = {
+						name = insulting_thing_to_say
+						value = flag:lifestyle_scholar
+					}
+				}
+			}
+		}
+	}
+
+	option = { #We'll send an insult relevant to our lifestyle.
+		name = {
+			trigger = {
+				scope:insulting_thing_to_say = flag:lifestyle_diplomat
+			}
+			text = iti_event.3000.a_lifestyle_diplomat
+		}
+		name = {
+			trigger = {
+				scope:insulting_thing_to_say = flag:lifestyle_general
+			}
+			text = iti_event.3000.a_lifestyle_general
+		}
+		name = {
+			trigger = {
+				scope:insulting_thing_to_say = flag:lifestyle_administrator
+			}
+			text = iti_event.3000.a_lifestyle_administrator
+		}
+		name = {
+			trigger = {
+				scope:insulting_thing_to_say = flag:lifestyle_schemer
+			}
+			text = iti_event.3000.a_lifestyle_schemer
+		}
+		name = {
+			trigger = {
+				scope:insulting_thing_to_say = flag:lifestyle_scholar
+			}
+			text = iti_event.3000.a_lifestyle_scholar
+		}
+		custom_tooltip = iti_event.3000.a.tt
+
+		save_scope_value_as = {
+			name = option_chosen
+			value = flag:lifestyle
+		}
+
+		scope:iti_insult_ruler = {
+			trigger_event = iti_event.4000
+		}
+
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				OR = {
+					has_trait = arrogant
+					has_trait = wrathful
+					has_trait = diligent
+				}
+			}
+			ai_value_modifier = {
+				ai_boldness = 0.75
+			}
+		}
+	}
+
+	option = { #Attempt to deescalate.
+		name = iti_event.3000.b
+		custom_tooltip = iti_event.3000.b.tt
+
+		save_scope_value_as = {
+			name = option_chosen
+			value = flag:interest
+		}
+
+		scope:iti_insult_ruler = {
+			trigger_event = iti_event.5000
+		}
+
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				OR = {
+					has_trait = humble
+					has_trait = lazy
+					has_trait = shy
+					has_trait = compassionate
+				}
+			}
+			ai_value_modifier = {
+				ai_compassion = 0.75
+			}
+		}
+	}
+
+	option = { #I'll send them a "gift"!
+		name = iti_event.3000.c
+		custom_tooltip = iti_event.3000.c.tt
+
+		remove_short_term_gold = minor_gold_value
+
+		save_scope_value_as = {
+			name = option_chosen
+			value = flag:gift
+		}
+
+		scope:iti_insult_ruler = {
+			trigger_event = iti_event.6000
+		}
+
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				OR = {
+					has_trait = gregarious
+					has_trait = arbitrary
+				}
+			}
+		}
+	}
+}
+
+# ============================================================
+# EVENT 4000: IS MY INSULT DEVASTATING ENOUGH TO FORCE A CONFRONTATION?
+# ============================================================
+
+# Is the insult devastating enough?
+iti_event.4000 = {
+	hidden = yes
+
+	immediate = {
+		# Diplomacy insult duel
+		if = {
+			limit = {
+				scope:insulting_thing_to_say = flag:lifestyle_diplomat
+			}
+
+			duel = {
+				skill = diplomacy
+				target = scope:iti_ruler
+				
+
+				# Escalation (war / aggression outcome)
+				70 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.7000 days = { 30 60 } }
+					}
+				}
+
+				# De-escalation (calm / dismiss outcome)
+				30 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 0.5
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.8000 days = { 30 60 } }
+					}
+				}
+			}
+		}
+
+		# Martial insult duel
+		else_if = {
+			limit = {
+				scope:insulting_thing_to_say = flag:lifestyle_general
+			}
+
+			duel = {
+				skill = martial
+				target = scope:iti_ruler
+
+				80 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.7000 days = { 30 60 } }
+					}
+				}
+
+				20 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 0.5
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.8000 days = { 30 60 } }
+					}
+				}
+			}
+		}
+
+		# Stewardship insult duel
+		else_if = {
+			limit = {
+				scope:insulting_thing_to_say = flag:lifestyle_administrator
+			}
+
+			duel = {
+				skill = stewardship
+				target = scope:iti_ruler
+
+				70 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.7000 days = { 30 60 } }
+					}
+				}
+
+				30 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 0.5
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.8000 days = { 30 60 } }
+					}
+				}
+			}
+		}
+
+		# Intrigue insult duel
+		else_if = {
+			limit = {
+				scope:insulting_thing_to_say = flag:lifestyle_schemer
+			}
+
+			duel = {
+				skill = intrigue
+				target = scope:iti_ruler
+
+				60 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.7000 days = { 30 60 } }
+					}
+				}
+
+				40 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 0.5
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.8000 days = { 30 60 } }
+					}
+				}
+			}
+		}
+
+		# Learning insult duel (The Fallback)
+		else = {
+			duel = {
+				skill = learning
+				target = scope:iti_ruler
+
+				60 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.7000 days = { 30 60 } }
+					}
+				}
+
+				40 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 1
+					}
+
+					scope:iti_ruler = {
+						trigger_event = { id = iti_event.8000 days = { 30 60 } }
+					}
+				}
+			}
+		}
+	}
+}
+
+# ============================================================
+# EVENT 5000: DE-ESCALATION ACCEPTANCE?
+# ============================================================
+
+iti_event.5000 = {
+	hidden = yes
+
+	immediate = {
+		random_list = {
+			50 = { # Option A: Acceptance
+				modifier = {
+					add = 20
+					has_trait = shy
+				}
+				modifier = {
+					add = 20
+					has_trait = humble
+				}
+				modifier = {
+					add = 20
+					has_trait = content
+				}
+
+				
+				scope:iti_ruler = {
+					trigger_event = {
+						id = iti_event.8000
+						days = { 30 60 }
+					}
+				}
+			}
+			50 = { # Option B: Rejection
+				modifier = {
+					add = 20
+					has_trait = arrogant
+				}
+				modifier = {
+					add = 20
+					has_trait = arbitrary
+				}
+				modifier = {
+					add = 20
+					has_trait = paranoid
+				}
+
+				scope:iti_ruler = {
+					trigger_event = {
+						id = iti_event.7000
+						days = { 30 60 }
+					}
+				}
+			}
+		}
+	}
+}
+
+#Did the neighboring_ruler like the "gift"? (it's a turd lol)
+iti_event.6000 = {
+	hidden = yes
+
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				80 = {
+					compare_modifier = {
+						value = ai_boldness
+						multiplier = -0.5
+						min = -25
+					}
+					scope:iti_ruler = {
+						trigger_event = {
+							id = iti_event.7000
+							days = { 30 60 }
+						}
+					}
+				}
+				20 = {
+					compare_modifier = {
+						value = ai_boldness
+						multiplier = 0.5
+						min = -25
+					}
+					scope:iti_ruler = {
+						trigger_event = {
+							id = iti_event.8000
+							days = { 30 60 }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# ============================================================
+# EVENT 7000: ESCALATION 2
+# ============================================================
+
+iti_event.7000 = {
+	type = letter_event
+	opening = { desc = iti_event.7000.opening }
+	desc = iti_event.7000.desc
+
+	
+	sender = scope:iti_insult_ruler 
+
+	option = { # Back down
+		name = iti_event.7000.a
+		custom_tooltip = iti_event.7000.a.tt
+		
+		# AI-AI Logic: Cowards or low-prowess AI back down
+		ai_chance = {
+			base = 30
+			modifier = { add = 70 has_trait = craven }
+			modifier = { add = 50 prowess_diff = { target = scope:iti_insult_ruler value <= -5 } }
+		}
+
+		scope:iti_insult_ruler = {
+			add_opinion = {
+				target = root
+				modifier = insulted_interaction_opinion
+				opinion = -25
+			}
+		}
+
+		# Trigger the response on ROOT (the person who just backed down)
+		trigger_event = {
+			id = iti_event.8000
+			days = { 30 60 }
+		}
+
+		stress_impact = {
+			wrathful = medium_stress_impact_gain
+			brave = minor_stress_impact_gain
+		}
+	}
+
+	option = { # Send a worse insult (Escalate)
+		name = iti_event.7000.b
+		custom_tooltip = iti_event.7000.b.tt
+
+		# Aggressive AI doubles down
+		ai_chance = {
+			base = 70
+			modifier = { add = 50 has_trait = wrathful }
+			modifier = { add = 50 has_trait = arrogant }
+		}
+
+		add_prestige = major_prestige_gain
+
+		# Player should see this event as it is ULTIMATUM
+		trigger_event = {
+			id = iti_event.9000
+			days = { 30 60 }
+		}
+
+		stress_impact = {
+			shy = minor_stress_impact_gain
+			dull = minor_stress_impact_gain
+		}
+	}
+}
+
+# ============================================================
+# EVENT 8000: OTHER RULER BACK DOWN
+# ============================================================
+
+iti_event.8000 = {
+	type = letter_event
+
+	opening = {
+		desc = iti_event.8000.opening
+	}
+
+	desc = iti_event.8000.desc
+
+	sender = scope:iti_insult_ruler
+
+	immediate = {
+		scope:iti_insult_ruler = {
+			add_opinion = {
+				target = root
+				modifier = insulted_interaction_opinion
+				opinion = -25
+			}
+		}
+	}
+
+	option = { # Acknowledgement of backing down
+		name = iti_event.8000.a
+
+		stress_impact = {
+			base = major_stress_impact_loss
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9000: THE ULTIMATUM (RUH-ROH RAGGY)
+# ============================================================
+iti_event.9000 = {
+	type = letter_event
+	opening = { desc = iti_event.9000.opening }
+	desc = iti_event.9000.desc
+
+	sender = scope:iti_insult_ruler 
+
+	immediate = {
+		add_character_flag = iti_war_flag 
+		scope:iti_insult_ruler = { add_character_flag = iti_war_flag_target } 
+	}
+
+	option = { # KILL THEM ALL
+		name = iti_event.9000.a
+		custom_tooltip = iti_event.9000.a.tt
+
+		trigger = {
+			OR = {
+				# Scenario A: Both parties are Adventurers
+				AND = {
+					has_government = landless_adventurer_government
+					scope:iti_insult_ruler = { has_government = landless_adventurer_government }
+				}
+				# Scenario B: Both parties are Landed
+				AND = {
+					NOT = { has_government = landless_adventurer_government }
+					scope:iti_insult_ruler = {
+						iti_rank_trigger = yes 
+						NOT = { has_government = landless_adventurer_government }
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			base = 20
+			modifier = { add = 50 has_trait = wrathful }
+			modifier = { add = 40 has_trait = ambitious }
+			modifier = { add = 30 has_trait = vengeful }
+			modifier = { factor = 0.5 has_trait = calm }
+			modifier = { factor = 0.2 has_trait = craven }
+			modifier = { factor = 0 has_trait = compassionate }
+		}
+
+		start_war = {
+			cb = iti_reply_to_insult_cb
+			target = scope:iti_insult_ruler 
+		}
+
+		stress_impact = {
+			shy = minor_stress_impact_gain
+			craven = major_stress_impact_gain
+		}
+	}
+
+	option = { # FIGHT ME (Duel)
+		name = iti_event.9000.c
+		custom_tooltip = iti_event.9000.c.tt
+		
+		ai_chance = {
+			base = 40
+			modifier = { add = 60 has_trait = brave }
+			modifier = { add = 50 has_trait = arrogant }
+			modifier = { add = 30 has_trait = wrathful }
+			modifier = { factor = 0.5 has_trait = shy }
+			modifier = { factor = 0.1 has_trait = craven }
+		}
+
+		root = {
+			trigger_event = { id = iti_event.9002 days = { 30 60 } }
+		}
+	}
+
+	option = { # Final Hesitation (Back out)
+		name = iti_event.9000.b
+		custom_tooltip = iti_event.9000.b.tt
+
+		ai_chance = {
+			base = 5
+			modifier = { add = 100 has_trait = craven }
+			modifier = { add = 50 has_trait = forgiving }
+			modifier = { factor = 0 has_trait = vengeful }
+		}
+
+		add_prestige = major_prestige_loss
+
+		remove_character_flag = iti_war_flag
+		scope:iti_insult_ruler = { remove_character_flag = iti_war_flag_target }
+
+		trigger_event = { id = iti_event.8000 days = { 30 60 } }
+	}
+}
+# ============================================================
+# NOTIFICATIONS
+# ============================================================
+
+iti_event.1001 = {
+	type = letter_event
+	opening = { desc = iti_event.1001.opening }
+	desc = iti_event.1001.desc
+	
+	sender = scope:iti_insult_ruler 
+
+	option = {
+		name = iti_event.1001.a
+		# Optional: add a bit of prestige loss for being ignored
+		add_prestige = minor_prestige_loss 
+	}
+}
+
+# WAR NOTIFICATION
+iti_event.9001 = {
+	type = letter_event
+	opening = { desc = iti_event.9001.opening }
+	desc = iti_event.9001.desc
+	
+	# The AI (Instigator) is the sender
+	sender = scope:iti_insult_ruler 
+
+	option = {
+		name = iti_event.9001.a
+		custom_tooltip = iti_event.9001.a.tt
+	}
+}
+
+# ============================================================
+# EVENT 9002: CASTLE RAID
+# ============================================================
+iti_event.9002 = {
+	type = character_event
+	theme = physical_health
+	title = iti_event.9002.t
+	desc = iti_event.9002.desc
+	
+	immediate = {
+		save_scope_as = actor
+		scope:iti_insult_ruler = { save_scope_as = recipient }
+
+		# CHAMP SELECTION
+		# Find Player's best 3 (Knights > Thugs > Male Courtiers)
+		iti_get_best_champions_effect = yes
+
+		# AI CHAMP SELECTION
+		scope:recipient = {
+			iti_get_best_ai_champions_effect = yes
+		}
+	}
+
+	left_portrait = { character = root animation = random_weapon_aggressive }
+	right_portrait = { character = scope:recipient animation = threatening }
+
+	# DISPLAY MY LADS
+	lower_left_portrait = { character = scope:p_knight_1 }
+	lower_center_portrait = { character = scope:p_knight_2 }
+	lower_right_portrait = { character = scope:p_knight_3 }
+
+	# OPTION A: "FIGHT ME BIIIII!"
+	option = {
+		name = iti_event.9002.a
+		
+		# 1. CHECK: Does the AI accept the duel immediately?
+		if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						has_trait = brave
+						has_trait = wrathful
+						has_trait = arrogant
+						prowess >= 25
+					}
+					NOT = { has_trait = craven }
+				}
+			}
+			custom_tooltip = iti_event.9002.a.tt
+			trigger_event = iti_event.9010
+		}
+		
+		# 2. IF AI REFUSES: Trigger 3v3 to force the issue
+		else = {
+			
+			# 
+			show_as_tooltip = {
+				custom_tooltip = iti_duel_ai_refuses_force_3v3_tt
+
+				# 1. Prediction Math
+				if = {
+					limit = {
+						iti_predict_knight_duel_win_trigger = yes
+					}
+					custom_tooltip = iti_duel_3v3_win_tt
+				}
+				else = {
+					custom_tooltip = iti_duel_3v3_loss_tt
+				}
+			}
+
+			hidden_effect = {
+				# 2. Actual Combat Math (Using the Scripted Effect)
+				iti_calculate_knight_duel_effect = yes
+				
+				# 3. Apply specific event results based on the math
+				if = {
+					limit = { var:iti_knight_wins >= 2 }
+					trigger_event = iti_event.9010
+				}
+				else = {
+					add_prestige = major_prestige_loss
+					add_trait = wounded_1
+					trigger_event = iti_event.9011
+				}
+
+				# 4. Clean up
+				remove_variable = iti_knight_wins
+			}
+		}
+	}
+
+	# OPTION B: RETREAT
+	option = {
+		name = iti_event.9002.b
+		add_prestige = medium_prestige_loss
+		add_trait = craven
+		stress_impact = { base = 20 brave = 20 }
+	}
+}
+
+# ============================================================
+# EVENT 9010: DUEL CONFIRMATION
+# ============================================================
+iti_event.9010 = {
+	type = character_event
+	theme = physical_health
+	title = iti_event.9010.t
+	desc = iti_event.9010.desc
+
+	immediate = {
+		# Cleanup variable passed from 9002
+		remove_variable = iti_knight_wins
+	}
+
+	left_portrait = { character = root animation = random_weapon_aggressive }
+	right_portrait = { character = scope:recipient animation = fear }
+
+	option = {
+		name = iti_event.9010.a # 
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = root
+			SC_ATTACKER = root
+			SC_DEFENDER = scope:recipient
+			FATALITY = no
+			FIXED = no
+			LOCALE = throne_room
+			OUTPUT_EVENT = iti_event.9003
+			INVALIDATION_EVENT = iti_event.9004
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9011: KNIGHTS LOST!
+# ============================================================
+iti_event.9011 = {
+	type = character_event
+	theme = physical_health
+	title = iti_event.9011.t
+	desc = iti_event.9011.desc
+
+	left_portrait = { 
+		character = root 
+		animation = random_weapon_yield	 
+	}
+	right_portrait = { 
+		character = scope:recipient 
+		animation = random_weapon_aggressive 
+	}
+
+	option = {
+		name = iti_event.9011.a
+		
+		# Route to AI Judgement event
+		trigger_event = iti_event.9007
+	}
+}
+
+# ============================================================
+# EVENT 9003: DUEL ROUTER
+# ============================================================
+iti_event.9003 = {
+	hidden = yes
+	
+	immediate = {
+		# Clean up appearance
+		single_combat_clean_shirtlessness_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+		}
+
+		# ROUTING LOGIC
+		# If the opponent (recipient) won, the player (actor) is the loser
+		if = {
+			limit = {
+				scope:sc_victor = scope:recipient
+			}
+			
+			scope:actor = {
+				random_list = {
+					80 = { add_trait = wounded_1 }
+					15 = { add_trait = wounded_2 }
+					5 = { add_trait = wounded_3 }
+				}
+			}
+
+			trigger_event = {
+				id = iti_event.9006
+				days = 1
+			}
+		}
+		# If the player (actor) won, the opponent (recipient) is the loser
+		else = {
+			scope:recipient = {
+				random_list = {
+					80 = { add_trait = wounded_1 }
+					15 = { add_trait = wounded_2 }
+					5 = { add_trait = wounded_3 }
+				}
+			}
+
+			trigger_event = {
+				id = iti_event.9005
+				days = 1
+			}
+		}
+	}
+}
+# ============================================================
+# EVENT 9004: INVALIDATION (Hidden)
+# ============================================================
+iti_event.9004 = {
+	hidden = yes
+	immediate = {
+		single_combat_clean_shirtlessness_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9005: PLAYER VICTORIOUS
+# ============================================================
+iti_event.9005 = {
+	type = character_event
+	title = iti_event.9005.t
+	desc = iti_event.9005.desc_winner
+	theme = physical_health
+
+	left_portrait = {
+		character = root
+		animation = menacing
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = shock
+	}
+
+	option = {
+		name = iti_event.9005.a
+		custom_tooltip = iti_event.9005.a.tt
+		
+		scope:recipient = {
+			death = {
+				death_reason = death_duel
+				killer = root
+			}
+		}
+	}
+
+	# OPTION: SPARE
+	option = {
+		name = iti_event.9005.b
+		custom_tooltip = iti_event.9005.b.tt
+		
+		add_prestige = major_prestige_gain
+		add_stress = -40
+		add_hook = {
+			target = scope:recipient
+			type = strong_favor_hook
+		}
+	} 
+} 
+
+# ============================================================
+# EVENT 9006: PLAYER DEFEATED
+# ============================================================
+iti_event.9006 = {
+	type = character_event
+	title = iti_event.9006.t
+	desc = iti_event.9006.desc_loser
+	theme = physical_health
+
+	left_portrait = {
+		character = root
+		animation = sick_stomach
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = hero_flex
+	}
+
+	option = {
+		name = iti_event.9006.c
+		add_prestige = major_prestige_loss
+		add_stress = 40
+		
+		scope:recipient = {
+			trigger_event = iti_event.9007
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9007: AI JUDGMENT (Hidden)
+# ============================================================
+iti_event.9007 = {
+	hidden = yes
+
+	# AI chooses to KILL
+	option = {
+		name = iti_event.9008.t
+		ai_chance = {
+			base = 20
+			modifier = { factor = 5 has_trait = vengeful }
+			modifier = { factor = 5 has_trait = wrathful }
+			modifier = { factor = 0 has_trait = compassionate }
+		}
+		
+		scope:actor = { trigger_event = iti_event.9008 }
+	}
+
+	# AI chooses to SPARE
+	option = {
+		name = iti_event.9009.t
+		ai_chance = {
+			base = 80
+			modifier = { factor = 2 has_trait = compassionate }
+			modifier = { factor = 0.1 has_trait = vengeful }
+		}
+		
+		scope:actor = { trigger_event = iti_event.9009 }
+	}
+}
+
+# ============================================================
+# EVENT 9008: PLAYER KILLED
+# ============================================================
+iti_event.9008 = {
+	type = character_event
+	title = iti_event.9008.t
+	desc = iti_event.9008.desc
+	theme = death
+
+	left_portrait = {
+		character = root
+		animation = severelywounded
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = inspect_weapon
+	}
+
+	option = {
+		name = iti_event.9008.a
+		death = {
+			death_reason = death_duel
+			killer = scope:recipient
+		}
+	}
+}
+
+# ============================================================
+# EVENT 9009: PLAYER SPARED
+# ============================================================
+iti_event.9009 = {
+	type = character_event
+	title = iti_event.9009.t
+	desc = iti_event.9009.desc
+	theme = physical_health
+
+	left_portrait = {
+		character = root
+		animation = severelywounded
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = dismissal
+	}
+
+	option = {
+		name = iti_event.9009.a
+		add_stress = -20
+
+		scope:recipient = {
+			add_hook = {
+				target = root
+				type = strong_favor_hook
+			}
+		}
+
+		if = {
+			limit = { scope:recipient = { has_trait = greedy } }
+			random_list = {
+				50 = {
+					desc = "iti_event.9009.gold_loss_tt"
+					root = { 
+						add_gold = {
+							value = minor_gold_value
+							multiply = -1
+						}
+					}
+				}
+				50 = { }
+			}
+		}
+
+		if = {
+			limit = { scope:recipient = { has_trait = arrogant } }
+			random_list = {
+				60 = {
+					desc = "iti_event.9009.prestige_loss_tt"
+					root = { add_prestige = minor_prestige_loss }
+				}
+				40 = { }
+			}
+		}
+
+		if = {
+			limit = { 
+				scope:recipient = {
+					OR = {
+						has_trait = sadistic
+						has_trait = vengeful
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					desc = "iti_event.9009.renown_loss_tt"
+					root = { add_dynasty_prestige = minor_dynasty_prestige_loss }
+				}
+				75 = { }
+			}
+		}
+
+		if = {
+			limit = { scope:recipient = { has_trait = wrathful } }
+			random_list = {
+				30 = { 
+					desc = "iti_event.9009.maim_loss_tt"
+					root = { 
+						add_trait = maimed 
+						send_interface_toast = {
+							title = iti_event.9009.b
+							left_icon = scope:recipient
+						}
+					}
+				}
+				70 = { }
+			}
+		}
+
+		send_interface_toast = {
+			title = iti_event.9006.t
+			desc = iti_event.9006.desc_toast
+		}
+	}
+}

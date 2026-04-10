@@ -1,0 +1,243 @@
+﻿thuggery = {
+	skill = intrigue
+	desc = "thuggery_scheme_desc"
+	success_desc = "thuggery_scheme_success_desc"
+	discovery_desc = "thuggery_scheme_discovery_desc"
+	icon = iti_icon_scheme_thuggery
+	illustration = "gfx/interface/illustrations/event_scenes/alley_night.dds"
+	category = hostile
+	target_type = character
+	is_secret = yes
+	maximum_breaches = 3
+	cooldown = { months = 6 }
+
+	# Parameters
+	speed_per_skill_point = t2_spsp_owner_value
+	speed_per_target_skill_point = t2_spsp_target_value
+	base_progress_goal = t2_base_phase_length_value
+	maximum_secrecy = 90
+	base_maximum_success = 95
+	phases_per_agent_charge = 1
+	success_chance_growth_per_skill_point = t2_scgpsp_value
+
+	# Core Triggers
+	allow = {
+		is_adult = yes
+		is_playable_character = yes
+		is_imprisoned = no
+		any_court_position_holder = {
+			has_court_position = iti_thug_court_position
+		}
+	}
+	valid = {
+		is_playable_character = yes
+		is_incapable = no
+		# Invalidate if the user loses their thugs
+		any_court_position_holder = {
+			has_court_position = iti_thug_court_position
+		}
+		scope:target = {
+			is_imprisoned = no
+			is_hostage = no
+			# Location check removed per request
+			in_diplomatic_range = scope:owner
+		}
+		trigger_if = {
+			limit = { has_variable = no_scheming_allowed_var }
+			custom_tooltip = {
+				text = no_scheming_allowed_var_tt
+				var:no_scheming_allowed_var != scope:target
+			}
+		}
+	}
+
+	# Agents
+	agent_leave_threshold = -25
+	agent_join_chance = {
+		base = 0
+		ai_agent_join_chance_basic_suite_modifier = yes
+		modifier = {
+			add = 200
+			desc = "SCHEME_AGENT_IS_HIRED_THUG"
+			has_court_position = iti_thug_court_position
+		}
+	}
+	agent_groups_owner_perspective = { courtiers }
+	
+	valid_agent = {
+		is_adult = yes
+		is_imprisoned = no
+	}
+
+	odds_prediction = {
+		add = hostile_scheme_base_odds_prediction_target_is_char_value
+		add = odds_skill_contribution_intrigue_value
+		add = agent_groups_owner_perspective_value
+		min = 0
+	}
+	
+	# Base Chances
+	base_success_chance = {
+		base = 30
+		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
+		hostile_scheme_base_chance_modifier = yes
+		apply_calculated_scheme_success_chance_adjustments_modifier = yes
+
+		modifier = {
+			add = 15
+			desc = "SCHEME_OWNER_PROWESS"
+			scope:owner = { prowess >= 15 }
+		}
+		modifier = {
+			add = -20
+			desc = "SCHEME_TARGET_PROWESS"
+			scope:target = { prowess >= 15 }
+		}
+
+		modifier = {
+			add = 40
+			desc = "SCHEME_HAS_MULTIPLE_THUGS"
+			scope:owner = {
+				any_court_position_holder = {
+					has_court_position = iti_thug_court_position
+					count >= 2
+				}
+			}
+		}
+		modifier = {
+			add = 50
+			desc = "SCHEME_HAS_FULL_GANG"
+			scope:owner = {
+				any_court_position_holder = {
+					has_court_position = iti_thug_court_position
+					count >= 3
+				}
+			}
+		}
+
+		first_valid = {
+			modifier = {
+				add = -75
+				desc = "sway_foreign_target"
+				scope:target = {
+					is_ruler = yes
+					scope:target.top_liege != scope:owner.top_liege
+				}
+			}
+			modifier = {
+				add = -50
+				desc = "FABRICATE_HOOK_RULER_TARGET"
+				scope:target = { is_ruler = yes }
+			}
+		}
+
+		first_valid = {
+			modifier = {
+				add = -500
+				desc = "SCHEME_AT_WAR"
+				scope:target = { is_at_war_with = scope:owner }
+			}
+		}
+	}
+
+	base_secrecy = {
+		add = secrecy_base_value
+		add = countermeasure_apply_secrecy_maluses_value
+	}
+
+	# On Actions
+	on_start = {
+		set_variable = {
+			name = apply_countermeasures
+			value = flag:calculating
+		}
+		add_scheme_starting_opportunities_intrigue_effect = yes
+	}
+	
+	on_phase_completed = {
+		suppress_scheme_follow_up_event_till_input_given_effect = yes
+		thuggery_scheme_prep_effect = yes
+		cap_schemes_and_fire_reminders_effect = yes
+	}
+
+	on_hud_click = {
+		thuggery_scheme_prep_effect = yes
+	}
+
+	on_semiyearly = {
+		if = {
+			limit = {
+				scheme_owner = { is_ai = yes }
+			}
+			thuggery_scheme_prep_effect = yes
+		}
+	}
+
+	on_monthly = {
+		hostile_scheme_monthly_discovery_chance_effect = yes
+	}
+
+	on_invalidated = {
+		scheme_target_character = { save_scope_as = target }
+		scheme_owner = { save_scope_as = owner }
+		
+		if = {
+			limit = { scope:target = { is_alive = no } }
+			scope:owner = {
+				send_interface_toast = {
+					title = thuggery_scheme_invalidated_title
+					left_icon = scope:target
+					custom_description_no_bullet = {
+						object = scope:target
+						text = thuggery_target_died
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					scope:owner = {
+						any_court_position_holder = {
+							has_court_position = iti_thug_court_position
+						}
+					}
+				}
+			}
+			scope:owner = {
+				send_interface_toast = {
+					title = thuggery_scheme_invalidated_title
+					custom_description_no_bullet = {
+						text = thuggery_no_thugs_left_tt
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { scope:target = { is_imprisoned = yes } }
+			scope:owner = {
+				send_interface_toast = {
+					title = thuggery_scheme_invalidated_title
+					left_icon = scope:target
+					custom_description_no_bullet = {
+						object = scope:target
+						text = thuggery_target_imprisoned
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { scope:target = { NOT = { in_diplomatic_range = scope:owner } } }
+			scope:owner = {
+				send_interface_toast = {
+					title = thuggery_scheme_invalidated_title
+					left_icon = scope:target
+					custom_description_no_bullet = {
+						object = scope:target
+						text = thuggery_target_not_in_diplomatic_range
+					}
+				}
+			}
+		}
+	}
+}

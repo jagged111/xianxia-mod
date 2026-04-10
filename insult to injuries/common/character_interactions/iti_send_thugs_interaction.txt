@@ -1,0 +1,207 @@
+﻿iti_send_thugs_interaction = {
+	category = interaction_category_hostile
+	icon = iti_send_thugs_interaction
+	
+	auto_accept = yes
+
+	scheme = thuggery
+	send_name = START_SCHEME
+
+	is_shown = {
+		scope:actor = {
+			is_ruler = yes
+			OR = {
+				is_ai = no
+				has_perk = a_job_done_right_perk
+				intrigue >= 10
+			}
+		}
+		scope:recipient = {
+			is_adult = yes
+			NOT = { this = scope:actor }
+			NOT = { is_liege_or_above_of = scope:actor }
+		}
+	}
+
+	is_valid = {
+		scope:actor = {
+			custom_description = {
+				text = "iti_thug_user_cooldown_tt"
+				NOT = { has_character_flag = iti_thug_user_cooldown }
+			}
+		}
+		scope:actor = {
+			custom_description = {
+				text = "interaction_requires_thug_tt"
+				any_court_position_holder = {
+					has_court_position = iti_thug_court_position
+				}
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = minor_gold_value
+			add = {
+				value = minor_gold_value
+				multiply = 2
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 0
+		
+		# AI will now target people they simply dislike
+		modifier = {
+			add = 75
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value <= -30
+				}
+			}
+		}
+
+		# Stronger weight for hatred
+		modifier = {
+			add = 50
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value <= -50
+				}
+			}
+		}
+
+		
+		modifier = {
+			add = 50
+			OR = {
+				has_trait = callous
+				has_trait = vengeful
+				has_trait = sadistic
+			}
+		}
+
+		# Honest/Just characters won't do this unless they have a very good reason (Opinion < -75)
+		modifier = {
+			factor = 0
+			OR = {
+				has_trait = honest
+				has_trait = just
+			}
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value > -75
+				}
+			}
+		}
+	}
+
+	options_heading = schemes.t.agent_packages
+	send_options_exclusive = yes
+	
+	send_option = {
+		flag = agent_focus_balance
+		current_description = start_murder_interaction.tt.agent_focus_balance
+	}
+	send_option = {
+		flag = agent_focus_success
+		current_description = start_murder_interaction.tt.agent_focus_success
+	}
+	send_option = {
+		flag = agent_focus_speed
+		current_description = start_murder_interaction.tt.agent_focus_speed
+	}
+	send_option = {
+		flag = agent_focus_secrecy
+		current_description = start_murder_interaction.tt.agent_focus_secrecy
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_flag = {
+				flag = iti_thug_user_cooldown
+				days = 90
+			}
+
+			# Landless Adventurer XP Trigger
+			if = {
+				limit = {
+					government_has_flag = government_is_landless_adventurer
+				}
+				iti_mugging_xp = { XP = 10 }
+			}
+			
+			if = {
+				limit = { scope:recipient = { is_ai = no } }
+				save_scope_as = iti_thug_sender
+			}
+
+			if = {
+				limit = { scope:agent_focus_success ?= yes }
+				begin_scheme_with_agents_effect = {
+					SCHEME_TYPE = thuggery
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
+					AGENT_1 = agent_thug
+					AGENT_2 = agent_thug
+					AGENT_3 = agent_thug
+					AGENT_4 = agent_lookout
+					AGENT_5 = agent_alibi
+				}
+			}
+			else_if = {
+				limit = { scope:agent_focus_speed ?= yes }
+				begin_scheme_with_agents_effect = {
+					SCHEME_TYPE = thuggery
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
+					AGENT_1 = agent_lookout
+					AGENT_2 = agent_lookout
+					AGENT_3 = agent_thug
+					AGENT_4 = agent_thug
+					AGENT_5 = agent_alibi
+				}
+			}
+			else_if = {
+				limit = { scope:agent_focus_secrecy ?= yes }
+				begin_scheme_with_agents_effect = {
+					SCHEME_TYPE = thuggery
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
+					AGENT_1 = agent_alibi
+					AGENT_2 = agent_alibi
+					AGENT_3 = agent_alibi
+					AGENT_4 = agent_thug
+					AGENT_5 = agent_lookout
+				}
+			}
+			else = {
+				begin_scheme_with_agents_effect = {
+					SCHEME_TYPE = thuggery
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
+					AGENT_1 = agent_thug
+					AGENT_2 = agent_thug
+					AGENT_3 = agent_alibi
+					AGENT_4 = agent_alibi
+					AGENT_5 = agent_lookout
+				}
+			}
+		}
+
+		scope:recipient = {
+			save_scope_as = iti_thug_victim
+
+			# Increased opinion penalty since they are being targeted by thugs
+			add_opinion = {
+				target = scope:actor
+				modifier = suspected_involvement_opinion
+			}
+		}
+	}
+}

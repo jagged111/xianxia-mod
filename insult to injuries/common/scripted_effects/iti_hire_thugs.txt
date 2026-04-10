@@ -1,0 +1,50 @@
+﻿iti_hire_thug_effect = {
+	# 1. Move the Thug to the new court
+	hidden_effect = {
+		$EMPLOYER$ = {
+			add_courtier = $THUG$
+		}
+	}
+	
+	# Ensure the recipient actually physically moves to the new court location
+	$THUG$ = {
+		hidden_effect = {
+			return_to_court = yes
+		}
+
+		# 2. Add flags and opinions
+		add_character_flag = is_hired_thug
+		add_opinion = {
+			target = $EMPLOYER$
+			modifier = hired_thug_opinion
+		}
+
+		# 3. Move family members so they don't stay behind if the recipient was a wanderer
+		every_traveling_family_member = {
+			hidden_effect = {
+				$EMPLOYER$ = { 
+					add_courtier = prev 
+				}
+				return_to_court = yes
+			}
+		}
+	}
+
+	# 4. Assign the position now that they are officially in court
+	$EMPLOYER$ = {
+		appoint_court_position = {
+			recipient = $THUG$
+			court_position = iti_thug_court_position
+		}
+	}
+}
+
+thug_title_accepted_effect = {
+	basic_gained_court_position_effect = yes
+}
+thug_title_revoked_effect = {
+	basic_revoked_court_position_effect = yes
+}
+thug_title_invalidated_effect = {
+	basic_invalidated_court_position_effect = yes
+}

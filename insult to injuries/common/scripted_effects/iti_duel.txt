@@ -1,0 +1,86 @@
+﻿# Calculates a 3v3 Knight Duel based on proportional prowess rolls. 
+iti_calculate_knight_duel_effect = {
+	set_variable = { name = iti_knight_wins value = 0 }
+
+	# ==========================================
+	# 1v1 ROUND 1
+	# ==========================================
+	if = {
+		limit = { 
+			exists = scope:p_knight_1
+			exists = scope:e_knight_1
+		}
+		random_list = {
+			# PLAYER WINS
+			1 = {
+				modifier = { add = scope:p_knight_1.prowess }
+				change_variable = { name = iti_knight_wins add = 1 }
+				scope:e_knight_1 = { add_trait = wounded_1 }
+			}
+			# ENEMY WINS
+			1 = {
+				modifier = { add = scope:e_knight_1.prowess }
+				scope:p_knight_1 = { add_trait = wounded_1 }
+			}
+		}
+	}
+	else_if = {
+		limit = { exists = scope:p_knight_1 }
+		# AI failed to field a champion. Player wins by default.
+		change_variable = { name = iti_knight_wins add = 1 }
+	}
+
+	# ==========================================
+	# 1v1 ROUND 2
+	# ==========================================
+	if = {
+		limit = { 
+			exists = scope:p_knight_2
+			exists = scope:e_knight_2
+		}
+		random_list = {
+			# PLAYER WINS
+			1 = {
+				modifier = { add = scope:p_knight_2.prowess }
+				change_variable = { name = iti_knight_wins add = 1 }
+				scope:e_knight_2 = { add_trait = wounded_1 }
+			}
+			# ENEMY WINS
+			1 = {
+				modifier = { add = scope:e_knight_2.prowess }
+				scope:p_knight_2 = { add_trait = wounded_1 }
+			}
+		}
+	}
+	else_if = {
+		limit = { exists = scope:p_knight_2 }
+		change_variable = { name = iti_knight_wins add = 1 }
+	}
+
+	# ==========================================
+	# 1v1 ROUND 3
+	# ==========================================
+	if = {
+		limit = { 
+			exists = scope:p_knight_3
+			exists = scope:e_knight_3
+		}
+		random_list = {
+			# PLAYER WINS
+			1 = {
+				modifier = { add = scope:p_knight_3.prowess }
+				change_variable = { name = iti_knight_wins add = 1 }
+				scope:e_knight_3 = { add_trait = wounded_1 }
+			}
+			# ENEMY WINS
+			1 = {
+				modifier = { add = scope:e_knight_3.prowess }
+				scope:p_knight_3 = { add_trait = wounded_1 }
+			}
+		}
+	}
+	else_if = {
+		limit = { exists = scope:p_knight_3 }
+		change_variable = { name = iti_knight_wins add = 1 }
+	}
+}

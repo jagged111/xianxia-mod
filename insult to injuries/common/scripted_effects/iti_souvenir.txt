@@ -1,0 +1,14 @@
+﻿# Creates the bloody tooth artifact
+# Required parameters:
+# CREATOR - The scope of the character who is the original source/creator of the tooth
+iti_create_thug_tooth_effect = {
+	create_artifact = {
+		name = iti_thug_tooth_name
+		description = iti_thug_tooth_description
+		modifier = artifact_intrigue_1_modifier
+		type = miscellaneous
+		visuals = iti_tooth
+		save_scope_as = iti_thug_souvenir
+		creator = $CREATOR$
+	}
+}

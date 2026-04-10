@@ -1,0 +1,240 @@
+﻿namespace = iti_travel_thug_event
+
+# ============================================================
+# EVENT 1000: ADVENTURER AMBUSH
+# ============================================================
+iti_travel_thug_event.1000 = {
+	type = character_event
+	title = iti_travel_thug_event.1000.t
+	desc = iti_travel_thug_event.1000.desc
+	theme = intrigue
+
+	left_portrait = { 
+		character = root 
+		animation = threatening 
+	}
+	right_portrait = { 
+		character = scope:traveling_victim 
+		animation = shock 
+	}
+
+	# Show the enemy retinue at the bottom
+	lower_left_portrait = { character = scope:e_knight_1 }
+	lower_center_portrait = { character = scope:e_knight_2 }
+	lower_right_portrait = { character = scope:e_knight_3 }
+
+	immediate = {
+		remove_variable = iti_knight_wins
+
+		# 1. Handle Victim generation
+		if = {
+			limit = { NOT = { exists = scope:traveling_victim } }
+			create_character = {
+				template = generic_peasant_character
+				location = root.location
+				save_scope_as = traveling_victim
+			}
+		}
+
+		# 2. PLAYER CHAMPION SELECTION (Thugs first, then Knights, then Courtiers)
+		iti_get_best_champions_thug_priority_effect = yes
+
+		# 3. ENEMY RETINUE SELECTION (Knights first, then Thugs, Courtiers, Peasants)
+		scope:traveling_victim = {
+			iti_get_best_ai_champions_effect = yes
+		}
+	}
+
+	# OPTION A: The Mugging
+	option = {
+		name = iti_travel_thug_event.1000.a
+		trigger = {
+			scope:traveling_victim = { location = root.location }
+			# Only available if the player has at least one backup scoped
+			OR = {
+				exists = scope:p_knight_1
+				exists = scope:p_knight_2
+				exists = scope:p_knight_3
+			}
+		}
+
+		custom_tooltip = iti_travel_thug_event.1000.a.tt
+		
+		trigger_event = iti_travel_thug_event.2000
+		
+		stress_impact = {
+			base = 0
+			sadistic = -10
+			callous = -10
+			compassionate = 20
+		}
+	}
+
+	# OPTION B: Let them off
+	option = {
+		name = iti_travel_thug_event.1000.b
+		stress_impact = {
+			base = 20
+			craven = -10
+			wrathful = 20
+		}
+	}
+}
+
+# ============================================================
+# EVENT 2000: MUGGING (Logic Only)
+# ============================================================
+iti_travel_thug_event.2000 = {
+	type = character_event
+	theme = intrigue
+	title = iti_travel_thug_event.2000.t
+	desc = iti_travel_thug_event.2000.desc
+	
+	immediate = {
+		save_scope_as = actor
+		scope:traveling_victim = { save_scope_as = recipient }
+
+		# Initialize the variable right away so the UI parser doesn't panic
+		set_variable = { name = iti_knight_wins value = 0 }
+
+		# Note: e_knight 1/2/3 and p_knight 1/2/3 are already saved and inherited from Event 1000.
+	}
+
+	left_portrait = { character = root animation = random_weapon_aggressive }
+	right_portrait = { character = scope:recipient animation = shock }
+
+	lower_left_portrait = { character = scope:p_knight_1 }
+	lower_center_portrait = { character = scope:p_knight_2 }
+	lower_right_portrait = { character = scope:p_knight_3 }
+
+	option = {
+		name = iti_travel_thug_event.2000.a
+
+		hidden_effect = {
+			# 1. Actual Combat Math
+			iti_calculate_knight_duel_effect = yes
+			
+			# 2. Determine the Outcome
+			if = {
+				limit = { var:iti_knight_wins >= 2 }
+				trigger_event = iti_travel_thug_event.3000
+			}
+			else = {
+				trigger_event = iti_travel_thug_event.4000
+			}
+
+			# 3. Clean up the variable
+			remove_variable = iti_knight_wins
+		}
+	}
+}
+
+# ============================================================
+# EVENT 3000: MUGGING SUCCESS
+# ============================================================
+iti_travel_thug_event.3000 = {
+	type = character_event
+	theme = intrigue
+	title = iti_travel_thug_event.3000.t
+	desc = iti_travel_thug_event.3000.desc
+
+	left_portrait = { 
+		character = root 
+		animation = random_weapon_aggressive 
+	}
+	right_portrait = { 
+		character = scope:traveling_victim 
+		animation = crying 
+	}
+
+	immediate = {
+		remove_variable = iti_knight_wins
+
+		# LOOT CALCULATION
+		scope:traveling_victim = {
+			save_temporary_scope_value_as = {
+				name = loot_calc
+				value = {
+					value = gold
+					multiply = 0.25
+					min = 20
+				}
+			}
+			if = {
+				limit = { gold < scope:loot_calc }
+				save_temporary_scope_value_as = { name = loot_calc value = gold }
+			}
+			root = { set_variable = { name = iti_pending_loot value = scope:loot_calc } }
+		}
+	}
+
+	# OPTION A: Take their stuff
+	option = {
+		name = iti_travel_thug_event.3000.a
+		
+		# Victim loses the calculated amount
+		scope:traveling_victim = {
+			add_gold = {
+				value = root.var:iti_pending_loot
+				multiply = -1
+			}
+		}
+		
+		# Root gains it
+		add_gold = root.var:iti_pending_loot
+
+		# Give the Gallowsbait trait (if missing) and add 5 XP to the Bandit track
+		iti_mugging_xp = { XP = 5 }
+
+		stress_impact = {
+			base = 0
+			sadistic = -10
+			callous = -5
+			compassionate = 20
+		}
+
+		remove_variable = iti_pending_loot
+	}
+
+	# OPTION B: Let them go
+	option = {
+		name = iti_travel_thug_event.3000.b
+		
+		add_piety = 25
+
+		stress_impact = {
+			base = 20
+			compassionate = -10
+			forgiving = -5
+			wrathful = 20
+		}
+
+		remove_variable = iti_pending_loot
+	}
+}
+
+# ============================================================
+# EVENT 4000: MUGGING FAILURE
+# ============================================================
+iti_travel_thug_event.4000 = {
+	type = character_event
+	theme = intrigue
+	title = iti_travel_thug_event.4000.t
+	desc = iti_travel_thug_event.4000.desc
+
+	left_portrait = { character = root animation = severelywounded }
+	right_portrait = { character = scope:traveling_victim animation = laugh }
+
+	immediate = {
+		remove_variable = iti_knight_wins
+	}
+
+	option = {
+		name = iti_travel_thug_event.4000.a
+		add_prestige = -100
+		add_trait = wounded_1
+		stress_impact = {
+			base = medium_stress_impact_gain
+		}
+	}
+}

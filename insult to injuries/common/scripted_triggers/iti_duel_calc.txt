@@ -1,0 +1,21 @@
+﻿# Predicts if the player's knights will win at least 2 out of 3 bouts
+iti_predict_knight_duel_win_trigger = {
+	calc_true_if = {
+		amount >= 2
+		AND = { 
+			exists = scope:p_knight_1 
+			exists = scope:e_knight_1 
+			scope:p_knight_1 = { prowess >= scope:e_knight_1.prowess } 
+		}
+		AND = { 
+			exists = scope:p_knight_2 
+			exists = scope:e_knight_2 
+			scope:p_knight_2 = { prowess >= scope:e_knight_2.prowess } 
+		}
+		AND = { 
+			exists = scope:p_knight_3 
+			exists = scope:e_knight_3 
+			scope:p_knight_3 = { prowess >= scope:e_knight_3.prowess } 
+		}
+	}
+}

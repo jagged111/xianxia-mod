@@ -1,0 +1,413 @@
+﻿# Scopes p_knight_1, 2, and 3 based on priority: Knights > Thugs > Male Courtiers
+iti_get_best_champions_effect = {
+
+	# SLOT 1
+	ordered_knight = {
+		limit = { 
+			is_alive = yes 
+			NOT = { this = scope:recipient }
+			NOT = { this = root }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = p_knight_1
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_1 } }
+		ordered_court_position_holder = {
+			limit = { 
+				has_court_position = iti_thug_court_position 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_1
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_1 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_1
+		}
+	}
+
+	# SLOT 2
+	ordered_knight = {
+		limit = { 
+			is_alive = yes 
+			NOT = { this = scope:p_knight_1 } 
+			NOT = { this = scope:recipient }
+			NOT = { this = root }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = p_knight_2
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_2 } }
+		ordered_court_position_holder = {
+			limit = { 
+				has_court_position = iti_thug_court_position 
+				NOT = { this = scope:p_knight_1 }
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_2
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_2 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:p_knight_1 } 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_2
+		}
+	}
+
+	# SLOT 3
+	ordered_knight = {
+		limit = { 
+			is_alive = yes 
+			NOT = { this = scope:p_knight_1 } 
+			NOT = { this = scope:p_knight_2 } 
+			NOT = { this = scope:recipient }
+			NOT = { this = root }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = p_knight_3
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_3 } }
+		ordered_court_position_holder = {
+			limit = { 
+				has_court_position = iti_thug_court_position 
+				NOT = { this = scope:p_knight_1 }
+				NOT = { this = scope:p_knight_2 }
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_3
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_3 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:p_knight_1 }
+				NOT = { this = scope:p_knight_2 }
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_3
+		}
+	}
+}
+
+# Scopes p_knight_1, 2, and 3 based on priority: Thugs > Knights > Male Courtiers
+iti_get_best_champions_thug_priority_effect = {
+
+	# SLOT 1
+	ordered_court_position_holder = {
+		limit = { 
+			has_court_position = iti_thug_court_position 
+			NOT = { this = scope:recipient }
+			NOT = { this = root }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = p_knight_1
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_1 } }
+		ordered_knight = {
+			limit = { 
+				is_alive = yes 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_1
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_1 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_1
+		}
+	}
+
+	# SLOT 2
+	ordered_court_position_holder = {
+		limit = { 
+			has_court_position = iti_thug_court_position 
+			NOT = { this = scope:p_knight_1 }
+			NOT = { this = scope:recipient }
+			NOT = { this = root }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = p_knight_2
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_2 } }
+		ordered_knight = {
+			limit = { 
+				is_alive = yes 
+				NOT = { this = scope:p_knight_1 } 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_2
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_2 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:p_knight_1 } 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_2
+		}
+	}
+
+	# SLOT 3
+	ordered_court_position_holder = {
+		limit = { 
+			has_court_position = iti_thug_court_position 
+			NOT = { this = scope:p_knight_1 }
+			NOT = { this = scope:p_knight_2 }
+			NOT = { this = scope:recipient }
+			NOT = { this = root }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = p_knight_3
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_3 } }
+		ordered_knight = {
+			limit = { 
+				is_alive = yes 
+				NOT = { this = scope:p_knight_1 } 
+				NOT = { this = scope:p_knight_2 } 
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_3
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:p_knight_3 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:p_knight_1 }
+				NOT = { this = scope:p_knight_2 }
+				NOT = { this = scope:recipient }
+				NOT = { this = root }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = p_knight_3
+		}
+	}
+}
+
+# Scopes e_knight_1, 2, and 3 for the AI/Recipient
+# Priority: Knights > Thugs > Male Courtiers > Generated Peasants
+iti_get_best_ai_champions_effect = {
+	# SLOT 1
+	ordered_knight = {
+		limit = { 
+			is_alive = yes 
+			NOT = { this = root }
+			NOT = { this = scope:recipient }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = e_knight_1
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_1 } }
+		ordered_court_position_holder = {
+			limit = { 
+				has_court_position = iti_thug_court_position 
+				NOT = { this = root }
+				NOT = { this = scope:recipient }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = e_knight_1
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_1 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = root }
+				NOT = { this = scope:recipient }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = e_knight_1
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_1 } }
+		create_character = { 
+			template = generic_peasant_character 
+			location = root.location 
+			save_scope_as = e_knight_1 
+		}
+	}
+
+	# SLOT 2
+	ordered_knight = {
+		limit = { 
+			is_alive = yes 
+			NOT = { this = scope:e_knight_1 } 
+			NOT = { this = root }
+			NOT = { this = scope:recipient }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = e_knight_2
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_2 } }
+		ordered_court_position_holder = {
+			limit = { 
+				has_court_position = iti_thug_court_position 
+				NOT = { this = scope:e_knight_1 }
+				NOT = { this = root }
+				NOT = { this = scope:recipient }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = e_knight_2
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_2 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:e_knight_1 } 
+				NOT = { this = root }
+				NOT = { this = scope:recipient }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = e_knight_2
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_2 } }
+		create_character = { 
+			template = generic_peasant_character 
+			location = root.location 
+			save_scope_as = e_knight_2 
+		}
+	}
+
+	# SLOT 3
+	ordered_knight = {
+		limit = { 
+			is_alive = yes 
+			NOT = { this = scope:e_knight_1 } 
+			NOT = { this = scope:e_knight_2 } 
+			NOT = { this = root }
+			NOT = { this = scope:recipient }
+		}
+		order_by = prowess
+		max = 1
+		save_scope_as = e_knight_3
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_3 } }
+		ordered_court_position_holder = {
+			limit = { 
+				has_court_position = iti_thug_court_position 
+				NOT = { this = scope:e_knight_1 }
+				NOT = { this = scope:e_knight_2 }
+				NOT = { this = root }
+				NOT = { this = scope:recipient }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = e_knight_3
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_3 } }
+		ordered_courtier = {
+			limit = { 
+				is_alive = yes 
+				is_male = yes 
+				NOT = { this = scope:e_knight_1 } 
+				NOT = { this = scope:e_knight_2 } 
+				NOT = { this = root }
+				NOT = { this = scope:recipient }
+			}
+			order_by = prowess
+			max = 1
+			save_scope_as = e_knight_3
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:e_knight_3 } }
+		create_character = { 
+			template = generic_peasant_character 
+			location = root.location 
+			save_scope_as = e_knight_3 
+		}
+	}
+}

@@ -1,0 +1,25 @@
+﻿thuggery_scheme_prep_effect = {
+	save_scope_as = scheme
+	scheme_target_character = { save_scope_as = iti_thug_victim }
+	scheme_owner = { save_scope_as = actor }
+
+	if = {
+		limit = {
+			scheme_target_character = { is_ai = no }
+		}
+		scheme_target_character = { trigger_event = iti_thug_event.2000 }
+	}
+	else = {
+		save_scope_value_as = {
+			name = follow_up_event
+			value = event_id:iti_thug_event.1000
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = scope:suppress_next_event }
+			}
+			scheme_owner = { trigger_event = scheme_critical_moments.0002 }
+		}
+	}
+}

@@ -1,0 +1,35 @@
+﻿iti_hire_as_thug_interaction = {
+	category = interaction_category_diplomacy
+	desc = iti_hire_as_thug_interaction_desc
+	
+	auto_accept = yes 
+
+	is_shown = {
+		scope:actor = { is_ai = no }
+		scope:recipient = {
+			is_adult = yes
+			is_lowborn = yes
+			is_ruler = no
+			is_physically_able = yes
+			NOT = { has_character_flag = is_hired_thug }
+		}
+	}
+
+	is_valid = {
+		scope:recipient = {
+			prowess >= 5
+		}
+	}
+
+	cost = {
+		gold = minor_gold_value
+	}
+
+	on_accept = {
+		
+		iti_hire_thug_effect = {
+			EMPLOYER = scope:actor
+			THUG = scope:recipient
+		}
+	}
+}

@@ -1,0 +1,6 @@
+﻿iti_cleanup_effect = {
+	# Remove flags from the character this is called on
+	remove_character_flag = iti_war_flag
+	remove_character_flag = iti_war_flag_target
+	remove_character_flag = insulted_by_player
+}

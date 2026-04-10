@@ -1,0 +1,113 @@
+﻿namespace = iti_find_thugs
+
+iti_find_thugs.1000 = {
+	type = character_event
+	title = iti_find_thugs.1000.t
+	desc = iti_find_thugs.1000.desc
+	theme = intrigue
+	override_background = { reference = tavern }
+	
+	left_portrait = {
+		character = scope:thug_1
+		animation = manic
+	}
+	right_portrait = {
+		character = scope:thug_2
+		animation = dancing_plague
+	}
+	lower_left_portrait = {
+		character = scope:thug_3
+	}
+
+	immediate = {
+		# THUG 1
+		create_character = {
+			template = iti_tavern_thug_character
+			location = root.capital_province
+			save_scope_as = thug_1
+		}
+		
+		# THUG 2
+		create_character = {
+			template = iti_tavern_thug_character
+			location = root.capital_province
+			save_scope_as = thug_2
+		}
+		
+		# THUG 3
+		create_character = {
+			template = iti_tavern_thug_character
+			location = root.capital_province
+			save_scope_as = thug_3
+		}
+	}
+
+	# Option 1: Hire Thug 1
+	option = {
+		name = iti_find_thugs.1000.a
+		trigger = { gold >= minor_gold_value }
+		remove_short_term_gold = minor_gold_value
+		
+		iti_hire_thug_effect = {
+			EMPLOYER = root
+			THUG = scope:thug_1
+		}
+
+		# Kill the ones not hired
+		scope:thug_2 = { death = { death_reason = death_vanished } }
+		scope:thug_3 = { death = { death_reason = death_vanished } }
+	}
+
+	# Option 2: Hire Thug 2
+	option = {
+		name = iti_find_thugs.1000.b
+		trigger = { gold >= minor_gold_value }
+		remove_short_term_gold = minor_gold_value
+		
+		iti_hire_thug_effect = {
+			EMPLOYER = root
+			THUG = scope:thug_2
+		}
+
+		# Kill the ones not hired
+		scope:thug_1 = { death = { death_reason = death_vanished } }
+		scope:thug_3 = { death = { death_reason = death_vanished } }
+	}
+
+	# Option 3: Hire Thug 3
+	option = {
+		name = iti_find_thugs.1000.c
+		trigger = { gold >= minor_gold_value }
+		remove_short_term_gold = minor_gold_value
+		
+		iti_hire_thug_effect = {
+			EMPLOYER = root
+			THUG = scope:thug_3
+		}
+
+		
+		scope:thug_1 = { death = { death_reason = death_vanished } }
+		scope:thug_2 = { death = { death_reason = death_vanished } }
+	}
+
+	# Option 4: Hire All 3
+	option = {
+		name = iti_find_thugs.1000.d
+		trigger = { gold >= medium_gold_value }
+		remove_short_term_gold = medium_gold_value
+		
+		iti_hire_thug_effect = { EMPLOYER = root THUG = scope:thug_1 }
+		iti_hire_thug_effect = { EMPLOYER = root THUG = scope:thug_2 }
+		iti_hire_thug_effect = { EMPLOYER = root THUG = scope:thug_3 }
+	}
+
+	# Option 5: Walk Away
+	option = {
+		name = iti_find_thugs.1000.e
+		
+		# Kill all of them
+		scope:thug_1 = { death = { death_reason = death_vanished } }
+		scope:thug_2 = { death = { death_reason = death_vanished } }
+		scope:thug_3 = { death = { death_reason = death_vanished } }
+	}
+}

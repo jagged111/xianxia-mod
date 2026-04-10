@@ -1,0 +1,30 @@
+﻿############################
+# COMBAT SETTINGS
+############################
+
+# By default, how much % extra do we pump it up when someone is risking injury? Occurs *after* it has been determined that they may be injured, and just increases that chance.
+starting_injury_bonus = 0
+
+# How much of a gap do you need, initially, between you and your opponent in order to win?
+starting_success_threshold = 2000
+
+# How many rounds can the single combat go before it enters sudden death?
+round_cap_limit = 20
+
+############################
+# COMBAT ROLLS
+############################
+
+# Injury Risk values
+injury_risk_none = 0
+injury_risk_low = 2
+injury_risk_medium = 3
+injury_risk_high = 4
+injury_risk_very_high = 10
+
+# Duel Success values
+duel_success_none = 0
+duel_success_low = 5
+duel_success_medium = 6
+duel_success_high = 7
+duel_success_very_high = 10

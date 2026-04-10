@@ -1,0 +1,858 @@
+﻿namespace = iti_thug_event
+
+# ============================================================
+# EVENT 1000: THE AMBUSH (HIDDEN)
+# ============================================================
+iti_thug_event.1000 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+
+		if = {
+			limit = { exists = scope:scheme }
+			scope:scheme = { end_scheme = yes }
+		}
+
+		# 1. SAVE THE MESSENGER (Highest Prowess Thug)
+		ordered_court_position_holder = {
+			limit = { has_court_position = iti_thug_court_position }
+			order_by = prowess
+			save_scope_as = iti_thug_messenger
+		}
+
+		# 2. GENERATE THE SECRET
+		add_secret = {
+			type = secret_thug_assault
+			target = scope:iti_thug_victim
+		}
+
+		# 3. Trait and XP for all thugs involved
+		every_court_position_holder = {
+			limit = { has_court_position = iti_thug_court_position }
+			
+			iti_mugging_xp = { XP = 5 }
+		}
+
+		# 4. RESOLUTION LOGIC
+		scope:iti_thug_victim = {
+			random_list = {
+				# SUCCESS: THUGS KICK THEIR ASS
+				35 = {
+					modifier = {
+						add = 25
+						scope:actor = { has_perk = a_job_done_right_perk }
+						desc = "iti_perk_bonus_tt"
+					}
+					modifier = {
+						add = 15
+						scope:actor = {
+							any_court_position_holder = {
+								type = iti_thug_court_position
+								count >= 2
+							}
+						}
+						desc = "iti_extra_thugs_bonus_tt"
+					}
+					modifier = {
+						add = 15
+						scope:actor = {
+							any_court_position_holder = {
+								type = iti_thug_court_position
+								count >= 3
+							}
+						}
+						desc = "iti_large_gang_bonus_tt"
+					}
+					compare_modifier = {
+						value = scope:actor.intrigue
+						target = intrigue
+						multiplier = 1.5
+					}
+					modifier = { add = 20 prowess < 5 }
+					modifier = { add = -20 prowess > 15 }
+					
+					save_temporary_scope_value_as = {
+						name = loot_calc
+						value = {
+							value = gold
+							multiply = 0.25
+							min = 20
+						}
+					}
+					if = {
+						limit = { gold < scope:loot_calc }
+						save_temporary_scope_value_as = { name = loot_calc value = gold }
+					}
+					scope:actor = { set_variable = { name = iti_pending_loot value = scope:loot_calc } }
+
+					random_list = {
+						60 = { add_trait = wounded_1 }
+						30 = { add_trait = wounded_2 }
+						10 = { add_trait = wounded_3 }
+					}
+					scope:actor = { trigger_event = iti_thug_event.1004 }
+				}
+
+				# FAILURE: VICTIM KICKS THUGS ASS
+				20 = {
+					compare_modifier = {
+						value = intrigue
+						target = scope:actor.intrigue
+						multiplier = 1.5
+					}
+					modifier = { add = 20 prowess > 10 }
+					add_opinion = {
+						target = scope:actor
+						modifier = iti_thugs_failed_opinion
+					}
+
+					scope:actor = {
+						every_court_position_holder = {
+							limit = { has_court_position = iti_thug_court_position }
+							random = {
+								chance = 35
+								add_trait = wounded_1
+							}
+						}
+						trigger_event = iti_thug_event.1002
+					}
+				}
+
+				# CRITICAL FAILURE: VICTIM IS TOO COOL
+				15 = {
+					compare_modifier = {
+						value = intrigue
+						target = scope:actor.intrigue
+						multiplier = 2.0
+					}
+					modifier = { 
+						add = 30 
+						prowess > 15 
+					}
+					add_opinion = {
+						target = scope:actor
+						modifier = attempted_medieval_jumping_opinion
+					}
+					scope:actor = { 
+						trigger_event = iti_thug_event.1001 
+						every_court_position_holder = {
+							limit = { has_court_position = iti_thug_court_position }
+							random_list = {
+								10 = { add_trait = wounded_1 }
+								40 = { add_trait = wounded_2 }
+								50 = { add_trait = wounded_3 }
+							}
+						}
+					}
+				}
+
+				# CRITICAL SUCCESS: BRUTALITY
+				10 = {
+					modifier = {
+						add = 15
+						scope:actor = { has_perk = a_job_done_right_perk }
+						desc = "iti_perk_bonus_tt"
+					}
+					compare_modifier = {
+						value = scope:actor.intrigue
+						target = intrigue
+						multiplier = 2.0
+					}
+
+					add_stress = major_stress_impact_gain
+
+					save_temporary_scope_value_as = {
+						name = loot_calc
+						value = {
+							value = gold
+							multiply = 0.50
+							min = 50
+						}
+					}
+					if = {
+						limit = { gold < scope:loot_calc }
+						save_temporary_scope_value_as = { name = loot_calc value = gold }
+					}
+					scope:actor = { set_variable = { name = iti_pending_loot value = scope:loot_calc } }
+					
+					random_list = {
+						70 = { add_trait = wounded_2 }
+						30 = { add_trait = wounded_3 }
+					}
+
+					random = { chance = 30 add_trait = maimed }
+					random = { chance = 20 add_trait = one_eyed }
+					random = { chance = 15 add_trait = one_legged }
+					random = { chance = 25 add_trait = disfigured }
+					random = { chance = 10 add_trait = infirm }
+					random = { chance = 5 add_trait = blind }
+					random = { chance = 2 add_trait = incapable }
+
+					random = {
+						chance = 40
+						random_list = {
+							20 = { trigger = { has_trait = brave } remove_trait = brave add_trait = craven }
+							20 = { trigger = { has_trait = gregarious } remove_trait = gregarious add_trait = paranoid }
+							15 = { trigger = { NOT = { has_trait = wrathful } } add_trait = wrathful }
+							15 = { trigger = { NOT = { has_trait = reclusive } } add_trait = reclusive }
+							5 = { trigger = { NOT = { has_trait = lunatic_1 } } add_trait = lunatic_1 }
+							25 = { add_stress = 60 }
+						}
+					}
+
+					scope:actor = {
+						trigger_event = iti_thug_event.1003
+						add_dread = 10
+					}
+				}
+			}
+		}
+	} 
+} 
+
+# ============================================================
+# OUTCOME WINDOWS (1001 - 1004)
+# ============================================================
+
+# EXPOSED
+iti_thug_event.1001 = {
+	type = character_event
+	title = iti_thug_event.1001.t
+	desc = iti_thug_event.1001.desc_exposed
+	theme = intrigue
+		
+	left_portrait = { character = root animation = rage }
+	right_portrait = { character = scope:iti_thug_messenger animation = beg }
+	lower_left_portrait = { character = scope:iti_thug_victim }
+
+	option = {
+		name = iti_thug_event.1001.a_exposed
+		add_prestige = { value = medium_prestige_value multiply = -1 }
+	}
+
+	option = {
+		name = iti_thug_event.1001.c_bribe
+		add_gold = { value = major_gold_value multiply = -1 }
+	}
+
+	option = {
+		name = iti_thug_event.1001.b_execute
+		add_dread = 20
+		scope:iti_thug_messenger = {
+			death = { death_reason = death_execution killer = root }
+		}
+	}
+}
+
+# FAILURE
+iti_thug_event.1002 = {
+	type = character_event
+	title = iti_thug_event.1001.t
+	desc = iti_thug_event.1001.desc_fail
+	theme = intrigue
+
+	left_portrait = { character = root animation = disbelief }
+	right_portrait = { character = scope:iti_thug_messenger animation = wailing }
+	lower_left_portrait = { character = scope:iti_thug_victim }
+
+	option = {
+		name = iti_thug_event.1001.a_fail
+		
+		# Root (the employer) loses prestige for the botched job
+		add_prestige = { value = minor_prestige_value multiply = -1 }
+		
+		
+	}
+}
+
+# CRITICAL SUCCESS (BRUTAL)
+iti_thug_event.1003 = {
+	type = character_event
+	title = iti_thug_event.1001.t
+	desc = iti_thug_event.1001.desc_brutal
+	theme = intrigue
+
+	left_portrait = { character = root animation = laugh }
+	right_portrait = { character = scope:iti_thug_messenger animation = ecstasy }
+	lower_left_portrait = { character = scope:iti_thug_victim }
+
+	option = {
+		name = iti_thug_event.1001.a_brutal
+		add_prestige = minor_prestige_value
+		add_dread = 10
+
+		scope:iti_thug_victim = {
+			add_gold = { value = root.var:iti_pending_loot multiply = -1 }
+		}
+		add_gold = root.var:iti_pending_loot
+		
+		 
+		iti_create_thug_tooth_effect = {
+			CREATOR = scope:iti_thug_victim
+		}
+
+		
+		send_interface_toast = {
+			title = iti_thug_event.1003.toast
+			left_icon = root
+			right_icon = scope:iti_thug_souvenir
+			
+			scope:iti_thug_souvenir = {
+				set_variable = {
+					name = suppress_artifact_notifications
+					value = yes
+					days = 1
+				}
+				set_owner = root
+			}
+		}
+
+		# Critical Success: 50% chance to steal an artifact (Common or Masterwork)
+		custom_description = {
+			text = iti_thug_artifact_steal_chance_standard_tt
+			random = {
+				chance = 50
+				scope:iti_thug_victim = {
+					if = {
+						limit = {
+							any_character_artifact = {
+								OR = {
+									rarity = common
+									rarity = masterwork
+								}
+							}
+						}
+						random_character_artifact = {
+							limit = {
+								OR = {
+									rarity = common
+									rarity = masterwork
+								}
+							}
+							set_owner = root
+						}
+					}
+				}
+			}
+		}
+
+		remove_variable = iti_pending_loot
+	}
+}
+# STANDARD SUCCESS
+iti_thug_event.1004 = {
+	type = character_event
+	title = iti_thug_event.1001.t
+	desc = iti_thug_event.1001.desc_success
+	theme = intrigue
+
+	left_portrait = { character = root animation = laugh }
+	right_portrait = { character = scope:iti_thug_messenger animation = hero_flex }
+	lower_left_portrait = { character = scope:iti_thug_victim }
+
+	option = {
+		name = iti_thug_event.1001.a_success
+
+		# The gold transfer remains visible
+		scope:iti_thug_victim = {
+			add_gold = {
+				value = root.var:iti_pending_loot
+				multiply = -1
+			}
+		}
+		
+		add_gold = root.var:iti_pending_loot
+ 
+
+		hidden_effect = {
+			# Tooth Souvenir Logic: 20% chance for toothin
+			random = {
+				chance = 20
+				
+				
+				iti_create_thug_tooth_effect = {
+					CREATOR = scope:iti_thug_victim
+				}
+
+				
+				send_interface_toast = {
+					title = iti_thug_event.1003.toast
+					left_icon = root
+					right_icon = scope:iti_thug_souvenir
+					
+					scope:iti_thug_souvenir = {
+						set_variable = {
+							name = suppress_artifact_notifications
+							value = yes
+							days = 1
+						}
+						set_owner = root
+					}
+				}
+			}
+
+			# Standard Success: 20% chance to steal a Common artifact
+			random = {
+				chance = 20
+				scope:iti_thug_victim = {
+					if = {
+						limit = {
+							any_character_artifact = {
+								rarity = common
+							}
+						}
+						random_character_artifact = {
+							limit = {
+								rarity = common
+							}
+							
+							save_scope_as = iti_stolen_common_artifact
+							
+							# Suppress default notification so it doesn't double-fire with the toast
+							set_variable = {
+								name = suppress_artifact_notifications
+								value = yes
+								days = 1
+							}
+							set_owner = root
+						}
+						
+						# Send the custom toast from the root (player) scope
+						root = {
+							send_interface_toast = {
+								title = iti_thug_event.1004.toast
+								left_icon = root
+								right_icon = scope:iti_stolen_common_artifact
+							}
+						}
+					}
+				}
+			}
+		}
+
+		remove_variable = iti_pending_loot
+	}
+}
+# ============================================================
+# A MEDIEVAL JUMPING.. FOR YOU!
+# ============================================================
+iti_thug_event.2000 = {
+	type = character_event
+	theme = physical_health
+	override_background = alley_day
+	title = iti_thug_event.2000.t
+	desc = iti_thug_event.2000.desc
+	
+	immediate = {
+		# Identify the mastermind's thugs and build a proper list
+		scope:iti_thug_sender = {
+			every_court_position_holder = {
+				type = iti_thug_court_position
+				limit = { is_alive = yes }
+				add_to_list = mastermind_thugs
+			}
+			every_courtier = {
+				limit = { 
+					is_alive = yes 
+					has_character_flag = is_hired_thug
+				}
+				add_to_list = mastermind_thugs
+			}
+		}
+
+		### 1. ASSIGN OR CREATE RECIPIENT (Leader)
+		random_in_list = {
+			list = mastermind_thugs
+			save_scope_as = recipient
+		}
+		if = {
+			limit = { NOT = { exists = scope:recipient } }
+			create_character = {
+				template = iti_tavern_thug_character
+				location = root 
+				save_scope_as = recipient
+			}
+		}
+
+		### 2. ASSIGN OR CREATE THUG LEFT
+		random_in_list = {
+			list = mastermind_thugs
+			limit = { NOT = { this = scope:recipient } }
+			save_scope_as = thug_left
+		}
+		if = {
+			limit = { NOT = { exists = scope:thug_left } }
+			create_character = {
+				template = iti_tavern_thug_character
+				location = root 
+				save_scope_as = thug_left
+			}
+		}
+
+		### 3. ASSIGN OR CREATE THUG RIGHT
+		random_in_list = {
+			list = mastermind_thugs
+			limit = { 
+				NOT = { this = scope:recipient } 
+				NOT = { this = scope:thug_left } 
+			}
+			save_scope_as = thug_right
+		}
+		if = {
+			limit = { NOT = { exists = scope:thug_right } }
+			create_character = {
+				template = iti_tavern_thug_character
+				location = root 
+				save_scope_as = thug_right
+			}
+		}
+	}
+
+	left_portrait = { 
+		character = root 
+		animation = fear 
+	}
+	
+	right_portrait = { 
+		character = scope:recipient 
+		animation = random_weapon_aggressive 
+	}
+
+	lower_left_portrait = {
+		character = scope:thug_left
+	}
+
+	lower_right_portrait = {
+		character = scope:thug_right
+	}
+
+	# OPTION: FIGHT ME
+	option = {
+		name = iti_thug_event.2000.a
+		custom_tooltip = iti_thug_event.2000.a.tt
+
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = root
+			SC_ATTACKER = root
+			SC_DEFENDER = scope:recipient
+			FATALITY = no
+			FIXED = no
+			LOCALE = alley_day
+			OUTPUT_EVENT = iti_thug_event.2001
+			INVALIDATION_EVENT = iti_thug_event.2002
+		}
+	}
+
+	# OPTION: Get jumped by thugs
+	option = {
+		name = iti_thug_event.2000.b
+		custom_tooltip = iti_thug_event.2000.b.tt
+		
+		# Injuries
+		random_list = {
+			75 = { add_trait = wounded_1 }
+			25 = { add_trait = wounded_2 }
+		}
+
+		add_prestige = medium_prestige_loss
+
+		# NEW: Lead to the follow-up event
+		trigger_event = iti_thug_event.2004
+	}
+}
+# ============================================================
+# EVENT 2002: INVALIDATION (Hidden)
+# ============================================================
+iti_thug_event.2002 = {
+	hidden = yes
+	immediate = {
+		single_combat_clean_shirtlessness_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+		}
+	}
+}
+
+iti_thug_event.2001 = {
+	hidden = yes
+	immediate = {
+		single_combat_clean_shirtlessness_effect = {
+			ATTACKER = scope:actor
+			DEFENDER = scope:recipient
+		}
+
+		if = {
+			limit = { scope:sc_victor = root }
+			trigger_event = { id = iti_thug_event.2003 days = 1 }
+		}
+		else = {
+			trigger_event = { id = iti_thug_event.2004 days = 1 }
+		}
+	}
+}
+# PLAYER VICTORIOUS
+iti_thug_event.2003 = {
+	type = character_event
+	title = iti_thug_event.2000.t
+	desc = iti_thug_event.2003.desc
+	theme = physical_health
+	override_background = alley_day
+
+	left_portrait = { character = root animation = inspect_weapon }
+	right_portrait = { character = scope:recipient animation = wailing }
+
+	# OPTION: Mercy
+	option = {
+		name = iti_thug_event.2003.a
+		add_prestige = medium_prestige_value
+	}
+
+	# WHAT DO THE NUMBERS MEAN MASON?
+	option = {
+		name = iti_thug_event.2003.interrogate
+		
+		duel = {
+			skill = prowess
+			target = scope:recipient
+
+			# They tell you what the numbers mean
+			70 = {
+				desc = iti_thug_event.2003.duel.success
+				compare_modifier = { value = scope:duel_value multiplier = 2 }
+				scope:recipient = {
+					random_list = {
+						60 = { 
+							desc = iti_thug_event.2003.wound_light
+							add_trait = wounded_1 
+						}
+						40 = { 
+							desc = iti_thug_event.2003.wound_heavy
+							add_trait = wounded_2 
+						}
+					}
+				}
+				trigger_event = { id = iti_thug_event.2005 }
+			}
+			# They dont know what numbers are anymore
+			30 = {
+				desc = iti_thug_event.2003.duel.failure
+				compare_modifier = { value = scope:duel_value multiplier = 0.5 }
+				scope:recipient = {
+					random_list = {
+						20 = { 
+							desc = iti_thug_event.2003.wound_light
+							add_trait = wounded_1 
+						}
+						80 = { 
+							desc = iti_thug_event.2003.wound_heavy
+							add_trait = wounded_2 
+						}
+					}
+				}
+				trigger_event = { id = iti_thug_event.2006 }
+			}
+		}
+	}
+}
+
+# PLAYER DEFEATED
+iti_thug_event.2004 = {
+	type = character_event
+	title = iti_thug_event.2000.t
+	theme = physical_health
+	desc = iti_thug_event.2004.desc
+	override_background = alley_night
+	
+	left_portrait = { 
+		character = root 
+		animation = pain 
+	}
+	
+	option = {
+		name = iti_thug_event.2004.a
+		
+		# Apply the wound
+		add_trait = wounded_1
+
+		# Lose Gold Logic
+		if = {
+			limit = { gold >= minor_gold_value }
+			# Player loses a minor amount of gold
+			add_gold = {
+				value = minor_gold_value
+				multiply = -1
+			}
+			# The mastermind who sent the thugs gets the gold
+			scope:iti_thug_sender = {
+				add_gold = minor_gold_value
+			}
+		}
+		else = {
+			# If the player is broke, the mastermind takes whatever is left
+			scope:iti_thug_sender = {
+				add_gold = root.gold
+			}
+			remove_long_term_gold = { value = gold }
+		}
+		
+		
+		
+	}
+}
+
+# ============================================================
+# THE REVEAL: INTERROGATION SUCCESS
+# ============================================================
+iti_thug_event.2005 = {
+	type = character_event
+	title = iti_thug_event.2005.t
+	desc = iti_thug_event.2005.desc
+	theme = physical_health
+
+	immediate = {
+		# FIND THE MASTERMIND
+		# Fallback 1: Nemesis or Rival with Thugs
+		if = {
+			limit = {
+				NOT = { exists = scope:iti_thug_sender }
+			}
+			random_ruler = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					in_diplomatic_range = root
+					has_court_position = iti_thug_court_position
+					OR = {
+						has_relation_nemesis = root
+						has_relation_rival = root
+					}
+				}
+				save_scope_as = iti_thug_sender
+			}
+		}
+
+		# Fallback 2: Rank same as player or higher with Thugs
+		if = {
+			limit = {
+				NOT = { exists = scope:iti_thug_sender }
+			}
+			random_ruler = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					in_diplomatic_range = root
+					NOT = { this = root }
+					has_court_position = iti_thug_court_position
+					opinion = { target = root value <= -30 }
+					highest_held_title_tier >= root.highest_held_title_tier
+				}
+				save_scope_as = iti_thug_sender
+			}
+		}
+
+		# Fallback 3: Any ruler with -30 opinion and Thugs
+		if = {
+			limit = {
+				NOT = { exists = scope:iti_thug_sender }
+			}
+			random_ruler = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					in_diplomatic_range = root
+					NOT = { this = root }
+					has_court_position = iti_thug_court_position
+					opinion = { target = root value <= -30 }
+				}
+				save_scope_as = iti_thug_sender
+			}
+		}
+
+		
+		if = {
+			limit = { exists = scope:iti_thug_sender }
+			every_scheme = {
+				limit = {
+					scheme_type = thuggery
+					scheme_owner = scope:iti_thug_sender
+					scheme_target_character = root
+				}
+				end_scheme = yes
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = threatening
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = crying
+	}
+
+	lower_center_portrait = {
+		character = scope:iti_thug_sender
+	}
+
+	option = {
+		name = iti_thug_event.2005.a
+		set_relation_rival = scope:iti_thug_sender
+		add_opinion = {
+			target = scope:iti_thug_sender
+			modifier = attempted_medieval_jumping_opinion
+		}
+		scope:recipient = {
+			death = { death_reason = death_execution killer = root }
+		}
+	}
+
+	option = {
+		name = iti_thug_event.2005.b
+		add_prestige = medium_prestige_gain
+		add_piety = major_piety_gain
+		set_relation_rival = scope:iti_thug_sender
+		add_opinion = {
+			target = scope:iti_thug_sender
+			modifier = attempted_medieval_jumping_opinion
+		}
+	}
+}
+
+# ============================================================
+# INTERROGATION FAIL
+# ============================================================
+iti_thug_event.2006 = {
+	type = character_event
+	title = iti_thug_event.2006.t
+	desc = iti_thug_event.2006.desc
+	theme = physical_health
+
+	left_portrait = { 
+		character = root 
+		animation = threatening 
+	}
+	
+	
+	right_portrait = { 
+		character = scope:recipient 
+		animation = severelywounded 
+	}
+
+	option = {
+		name = iti_thug_event.2006.a 
+		
+		stress_impact = {
+			base = minor_stress_impact_gain
+			paranoid = medium_stress_impact_gain
+			wrathful = medium_stress_impact_gain
+		}
+
+		# Clean up the thug since they didn't talk
+		scope:recipient = {
+			death = { death_reason = death_execution }
+		}
+	} 
+} 

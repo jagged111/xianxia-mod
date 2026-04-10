@@ -1,0 +1,139 @@
+﻿iti_tavern_thug_character = {
+	age = { 20 45 }
+	gender = male
+	dynasty = none
+	faith = root.faith
+	culture = root.culture
+	random_traits = no
+	intrigue = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+	prowess = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+	random_traits_list = {
+		count = 1
+		education_intrigue_3 = {}
+		education_intrigue_4 = {}
+		education_martial_1 = {}
+		education_martial_2 = {}
+	}
+	
+	# Personality 
+	random_traits_list = {
+		count = 4
+		callous = {}
+		sadistic = {}
+		wrathful = {}
+		brave = {}
+		deceitful = {}
+		greedy = {}
+		vengeful = {}
+		arrogant = {}
+		cynical = {}
+		impatient = {}
+		lustful = {}
+		gluttonous = {}
+		lazy = {}
+		craven = {}
+		shy = {}
+		ambitious = {}
+		arbitrary = {}
+		paranoid = {}
+		stubborn = {}
+	}
+
+	# Physique / Genetics 
+	random_traits_list = {
+		count = 1
+		giant = {}
+		strong = {}
+		scaly = {}
+		fecund = {}
+		albino = {}
+		lisping = {}
+		stuttering = {}
+		pure_blooded = {}
+		clubfooted = {}
+		dwarf = {}
+		hunchbacked = {}
+		infertile = {}
+		wheezing = {}
+		spindly = {}
+		bleeder = {}
+		beauty_bad_1 = {}
+		beauty_bad_2 = {}
+		beauty_bad_3 = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		beauty_good_3 = {}
+		physique_bad_1 = {}
+		physique_bad_2 = {}
+		physique_bad_3 = {}
+		physique_good_1 = {}
+	}
+
+	# Mental Health / Intellect 
+	random_traits_list = {
+		count = 1
+		depressed_1 = {}
+		depressed_genetic = {}
+		lunatic_1 = {}
+		lunatic_genetic = {}
+		possessed_1 = {}
+		possessed_genetic = {}
+		intellect_bad_1 = {}
+		intellect_bad_2 = {}
+		intellect_bad_3 = {}
+		intellect_good_1 = {}
+	}
+
+	# Crimes / Vices / Dark Secrets 
+	random_traits_list = {
+		count = 1
+		gallowsbait = {}
+		drunkard = {}
+		adulterer = {}
+		fornicator = {}
+		deviant = {}
+		murderer = {}
+		kinslayer_1 = {}
+		kinslayer_2 = {}
+		kinslayer_3 = {}
+		incestuous = {}
+		sodomite = {}
+		witch = {}
+		cannibal = {}
+		excommunicated = {}
+		comfort_eater = {}
+		contrite = {}
+		flagellant = {}
+		hashishiyah = {}
+		inappetetic = {}
+		irritable = {}
+		profligate = {}
+		rakish = {}
+		reclusive = {}
+	}
+
+	# History / Lifestyle / Life Events 
+	random_traits_list = {
+		count = 1
+		one_eyed = {}
+		scarred = {}
+		disfigured = {}
+		hunter = {}
+		athletic = {}
+		burdened = {}
+		bastard = {}
+		wild_oat = {}
+		peasant_leader = {}
+		adventurer = {}
+		adventurer_follower = {}
+		populist_leader = {}
+		loyal = {}
+		disloyal = {}
+	}
+}

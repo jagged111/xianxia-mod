@@ -1,0 +1,102 @@
+﻿```yml
+l_korean:
+ ### war related
+ esr_declared_war_on_family:0 "[family_member|E]에게 전쟁을 선포함"
+ esr_declared_war_on_close_family:0 "[close_family_member|E]에게 전쟁을 선포함"
+ esr_joined_war_on_family:0 "[family_member|E]을 상대로 한 전쟁에 참전함"
+ esr_joined_war_on_me:0 "나를 상대로 한 전쟁에 참전함"
+ esr_declared_war_on_friend:0 "[friend|E]에게 전쟁을 선포함"
+ esr_declared_war_on_best_friend:0 "[best_friend|E]에게 전쟁을 선포함"
+ esr_declared_war_on_lover:0 "[lover|E]에게 전쟁을 선포함"
+ esr_declared_war_on_soulmate:0 "[soulmate|E]에게 전쟁을 선포함"
+ esr_declared_war_on_rival:0 "[rival|E]에게 전쟁을 선포함"
+ esr_declared_war_on_nemesis:0 "[nemesis|E]에게 전쟁을 선포함"
+
+ ### relation related
+ esr_common_friend:0 "공통된 [friend|E]가 있음"
+ esr_rival_friend:0 "당신은 내 [rival|E]의 [friend|E]임"
+ esr_nemesis_friend:0 "당신은 내 [nemesis|E]의 [friend|E]임"
+ esr_rival_best_friend:0 "당신은 내 [rival|E]의 [best_friend|E]임"
+ esr_nemesis_best_friend:0 "당신은 내 [nemesis|E]의 [best_friend|E]임"
+ esr_common_rival:0 "공통된 [rival|E]가 있음"
+ esr_friend_rival:0 "당신은 내 [friend|E]의 [rival|E]임"
+ esr_best_friend_rival:0 "당신은 내 [best_friend|E]의 [rival|E]임"
+ esr_friend_nemesis:0 "당신은 내 [friend|E]의 [nemesis|E]임"
+ esr_best_friend_nemesis:0 "당신은 내 [best_friend|E]의 [nemesis|E]임"
+
+ ### Murder / Execution related
+ esr_murdered_best_friend:0 "[best_friend|E]을 처형함"
+ esr_murdered_soulmate:0 "[soulmate|E]을 처형함"
+ esr_murdered_rival:0 "[rival|E]을 처형함"
+ esr_murdered_nemesis:0 "[nemesis|E]을 처형함"
+ esr_murdered_extended_family:0 "[extended_family_members|E]을 처형함"
+ esr_hate_by_association_murder:0 "살인자의 가문"
+
+ ### Attempted Murder related modifiers
+ esr_attempted_murder_extended_family:0 "[extended_family_members|E] 살해를 시도함"
+ esr_attempted_murder_close_relation_opinion:0 "가까운 관계 인물 살해 시도"
+ esr_attempted_murder_best_friend:0 "[best_friend|E] 살해를 시도함"
+ esr_attempted_murder_soulmate:0 "[soulmate|E] 살해를 시도함"
+ esr_attempted_murder_rival:0 "[rival|E] 살해를 시도함"
+ esr_attempted_murder_nemesis:0 "[nemesis|E] 살해를 시도함"
+
+ ### Execution modifiers
+ esr_hate_by_association_execution:0 "처형자의 가문"
+
+ ### Imprison modifiers
+ esr_imprisoned_close_family:0 "[close_family_member|E]을 투옥함"
+ esr_imprisoned_extended_family:0 "[extended_family_members|E]을 투옥함"
+ esr_imprisoned_close_relation_opinion:0 "가까운 관계 인물을 투옥함"
+ esr_imprisoned_rival:0 "내 [rival|E]을 투옥함"
+ esr_imprisoned_best_friend:0 "내 [best_friend|E]을 투옥함"
+ esr_imprisoned_soulmate:0 "내 [soulmate|E]을 투옥함"
+ esr_imprisoned_nemesis:0 "내 [nemesis|E]을 투옥함"
+ esr_threw_family_in_dungeon:0 "[family_member|E]을 지하 감옥에 가둠"
+ esr_threw_close_relation_in_dungeon:0 "가까운 관계 인물을 지하 감옥에 가둠"
+ esr_threw_very_close_in_dungeon:0 "[best_friend|E] 또는 [soulmate|E]을 지하 감옥에 가둠"
+ esr_threw_nemesis_in_dungeon:0 "[nemesis|E]을 지하 감옥에 가둠"
+ esr_move_family_to_house_arrest:0 "[family_member|E]을 가택 연금으로 전환함"
+ esr_move_close_relation_to_house_arrest:0 "가까운 관계 인물을 가택 연금으로 전환함"
+ esr_move_very_close_to_house_arrest:0 "[best_friend|E] 또는 [soulmate|E]을 가택 연금으로 전환함"
+ esr_move_nemesis_to_house_arrest:0 "[nemesis|E]을 가택 연금으로 전환함"
+
+ ### Revoke title modifiers
+ esr_revoked_close_family:0 "[close_family_member|E]의 작위를 박탈함"
+ esr_revoked_extended_family:0 "[extended_family_members|E]의 작위를 박탈함"
+ esr_revoked_close_relation_opinion:0 "가까운 관계 인물의 작위를 박탈함"
+ esr_revoked_best_friend:0 "[best_friend|E]의 작위를 박탈함"
+ esr_revoked_soulmate:0 "[soulmate|E]의 작위를 박탈함"
+ esr_revoked_rival:0 "[rival|E]의 작위를 박탈함"
+ esr_revoked_nemesis:0 "[nemesis|E]의 작위를 박탈함"
+
+ ### Retracted vassal modifiers
+ esr_retracted_close_family:0 "[close_family_member|E]의 [vassal|E]을 회수함"
+ esr_retracted_extended_family:0 "[extended_family_members|E]의 [vassal|E]을 회수함"
+ esr_retracted_close_relation_opinion:0 "가까운 관계 인물의 [vassal|E]을 회수함"
+ esr_retracted_best_friend:0 "[best_friend|E]의 [vassal|E]을 회수함"
+ esr_retracted_soulmate:0 "[soulmate|E]의 [vassal|E]을 회수함"
+ esr_retracted_rival:0 "[rival|E]의 [vassal|E]을 회수함"
+ esr_retracted_nemesis:0 "[nemesis|E]의 [vassal|E]을 회수함"
+
+ ### Grant title / [vassal|E] modifiers
+ esr_grant_family_barony:0 "[close_family_member|E]에게 남작령을 수여함"
+ esr_grant_family_county:0 "[close_family_member|E]에게 백작령을 수여함"
+ esr_grant_family_duchy:0 "[close_family_member|E]에게 공작령을 수여함"
+ esr_grant_family_kingdom:0 "[close_family_member|E]에게 왕국을 수여함"
+ esr_grant_family_empire:0 "[close_family_member|E]에게 제국을 수여함"
+ esr_grant_family_vassal:0 "[close_family_member|E]에게 [vassal|E] 지위를 부여함"
+ esr_grant_close_relation_opinion:0 "가까운 관계 인물에게 작위 또는 [vassal|E]을 부여함"
+ esr_grant_best_friend:0 "[best_friend|E]에게 작위 또는 [vassal|E]을 부여함"
+ esr_grant_soulmate:0 "[soulmate|E]에게 작위 또는 [vassal|E]을 부여함"
+ esr_grant_rival:0 "[rival|E]에게 작위 또는 [vassal|E]을 부여함"
+ esr_grant_nemesis:0 "[nemesis|E]에게 작위 또는 [vassal|E]을 부여함"
+
+ ### Grant Independance
+ esr_grant_independence_family:0 "[close_family_member|E]에게 독립을 부여함"
+
+ ### Family friend
+ esr_family_friend:0 "[family_friend|E]"
+
+ ### Threat
+ esr_threatened_by_war_declared:0 "침략으로 인한 위협"
+```

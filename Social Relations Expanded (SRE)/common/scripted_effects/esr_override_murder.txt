@@ -1,0 +1,957 @@
+﻿# Apply scope:owner's general ending & consequences.
+scheme_owner_pov_murder_success_effect = {
+	# Murdering your rival gets you some bonus cred.
+	## Presumably in how you comport yourself & who's a thorn in your side.
+	if = {
+		limit = {
+			scope:owner = { has_relation_rival = scope:target }
+		}
+		custom_tooltip = {
+			text = murder_outcome_murdered_rival_tt
+			add_prestige = medium_prestige_gain
+		}
+	}
+	# Dread for successfully murdering someone and getting discovered.
+	if = {
+		limit = { exists = scope:scheme_discovered }
+		murder_consequences_known_or_exposed_apply_dread_effect = { VICTIM = scope:target }
+	}
+	# Piety, if appropriate.
+	if = {
+		limit = {
+			faith = { has_doctrine_parameter = piety_gain_from_successful_intrigue_schemes }
+		}
+		add_piety = minor_piety_gain
+	}
+	# Stress.
+	## Murdered a rival.
+	if = {
+		limit = {
+			scope:owner = { has_relation_rival = scope:target }
+		}
+		stress_impact = {
+			base = murder_base_stress_value
+			vengeful = massive_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+			callous = miniscule_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			forgiving = major_stress_impact_gain
+		}
+	}
+	## Murdered someone helpless.
+	else_if = {
+		limit = {
+			scope:target = {
+				OR = {
+					is_adult = no
+					is_incapable = yes
+				}
+			}
+		}
+		stress_impact = {
+			base = murder_base_stress_value
+			sadistic = major_stress_impact_loss
+			callous = minor_stress_impact_loss
+			compassionate = major_stress_impact_gain
+		}
+	}
+	## Murdered anyone else.
+	else = {
+		stress_impact = {
+			base = murder_base_stress_value
+			sadistic = minor_stress_impact_loss
+			callous = miniscule_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+		}
+	}
+	# Aaaaand show our other consequences.
+	show_as_tooltip = {
+		murder_success_kill_effect = { REASON = $REASON$ }
+	}
+
+	###esr
+	# The esr_story_cycle_relation_of_the_murdered holds relations for the soon dead scheme target/victum in case the murder secret is exposed
+	scope:owner={
+		create_story = {
+			type = esr_story_cycle_relation_of_the_murdered
+			save_scope_as = esr_murder_story
+		}
+	}
+
+	# was in on_setup block of the story cycle. Taken out because error log spam (failed to create story)
+	scope:esr_murder_story = {
+		set_variable = {
+			name = relation_count
+			value = 0
+		}
+
+		set_variable = {
+			name = murdered_character
+			value = scope:target
+		}
+
+		scope:target = {
+			every_relation = {
+				type = friend
+				limit = {NOT = {this = scope:owner}}
+	
+				if = {
+					limit = {NOT = {has_relation_best_friend = scope:target}}
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_friends # prev is the firned of the victim (murdered); the same goes for all the following every_relation blocks
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}								
+					}
+
+				}
+	
+				else = {
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_best_friends
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+			}
+	
+			every_relation = {
+				type = rival
+				limit = {NOT = {this = scope:owner}}
+	
+				if = {
+					limit = {NOT = {has_relation_nemesis = scope:target}}
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_rivals
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+	
+				else = {
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_nemeses
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+			}
+			
+			every_relation = {
+				type = lover
+				limit = {NOT = {this = scope:owner}}
+	
+				if = {
+					limit = {NOT = {has_relation_soulmate = scope:target}}
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_lovers
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+	
+				else = {
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_soulmates
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+	
+			}					
+		}
+
+		if = { # end story cycle if the victim has no relation (probably should move this to the top for better performance? and var:relation_count can be replaced by has_relation_<> triggers)
+			limit = {
+				var:relation_count = 0
+			}
+			end_story = yes
+		}
+	}
+	###esr/
+}
+
+# Obsolete: Repalced by scheme_owner_pov_murder_success_effect
+murder_success_effect = {
+	play_music_cue = mx_cue_murder
+	# Achievement Score Keeping
+	hidden_effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				scope:scheme.scheme_owner = { 
+					is_ai = no 
+					faith = {
+						has_doctrine = tenet_fp3_fedayeen
+					}
+				}
+			}
+			if = {
+				limit = { scope:target = { highest_held_title_tier = tier_empire } }
+				scope:scheme.scheme_owner = { add_character_flag = fp3_assassinated_tier3 }
+			}
+			else_if = {
+				limit = { scope:target = { highest_held_title_tier = tier_kingdom } }
+				scope:scheme.scheme_owner = { add_character_flag = fp3_assassinated_tier2 }
+			}
+			else_if = {
+				limit = { scope:target = { is_lowborn  = yes } }
+				scope:scheme.scheme_owner = { add_character_flag = fp3_assassinated_tier1 }
+			}
+		}
+	}
+	
+	#Check if it is a Rival being murdered
+	if = {
+		limit = {
+			scope:scheme.scheme_owner = {
+				has_relation_rival = scope:scheme.scheme_target
+			}
+		}
+		save_scope_value_as = {
+			name = murdered_rival
+			value = yes
+		}
+	}
+	#End of Rival check
+
+	###esr
+	# The esr_story_cycle_relation_of_the_murdered holds relations for the soon dead scheme target/victum in case the murder secret is exposed
+	scope:scheme.scheme_owner={
+		create_story = {
+			type = esr_story_cycle_relation_of_the_murdered
+			save_scope_as = esr_murder_story
+		}
+	}
+
+	# was in on_setup block of the story cycle. Taken out because error log spam (failed to create story)
+	scope:esr_murder_story = {
+		set_variable = {
+			name = relation_count
+			value = 0
+		}
+
+		set_variable = {
+			name = murdered_character
+			value = scope:scheme.scheme_target
+		}
+
+		scope:scheme.scheme_target = {
+			every_relation = {
+				type = friend
+				limit = {NOT = {this = scope:scheme.scheme_owner}}
+	
+				if = {
+					limit = {NOT = {has_relation_best_friend = scope:scheme.scheme_target}}
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_friends # prev is the firned of the victim (murdered); the same goes for all the following every_relation blocks
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}								
+					}
+
+				}
+	
+				else = {
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_best_friends
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+			}
+	
+			every_relation = {
+				type = rival
+				limit = {NOT = {this = scope:scheme.scheme_owner}}
+	
+				if = {
+					limit = {NOT = {has_relation_nemesis = scope:scheme.scheme_target}}
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_rivals
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+	
+				else = {
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_nemeses
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+			}
+			
+			every_relation = {
+				type = lover
+				limit = {NOT = {this = scope:scheme.scheme_owner}}
+	
+				if = {
+					limit = {NOT = {has_relation_soulmate = scope:scheme.scheme_target}}
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_lovers
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+	
+				else = {
+					scope:esr_murder_story = {
+						add_to_variable_list = {
+							name = esr_murdered_soulmates
+							target = prev
+						}
+						change_variable = {
+							name = relation_count
+							add = 1
+						}
+					}
+				}
+	
+			}					
+		}
+
+		if = { # end story cycle if the victim has no relation (probably should move this to the top for better performance? and var:relation_count can be replaced by has_relation_<> triggers)
+			limit = {
+				var:relation_count = 0
+			}
+			end_story = yes
+		}
+	}
+	###esr/
+
+	scope:scheme.scheme_target = {
+		trigger_event = murder_outcome.5001
+	}
+
+	show_as_tooltip = {
+		murder_success_kill_effect = yes
+	}
+
+	#Stress reduction
+	if = {
+		limit = {
+			scope:scheme.scheme_owner = {
+				has_trait = sadistic
+			}
+		}
+		scope:scheme.scheme_owner = {
+			stress_impact = {
+				sadistic = minor_stress_impact_loss
+			}
+		}
+	}
+	# If the murder was completed as part of the imaginary friend story cycle, we give them a break on stress
+	if = {
+		limit = {
+			scope:scheme.scheme_owner.var:imaginary_friend_murder_target ?= scope:scheme.scheme_target
+		}
+		scope:scheme.scheme_owner = {
+			stress_impact = {
+				base = major_stress_impact_loss
+			}
+		}
+	}	
+	if = {
+		limit = {
+			exists = scope:murdered_rival
+		}
+		if = {
+			limit = {
+				scope:scheme.scheme_owner = {
+					has_trait = vengeful
+				}
+			}
+			scope:scheme.scheme_owner = {
+				stress_impact = {
+					vengeful = massive_stress_impact_loss
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:scheme.scheme_owner = {
+					has_trait = forgiving
+				}
+			}
+			scope:scheme.scheme_owner = {
+				stress_impact = {
+					base = medium_stress_impact_loss
+					forgiving = minor_stress_impact_gain
+				}
+			}
+		}
+		else = {
+			scope:scheme.scheme_owner = {
+				add_stress = major_stress_loss
+			}
+		}
+	}
+	scope:scheme = {
+		end_scheme = yes
+	}
+}
+
+murder_opinion_effect = { # triggered when a murder secret is discovered after a successful murder
+	$VICTIM$ = {
+		#Victim's family
+		###esr
+		save_scope_as = esr_victim
+		###esr/
+		every_spouse = {
+			limit = { NOT = { this = $MURDERER$ } }
+			add_to_temporary_list = close_family_murder_opinion_list
+			###esr
+			add_to_temporary_list = esr_spouse_murder_opinion_list
+			###esr/
+		}
+		
+		###esr
+		#every_close_family_member = {
+		every_close_or_extended_family_member ={
+			limit = { NOT = { this = $MURDERER$ } }
+			add_to_temporary_list = close_family_murder_opinion_list
+			###Note close_family_murder_opinion_list stores both close and extened family in esr
+		}
+		###esr/
+
+		if = {
+			limit = {
+				any_in_list = {
+					list = close_family_murder_opinion_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = close_family_murder_opinion_list
+
+				###esr
+				custom = all_close_family_and_spouses
+				#custom = all_family_members
+				#add_opinion = {
+					#target = $MURDERER$
+					#modifier = murdered_close_family_crime
+				#}
+
+				if = {
+					limit = {
+						OR = {
+							is_close_family_of = $VICTIM$
+							is_in_list = esr_spouse_murder_opinion_list
+						}
+					}
+
+					save_scope_as = esr_victim_close_family_member
+
+					add_opinion = {
+						target = $MURDERER$
+						modifier = murdered_close_family_crime
+					}
+					
+					###Hate by association ( Victim's close family memebers lose opinion of Murder's close family members )
+					# Can be replaced by esr_hate_by_association = {HATED= VICTIM= VICTIM_ASSOCIATE= MODIFIER= }
+					hidden_effect = {
+						$MURDERER$ = {
+
+							every_spouse = {
+								limit = { NOT = { this = $VICTIM$ } }
+								add_to_temporary_list = esr_murder_close_family_list
+							}
+							
+							every_close_family_member = {
+								limit = { NOT = { this = $VICTIM$ } }
+								add_to_temporary_list = esr_murder_close_family_list
+							}
+	
+							every_in_list = {
+								list = esr_murder_close_family_list
+								save_scope_as = esr_murder_close_family_member
+								scope:esr_victim_close_family_member = {
+									if = {
+										limit = {
+											NOR = {
+												this = scope:esr_murder_close_family_member
+												has_trait = forgiving
+											}
+										}
+										add_opinion = {
+											target = scope:esr_murder_close_family_member
+											modifier = esr_hate_by_association_murder
+										}	
+									}				
+								}
+							}
+						}
+					}
+					###Hate by association/
+				}
+
+				else = {
+					add_opinion = {
+						target = $MURDERER$
+						modifier = esr_murdered_extended_family
+					}		
+				}
+				###esr/
+			}
+		}
+	}
+
+	#Victim's friends and lovers
+	###esr
+	#every_relation doesn't work for dead characters so a story cycle is used
+	$MURDERER$ = {
+		random_owned_story = {
+			limit = {
+				story_type = esr_story_cycle_relation_of_the_murdered
+				exists = var:murdered_character
+				var:murdered_character = $VICTIM$
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_variable_list = esr_murdered_friends
+						has_variable_list = esr_murdered_lovers
+					}
+				}
+
+				if = {
+					limit = {
+						has_variable_list = esr_murdered_friends
+					}
+					every_in_list = {
+						variable = esr_murdered_friends
+						limit = {is_alive = yes}
+						add_to_temporary_list = close_relation_murder_opinion_list
+					}
+				}
+
+				if = {
+					limit = {
+						has_variable_list = esr_murdered_lovers
+					}
+					every_in_list = {
+						variable = esr_murdered_lovers
+						limit = {is_alive = yes}
+						add_to_temporary_list = close_relation_murder_opinion_list
+					}
+				}
+
+				every_in_list = {
+					list = close_relation_murder_opinion_list
+					custom = esr_all_friends_and_lovers
+					add_opinion = {
+						target = $MURDERER$
+						modifier = executed_close_relation_opinion
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_variable_list = esr_murdered_best_friends
+				}
+	
+				every_in_list = {
+					variable = esr_murdered_best_friends
+					limit = {is_alive = yes}
+					add_opinion = {
+						target = $MURDERER$
+						modifier = esr_murdered_best_friend 
+					}
+				}
+	
+			}
+
+			if = {
+				limit = {
+					has_variable_list = esr_murdered_rivals
+				}
+
+				every_in_list = {
+					variable = esr_murdered_rivals
+					limit = {is_alive = yes}
+					custom = esr_rivals
+					add_opinion = {
+						target = $MURDERER$
+						modifier = esr_murdered_rival
+					}
+				}
+	
+			}
+
+			if = {
+				limit = {
+					has_variable_list = esr_murdered_nemeses
+				}
+	
+				every_in_list = {
+					variable = esr_murdered_nemeses
+					limit = {is_alive = yes}
+					add_opinion = {
+						target = $MURDERER$
+						modifier = esr_murdered_nemesis
+					}
+				}
+	
+			}
+
+			if = {
+				limit = {
+					has_variable_list = esr_murdered_lovers
+				}
+	
+				every_in_list = {
+					variable = esr_murdered_lovers
+					limit = {is_alive = yes}
+					add_opinion = {
+						target = $MURDERER$
+						modifier = executed_close_relation_opinion
+					}
+				}
+	
+			}
+
+			if = {
+				limit = {
+					has_variable_list = esr_murdered_soulmates
+				}
+	
+				every_in_list = {
+					variable = esr_murdered_soulmates
+					limit = {is_alive = yes}
+					add_opinion = {
+						target = $MURDERER$
+						modifier = esr_murdered_soulmate
+					}
+				}
+	
+			}
+		}
+	}
+
+}
+
+attempted_murder_opinion_effect = {
+	$VICTIM$ = {
+		###esr
+		save_scope_as = esr_victim
+		###esr/		
+		if = {
+			limit = { is_alive = yes }
+			add_opinion = {
+				target = $MURDERER$
+				modifier = attempted_murder_me_crime
+			}
+			hidden_effect = {
+				add_opinion = {
+					target = $MURDERER$
+					modifier = murder_personal_grudge_opinion
+					years = 2
+				}
+			}
+			### esr
+			### A chance for the surviver to grow closer to forming a rivalry with the schemer
+			if = {
+				limit = { can_set_relation_rival_if_adult_trigger = { CHARACTER = $MURDERER$ } }
+				random = {
+					chance = 50
+					modifier = {
+						factor = 0.5
+						$VICTIM$ = { ai_vengefulness <= medium_negative_vengefulness }
+					}
+					modifier = {
+						factor = 1.4
+						$VICTIM$ = { ai_vengefulness >= medium_positive_vengefulness }
+					}
+					modifier = {
+						factor = 1.4
+						$VICTIM$ = { ai_vengefulness >= high_positive_vengefulness }
+					}
+					progress_towards_rival_effect = {
+						REASON = esr_rival_attempted_murder_vengeful
+						CHARACTER = $MURDERER$
+						OPINION = 0
+					}
+				}
+			}
+
+			### A chance for the surviving rival to become schemer's nemesis
+			if = {
+				limit = {
+					can_set_relation_nemesis_trigger = { CHARACTER = $MURDERER$ }
+					ai_vengefulness >= low_positive_vengefulness
+				}
+				set_relation_nemesis = {
+					target = $MURDERER$
+					reason = esr_rival_attempted_murder_vengeful
+				}
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_relation_friend = $MURDERER$
+						has_relation_lover = $MURDERER$
+					}
+				}
+				add_opinion = {
+					target = $MURDERER$
+					modifier = betrayed_me_opinion
+					opinion = -60
+				}
+			}
+	
+			if = {
+				limit = {
+					OR = {
+						has_relation_best_friend = $MURDERER$
+						has_relation_soulmate = $MURDERER$
+					}
+				}
+				add_opinion = {
+					target = $MURDERER$
+					modifier = betrayed_me_opinion
+					opinion = -120
+				}
+			}
+			### esr/
+		}
+
+		every_spouse = {
+			limit = { NOT = { this = $MURDERER$ } }
+			add_to_temporary_list = close_family_murder_opinion_list
+			###esr
+			add_to_temporary_list = esr_spouse_murder_opinion_list
+			###esr/			
+		}
+		###esr
+		#every_close_family_member = {
+		every_close_or_extended_family_member ={
+			limit = { NOT = { this = $MURDERER$ } }
+			add_to_temporary_list = close_family_murder_opinion_list
+			###Note close_family_murder_opinion_list stores both close and extened family in esr
+		}
+		###esr/
+
+		if = {
+			limit = {
+				any_in_list = {
+					list = close_family_murder_opinion_list
+					count >= 1
+					NOT = {
+						is_scheming_against = {
+							target = $VICTIM$
+							type = murder
+						}
+					}
+				}
+			}
+			every_in_list = {
+				list = close_family_murder_opinion_list
+				limit = {
+					NOT = {
+						is_scheming_against = {
+							target = $VICTIM$
+							type = murder
+						}
+					}
+				}
+
+				###esr
+				#custom = all_close_family_and_spouses
+				custom = all_family_members
+
+				#add_opinion = {
+					#target = $MURDERER$
+					#modifier = murdered_close_family_crime
+				#}
+
+				if = {
+					limit = {
+						OR = {
+							is_close_family_of = $VICTIM$
+							is_in_list = esr_spouse_murder_opinion_list
+						}
+					}
+					add_opinion = {
+						target = $MURDERER$
+						modifier = attempted_murder_close_family_crime
+					}					
+				}
+
+				else = {
+					add_opinion = {
+						target = $MURDERER$
+						modifier = esr_attempted_murder_extended_family
+					}		
+				}
+				###esr/
+			}
+		}
+
+		###esr
+		#Victim's friends and lovers
+		every_relation = {
+			type = friend
+			limit = {
+				NOR = {
+					this = $VICTIM$
+					###esr
+					this = $MURDERER$
+					has_relation_best_friend = $VICTIM$
+					#is_in_list = close_family_murder_opinion_list
+					###esr/					
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		every_relation = {
+			type = lover
+			limit = {
+				NOR = {
+					this = $VICTIM$
+					###esr
+					this = $MURDERER$
+					has_relation_soulmate = $VICTIM$					
+					#is_in_list = close_family_murder_opinion_list
+					###esr/
+					is_in_list = victim_close_relations_list
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = victim_close_relations_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = victim_close_relations_list
+				custom = all_friends_and_lovers
+				add_opinion = {
+					target = $MURDERER$
+					modifier = esr_attempted_murder_close_relation_opinion
+				}
+			}
+		}
+
+		###esr
+		#Victim's best friend and soulmate
+		every_relation = {
+			type = best_friend
+			limit = { NOT = {this = $MURDERER$}}
+			add_opinion = {
+				target = $MURDERER$
+				modifier = esr_attempted_murder_best_friend
+			}
+		}
+
+		every_relation = {
+			type = soulmate
+			limit = { NOT = {this = $MURDERER$}}
+			add_opinion = {
+				target = $MURDERER$
+				modifier = esr_attempted_murder_soulmate
+			}
+		}
+
+		#Victim's rivals and nemesis
+		every_relation = {
+			type = rival
+			limit = {
+				NOR = {
+					this = $MURDERER$
+					has_relation_nemesis = $VICTIM$
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+					has_trait = honest
+					has_trait = trusting
+				}
+			}
+			custom = esr_rivals_attempted
+			add_opinion = {
+				target = $MURDERER$
+				modifier = esr_attempted_murder_rival
+			}
+		}
+
+		every_relation = {
+			type = nemesis
+
+			limit = {
+				NOR = {
+					this = $MURDERER$
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			add_opinion = {
+				target = $MURDERER$
+				modifier = esr_attempted_murder_nemesis
+			}
+		}
+		###esr/
+		###esr/	
+
+	}
+}

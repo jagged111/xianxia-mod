@@ -1,0 +1,6 @@
+﻿l_korean:
+  esr_rivals:0 "[victim.GetShortUIName]의 모든 [rivals|E]"
+  esr_all_friends_and_lovers:0 "[victim.GetShortUIName]의 모든 [friends|E] 및 [lovers|E]"
+  esr_rivals_attempted:0 "[target.GetShortUIName]의 모든 [rivals|E]"
+  esr_rivals_execution:0 "[THIS.GetCharacter.GetShortUIName]의 모든 [rivals|E]"
+  esr_extended_family_members:0 "[THIS.GetCharacter.GetShortUIName]의 모든 [extended_family|E]"

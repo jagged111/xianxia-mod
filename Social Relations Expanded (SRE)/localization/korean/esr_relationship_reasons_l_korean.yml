@@ -1,0 +1,15 @@
+﻿l_korean:
+ esr_rival_declared_war_vengeful:0 "[TARGET_CHARACTER.GetShortUIName|U]는 [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신의', TARGET_CHARACTER.GetHerHis )] 경쟁자 [CHARACTER.GetShortUIName|U]에게 전쟁을 선포했다."
+ esr_rival_declared_war_vengeful_corresponding:0 "[TARGET_CHARACTER.GetShortUINamePossessive] 경쟁자 [CHARACTER.GetShortUIName|U]는 [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신에게', TARGET_CHARACTER.GetHerHim )] 전쟁을 선포했다."
+
+ esr_rival_attempted_murder_vengeful:0 "[TARGET_CHARACTER.GetShortUINamePossessive] [CHARACTER.GetShortUIName|U] 암살 시도가 발각되었다."
+ esr_rival_attempted_murder_vengeful_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U]는 [CHARACTER.GetShortUINamePossessive] [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신', TARGET_CHARACTER.GetHerHim )] 암살 시도를 밝혀냈다."
+
+ esr_rival_divorced_soulmate_vengeful:0 "[TARGET_CHARACTER.GetShortUIName|U]는 [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신의', TARGET_CHARACTER.GetHerHis )] 소울메이트 [CHARACTER.GetShortUIName|U]와 이혼했다."
+ esr_rival_divorced_soulmate_vengeful_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U], 즉 [CHARACTER.GetShortUINamePossessive] 소울메이트는 [Select_CString(CHARACTER.IsLocalPlayer, '당신이', CHARACTER.GetHerHim )] [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신', TARGET_CHARACTER.GetHerHim )]과 이혼한 것에 원한을 품었다."
+
+ esr_rival_divorced_lover_vengeful:0 "[TARGET_CHARACTER.GetShortUIName|U]는 [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신의', TARGET_CHARACTER.GetHerHis )] 연인 [CHARACTER.GetShortUIName|U]와 이혼했다."
+ esr_rival_divorced_lover_vengeful_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U], 즉 [CHARACTER.GetShortUINamePossessive] 연인은 [Select_CString(CHARACTER.IsLocalPlayer, '당신이', CHARACTER.GetHerHim )] [Select_CString(TARGET_CHARACTER.IsLocalPlayer, '당신', TARGET_CHARACTER.GetHerHim )]과 이혼한 것에 분노했다."
+
+ esr_rival_retracted_vassal_reversed:0 "[TARGET_CHARACTER.GetShortUIName|U]는 [CHARACTER.GetShortUINamePossessiveNoTooltip] 봉신을 회수했다."
+ esr_rival_retracted_vassal_reversed_corresponding:0 "[CHARACTER.GetShortUIName|U]는 [TARGET_CHARACTER.GetShortUINamePossessiveNoTooltip] 봉신을 회수했다."

@@ -1,0 +1,95 @@
+Updated for [b]1.6.1[/b].
+
+[h1][i]Bothered by the lack of information on what AI personalities does?[/i][/h1]
+
+This mod aims to provide an in-game feature that let you known [b]as much as possible[/b] about [b]AI Personalities[/b] and their [b]Specific Effects[/b].
+
+[img]https://imgur.com/p7Fv1Z6.gif[/img]
+
+[h1][b]🎭 Detailed Breakdown of AI Personality[/b][/h1]
+The added tooltip will list all the values that make up a character's [b]personality[/b].
+It will also show [b]Detailed Breakdowns[/b] of each value so that the player can better understand [b]Why[/b] a character has these [b]specific tendencies[/b].
+
+* The grey number on the right shows the sum of all breakdown values listed. If it is not the same as the colored value on the left, please let me know in the comment.
+[img]https://i.imgur.com/Siv14us.png[/img]
+* ai_energy is rephrased as "livlieness" since it fits what it does better IMHO.
+* The actual mod will display breakdown values as integers. This change was made after the screenshots were taken.
+[img]https://i.imgur.com/tbW51zo.png[/img]
+
+[img]https://i.imgur.com/Gz73vqa.png[/img]
+
+[h1][b]🧠 Lists of AI Behaviors related to Personality[/b][/h1]
+A set of nested tooltips that show what kind of [b]Behavior[/b] one could expect from a character with certain tendencies.
+Hover the mouse above specific personality tendency to see what it does.
+
+*Note that the list is by no mean exhaustive. It's intended to be a rough guidline for understanding the function of these values.
+
+[img]https://i.imgur.com/nkxJDDx.png[/img]
+
+Here is an [b]Overview[/b] of all entries:
+
+[img]https://i.imgur.com/BaTGxhl.png[/img]
+
+[h1][b]🍏 Lite Version for Immersion[/b][/h1]
+Find the Value Breakdown [b]too distracting[/b]? You can load this [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Lite Patch[/url][/b] below to [b]hide the breakdown[/b].
+
+*Nested tooltip for value breakdown will not be possible without significant amount of tedious work due to technical constraint. I'm NOT going to even consider it.
+
+[img]https://i.imgur.com/tRN1hpJ.png[/img]
+
+[hr][/hr]
+[h1][b]Load order[/b][/h1]
+-Probably doesn't matter. Put it lower in the load order if the tooltip doesn't show up.
+
+[h1][b]Compatibility[/b][/h1]
+Compatible with practically [b]any mod[/b] except [b]Personality Tooltips[/b]
+🏆❌ This mod is [b][u]not achievement[/u] compatible[/b].
+
+Feel free to use any part of [i]this mod™[/i] in your own work.
+[img]https://imgur.com/p7Fv1Z6.gif[/img]
+
+[h1]Big Uncle's other mods (1.6.1):[/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815382549]Dynamic UI Themes[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790980257]Show Me Your Council[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2796111001]Show Me Your Court Positions[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790457557]Stress Bar for All[/url]
+
+
+
+Updated for [b]1.6.1[/b].
+
+This is a [b]🍏 Lite Patch[/b] for [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Show Me Your Personality[/url][/b]
+Load this [b]After[/b] SMYP
+
+[img]https://i.imgur.com/tRN1hpJ.png[/img]
+
+[h1][b]🧠 Lists of AI Behaviors related to Personality[/b][/h1]
+A set of nested tooltips that show what kind of [b]Behavior[/b] one could expect from a character with certain tendencies.
+Hover the mouse above specific personality tendency to see what it does.
+
+*Note that the list is by no mean exhaustive. It's intended to be a rough guidline for understanding the function of these values.
+
+[img]https://i.imgur.com/nkxJDDx.png[/img]
+
+Here is an [b]Overview[/b] of all entries:
+
+[img]https://i.imgur.com/BaTGxhl.png[/img]
+
+[hr][/hr]
+[h1][b]Load order[/b][/h1]
+-Load this after [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]SMYP[/url][/b]
+
+[h1][b]Compatibility[/b][/h1]
+Compatible with practically [b]any mod[/b] except [b]Personality Tooltips[/b]
+🏆❌ This mod is [b][u]not achievement[/u] compatible[/b].
+
+Feel free to use any part of [i]this mod™[/i] in your own work.
+[img]https://imgur.com/p7Fv1Z6.gif[/img]
+
+[h1]Big Uncle's other mods (1.6.1):[/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815382549]Dynamic UI Themes[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790980257]Show Me Your Council[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2796111001]Show Me Your Court Positions[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790457557]Stress Bar for All[/url]

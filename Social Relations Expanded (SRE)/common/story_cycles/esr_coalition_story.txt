@@ -1,0 +1,46 @@
+﻿### story cycle for coalition against the story owner
+esr_coalition_story = {
+
+	on_setup = {
+		
+	}
+
+	on_end = {
+
+	}
+
+	on_owner_death = {
+		end_story = yes
+	}
+
+	effect_group = {
+		months = 1
+
+		triggered_effect = {
+			trigger = {
+				always = yes
+			}
+
+			effect = {
+				if = {
+					limit = {
+						has_variable_list = esr_threatened_chars
+					}
+					every_in_list = {
+						variable = esr_threatened_chars
+						root = {
+							add_to_variable_list = {
+								name = esr_coalition_member
+								target = prev
+							}
+						}
+					}
+				}
+				set_variable = {
+					name = sc_relative_power_of_coalition
+					value = sc_relative_power_of_coalition
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,600 @@
+﻿imprison_character_effect = {
+	$TARGET$ = { save_scope_as = imprisonment_target }
+	$IMPRISONER$ = { save_scope_as = imprisoner }
+	
+	scope:imprisonment_target = {
+		if = {
+			limit = {
+				has_opinion_modifier = {
+					modifier = imprisoned_me_past
+					target = scope:imprisoner
+				}
+			}
+			hidden_effect = {
+				remove_opinion = {
+					target = scope:imprisoner
+					modifier = imprisoned_me
+				}
+			}
+		}
+		add_opinion = {
+			target = scope:imprisoner
+			modifier = imprisoned_me
+		}
+		###esr
+		if = {
+			limit = { can_set_relation_rival_if_adult_trigger = { CHARACTER = scope:imprisoner } }
+			random = {
+				chance = 15
+				modifier = {
+					factor = 0.5
+					scope:imprisonment_target = { ai_vengefulness <= medium_negative_vengefulness }
+				}
+				modifier = {
+					factor = 2
+					scope:imprisonment_target = { ai_vengefulness >= medium_positive_vengefulness }
+				}
+				modifier = {
+					factor = 2
+					scope:imprisonment_target = { ai_vengefulness >= high_positive_vengefulness }
+				}
+				progress_towards_rival_effect = {
+					REASON = rival_imprisoned
+					CHARACTER = scope:imprisoner
+					OPINION = 0
+				}
+			}
+		}
+
+		every_spouse = {
+			limit = { NOT = { this = scope:imprisoner } }
+			add_to_temporary_list = close_family_imprison_opinion_list
+			add_to_temporary_list = esr_spouse_imprison_opinion_list		
+		}
+
+		every_close_or_extended_family_member ={
+			limit = { NOT = { this = scope:imprisoner } }
+			add_to_temporary_list = close_family_imprison_opinion_list
+			###Note close_family_imprison_opinion_list stores both close and extened family in esr
+		}
+
+		if = {
+			limit = {
+				any_in_list = {
+					list = close_family_imprison_opinion_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = close_family_imprison_opinion_list
+				custom = all_family_members
+
+				if = {
+					limit = {
+						OR = {
+							is_close_family_of = scope:imprisonment_target 
+							is_in_list = esr_spouse_imprison_opinion_list
+						}
+					}
+					add_opinion = {
+						target = scope:imprisoner
+						modifier = esr_imprisoned_close_family
+					}				
+				}
+
+				else = {
+					add_opinion = {
+						target = scope:imprisoner
+						modifier = esr_imprisoned_extended_family
+					}		
+				}
+			}
+		}
+		
+		#Victim's normal relations
+		every_relation = {
+			type = friend
+			limit = {
+				NOR = {
+					this = scope:imprisonment_target
+					###esr
+					this = scope:imprisoner
+					has_relation_best_friend = scope:imprisonment_target
+					#is_in_list = close_family_murder_opinion_list
+					###esr/					
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		every_relation = {
+			type = lover
+			limit = {
+				NOR = {
+					this = scope:imprisonment_target
+					###esr
+					this = scope:imprisoner
+					has_relation_soulmate = scope:imprisonment_target					
+					#is_in_list = close_family_murder_opinion_list
+					###esr/
+					is_in_list = victim_close_relations_list
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = victim_close_relations_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = victim_close_relations_list
+				custom = all_friends_and_lovers
+				add_opinion = {
+					target = scope:imprisoner
+					modifier = esr_imprisoned_close_relation_opinion
+				}
+			}
+		}
+
+		every_relation = {
+			type = rival
+			limit = {
+				NOR = {
+					this = scope:imprisoner
+					has_relation_nemesis = scope:imprisonment_target
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+					#has_trait = honest
+					#has_trait = trusting
+				}
+			}
+			custom = esr_rivals_execution
+			add_opinion = {
+				target = scope:imprisoner
+				modifier = esr_imprisoned_rival
+			}
+		}
+
+		###esr
+		#Victim's lifelong relations
+		every_relation = {
+			type = best_friend
+			limit = { NOT = {this = scope:imprisoner}}
+			add_opinion = {
+				target = scope:imprisoner
+				modifier = esr_imprisoned_best_friend
+			}
+			add_to_temporary_list = esr_positive_life_long_relation_list
+		}
+
+		every_relation = {
+			type = soulmate
+			limit = { NOT = {this = scope:imprisoner}}
+			add_opinion = {
+				target = scope:imprisoner
+				modifier = esr_imprisoned_soulmate
+			}
+			add_to_temporary_list = esr_positive_life_long_relation_list
+		}
+
+		every_relation = {
+			type = nemesis
+
+			limit = {
+				NOR = {
+					this = scope:imprisoner
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			add_opinion = {
+				target = scope:imprisoner
+				modifier = esr_imprisoned_nemesis
+			}
+			add_to_temporary_list = esr_negative_life_long_relation_list
+		}
+		###esr/		
+	}
+
+	imprison_hostage_tooltip_effect = { WHO = scope:imprisonment_target }
+
+	if = {
+		limit = {
+			scope:imprisoner = { is_landless_ruler = no }
+			scope:imprisonment_target = {
+				exists = liege
+				OR = {
+					is_playable_character = yes
+					is_close_or_extended_family_of = liege
+					is_spouse_of = liege
+				}
+			}
+		}
+		
+		scope:imprisoner = {
+			imprison = {
+				target = scope:imprisonment_target
+				type = house_arrest
+			}
+			#scope:imprisonment_target = {
+				#if = {
+					#limit = {
+						#any_close_or_extended_family_member = {
+							#NOR = {
+								#is_close_family_of = scope:imprisoner
+								#scope:imprisoner = this
+							#}
+						#}
+					#}
+					#custom_tooltip = IMPRISONMENT_RELATIVES_EFFECT_HOUSE_ARREST
+					#hidden_effect = {
+
+						#every_close_or_extended_family_member = {
+							#limit = {
+								#NOR = {
+									#is_close_family_of = scope:imprisoner
+									#scope:imprisoner = this
+								#}
+							#}
+							#add_opinion = {
+								#modifier = imprisoned_family_member
+								#target = scope:imprisoner
+							#}
+						#}
+					#}
+				#}
+			#}
+		}
+	}
+		
+	else = {
+		scope:imprisoner = {
+			imprison = {
+				target = scope:imprisonment_target
+				type = dungeon
+			}
+
+			###esr
+			hidden_effect = {
+				every_in_list = {
+					list = close_family_imprison_opinion_list
+					add_opinion = {
+						modifier = esr_threw_family_in_dungeon
+						target = scope:imprisoner
+					}
+				}
+				every_in_list = {
+					list = victim_close_relations_list
+					add_opinion = {
+						modifier = esr_threw_close_relation_in_dungeon
+						target = scope:imprisoner
+					}
+				}
+				every_in_list = {
+					list = esr_positive_life_long_relation_list
+					add_opinion = {
+						modifier = esr_threw_very_close_in_dungeon
+						target = scope:imprisoner
+					}
+				}
+				every_in_list = {
+					list = esr_negative_life_long_relation_list
+					add_opinion = {
+						modifier = esr_threw_nemesis_in_dungeon 
+						target = scope:imprisoner
+					}
+				}	
+			}
+			###esr
+		}
+	}
+			
+	scope:imprisoner = {
+		imprison_tyranny_effect = yes
+	}
+
+	#Disband any scheme you have against them
+	scope:imprisoner = {
+		if = {
+			limit = {
+				any_scheme = {
+					scheme_target_character = scope:imprisonment_target
+				}
+			}
+			every_scheme = {
+				limit = {
+					scheme_target_character = scope:imprisonment_target
+				}
+				end_scheme = yes
+			}
+		}
+	}
+
+	#Send break up event if they are your lover
+	scope:imprisoner = {
+		if = {
+			limit = {
+				has_relation_lover = scope:imprisonment_target
+				NOT = { has_relation_rival = scope:imprisonment_target } #To enable really strange love stories
+			}
+			scope:imprisonment_target = {
+				trigger_event = {
+					id = lover.0101
+					days = { 14 30 }
+				}
+			}
+		}
+	}
+
+	#Remove them as guardian/ward for any courtiers and give feedback about this
+	imprison_remove_ward_guardian_effect = { IMPRISONER = scope:imprisoner PRISONER = scope:imprisonment_target }
+
+}
+
+hard_imprison_character_effect = { # used for imprisonments that are not triggered by character interaction. (e.g. events, seiges, raids, civil war ...) Should be tuned down for balance.
+	$TARGET$ = { save_temporary_scope_as = new_target }
+	$IMPRISONER$ = { save_temporary_scope_as = new_imprisoner }
+
+	###esr
+	scope:new_imprisoner = {
+		imprison = {
+			target = scope:new_target
+			type = house_arrest
+		}
+	}
+
+	scope:new_target = {
+		add_opinion = {
+			target = scope:new_imprisoner
+			modifier = imprisoned_me
+		}
+
+		if = {
+			limit = { can_set_relation_rival_if_adult_trigger = { CHARACTER = scope:new_imprisoner } }
+			random = {
+				chance = 10
+				modifier = {
+					factor = 0.5
+					scope:new_target = { ai_vengefulness <= medium_negative_vengefulness }
+				}
+				modifier = {
+					factor = 2
+					scope:new_target = { ai_vengefulness >= medium_positive_vengefulness }
+				}
+				modifier = {
+					factor = 2
+					scope:new_target = { ai_vengefulness >= high_positive_vengefulness }
+				}
+				progress_towards_rival_effect = {
+					REASON = rival_imprisoned
+					CHARACTER = scope:new_imprisoner
+					OPINION = 0
+				}
+			}
+		}
+
+		### For testing whether the attacker is still in the war when on_defeat is triggered - Result: yes
+		#if = {
+			#limit = {
+				#is_at_war_with = scope:new_imprisoner
+			#}
+			#set_variable = {
+				#name = still_an_attacker_on_defeat
+				#value = yes
+			#}
+		#}
+		### For testing whether the attacker is still in the war when on_defeat is triggered/
+
+		every_spouse = {
+			limit = {
+				NOR = {
+					this = scope:new_imprisoner
+					is_at_war_with = scope:new_target
+				}
+			}
+			add_to_temporary_list = close_family_imprison_opinion_list
+			add_to_temporary_list = esr_spouse_imprison_opinion_list		
+		}
+
+		every_close_or_extended_family_member ={
+			limit = {
+				NOR = {
+					this = scope:new_imprisoner
+					is_at_war_with = scope:new_target
+				}
+			}
+			add_to_temporary_list = close_family_imprison_opinion_list
+			###Note close_family_imprison_opinion_list stores both close and extened family in esr
+		}
+
+		if = {
+			limit = {
+				any_in_list = {
+					list = close_family_imprison_opinion_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = close_family_imprison_opinion_list
+				custom = all_family_members
+
+				if = {
+					limit = {
+						OR = {
+							is_close_family_of = scope:new_target 
+							is_in_list = esr_spouse_imprison_opinion_list
+						}
+					}
+					add_opinion = {
+						target = scope:new_imprisoner
+						modifier = esr_imprisoned_close_family
+					}					
+				}
+
+				else = {
+					add_opinion = {
+						target = scope:new_imprisoner
+						modifier = esr_imprisoned_extended_family
+					}		
+				}
+			}
+		}
+
+		#Victim's normal relations
+		every_relation = {
+			type = friend
+			limit = {
+				NOR = {
+					this = scope:new_target
+					this = scope:new_imprisoner
+					has_relation_best_friend = scope:new_target					
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		every_relation = {
+			type = lover
+			limit = {
+				NOR = {
+					this = scope:new_target
+					this = scope:new_imprisoner
+					has_relation_soulmate = scope:new_target
+					is_in_list = victim_close_relations_list
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = victim_close_relations_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = victim_close_relations_list
+				custom = all_friends_and_lovers
+				add_opinion = {
+					target = scope:new_imprisoner
+					modifier = esr_imprisoned_close_relation_opinion
+				}
+			}
+		}
+
+		every_relation = {
+			type = rival
+			limit = {
+				NOR = {
+					this = scope:new_imprisoner
+					has_relation_nemesis = scope:new_target
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			custom = esr_rivals_execution
+			add_opinion = {
+				target = scope:new_imprisoner
+				modifier = esr_imprisoned_rival
+			}
+		}
+
+		#Victim's lifelong relations
+		every_relation = {
+			type = best_friend
+			limit = { NOT = {this = scope:new_imprisoner}}
+			add_opinion = {
+				target = scope:new_imprisoner
+				modifier = esr_imprisoned_best_friend
+			}
+		}
+
+		every_relation = {
+			type = soulmate
+			limit = { NOT = {this = scope:new_imprisoner}}
+			add_opinion = {
+				target = scope:new_imprisoner
+				modifier = esr_imprisoned_soulmate
+			}
+		}
+
+		every_relation = {
+			type = nemesis
+
+			limit = {
+				NOR = {
+					this = scope:new_imprisoner
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			add_opinion = {
+				target = scope:new_imprisoner
+				modifier = esr_imprisoned_nemesis
+			}
+		}
+			
+	}
+
+	# clear list just in case this effect is called multiple times
+	every_in_list = {
+		list = close_family_imprison_opinion_list
+		remove_from_list = close_family_imprison_opinion_list
+	}
+	every_in_list = {
+		list = esr_spouse_imprison_opinion_list
+		remove_from_list = esr_spouse_imprison_opinion_list
+	}
+	every_in_list = {
+		list = victim_close_relations_list
+		remove_from_list = victim_close_relations_list
+	}
+	# clear list just in case this effect is called multiple times/
+
+	###esr/
+	
+	imprison_hostage_tooltip_effect = { WHO = scope:new_target }
+
+	hidden_effect = {
+		#Disband any scheme you have against them
+		scope:new_imprisoner = {
+			if = {
+				limit = {
+					any_scheme = {
+						scheme_target_character = scope:new_target
+					}
+				}
+				every_scheme = {
+					limit = {
+						scheme_target_character = scope:new_target
+					}
+					end_scheme = yes
+				}
+			}
+		}
+
+		#Send break up event if they are your lover
+		scope:new_imprisoner = {
+			if = {
+				limit = {
+					has_relation_lover = scope:new_target
+					NOT = { has_relation_rival = scope:new_target } #To enable really strange love stories
+				}
+				scope:new_target = {
+					trigger_event = {
+						id = lover.0101
+						days = { 14 30 }
+					}
+				}
+			}
+		}
+
+		#Remove them as guardian/ward for any courtiers and give feedback about this
+		imprison_remove_ward_guardian_effect = { IMPRISONER = scope:new_imprisoner  PRISONER = scope:new_target }
+	}
+}

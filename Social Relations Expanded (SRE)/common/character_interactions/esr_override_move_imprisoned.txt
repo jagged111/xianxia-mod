@@ -1,0 +1,400 @@
+﻿move_to_dungeon_interaction = {
+	interface_priority = 30
+	category = interaction_category_prison
+	desc = move_to_dungeon_interaction_desc
+	icon = prison
+
+	is_shown = {
+		scope:actor = {
+			is_landless_ruler = no
+		}
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			is_in_prison_type = house_arrest
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_description = {
+				text = "currently_being_tortured"
+				NOT = { has_character_flag = is_being_tortured }
+			}
+		}
+		tgp_blocked_action_against_tenno_trigger = {
+			ACTOR = scope:actor
+			TARGET = scope:recipient
+		}
+		custom_tooltip = {
+			text = is_currently_being_purged_tt
+			scope:recipient = {
+				NOT = {
+					has_character_flag = is_currently_being_purged
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		if = {
+			limit = { scope:recipient = { has_character_modifier = allowed_to_go_outside } }
+			scope:recipient = { remove_character_modifier = allowed_to_go_outside }
+		}
+		scope:recipient = {
+			hidden_effect = {
+				change_prison_type = dungeon
+			}
+			trigger_event = prison_notification.1001
+			custom_tooltip = MOVE_PRISONER_TO_DUNGEON
+			scope:recipient = {
+
+				###esr
+				every_spouse = {
+					limit = { this != scope:actor }
+					add_to_temporary_list = recipient_family_opinion_list	
+				}
+		
+				every_close_or_extended_family_member ={
+					limit = { this != scope:actor }
+					add_to_temporary_list = recipient_family_opinion_list
+					###Note recipient_family_opinion_list stores both close and extened family in esr
+				}
+		
+				if = {
+					limit = {
+						any_in_list = {
+							list = recipient_family_opinion_list
+							always = yes
+						}
+					}
+					every_in_list = {
+						list = recipient_family_opinion_list
+						custom = all_family_members
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_threw_family_in_dungeon
+						}
+					}
+				}
+		
+				#recipient's friends and lovers
+				every_relation = {
+					type = friend
+					limit = {
+        				this != scope:recipient
+        				this != scope:actor
+        				NOT = { has_relation_best_friend = scope:recipient }
+					}
+					add_to_list = recipient_close_relations_list
+				}
+				every_relation = {
+					type = lover
+					limit = { 
+    					this != scope:recipient 
+    					this != scope:actor 
+    					NOR = { 
+							has_relation_soulmate = scope:recipient 
+							is_in_list = recipient_close_relations_list 
+    					}
+					}
+					add_to_list = recipient_close_relations_list
+				}
+				if = {
+					limit = {
+						any_in_list = {
+							list = recipient_close_relations_list
+							always = yes
+						}
+					}
+					every_in_list = {
+						list = recipient_close_relations_list
+						custom = all_friends_and_lovers
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_threw_close_relation_in_dungeon
+						}
+					}
+				}
+		
+				#recipient's best friend and soulmate
+				every_relation = {
+					type = best_friend
+					limit = { this != scope:actor }
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_threw_very_close_in_dungeon
+					}
+				}
+		
+				every_relation = {
+					type = soulmate
+					limit = { this != scope:actor }
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_threw_very_close_in_dungeon
+					}
+				}
+		
+				#recipient's nemesis
+		
+				every_relation = {
+					type = nemesis
+		
+					limit = {
+        				this != scope:recipient
+        				this != scope:actor
+        				NOT = { has_relation_best_friend = scope:recipient }
+					}
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_threw_nemesis_in_dungeon
+					}
+				}
+				###esr/
+
+			}
+		}
+		scope:actor = {
+			stress_impact = {
+				compassionate = medium_stress_impact_gain
+				forgiving = medium_stress_impact_gain
+			}
+			hidden_effect = {
+				send_interface_message = {
+					type = event_prison_neutral
+					title = msg_move_prisoner_to_dungeon
+					right_icon = scope:recipient
+					custom_tooltip = MOVE_PRISONER_TO_DUNGEON
+				}
+			}
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = medium_unity_loss
+			DESC = clan_unity_move_to_dungeon.desc
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	}
+
+	auto_accept = yes
+
+	# AI
+	ai_targets = {
+		ai_recipients = prisoners
+	}
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 48
+		duchy = 12
+		kingdom = 12
+		empire = 12
+		hegemony = 12
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 0
+
+		modifier = {
+			add = 100
+			scope:actor.ai_compassion < medium_positive_ai_value
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value <= high_negative_opinion
+				}
+			}
+		}
+		modifier = { # Family Feud
+			add = 25
+			trigger = {
+				scope:actor = {
+					house_has_feud_relation_with_trigger = { TARGET = scope:recipient }
+
+				}
+			}
+			desc = INTERACTION_FAMILY_FEUD_REASON
+		}
+	}
+}
+
+move_to_house_arrest_interaction = {
+	interface_priority = 30
+	category = interaction_category_prison
+	desc = move_to_house_arrest_interaction_desc
+	icon = prison
+
+	is_shown = {
+		scope:actor = {
+			is_landless_ruler = no
+		}
+		scope:recipient = {
+			is_imprisoned_by = scope:actor
+			is_in_prison_type = dungeon
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_description = {
+				text = "currently_being_tortured"
+				NOT = { has_character_flag = is_being_tortured }
+			}
+		}
+		custom_tooltip = {
+			text = is_currently_being_purged_tt
+			scope:recipient = {
+				NOT = {
+					has_character_flag = is_currently_being_purged
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		if = {
+			limit = { scope:recipient = { has_character_modifier = allowed_to_go_outside } }
+			scope:recipient = { remove_character_modifier = allowed_to_go_outside }
+		}
+		if = {
+			limit = { scope:recipient = { has_character_modifier = moldy_gruel_diet } }
+			scope:recipient = { remove_character_modifier = moldy_gruel_diet }
+		}
+		scope:recipient = {
+			hidden_effect = {
+				change_prison_type = house_arrest
+				trigger_event = prison_notification.1002
+			}
+			custom_tooltip = MOVE_PRISONER_TO_HOUSE_ARREST
+			scope:recipient = {
+
+				###esr
+				every_spouse = {
+					limit = { this != scope:actor }
+					add_to_temporary_list = recipient_family_opinion_list	
+				}
+		
+				every_close_or_extended_family_member ={
+					limit = { this != scope:actor }
+					add_to_temporary_list = recipient_family_opinion_list
+					###Note recipient_family_opinion_list stores both close and extened family in esr
+				}
+		
+				if = {
+					limit = {
+						any_in_list = {
+							list = recipient_family_opinion_list
+							always = yes
+						}
+					}
+					every_in_list = {
+						list = recipient_family_opinion_list
+						custom = all_family_members
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_move_family_to_house_arrest
+						}
+					}
+				}
+		
+				#recipient's friends and lovers
+				every_relation = {
+					type = friend
+					limit = {
+        				this != scope:recipient
+        				this != scope:actor
+        				NOT = { has_relation_best_friend = scope:recipient }
+					}
+					add_to_list = recipient_close_relations_list
+				}
+				every_relation = {
+					type = lover
+					limit = { 
+    					this != scope:recipient 
+    					this != scope:actor 
+    					NOR = { 
+							has_relation_soulmate = scope:recipient 
+							is_in_list = recipient_close_relations_list 
+    					}
+					}
+					add_to_list = recipient_close_relations_list
+				}
+				if = {
+					limit = {
+						any_in_list = {
+							list = recipient_close_relations_list
+							always = yes
+						}
+					}
+					every_in_list = {
+						list = recipient_close_relations_list
+						custom = all_friends_and_lovers
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_move_close_relation_to_house_arrest
+						}
+					}
+				}
+		
+				#recipient's best friend and soulmate
+				every_relation = {
+					type = best_friend
+					limit = { this != scope:actor }
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_move_very_close_to_house_arrest
+					}
+				}
+		
+				every_relation = {
+					type = soulmate
+					limit = { this != scope:actor }
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_move_very_close_to_house_arrest
+					}
+				}
+		
+				#recipient's nemesis
+		
+				every_relation = {
+					type = nemesis
+		
+					limit = {
+						scope:actor != this
+						NOT = { has_trait = compassionate }
+				
+					}
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_move_nemesis_to_house_arrest
+					}
+				}
+				###esr/
+
+			}
+		}
+		scope:actor = {
+			stress_impact = {
+				sadistic = medium_stress_impact_gain
+				vengeful = medium_stress_impact_gain
+			}
+			hidden_effect = {
+				send_interface_message = {
+					type = event_prison_neutral
+					title = msg_move_prisoner_to_house_arrest
+					right_icon = scope:recipient
+					custom_tooltip = MOVE_PRISONER_TO_HOUSE_ARREST
+				}
+			}
+		}
+	}
+
+	auto_accept = yes
+}

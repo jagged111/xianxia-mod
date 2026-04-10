@@ -1,0 +1,4 @@
+﻿l_korean:
+ game_concept_family_friend:0 "가문의 친구"
+ game_concept_family_friends:0 "가문의 친구들"
+ game_concept_family_friend_desc:0 "가문의 친구는 서로 [close_family_members|E] 관계인 친구를 최소 세 명 이상 두었을 때 형성되는 암묵적인 관계이다.\n가문의 친구는 해당 [close_family|E]의 모든 구성원에게서 호감을 얻는다.\n자신의 [close_family|E]와는 가문의 친구 관계를 맺을 수 없다."

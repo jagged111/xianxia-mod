@@ -1,0 +1,135 @@
+﻿divorce_effect = {
+	$DIVORCER$ = {
+		if = {
+			limit = {
+				any_spouse = {
+					this = $DIVORCEE$
+				}
+			}
+			divorce = $DIVORCEE$
+		}
+
+		###esr
+		# Close relation divorcee feels betrayed
+		if = {
+			limit = {has_relation_soulmate = $DIVORCEE$ }
+			reverse_add_opinion = {
+				modifier = betrayed_me_opinion
+				opinion = -60
+				target = $DIVORCEE$
+			}
+
+			if = {
+                limit = { can_set_relation_rival_if_adult_trigger = { CHARACTER = $DIVORCEE$ } }
+
+				random = {
+					chance = 20
+					modifier = {
+						factor = 0.5
+						$DIVORCEE$ = { ai_vengefulness <= medium_negative_vengefulness }
+					}
+					modifier = {
+						factor = 2
+						$DIVORCEE$ = { ai_vengefulness >= medium_positive_vengefulness }
+					}
+					modifier = {
+						factor = 2
+						$DIVORCEE$ = { ai_vengefulness >= high_positive_vengefulness }
+					}
+					$DIVORCEE$ = {
+						progress_towards_rival_effect = {
+							REASON = esr_rival_divorced_soulmate_vengeful
+							CHARACTER = $DIVORCER$
+							OPINION = 0
+						}
+					}
+				}
+			}
+		}
+
+		else_if = {
+			limit = {has_relation_lover = $DIVORCEE$ }
+			reverse_add_opinion = {
+				modifier = betrayed_me_opinion
+				opinion = -30
+				target = $DIVORCEE$
+			}
+
+			if = {
+                limit = { can_set_relation_rival_if_adult_trigger = { CHARACTER = $DIVORCEE$ } }
+				random = {
+					chance = 10
+					modifier = {
+						factor = 0.5
+						$DIVORCEE$ = { ai_vengefulness <= medium_negative_vengefulness }
+					}
+					modifier = {
+						factor = 2
+						$DIVORCEE$ = { ai_vengefulness >= medium_positive_vengefulness }
+					}
+					modifier = {
+						factor = 2
+						$DIVORCEE$ = { ai_vengefulness >= high_positive_vengefulness }
+					}
+					$DIVORCEE$ = {
+						progress_towards_rival_effect = {
+							REASON = esr_rival_divorced_lover_vengeful
+							CHARACTER = $DIVORCER$
+							OPINION = 0
+						}
+					}
+				}
+			}
+		}
+
+		else_if = {
+			limit = {has_relation_best_friend = $DIVORCEE$ }
+			reverse_add_opinion = {
+				modifier = betrayed_me_opinion
+				opinion = -15
+				target = $DIVORCEE$
+			}
+		}
+		###esr/
+		
+		reverse_add_opinion = {
+			modifier = divorced_me_opinion
+			target = $DIVORCEE$
+		}
+	}
+	# Opinion hit
+	$DIVORCEE$ = {
+		every_close_or_extended_family_member = {
+			limit = { NOT = { this = $DIVORCER$ } } # don't hate yourself just because of some incest
+			custom = all_family_members
+			add_opinion = {
+				modifier = divorced_close_kin
+				target = $DIVORCER$
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			$DIVORCER$ = {
+				has_character_modifier = rejected_from_marriage_bed_modifier
+			}
+		}
+		$DIVORCER$ = { remove_character_modifier = rejected_from_marriage_bed_modifier }
+	}
+	if = {
+		limit = {
+			$DIVORCEE$ = {
+				has_character_modifier = rejected_from_marriage_bed_modifier
+			}
+		}
+		$DIVORCEE$ = { remove_character_modifier = rejected_from_marriage_bed_modifier }
+	}
+	if = {
+		limit = { $DIVORCER$ = { has_relation_lover = $DIVORCEE$ } }
+		lover_breakup_effect = {
+			BREAKER = $DIVORCER$
+			LOVER = $DIVORCEE$
+		}			
+	}
+}

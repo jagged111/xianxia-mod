@@ -1,0 +1,251 @@
+﻿retract_vassal_interaction_effect = {
+	scope:actor = {
+		vassal_revocation_tyranny_effect = yes
+		if = {
+			limit = {
+				vassal_revocation_is_tyrannical_trigger = { VASSAL = scope:recipient }
+			}
+			stress_impact = {
+				generous = medium_stress_impact_gain
+				just = medium_stress_impact_gain
+			}
+		}
+		else = {
+			stress_impact = {
+				generous = medium_stress_impact_gain
+				forgiving = minor_stress_impact_gain
+			}
+		}
+		consume_revoke_title_reason = scope:recipient
+	}
+	create_title_and_vassal_change = {
+		type = revoked
+		save_scope_as = change
+		add_claim_on_loss = no
+	}
+
+	scope:secondary_recipient = {
+		change_liege = {
+			liege = scope:actor
+			change = scope:change
+		}
+	}
+
+	resolve_title_and_vassal_change = scope:change
+
+	scope:recipient = {
+		add_opinion = {
+			target = scope:actor
+			modifier = retracted_vassal
+		}
+
+		###esr
+		# a tuned down version of what was added in esr_override_revoke_title.txt
+		if = {
+			limit = {
+				OR = {
+					has_relation_friend = scope:actor
+					has_relation_lover = scope:actor
+				}
+			}
+			add_opinion = {
+				target = scope:actor
+				modifier = betrayed_me_opinion
+				opinion = -15
+			}
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_relation_best_friend = scope:actor
+					has_relation_soulmate = scope:actor
+				}
+			}
+			add_opinion = {
+				target = scope:actor
+				modifier = betrayed_me_opinion
+				opinion = -30
+			}
+		}
+
+		if = {
+			limit = { can_set_relation_rival_if_adult_trigger = { CHARACTER = scope:actor } }
+			random = {
+				chance = 10
+				modifier = {
+					factor = 0.5
+					scope:recipient = { ai_vengefulness <= medium_negative_vengefulness }
+				}
+				modifier = {
+					factor = 2
+					scope:recipient = { ai_vengefulness >= medium_positive_vengefulness }
+				}
+				modifier = {
+					factor = 2.5
+					scope:recipient = { ai_vengefulness >= high_positive_vengefulness }
+				}
+				progress_towards_rival_effect = {
+					REASON = esr_rival_retracted_vassal_reversed
+					CHARACTER = scope:actor
+					OPINION = 0
+				}
+			}
+		}
+
+
+		every_spouse = {
+			limit = { this != scope:actor }
+			add_to_temporary_list = close_family_revoke_opinion_list
+			add_to_temporary_list = esr_spouse_revoke_opinion_list
+		}
+
+		every_close_or_extended_family_member = {
+			limit = { this != scope:actor }
+			add_to_temporary_list = close_family_revoke_opinion_list
+			###Note close_family_revoke_opinion_list stores both close and extened family in esr
+		}
+
+		if = {
+			limit = {
+				any_in_list = {
+					list = close_family_revoke_opinion_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = close_family_revoke_opinion_list
+				custom = all_family_members
+				limit = {
+					NAND = {
+						OR = {
+							is_close_or_extended_family_of = scope:actor
+							is_spouse_of = scope:actor
+						}
+						NOT = {scope:actor = {vassal_revocation_is_tyrannical_trigger = { VASSAL = scope:recipient }}}
+					}
+				}
+
+				if = {
+					limit = {
+						OR = {
+							is_close_family_of = scope:recipient
+							is_in_list = esr_spouse_revoke_opinion_list
+						}
+					}
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_retracted_close_family
+					}
+				}
+
+				else = {
+					add_opinion = {
+						target = scope:actor
+						modifier = esr_retracted_extended_family
+					}
+				}
+			}
+		}
+
+		#recipient's friends and lovers
+		every_relation = {
+			type = friend
+			limit = {
+				NOR = {
+					this = scope:recipient
+					this = scope:actor
+					has_relation_best_friend = scope:recipient
+				}
+			}
+			add_to_list = recipient_close_relations_list
+		}
+		every_relation = {
+			type = lover
+			limit = {
+				NOR = {
+					this = scope:recipient
+					this = scope:actor
+					has_relation_soulmate = scope:recipient
+					is_in_list = recipient_close_relations_list
+				}
+			}
+			add_to_list = recipient_close_relations_list
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = recipient_close_relations_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = recipient_close_relations_list
+				custom = all_friends_and_lovers
+				add_opinion = {
+					target = scope:actor
+					modifier = esr_retracted_close_relation_opinion
+				}
+			}
+		}
+
+		#recipient's best friend and soulmate
+		every_relation = {
+			type = best_friend
+			limit = { this != scope:actor }
+			add_opinion = {
+				target = scope:actor
+				modifier = esr_retracted_best_friend
+			}
+		}
+
+		every_relation = {
+			type = soulmate
+			limit = { this != scope:actor }
+			add_opinion = {
+				target = scope:actor
+				modifier = esr_retracted_soulmate
+			}
+		}
+
+		#recipient's rivals and nemesis
+		every_relation = {
+			type = rival
+			limit = {
+				NOR = {
+					this = scope:actor
+					has_relation_nemesis = scope:recipient
+					has_trait = compassionate
+				}
+			}
+			custom = esr_rivals_execution
+			add_opinion = {
+				target = scope:actor
+				modifier = esr_retracted_rival
+			}
+		}
+
+		every_relation = {
+			type = nemesis
+
+			limit = {
+				NOR = {
+					this = scope:actor
+					has_trait = compassionate
+				}
+			}
+			add_opinion = {
+				target = scope:actor
+				modifier = esr_retracted_nemesis
+			}
+		}
+		###esr/
+	}
+	if = {
+		limit = {
+			always = scope:hook
+			scope:actor ?= { has_hook = scope:recipient }
+		}
+		scope:actor = { use_hook = scope:recipient }
+	}
+}

@@ -1,0 +1,233 @@
+﻿execute_opinion_effect = {
+	$VICTIM$ = {
+		# Victim's family & spouse hates executioner
+		every_close_family_member = {
+			limit = { NOT = { this = $EXECUTIONER$ } }
+			add_to_temporary_list = victim_family_list
+		}
+		every_spouse = {
+			limit = {
+				NOR = {
+					this = $EXECUTIONER$
+					is_in_list = victim_family_list
+				}
+			}
+			add_to_temporary_list = victim_family_list
+		}
+		
+		if = {
+			limit = {
+				any_in_list = {
+					list = victim_family_list
+					count > 0
+				}
+			}
+			if = {
+				limit = {
+					$EXECUTIONER$ = {
+						has_execute_reason = $VICTIM$
+					}
+				}
+				every_in_list = {
+					list = victim_family_list
+					custom = all_close_family_and_spouses
+					add_opinion = {
+						target = $EXECUTIONER$
+						modifier = executed_close_family
+					}
+
+					###esr
+					if = {
+						limit = {
+							NOT = {
+								has_trait = forgiving
+							}
+						}
+						save_scope_as = esr_victim_family_member
+						esr_hate_by_association = {HATED=$EXECUTIONER$ VICTIM=$VICTIM$ VICTIM_ASSOCIATE=scope:esr_victim_family_member MODIFIER=esr_hate_by_association_execution }
+					}
+					###esr/
+				}
+			}
+			else = {
+				every_in_list = {
+					list = victim_family_list
+					custom = all_close_family_and_spouses
+					add_opinion = {
+						target = $EXECUTIONER$
+						modifier = executed_close_family_crime
+					}
+					###esr
+					if = {
+						limit = {
+							NOT = {
+								has_trait = forgiving
+							}
+						}
+						save_scope_as = esr_victim_family_member
+						esr_hate_by_association = {HATED=$EXECUTIONER$ VICTIM=$VICTIM$ VICTIM_ASSOCIATE=scope:esr_victim_family_member MODIFIER=esr_hate_by_association_execution }
+					}
+					###esr/			
+				}
+			}
+		}
+
+		###esr
+		# Victim's Extended family members
+		every_close_or_extended_family_member = {
+			limit = {
+				NOR = {
+					this = $EXECUTIONER$
+					is_in_list = victim_family_list
+				}
+			}
+			custom = esr_extended_family_members
+			add_to_temporary_list = esr_victim_extended_family_list
+			add_opinion = {
+				target = $EXECUTIONER$
+				modifier = esr_murdered_extended_family
+			}			
+		}
+		###esr/
+
+		# Victim's dynasty hates executioner
+		if = {
+			limit = {
+				exists = dynasty
+				exists = $EXECUTIONER$.dynasty
+				NOT = { dynasty = $EXECUTIONER$.dynasty }
+				NOT = {
+					$EXECUTIONER$ = {
+						has_execute_reason = $VICTIM$
+					}
+				}
+			}
+			dynasty = {
+				every_dynasty_member = {
+					limit = {
+						NOR = {
+							this = $VICTIM$
+							is_in_list = victim_family_list
+							###esr
+							is_in_list = esr_victim_extended_family_list
+							###esr/
+						}
+					}
+					custom = all_dynasty_members
+					add_to_temporary_list = victim_dynasty_list
+					add_opinion = {
+						target = $EXECUTIONER$
+						modifier = executed_dynasty_member
+					}
+				}
+			}
+		}
+		
+		###esr
+		#Victim's normal relations
+		every_relation = {
+			type = friend
+			limit = {
+				NOR = {
+					this = $VICTIM$
+					###esr
+					this = $EXECUTIONER$
+					has_relation_best_friend = $VICTIM$
+					#is_in_list = close_family_murder_opinion_list
+					###esr/					
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		every_relation = {
+			type = lover
+			limit = {
+				NOR = {
+					this = $VICTIM$
+					###esr
+					this = $EXECUTIONER$
+					has_relation_soulmate = $VICTIM$					
+					#is_in_list = close_family_murder_opinion_list
+					###esr/
+					is_in_list = victim_close_relations_list
+				}
+			}
+			add_to_list = victim_close_relations_list
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = victim_close_relations_list
+					always = yes
+				}
+			}
+			every_in_list = {
+				list = victim_close_relations_list
+				limit = {
+					NOT = { this = $EXECUTIONER$ }
+				}
+				custom = all_friends_and_lovers
+				add_opinion = {
+					target = $EXECUTIONER$
+					modifier = executed_close_relation_opinion
+				}
+			}
+		}
+
+		every_relation = {
+			type = rival
+			limit = {
+				NOR = {
+					this = $EXECUTIONER$
+					has_relation_nemesis = $VICTIM$
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			custom = esr_rivals_execution
+			add_opinion = {
+				target = $EXECUTIONER$
+				modifier = esr_murdered_rival
+			}
+		}
+
+		###esr
+		#Victim's lifelong relations
+		every_relation = {
+			type = best_friend
+			limit = { NOT = {this = $EXECUTIONER$}}
+			add_opinion = {
+				target = $EXECUTIONER$
+				modifier = esr_murdered_best_friend
+			}
+		}
+
+		every_relation = {
+			type = soulmate
+			limit = { NOT = {this = $EXECUTIONER$}}
+			add_opinion = {
+				target = $EXECUTIONER$
+				modifier = esr_murdered_soulmate
+			}
+		}
+
+		every_relation = {
+			type = nemesis
+
+			limit = {
+				NOR = {
+					this = $EXECUTIONER$
+					has_trait = just
+					has_trait = compassionate
+					has_trait = forgiving
+				}
+			}
+			add_opinion = {
+				target = $EXECUTIONER$
+				modifier = esr_murdered_nemesis
+			}
+		}
+		###esr/
+	}
+}

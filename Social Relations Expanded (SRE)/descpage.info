@@ -1,0 +1,111 @@
+Updated for [b]1.7.0[/b]
+
+[h1][i]Find the relation system to be irrelevant most of the time?[/i][/h1]
+
+This mod aims to make [b]personal/family relations[/b] have a more prominent effect on [b]how characters view each other[/b].
+As a player, your relations and interactions with other characters will now feel more impactful and realistic.
+
+[h1][b]🕸️ Mutual Acquaintances[/b] system[/h1]
+A relation should have a broader impact on a character's social environment. After all, people are more inclined to like [b]Friends of a Friend[/b] or [b]Rivals of a Rival[/b].
+The Mutual Acquaintances system dynamically simulates this aspect of your friendships and rivalries by assigning appropriate opinion modifiers on relevant characters.
+
+[img]https://i.imgur.com/QUX3Bk5.png[/img]
+
+[h1][b]👿 Hate by Association[/b][/h1]
+Being a murderer or executioner affects not only you but also your family members, who now will be hated by those close to your victims because of what you've done.
+
+[img]https://i.imgur.com/GtbgrpR.png[/img]
+
+[h1]👨‍👩‍👧‍👦 Become a [b]Family Friend[/b][/h1] 
+Having multiple friends within a powerful family now brings more benefits. The family you have close ties with will consider you a Family Friend, and thus holds you in higher regard.
+
+[img]https://i.imgur.com/in8OuK2.png[/img]
+
+[h1]💔 Expanded [b]Betrayal[/b] Triggers[/h1] 
+It takes only a few betrayals to destroy the strongest bonds. It could either be revoking a best friend's title or divorcing a soulmate. Be careful not to stab those closest to you in the back
+
+[img]https://i.imgur.com/U7SBXfS.png[/img]
+
+[h1]⛓️ More [b]Impactful Character Interactions[/b][/h1] 
+Expanded the scope of the opinion impact caused by interactions. Consider how would a character's friends, families and rivals would view an action before committing to it.
+
+[img]https://i.imgur.com/LFmEgvV.png[/img]
+
+[h1]⚔️ [b]Declaring/Joining War[/b] upsets those [b]close to the defender[/b][/h1] 
+When a war is declared, the defending character is not the only one who has something to lose. Expect those who have a relation with the defender, either positive or negative, to react accordingly.
+Joining a war against someone would lower the defender's family's opinion of you, albeit to a lesser extent.
+
+[img]https://i.imgur.com/RqIh6NA.png[/img]
+
+[h1]🤝🏼 Increased importance of [b]Life-Long Relations[/b][/h1] 
+Distinctions between a normal relation and a life-long relation are made more drastic. One might get away with trying to murder someone's lover, but killing someone's soulmate will earn you a guaranteed nemesis.
+conversely, revoking the title of someone's nemesis will surely please them more than doing the same to one of their many rivals.
+
+[img]https://i.imgur.com/co8RQkf.png[/img]
+
+[h1]😡 More opportunity to form [b]rival & nemesis[/b] relations[/h1] 
+Declaring a few wars to a vengeful character and you'll find yourself a new rival. The same goes for several other hostile actions such as imprisonment, revoking tiles/vassals and, sometimes, divorce.
+
+[img]https://i.imgur.com/U8lnBsh.png[/img]
+[hr][/hr]
+[h1]1st Feature Update[/h1]
+[h1]🎭 [b]Personality Based Triggers[/b][/h1] 
+Additional triggers are added in several interactions to take how would relevant characters with [b]specific personalities would react to certain actions[/b] taken by others.
+For example, characters who are [b]just, compassionate or forgiving[/b] will no longer cheer for your [b]execution of their rivals[/b].
+Conversely, a [b]callous or arbitrary[/b] character will stop thinking better of you just because you [b]granted their friend a vassal[/b].
+
+[h1][b]🩸 Cross-Generational Friends & Rivals[/b][/h1]
+[h1](Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2829009590]Unfinished Business[/url] Add-on)[/h1]
+Now taking a crown comes with its unique diplomatic benefits and challenges, depending on the previous holder's relations and how close you two are related.
+*I made this feature a separate mod so that people who don't want to use SRE can also use it. You can check out [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2829009590]Unfinished Business[/url] if you're interested.
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2829009590][img]https://i.imgur.com/Y9M4Mxm.png[/img][/url]
+[hr][/hr]
+[h1][b]⚠️ Before You Start ⚠️[/b][/h1]
+
+1. This mod [b]Requires[/b] a new game! It might seem to be working on an existing save, but not really.
+
+2. If you intend to use this mod with other mods that modify [b]window_character.gui[/b], you need to use [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2768734977]UniUI[/url][/b] to prevent conflicts. (see UniUI mod page for detailed instructions)
+
+3. Mods that are not supported by [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2768734977]UniUI[/url][/b] might cause life-long relations not showing up in the relation tab.
+
+4. Since this mod overrides several character interactions and some vanilla effects, it will conflict with other mods that modify the same scripts. Please report any potential compatibility issues you encountered. You're also welcome to post your own patch.
+
+5. If you use lots of mechanical mods (or even overhaul) and don't want to deal with compatibility issues, you can use the [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825975085]Lite Version[/url][/b] of this mod. Simply put the "Social Relations Expanded Lite" patch below this mod in your load order.
+
+6. [b]🏆❌ This mod is [u]not achievement[/u] compatible.[/b]
+
+[h1][b]Load order[/b][/h1]
+-Other mods
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825977309]Social Relations Expanded[/url]
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2829009590]Unfinished Business[/url] (optional)
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2825975085]Social Relations Expanded Lite[/url] (optional)
+-Other mechanical mods / Overhaul
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2768734977]UniUI[/url] (optional)
+-end of the load order
+
+[hr][/hr]
+[h1][b]📅 Future Plans[/b][/h1]
+- More relation related mechanics
+- Relation Related events
+[img]https://imgur.com/p7Fv1Z6.gif[/img]
+
+[url=https://steamcommunity.com:/linkfilter/?url=https://discord.gg/xdSAeDPT8y][img]https://i.imgur.com/YkvRbPA.png[/img][/url]
+
+[hr][/hr]
+[h1][b]📢 Credits[/b][/h1]
+[b]Translations:[/b]
+Simplified Chinese (Special thanks to [b][url=https://steamcommunity.com/profiles/76561198255881425/myworkshopfiles/]牛奶大魔王[/url][/b])
+French (Special thanks to [b][url=https://steamcommunity.com/profiles/76561198007252288/myworkshopfiles/]KaD91[/url][/b] and grobubon)
+German (Special thanks to [b][url=https://steamcommunity.com/profiles/76561198000750190/myworkshopfiles/]Nekrokant[/url][/b])
+
+[h1]Big Uncle's other mods (1.6.1):[/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2847318957]Show Me Your Personality[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2829009590]Unfinished Business[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815382549]Dynamic UI Themes[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790980257]Show Me Your Council[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2796111001]Show Me Your Court Positions[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2790457557]Stress Bar for All[/url]
+
+[url=https://steamcommunity.com/workshop/filedetails/?id=2819265426][img]https://i.imgur.com/SMfVN1b.png[/img][/url]
+

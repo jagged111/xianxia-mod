@@ -1,0 +1,461 @@
+﻿grant_vassal_interaction = {
+	category = interaction_category_vassal
+	common_interaction = yes
+	interface = transfer_vassal
+	icon = icon_vassal
+
+	special_interaction = grant_vassal_interaction
+
+	populate_actor_list = {
+		scope:actor = {
+			every_vassal = {
+				add_to_list = characters
+			}
+		}
+	}
+
+	desc = grant_vassal_interaction_desc
+
+	prompt = GRANT_VASSAL_SELECT_VASSAL_TO_TRANSFER
+
+	greeting = positive
+	notification_text = GRANT_VASSAL_PROPOSAL
+
+	pre_answer_yes_key = ACCEPT
+	pre_answer_no_key = DECLINE
+
+	is_shown = {
+		scope:recipient != scope:actor
+		OR = {
+			AND = {
+				exists = scope:recipient.liege
+				scope:recipient.liege = scope:actor
+			}
+			AND = {
+				exists = scope:actor.liege
+				scope:actor.liege = scope:recipient
+			}
+			AND = {
+				scope:actor.faith.religious_head = scope:recipient
+				scope:recipient = {
+					top_liege = this
+				}
+			}
+		}
+		scope:recipient.highest_held_title_tier > tier_barony
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			is_landed = yes # Landless rulers should not have Vassals
+			# Gallivanters won't accept additional responsibilities.
+			NOT = { has_trait = gallivanter }
+		}
+		NOT = { scope:actor = { is_at_war_with = scope:recipient } }
+		trigger_if = {
+			limit = { exists = scope:secondary_actor }
+			NOT = { scope:secondary_actor = { is_at_war_with = scope:recipient } }
+			scope:recipient.primary_title.tier > scope:secondary_actor.primary_title.tier
+		}
+		trigger_if = {
+			limit = {
+				scope:actor = { is_ai = yes }
+				exists = scope:secondary_actor
+			}
+			trigger_if = {
+				limit = {
+					NOT = {
+						scope:recipient.primary_title = {
+							any_in_de_jure_hierarchy = {
+								holder = scope:secondary_actor
+							}
+						}
+					}
+				}
+				scope:recipient.vassal_count < scope:recipient.vassal_limit # Avoid creating vassals with unsustainable situations
+			}
+			scope:secondary_actor = {
+				NOT = { has_character_flag = ai_should_not_transfer }
+			}
+		}
+		trigger_if = {
+			limit = { scope:recipient.highest_held_title_tier <= tier_county }
+			scope:recipient = { highest_held_title_tier > tier_county }
+		}
+		trigger_else = {
+			scope:actor = {
+				custom_description = {
+					text = "basic_valid_vassal_to_tranfer"
+					object = scope:recipient
+					any_vassal = {
+						NOT = { highest_held_title_tier = tier_barony }
+						scope:recipient.highest_held_title_tier > highest_held_title_tier
+					}
+				}
+			}
+		}
+		# Prevent Admin AI transferring admin vassals under non-admin vassals
+		NAND = {
+			scope:actor ?= {
+				is_ai = yes
+				government_allows = administrative
+			}
+			scope:recipient ?= {
+				NOT = { government_allows = administrative }
+			}
+			scope:secondary_actor ?= { government_allows = administrative }
+		}
+		# Ritsuryo cannot transfer Soryo to Ritsuryo
+		custom_tooltip = {
+			text = ritsuryo_to_soryo_invalid_to_transfer
+			NAND = {
+				scope:actor ?= { has_government = japan_administrative_government }
+				scope:recipient ?= { has_government = japan_administrative_government }
+				scope:secondary_actor ?= { has_government = japan_feudal_government }
+			}
+		}
+		custom_tooltip = {
+			text = cannot_transfer_bloc_leader_as_vassal_tt
+			NOT = {
+				scope:secondary_actor ?= {
+					exists = house.house_confederation.leading_house
+					house.house_confederation.leading_house ?= house
+					is_house_head = yes
+				}
+			}
+		}
+	}
+
+	can_be_picked = {
+		scope:recipient != root
+		highest_held_title_tier > tier_barony
+		highest_held_title_tier < scope:recipient.highest_held_title_tier
+
+		trigger_if = {
+			limit = { scope:actor.liege = scope:recipient }
+			custom_tooltip = {
+				text = is_de_jure_liege_of_target
+				NOT = {
+					primary_title = {
+						any_this_title_or_de_jure_above = {
+							holder = scope:actor
+						}
+					}
+				}
+			}
+		}
+
+		# You can't give your diarch away as a vassal.
+		custom_description = {
+			text = cannot_grant_own_diarch_as_vassal
+			subject = scope:actor.diarch
+			NOT = { root ?= scope:actor.diarch }
+		}
+
+		# Not at war with the vassal being transferred (blocks explicit transfer of war enemies, which invalidates the war).
+		custom_description = {
+			text = "basic_is_at_war_with_vassal"
+			subject = root
+			object = scope:actor
+			NOT = {
+				root = {
+					is_at_war_with = scope:actor
+				}
+			}
+		}
+
+		# Not at war with a vassal under the vassal being transferred (blocks implicit transfers of war enemies).
+		custom_description = {
+			text = "basic_is_at_war_with_sub_vassal"
+			subject = root
+			object = scope:actor
+			NOT = {
+				any_vassal_or_below = {
+					is_at_war_with = root
+				}
+			}
+		}
+
+		# EP3 Admin - You cannot give away noble families
+		custom_description = {
+			text = admin_cannot_grant_vassal_noble_family
+			subject = root
+			trigger_if = {
+				limit = {
+					government_allows = administrative
+				}
+				any_held_title = {
+					is_noble_family_title = no
+				}
+			}
+		}
+	}
+
+	auto_accept = {
+		scope:recipient = {
+			custom_description = {
+				text = wants_more_vassals
+				is_ai = yes
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = grant_vassal_interaction_notification
+				right_icon = scope:recipient
+				left_icon = scope:secondary_actor
+
+				# If we're granting a vassal to our liege, gain a truce with our former vassal (we can't immediately reconquer them, and they can't attack us either).
+				if = {
+					limit = {
+						scope:actor = {
+							is_vassal_of = scope:recipient
+						}
+					}
+					add_truce_both_ways = {
+						character = scope:secondary_actor
+						days = 3650
+						name = TRUCE_GRANT_INDEPENDENCE
+					}
+				}
+
+				# Transfer the vassal over to their new liege.
+				create_title_and_vassal_change = {
+					type = granted
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				scope:secondary_actor = {
+					change_liege = {
+						liege = scope:recipient
+						change = scope:change
+					}
+				}
+				resolve_title_and_vassal_change = scope:change
+
+				# Gain an opinion bonus with the person we gave a vassal to.
+				scope:recipient = {
+					add_opinion = {
+						target = scope:actor
+						modifier = granted_vassal
+					}
+
+					###esr
+					every_spouse = {
+						limit = { this != scope:actor }
+						add_to_temporary_list = close_family_grant_opinion_list		
+					}
+			
+					every_close_family_member ={
+						limit = { this != scope:actor }
+						add_to_temporary_list = close_family_grant_opinion_list
+					}
+			
+					if = {
+						limit = {
+							any_in_list = {
+								list = close_family_grant_opinion_list
+								always = yes
+							}
+						}
+						every_in_list = {
+							list = close_family_grant_opinion_list
+							custom = all_close_family_members
+
+							add_opinion = {
+								target = scope:actor
+								modifier = esr_grant_family_vassal
+							}
+						}
+					}
+			
+					#recipient's friends and lovers
+					every_relation = {
+						type = friend
+						limit = {
+							NOR = {
+								this = scope:recipient
+								this = scope:actor
+								has_relation_best_friend = scope:recipient
+								has_trait = callous
+								has_trait = arbitrary				
+							}
+						}
+						add_to_list = recipient_close_relations_list
+					}
+					every_relation = {
+						type = lover
+						limit = {
+							NOR = {
+								this = scope:recipient
+								this = scope:actor
+								has_relation_soulmate = scope:recipient
+								is_in_list = recipient_close_relations_list
+							}
+						}
+						add_to_list = recipient_close_relations_list
+					}
+					if = {
+						limit = {
+							any_in_list = {
+								list = recipient_close_relations_list
+								always = yes
+							}
+						}
+						every_in_list = {
+							list = recipient_close_relations_list
+							custom = all_friends_and_lovers
+							add_opinion = {
+								target = scope:actor
+								modifier = esr_grant_close_relation_opinion
+							}
+						}
+					}
+			
+					#recipient's best friend and soulmate
+					every_relation = {
+						type = best_friend
+						limit = { this != scope:actor }
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_grant_best_friend
+						}
+					}
+			
+					every_relation = {
+						type = soulmate
+						limit = { this != scope:actor }
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_grant_soulmate
+						}
+					}
+			
+					#recipient's rivals and nemesis
+					every_relation = {
+						type = rival
+						limit = {
+							NOR = {
+								this = scope:actor
+								has_relation_nemesis = scope:recipient
+							}
+						}
+						custom = esr_rivals_execution
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_grant_rival
+						}
+					}
+			
+					every_relation = {
+						type = nemesis
+			
+						limit = {
+							NOT = {
+								this = scope:actor
+							}
+						}
+						add_opinion = {
+							target = scope:actor
+							modifier = esr_grant_nemesis
+						}
+					}
+					###esr/					
+				}
+
+				stress_impact = {
+					greedy = medium_stress_impact_gain
+				}
+			}
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = miniscule_unity_gain
+			DESC = clan_unity_grant_vassal.desc
+			REVERSE_NON_HOUSE_TARGET = yes
+		}
+
+		hidden_effect = {
+			# Struggle catalyst
+			if = {
+				limit = {
+					fp3_struggle_involves_one_supporter_and_one_detractor = {
+						FIRST = scope:actor
+						SECOND = scope:recipient
+					}
+					scope:actor = {
+						any_character_struggle	 = {
+							involvement = involved
+							phase_has_catalyst = catalyst_grants_vassal_to_de_jure_liege_supporter_detractor
+							is_secondary_character_involvement_involved_trigger = {
+								CHAR = scope:recipient
+							}
+						}
+					}
+					scope:recipient.primary_title = {
+						any_this_title_or_de_jure_above = {
+							holder = scope:secondary_actor
+						}
+					}
+				}
+				scope:actor = {
+					every_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst = {
+							catalyst = catalyst_grants_vassal_to_de_jure_liege_supporter_detractor
+							character = scope:actor
+						}
+						log_debug_variable_for_persian_struggle_effect = { VAR = concession_catalyst_grants_vassal_to_de_jure_liege_supporter_detractor }
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:recipient = {
+						government_has_flag = government_is_nomadic
+					}
+				}
+				while = {
+					limit = {
+						scope:secondary_actor ?= {
+							any_held_title = {
+								vassal_grant_de_jure_shift_trigger = yes
+							}
+						}
+					}
+					scope:secondary_actor ?= {
+						random_held_title = {
+							limit = {
+								vassal_grant_de_jure_shift_trigger = yes
+							}
+							set_de_jure_liege_title = scope:recipient.primary_title
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_decline = {
+		scope:actor = {
+			trigger_event = char_interaction.0211
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:recipient
+			TARGET = scope:actor
+			VALUE = miniscule_unity_loss
+			DESC = clan_unity_grant_vassal_decline.desc
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	}
+
+	# AI handled entirely though code
+}

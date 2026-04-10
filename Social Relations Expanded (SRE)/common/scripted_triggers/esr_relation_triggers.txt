@@ -1,0 +1,19 @@
+﻿###esr to ensure linear progression for correct opinion on_action firing seqence
+
+### FRIEND ###
+can_set_relation_best_friend_trigger = {
+	NOT = { this = $CHARACTER$ }
+	has_relation_friend = $CHARACTER$
+	num_of_relation_best_friend = 0
+	$CHARACTER$ = { num_of_relation_best_friend = 0 }
+}
+
+### RIVAL ###
+can_set_relation_nemesis_trigger = {
+	is_adult = yes
+	NOT = { this = $CHARACTER$ }
+	$CHARACTER$ = { is_adult = yes }
+	has_relation_rival = $CHARACTER$
+	num_of_relation_nemesis = 0
+	$CHARACTER$ = { num_of_relation_nemesis = 0 }
+}

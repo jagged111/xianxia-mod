@@ -1,0 +1,9 @@
+﻿NDynasty = {
+	MAX_LONG_REIGN = { 3	6	9	12	15	18	21	24	27	30	33 }
+}
+
+NCharacterOpinion = {
+	PIOUS = { -10 0 3 5 10 15 }
+	PRESTIGIOUS = { -10 0 3 5 10 15 } # This is level of fame
+	PIOUS_MAGNIFICENCE = { -10 0 3 5 10 15 } # This is level of devotion
+}

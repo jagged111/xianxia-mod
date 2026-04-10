@@ -1,0 +1,120 @@
+﻿l_simp_chinese:
+### war related
+esr_declared_war_on_family:0 "向[family_member|E]宣战"
+esr_declared_war_on_close_family:0 "向[close_family_member|E]宣战"
+esr_joined_war_on_family:0 "加入对[family_member|E]的战争"
+esr_joined_war_on_me:0 "加入对我的战争"
+esr_declared_war_on_friend:0 "向[friend|E]宣战"
+esr_declared_war_on_best_friend:0 "向[best_friend|E]宣战"
+esr_declared_war_on_lover:0 "向[lover|E]宣战"
+esr_declared_war_on_soulmate:0 "向[soulmate|E]宣战"
+esr_declared_war_on_rival:0 "向[rival|E]宣战"
+esr_declared_war_on_nemesis:0 "向[nemesis|E]宣战"
+
+### relation related
+esr_common_friend:0 "有共同的[friend|E]"
+esr_rival_friend:0 "你是我[rival|E]的[friend|E]"
+esr_nemesis_friend:0 "你是我[nemesis|E]的[friend|E]"
+esr_rival_best_friend:0 "你是我[rival|E]的[best_friend|E]"
+esr_nemesis_best_friend:0 "你是我[nemesis|E]的[best_friend|E]"
+esr_common_rival:0 "有共同的[rival|E]"
+esr_friend_rival:0 "你是我[friend|E]的[rival|E]"
+esr_best_friend_rival:0 "你是我[best_friend|E]的[rival|E]"
+esr_friend_nemesis:0 "你是我[friend|E]的[nemesis|E]"
+esr_best_friend_nemesis:0 "你是我[best_friend|E]的[nemesis|E]"
+
+### Murder / Execution related
+esr_murdered_best_friend:0 "处决了[best_friend|E]"
+esr_murdered_soulmate:0 "处决了[soulmate|E]"
+esr_murdered_rival:0 "处决了[rival|E]"
+esr_murdered_nemesis:0 "处决了[nemesis|E]"
+esr_murdered_extended_family:0 "处决了[extended_family_members|E]"
+esr_hate_by_association_murder:0 "凶手家属"
+
+### Attempted Murder related modifiers
+esr_attempted_murder_extended_family:0 "谋杀[extended_family_members|E]未遂"
+esr_attempted_murder_close_relation_opinion:0 "谋杀亲信未遂"
+esr_attempted_murder_best_friend:0 "谋杀[best_friend|E]未遂"
+esr_attempted_murder_soulmate:0 "谋杀[soulmate|E]未遂"
+esr_attempted_murder_rival:0 "谋杀[rival|E]未遂"
+esr_attempted_murder_nemesis:0 "谋杀[nemesis|E]未遂"
+
+### Execution modifiers
+esr_hate_by_association_execution:0 "刽子手家属"
+
+### Imprison modifiers
+esr_imprisoned_close_family:0 "[close_family_member|E]被囚禁"
+esr_imprisoned_extended_family:0 "[extended_family_members|E]被囚禁"
+esr_imprisoned_close_relation_opinion:0 "亲信被囚禁"
+esr_imprisoned_rival:0 "我的[rival|E]被囚禁"
+esr_imprisoned_best_friend:0 "我的[best_friend|E]被囚禁"
+esr_imprisoned_soulmate:0 "我的[soulmate|E]被囚禁"
+esr_imprisoned_nemesis:0 "我的[nemesis|E]被囚禁"
+esr_threw_family_in_dungeon:0 "将我的[family_member|E]投入地牢"
+esr_threw_close_relation_in_dungeon:0 "将亲信投入地牢"
+esr_threw_very_close_in_dungeon:0 "将我的[best_friend|E]或[soulmate|E]投入地牢"
+esr_threw_nemesis_in_dungeon:0 "将我的[nemesis|E]投入地牢"
+esr_move_family_to_house_arrest:0 "将我的[family_member|E]改为软禁"
+esr_move_close_relation_to_house_arrest:0 "将亲信改为软禁"
+esr_move_very_close_to_house_arrest:0 "将我的[best_friend|E]或[soulmate|E]改为软禁"
+esr_move_nemesis_to_house_arrest:0 "将我的[nemesis|E]改为软禁"
+
+### Revoke title modifiers
+esr_revoked_close_family:0 "剥夺过[close_family_member|E]的头衔"
+esr_revoked_extended_family:0 "剥夺过[extended_family_members|E]的头衔"
+esr_revoked_close_relation_opinion:0 "剥夺过亲信的头衔"
+esr_revoked_best_friend:0 "剥夺过[best_friend|E]的头衔"
+esr_revoked_soulmate:0 "剥夺过[soulmate|E]的头衔"
+esr_revoked_rival:0 "剥夺过[rival|E]的头衔"
+esr_revoked_nemesis:0 "剥夺过[nemesis|E]的头衔"
+
+### Retracted vassal modifiers
+esr_retracted_close_family:0 "收回过[close_family_member|E]的[vassal|E]"
+esr_retracted_extended_family:0 "收回过[extended_family_members|E]的[vassal|E]"
+esr_retracted_close_relation_opinion:0 "收回过亲信的[vassal|E]"
+esr_retracted_best_friend:0 "收回过[best_friend|E]的[vassal|E]"
+esr_retracted_soulmate:0 "收回过[soulmate|E]的[vassal|E]"
+esr_retracted_rival:0 "收回过[rival|E]的[vassal|E]"
+esr_retracted_nemesis:0 "收回过[nemesis|E]的[vassal|E]"
+
+### Grant title / [vassal|E] modifiers
+esr_grant_family_barony:0 "授予过[close_family_member|E]男爵领"
+esr_grant_family_county:0 "授予过[close_family_member|E]伯爵领"
+esr_grant_family_duchy:0 "授予过[close_family_member|E]公国"
+esr_grant_family_kingdom:0 "授予过[close_family_member|E]王国"
+esr_grant_family_empire:0 "授予过[close_family_member|E]帝国"
+esr_grant_family_vassal:0 "授予过[close_family_member|E][vassal|E]"
+esr_grant_close_relation_opinion:0 "授予过亲信头衔或[vassal|E]"
+esr_grant_best_friend:0 "授予过[best_friend|E]头衔或[vassal|E]"
+esr_grant_soulmate:0 "授予过[soulmate|E]头衔或[vassal|E]"
+esr_grant_rival:0 "授予过[rival|E]头衔或[vassal|E]"
+esr_grant_nemesis:0 "授予过[nemesis|E]头衔或[vassal|E]"
+
+### Grant Independance
+esr_grant_independence_family:0 "给予[close_family_member|E]独立"
+
+### Family friend
+esr_family_friend:0 "[family_friend|E]"
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

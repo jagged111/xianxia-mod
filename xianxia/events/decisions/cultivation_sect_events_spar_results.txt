@@ -16,7 +16,17 @@ cultivation_sect_spar_results.1000 = {
 				name = sect_spars_total
 				add = 1
 			}
-			#add_cultivation_lifestyle_xp = minor_lifestyle_xp
+			add_character_modifier = {
+				modifier = sect_spar_victory
+				days = 365
+			}
+			random = {
+				chance = 45
+				add_character_modifier = {
+					modifier = sect_spar_training_insight
+					days = 365
+				}
+			}
 		}
 
 		# Loser gain
@@ -28,6 +38,17 @@ cultivation_sect_spar_results.1000 = {
 			change_variable = {
 				name = sect_spars_total
 				add = 1
+			}
+			add_character_modifier = {
+				modifier = sect_spar_defeat
+				days = 180
+			}
+			random = {
+				chance = 45
+				add_character_modifier = {
+					modifier = sect_spar_training_insight
+					days = 365
+				}
 			}
 		}
 	}

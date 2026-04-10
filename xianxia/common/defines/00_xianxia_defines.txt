@@ -1,0 +1,26 @@
+﻿NCharacter = {
+	# Xianxia scaling: cultivators can push attributes far beyond mortal caps.
+	MAX_MARTIAL = 200
+	MAX_LEARNING = 200
+	MAX_PROWESS = 300
+	DEFAULT_PIETY_LEVEL_CAP = 7
+	DEFAULT_PRESTIGE_LEVEL_CAP = 7
+	DEFAULT_INFLUENCE_LEVEL_CAP = 7
+}
+
+NCombat = {
+	# Faster, more explosive battle cadence for a cultivation world.
+	COMBAT_ROLL_DAYS = 1
+	COMBAT_EVENT_DAYS = 1
+	MIN_DAYS_BEFORE_MANUAL_RETREAT = 30
+	ADVANTAGE_DAMAGE_SCALING_FACTOR = 8
+
+	# Knight/champion duels should define battles in xianxia campaigns.
+	KNIGHT_DAMAGE_PER_PROWESS = 120
+	KNIGHT_TOUGHNESS_PER_PROWESS = 30
+	KNIGHT_AVERAGE_PROWESS_FOR_AI_POWER_CALCULATION = 18
+}
+
+NCourt = {
+	MIN_ROYAL_COURT_TIER = "duchy"
+}

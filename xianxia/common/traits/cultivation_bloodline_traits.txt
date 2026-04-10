@@ -41,8 +41,6 @@ yin_bloodline_1 = {
 	physical = yes
 	genetic = yes
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -95,8 +93,6 @@ yin_bloodline_2 = {
 	physical = yes
 	genetic = yes
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -149,8 +145,6 @@ yin_bloodline_3 = {
 	physical = yes
 	genetic = yes
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -207,8 +201,6 @@ yang_bloodline_1 = {
 	group = yang_bloodline
 	level = 1
 	
-	inherit_chance = 5
-	both_parent_has_trait_inherit_chance = 25
 		
 	genetic = yes
 	good = yes
@@ -262,8 +254,6 @@ yang_bloodline_2 = {
 	group = yang_bloodline
 	level = 2
 	
-	inherit_chance = 5
-	both_parent_has_trait_inherit_chance = 25
 		
 	genetic = yes
 	good = yes
@@ -318,8 +308,6 @@ yang_bloodline_3 = {
 	group = yang_bloodline
 	level = 3
 	
-	inherit_chance = 5
-	both_parent_has_trait_inherit_chance = 25
 		
 	genetic = yes
 	good = yes
@@ -378,8 +366,6 @@ dragon_bloodline_1 = {
 	group = dragon_bloodline
 	level = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -429,8 +415,6 @@ dragon_bloodline_2 = {
 	group = dragon_bloodline
 	level = 2
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -480,8 +464,6 @@ dragon_bloodline_3 = {
 	group = dragon_bloodline
 	level = 3
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -535,8 +517,6 @@ phoenix_bloodline_1 = {
 	group = phoenix_bloodline
 	level = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -586,8 +566,6 @@ phoenix_bloodline_2 = {
 	group = phoenix_bloodline
 	level = 2
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -637,8 +615,6 @@ phoenix_bloodline_3 = {
 	group = phoenix_bloodline
 	level = 3
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -692,8 +668,6 @@ anchestor_bloodline_1 = {
 	group = anchestor_bloodline
 	level = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -744,8 +718,6 @@ anchestor_bloodline_2 = {
 	group = anchestor_bloodline
 	level = 2
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -796,8 +768,6 @@ anchestor_bloodline_3 = {
 	group = anchestor_bloodline
 	level = 3
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -855,8 +825,6 @@ poison_bloodline_1 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -906,8 +874,6 @@ poison_bloodline_2 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -957,8 +923,6 @@ poison_bloodline_3 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1012,8 +976,6 @@ cursed_bloodline_1 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1063,8 +1025,6 @@ cursed_bloodline_2 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1114,8 +1074,6 @@ cursed_bloodline_3 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1169,8 +1127,6 @@ demon_bloodline_1 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1220,8 +1176,6 @@ demon_bloodline_2 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1271,8 +1225,6 @@ demon_bloodline_3 = {
 	physical = yes
 	genetic = yes	
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 	good = yes
 	
 	desc = {
@@ -1330,8 +1282,6 @@ primal_bloodline_1 = {
 	prowess = 1
 	learning = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1388,8 +1338,6 @@ primal_bloodline_2 = {
 	prowess = 1
 	learning = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1446,8 +1394,6 @@ primal_bloodline_3 = {
 	prowess = 1
 	learning = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1503,8 +1449,6 @@ spirit_bloodline_1 = {
 	group = spirit_bloodline
 	level = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1555,8 +1499,6 @@ spirit_bloodline_2 = {
 	group = spirit_bloodline
 	level = 2
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1607,8 +1549,6 @@ spirit_bloodline_3 = {
 	group = spirit_bloodline
 	level = 3
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1670,8 +1610,6 @@ sun_bloodline_1 = {
 	group = sun_bloodline
 	level = 1
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1728,8 +1666,6 @@ sun_bloodline_2 = {
 	group = sun_bloodline
 	level = 2
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes
@@ -1786,8 +1722,6 @@ sun_bloodline_3 = {
 	group = sun_bloodline
 	level = 3
 	
-	inherit_chance = 15
-	both_parent_has_trait_inherit_chance = 75
 		
 	genetic = yes
 	good = yes

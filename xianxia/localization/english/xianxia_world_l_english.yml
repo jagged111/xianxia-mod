@@ -402,3 +402,25 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  martial_alliance_leader_desc:0 "This ruler presides over a broad Jianghu alliance framework and arbitration order."
  imperial_patron_sect:0 "Imperial Patron Sect"
  imperial_patron_sect_desc:0 "This sect is formally tied to imperial patronage and Han court legitimacy."
+
+ xianxia_world.1801.t:0 "Dao Challenge at War's Dawn"
+ xianxia_world.1801.desc:0 "[sender.GetTitledFirstName] challenges you to decide this war with a direct clash of Dao between equal realms. Acceptance may decide the whole campaign."
+ xianxia_world.1801.a:0 "Accept the Dao battle."
+ xianxia_world.1801.b:0 "Refuse and preserve the main armies."
+
+ opinion_dao_challenge_cowardice:0 "Refused a Dao Challenge"
+ opinion_dao_challenge_accepted:0 "Accepted a Dao Challenge"
+ opinion_reincarnator_disdains_liege:0 "Reincarnator Disdains Liege"
+
+ trait_reincarnator_ascendant:0 "Reincarnator Ascendant"
+ trait_reincarnator_ascendant_desc:0 "Memories from past lives and heaven-defying talent make this cultivator disdain ordinary authority."
+
+ convene_unorthodox_alliance_decision:0 "Convene Unorthodox Alliance"
+ convene_unorthodox_alliance_decision_desc:0 "Gather unorthodox sect powers into a formal martial compact led by your court."
+ convene_unorthodox_alliance_decision_tooltip:0 "Form an unorthodox cultivation alliance bound by defense and prestige pacts."
+ convene_unorthodox_alliance_decision_confirm:0 "Summon the unorthodox masters."
+
+ convene_vagrant_alliance_decision:0 "Convene Vagrant Alliance"
+ convene_vagrant_alliance_decision_desc:0 "Unite wandering halls and rogue lineages into a path-wide martial alliance."
+ convene_vagrant_alliance_decision_tooltip:0 "Form a vagrant cultivation alliance rooted in expeditions and mutual defense."
+ convene_vagrant_alliance_decision_confirm:0 "Call the vagrant elders."

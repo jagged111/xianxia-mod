@@ -1,0 +1,54 @@
+﻿face_slap_interaction = {
+	category = interaction_category_hostile
+	interface_priority = 85
+	common_interaction = yes
+	icon = icon_torture
+	desc = face_slap_interaction_desc
+
+	is_shown = {
+		is_adult = yes
+		scope:recipient = { is_adult = yes }
+		NOT = { scope:actor = scope:recipient }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_alive = yes
+			is_imprisoned = no
+		}
+		scope:recipient = {
+			is_alive = yes
+			is_imprisoned = no
+		}
+	}
+
+	on_accept = {
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = face_slapped_humanliation_opinion
+			}
+			add_stress = 35
+		}
+		scope:actor = {
+			add_prestige = 35
+			add_stress = -20
+		}
+	}
+
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 55
+			has_trait = arrogant
+		}
+		modifier = {
+			add = 45
+			has_trait = wrathful
+		}
+		modifier = {
+			add = -80
+			has_trait = compassionate
+		}
+	}
+}

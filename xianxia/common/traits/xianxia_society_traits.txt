@@ -244,3 +244,13 @@ formation_body_tier_3 = {
     prowess = 3
     advantage = 3
 }
+
+reincarnator_ascendant = {
+    category = lifestyle
+    icon = heavenly_root.dds
+    desc = trait_reincarnator_ascendant_desc
+    group = personality
+    learning = 3
+    prowess = 3
+    general_opinion = -5
+}

@@ -512,3 +512,5 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Expanded pill creation system with multi-formula grand refinement via `refine_grand_spirit_pills_decision` and event `xianxia_world.1830` (Body Tempering, Soul Clarity, Tribulation Guard, Blood Ignition).
 - Added `host_jianghu_artifact_auction_decision` and event `xianxia_world.1820` to run tiered artifact bidding (mortal/profound/heaven) or sell your own treasures for gold/prestige.
 - Added a rare Legendary Breakthrough Pill discovery hook to the legendary artifact/auction chains; when found, it guarantees the holder's next breakthrough attempt (100% success) and is consumed on use.
+- Added `study_magic_treasure_crafting_decision` + `xianxia_world.1840` so Magic Treasure Crafter tiers can be earned in normal gameplay instead of requiring external trait injection.
+- Updated auction sell branch to actually destroy one owned artifact before granting sale payout, restoring real tradeoff economics.

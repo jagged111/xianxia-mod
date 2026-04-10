@@ -812,3 +812,34 @@ host_jianghu_artifact_auction_decision = {
     ai_check_interval = 30
     ai_will_do = { base = 18 }
 }
+
+study_magic_treasure_crafting_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_study_culture.dds" }
+    decision_group_type = major
+    sort_order = 535
+
+    title = study_magic_treasure_crafting_decision
+    desc = study_magic_treasure_crafting_decision_desc
+    selection_tooltip = study_magic_treasure_crafting_decision_tooltip
+    confirm_text = study_magic_treasure_crafting_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        NOT = { has_trait = magic_treasure_crafter_3 }
+    }
+
+    is_valid = {
+        gold >= 150
+        NOT = { has_character_flag = study_magic_treasure_crafting_cooldown }
+    }
+
+    effect = {
+        add_gold = -150
+        add_character_flag = { flag = study_magic_treasure_crafting_cooldown days = 730 }
+        trigger_event = xianxia_world.1840
+    }
+
+    ai_check_interval = 30
+    ai_will_do = { base = 22 }
+}

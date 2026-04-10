@@ -1,0 +1,10 @@
+﻿can_marry_trigger = {
+	can_marry_common_trigger = yes
+	allowed_more_spouses = yes
+	#To account for a person marrying their concubines please use can_marry_character_trigger
+	###rv
+	NAND = {
+		is_ai = yes
+		has_variable = rv_block_ai_marriage
+	}
+}

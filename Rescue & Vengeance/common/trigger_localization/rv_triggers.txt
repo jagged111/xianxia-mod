@@ -1,0 +1,3 @@
+﻿rv_no_revenge_target = {
+	global = rv_no_revenge_target
+}

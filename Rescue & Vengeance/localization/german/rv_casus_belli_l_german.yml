@@ -1,0 +1,109 @@
+﻿l_german:
+
+  ### Declare Private War
+  rv_declare_private_war_interaction:0 "Privatkrieg erklären"
+  rv_declare_private_war_desc:0 "Verwenden Sie einen [casus_belli|E], um [war|E] gegen [recipient.GetShortUINameNoTooltip] zu erklären."
+  rv_liege_warning:0 "Der [liege|E] des Verteidigers wird sich dem Privatkrieg anschließen."
+
+  ### Rescue CB
+  RESCUE_WAR_NAME:0 "Gefangene befreien"
+  RESCUE_WAR_NAME_FALLBACK:0 "Gefangene befreien"
+  rv_rescue_war:0 "Krieg zur Befreiung von einem Gefangenen"
+  CB_RESCUE_COST:0 "Anzahl der anvisierten Gefangenen"
+  CB_RESCUE_CRIMINAL_COST:0 "Anzahl der anvisierten Verbrecher"
+  rv_release_effect:0 "• [Scope.GetCharacter.GetShortUIName|U] wird freigelassen"
+  rv_transfer_effect:0 "• [Scope.GetCharacter.GetShortUIName|U] wird von dir eingesperrt werden"
+  rv_other_effect:0 "• Ihre Verbündeten teilen [prestige_i][EmptyScope.ScriptValue('medium_prestige_value')|+0] basierend auf ihrem Beitrag \n• [Scope.GetCharacter.GetImprisonedBy.GetUIName|U]:\n • Verbündete teilen [prestige_i][EmptyScope.ScriptValue('medium_prestige_value')|V0] basierend auf ihrem Beitrag\n • Erhöht die Meinung von [Scope.GetCharacter.GetImprisonedBy.GetHerHis] über die Verbündeten basierend auf ihrem Beitrag"
+  rescue_war_victory_desc:0 "Sie befreien alle ausgewählten [prisoners|E] und [Konkubinen|E], die von [defender.GetShortUINamePossessive] festgehalten werden."
+  rv_house_effect:0 "• [house|E] [Scope.GetCharacter.GetDynastyHouseName|V] [house_unity|E] ändert sich um [EmptyScope.ScriptValue('medium_unity_gain')|+0] @dynasty_house_unity!"
+  rescue_war_victory_desc_defender:0 "[attacker.GetShortUIName|U] befreit alle aufgelisteten [prisoners|E] in deinem Kerker."
+  rv_failed_rescue:0 "Gescheiterte Rettung"
+  rv_rescue_war_invalidated_desc:0 "Der Krieg zur Befreiung von einem Gefangenen ist ungültig!"
+  rv_rescue_war_white_peace_desc:0 "Kein [prisoner|E] wird befreit."
+  rv_rescue_war_defeat_desc:0 "$rv_rescue_war_white_peace_desc$"
+  rv_failed_rescue_desc_1:0 "Es ist mir nicht gelungen, [rescue_target_dead.GetName] zu retten, der von [rescue_target_killer.GetName] getötet wurde."
+  rv_failed_rescue_desc_second_perspective_1:0 "[owner.GetName] konnte [rescue_target_dead.GetName] nicht retten, der von [rescue_target_killer.GetName] getötet wurde."
+  rv_failed_rescue_desc_third_perspective_1:0 "[owner.GetName] konnte [rescue_target_dead.GetName] nicht retten, der von [rescue_target_killer.GetName] getötet wurde."
+  RV_IS_CRIMINAL:0 "Dieser Charakter ist wegen [crime|E] [imprisoned|E]. Die Rettung wird zusätzliche [prestige|E]-Kosten verursachen und Sie und den Inhaftierenden näher an [rivals|E] bringen."
+
+  ### Rescue_Opinions
+  rv_rescued_me:0 "Mich gerettet"
+  rv_rescued_family:0 "[family_member|E] gerettet"
+  rv_rescued_former_spouse:0 "Mich aus [concubinage|E] als ehemaligen [spouse|E] gerettet"
+  rv_rescued_close_relation:0 "Nahe Verwandte gerettet"
+  rv_rescued_very_close:0 "[best_friend|E] oder [soulmate|E] gerettet"
+  rv_rescued_rival:0 "[rival|E] gerettet"
+  rv_rescued_nemesis:0 "[nemesis|E] gerettet"
+  rv_attempt_free_my_criminal:0 "Versuchte, einen [criminal|E] zu befreien"
+  rv_attempted_rescuing_me:0 "Versuchte, mich zu retten"
+  rv_attempted_rescuing_family:0 "Versuchte, [family_member|E] zu retten"
+  rv_attempted_rescuing_close_relation:0 "Versuchte, nahe Verwandte zu retten"
+  rv_attempted_rescuing_very_close:0 "Versuchte, [best_friend|E] oder [soulmate|E] zu retten"
+  rv_attempted_rescuing_rival:0 "Versuchte, [rival|E] zu retten"
+  rv_attempted_rescuing_nemesis:0 "Versuchte, [nemesis|E] zu retten"
+  rv_avenged_family:0 "[family_member|E] gerächt"
+  rv_avenged_close_relation:0 "Nahe Verwandtschaft gerächt"
+  rv_avenged_very_close:0 "[best_friend|E] oder [soulmate|E] gerächt"
+
+  ### Revenge CB
+  REVENGE_WAR_NAME:0 "Rachekrieg"
+  REVENGE_WAR_NAME_FALLBACK:0 "Rachekrieg"
+  rv_revenge_war:0 "Rachekrieg"
+  CB_REVENGE_COST:0 "Das zu rächende Opfer"
+  REVENGE_LABEL:0 "Das zu rächende Opfer"
+  rv_no_revenge_target:0 "Es gibt niemanden, der gerächt werden muss"
+  revenge_war_victory_desc:0 "Du hast Rache genommen für das Verbrechen von [defender.GetShortUINamePossessive] gegen diejenigen, die dir nahestanden."
+  revenge_war_victory_desc_defender:0 "[attacker.GetShortUIName|U] hat Rache genommen für dein Verbrechen gegen diejenigen, die [attacker.GetHerHim] nahestanden."
+  rv_revenge_war_white_peace_desc:0 "Das Verbrechen von [defender.GetShortUIName|U] wurde nicht gerächt."
+  rv_revenge_war_defeat_desc:0 "$rv_revenge_war_white_peace_desc$"
+  rv_revenge_war_invalidated_desc:0 "Der Krieg um Rache auszuüben ist für ungültig erklärt worden!"
+
+  # Successfule revenge memory
+  rv_successful_revenged_lover:0 "Erfolgreiche Rache"
+  rv_revenged_lover_desc_1:0 "Ich habe Rache genommen für den Tod meiner Geliebten [target_revenged.GetName], die von [target_killer.GetName] getötet wurde"
+  rv_revenged_lover_desc_second_perspective_1:0 "Du hast Rache genommen für den Tod deiner Geliebten [target_revenged.GetName], die von [target_killer.GetName] getötet wurde"
+  rv_revenged_lover_desc_third_perspective_1:0 "[owner.GetName] hat Rache genommen für den Tod seiner Geliebten [target_revenged.GetName], die von [target_killer.GetName] getötet wurde"
+
+  rv_successful_revenged_soulmate:0 "Erfolgreiche Rache"
+  rv_revenged_soulmate_desc_1:0 "Ich habe Rache genommen für den Tod meiner Seelenverwandten [target_revenged.GetName], die von [target_killer.GetName] getötet wurde"
+  rv_revenged_soulmate_desc_second_perspective_1:0 "Du hast Rache genommen für den Tod deiner Seelenverwandten [target_revenged.GetName], die von [target_killer.GetName] getötet wurde"
+  rv_revenged_soulmate_desc_third_perspective_1:0 "[owner.GetName] hat Rache genommen für den Tod seiner Seelenverwandten [target_revenged.GetName], die von [target_killer.GetName] getötet wurde"
+
+  rv_successful_revenged_friend:0 "Erfolgreiche Rache"
+  rv_revenged_friend_desc_1:0 "Ich habe Rache genommen für den Tod meines Freundes [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_friend_desc_second_perspective_1:0 "Du hast Rache genommen für den Tod deines Freundes [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_friend_desc_third_perspective_1:0 "[owner.GetName] hat Rache genommen für den Tod seines Freundes [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+
+  rv_successful_revenged_best_friend:0 "Erfolgreiche Rache"
+  rv_revenged_best_friend_desc_1:0 "Ich habe Rache genommen für den Tod meines besten Freundes [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_best_friend_desc_second_perspective_1:0 "Du hast Rache genommen für den Tod deines besten Freundes [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_best_friend_desc_third_perspective_1:0 "[owner.GetName] hat Rache genommen für den Tod seines besten Freundes [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+
+  rv_successful_revenged_spouse:0 "Erfolgreiche Rache"
+  rv_revenged_spouse_desc_1:0 "Ich habe Rache genommen für den Tod meines Ehepartners [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_spouse_desc_second_perspective_1:0 "Du hast Rache genommen für den Tod deines Ehepartners [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_spouse_desc_third_perspective_1:0 "[owner.GetName] hat Rache genommen für den Tod seines Ehepartners [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+
+  rv_successful_revenged_family:0 "Erfolgreiche Rache"
+  rv_revenged_family_desc_1:0 "Ich habe Rache genommen für den Tod meines Familienmitglieds [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_family_desc_second_perspective_1:0 "Du hast Rache genommen für den Tod deines Familienmitglieds [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+  rv_revenged_family_desc_third_perspective_1:0 "[owner.GetName] hat Rache genommen für den Tod seines Familienmitglieds [target_revenged.GetName], der von [target_killer.GetName] getötet wurde"
+
+  rv_was_revenged:0 "Wurde gerächt"
+  rv_was_revenged_desc_1:0 "Mein Tod, verursacht von [target_killer.GetName], wurde von [target_revenger.GetName] gerächt (nach dem Tod)"
+  rv_was_revenged_desc_second_perspective_1:0 "Dein Tod, verursacht von [target_killer.GetName], wurde von [target_revenger.GetName] gerächt (nach dem Tod)"
+  rv_was_revenged_desc_third_perspective_1:0 "[owner.GetName]'s Tod, verursacht von [target_killer.GetName], wurde von [target_revenger.GetName] gerächt (nach dem Tod)"
+
+  #Failed Revenge Story
+  rv_failed_revenge_desc_1:0 "Es ist mir nicht gelungen, Rache an [target_killer.GetName] zu üben."
+  rv_failed_revenge_desc_second_perspective_1:0 "Es ist dir nicht gelungen, Rache an [target_killer.GetName] zu üben."
+  rv_failed_revenge_desc_third_perspective_1:0 "Es ist [owner.GetName] nicht gelungen, Rache an [target_killer.GetName] zu üben."
+  rv_failed_revenge:0 "Gescheiterte Rache"
+
+  #Tooltip
+  rv_is_your_family_member:0 "Dieser Charakter ist ein Familienmitglied"
+
+  #gui texts
+  rv_lover_header:0 "Geliebter"
+
+  rv_error_suppression:0 "Fehlerunterdrückung"

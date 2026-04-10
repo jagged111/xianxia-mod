@@ -1,0 +1,62 @@
+	### rv
+	redirect = { # Should make the trigger more robust
+		if = {
+			limit = {
+				exists = scope:recipient
+				scope:recipient = {
+					any_prisoner = {
+						OR = {
+							is_heir_of = scope:actor
+							is_spouse_of = scope:actor
+							has_relation_lover = scope:actor
+							has_relation_soulmate = scope:actor
+							has_relation_friend = scope:actor
+							has_relation_best_friend = scope:actor
+							is_close_or_extended_family_of = scope:actor
+							scope:actor = {
+								has_relation_esr_family_friend = prev
+							}
+						}
+					}
+				}
+			}
+			scope:recipient = { save_scope_as = recipient }
+		}
+		else_if = {
+			limit = {
+				exists = scope:recipient
+				exists = scope:recipient.liege
+				scope:recipient = { is_independent_ruler = no}
+				scope:recipient.top_liege = scope:actor.top_liege
+				NOR = {
+					scope:recipient.liege = scope:recipient.top_liege
+					scope:recipient.liege = scope:actor.liege
+				}
+			}
+			scope:recipient.liege = { save_scope_as = recipient }
+		}
+		else_if = {
+			limit = {
+				exists = scope:recipient
+				exists = scope:recipient.top_liege
+				scope:recipient = { is_independent_ruler = no }
+				NOT = {scope:recipient.top_liege = scope:actor.top_liege}
+			}
+			scope:recipient.top_liege = { save_scope_as = recipient }
+		}
+	}
+	### rv/	
+
+    ### war_declaration on_action limit
+                        NAND = {
+                            scope:defender = { is_independent_ruler = no}
+                            scope:defender.top_liege = scope:attacker.top_liege
+                            NOR = {
+                                scope:defender.liege = scope:defender.top_liege
+                                scope:defender.liege = scope:attacker.liege
+                            }
+                        }
+                        NAND = {
+                            scope:defender = { is_independent_ruler = no }
+                            NOT = {scope:defender.top_liege = scope:attacker.top_liege}
+                        }    

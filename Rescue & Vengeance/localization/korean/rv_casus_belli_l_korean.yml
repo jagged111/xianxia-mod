@@ -1,0 +1,111 @@
+﻿```yml
+l_korean:
+
+  ### Declare Private War
+  rv_declare_private_war_interaction:0 "사적인 전쟁 선포"
+  rv_declare_private_war_desc:0 "[casus_belli|E]를 사용해 [recipient.GetShortUINameNoTooltip]에게 [war|E]을 선포합니다"
+  rv_liege_warning:0 "방어 측의 [liege|E]가 전쟁에 참전합니다"
+
+  ### Rescue CB
+  RESCUE_WAR_NAME:0 "포로 해방"
+  RESCUE_WAR_NAME_FALLBACK:0 "포로 해방"
+  rv_rescue_war:0 "포로 해방 전쟁"
+  CB_RESCUE_COST:0 "대상 포로 수"
+  CB_RESCUE_CRIMINAL_COST:0 "대상 범죄자 수"
+  rv_release_effect:0 "• [Scope.GetCharacter.GetShortUIName|U]이(가) 석방됩니다"
+  rv_transfer_effect:0 "• [Scope.GetCharacter.GetShortUIName|U]이(가) 당신에게 투옥됩니다"
+  rv_other_effect:0 "• 아군들은 기여도에 따라 [prestige_i][EmptyScope.ScriptValue('medium_prestige_value')|+0]을 공유합니다 \n• [Scope.GetCharacter.GetImprisonedBy.GetUIName|U]:\n    • 아군들이 기여도에 따라 [prestige_i][EmptyScope.ScriptValue('medium_prestige_value')|V0]을 공유함\n    • 기여도에 따라 [Scope.GetCharacter.GetImprisonedBy.GetHerHis] 아군들에 대한 호감이 증가함"
+  rescue_war_victory_desc:0 "당신은 [defender.GetShortUINamePossessive]에게 붙잡혀 있던 선택된 모든 [prisoners|E]와 [concubines|E]를 해방합니다."
+  rv_house_effect:0 "• [house|E] [Scope.GetCharacter.GetDynastyHouseName|V]의 [house_unity|E]가 [EmptyScope.ScriptValue('medium_unity_gain')|+0] @dynasty_house_unity! 만큼 변합니다"
+  rescue_war_victory_desc_defender:0 "[attacker.GetShortUIName|U]이(가) 당신의 감옥에 있던 목록의 모든 [prisoners|E]를 해방했습니다."
+  rv_failed_rescue:0 "구출 실패"
+  rv_rescue_war_invalidated_desc:0 "포로 해방 전쟁이 무효화되었습니다!"
+  rv_rescue_war_white_peace_desc:0 "어떠한 [prisoner|E]도 해방되지 않았습니다."
+  rv_rescue_war_defeat_desc:0 "$rv_rescue_war_white_peace_desc$"
+  rv_failed_rescue_desc_1:0 "[rescue_target_killer.GetName]에게 살해된 [rescue_target_dead.GetName]을(를) 구출하지 못했다"
+  rv_failed_rescue_desc_second_perspective_1:0 "[owner.GetName]은(는) [rescue_target_killer.GetName]에게 살해된 [rescue_target_dead.GetName]을(를) 구출하지 못했다"
+  rv_failed_rescue_desc_third_perspective_1:0 "[owner.GetName]은(는) [rescue_target_killer.GetName]에게 살해된 [rescue_target_dead.GetName]을(를) 구출하지 못했다"
+  RV_IS_CRIMINAL:0 "이 인물은 [crime|E]로 인해 [imprisoned|E] 상태입니다. 이들을 구출하면 추가 [prestige|E] 비용이 들며, 당신과 감금자는 [rivals|E]가 될 가능성이 높아집니다."
+
+  ### Rescue_Opinions
+  rv_rescued_me:0 "나를 구출함"
+  rv_rescued_family:0 "[family_member|E]을 구출함"
+  rv_rescued_former_spouse:0 "전 [spouse|E]로서 [concubinage|E]에서 나를 구출함"
+  rv_rescued_close_relation:0 "가까운 관계 인물을 구출함"
+  rv_rescued_very_close:0 "[best_friend|E] 또는 [soulmate|E]을 구출함"
+  rv_rescued_rival:0 "[rival|E]을 구출함"
+  rv_rescued_nemesis:0 "[nemesis|E]을 구출함"
+  rv_attempt_free_my_criminal:0 "[criminal|E] 구출을 시도함"
+  rv_attempted_rescuing_me:0 "나를 구출하려 시도함"
+  rv_attempted_rescuing_family:0 "[family_member|E] 구출을 시도함"
+  rv_attempted_rescuing_close_relation:0 "가까운 관계 인물 구출을 시도함"
+  rv_attempted_rescuing_very_close:0 "[best_friend|E] 또는 [soulmate|E] 구출을 시도함"
+  rv_attempted_rescuing_rival:0 "[rival|E] 구출을 시도함"
+  rv_attempted_rescuing_nemesis:0 "[nemesis|E] 구출을 시도함"
+  rv_avenged_family:0 "[family_member|E]의 복수를 함"
+  rv_avenged_close_relation:0 "가까운 관계 인물의 복수를 함"
+  rv_avenged_very_close:0 "[best_friend|E] 또는 [soulmate|E]의 복수를 함"
+
+  ### Revenge CB
+  REVENGE_WAR_NAME:0 "복수의 전쟁"
+  REVENGE_WAR_NAME_FALLBACK:0 "복수의 전쟁"
+  rv_revenge_war:0 "복수의 전쟁"
+  CB_REVENGE_COST:0 "복수할 희생자 수"
+  REVENGE_LABEL:0 "복수할 희생자"
+  rv_no_revenge_target:0 "복수할 대상이 없습니다"
+  revenge_war_victory_desc:0 "당신은 [defender.GetShortUINamePossessive]의 범죄에 대해 가까운 이들을 위해 복수를 완수했습니다."
+  revenge_war_victory_desc_defender:0 "[attacker.GetShortUIName|U]은(는) [attacker.GetHerHim]에게 가까운 이들에 대한 당신의 범죄에 복수했습니다."
+  rv_revenge_war_white_peace_desc:0 "[defender.GetShortUIName|U]이(가) 저지른 범죄는 복수되지 않았습니다."
+  rv_revenge_war_defeat_desc:0 "$rv_revenge_war_white_peace_desc$"
+  rv_revenge_war_invalidated_desc:0 "복수 전쟁이 무효화되었습니다!"
+
+  # Successfule revenge memory
+  rv_successful_revenged_lover:0 "복수 성공"
+  rv_revenged_lover_desc_1:0 "[target_killer.GetName]에게 살해된 연인 [target_revenged.GetName]의 죽음에 대해 복수했다"
+  rv_revenged_lover_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 살해된 연인 [target_revenged.GetName]의 죽음에 복수했다"
+  rv_revenged_lover_desc_third_perspective_1:0 "[owner.GetName]은(는) [owner.GetHerHis] 연인 [target_revenged.GetName]의 죽음에 대해 [target_killer.GetName]에게 복수했다"
+
+  rv_successful_revenged_soulmate:0 "복수 성공"
+  rv_revenged_soulmate_desc_1:0 "[target_killer.GetName]에게 살해된 소울메이트 [target_revenged.GetName]의 죽음에 대해 복수했다"
+  rv_revenged_soulmate_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 살해된 소울메이트 [target_revenged.GetName]의 죽음에 복수했다"
+  rv_revenged_soulmate_desc_third_perspective_1:0 "[owner.GetName]은(는) [owner.GetHerHis] 소울메이트 [target_revenged.GetName]의 죽음에 대해 [target_killer.GetName]에게 복수했다"
+
+  rv_successful_revenged_friend:0 "복수 성공"
+  rv_revenged_friend_desc_1:0 "[target_killer.GetName]에게 살해된 친구 [target_revenged.GetName]의 죽음에 대해 복수했다"
+  rv_revenged_friend_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 살해된 친구 [target_revenged.GetName]의 죽음에 복수했다"
+  rv_revenged_friend_desc_third_perspective_1:0 "[owner.GetName]은(는) [owner.GetHerHis] 친구 [target_revenged.GetName]의 죽음에 대해 [target_killer.GetName]에게 복수했다"
+
+  rv_successful_revenged_best_friend:0 "복수 성공"
+  rv_revenged_best_friend_desc_1:0 "[target_killer.GetName]에게 살해된 절친 [target_revenged.GetName]의 죽음에 대해 복수했다"
+  rv_revenged_best_friend_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 살해된 절친 [target_revenged.GetName]의 죽음에 복수했다"
+  rv_revenged_best_friend_desc_third_perspective_1:0 "[owner.GetName]은(는) [owner.GetHerHis] 절친 [target_revenged.GetName]의 죽음에 대해 [target_killer.GetName]에게 복수했다"
+
+  rv_successful_revenged_spouse:0 "복수 성공"
+  rv_revenged_spouse_desc_1:0 "[target_killer.GetName]에게 살해된 배우자 [target_revenged.GetName]의 죽음에 대해 복수했다"
+  rv_revenged_spouse_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 살해된 배우자 [target_revenged.GetName]의 죽음에 복수했다"
+  rv_revenged_spouse_desc_third_perspective_1:0 "[owner.GetName]은(는) [owner.GetHerHis] 배우자 [target_revenged.GetName]의 죽음에 대해 [target_killer.GetName]에게 복수했다"
+
+  rv_successful_revenged_family:0 "복수 성공"
+  rv_revenged_family_desc_1:0 "[target_killer.GetName]에게 살해된 가족 구성원 [target_revenged.GetName]의 죽음에 대해 복수했다"
+  rv_revenged_family_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 살해된 가족 구성원 [target_revenged.GetName]의 죽음에 복수했다"
+  rv_revenged_family_desc_third_perspective_1:0 "[owner.GetName]은(는) [owner.GetHerHis] 가족 구성원 [target_revenged.GetName]의 죽음에 대해 [target_killer.GetName]에게 복수했다"
+
+  rv_was_revenged:0 "복수당함"
+  rv_was_revenged_desc_1:0 "[target_killer.GetName]에 의해 초래된 나의 죽음은 [target_revenger.GetName]에 의해 복수되었다 (사후)"
+  rv_was_revenged_desc_second_perspective_1:0 "[target_killer.GetName]에 의해 초래된 당신의 죽음은 [target_revenger.GetName]에 의해 복수되었다 (사후)"
+  rv_was_revenged_desc_third_perspective_1:0 "[owner.GetName]의 죽음은 [target_killer.GetName]에 의해 초래되었고 [target_revenger.GetName]에 의해 복수되었다 (사후)"
+
+ #Failed Revenge Story
+  rv_failed_revenge_desc_1:0 "[target_killer.GetName]에게 복수를 이루지 못했다."
+  rv_failed_revenge_desc_second_perspective_1:0 "당신은 [target_killer.GetName]에게 복수를 이루지 못했다."
+  rv_failed_revenge_desc_third_perspective_1:0 "[owner.GetName]은(는) [target_killer.GetName]에게 복수를 이루지 못했다."
+  rv_failed_revenge:0 "복수 실패"
+
+ #Tooltip
+  rv_is_your_family_member:0 "이 인물은 당신의 가족 구성원입니다"
+
+ #gui texts
+  rv_lover_header:0 "연인"
+
+  rv_error_suppression:0 "오류 억제"
+```

@@ -1,0 +1,14 @@
+﻿on_game_start = {
+    on_actions = {
+        rescue_and_vengeance_start
+    }
+}
+
+rescue_and_vengeance_start = {
+    effect = {
+        set_global_variable = {
+			name = rv_is_loaded
+			value = yes
+		}
+    }
+}

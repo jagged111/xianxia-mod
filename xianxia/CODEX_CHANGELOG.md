@@ -1,4 +1,6 @@
 ﻿# Codex Changelog & Handoff Notes
+CK3 localization loading expects BOM-prefixed YAML files; without it, the file is not parsed correctly and these new interaction strings can fail to load in-game (showing raw keys or missing text).
+
 
 This file is for future Codex instances working on this CK3 xianxia/cultivation mod.
 It summarizes *what has been changed recently*, *why*, and *what constraints to preserve*.

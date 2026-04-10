@@ -456,3 +456,29 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added anti-conflict guard with random sect lottery assignment (`cultivation_random_sect_lottery_assigned`) so game-start Han mandate seeding does not override rulers already assigned by sect lottery effects.
 
 - Path-opinion yearly pass performance fix: `cultivation_ai.2280` now scopes to independent rulers in diplomatic range (avoids global O(n²) ruler pairing), and clears stale `opinion_cultivation_path_peer`/`opinion_cultivation_path_rival` before applying the current path relationship.
+
+### 42) Jianghu insult + ambush interaction import pass (2026-04-10)
+- Added two new xianxia-native hostile interactions inspired by external reference mods (Insult to Injuries / Cultivator Indulgences style social aggression):
+  - `jianghu_face_slap_interaction` for public humiliation / face-slapping social conflict.
+  - `jianghu_set_ambush_interaction` for covert retaliation against weaker targets.
+- Both interactions are explicitly realm-gated for xianxia balance:
+  - Actor must be a cultivator.
+  - Ambush actor must be at least respected realm tier (Nascent Soul+ via existing triggers).
+  - Targets are constrained to mortals or lower-tier cultivators (Qi Gathering -> Core Formation), preventing top-realm grief loops.
+- Added jianghu-specific opinion modifiers and English localization for interaction descriptions.
+- Design intent: strengthen interpersonal grudges/retaliation fantasy in jianghu without breaking established high-realm invulnerability direction.
+
+### 43) Cross-mod social integration pass: IR + RV + SRE inspirations (2026-04-10)
+- Expanded jianghu interaction layer with additional Rescue & Vengeance-inspired social tools:
+  - `jianghu_demand_prisoner_release_interaction` for coercive captive rescue diplomacy.
+  - `jianghu_swear_blood_vengeance_interaction` for formalized revenge feuds after memory-backed bereavement.
+- Added corresponding opinion fallout for forced rescues and blood-feud declarations.
+- Added hidden monthly social pulse events (`xianxia_social.1000`, `xianxia_social.1100`) inspired by Inheritable Relations + Social Relations Expanded:
+  - Heirs inherit partial friendship/rivalry opinion fallout from predecessor social networks.
+  - Friend-heavy courts gain social momentum while rival-heavy courts accrue internal dispute pressure.
+- Hooked these social events into monthly on_action orchestration to keep jianghu relationship dynamics persistent over campaign time.
+
+### 44) Long-lived cultivator social memory duration rebalance (2026-04-10)
+- Extended jianghu social opinion durations (humiliation, ambush, rescue coercion, blood vengeance, inherited friendship/rivalry) from short mortal-scale timers to long cultivation-scale windows.
+- Increased interaction-applied opinion durations to multi-decade/century-scale values so major slights and blood-oaths persist across long-lived cultivator lifespans.
+- Increased inheritable social fallout event durations so predecessor alliances/feuds remain politically relevant through long cultivation reigns.

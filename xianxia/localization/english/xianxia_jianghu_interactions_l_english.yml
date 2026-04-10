@@ -1,0 +1,9 @@
+l_english:
+ jianghu_face_slap_interaction:0 "Public Face Slap"
+ jianghu_face_slap_interaction_desc:0 "Publicly humiliate [recipient.GetShortUINameNoTooltip], making it clear who stands higher on the jianghu ladder."
+ jianghu_set_ambush_interaction:0 "Arrange Cultivator Ambush"
+ jianghu_set_ambush_interaction_desc:0 "Set an ambush for [recipient.GetShortUINameNoTooltip] outside city walls and sect roads, punishing weaker foes through hidden force."
+ jianghu_demand_prisoner_release_interaction:0 "Demand Captive Release"
+ jianghu_demand_prisoner_release_interaction_desc:0 "Invoke sect honor and martial pressure to force [recipient.GetShortUINameNoTooltip] to release one of your captured kin or sworn companions."
+ jianghu_swear_blood_vengeance_interaction:0 "Swear Blood Vengeance"
+ jianghu_swear_blood_vengeance_interaction_desc:0 "Swear a jianghu blood oath against [recipient.GetShortUINameNoTooltip] for slain loved ones, turning grief into a lasting feud."

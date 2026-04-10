@@ -27,6 +27,8 @@ on_monthly_pulse = {
         cultivation_ai.3001
         cultivation_ai.3002
         xianxia_world.1710
+        xianxia_social.1000
+        xianxia_social.1100
     }
 }
 

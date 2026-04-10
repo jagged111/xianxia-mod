@@ -34,7 +34,13 @@ attempt_qi_gathering_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1000
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1000
+		}
 	}
 	
 	ai_check_interval = 60
@@ -76,7 +82,13 @@ attempt_qi_refining_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1100
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1100
+		}
 	}
 	
 	ai_check_interval = 60
@@ -118,7 +130,13 @@ attempt_qi_building_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1200
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1200
+		}
 	}
 	
 	ai_check_interval = 60
@@ -160,7 +178,13 @@ attempt_core_formation_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1300
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1300
+		}
 	}
 	
 	ai_check_interval = 60
@@ -202,7 +226,13 @@ attempt_nascent_soul_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1400
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1400
+		}
 	}
 	
 	ai_check_interval = 60
@@ -244,7 +274,13 @@ attempt_heavenly_being_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1500
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1500
+		}
 	}
 	
 	ai_check_interval = 60
@@ -286,7 +322,13 @@ attempt_four_axis_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1600
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1600
+		}
 	}
 	
 	ai_check_interval = 60
@@ -328,7 +370,13 @@ attempt_integration_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1700
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1700
+		}
 	}
 	
 	ai_check_interval = 60
@@ -370,7 +418,13 @@ attempt_star_shattering_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1800
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1800
+		}
 	}
 	
 	ai_check_interval = 60
@@ -412,7 +466,13 @@ attempt_sacred_vessel_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1900
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1900
+		}
 	}
 	
 	ai_check_interval = 60
@@ -454,7 +514,13 @@ attempt_entering_nirvana_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.2000
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.2000
+		}
 	}
 	
 	ai_check_interval = 60
@@ -495,7 +561,13 @@ attempt_true_immortal_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.2100
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.2100
+		}
 	}
 	
 	ai_check_interval = 60

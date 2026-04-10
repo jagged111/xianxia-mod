@@ -2222,3 +2222,6 @@ yin_yang_harmony_sect_desc:0 "A demonic-leaning dual-cultivation faction that mi
  jianghu_extinguish_noble_family_roots_interaction_desc:0 "Exterminate this imprisoned noble cultivator's line by the roots. If the target is a stronger prisoner, there is a high chance they break free."
  jianghu_extinguish_noble_family_spare_children_interaction:0 "Extinguish Noble Family (Spare Children)"
  jianghu_extinguish_noble_family_spare_children_interaction_desc:0 "Destroy this imprisoned noble cultivator's line but spare the children; only adults are put to the sword."
+ cultivation_breakthrough.9000.t:0 "Legendary Pill Resonance"
+ cultivation_breakthrough.9000.desc:0 "The legendary breakthrough pill dissolves into pure dao-light. Your bottleneck shatters without resistance, and your realm advances with absolute certainty."
+ cultivation_breakthrough.9000.a:0 "The heavens cannot bar my path."

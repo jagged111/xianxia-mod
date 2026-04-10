@@ -126,3 +126,672 @@ xianxia_update_formation_master_trait_effect = {
     else_if = { limit = { var:formation_mastery_xp >= 18 } add_trait = formation_master_tier_2 }
     else_if = { limit = { var:formation_mastery_xp >= 6 } add_trait = formation_master_tier_1 }
 }
+
+xianxia_magic_treasure_craft_effect = {
+    save_scope_as = magic_treasure_crafter
+
+    hidden_effect_new_object = {
+        scope:magic_treasure_crafter = {
+            if = {
+                limit = { has_trait = magic_treasure_crafter_3 }
+                save_scope_value_as = { name = quality value = 90 }
+                save_scope_value_as = { name = wealth value = 180 }
+            }
+            else_if = {
+                limit = { has_trait = magic_treasure_crafter_2 }
+                save_scope_value_as = { name = quality value = 70 }
+                save_scope_value_as = { name = wealth value = 130 }
+            }
+            else = {
+                save_scope_value_as = { name = quality value = 50 }
+                save_scope_value_as = { name = wealth value = 90 }
+            }
+
+            random_list = {
+                10 = { xianxia_create_artifact_heaven_splitter_blade_effect = yes }
+                10 = { xianxia_create_artifact_soul_binding_gourd_effect = yes }
+                10 = { xianxia_create_artifact_nine_dragon_cauldron_effect = yes }
+                10 = { xianxia_create_artifact_voidstep_boots_effect = yes }
+                10 = { xianxia_create_artifact_starfall_talisman_effect = yes }
+                10 = { xianxia_create_artifact_mirror_of_true_heart_effect = yes }
+                10 = { xianxia_create_artifact_thunder_seal_bracelet_effect = yes }
+                10 = { xianxia_create_artifact_emerald_lotus_robe_effect = yes }
+                10 = { xianxia_create_artifact_mount_kunlun_inkstone_effect = yes }
+                10 = { xianxia_create_artifact_ancestral_spirit_banner_effect = yes }
+                6 = { xianxia_create_artifact_sun_moon_pendant_effect = yes }
+                6 = { xianxia_create_artifact_heavenly_river_map_effect = yes }
+                6 = { xianxia_create_artifact_dragonbone_flute_effect = yes }
+                6 = { xianxia_create_artifact_myriad_soul_lantern_effect = yes }
+                6 = { xianxia_create_artifact_phoenix_feather_cloak_effect = yes }
+                6 = { xianxia_create_artifact_mountain_sea_compass_effect = yes }
+                6 = { xianxia_create_artifact_blood_jade_seal_effect = yes }
+                6 = { xianxia_create_artifact_void_silk_sash_effect = yes }
+                6 = { xianxia_create_artifact_heavenly_forge_hammer_effect = yes }
+                6 = { xianxia_create_artifact_jade_cicada_charm_effect = yes }
+                6 = { xianxia_create_artifact_thousand_needle_manual_effect = yes }
+                6 = { xianxia_create_artifact_black_tortoise_shield_effect = yes }
+                6 = { xianxia_create_artifact_white_tiger_halberd_effect = yes }
+                6 = { xianxia_create_artifact_azure_dragon_spear_effect = yes }
+                6 = { xianxia_create_artifact_vermilion_bird_fan_effect = yes }
+                6 = { xianxia_create_artifact_ten_thousand_scroll_case_effect = yes }
+                6 = { xianxia_create_artifact_soul_calm_bell_effect = yes }
+                6 = { xianxia_create_artifact_storm_chasing_boots_effect = yes }
+                6 = { xianxia_create_artifact_immortal_peach_branch_effect = yes }
+                6 = { xianxia_create_artifact_deep_abyss_orb_effect = yes }
+                6 = { xianxia_create_artifact_heavenly_silk_gloves_effect = yes }
+                6 = { xianxia_create_artifact_soulbreaker_chisel_effect = yes }
+                6 = { xianxia_create_artifact_golden_crow_crown_effect = yes }
+                6 = { xianxia_create_artifact_moon_rabbit_cauldron_effect = yes }
+                6 = { xianxia_create_artifact_earthvein_prayer_beads_effect = yes }
+                6 = { xianxia_create_artifact_thunder_resonance_zither_effect = yes }
+                6 = { xianxia_create_artifact_celestial_ink_brush_effect = yes }
+                6 = { xianxia_create_artifact_nine_heavens_kite_effect = yes }
+                6 = { xianxia_create_artifact_ancestral_bone_tablet_effect = yes }
+                6 = { xianxia_create_artifact_chaos_refining_crucible_effect = yes }
+            }
+        }
+    }
+
+    add_prestige = 150
+    add_character_modifier = { modifier = forged_magic_treasure_inspiration days = 365 }
+}
+
+xianxia_create_artifact_heaven_splitter_blade_effect = {
+    create_artifact = {
+        name = xianxia_artifact_heaven_splitter_blade_name
+        description = xianxia_artifact_heaven_splitter_blade_desc
+        rarity = illustrious
+        type = weapon
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_3_modifier
+        modifier = xianxia_artifact_heaven_splitter_blade_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_soul_binding_gourd_effect = {
+    create_artifact = {
+        name = xianxia_artifact_soul_binding_gourd_name
+        description = xianxia_artifact_soul_binding_gourd_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_piety_3_modifier
+        modifier = xianxia_artifact_soul_binding_gourd_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_nine_dragon_cauldron_effect = {
+    create_artifact = {
+        name = xianxia_artifact_nine_dragon_cauldron_name
+        description = xianxia_artifact_nine_dragon_cauldron_desc
+        rarity = illustrious
+        type = pedestal
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_nine_dragon_cauldron_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_voidstep_boots_effect = {
+    create_artifact = {
+        name = xianxia_artifact_voidstep_boots_name
+        description = xianxia_artifact_voidstep_boots_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_voidstep_boots_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_starfall_talisman_effect = {
+    create_artifact = {
+        name = xianxia_artifact_starfall_talisman_name
+        description = xianxia_artifact_starfall_talisman_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_piety_2_modifier
+        modifier = xianxia_artifact_starfall_talisman_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_mirror_of_true_heart_effect = {
+    create_artifact = {
+        name = xianxia_artifact_mirror_of_true_heart_name
+        description = xianxia_artifact_mirror_of_true_heart_desc
+        rarity = illustrious
+        type = pedestal
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_mirror_of_true_heart_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_thunder_seal_bracelet_effect = {
+    create_artifact = {
+        name = xianxia_artifact_thunder_seal_bracelet_name
+        description = xianxia_artifact_thunder_seal_bracelet_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_thunder_seal_bracelet_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_emerald_lotus_robe_effect = {
+    create_artifact = {
+        name = xianxia_artifact_emerald_lotus_robe_name
+        description = xianxia_artifact_emerald_lotus_robe_desc
+        rarity = illustrious
+        type = armor
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_piety_2_modifier
+        modifier = xianxia_artifact_emerald_lotus_robe_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_mount_kunlun_inkstone_effect = {
+    create_artifact = {
+        name = xianxia_artifact_mount_kunlun_inkstone_name
+        description = xianxia_artifact_mount_kunlun_inkstone_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_mount_kunlun_inkstone_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_ancestral_spirit_banner_effect = {
+    create_artifact = {
+        name = xianxia_artifact_ancestral_spirit_banner_name
+        description = xianxia_artifact_ancestral_spirit_banner_desc
+        rarity = illustrious
+        type = banner
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_ancestral_spirit_banner_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_sun_moon_pendant_effect = {
+    create_artifact = {
+        name = xianxia_artifact_sun_moon_pendant_name
+        description = xianxia_artifact_sun_moon_pendant_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_sun_moon_pendant_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_heavenly_river_map_effect = {
+    create_artifact = {
+        name = xianxia_artifact_heavenly_river_map_name
+        description = xianxia_artifact_heavenly_river_map_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_heavenly_river_map_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_dragonbone_flute_effect = {
+    create_artifact = {
+        name = xianxia_artifact_dragonbone_flute_name
+        description = xianxia_artifact_dragonbone_flute_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_dragonbone_flute_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_myriad_soul_lantern_effect = {
+    create_artifact = {
+        name = xianxia_artifact_myriad_soul_lantern_name
+        description = xianxia_artifact_myriad_soul_lantern_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_myriad_soul_lantern_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_phoenix_feather_cloak_effect = {
+    create_artifact = {
+        name = xianxia_artifact_phoenix_feather_cloak_name
+        description = xianxia_artifact_phoenix_feather_cloak_desc
+        rarity = illustrious
+        type = armor
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_phoenix_feather_cloak_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_mountain_sea_compass_effect = {
+    create_artifact = {
+        name = xianxia_artifact_mountain_sea_compass_name
+        description = xianxia_artifact_mountain_sea_compass_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_mountain_sea_compass_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_blood_jade_seal_effect = {
+    create_artifact = {
+        name = xianxia_artifact_blood_jade_seal_name
+        description = xianxia_artifact_blood_jade_seal_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_blood_jade_seal_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_void_silk_sash_effect = {
+    create_artifact = {
+        name = xianxia_artifact_void_silk_sash_name
+        description = xianxia_artifact_void_silk_sash_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_void_silk_sash_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_heavenly_forge_hammer_effect = {
+    create_artifact = {
+        name = xianxia_artifact_heavenly_forge_hammer_name
+        description = xianxia_artifact_heavenly_forge_hammer_desc
+        rarity = illustrious
+        type = weapon
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_heavenly_forge_hammer_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_jade_cicada_charm_effect = {
+    create_artifact = {
+        name = xianxia_artifact_jade_cicada_charm_name
+        description = xianxia_artifact_jade_cicada_charm_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_jade_cicada_charm_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_thousand_needle_manual_effect = {
+    create_artifact = {
+        name = xianxia_artifact_thousand_needle_manual_name
+        description = xianxia_artifact_thousand_needle_manual_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_thousand_needle_manual_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_black_tortoise_shield_effect = {
+    create_artifact = {
+        name = xianxia_artifact_black_tortoise_shield_name
+        description = xianxia_artifact_black_tortoise_shield_desc
+        rarity = illustrious
+        type = armor
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_black_tortoise_shield_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_white_tiger_halberd_effect = {
+    create_artifact = {
+        name = xianxia_artifact_white_tiger_halberd_name
+        description = xianxia_artifact_white_tiger_halberd_desc
+        rarity = illustrious
+        type = weapon
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_white_tiger_halberd_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_azure_dragon_spear_effect = {
+    create_artifact = {
+        name = xianxia_artifact_azure_dragon_spear_name
+        description = xianxia_artifact_azure_dragon_spear_desc
+        rarity = illustrious
+        type = weapon
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_azure_dragon_spear_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_vermilion_bird_fan_effect = {
+    create_artifact = {
+        name = xianxia_artifact_vermilion_bird_fan_name
+        description = xianxia_artifact_vermilion_bird_fan_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_vermilion_bird_fan_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_ten_thousand_scroll_case_effect = {
+    create_artifact = {
+        name = xianxia_artifact_ten_thousand_scroll_case_name
+        description = xianxia_artifact_ten_thousand_scroll_case_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_ten_thousand_scroll_case_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_soul_calm_bell_effect = {
+    create_artifact = {
+        name = xianxia_artifact_soul_calm_bell_name
+        description = xianxia_artifact_soul_calm_bell_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_soul_calm_bell_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_storm_chasing_boots_effect = {
+    create_artifact = {
+        name = xianxia_artifact_storm_chasing_boots_name
+        description = xianxia_artifact_storm_chasing_boots_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_storm_chasing_boots_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_immortal_peach_branch_effect = {
+    create_artifact = {
+        name = xianxia_artifact_immortal_peach_branch_name
+        description = xianxia_artifact_immortal_peach_branch_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_immortal_peach_branch_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_deep_abyss_orb_effect = {
+    create_artifact = {
+        name = xianxia_artifact_deep_abyss_orb_name
+        description = xianxia_artifact_deep_abyss_orb_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_deep_abyss_orb_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_heavenly_silk_gloves_effect = {
+    create_artifact = {
+        name = xianxia_artifact_heavenly_silk_gloves_name
+        description = xianxia_artifact_heavenly_silk_gloves_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_heavenly_silk_gloves_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_soulbreaker_chisel_effect = {
+    create_artifact = {
+        name = xianxia_artifact_soulbreaker_chisel_name
+        description = xianxia_artifact_soulbreaker_chisel_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_soulbreaker_chisel_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_golden_crow_crown_effect = {
+    create_artifact = {
+        name = xianxia_artifact_golden_crow_crown_name
+        description = xianxia_artifact_golden_crow_crown_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_golden_crow_crown_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_moon_rabbit_cauldron_effect = {
+    create_artifact = {
+        name = xianxia_artifact_moon_rabbit_cauldron_name
+        description = xianxia_artifact_moon_rabbit_cauldron_desc
+        rarity = illustrious
+        type = pedestal
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_piety_2_modifier
+        modifier = xianxia_artifact_moon_rabbit_cauldron_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_earthvein_prayer_beads_effect = {
+    create_artifact = {
+        name = xianxia_artifact_earthvein_prayer_beads_name
+        description = xianxia_artifact_earthvein_prayer_beads_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_earthvein_prayer_beads_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_thunder_resonance_zither_effect = {
+    create_artifact = {
+        name = xianxia_artifact_thunder_resonance_zither_name
+        description = xianxia_artifact_thunder_resonance_zither_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_thunder_resonance_zither_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_celestial_ink_brush_effect = {
+    create_artifact = {
+        name = xianxia_artifact_celestial_ink_brush_name
+        description = xianxia_artifact_celestial_ink_brush_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_celestial_ink_brush_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_nine_heavens_kite_effect = {
+    create_artifact = {
+        name = xianxia_artifact_nine_heavens_kite_name
+        description = xianxia_artifact_nine_heavens_kite_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_nine_heavens_kite_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_ancestral_bone_tablet_effect = {
+    create_artifact = {
+        name = xianxia_artifact_ancestral_bone_tablet_name
+        description = xianxia_artifact_ancestral_bone_tablet_desc
+        rarity = illustrious
+        type = trinket
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_prestige_2_modifier
+        modifier = xianxia_artifact_ancestral_bone_tablet_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}
+
+xianxia_create_artifact_chaos_refining_crucible_effect = {
+    create_artifact = {
+        name = xianxia_artifact_chaos_refining_crucible_name
+        description = xianxia_artifact_chaos_refining_crucible_desc
+        rarity = illustrious
+        type = pedestal
+        template = xianxia_magic_treasure_template
+        modifier = artifact_monthly_piety_2_modifier
+        modifier = xianxia_artifact_chaos_refining_crucible_modifier
+        quality = scope:quality
+        wealth = scope:wealth
+        decaying = no
+    }
+}

@@ -673,3 +673,142 @@ establish_heavenly_mandate_bureau_decision = {
         }
     }
 }
+
+craft_magic_treasure_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_write_diplomatic_treatise.dds" }
+    decision_group_type = major
+    sort_order = 531
+
+    title = craft_magic_treasure_decision
+    desc = craft_magic_treasure_decision_desc
+    selection_tooltip = craft_magic_treasure_decision_tooltip
+    confirm_text = craft_magic_treasure_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = magic_treasure_crafter_1
+            has_trait = magic_treasure_crafter_2
+            has_trait = magic_treasure_crafter_3
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = craft_magic_treasure_cooldown }
+        gold >= 100
+    }
+
+    effect = {
+        trigger_event = xianxia_world.1800
+    }
+
+    ai_check_interval = 18
+    ai_will_do = { base = 30 }
+}
+
+seek_legendary_world_artifact_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_search_for_secrets.dds" }
+    decision_group_type = major
+    sort_order = 532
+
+    title = seek_legendary_world_artifact_decision
+    desc = seek_legendary_world_artifact_decision_desc
+    selection_tooltip = seek_legendary_world_artifact_decision_tooltip
+    confirm_text = seek_legendary_world_artifact_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = cultivation_nascent_soul
+            has_trait = cultivation_heavenly_being
+            has_trait = cultivation_four_axis
+            has_trait = cultivation_integration
+            has_trait = cultivation_star_shattering
+            has_trait = cultivation_sacred_vessel
+            has_trait = cultivation_entering_nirvana
+            has_trait = cultivation_true_immortal
+        }
+    }
+
+    is_valid = {
+        NOT = { has_character_flag = seek_legendary_world_artifact_cooldown }
+        gold >= 250
+    }
+
+    effect = {
+        add_gold = -250
+        add_character_flag = { flag = seek_legendary_world_artifact_cooldown days = 1460 }
+        trigger_event = xianxia_world.1810
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 8 }
+}
+
+refine_grand_spirit_pills_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_dose_self.dds" }
+    decision_group_type = major
+    sort_order = 533
+
+    title = refine_grand_spirit_pills_decision
+    desc = refine_grand_spirit_pills_decision_desc
+    selection_tooltip = refine_grand_spirit_pills_decision_tooltip
+    confirm_text = refine_grand_spirit_pills_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_cultivator = yes
+        OR = {
+            has_trait = alchemy_lifestyle_tier_1
+            has_trait = alchemy_lifestyle_tier_2
+            has_trait = alchemy_lifestyle_tier_3
+        }
+    }
+
+    is_valid = {
+        gold >= 180
+        NOT = { has_character_flag = grand_spirit_pill_cooldown }
+    }
+
+    effect = {
+        add_gold = -180
+        add_character_flag = { flag = grand_spirit_pill_cooldown days = 540 }
+        trigger_event = xianxia_world.1830
+    }
+
+    ai_check_interval = 24
+    ai_will_do = { base = 26 }
+}
+
+host_jianghu_artifact_auction_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_court.dds" }
+    decision_group_type = major
+    sort_order = 534
+
+    title = host_jianghu_artifact_auction_decision
+    desc = host_jianghu_artifact_auction_decision_desc
+    selection_tooltip = host_jianghu_artifact_auction_decision_tooltip
+    confirm_text = host_jianghu_artifact_auction_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_cultivator = yes
+    }
+
+    is_valid = {
+        gold >= 120
+        NOT = { has_character_flag = jianghu_artifact_auction_cooldown }
+    }
+
+    effect = {
+        add_gold = -120
+        add_character_flag = { flag = jianghu_artifact_auction_cooldown days = 730 }
+        trigger_event = xianxia_world.1820
+    }
+
+    ai_check_interval = 30
+    ai_will_do = { base = 18 }
+}

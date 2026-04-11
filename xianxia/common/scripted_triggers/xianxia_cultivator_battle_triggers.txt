@@ -1,0 +1,17 @@
+xianxia_is_designated_cultivator_champion_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_cultivator = yes
+    OR = {
+        has_trait = sect_leader
+        has_trait = sect_inner_hall_elder
+        has_trait = sect_outer_hall_elder
+        has_trait = sect_enforcement_elder
+        has_trait = sect_lineage_heir
+    }
+}
+
+xianxia_is_active_cultivator_champion_trigger = {
+    xianxia_is_designated_cultivator_champion_trigger = yes
+    NOT = { has_character_flag = xianxia_cultivator_champion_defeated }
+}

@@ -1,0 +1,29 @@
+xianxia_clear_cultivator_battle_state_effect = {
+    remove_character_modifier = xianxia_cultivator_champion_protection
+    remove_character_modifier = xianxia_cultivator_champion_collapse
+    remove_character_modifier = xianxia_cultivator_champion_routed
+    remove_character_flag = xianxia_cultivator_champion_active
+    remove_character_flag = xianxia_cultivator_champion_defeated
+}
+
+xianxia_activate_cultivator_champion_effect = {
+    xianxia_clear_cultivator_battle_state_effect = yes
+
+    if = {
+        limit = { xianxia_is_designated_cultivator_champion_trigger = yes }
+        add_character_flag = xianxia_cultivator_champion_active
+        add_character_modifier = { modifier = xianxia_cultivator_champion_protection days = 30 }
+    }
+}
+
+xianxia_mark_cultivator_champion_defeated_effect = {
+    remove_character_modifier = xianxia_cultivator_champion_protection
+    add_character_flag = { flag = xianxia_cultivator_champion_defeated days = 30 }
+    remove_character_flag = xianxia_cultivator_champion_active
+    add_character_modifier = { modifier = xianxia_cultivator_champion_collapse days = 30 }
+}
+
+xianxia_apply_cultivator_champion_rout_effect = {
+    add_character_modifier = { modifier = xianxia_cultivator_champion_routed days = 90 }
+    xianxia_mark_cultivator_champion_defeated_effect = yes
+}

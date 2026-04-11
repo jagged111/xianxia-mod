@@ -614,3 +614,16 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
   - `control_growth_factor` -> `monthly_county_control_growth_factor`
   - `monthly_control_growth_add` -> `monthly_county_control_growth_add`
 - Updated challenge-victory trait cleanup to remove `sect_inner_hall_elder` before assigning `sect_leader`, preventing conflicting sect office traits on successful challengers.
+
+### 59) Cultivator champion battle layer v1 (2026-04-11)
+- Added new combat-state modifiers in `common/modifiers/xianxia_cultivator_battle_modifiers.txt`:
+  - `xianxia_cultivator_champion_protection`
+  - `xianxia_cultivator_champion_collapse`
+  - `xianxia_cultivator_champion_routed`
+- Added designated-champion and active-champion scripted triggers in `common/scripted_triggers/xianxia_cultivator_battle_triggers.txt` so the system targets cultivator champions (sect leadership/elder/heir roles) instead of generic knights.
+- Added battle-state scripted effects in `common/scripted_effects/xianxia_cultivator_battle_effects.txt` for champion activation, defeat/collapse, rout handling, and cleanup.
+- Added hidden duel-chain events (`events/xianxia_cultivator_battle_events.txt`) that resolve champion-vs-champion combat outcomes (kill/capture/wound/rout) and can loop into follow-up exchanges while both champions remain active.
+- Added appended combat on_actions (`common/on_action/zzzz_xianxia_cultivator_battle_on_actions.txt`) to:
+  - activate champion protection on combat start/join,
+  - trigger duel chain when both sides have active champions,
+  - clear temporary champion battle state on combat end.

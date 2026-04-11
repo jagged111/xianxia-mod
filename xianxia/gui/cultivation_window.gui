@@ -537,7 +537,7 @@ window = {
 						spacing = 10
 						
 						text_single = {
-							text = "Sect:"
+							text = cultivation_gui_sect_label
 							min_width = 100
 						}
 						
@@ -553,7 +553,7 @@ window = {
 						spacing = 10
 						
 						text_single = {
-							text = "Prowess:"
+							text = cultivation_gui_prowess_label
 							min_width = 100
 						}
 						
@@ -569,7 +569,7 @@ window = {
 						spacing = 10
 						
 						text_single = {
-							text = "Realm:"
+							text = cultivation_gui_realm_label
 							min_width = 100
 						}
 						
@@ -680,7 +680,7 @@ window = {
 								default_format = "#high"
 								
 								visible = "[GetScriptedGui('show_mortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
-								text = "Mortal"
+								text = cultivation_gui_realm_mortal
 							}
 						}
 					}
@@ -705,7 +705,7 @@ window = {
 						spacing = 10
 						
 						text_single = {
-							text = "Sect:"
+							text = cultivation_gui_sect_label
 							min_width = 100
 						}
 						
@@ -721,7 +721,7 @@ window = {
 						spacing = 10
 						
 						text_single = {
-							text = "Prowess:"
+							text = cultivation_gui_prowess_label
 							min_width = 100
 						}
 						
@@ -737,7 +737,7 @@ window = {
 						spacing = 10
 						
 						text_single = {
-							text = "Realm:"
+							text = cultivation_gui_realm_label
 							min_width = 100
 						}
 						
@@ -848,7 +848,7 @@ window = {
 								default_format = "#high"
 								
 								visible = "[GetScriptedGui('show_mortal').IsShown(GuiScope.SetRoot(Character.MakeScope).End)]"
-								text = "Mortal"
+								text = cultivation_gui_realm_mortal
 							}
 						}
 					}

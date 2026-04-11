@@ -1,0 +1,103 @@
+﻿xianxia_update_sect_authority_effect = {
+    if = {
+        limit = { NOT = { exists = var:sect_authority_score } }
+        set_variable = { name = sect_authority_score value = 55 }
+    }
+
+    change_variable = { name = sect_authority_score add = -1 }
+
+    if = {
+        limit = { has_trait = sect_leader }
+        change_variable = { name = sect_authority_score add = 2 }
+    }
+    if = {
+        limit = { has_character_modifier = sect_internal_dispute }
+        change_variable = { name = sect_authority_score add = -5 }
+    }
+    if = {
+        limit = { has_character_modifier = sect_power_struggle }
+        change_variable = { name = sect_authority_score add = -4 }
+    }
+    if = {
+        limit = { has_trait = ambitious }
+        change_variable = { name = sect_authority_score add = 1 }
+    }
+    if = {
+        limit = { has_trait = calm }
+        change_variable = { name = sect_authority_score add = 1 }
+    }
+    if = {
+        limit = { has_trait = content }
+        change_variable = { name = sect_authority_score add = 1 }
+    }
+    if = {
+        limit = { has_trait = craven }
+        change_variable = { name = sect_authority_score add = -2 }
+    }
+    if = {
+        limit = { stress_level >= 2 }
+        change_variable = { name = sect_authority_score add = -2 }
+    }
+
+    if = {
+        limit = { var:sect_authority_score > 100 }
+        set_variable = { name = sect_authority_score value = 100 }
+    }
+    if = {
+        limit = { var:sect_authority_score < 0 }
+        set_variable = { name = sect_authority_score value = 0 }
+    }
+
+    remove_character_modifier = sect_authority_high
+    remove_character_modifier = sect_authority_low
+    remove_character_modifier = sect_elder_faction_pressure
+
+    if = {
+        limit = { var:sect_authority_score >= 65 }
+        add_character_modifier = { modifier = sect_authority_high days = 90 }
+    }
+    else_if = {
+        limit = { var:sect_authority_score <= 35 }
+        add_character_modifier = { modifier = sect_authority_low days = 90 }
+        add_character_modifier = { modifier = sect_elder_faction_pressure days = 120 }
+    }
+}
+
+xianxia_apply_lineage_backing_effect = {
+    every_courtier = {
+        limit = { is_alive = yes }
+        remove_character_modifier = sect_lineage_backed_heir
+    }
+
+    if = {
+        limit = {
+            any_courtier = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+                OR = {
+                    has_trait = sect_inner_hall_elder
+                    has_trait = sect_outer_hall_elder
+                    has_trait = sect_enforcement_elder
+                    has_trait = sect_disciple
+                }
+            }
+        }
+        random_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+                OR = {
+                    has_trait = sect_inner_hall_elder
+                    has_trait = sect_outer_hall_elder
+                    has_trait = sect_enforcement_elder
+                    has_trait = sect_disciple
+                }
+            }
+            add_character_modifier = { modifier = sect_lineage_backed_heir days = 180 }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+﻿xianxia_seize_spirit_vein_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_SEIZE_SPIRIT_VEIN_WAR_NAME
+	war_name_base = XIANXIA_SEIZE_SPIRIT_VEIN_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes is_cultivator = yes } }
+	allowed_against_character = { scope:defender = { is_landed = yes } }
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_seize_spirit_vein_victory_desc
+	on_defeat_desc = xianxia_seize_spirit_vein_defeat_desc
+	on_white_peace_desc = xianxia_seize_spirit_vein_white_peace_desc
+	on_victory = {
+		scope:attacker = { add_prestige = 180 change_variable = { name = sect_authority_score add = 6 } }
+		scope:defender.capital_county = { add_county_modifier = { modifier = spirit_vein_contested days = 1825 } }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -120 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}
+
+xianxia_destroy_sect_foundation_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_DESTROY_SECT_FOUNDATION_WAR_NAME
+	war_name_base = XIANXIA_DESTROY_SECT_FOUNDATION_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes is_cultivator = yes } }
+	allowed_against_character = { scope:defender = { is_landed = yes has_cultivation_sect_faith = yes } }
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_destroy_sect_foundation_victory_desc
+	on_defeat_desc = xianxia_destroy_sect_foundation_defeat_desc
+	on_white_peace_desc = xianxia_destroy_sect_foundation_white_peace_desc
+	on_victory = {
+		scope:defender = { add_character_modifier = { modifier = sect_succession_crisis days = 1825 } change_variable = { name = sect_authority_score add = -10 } }
+		scope:defender.capital_county = { add_county_modifier = { modifier = corrupted_spirit_vein days = 3650 } }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -140 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}
+
+xianxia_force_sect_submission_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_FORCE_SECT_SUBMISSION_WAR_NAME
+	war_name_base = XIANXIA_FORCE_SECT_SUBMISSION_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes has_cultivation_sect_faith = yes } }
+	allowed_against_character = { scope:defender = { is_landed = yes has_cultivation_sect_faith = yes } }
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_force_sect_submission_victory_desc
+	on_defeat_desc = xianxia_force_sect_submission_defeat_desc
+	on_white_peace_desc = xianxia_force_sect_submission_white_peace_desc
+	on_victory = {
+		scope:defender = { add_character_modifier = { modifier = high_realm_suppressed_vassal days = 3650 } add_opinion = { target = scope:attacker modifier = opinion_high_realm_submission years = 20 } }
+		scope:attacker = { add_character_modifier = { modifier = high_realm_mandate_presence days = 1825 } add_prestige = 180 }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -120 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}
+
+xianxia_purge_demonic_sect_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_PURGE_DEMONIC_SECT_WAR_NAME
+	war_name_base = XIANXIA_PURGE_DEMONIC_SECT_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes faith = { has_doctrine_parameter = orthodox_cultivation } } }
+	allowed_against_character = { scope:defender = { is_landed = yes faith = { has_doctrine_parameter = demonic_cultivation } } }
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_purge_demonic_sect_victory_desc
+	on_defeat_desc = xianxia_purge_demonic_sect_defeat_desc
+	on_white_peace_desc = xianxia_purge_demonic_sect_white_peace_desc
+	on_victory = {
+		scope:attacker = { add_piety = 220 add_prestige = 120 }
+		scope:defender = { add_character_modifier = { modifier = sect_purge_aftermath days = 1825 } }
+		scope:attacker.capital_county = { add_county_modifier = { modifier = sacred_mountain_consecrated days = 1825 } }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -140 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}
+
+xianxia_capture_sacred_mountain_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_CAPTURE_SACRED_MOUNTAIN_WAR_NAME
+	war_name_base = XIANXIA_CAPTURE_SACRED_MOUNTAIN_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes has_cultivation_sect_faith = yes } }
+	allowed_against_character = { scope:defender = { is_landed = yes has_cultivation_sect_faith = yes } }
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_capture_sacred_mountain_victory_desc
+	on_defeat_desc = xianxia_capture_sacred_mountain_defeat_desc
+	on_white_peace_desc = xianxia_capture_sacred_mountain_white_peace_desc
+	on_victory = {
+		scope:attacker.capital_county = { add_county_modifier = { modifier = sacred_mountain_consecrated days = 3650 } add_county_modifier = { modifier = spirit_vein_secured days = 1825 } }
+		scope:attacker = { add_prestige = 250 }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -120 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}
+
+xianxia_avenge_sect_insult_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_AVENGE_SECT_INSULT_WAR_NAME
+	war_name_base = XIANXIA_AVENGE_SECT_INSULT_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes has_cultivation_sect_faith = yes has_character_modifier = sect_purge_aftermath } }
+	allowed_against_character = { scope:defender = { is_landed = yes has_cultivation_sect_faith = yes } }
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_avenge_sect_insult_victory_desc
+	on_defeat_desc = xianxia_avenge_sect_insult_defeat_desc
+	on_white_peace_desc = xianxia_avenge_sect_insult_white_peace_desc
+	on_victory = {
+		scope:attacker = { add_prestige = 180 }
+		scope:defender = { add_character_modifier = { modifier = sect_forced_abdication_shame days = 1825 } change_variable = { name = sect_authority_score add = -6 } }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -100 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}

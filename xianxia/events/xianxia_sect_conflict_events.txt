@@ -299,6 +299,7 @@ xianxia_sect_conflict.0220 = {
         trigger_event = xianxia_sect_succession.0100
 
         remove_trait = sect_disciple
+        remove_trait = sect_inner_hall_elder
         remove_trait = sect_outer_hall_elder
         remove_trait = sect_enforcement_elder
         add_trait = sect_leader

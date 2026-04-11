@@ -608,3 +608,9 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added application effect `xianxia_apply_commander_sect_archetype_effect` in `common/scripted_effects/xianxia_commander_sect_effects.txt` with strict single-archetype priority and cleanup to prevent stacking.
 - Wired commander-archetype refresh into world maintenance (`xianxia_world.1000`) for rulers, courtiers, and vassals so bonuses stay synchronized with sect traits/path identity.
 - Added localization keys for all new commander archetype modifiers and descriptions.
+
+### 58) Sect control-key and challenger role cleanup (2026-04-11)
+- Fixed sect authority/succession character modifiers to use valid county-control keys:
+  - `control_growth_factor` -> `monthly_county_control_growth_factor`
+  - `monthly_control_growth_add` -> `monthly_county_control_growth_add`
+- Updated challenge-victory trait cleanup to remove `sect_inner_hall_elder` before assigning `sect_leader`, preventing conflicting sect office traits on successful challengers.

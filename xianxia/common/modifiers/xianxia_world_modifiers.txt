@@ -410,14 +410,14 @@ sect_authority_high = {
     monthly_prestige = 0.22
     vassal_opinion = 6
     same_faith_opinion = 5
-    control_growth_factor = 0.1
+    monthly_county_control_growth_factor = 0.1
 }
 
 sect_authority_low = {
     monthly_prestige = -0.18
     vassal_opinion = -8
     same_faith_opinion = -6
-    control_growth_factor = -0.15
+    monthly_county_control_growth_factor = -0.15
 }
 
 sect_elder_faction_pressure = {
@@ -435,7 +435,7 @@ sect_schism_recent = {
 sect_purge_aftermath = {
     dread_gain_mult = 0.2
     same_faith_opinion = -10
-    monthly_control_growth_add = -0.1
+    monthly_county_control_growth_add = -0.1
 }
 
 sect_lineage_backed_heir = {
@@ -519,7 +519,7 @@ high_realm_court_deference = {
 sect_succession_crisis = {
     vassal_opinion = -12
     monthly_prestige = -0.2
-    control_growth_factor = -0.2
+    monthly_county_control_growth_factor = -0.2
 }
 
 sect_claimant_faction_pressure = {

@@ -1382,3 +1382,29 @@ enforce_high_realm_submission_decision = {
         }
     }
 }
+
+view_xianxia_state_status_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_study_culture.dds" }
+    decision_group_type = major
+    sort_order = 547
+
+    title = view_xianxia_state_status_decision
+    desc = view_xianxia_state_status_decision_desc
+    selection_tooltip = view_xianxia_state_status_decision_tooltip
+    confirm_text = view_xianxia_state_status_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+    }
+
+    is_valid = {
+        always = yes
+    }
+
+    effect = {
+        trigger_event = xianxia_sect_succession.0900
+    }
+
+    ai_check_interval = 0
+    ai_will_do = { base = 0 }
+}

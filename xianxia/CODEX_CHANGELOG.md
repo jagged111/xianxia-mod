@@ -556,3 +556,13 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 
 - Fixed sect leadership persistence: `xianxia_world.1700` now respects `sect_leader_deposed_from_challenge`, preventing automatic trait restoration after challenge defeat.
 - Fixed breakthrough resource economy: all breakthrough attempt decisions now deduct gold (`add_gold = -50`) before applying cooldown tiers.
+
+### 51) Sect succession consequences + CB scaffolding + state report (2026-04-11)
+- Added new succession framework modules:
+  - `events/xianxia_sect_succession_events.txt`
+  - `common/scripted_effects/xianxia_sect_succession_effects.txt`
+- Hooked `xianxia_sect_succession.0001` into `on_character_death` to force instability/conflict on sect leader transitions rather than passive handoff.
+- Added succession outcomes including elder coup, schism, claimant pressure, and failed-heir exile style states with authority/county/vassal consequences.
+- Integrated challenge-deposition transitions with succession instability by triggering `xianxia_sect_succession.0100` from challenge victory resolution.
+- Added a player-readable status decision/event (`view_xianxia_state_status_decision` -> `xianxia_sect_succession.0900`) for authority/wins/state tracking.
+- Added initial xianxia war scaffolding file `common/casus_belli_types/xianxia_cb_types.txt` with sect-territory themed CB definitions (spirit vein seizure, foundation destruction, sect submission, demonic purge, sacred mountain capture, sect insult retaliation).

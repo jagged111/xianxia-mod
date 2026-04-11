@@ -1,0 +1,121 @@
+xianxia_seize_spirit_vein_cb = {
+    war_name = WAR_NAME
+    truce_days = 1825
+    can_use = {
+        scope:attacker = { is_cultivator = yes }
+        scope:defender = { is_landed = yes }
+    }
+    can_use_title = {
+        title_tier = tier_county
+    }
+    on_success = {
+        scope:title = {
+            add_county_modifier = { modifier = spirit_vein_secured days = 3650 }
+            remove_county_modifier = spirit_vein_contested
+        }
+        scope:attacker = { change_variable = { name = sect_authority_score add = 6 } }
+    }
+    on_fail = {
+        scope:attacker = { change_variable = { name = sect_authority_score add = -6 } }
+    }
+}
+
+xianxia_destroy_sect_foundation_cb = {
+    war_name = WAR_NAME
+    truce_days = 2555
+    can_use = {
+        scope:attacker = { is_cultivator = yes }
+        scope:defender = { has_cultivation_sect_faith = yes }
+    }
+    can_use_title = {
+        title_tier = tier_county
+    }
+    on_success = {
+        scope:title = {
+            add_county_modifier = { modifier = spirit_vein_contested days = 3650 }
+            add_county_modifier = { modifier = corrupted_spirit_vein days = 3650 }
+        }
+        scope:defender = {
+            add_character_modifier = { modifier = sect_succession_crisis days = 1825 }
+            change_variable = { name = sect_authority_score add = -10 }
+        }
+    }
+}
+
+xianxia_force_sect_submission_cb = {
+    war_name = WAR_NAME
+    truce_days = 1825
+    can_use = {
+        scope:attacker = { has_cultivation_sect_faith = yes }
+        scope:defender = { has_cultivation_sect_faith = yes }
+    }
+    can_use_title = {
+        title_tier = tier_duchy
+    }
+    on_success = {
+        scope:defender = {
+            add_character_modifier = { modifier = high_realm_suppressed_vassal days = 3650 }
+            add_opinion = { target = scope:attacker modifier = opinion_high_realm_submission years = 20 }
+        }
+        scope:attacker = { add_character_modifier = { modifier = high_realm_mandate_presence days = 1825 } }
+    }
+}
+
+xianxia_purge_demonic_sect_cb = {
+    war_name = WAR_NAME
+    truce_days = 2555
+    can_use = {
+        scope:attacker = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+        scope:defender = { faith = { has_doctrine_parameter = demonic_cultivation } }
+    }
+    can_use_title = {
+        title_tier = tier_county
+    }
+    on_success = {
+        scope:title = {
+            add_county_modifier = { modifier = sacred_mountain_consecrated days = 3650 }
+            remove_county_modifier = corrupted_spirit_vein
+        }
+        scope:attacker = { add_piety = 200 }
+        scope:defender = { add_character_modifier = { modifier = sect_purge_aftermath days = 1825 } }
+    }
+}
+
+xianxia_capture_sacred_mountain_cb = {
+    war_name = WAR_NAME
+    truce_days = 2555
+    can_use = {
+        scope:attacker = { has_cultivation_sect_faith = yes }
+        scope:defender = { has_cultivation_sect_faith = yes }
+    }
+    can_use_title = {
+        title_tier = tier_county
+    }
+    on_success = {
+        scope:title = {
+            add_county_modifier = { modifier = sacred_mountain_consecrated days = 3650 }
+            add_county_modifier = { modifier = spirit_vein_secured days = 1825 }
+        }
+        scope:attacker = { add_prestige = 250 }
+    }
+}
+
+xianxia_avenge_sect_insult_cb = {
+    war_name = WAR_NAME
+    truce_days = 1095
+    can_use = {
+        scope:attacker = { has_cultivation_sect_faith = yes }
+        scope:defender = { has_cultivation_sect_faith = yes }
+        scope:attacker = { has_character_modifier = sect_purge_aftermath }
+    }
+    can_use_title = {
+        title_tier = tier_county
+    }
+    on_success = {
+        scope:attacker = { add_prestige = 180 }
+        scope:defender = {
+            add_character_modifier = { modifier = sect_forced_abdication_shame days = 1825 }
+            change_variable = { name = sect_authority_score add = -6 }
+        }
+    }
+}

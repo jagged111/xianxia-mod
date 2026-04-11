@@ -46,3 +46,10 @@ on_yearly_pulse = {
         xianxia_world.1700
     }
 }
+
+
+on_character_death = {
+    events = {
+        xianxia_sect_succession.0001
+    }
+}

@@ -283,6 +283,7 @@ xianxia_sect_conflict.0220 = {
         add_character_flag = { flag = sect_challenge_cooldown days = 3650 }
         add_prestige = 400
         add_dynasty_prestige = 150
+        trigger_event = xianxia_sect_succession.0100
 
         remove_trait = sect_disciple
         remove_trait = sect_outer_hall_elder

@@ -764,3 +764,63 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  high_realm_court_deference:0 "Court Deference to Higher Realm"
  high_realm_court_deference_desc:0 "This cultivator suppresses independent expression around a high-realm sovereign."
  opinion_high_realm_submission:0 "Forced High-Realm Submission"
+
+ view_xianxia_state_status_decision:0 "View Xianxia State Report"
+ view_xianxia_state_status_decision_desc:0 "Review your current realm/cultivation status including authority, cooldowns, and territorial pressure states."
+ view_xianxia_state_status_decision_tooltip:0 "Opens a readable status report for cultivation, sect, county, and special-state tracking."
+ view_xianxia_state_status_decision_confirm:0 "Open the report tablet."
+
+ xianxia_sect_succession.0010.t:0 "Sect Succession Crisis"
+ xianxia_sect_succession.0010.desc:0 "Your succession is disputed by elders, lineages, and opportunists. No sect leadership transition is ever peaceful.\n\n#bold Sect Authority:#! [ROOT.Var('sect_authority_score').GetValue]"
+ xianxia_sect_succession.0010.a:0 "I will survive the storm."
+
+ xianxia_sect_succession.0015.t:0 "Leadership Vacuum"
+ xianxia_sect_succession.0015.desc:0 "No stable heir stands ready. Elders force an emergency settlement to prevent the sect from collapsing immediately."
+ xianxia_sect_succession.0015.a:0 "Install an emergency regent."
+
+ xianxia_sect_succession.0020.t:0 "Elder Coup"
+ xianxia_sect_succession.0020.desc:0 "Senior elders reject your inheritance and force a coup-backed transfer of authority."
+ xianxia_sect_succession.0020.a:0 "The mandate is stolen from my line."
+
+ xianxia_sect_succession.0030.t:0 "Sect Schism"
+ xianxia_sect_succession.0030.desc:0 "Lineages split, disciples defect, and your sect fractures into hostile camps."
+ xianxia_sect_succession.0030.a:0 "Stabilize what remains."
+
+ xianxia_sect_succession.0040.t:0 "Claimant Civil Conflict"
+ xianxia_sect_succession.0040.desc:0 "A claimant bloc rejects your leadership and starts organizing long-term faction pressure."
+ xianxia_sect_succession.0040.a:0 "Then let them come."
+
+ xianxia_sect_succession.0900.t:0 "Xianxia State Report"
+ xianxia_sect_succession.0900.desc:0 "#bold Cultivation/Sect State:#!
+Sect Authority Score: [ROOT.Var('sect_authority_score').GetValue]
+Jianghu Wins (Total): [ROOT.Var('jianghu_tourney_wins_total').GetValue]
+Jianghu Wins (Orthodox): [ROOT.Var('jianghu_tourney_wins_orthodox').GetValue]
+Jianghu Wins (Unorthodox): [ROOT.Var('jianghu_tourney_wins_unorthodox').GetValue]
+Jianghu Wins (Demonic): [ROOT.Var('jianghu_tourney_wins_demonic').GetValue]
+Jianghu Wins (Vagrant): [ROOT.Var('jianghu_tourney_wins_vagrant').GetValue]
+
+#bold Status Checklist (manual read):#!
+- Check if you have [GetModifier('sect_succession_crisis').GetNameWithTooltip], [GetModifier('sect_claimant_faction_pressure').GetNameWithTooltip], or [GetModifier('high_realm_mandate_presence').GetNameWithTooltip].
+- Check your capital county for [GetModifier('sacred_mountain_consecrated').GetNameWithTooltip], [GetModifier('spirit_vein_secured').GetNameWithTooltip], [GetModifier('spirit_vein_contested').GetNameWithTooltip], [GetModifier('corrupted_spirit_vein').GetNameWithTooltip].
+- Check your flags/cooldowns in tooltips for breakthrough resource cooldown, high-realm submission cooldown, and fox exposure."
+ xianxia_sect_succession.0900.a:0 "Close report."
+
+ sect_succession_crisis:0 "Sect Succession Crisis"
+ sect_succession_crisis_desc:0 "This sect's succession is actively contested by rival lineages and claimants."
+ sect_claimant_faction_pressure:0 "Claimant Faction Pressure"
+ sect_claimant_faction_pressure_desc:0 "A claimant bloc is consolidating support against the current sect leadership."
+ sect_failed_heir_exile:0 "Failed Heir in Exile"
+ sect_failed_heir_exile_desc:0 "A failed succession claimant has been pushed out of orthodox power structures."
+ sect_lineage_betrayal:0 "Lineage Betrayal"
+ sect_lineage_betrayal_desc:0 "Trusted lineage blocs betrayed the expected succession order."
+ sect_coup_victor:0 "Coup Victor"
+ sect_coup_victor_desc:0 "This cultivator rose through coup politics during a succession crisis."
+ sect_emergency_regent:0 "Emergency Sect Regent"
+ sect_emergency_regent_desc:0 "A provisional regent installed to prevent total collapse after succession breakdown."
+
+ xianxia_seize_spirit_vein_cb:0 "Seize Spirit Vein"
+ xianxia_destroy_sect_foundation_cb:0 "Destroy Sect Foundation"
+ xianxia_force_sect_submission_cb:0 "Force Sect Submission"
+ xianxia_purge_demonic_sect_cb:0 "Purge Demonic Sect"
+ xianxia_capture_sacred_mountain_cb:0 "Capture Sacred Mountain"
+ xianxia_avenge_sect_insult_cb:0 "Avenge Sect Insult"

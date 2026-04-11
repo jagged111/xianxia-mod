@@ -1,4 +1,4 @@
-# Xianxia Activity Map (Canonical In-Game Wiring Index)
+﻿# Xianxia Activity Map (Canonical In-Game Wiring Index)
 #
 # Purpose:
 # - Prevent path mismatch between reference activity material and our real scripted gameplay hooks.
@@ -23,3 +23,8 @@
 # 1) Any time you modify ANY gameplay system that can touch activity behavior, timing, participation,
 #    rewards, or AI hosting, update this index and the changelog in the same commit.
 # 2) Cross-check against /activities/ structure patterns before finalizing.
+# - New staged activity-style systems (2026-04-10)
+#   -> /common/decisions/xianxia_world_decisions.txt
+#      * disciple_assignment_activity_decision -> xianxia_world.1860 (talented non-adult disciple assignment pass)
+#      * jianghu_grand_gathering_activity_decision -> xianxia_world.1870/1871/1872 (staged jianghu gathering flow)
+#      * host_same_path_dao_exchange_activity_decision -> xianxia_world.1880/1881 (feast-like same-path sect meeting with Dao exchange lifestyle-speed rewards)

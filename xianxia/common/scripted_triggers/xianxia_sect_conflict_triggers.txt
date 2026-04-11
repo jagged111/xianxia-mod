@@ -1,0 +1,37 @@
+﻿is_valid_sect_conflict_ruler_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_landed = yes
+    is_cultivator = yes
+    has_cultivation_sect_faith = yes
+}
+
+can_challenge_sect_leader_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_cultivator = yes
+    is_landed = no
+    has_cultivation_sect_faith = yes
+    has_trait = sect_inner_hall_elder
+    NOT = { has_character_flag = sect_challenge_cooldown }
+    exists = liege
+    liege = {
+        is_alive = yes
+        is_landed = yes
+        is_cultivator = yes
+        has_trait = sect_leader
+        faith = root.faith
+    }
+}
+
+has_spiritual_capital_county_trigger = {
+    exists = capital_county
+    capital_county = {
+        OR = {
+            has_county_modifier = spirit_vein_secured
+            has_county_modifier = sacred_mountain_consecrated
+            has_county_modifier = corrupted_spirit_vein
+            has_county_modifier = spirit_vein_contested
+        }
+    }
+}

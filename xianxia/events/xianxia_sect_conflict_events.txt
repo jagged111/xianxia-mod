@@ -1,0 +1,397 @@
+﻿namespace = xianxia_sect_conflict
+
+# Monthly sect-politics maintenance and pressure pulse.
+xianxia_sect_conflict.0001 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_landed = yes
+                is_cultivator = yes
+                has_cultivation_sect_faith = yes
+            }
+
+            xianxia_update_sect_authority_effect = yes
+            xianxia_apply_lineage_backing_effect = yes
+
+            if = {
+                limit = {
+                    exists = capital_county
+                    NOT = { capital_county = { has_county_modifier = spirit_vein_secured } }
+                    NOT = { capital_county = { has_county_modifier = sacred_mountain_consecrated } }
+                    NOT = { capital_county = { has_county_modifier = corrupted_spirit_vein } }
+                    NOT = { capital_county = { has_county_modifier = spirit_vein_contested } }
+                }
+                capital_county = {
+                    add_county_modifier = { modifier = spirit_vein_secured days = -1 }
+                }
+            }
+
+            if = {
+                limit = {
+                    var:sect_authority_score < 38
+                    any_courtier = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_cultivator = yes
+                        faith = root.faith
+                    }
+                    NOT = { has_character_flag = sect_internal_conflict_recent }
+                }
+                random = {
+                    chance = 16
+                    trigger_event = xianxia_sect_conflict.0100
+                }
+            }
+
+            if = {
+                limit = { var:sect_authority_score >= 62 }
+                capital_county = {
+                    remove_county_modifier = spirit_vein_contested
+                    if = {
+                        limit = { NOT = { has_county_modifier = spirit_vein_secured } }
+                        add_county_modifier = { modifier = spirit_vein_secured days = 1095 }
+                    }
+                }
+            }
+            else_if = {
+                limit = { var:sect_authority_score <= 34 }
+                capital_county = {
+                    remove_county_modifier = spirit_vein_secured
+                    add_county_modifier = { modifier = spirit_vein_contested days = 1095 }
+                    change_county_control = -10
+                }
+            }
+
+            if = {
+                limit = {
+                    OR = {
+                        has_trait = cultivation_nascent_soul
+                        has_trait = cultivation_heavenly_being
+                        has_trait = cultivation_four_axis
+                        has_trait = cultivation_integration
+                        has_trait = cultivation_star_shattering
+                        has_trait = cultivation_sacred_vessel
+                        has_trait = cultivation_entering_nirvana
+                        has_trait = cultivation_true_immortal
+                    }
+                }
+                add_character_modifier = { modifier = high_realm_mandate_presence days = 120 }
+                every_vassal = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        OR = {
+                            is_cultivator = no
+                            NOT = {
+                                OR = {
+                                    has_trait = cultivation_nascent_soul
+                                    has_trait = cultivation_heavenly_being
+                                    has_trait = cultivation_four_axis
+                                    has_trait = cultivation_integration
+                                    has_trait = cultivation_star_shattering
+                                    has_trait = cultivation_sacred_vessel
+                                    has_trait = cultivation_entering_nirvana
+                                    has_trait = cultivation_true_immortal
+                                }
+                            }
+                        }
+                    }
+                    add_character_modifier = { modifier = high_realm_suppressed_vassal days = 120 }
+                }
+            }
+
+            if = {
+                limit = {
+                    has_spiritual_capital_county_trigger = yes
+                    var:sect_authority_score <= 45
+                    NOT = { has_character_flag = sect_county_contest_recent }
+                }
+                random = {
+                    chance = 12
+                    trigger_event = xianxia_sect_conflict.0300
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Elder faction unrest event.
+xianxia_sect_conflict.0100 = {
+    type = character_event
+    title = xianxia_sect_conflict.0100.t
+    desc = xianxia_sect_conflict.0100.desc
+
+    option = {
+        name = xianxia_sect_conflict.0100.a
+        add_gold = -80
+        change_variable = { name = sect_authority_score add = 8 }
+        add_character_modifier = { modifier = sect_authority_high days = 1460 }
+        add_character_flag = { flag = sect_internal_conflict_recent days = 1095 }
+        every_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+            }
+            add_opinion = { target = root modifier = opinion_sect_leader_appeased_elders years = 10 }
+        }
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0100.b
+        change_variable = { name = sect_authority_score add = 4 }
+        add_character_modifier = { modifier = sect_purge_aftermath days = 1825 }
+        add_character_flag = { flag = sect_internal_conflict_recent days = 1460 }
+        random_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+                NOT = { has_trait = sect_leader }
+            }
+            add_character_modifier = { modifier = sect_exiled_elder days = 3650 }
+            add_stress = 80
+            add_opinion = { target = root modifier = opinion_sect_leader_purged_elders years = 20 }
+        }
+        every_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+            }
+            random_list = {
+                55 = { add_opinion = { target = root modifier = opinion_sect_leader_purged_elders years = 15 } }
+                45 = { add_opinion = { target = root modifier = opinion_sect_leader_crushed_dissent years = 15 } }
+            }
+        }
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0100.c
+        trigger_event = xianxia_sect_conflict.0110
+        add_character_flag = { flag = sect_internal_conflict_recent days = 1825 }
+    }
+}
+
+# Schism resolution path.
+xianxia_sect_conflict.0110 = {
+    type = character_event
+    title = xianxia_sect_conflict.0110.t
+    desc = xianxia_sect_conflict.0110.desc
+
+    option = {
+        name = xianxia_sect_conflict.0110.a
+        change_variable = { name = sect_authority_score add = -12 }
+        add_character_modifier = { modifier = sect_schism_recent days = 3650 }
+        add_stress = 50
+        capital_county = {
+            add_county_modifier = { modifier = spirit_vein_contested days = 1825 }
+            change_county_control = -20
+        }
+        every_vassal = {
+            limit = { is_alive = yes faith = root.faith }
+            add_opinion = { target = root modifier = opinion_sect_schism_allowed years = 20 }
+        }
+        random_vassal = {
+            limit = { is_alive = yes faith = root.faith is_cultivator = yes }
+            add_character_modifier = { modifier = sect_lineage_backed_heir days = 3650 }
+        }
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0110.b
+        change_variable = { name = sect_authority_score add = 6 }
+        add_character_modifier = { modifier = sect_purge_aftermath days = 1825 }
+        add_stress = 35
+        capital_county = {
+            remove_county_modifier = spirit_vein_contested
+            add_county_modifier = { modifier = spirit_vein_secured days = 1095 }
+        }
+        every_vassal = {
+            limit = { is_alive = yes faith = root.faith }
+            add_opinion = { target = root modifier = opinion_sect_leader_crushed_dissent years = 15 }
+        }
+    }
+}
+
+# Challenger-side entry event.
+xianxia_sect_conflict.0200 = {
+    type = character_event
+    title = xianxia_sect_conflict.0200.t
+    desc = xianxia_sect_conflict.0200.desc
+
+    immediate = {
+        if = {
+            limit = { liege = { is_alive = yes is_landed = yes is_cultivator = yes } }
+            liege = { save_scope_as = sect_leader_target }
+        }
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0200.a
+        trigger_event = xianxia_sect_conflict.0210
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0200.b
+        add_character_flag = { flag = sect_challenge_cooldown days = 1825 }
+        add_prestige = -60
+    }
+}
+
+# Challenge resolution.
+xianxia_sect_conflict.0210 = {
+    type = character_event
+    title = xianxia_sect_conflict.0210.t
+    desc = xianxia_sect_conflict.0210.desc
+
+    immediate = {
+        if = {
+            limit = {
+                exists = scope:sect_leader_target
+                OR = {
+                    prowess >= scope:sect_leader_target.prowess
+                    martial >= scope:sect_leader_target.martial
+                }
+            }
+            random_list = {
+                68 = { trigger_event = xianxia_sect_conflict.0220 }
+                32 = { trigger_event = xianxia_sect_conflict.0230 }
+            }
+        }
+        else = {
+            random_list = {
+                32 = { trigger_event = xianxia_sect_conflict.0220 }
+                68 = { trigger_event = xianxia_sect_conflict.0230 }
+            }
+        }
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0210.a
+    }
+}
+
+# Challenger victory: forced sect leadership change.
+xianxia_sect_conflict.0220 = {
+    type = character_event
+    title = xianxia_sect_conflict.0220.t
+    desc = xianxia_sect_conflict.0220.desc
+
+    option = {
+        name = xianxia_sect_conflict.0220.a
+
+        add_character_modifier = { modifier = sect_challenger_glory days = 3650 }
+        add_character_flag = { flag = sect_challenge_cooldown days = 3650 }
+        add_prestige = 400
+        add_dynasty_prestige = 150
+        trigger_event = xianxia_sect_succession.0100
+
+        remove_trait = sect_disciple
+        remove_trait = sect_outer_hall_elder
+        remove_trait = sect_enforcement_elder
+        add_trait = sect_leader
+
+        if = {
+            limit = { exists = scope:sect_leader_target }
+            scope:sect_leader_target = {
+                remove_trait = sect_leader
+                add_trait = sect_outer_hall_elder
+                add_character_flag = { flag = sect_leader_deposed_from_challenge days = 3650 }
+                add_character_modifier = { modifier = sect_forced_abdication_shame days = 3650 }
+                add_stress = 90
+                add_opinion = { target = root modifier = opinion_sect_challenger_usurped_leadership years = 30 }
+            }
+        }
+
+        every_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+            }
+            random_list = {
+                50 = { add_opinion = { target = root modifier = opinion_sect_challenger_usurped_leadership years = 20 } }
+                50 = { add_opinion = { target = root modifier = opinion_sect_leader_crushed_dissent years = 20 } }
+            }
+        }
+    }
+}
+
+# Challenger defeat: purge/exile pressure.
+xianxia_sect_conflict.0230 = {
+    type = character_event
+    title = xianxia_sect_conflict.0230.t
+    desc = xianxia_sect_conflict.0230.desc
+
+    option = {
+        name = xianxia_sect_conflict.0230.a
+        add_character_modifier = { modifier = sect_challenger_disgraced days = 3650 }
+        add_character_flag = { flag = sect_challenge_cooldown days = 3650 }
+        add_prestige = -220
+        add_stress = 70
+
+        if = {
+            limit = { exists = scope:sect_leader_target }
+            scope:sect_leader_target = {
+                add_character_modifier = { modifier = sect_authority_high days = 1460 }
+                change_variable = { name = sect_authority_score add = 6 }
+                add_opinion = { target = root modifier = opinion_sect_leader_purged_elders years = 20 }
+            }
+        }
+
+        every_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+            }
+            add_opinion = { target = root modifier = opinion_sect_leader_purged_elders years = 20 }
+        }
+    }
+}
+
+
+# County contest event for spirit vein control.
+xianxia_sect_conflict.0300 = {
+    type = character_event
+    title = xianxia_sect_conflict.0300.t
+    desc = xianxia_sect_conflict.0300.desc
+
+    option = {
+        name = xianxia_sect_conflict.0300.a
+        add_gold = -60
+        add_character_flag = { flag = sect_county_contest_recent days = 1095 }
+        add_prestige = 80
+        capital_county = {
+            remove_county_modifier = spirit_vein_contested
+            add_county_modifier = { modifier = spirit_vein_secured days = 1460 }
+            change_county_control = 15
+        }
+        change_variable = { name = sect_authority_score add = 5 }
+    }
+
+    option = {
+        name = xianxia_sect_conflict.0300.b
+        add_character_flag = { flag = sect_county_contest_recent days = 1095 }
+        add_stress = 35
+        capital_county = {
+            add_county_modifier = { modifier = spirit_vein_contested days = 1825 }
+            change_county_control = -15
+        }
+        change_variable = { name = sect_authority_score add = -6 }
+    }
+}

@@ -530,3 +530,15 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added player decision `view_jianghu_strongest_leaderboard_decision` and event `xianxia_world.1891` so players can check the current jianghu strongest board in-game.
 - Added new leaderboard modifiers + localization strings for rank titles and path champion labels.
 - Tightened `disciple_assignment_activity_decision` validity: it now requires at least one eligible non-adult talented disciple, preventing no-op prestige farming when only adult cultivator courtiers are present.
+
+### 49) Sect internal conflict framework v1 + county sect influence v1 (2026-04-11)
+- Added new modular sect-politics framework files:
+  - `events/xianxia_sect_conflict_events.txt`
+  - `common/scripted_effects/xianxia_sect_conflict_effects.txt`
+  - `common/scripted_triggers/xianxia_sect_conflict_triggers.txt`
+- Added ruler-facing authority variable maintenance (`sect_authority_score`) with high/low authority states, elder-faction pressure, lineage-backed heir rotation, and schism/purge pressure loops.
+- Added challenger gameplay loop via `challenge_sect_leader_decision` with visible success/failure outcomes, trait/personality-based AI weighting, and persistent political modifiers.
+- Added ruler control tools via `purge_dissenting_elders_decision` and multi-outcome elder-faction confrontation events (appease/purge/schism paths).
+- Added first county/territorial influence layer via `consecrate_sacred_mountain_decision` and new county modifiers (`sacred_mountain_consecrated`, `spirit_vein_secured`, `spirit_vein_contested`, `corrupted_spirit_vein`) tied into monthly sect authority pulses.
+- Added opinion modifier definitions for sect politics outcomes and full English localization for decisions/events/modifiers/opinion text.
+- Hooked sect conflict maintenance event `xianxia_sect_conflict.0001` into game-start and monthly pulse orchestration.

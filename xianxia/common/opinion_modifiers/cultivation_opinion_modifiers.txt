@@ -113,3 +113,28 @@ opinion_jianghu_inherited_rivalry = {
 	opinion = -30
 	months = 2400
 }
+
+opinion_sect_leader_appeased_elders = {
+	opinion = 20
+	months = 180
+}
+
+opinion_sect_leader_purged_elders = {
+	opinion = -35
+	months = 240
+}
+
+opinion_sect_leader_crushed_dissent = {
+	opinion = -20
+	months = 180
+}
+
+opinion_sect_challenger_usurped_leadership = {
+	opinion = -25
+	months = 300
+}
+
+opinion_sect_schism_allowed = {
+	opinion = -30
+	months = 360
+}

@@ -1007,3 +1007,189 @@ view_jianghu_strongest_leaderboard_decision = {
     ai_check_interval = 0
     ai_will_do = { base = 0 }
 }
+
+challenge_sect_leader_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_duel.dds" }
+    decision_group_type = major
+    sort_order = 541
+
+    title = challenge_sect_leader_decision
+    desc = challenge_sect_leader_decision_desc
+    selection_tooltip = challenge_sect_leader_decision_tooltip
+    confirm_text = challenge_sect_leader_decision_confirm
+
+    is_shown = {
+        can_challenge_sect_leader_trigger = yes
+    }
+
+    is_valid = {
+        prowess >= 12
+        liege = {
+            has_trait = sect_leader
+            has_cultivation_sect_faith = yes
+            faith = root.faith
+        }
+    }
+
+    effect = {
+        trigger_event = xianxia_sect_conflict.0200
+    }
+
+    ai_check_interval = 24
+    ai_will_do = {
+        base = 15
+        modifier = {
+            add = 30
+            has_trait = ambitious
+        }
+        modifier = {
+            add = 22
+            has_trait = wrathful
+        }
+        modifier = {
+            add = 18
+            has_trait = brave
+        }
+        modifier = {
+            add = 14
+            has_trait = greedy
+        }
+        modifier = {
+            add = 10
+            has_trait = zealous
+        }
+        modifier = {
+            add = -12
+            has_trait = patient
+        }
+        modifier = {
+            add = -16
+            has_trait = calm
+        }
+        modifier = {
+            add = -22
+            has_trait = content
+        }
+        modifier = {
+            add = -28
+            has_trait = craven
+        }
+    }
+}
+
+purge_dissenting_elders_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_targeted_imprisonment.dds" }
+    decision_group_type = major
+    sort_order = 542
+
+    title = purge_dissenting_elders_decision
+    desc = purge_dissenting_elders_decision_desc
+    selection_tooltip = purge_dissenting_elders_decision_tooltip
+    confirm_text = purge_dissenting_elders_decision_confirm
+
+    is_shown = {
+        is_valid_sect_conflict_ruler_trigger = yes
+        has_trait = sect_leader
+    }
+
+    is_valid = {
+        OR = {
+            has_character_modifier = sect_authority_low
+            has_character_modifier = sect_elder_faction_pressure
+        }
+        any_courtier = {
+            is_alive = yes
+            is_adult = yes
+            is_cultivator = yes
+            faith = root.faith
+            NOT = { has_trait = sect_leader }
+        }
+    }
+
+    effect = {
+        add_stress = 35
+        trigger_event = xianxia_sect_conflict.0100
+    }
+
+    ai_check_interval = 24
+    ai_will_do = {
+        base = 10
+        modifier = {
+            add = 26
+            has_trait = wrathful
+        }
+        modifier = {
+            add = 20
+            has_trait = ambitious
+        }
+        modifier = {
+            add = 16
+            has_trait = brave
+        }
+        modifier = {
+            add = -14
+            has_trait = patient
+        }
+        modifier = {
+            add = -16
+            has_trait = calm
+        }
+        modifier = {
+            add = -24
+            has_trait = craven
+        }
+    }
+}
+
+consecrate_sacred_mountain_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_festival.dds" }
+    decision_group_type = major
+    sort_order = 543
+
+    title = consecrate_sacred_mountain_decision
+    desc = consecrate_sacred_mountain_decision_desc
+    selection_tooltip = consecrate_sacred_mountain_decision_tooltip
+    confirm_text = consecrate_sacred_mountain_decision_confirm
+
+    is_shown = {
+        is_valid_sect_conflict_ruler_trigger = yes
+    }
+
+    is_valid = {
+        gold >= 120
+        piety_level >= 2
+        exists = capital_county
+        capital_county = {
+            NOT = { has_county_modifier = sacred_mountain_consecrated }
+        }
+    }
+
+    effect = {
+        add_gold = -120
+        add_piety = -250
+        add_prestige = 180
+        capital_county = {
+            remove_county_modifier = corrupted_spirit_vein
+            add_county_modifier = { modifier = sacred_mountain_consecrated days = 3650 }
+            change_development_level = 1
+            change_control = 15
+        }
+    }
+
+    ai_check_interval = 60
+    ai_will_do = {
+        base = 8
+        modifier = {
+            add = 16
+            has_trait = zealous
+        }
+        modifier = {
+            add = 10
+            has_trait = patient
+        }
+        modifier = {
+            add = -8
+            has_trait = greedy
+        }
+    }
+}

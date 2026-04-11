@@ -9,6 +9,7 @@
         xianxia_world.1000
         xianxia_world.1700
         xianxia_health.0001
+        xianxia_sect_conflict.0001
     }
 }
 
@@ -32,6 +33,7 @@ on_monthly_pulse = {
         xianxia_social.1100
         xianxia_health.0001
         xianxia_world.1890
+        xianxia_sect_conflict.0001
     }
 }
 

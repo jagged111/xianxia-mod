@@ -1,0 +1,205 @@
+﻿forged_magic_treasure_inspiration = {
+    learning = 1
+    monthly_lifestyle_xp_gain_mult = 0.05
+}
+
+xianxia_artifact_heaven_splitter_blade_modifier = {
+    prowess = 4
+    hostile_scheme_resistance_add = 10
+}
+
+xianxia_artifact_soul_binding_gourd_modifier = {
+    dread_gain_mult = 0.2
+    owned_hostile_scheme_success_chance_add = 8
+}
+
+xianxia_artifact_nine_dragon_cauldron_modifier = {
+    monthly_piety = 0.25
+    learning = 2
+}
+
+xianxia_artifact_voidstep_boots_modifier = {
+    travel_speed_mult = 0.2
+    enemy_hostile_scheme_success_chance_add = -8
+}
+
+xianxia_artifact_starfall_talisman_modifier = {
+    knight_effectiveness_mult = 0.08
+    friendly_territory_advantage = 4
+}
+
+xianxia_artifact_mirror_of_true_heart_modifier = {
+    stress_loss_mult = 0.12
+    diplomacy = 2
+}
+
+xianxia_artifact_thunder_seal_bracelet_modifier = {
+    prowess = 2
+    army_damage_mult = 0.04
+}
+
+xianxia_artifact_emerald_lotus_robe_modifier = {
+    health = 0.25
+    disease_resistance = 0.2
+}
+
+xianxia_artifact_mount_kunlun_inkstone_modifier = {
+    monthly_lifestyle_xp_gain_mult = 0.07
+    learning = 1
+}
+
+xianxia_artifact_ancestral_spirit_banner_modifier = {
+    monthly_prestige = 0.35
+    same_faith_opinion = 6
+}
+
+
+xianxia_artifact_sun_moon_pendant_modifier = {
+    monthly_piety = 0.2
+    stress_loss_mult = 0.08
+}
+
+xianxia_artifact_heavenly_river_map_modifier = {
+    travel_speed_mult = 0.12
+    monthly_lifestyle_xp_gain_mult = 0.05
+}
+
+xianxia_artifact_dragonbone_flute_modifier = {
+    same_faith_opinion = 5
+    knight_effectiveness_mult = 0.05
+}
+
+xianxia_artifact_myriad_soul_lantern_modifier = {
+    hostile_scheme_resistance_add = 8
+    dread_gain_mult = 0.12
+}
+
+xianxia_artifact_phoenix_feather_cloak_modifier = {
+    health = 0.2
+    disease_resistance = 0.15
+}
+
+xianxia_artifact_mountain_sea_compass_modifier = {
+    martial = 2
+    advantage = 3
+}
+
+xianxia_artifact_blood_jade_seal_modifier = {
+    monthly_prestige = 0.25
+    vassal_opinion = 4
+}
+
+xianxia_artifact_void_silk_sash_modifier = {
+    enemy_hostile_scheme_success_chance_add = -10
+    intrigue = 1
+}
+
+xianxia_artifact_heavenly_forge_hammer_modifier = {
+    prowess = 3
+    monthly_lifestyle_xp_gain_mult = 0.04
+}
+
+xianxia_artifact_jade_cicada_charm_modifier = {
+    health = 0.15
+    stress_loss_mult = 0.05
+}
+
+xianxia_artifact_thousand_needle_manual_modifier = {
+    learning = 2
+    monthly_lifestyle_xp_gain_mult = 0.04
+}
+
+xianxia_artifact_black_tortoise_shield_modifier = {
+    hostile_scheme_resistance_add = 6
+    army_toughness_mult = 0.04
+}
+
+xianxia_artifact_white_tiger_halberd_modifier = {
+    prowess = 4
+    army_damage_mult = 0.05
+}
+
+xianxia_artifact_azure_dragon_spear_modifier = {
+    prowess = 3
+    knight_effectiveness_mult = 0.06
+}
+
+xianxia_artifact_vermilion_bird_fan_modifier = {
+    monthly_prestige = 0.22
+    diplomacy = 2
+}
+
+xianxia_artifact_ten_thousand_scroll_case_modifier = {
+    learning = 2
+    monthly_lifestyle_xp_gain_mult = 0.06
+}
+
+xianxia_artifact_soul_calm_bell_modifier = {
+    stress_loss_mult = 0.1
+    monthly_piety = 0.15
+}
+
+xianxia_artifact_storm_chasing_boots_modifier = {
+    travel_speed_mult = 0.15
+    prowess = 1
+}
+
+xianxia_artifact_immortal_peach_branch_modifier = {
+    health = 0.25
+    monthly_piety = 0.18
+}
+
+xianxia_artifact_deep_abyss_orb_modifier = {
+    dread_gain_mult = 0.14
+    martial = 1
+}
+
+xianxia_artifact_heavenly_silk_gloves_modifier = {
+    stewardship = 2
+    monthly_lifestyle_xp_gain_mult = 0.04
+}
+
+xianxia_artifact_soulbreaker_chisel_modifier = {
+    owned_hostile_scheme_success_chance_add = 6
+    intrigue = 1
+}
+
+xianxia_artifact_golden_crow_crown_modifier = {
+    monthly_prestige = 0.3
+    general_opinion = 3
+}
+
+xianxia_artifact_moon_rabbit_cauldron_modifier = {
+    learning = 1
+    monthly_piety = 0.2
+}
+
+xianxia_artifact_earthvein_prayer_beads_modifier = {
+    stewardship = 1
+    stress_loss_mult = 0.06
+}
+
+xianxia_artifact_thunder_resonance_zither_modifier = {
+    advantage = 2
+    knight_effectiveness_mult = 0.04
+}
+
+xianxia_artifact_celestial_ink_brush_modifier = {
+    learning = 1
+    monthly_lifestyle_xp_gain_mult = 0.05
+}
+
+xianxia_artifact_nine_heavens_kite_modifier = {
+    travel_speed_mult = 0.1
+    enemy_hostile_scheme_success_chance_add = -6
+}
+
+xianxia_artifact_ancestral_bone_tablet_modifier = {
+    same_faith_opinion = 4
+    monthly_prestige = 0.18
+}
+
+xianxia_artifact_chaos_refining_crucible_modifier = {
+    monthly_lifestyle_xp_gain_mult = 0.07
+    health = -0.05
+}

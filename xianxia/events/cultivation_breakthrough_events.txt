@@ -1508,3 +1508,19 @@ cultivation_breakthrough.2102 = {
 		name = cultivation_breakthrough.2102.a
 	}
 }
+
+cultivation_breakthrough.9000 = {
+	type = character_event
+	title = cultivation_breakthrough.9000.t
+	desc = cultivation_breakthrough.9000.desc
+	theme = learning
+
+	left_portrait = {
+		character = ROOT
+		animation = personality_bold
+	}
+
+	option = {
+		name = cultivation_breakthrough.9000.a
+	}
+}

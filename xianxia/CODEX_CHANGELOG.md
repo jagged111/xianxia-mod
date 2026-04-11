@@ -529,3 +529,4 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added hidden monthly leaderboard maintenance event `xianxia_world.1890` that assigns rank modifiers for global top 3 and per-path champions (orthodox/unorthodox/demonic/vagrant).
 - Added player decision `view_jianghu_strongest_leaderboard_decision` and event `xianxia_world.1891` so players can check the current jianghu strongest board in-game.
 - Added new leaderboard modifiers + localization strings for rank titles and path champion labels.
+- Tightened `disciple_assignment_activity_decision` validity: it now requires at least one eligible non-adult talented disciple, preventing no-op prestige farming when only adult cultivator courtiers are present.

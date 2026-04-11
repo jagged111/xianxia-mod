@@ -897,18 +897,11 @@ disciple_assignment_activity_decision = {
 
     is_valid = {
         NOT = { has_character_flag = disciple_assignment_activity_cooldown }
-        OR = {
-            any_courtier = {
-                is_alive = yes
-                is_adult = no
-                is_cultivator = no
-                OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians }
-            }
-            any_courtier = {
-                is_alive = yes
-                is_adult = yes
-                is_cultivator = yes
-            }
+        any_courtier = {
+            is_alive = yes
+            is_adult = no
+            is_cultivator = no
+            OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians }
         }
     }
 

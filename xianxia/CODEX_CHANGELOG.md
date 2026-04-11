@@ -553,3 +553,6 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
   - New high-realm presence/deference/suppression modifiers and opinion fallout.
   - Monthly sect conflict maintenance now projects suppression pressure from high-realm rulers onto weaker vassals.
 - Added localization/opinion plumbing for these new county and hierarchy systems.
+
+- Fixed sect leadership persistence: `xianxia_world.1700` now respects `sect_leader_deposed_from_challenge`, preventing automatic trait restoration after challenge defeat.
+- Fixed breakthrough resource economy: all breakthrough attempt decisions now deduct gold (`add_gold = -50`) before applying cooldown tiers.

@@ -294,6 +294,7 @@ xianxia_sect_conflict.0220 = {
             scope:sect_leader_target = {
                 remove_trait = sect_leader
                 add_trait = sect_outer_hall_elder
+                add_character_flag = { flag = sect_leader_deposed_from_challenge days = 3650 }
                 add_character_modifier = { modifier = sect_forced_abdication_shame days = 3650 }
                 add_stress = 90
                 add_opinion = { target = root modifier = opinion_sect_challenger_usurped_leadership years = 30 }

@@ -36,6 +36,7 @@ attempt_qi_gathering_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -97,6 +98,7 @@ attempt_qi_refining_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -158,6 +160,7 @@ attempt_qi_building_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -219,6 +222,7 @@ attempt_core_formation_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -280,6 +284,7 @@ attempt_nascent_soul_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -341,6 +346,7 @@ attempt_heavenly_being_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -402,6 +408,7 @@ attempt_four_axis_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -463,6 +470,7 @@ attempt_integration_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -524,6 +532,7 @@ attempt_star_shattering_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -585,6 +594,7 @@ attempt_sacred_vessel_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -646,6 +656,7 @@ attempt_entering_nirvana_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
@@ -706,6 +717,7 @@ attempt_true_immortal_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
+		add_gold = -50
 		if = {
 			limit = { gold < 200 }
 			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }

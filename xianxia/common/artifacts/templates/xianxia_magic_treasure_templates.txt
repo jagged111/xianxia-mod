@@ -1,0 +1,16 @@
+﻿xianxia_magic_treasure_template = {
+    can_equip = {
+        always = yes
+    }
+
+    can_benefit = {
+        this = root
+    }
+
+    fallback = {
+        prowess = 1
+        monthly_prestige = 0.1
+    }
+
+    unique = no
+}

@@ -244,3 +244,38 @@ formation_body_tier_3 = {
     prowess = 3
     advantage = 3
 }
+
+magic_treasure_crafter_1 = {
+    category = lifestyle
+    icon = good_meridians.dds
+    desc = trait_magic_treasure_crafter_1_desc
+    group = magic_treasure_crafter
+    level = 1
+    learning = 1
+    stewardship = 1
+    monthly_lifestyle_xp_gain_mult = 0.01
+}
+
+magic_treasure_crafter_2 = {
+    category = lifestyle
+    icon = excellent_meridians.dds
+    desc = trait_magic_treasure_crafter_2_desc
+    group = magic_treasure_crafter
+    level = 2
+    learning = 2
+    stewardship = 2
+    monthly_lifestyle_xp_gain_mult = 0.02
+    men_at_arms_maintenance_mult = -0.05
+}
+
+magic_treasure_crafter_3 = {
+    category = lifestyle
+    icon = heavenly_root.dds
+    desc = trait_magic_treasure_crafter_3_desc
+    group = magic_treasure_crafter
+    level = 3
+    learning = 3
+    stewardship = 3
+    monthly_lifestyle_xp_gain_mult = 0.03
+    men_at_arms_maintenance_mult = -0.1
+}

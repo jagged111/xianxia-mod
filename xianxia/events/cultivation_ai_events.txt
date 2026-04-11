@@ -624,7 +624,7 @@ cultivation_ai.0003 = {
             OR = {
                 liege = { is_parent_of = scope:root }
                 liege = {
-                    dynasty = scope:root.dynasty
+                    dynasty = root.dynasty
                     is_close_or_extended_family_of = scope:root
                 }
             }
@@ -1567,6 +1567,7 @@ cultivation_ai.2260 = {
 # Player parent response to fox-spirit child awakening.
 cultivation_ai.2261 = {
     type = character_event
+    theme = family
     title = cultivation_ai.2261.t
     desc = cultivation_ai.2261.desc
 

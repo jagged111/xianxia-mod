@@ -1,0 +1,90 @@
+﻿namespace = xianxia_health
+
+# Lore-accurate cultivation health pass:
+# cultivators progressively transcend mundane disease and injury,
+# with high realms becoming near-immune to mortal afflictions.
+xianxia_health.0001 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+            }
+
+            # High-realm cultivators: virtually purge mortal frailty.
+            if = {
+                limit = {
+                    OR = {
+                        has_trait = cultivation_nascent_soul
+                        has_trait = cultivation_heavenly_being
+                        has_trait = cultivation_four_axis
+                        has_trait = cultivation_integration
+                        has_trait = cultivation_star_shattering
+                        has_trait = cultivation_sacred_vessel
+                        has_trait = cultivation_entering_nirvana
+                        has_trait = cultivation_true_immortal
+                    }
+                }
+
+                remove_trait = ill
+                remove_trait = pneumonic
+                remove_trait = great_pox
+                remove_trait = consumption
+                remove_trait = cancer
+                remove_trait = typhus
+                remove_trait = bubonic_plague
+                remove_trait = smallpox
+                remove_trait = gout_ridden
+                remove_trait = wounded_1
+                remove_trait = wounded_2
+                remove_trait = wounded_3
+                remove_trait = maimed
+                remove_trait = one_legged
+                remove_trait = one_eyed
+                remove_trait = disfigured
+
+                add_character_modifier = {
+                    modifier = high_realm_longevity
+                    days = 365
+                }
+            }
+            # Mid-realm cultivators: strong recovery but not absolute immunity.
+            else_if = {
+                limit = {
+                    OR = {
+                        has_trait = cultivation_qi_refining
+                        has_trait = cultivation_qi_building
+                        has_trait = cultivation_core_formation
+                    }
+                }
+                random = {
+                    chance = 55
+                    remove_trait = ill
+                    remove_trait = wounded_1
+                    remove_trait = wounded_2
+                }
+                random = {
+                    chance = 25
+                    remove_trait = consumption
+                    remove_trait = cancer
+                    remove_trait = gout_ridden
+                }
+            }
+            # Early cultivators: improved resilience against common ailments.
+            else = {
+                random = {
+                    chance = 20
+                    remove_trait = ill
+                    remove_trait = wounded_1
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}

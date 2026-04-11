@@ -1,4 +1,4 @@
-jianghu_face_slap_interaction = {
+﻿jianghu_face_slap_interaction = {
 	category = interaction_category_hostile
 	interface_priority = 120
 	icon = icon_tyranny

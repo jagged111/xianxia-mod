@@ -26,6 +26,8 @@ attempt_qi_gathering_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_qi_gathering_breakthrough has_perk = mortal_qi_gathering_breakthrough_perk }
 		is_mortal = yes
 		NOT = { has_trait = cultivation_qi_gathering }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -34,7 +36,25 @@ attempt_qi_gathering_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1000
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1000
+		}
 	}
 	
 	ai_check_interval = 60
@@ -68,6 +88,8 @@ attempt_qi_refining_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_qi_refining_breakthrough has_perk = qi_gathering_qi_refining_breakthrough_perk }
 		has_trait = cultivation_qi_gathering
 		NOT = { has_trait = cultivation_qi_refining }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -76,7 +98,25 @@ attempt_qi_refining_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1100
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1100
+		}
 	}
 	
 	ai_check_interval = 60
@@ -110,6 +150,8 @@ attempt_qi_building_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_qi_building_breakthrough has_perk = qi_refining_qi_building_breakthrough_perk }
 		has_trait = cultivation_qi_refining
 		NOT = { has_trait = cultivation_qi_building }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -118,7 +160,25 @@ attempt_qi_building_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1200
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1200
+		}
 	}
 	
 	ai_check_interval = 60
@@ -152,6 +212,8 @@ attempt_core_formation_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_core_formation_breakthrough has_perk = qi_building_core_formation_breakthrough_perk }
 		has_trait = cultivation_qi_building
 		NOT = { has_trait = cultivation_core_formation }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -160,7 +222,25 @@ attempt_core_formation_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1300
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1300
+		}
 	}
 	
 	ai_check_interval = 60
@@ -194,6 +274,8 @@ attempt_nascent_soul_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_nascent_soul_breakthrough has_perk = core_formation_nascent_soul_breakthrough_perk }
 		has_trait = cultivation_core_formation
 		NOT = { has_trait = cultivation_nascent_soul }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -202,7 +284,25 @@ attempt_nascent_soul_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1400
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1400
+		}
 	}
 	
 	ai_check_interval = 60
@@ -236,6 +336,8 @@ attempt_heavenly_being_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_heavenly_being_breakthrough has_perk = nascent_soul_heavenly_being_breakthrough_perk }
 		has_trait = cultivation_nascent_soul
 		NOT = { has_trait = cultivation_heavenly_being }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -244,7 +346,25 @@ attempt_heavenly_being_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1500
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1500
+		}
 	}
 	
 	ai_check_interval = 60
@@ -278,6 +398,8 @@ attempt_four_axis_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_four_axis_breakthrough has_perk = heavenly_being_four_axis_breakthrough_perk }
 		has_trait = cultivation_heavenly_being
 		NOT = { has_trait = cultivation_four_axis }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -286,7 +408,25 @@ attempt_four_axis_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1600
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1600
+		}
 	}
 	
 	ai_check_interval = 60
@@ -320,6 +460,8 @@ attempt_integration_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_integration_breakthrough has_perk = four_axis_integration_breakthrough_perk }
 		has_trait = cultivation_four_axis
 		NOT = { has_trait = cultivation_integration }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -328,7 +470,25 @@ attempt_integration_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1700
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1700
+		}
 	}
 	
 	ai_check_interval = 60
@@ -362,6 +522,8 @@ attempt_star_shattering_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_star_shattering_breakthrough has_perk = integration_star_shattering_breakthrough_perk }
 		has_trait = cultivation_integration
 		NOT = { has_trait = cultivation_star_shattering }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -370,7 +532,25 @@ attempt_star_shattering_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1800
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1800
+		}
 	}
 	
 	ai_check_interval = 60
@@ -404,6 +584,8 @@ attempt_sacred_vessel_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_sacred_vessel_breakthrough has_perk = star_shattering_sacred_vessel_breakthrough_perk }
 		has_trait = cultivation_star_shattering
 		NOT = { has_trait = cultivation_sacred_vessel }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -412,7 +594,25 @@ attempt_sacred_vessel_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.1900
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.1900
+		}
 	}
 	
 	ai_check_interval = 60
@@ -446,6 +646,8 @@ attempt_entering_nirvana_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_entering_nirvana_breakthrough has_perk = sacred_vessel_entering_nirvana_breakthrough_perk }
 		has_trait = cultivation_sacred_vessel
 		NOT = { has_trait = cultivation_entering_nirvana }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -454,7 +656,25 @@ attempt_entering_nirvana_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.2000
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.2000
+		}
 	}
 	
 	ai_check_interval = 60
@@ -487,6 +707,8 @@ attempt_true_immortal_breakthrough_decision = {
 		OR = { has_character_flag = can_attempt_true_immortal_breakthrough has_perk = entering_nirvana_life_perk }
 		has_trait = cultivation_entering_nirvana
 		NOT = { has_trait = cultivation_true_immortal }
+		gold >= 50
+		NOT = { has_character_flag = cultivation_breakthrough_resource_cooldown }
 		OR = { is_ai = yes NOT = { has_character_flag = player_breakthrough_cooldown } }
 	}
 	
@@ -495,7 +717,25 @@ attempt_true_immortal_breakthrough_decision = {
 			limit = { is_ai = no }
 			add_character_flag = { flag = player_breakthrough_cooldown days = 1825 }
 		}
-		trigger_event = cultivation_breakthrough.2100
+		add_gold = -50
+		if = {
+			limit = { gold < 200 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 3650 }
+		}
+		else_if = {
+			limit = { gold < 500 }
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 2555 }
+		}
+		else = {
+			add_character_flag = { flag = cultivation_breakthrough_resource_cooldown days = 1825 }
+		}
+		if = {
+			limit = { has_character_flag = legendary_breakthrough_pill_owned }
+			cultivation_legendary_breakthrough_guaranteed_effect = yes
+		}
+		else = {
+			trigger_event = cultivation_breakthrough.2100
+		}
 	}
 	
 	ai_check_interval = 60

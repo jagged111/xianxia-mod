@@ -14,6 +14,7 @@ xianxia_world.1000 = {
             }
             xianxia_apply_government_adaptation_effect = yes
             xianxia_non_cultivator_stat_cap_effect = yes
+            xianxia_apply_commander_sect_archetype_effect = yes
 
             every_courtier = {
                 limit = {
@@ -21,6 +22,7 @@ xianxia_world.1000 = {
                     is_adult = yes
                 }
                 xianxia_non_cultivator_stat_cap_effect = yes
+                xianxia_apply_commander_sect_archetype_effect = yes
             }
 
             every_vassal = {
@@ -29,6 +31,7 @@ xianxia_world.1000 = {
                     is_adult = yes
                 }
                 xianxia_non_cultivator_stat_cap_effect = yes
+                xianxia_apply_commander_sect_archetype_effect = yes
             }
         }
 

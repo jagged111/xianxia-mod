@@ -601,3 +601,10 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 ### 56) Succession fallback scope fix (2026-04-11)
 - Fixed `xianxia_sect_succession.0001` weak-heir fallback scope so event `xianxia_sect_succession.0015` now fires on the heir/successor scope directly instead of incorrectly targeting the heir's liege.
 - This ensures emergency succession instability and successor-picking effects apply to the intended sect realm even when the heir is independent.
+
+### 57) Sect commander archetype battlefield layer (2026-04-11)
+- Added sect-archetype commander modifiers in `common/modifiers/xianxia_commander_sect_modifiers.txt` with differentiated battlefield roles instead of flat global advantage stacking.
+- Added trigger library `common/scripted_triggers/xianxia_commander_sect_triggers.txt` for archetype eligibility (imperial marshal, formation warden, demonic reaper, orthodox guardian, sword duelist, spear vanguard, vagrant skirmisher).
+- Added application effect `xianxia_apply_commander_sect_archetype_effect` in `common/scripted_effects/xianxia_commander_sect_effects.txt` with strict single-archetype priority and cleanup to prevent stacking.
+- Wired commander-archetype refresh into world maintenance (`xianxia_world.1000`) for rulers, courtiers, and vassals so bonuses stay synchronized with sect traits/path identity.
+- Added localization keys for all new commander archetype modifiers and descriptions.

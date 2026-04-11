@@ -1,0 +1,57 @@
+xianxia_commander_orthodox_guardian = {
+    advantage = 1
+    controlled_province_advantage = 3
+    knight_effectiveness_mult = 0.04
+    army_toughness_mult = 0.05
+    supply_duration = 0.1
+    hills_advantage = 2
+}
+
+xianxia_commander_demonic_reaper = {
+    advantage = 3
+    knight_effectiveness_mult = 0.06
+    enemy_hard_casualty_modifier = 0.08
+    desert_advantage = 2
+    forest_advantage = 1
+}
+
+xianxia_commander_formation_warden = {
+    advantage = 1
+    controlled_province_advantage = 2
+    army_toughness_mult = 0.03
+    siege_phase_time = -0.08
+    supply_duration = 0.08
+    mountains_advantage = 2
+}
+
+xianxia_commander_sword_duelist = {
+    advantage = 2
+    knight_effectiveness_mult = 0.08
+    enemy_hard_casualty_modifier = 0.04
+    forest_advantage = 2
+}
+
+xianxia_commander_spear_vanguard = {
+    advantage = 1
+    knight_effectiveness_mult = 0.03
+    army_toughness_mult = 0.06
+    enemy_hard_casualty_modifier = 0.05
+    plains_advantage = 2
+}
+
+xianxia_commander_vagrant_skirmisher = {
+    advantage = 1
+    army_siege_value_mult = 0.08
+    siege_phase_time = -0.04
+    supply_duration = 0.2
+    hills_advantage = 1
+    desert_mountains_advantage = 1
+}
+
+xianxia_commander_imperial_marshal = {
+    advantage = 2
+    controlled_province_advantage = 4
+    knight_effectiveness_mult = 0.05
+    siege_phase_time = -0.06
+    supply_duration = 0.12
+}

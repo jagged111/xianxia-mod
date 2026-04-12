@@ -114,6 +114,93 @@ has_any_cultivation_bloodline_trait = {
 	}
 }
 
+has_cultivation_bloodline_tier_2_or_higher = {
+	OR = {
+		has_trait = yin_bloodline_2
+		has_trait = yin_bloodline_3
+		has_trait = yang_bloodline_2
+		has_trait = yang_bloodline_3
+		has_trait = dragon_bloodline_2
+		has_trait = dragon_bloodline_3
+		has_trait = phoenix_bloodline_2
+		has_trait = phoenix_bloodline_3
+		has_trait = anchestor_bloodline_2
+		has_trait = anchestor_bloodline_3
+		has_trait = poison_bloodline_2
+		has_trait = poison_bloodline_3
+		has_trait = cursed_bloodline_2
+		has_trait = cursed_bloodline_3
+		has_trait = demon_bloodline_2
+		has_trait = demon_bloodline_3
+		has_trait = primal_bloodline_2
+		has_trait = primal_bloodline_3
+		has_trait = spirit_bloodline_2
+		has_trait = spirit_bloodline_3
+		has_trait = sun_bloodline_2
+		has_trait = sun_bloodline_3
+	}
+}
+
+has_cultivation_bloodline_tier_3 = {
+	OR = {
+		has_trait = yin_bloodline_3
+		has_trait = yang_bloodline_3
+		has_trait = dragon_bloodline_3
+		has_trait = phoenix_bloodline_3
+		has_trait = anchestor_bloodline_3
+		has_trait = poison_bloodline_3
+		has_trait = cursed_bloodline_3
+		has_trait = demon_bloodline_3
+		has_trait = primal_bloodline_3
+		has_trait = spirit_bloodline_3
+		has_trait = sun_bloodline_3
+	}
+}
+
+has_elder_eligible_realm = {
+	OR = {
+		has_trait = cultivation_core_formation
+		has_trait = cultivation_nascent_soul
+		has_trait = cultivation_heavenly_being
+		has_trait = cultivation_four_axis
+		has_trait = cultivation_integration
+		has_trait = cultivation_star_shattering
+		has_trait = cultivation_sacred_vessel
+		has_trait = cultivation_entering_nirvana
+		has_trait = cultivation_true_immortal
+	}
+}
+
+qualifies_inner_court_acceptance = {
+	OR = {
+		has_trait = weapon_combat_talent_5
+		has_trait = weapon_combat_talent_4
+		has_trait = heavenly_meridians
+		AND = {
+			has_trait = excellent_meridians
+			OR = {
+				has_trait = cultivation_qi_building
+				has_elder_eligible_realm = yes
+				has_cultivation_bloodline_tier_2_or_higher = yes
+				has_trait = weapon_combat_talent_3
+			}
+		}
+		AND = {
+			has_trait = good_meridians
+			has_cultivation_bloodline_tier_3 = yes
+			OR = {
+				has_trait = cultivation_qi_building
+				has_elder_eligible_realm = yes
+				has_trait = weapon_combat_talent_3
+			}
+		}
+		AND = {
+			has_cultivation_bloodline_tier_3 = yes
+			has_elder_eligible_realm = yes
+		}
+	}
+}
+
 
 has_cultivation_sect_faith = {
 	faith = {

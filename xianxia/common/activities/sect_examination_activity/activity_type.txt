@@ -1,0 +1,82 @@
+activity_sect_examination = {
+	is_shown = {
+		is_adult = yes
+		is_landed = yes
+		is_cultivator = yes
+	}
+
+	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_sect_examination }
+		is_available_adult = yes
+		is_landed = yes
+		is_cultivator = yes
+	}
+
+	is_valid = {
+		scope:host = {
+			is_alive = yes
+			is_capable_adult = yes
+			is_imprisoned = no
+			is_landed = yes
+			is_cultivator = yes
+		}
+	}
+
+	on_invalidated = {
+		invalidation_imprisoned_effect = yes
+		invalidation_incapable_effect = yes
+	}
+
+	province_filter = realm
+	ai_province_filter = realm
+	max_province_icons = 1
+	allow_zero_guest_invites = yes
+	open_invite = no
+	cooldown = { years = 4 }
+
+	can_be_activity_guest = {
+		is_alive = yes
+		is_adult = yes
+		NOT = { is_ruler = yes }
+		OR = {
+			has_trait = good_meridians
+			has_trait = excellent_meridians
+			has_trait = heavenly_meridians
+		}
+	}
+
+	phases = {
+		sect_examination_phase_arrival = {
+			is_predefined = yes
+			location_source = pickable
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = xianxia_activity.7300
+					scope:activity = { progress_activity_phase_after = { days = 10 } }
+				}
+			}
+		}
+
+		sect_examination_phase_assessment = {
+			is_predefined = yes
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = xianxia_activity.7310
+					scope:activity = { progress_activity_phase_after = { days = 8 } }
+				}
+			}
+		}
+
+		sect_examination_phase_recruitment = {
+			is_predefined = yes
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = xianxia_activity.7320
+				}
+			}
+		}
+	}
+}

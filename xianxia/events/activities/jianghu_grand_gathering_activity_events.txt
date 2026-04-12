@@ -1,0 +1,102 @@
+namespace = xianxia_activity
+
+xianxia_activity.7100 = {
+	type = activity_event
+	title = xianxia_activity.7100.t
+	desc = xianxia_activity.7100.desc
+	theme = tournament_activity
+
+	option = {
+		name = xianxia_activity.7100.a
+		add_prestige = 75
+	}
+}
+
+xianxia_activity.7110 = {
+	type = activity_event
+	title = xianxia_activity.7110.t
+	desc = xianxia_activity.7110.desc
+	theme = tournament_activity
+
+	option = {
+		name = xianxia_activity.7110.a
+		if = {
+			limit = { prowess >= 22 }
+			add_prestige = 120
+			add_piety = 80
+		}
+		else_if = {
+			limit = { prowess >= 14 }
+			add_prestige = 70
+		}
+		else = {
+			add_stress = 30
+			add_prestige = -40
+		}
+
+		every_attending_character = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_cultivator = yes
+				this != scope:host
+			}
+			if = {
+				limit = { prowess >= 16 }
+				add_prestige = 30
+			}
+		}
+	}
+}
+
+xianxia_activity.7120 = {
+	type = activity_event
+	title = xianxia_activity.7120.t
+	desc = xianxia_activity.7120.desc
+	theme = tournament_activity
+
+	option = {
+		name = xianxia_activity.7120.a
+		add_character_modifier = { modifier = jianghu_activity_host_momentum days = 730 }
+		every_attending_character = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_cultivator = yes
+				this != scope:host
+			}
+			add_prestige = 20
+		}
+	}
+}
+
+xianxia_activity.7130 = {
+	type = activity_event
+	title = xianxia_activity.7130.t
+	desc = xianxia_activity.7130.desc
+	theme = tournament_activity
+
+	option = {
+		name = xianxia_activity.7130.a
+		add_prestige = 220
+		add_character_modifier = { modifier = jianghu_activity_host_momentum days = 1095 }
+		change_variable = { name = jianghu_tourney_wins_total add = 1 }
+
+		if = {
+			limit = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+			change_variable = { name = jianghu_tourney_wins_orthodox add = 1 }
+		}
+		else_if = {
+			limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+			change_variable = { name = jianghu_tourney_wins_unorthodox add = 1 }
+		}
+		else_if = {
+			limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
+			change_variable = { name = jianghu_tourney_wins_demonic add = 1 }
+		}
+		else_if = {
+			limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+			change_variable = { name = jianghu_tourney_wins_vagrant add = 1 }
+		}
+	}
+}

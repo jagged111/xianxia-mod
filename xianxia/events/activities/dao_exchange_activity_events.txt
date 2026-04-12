@@ -1,0 +1,48 @@
+namespace = xianxia_activity
+
+xianxia_activity.7200 = {
+	type = activity_event
+	title = xianxia_activity.7200.t
+	desc = xianxia_activity.7200.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7200.a
+		add_prestige = 80
+	}
+}
+
+xianxia_activity.7210 = {
+	type = activity_event
+	title = xianxia_activity.7210.t
+	desc = xianxia_activity.7210.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7210.a
+		add_learning_lifestyle_xp = medium_lifestyle_xp
+		add_character_modifier = { modifier = dao_exchange_host_inspiration days = 1095 }
+	}
+}
+
+xianxia_activity.7220 = {
+	type = activity_event
+	title = xianxia_activity.7220.t
+	desc = xianxia_activity.7220.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7220.a
+		add_piety = 120
+		every_attending_character = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_cultivator = yes
+				faith = root.faith
+			}
+			add_character_modifier = { modifier = dao_exchange_participant days = 730 }
+			add_learning_lifestyle_xp = minor_lifestyle_xp
+		}
+	}
+}

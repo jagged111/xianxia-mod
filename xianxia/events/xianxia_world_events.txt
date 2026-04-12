@@ -15,6 +15,11 @@ xianxia_world.1000 = {
             xianxia_apply_government_adaptation_effect = yes
             xianxia_non_cultivator_stat_cap_effect = yes
             xianxia_apply_commander_sect_archetype_effect = yes
+            trigger_event = cultivation_character_initialization.0002
+            trigger_event = cultivation_character_initialization.0003
+            trigger_event = cultivation_character_initialization.0004
+            trigger_event = cultivation_character_initialization.0005
+            trigger_event = cultivation_character_initialization.0006
 
             every_courtier = {
                 limit = {
@@ -23,6 +28,11 @@ xianxia_world.1000 = {
                 }
                 xianxia_non_cultivator_stat_cap_effect = yes
                 xianxia_apply_commander_sect_archetype_effect = yes
+                trigger_event = cultivation_character_initialization.0002
+                trigger_event = cultivation_character_initialization.0003
+                trigger_event = cultivation_character_initialization.0004
+                trigger_event = cultivation_character_initialization.0005
+                trigger_event = cultivation_character_initialization.0006
             }
 
             every_vassal = {
@@ -32,6 +42,11 @@ xianxia_world.1000 = {
                 }
                 xianxia_non_cultivator_stat_cap_effect = yes
                 xianxia_apply_commander_sect_archetype_effect = yes
+                trigger_event = cultivation_character_initialization.0002
+                trigger_event = cultivation_character_initialization.0003
+                trigger_event = cultivation_character_initialization.0004
+                trigger_event = cultivation_character_initialization.0005
+                trigger_event = cultivation_character_initialization.0006
             }
         }
 

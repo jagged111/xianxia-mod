@@ -1211,7 +1211,7 @@ establish_sect_branch_hall_decision = {
 
     is_valid = {
         gold >= 100
-        any_demesne_title = {
+        any_held_title = {
             tier = tier_county
             NOT = { has_county_modifier = sacred_mountain_consecrated }
             NOT = { has_county_modifier = spirit_vein_secured }
@@ -1220,7 +1220,7 @@ establish_sect_branch_hall_decision = {
 
     effect = {
         gold = { add = -100 }
-        random_demesne_title = {
+        random_held_title = {
             limit = {
                 tier = tier_county
                 NOT = { has_county_modifier = sacred_mountain_consecrated }

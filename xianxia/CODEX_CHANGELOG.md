@@ -627,3 +627,8 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
   - activate champion protection on combat start/join,
   - trigger duel chain when both sides have active champions,
   - clear temporary champion battle state on combat end.
+
+### 60) Initialization and parser-stability recovery pass (2026-04-11)
+- Added a yearly hard-fallback initialization call path by triggering `cultivation_character_initialization.0002`–`.0006` for rulers/courtiers/vassals in `xianxia_world.1000`, ensuring meridians/realm assignment/sect seeding re-run even if birth/start hooks were missed.
+- Reworked `establish_sect_branch_hall_decision` county selectors from `any_demesne_title` / `random_demesne_title` to `any_held_title` / `random_held_title` for broader CK3 parser compatibility in character decision scope.
+- Removed/normalized questionable hostile-scheme modifier keys in xianxia modifier files to avoid parser rejection cascades (`hostile_scheme_power_add` -> `hostile_scheme_resistance_add` usage cleanup).

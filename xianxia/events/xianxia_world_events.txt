@@ -247,6 +247,65 @@ xianxia_world.1710 = {
     option = { name = OK }
 }
 
+# Monthly commander+knight prowess sync into battle advantage tiers.
+xianxia_world.1740 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        every_ruler = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_landed = yes
+            }
+
+            remove_character_modifier = commander_knight_prowess_advantage_1
+            remove_character_modifier = commander_knight_prowess_advantage_2
+            remove_character_modifier = commander_knight_prowess_advantage_3
+            remove_character_modifier = commander_knight_prowess_advantage_4
+            remove_character_modifier = commander_knight_prowess_advantage_5
+
+            set_variable = { name = commander_knight_combined_prowess value = prowess }
+
+            every_courtier = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_knight_of = prev
+                }
+                change_variable = { name = prev.commander_knight_combined_prowess add = prowess }
+            }
+
+            if = {
+                limit = { var:commander_knight_combined_prowess >= 200 }
+                add_character_modifier = { modifier = commander_knight_prowess_advantage_5 days = 40 }
+            }
+            else_if = {
+                limit = { var:commander_knight_combined_prowess >= 150 }
+                add_character_modifier = { modifier = commander_knight_prowess_advantage_4 days = 40 }
+            }
+            else_if = {
+                limit = { var:commander_knight_combined_prowess >= 100 }
+                add_character_modifier = { modifier = commander_knight_prowess_advantage_3 days = 40 }
+            }
+            else_if = {
+                limit = { var:commander_knight_combined_prowess >= 60 }
+                add_character_modifier = { modifier = commander_knight_prowess_advantage_2 days = 40 }
+            }
+            else_if = {
+                limit = { var:commander_knight_combined_prowess >= 30 }
+                add_character_modifier = { modifier = commander_knight_prowess_advantage_1 days = 40 }
+            }
+
+            clear_variable = commander_knight_combined_prowess
+        }
+    }
+
+    option = { name = OK }
+}
+
 # Multi-stage Jianghu tournament chain.
 xianxia_world.1110 = {
     type = character_event

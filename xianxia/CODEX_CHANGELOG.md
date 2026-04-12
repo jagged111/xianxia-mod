@@ -509,3 +509,11 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added two new state modifiers: `legendary_artifact_finder` (major success boon) and `legendary_artifact_escape_wounds` (severe failed-attempt penalty).
 
 - Expanded magic treasure pool with 30 additional craftable artifacts (total pool now 40) and wired all new artifact creation effects/modifiers/localization into the existing craft decision flow.
+
+
+### 25) Commander + knight pooled prowess battle-advantage sync (2026-04-12)
+- Added monthly hidden maintenance event `xianxia_world.1740` that computes each landed ruler's pooled prowess (`commander + all current knights`) and converts it into temporary commander battle advantage tiers.
+- Added five new world modifiers (`commander_knight_prowess_advantage_1..5`) granting +10/+20/+30/+40/+50 `advantage`.
+- Hooked `xianxia_world.1740` into `on_monthly_pulse` so the bonus auto-refreshes as knight rosters and prowess values change.
+- This ensures commander and knight prowess both contribute to practical battle advantage, not only raw knight damage/toughness.
+

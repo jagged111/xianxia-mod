@@ -52,6 +52,46 @@ cultivation_sect_join.1000 = {
     }
 }
 
+# Heavenly Sword Pavilion - Join Event 1001
+cultivation_sect_join.1001 = {
+    type = character_event
+    title = cultivation_sect_join.1001.t
+    desc = cultivation_sect_join.1001.desc
+    theme = martial
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:heavenly_sword_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:heavenly_sword_pavilion
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
 # Ten Thousand Swords Valley - Join Event 1003
 cultivation_sect_join.1003 = {
     type = character_event
@@ -1497,6 +1537,374 @@ cultivation_sect_join.4152 = {
     }
 
     # CANCEL
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+# Heavenly Mandate Bureau - Join Event 1200
+cultivation_sect_join.1200 = {
+    type = character_event
+    title = cultivation_sect_join.1200.t
+    desc = cultivation_sect_join.1200.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:heavenly_mandate_bureau
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:heavenly_mandate_bureau
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# beggar_sect - Join Event 4250
+cultivation_sect_join.4250 = {
+    type = character_event
+    title = cultivation_sect_join.4250.t
+    desc = cultivation_sect_join.4250.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:beggar_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:beggar_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# tang_clan - Join Event 4251
+cultivation_sect_join.4251 = {
+    type = character_event
+    title = cultivation_sect_join.4251.t
+    desc = cultivation_sect_join.4251.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:tang_clan
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:tang_clan
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# emei_sword_sect - Join Event 4252
+cultivation_sect_join.4252 = {
+    type = character_event
+    title = cultivation_sect_join.4252.t
+    desc = cultivation_sect_join.4252.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:emei_sword_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:emei_sword_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# qingcheng_sect - Join Event 4253
+cultivation_sect_join.4253 = {
+    type = character_event
+    title = cultivation_sect_join.4253.t
+    desc = cultivation_sect_join.4253.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:qingcheng_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:qingcheng_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# kunlun_sect - Join Event 4254
+cultivation_sect_join.4254 = {
+    type = character_event
+    title = cultivation_sect_join.4254.t
+    desc = cultivation_sect_join.4254.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:kunlun_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:kunlun_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# kongtong_sect - Join Event 4255
+cultivation_sect_join.4255 = {
+    type = character_event
+    title = cultivation_sect_join.4255.t
+    desc = cultivation_sect_join.4255.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:kongtong_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:kongtong_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# diancang_sect - Join Event 4256
+cultivation_sect_join.4256 = {
+    type = character_event
+    title = cultivation_sect_join.4256.t
+    desc = cultivation_sect_join.4256.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:diancang_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:diancang_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}
+
+
+# yin_yang_harmony_sect - Join Event 4257
+cultivation_sect_join.4257 = {
+    type = character_event
+    title = cultivation_sect_join.4257.t
+    desc = cultivation_sect_join.4257.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:yin_yang_harmony_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:yin_yang_harmony_sect
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
     option = {
         name = sect_join_cancel
     }

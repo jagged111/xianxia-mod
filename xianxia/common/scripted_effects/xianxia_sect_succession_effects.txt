@@ -10,7 +10,7 @@
     if = {
         limit = { exists = capital_county }
         capital_county = {
-            add_county_modifier = { modifier = spirit_vein_contested days = 1095 }
+            add_county_modifier = { modifier = spirit_vein_contested days = 2190 }
             change_county_control = -10
         }
     }

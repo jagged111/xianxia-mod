@@ -607,12 +607,12 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  xianxia_world.1860.b:0 "Postpone the assignment cycle."
 
  xianxia_world.1870.t:0 "Jianghu Grand Gathering Opens"
- xianxia_world.1870.desc:0 "Sect banners rise as cultivators, wandering swords, and hidden elders arrive. This gathering now unfolds as a full staged martial activity."
+ xianxia_world.1870.desc:0 "Sect banners rise as cultivators, wandering swords, and hidden elders arrive. The gathering now evaluates hosts by demonstrated martial prowess and sect coordination instead of random fortune."
  xianxia_world.1870.a:0 "Open the first stage."
  xianxia_world.1870.b:0 "Cancel the gathering."
 
  xianxia_world.1871.t:0 "Jianghu Gathering - Rivalry Stage"
- xianxia_world.1871.desc:0 "As rounds progress, alliances and rivalries reshape the gathering's momentum. Outcomes now branch like a tournament mid-phase."
+ xianxia_world.1871.desc:0 "As rounds progress, your command presence and martial display determine whether the sect leaves with strengthened mandate or internal embarrassment."
  xianxia_world.1871.a:0 "Push through the rivalry stage."
 
  xianxia_world.1872.t:0 "Jianghu Gathering - Final Stage"
@@ -646,7 +646,7 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  view_jianghu_strongest_leaderboard_decision_confirm:0 "Read the ranking tablets."
 
  xianxia_world.1891.t:0 "Jianghu Strongest Leaderboard"
- xianxia_world.1891.desc:0 "The latest ranking tablets circulate across inns, mountain sect gates, and city arenas.\n\n#bold Overall Tiers (Gatherings + Tourneys Won):#!\n#emp #1 Under Heaven:#! 20+ wins\n#emp #2 Jianghu Titan:#! 12+ wins\n#emp #3 Renowned Blade:#! 6+ wins\n\n#bold Path Champion Requirement:#! 8+ wins in your own path.\n\n#weak Your current totals:#!\nOverall wins: [ROOT.Var('jianghu_tourney_wins_total').GetValue]\nOrthodox wins: [ROOT.Var('jianghu_tourney_wins_orthodox').GetValue]\nUnorthodox wins: [ROOT.Var('jianghu_tourney_wins_unorthodox').GetValue]\nDemonic wins: [ROOT.Var('jianghu_tourney_wins_demonic').GetValue]\nVagrant wins: [ROOT.Var('jianghu_tourney_wins_vagrant').GetValue]"
+ xianxia_world.1891.desc:0 "The latest ranking tablets circulate across inns, mountain sect gates, and city arenas.\n\n#bold Overall Strength Tiers (Prowess-Based):#!\n#emp #1 Under Heaven:#! top living cultivator with the greatest prowess\n#emp #2 Jianghu Titan:#! 24+ prowess\n#emp #3 Renowned Blade:#! 18+ prowess\n\n#bold Path Champion Requirement:#! 18+ prowess within your cultivation path.\n\n#weak Your current prowess:#! [ROOT.GetProwess]\n#weak Your fame tally (legacy):#! [ROOT.Var('jianghu_tourney_wins_total').GetValue]"
  xianxia_world.1891.a:0 "The Jianghu remembers strength."
 
  jianghu_rank_overall_1:0 "#1 Under Heaven"
@@ -871,3 +871,14 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  cultivation_gui_prowess_label:0 "Prowess:"
  cultivation_gui_realm_label:0 "Realm:"
  cultivation_gui_realm_mortal:0 "Mortal"
+
+
+ cultivation_ai.2271.t:0 "A Reincarnator Has Descended"
+ cultivation_ai.2271.desc:0 "The heavenly cycle has selected a living ambitious ruler. [ROOT.GetTitledFirstName] now bears terrifying past-life insight and monstrous cultivation talent."
+ cultivation_ai.2271.a:0 "The Jianghu will tremble."
+ xianxia_force_recruit_talented_meridians_cb:0 "Force Recruit Talented Meridian"
+ xianxia_force_recruit_talented_meridians_victory_desc:0 "Victory in [GetCurrentWar.GetName] allows forced recruitment through imprisonment."
+ xianxia_force_recruit_talented_meridians_defeat_desc:0 "Defeat in [GetCurrentWar.GetName] wastes face and resources."
+ xianxia_force_recruit_talented_meridians_white_peace_desc:0 "[GetCurrentWar.GetName] ends without forcing recruitment."
+ XIANXIA_FORCE_RECRUIT_TALENTED_MERIDIANS_WAR_NAME:0 "Force Recruitment of Talented Meridian"
+ XIANXIA_FORCE_RECRUIT_TALENTED_MERIDIANS_WAR_NAME_BASE:0 "Talented Meridian Recruitment War"

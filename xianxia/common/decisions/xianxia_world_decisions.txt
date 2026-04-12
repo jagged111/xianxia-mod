@@ -879,15 +879,15 @@ invite_path_cultivators_decision = {
     ai_will_do = { base = 20 }
 }
 
-disciple_assignment_activity_decision = {
+sect_examination_activity_decision = {
     picture = { reference = "gfx/interface/illustrations/decisions/decision_study_culture.dds" }
     decision_group_type = major
     sort_order = 537
 
-    title = disciple_assignment_activity_decision
-    desc = disciple_assignment_activity_decision_desc
-    selection_tooltip = disciple_assignment_activity_decision_tooltip
-    confirm_text = disciple_assignment_activity_decision_confirm
+    title = sect_examination_activity_decision
+    desc = sect_examination_activity_decision_desc
+    selection_tooltip = sect_examination_activity_decision_tooltip
+    confirm_text = sect_examination_activity_decision_confirm
 
     is_shown = {
         is_adult = yes
@@ -896,85 +896,18 @@ disciple_assignment_activity_decision = {
     }
 
     is_valid = {
-        NOT = { has_character_flag = disciple_assignment_activity_cooldown }
-        any_courtier = {
-            is_alive = yes
-            is_adult = no
-            is_cultivator = no
-            OR = { has_trait = good_meridians has_trait = excellent_meridians has_trait = heavenly_meridians }
-        }
-    }
-
-    effect = {
-        add_character_flag = { flag = disciple_assignment_activity_cooldown days = 1095 }
-        trigger_event = xianxia_world.1860
-    }
-
-    ai_check_interval = 36
-    ai_will_do = { base = 24 }
-}
-
-jianghu_grand_gathering_activity_decision = {
-    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_festival.dds" }
-    decision_group_type = major
-    sort_order = 538
-
-    title = jianghu_grand_gathering_activity_decision
-    desc = jianghu_grand_gathering_activity_decision_desc
-    selection_tooltip = jianghu_grand_gathering_activity_decision_tooltip
-    confirm_text = jianghu_grand_gathering_activity_decision_confirm
-
-    is_shown = {
-        is_adult = yes
-        is_landed = yes
-        is_cultivator = yes
-    }
-
-    is_valid = {
-        NOT = { is_activity_type_on_cooldown = activity_jianghu_grand_gathering }
-        can_host_activity = activity_jianghu_grand_gathering
+        NOT = { is_activity_type_on_cooldown = activity_sect_examination }
+        can_host_activity = activity_sect_examination
     }
 
     effect = {
         if = {
-            limit = { can_host_activity = activity_jianghu_grand_gathering }
-            ai_attempt_to_host_activity = activity_jianghu_grand_gathering
+            limit = { can_host_activity = activity_sect_examination }
+            ai_attempt_to_host_activity = activity_sect_examination
         }
     }
 
     ai_check_interval = 36
-    ai_will_do = { base = 22 }
-}
-
-host_same_path_dao_exchange_activity_decision = {
-    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_feast.dds" }
-    decision_group_type = major
-    sort_order = 539
-
-    title = host_same_path_dao_exchange_activity_decision
-    desc = host_same_path_dao_exchange_activity_decision_desc
-    selection_tooltip = host_same_path_dao_exchange_activity_decision_tooltip
-    confirm_text = host_same_path_dao_exchange_activity_decision_confirm
-
-    is_shown = {
-        is_adult = yes
-        is_landed = yes
-        is_cultivator = yes
-    }
-
-    is_valid = {
-        NOT = { is_activity_type_on_cooldown = activity_same_path_dao_exchange }
-        can_host_activity = activity_same_path_dao_exchange
-    }
-
-    effect = {
-        if = {
-            limit = { can_host_activity = activity_same_path_dao_exchange }
-            ai_attempt_to_host_activity = activity_same_path_dao_exchange
-        }
-    }
-
-    ai_check_interval = 30
     ai_will_do = { base = 24 }
 }
 

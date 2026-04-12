@@ -44,6 +44,17 @@
 
 ---
 
+### 2026-04 Integration Updates
+
+* Merged `xianxia/fox demon spirits compatch/` into main `xianxia/` content roots.
+* Activity runtime now uses `xianxia/common/activities/*/activity_type.txt` + `xianxia/events/activities/*_events.txt`.
+* Removed dependency on `xianxia/activities/activities/` for custom runtime activity files (kept as reference only).
+* Deleted outdated launcher decisions for Jianghu Grand Gathering and Same-Path Dao Exchange so these are no longer represented as decision-owned flows.
+* Added `activity_sect_examination` (`xianxia/common/activities/sect_examination_activity/activity_type.txt`) with phase events in `xianxia/events/activities/sect_examination_activity_events.txt`.
+* Replaced disciple assignment wrapper with `sect_examination_activity_decision`, which now launches the activity planner instead of direct event execution.
+
+---
+
 # MAJOR FIXES (IN ORDER)
 
 ---
@@ -66,7 +77,7 @@ Convert into FULL ACTIVITY system:
 CREATE:
 
 ```
-common/activities/jianghu_grand_gathering_activity.txt
+common/activities/jianghu_grand_gathering_activity/activity_type.txt
 ```
 
 Must include:

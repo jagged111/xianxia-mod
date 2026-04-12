@@ -1,0 +1,115 @@
+namespace = xianxia_activity
+
+xianxia_activity.7300 = {
+	type = activity_event
+	title = xianxia_activity.7300.t
+	desc = xianxia_activity.7300.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7300.a
+		add_prestige = 60
+	}
+}
+
+xianxia_activity.7310 = {
+	type = activity_event
+	title = xianxia_activity.7310.t
+	desc = xianxia_activity.7310.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7310.a
+		add_learning_lifestyle_xp = medium_lifestyle_xp
+
+		every_attending_character = {
+			limit = {
+				this != scope:host
+				is_alive = yes
+				is_adult = yes
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			add_prestige = 20
+		}
+	}
+}
+
+xianxia_activity.7320 = {
+	type = activity_event
+	title = xianxia_activity.7320.t
+	desc = xianxia_activity.7320.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7320.a
+		add_prestige = 120
+
+		random_attending_character = {
+			limit = {
+				this != scope:host
+				is_alive = yes
+				NOT = { is_ruler = yes }
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			save_scope_as = sect_exam_candidate_1
+		}
+
+		random_attending_character = {
+			limit = {
+				this != scope:host
+				this != scope:sect_exam_candidate_1
+				is_alive = yes
+				NOT = { is_ruler = yes }
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			save_scope_as = sect_exam_candidate_2
+		}
+
+		scope:sect_exam_candidate_1 ?= {
+			root = { add_courtier = scope:sect_exam_candidate_1 }
+			add_learning_lifestyle_xp = minor_lifestyle_xp
+		}
+
+		scope:sect_exam_candidate_2 ?= {
+			root = { add_courtier = scope:sect_exam_candidate_2 }
+			add_learning_lifestyle_xp = minor_lifestyle_xp
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = scope:sect_exam_candidate_1 }
+				NOT = { exists = scope:sect_exam_candidate_2 }
+			}
+			create_character = {
+				age = { 16 28 }
+				gender_female_chance = 35
+				employer = root
+				faith = root.faith
+				culture = root.culture
+				dynasty = none
+				trait = cultivation_qi_gathering
+				save_scope_as = generated_exam_recruit
+				random_traits = no
+			}
+			scope:generated_exam_recruit = {
+				random_list = {
+					65 = { add_trait = good_meridians }
+					27 = { add_trait = excellent_meridians }
+					8 = { add_trait = heavenly_meridians }
+				}
+			}
+		}
+	}
+}

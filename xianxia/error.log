@@ -1,411 +1,130 @@
-Ignore the repeated mod descriptor/version spam unless we are specifically cleaning the load order. The real problems are below.
+Codex, audit and rebuild these systems as one connected pass. Do not just tweak numbers. The current architecture is still decision-led and event-led, not activity-led.
 
-Errors summary for Codex, with likely issue mapping
-1. Localization is broken in multiple places
+1. Rebuild Jianghu Grand Gathering as a real CK3-style activity, not a decision wrapper
 
-Problem files / directories
+* Right now the live mod layer documents Jianghu Grand Gathering as:
 
-localization/english/dynasties/ks_dynasty_names_l_english.yml
-localization/english/gui/schem_l_english.yml
-localization/english/gui/schemewindow_l_english.yml
-At least one additional malformed localization file causing Trying to import a localization key outside of a language
+  * `jianghu_grand_gathering_activity_decision -> xianxia_world.1870/1871/1872`
+* The current decision implementation in `common/decisions/xianxia_world_decisions.txt` only:
 
-Errors
+  * adds cooldown
+  * triggers `xianxia_world.1870`
+  * lets AI attempt vanilla `activity_tournament`
+* That is why the feature feels like a few event popups with rewards instead of a hosted gathering of characters.
+* Stop treating the decision as the gameplay body.
+* Keep a decision only if needed as the launch button, but move the actual system into the proper activity framework modeled after vanilla tournament/feast structure.
+* Use the reference activity files under `/xianxia/activities/` as pattern references, but create real live mod definitions in the engine-loaded layer for:
 
-Unexpected localization tokens: ) and in
-Duplicate localization keys in GUI loc files
-Many Trying to import a localization key outside of a language errors for names like Xian, Huo, Lang, Yuan, etc.
+  * custom Jianghu activity type
+  * activity phases / stage progression
+  * invitation and attendance handling
+  * participant pools
+  * rivalry / alliance / sect interactions during the activity
+  * rewards and consequences based on attendance, duels, reputation, sect politics, and outcomes
+* The host should not just get one event and some modifiers. Characters should actually gather, be iterated as attendees, and drive outcomes.
 
-Likely causing these issues
-
-“jianghu grand gathering activity event localization doesn't make sense”
-Very likely. Broken or malformed loc files can cause nonsense text, raw keys, or wrong text being displayed.
-Missing / broken text in sect systems, event outcomes, traits, and decisions
-Also likely, especially where event text or trait text is strange or missing.
-
-Codex note
-
-Find the malformed loc file missing l_english: or with broken indentation/quote structure.
-Fix the dynasty loc syntax errors first.
-Remove duplicate GUI loc keys or consolidate them into one file.
-2. Event script syntax is broken in multiple gameplay event files
-
-Problem files / directories
-
-events/xianxia_cultivator_battle_events.txt
-events/cultivation_ai_events.txt
-events/xianxia_sect_conflict_events.txt
-events/xianxia_world_events.txt
-events/xianxia_sect_succession*.txt or wherever those succession events are defined
-
-Errors
-
-imprison effect [ Expected opening bracket ]
-Unknown trigger: add_stress
-Malformed token: scope:root
-Unknown trigger: random
-Inconsistent effect scopes (character vs. dynasty)
-Many missing event themes
-add_gold effect [ Negative value in: {}. {} ]
-
-Likely causing these issues
-
-“jianghu grand gathering activity event localization doesn't make sense, it just automatically give you rewards or stresses a random character out”
-Very likely. This sounds like event logic is broken, scopes are wrong, and some effects are firing incorrectly or fallback branches are being used.
-Unknown trigger: add_stress and general event syntax failures are especially suspicious here.
-“reincarnation lottery still not working”
-Quite possibly tied to events/cultivation_ai_events.txt because it already has a malformed token error. If reincarnation chooser logic lives in AI/startup events, that can stop the whole chain.
-“sect succession crisis modifier harsher / rebellions should happen”
-The succession events themselves are clearly still unstable because all the xianxia_sect_succession.* events are missing themes, and event/scope problems in sect conflict files suggest the chain may not be applying effects correctly.
-
-Codex note
-
-Audit all event files for bad syntax first before tuning numbers.
-Replace invalid add_stress trigger usage with proper effect blocks.
-Replace malformed random usage with proper CK3 random list / random chance syntax.
-Fix scope:root malformed usage in events/cultivation_ai_events.txt.
-Fix character-vs-dynasty scope mismatches in sect conflict and world events.
-Missing themes are lower priority than broken logic, but should still be cleaned up.
-3. Decision effect code is invalid in core xianxia decisions
-
-Problem files / directories
-
-common/decisions/cultivation_breakthrough_decisions.txt
-common/decisions/xianxia_world_decisions.txt
-
-Errors
-
-Scope type 'value' can not be used in event target links, link compare_value
-
-Likely causing these issues
-
-Broken world decisions not applying their intended results
-Visit/join sect style decisions not populating or resolving correctly
-Not a guaranteed direct cause, but this absolutely means parts of decision logic are invalid and may silently fail.
-Consecrate sacred mountain / establish sect branch hall / other world decisions not giving intended effects
-Very likely, because those exact decisions are in the error list.
-
-Codex note
-
-Remove invalid event target link usage with compare_value.
-Rewrite those sections using a proper saved scope, variable comparison, or scripted trigger/effect instead of linking a value scope.
-4. Modifier files contain invalid or unsupported modifier tokens
-
-Problem files / directories
-
-common/modifiers/cultivation_modifiers.txt
-common/modifiers/xianxia_magic_treasure_modifiers.txt
-common/modifiers/xianxia_world_modifiers.txt
-common/modifiers/xianxia_commander_sect_modifiers.txt
-common/modifiers/xianxia_cultivator_battle_modifiers.txt
-
-Errors
-
-Unexpected token:
-hostile_scheme_resistance_add
-friendly_territory_advantage
-disease_resistance
-monthly_stress_gain_mult
-local_county_control_growth
-county_conversion_speed
-monthly_development_growth
-
-Likely causing these issues
-
-“contested spirit vein modifier should lower spirit stone gain for loser and give winner a stackable modifier”
-Very likely blocked or partially broken if modifier definitions are invalid.
-“consecrated spiritual mountain and secured spirit vein should provide gold”
-Very likely. If those province/character modifiers are malformed, the gold effect will not exist or will not apply.
-“their capital should also suffer from negative spirit stone gain(gold)”
-Also likely blocked if capital/county modifiers are using invalid tokens or invalid modifier definitions.
-“sect succession crisis modifier harsher”
-Tuning won’t matter if the modifier file itself is partly invalid or the effects are never applied.
-
-Codex note
-
-Validate every custom modifier key against CK3-supported modifier names for the current game version.
-For spirit stone economy, use valid gold/province income modifiers only.
-Rebuild contested_spirit_vein, consecrated_spiritual_mountain, secured_spirit_vein, and sect_succession_crisis from known-valid CK3 modifier keys.
-5. Negative add_gold usage is breaking spirit stone economy outcomes
-
-Problem files / directories
-
-common/casus_belli_types/xianxia_cb_types.txt
-events/xianxia_sect_conflict_events.txt
-Likely also some world event files from the earlier log
-
-Errors
-
-add_gold effect [ Negative value in: {}. {} ]
-
-Likely causing these issues
-
-“contested spirit vein modifier should lower spirit stone gain(gold) for loser”
-Very likely. If Codex tried to use add_gold = -X in places CK3 disallows, the loser penalty is failing.
-“consecrated spiritual mountain and secured spirit vein should provide gold”
-Possibly related if rewards/penalties were implemented with invalid direct gold effects instead of proper modifier application.
-Sect conflict / sacred mountain war rewards not resolving correctly
-Very likely.
-
-Codex note
-
-Replace invalid negative add_gold usage with either:
-a valid gold drain effect if CK3 allows it in that context, or
-temporary modifiers that reduce tax/gold income over time, or
-a paired effect structure that removes gold using a supported operation rather than invalid negative values.
-Recheck all war reward / loser punishment scripts.
-6. Sect conflict and succession event chains are still unstable
-
-Problem files / directories
-
-events/xianxia_sect_conflict_events.txt
-events/xianxia_sect_succession.*
-related modifier/event hookup files
-
-Errors
-
-Missing themes in almost every sect conflict / sect succession event
-Scope inconsistency in xianxia_sect_conflict.0220
-Negative gold effect errors in sect conflict events
-
-Likely causing these issues
-
-“sect succession crisis modifier harsher it should lower opinion of a ruler greatly that rebellions happen”
-Very likely. The crisis chain itself does not look stable yet.
-If the event chain is half-failing, the harsher rebellion pressure may never fully fire even if the modifier exists.
-
-Codex note
-
-First ensure succession and sect conflict events actually fire correctly and resolve on correct scopes.
-Then increase:
-direct vassal opinion malus
-same-sect/sect-elder opinion malus
-faction attraction / claimant support / revolt risk if you are simulating it through valid CK3 levers
-Add a capital modifier during crisis with reduced gold income / spirit stone flavor.
-Tie crisis severity to an actual persistent modifier, not just a one-off event pulse.
-7. Reincarnation lottery is probably blocked by broken startup/AI event scripting
-
-Problem files / directories
-
-events/cultivation_ai_events.txt
-
-Errors
-
-Malformed token: scope:root
-
-Likely causing these issues
-
-“reincarnation lottery still not working there's no reincarnator being chosen from living ambitious rulers or popping up at all on start”
-This is one of the strongest matches in the log. A malformed root scope token in an AI/startup event file can easily kill the selection chain before a reincarnator is chosen.
-
-Codex note
-
-Audit the full reincarnation startup chain:
-on_game_start / yearly pulse / startup event registration
-living ambitious ruler filter
-selection event
-flag/trait/modifier application
-popup event
-Fix the malformed root scope syntax first, because that may be preventing the whole chain from running.
-8. Trait definitions and trait localization are still malformed
-
-Problem files / directories
-
-common/traits/xianxia_society_traits.txt
-trait localization files
-
-Errors
-
-Group with no level set for many traits
-Missing localization keys such as:
-trait_education
-trait_personality
-trait_commander
-trait_physical
-trait_alchemy_body
-trait_alchemy_lifestyle
-trait_magic_treasure_crafter
-Unrecognized loc keys for trait_jianghu_righteous, trait_jianghu_demonic, and multiple alchemy tiers
-Unexpected token men_at_arms_maintenance_mult
-
-Likely causing these issues
-
-Leaderboard and sect identity systems may be misclassifying characters
-Not a direct proven cause, but malformed trait definitions can break category logic, scripted triggers, and UI display.
-Sect-join decision filters may be incomplete if they rely on these traits
-Possible.
-General missing or nonsensical loc in jianghu systems
-Very likely.
-
-Codex note
-
-Fix trait groups properly: any grouped trait must have valid levels or stop using group assignment.
-Rebuild missing localization for all custom trait categories and tiered traits.
-Remove invalid modifier tokens from trait definitions.
-9. The join-sect decision probably has stale or incomplete scripted lists, not just a UI problem
-
-Problem files / directories
-
-Not directly named by the error log, but likely in:
-common/decisions/xianxia_world_decisions.txt
-related scripted triggers/effects
-any sect list/event file that populates joinable sects
-
-Errors that may be related
-
-Invalid decision effect errors in xianxia_world_decisions.txt
-Broken localization
-Broken scripted triggers/effects encoding
-Possibly malformed event chains
-
-Likely causing these issues
-
-“visit a cultivation sect decision doesn't have the heavenly mandate sect or other sects we added alongside it for the player to be able to join”
-There is no single explicit log line saying “missing sect in list,” but the broken decision file and broken scripted files make this very plausible.
-This is probably a content registration/list population problem plus invalid decision logic.
-
-Codex note
-
-Audit the decision/event path that builds the list of joinable sects.
-Confirm newly added sects are included in:
-scripted lists
-potential/allow triggers
-loc
-event options
-AI/player filters
-Recheck visit a cultivation sect specifically after fixing xianxia_world_decisions.txt.
-10. Dynasty legacy file is malformed
-
-Problem files / directories
-
-common/dynasty_legacies/cultivation_legacies.txt
-
-Errors
-
-Unexpected token:
-legacy_1
-legacy_2
-legacy_3
-legacy_4
-legacy_5
-
-Likely causing these issues
-
-Not directly tied to the specific issues you listed, but this can still break dynasty progression and any systems referencing those legacies.
-
-Codex note
-
-Rebuild this file from valid vanilla dynasty legacy structure.
-11. Encoding issues are widespread
-
-Problem files / directories
-
-common/scripted_triggers/xianxia_commander_sect_triggers.txt
-common/scripted_triggers/xianxia_cultivator_battle_triggers.txt
-common/scripted_effects/xianxia_commander_sect_effects.txt
-common/scripted_effects/xianxia_cultivator_battle_effects.txt
-common/modifiers/xianxia_commander_sect_modifiers.txt
-common/modifiers/xianxia_cultivator_battle_modifiers.txt
-events/xianxia_cultivator_battle_events.txt
-events/xianxia_jianghu_letter_events.txt
-events/xianxia_social_events.txt
-
-Errors
-
-Should be in utf8-bom encoding
-
-Likely causing these issues
-
-Usually not the sole root cause, but it can absolutely worsen parsing failures, loc weirdness, and event script instability.
-
-Codex note
-
-Convert all flagged files to UTF-8 BOM after syntax cleanup.
-Most likely matches between your listed issues and the logged errors
-A. Jianghu strongest leaderboard still is not showing highest prowess characters
-
-Most likely causes
-
-Broken trait/category definitions in common/traits/xianxia_society_traits.txt
-Broken localization/UI parser issues
-Potentially broken scripted triggers/effects files with encoding issues
-Possibly not directly shown in this truncated log, but the current trait/script state suggests the ranking logic may be using invalid filters or broken scopes
-
-What Codex should check
-
-Audit the leaderboard sort/filter logic directly
-Make sure it sorts by actual prowess, not a cached custom value or invalid trait bucket
-Verify no scripted trigger used by leaderboard is in one of the broken trigger/effect files
-B. Jianghu grand gathering activity event localization is nonsense, and it auto-gives rewards or stresses a random character
-
-Most likely causes
-
-Broken localization files
-Broken event syntax in xianxia event files
-Unknown trigger: add_stress
-General scope/event parser failures
-Broken decision/event effect logic in xianxia_world_decisions.txt
-C. Reincarnation lottery still not working, no reincarnator selected from living ambitious rulers at start
-
-Most likely causes
-
-events/cultivation_ai_events.txt malformed token scope:root
-Possibly other event chain failures in startup/AI scripting
-D. Sect succession crisis should be harsher and trigger rebellions
-
-Most likely causes
-
-Sect succession event chain still unstable
-Modifier files partly invalid
-Event scopes and effect application may be broken, so even a harsher number won’t reliably apply
-E. Capital should suffer negative spirit stone gain, contested spirit vein loser should lose gold, winner should get stackable spirit stone reward
-
-Most likely causes
-
-Invalid modifier definitions in world/modifier files
-Invalid negative add_gold usage in conflict and CB files
-Possible broken event application in sect conflict/world event files
-F. Consecrated spiritual mountain and secured spirit vein should provide spirit stones
-
-Most likely causes
-
-Invalid modifier definitions
-Invalid decision effect logic in xianxia_world_decisions.txt
-Some relevant event/casus belli gold effects are also broken
-G. Visit a cultivation sect decision is missing Heavenly Mandate Sect and other added sects
-
-Most likely causes
-
-Broken xianxia_world_decisions.txt decision logic
-Incomplete scripted sect list / missing registration
-Possibly broken loc and scripted trigger/effect files worsening the issue
-Problem directories Codex should audit first
-events/
-common/decisions/
-common/modifiers/
-common/traits/
-localization/english/
-common/casus_belli_types/
-common/scripted_triggers/
-common/scripted_effects/
-Fix priority for Codex
-Fix event syntax and scope errors first
-especially cultivation_ai_events, xianxia_cultivator_battle_events, xianxia_sect_conflict_events, xianxia_world_events
-Fix localization/header/format issues
-Fix invalid decision logic in xianxia_world_decisions.txt and breakthrough decisions
-Rebuild invalid modifier keys with only valid CK3 modifiers
-Fix negative gold handling in CB/event scripts
-Repair sect succession crisis application and spirit vein/spiritual mountain reward modifiers
-Audit join-sect list population for all custom sects
-Then audit leaderboard sorting by actual prowess
-Plain Codex instruction
-
-Codex: do not just tune numbers yet. First repair the script and parsing failures that are preventing systems from functioning at all. The highest-probability blockers for the user’s listed issues are broken event syntax, broken decision logic, malformed localization, invalid modifier keys, and invalid negative gold usage. After those are fixed, specifically verify:
-
-jianghu strongest leaderboard sorts by highest prowess
-jianghu grand gathering uses correct loc and event branches
-reincarnation lottery selects one living ambitious ruler on start and fires popup
-sect succession crisis applies a strong opinion malus plus capital spirit stone loss
-contested spirit vein gives loser a spirit stone loss effect and winner a stackable spirit stone gain modifier
-consecrated spiritual mountain and secured spirit vein both provide spirit stone income
-visit a cultivation sect includes Heavenly Mandate Sect and all added sects for player joining
+2. Remove the fallback “decision -> event chain -> maybe AI hosts vanilla tournament” architecture
+
+* Replace the current bridge pattern described in:
+
+  * `common/activities/00_xianxia_activity_map.txt`
+  * `common/activities/jianghu_tournament_activity_bridge.txt`
+* Do not keep Jianghu Grand Gathering as a staged pseudo-activity.
+* Build it as a true hosted activity with real attendees and phase logic.
+
+3. Reincarnation lottery: repair script stability before retuning
+
+* The on_action wiring is already there:
+
+  * `on_game_start_after_lobby` calls `cultivation_ai.2270`
+  * `on_monthly_pulse` also calls `cultivation_ai.2270`
+* So the problem is not just “missing startup hook.”
+* The error log still reports `events/cultivation_ai_events.txt` has malformed syntax, so fix parser/runtime stability in that file first.
+* Then verify the reincarnation system end-to-end:
+
+  * one living ambitious ruler is selected at start
+  * selection respects living/landed/ambitious filters
+  * reincarnator traits/flags/modifiers are applied
+  * the popup actually fires
+  * it does not silently fail due to invalid scope syntax
+* Do not ship until start-date testing confirms a reincarnator appears reliably.
+
+4. Leaderboard: make “strongest” actually mean prowess
+
+* Audit the hidden monthly leaderboard maintenance pass tied to `xianxia_world.1890`.
+* The current strongest logic appears to be tied to Jianghu/tournament win tracking rather than actual prowess.
+* Rebuild strongest leaderboard sorting to use actual live prowess first.
+* If you want a separate fame leaderboard, keep that separate from strongest.
+* Strongest should not be a tournament-wins proxy.
+
+5. Grand Gathering outcomes: make it social and systemic, not random popup rewards
+
+* Remove the current shallow host-only flow where rewards/stress come from a couple of event windows.
+* The activity should:
+
+  * gather characters
+  * invite sect leaders, elders, notable cultivators, rivals, disciples, wanderers
+  * generate sect reputation shifts, rivalry escalation, alliance opportunities, duel chains, recognition of strongest attendees, disciple recruiting chances, artifact/trade/social incidents
+* Stress and rewards should come from activity choices and interactions, not arbitrary random target punishment.
+
+6. Sect succession crisis: make it materially dangerous
+
+* Increase the crisis modifier severity so it actually destabilizes rule.
+* It should sharply lower opinion of the ruler, especially among sect elites / same-sect stakeholders / vassals tied to sect structures.
+* Add real rebellion pressure through valid CK3 levers rather than flavor-only text.
+* Add a capital-level crisis penalty:
+
+  * contested spiritual center / disrupted spirit vein / capital spirit turbulence
+  * reduce spirit stone income (gold) in the capital while crisis persists
+* Ensure the succession crisis event chain is stable before tuning intensity.
+
+7. Spirit stone economy: rebuild using valid supported effects/modifiers
+
+* The logs show multiple invalid modifier keys and invalid negative gold usages.
+* Rebuild these systems only with valid CK3-supported modifier/effect syntax:
+
+  * `contested_spirit_vein`
+  * `secured_spirit_vein`
+  * `consecrated_spiritual_mountain`
+  * succession-crisis capital penalties
+* Required gameplay results:
+
+  * contested spirit vein lowers spirit stone income for loser
+  * winner gets a stackable spirit stone gain modifier
+  * consecrated spiritual mountain provides spirit stone income
+  * secured spirit vein provides spirit stone income
+* Do not use invalid negative `add_gold` patterns where CK3 rejects them. Use valid economic effects or timed modifiers instead.
+
+8. Visit a cultivation sect: include all added sects
+
+* Audit the full join/visit sect content path, not just localization.
+* The player-facing visit/join decision must include Heavenly Mandate Sect and every sect you added that should be joinable.
+* Check:
+
+  * scripted lists
+  * decision potential/allow
+  * option generation
+  * event option population
+  * loc for sect names/options
+* Do not leave newly added sects unregistered in the visit/join flow.
+
+9. Parser cleanup before feature polish
+   Fix these blockers before balance work:
+
+* malformed event syntax in `events/cultivation_ai_events.txt`
+* broken event/effect syntax in gathering/conflict/world files
+* broken localization files / missing language headers / malformed loc
+* invalid modifier tokens
+* invalid negative gold usage
+* decision code using invalid value-scope event target links
+
+10. Acceptance tests before finalizing
+    Do not stop after code edits. Test all of this in-game:
+
+* start date: reincarnator chosen and popup shown
+* Jianghu Grand Gathering opens as a real activity and gathers characters
+* attendee pool includes meaningful cultivators and sect figures
+* strongest leaderboard shows actual highest prowess characters
+* succession crisis produces real ruler instability and capital income pain
+* spirit vein / sacred mountain systems change spirit stone income correctly
+* visit cultivation sect includes Heavenly Mandate Sect and other added sects

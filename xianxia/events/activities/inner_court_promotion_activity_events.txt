@@ -1,0 +1,78 @@
+namespace = xianxia_activity
+
+xianxia_activity.7400 = {
+	type = activity_event
+	title = xianxia_activity.7400.t
+	desc = xianxia_activity.7400.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7400.a
+		add_prestige = 80
+	}
+}
+
+xianxia_activity.7410 = {
+	type = activity_event
+	title = xianxia_activity.7410.t
+	desc = xianxia_activity.7410.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7410.a
+		add_learning_lifestyle_xp = medium_lifestyle_xp
+	}
+}
+
+xianxia_activity.7420 = {
+	type = activity_event
+	title = xianxia_activity.7420.t
+	desc = xianxia_activity.7420.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7420.a
+		add_prestige = 140
+
+		random_courtier = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				has_trait = sect_disciple
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			save_scope_as = inner_court_nominee_1
+		}
+
+		random_courtier = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				has_trait = sect_disciple
+				this != scope:inner_court_nominee_1
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			save_scope_as = inner_court_nominee_2
+		}
+
+		scope:inner_court_nominee_1 ?= {
+			remove_character_modifier = outer_court_disciple
+			add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			add_learning_lifestyle_xp = medium_lifestyle_xp
+		}
+
+		scope:inner_court_nominee_2 ?= {
+			remove_character_modifier = outer_court_disciple
+			add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			add_learning_lifestyle_xp = medium_lifestyle_xp
+		}
+	}
+}

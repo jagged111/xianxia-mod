@@ -77,14 +77,114 @@ xianxia_activity.7320 = {
 			save_scope_as = sect_exam_candidate_2
 		}
 
+		random_attending_character = {
+			limit = {
+				this != scope:host
+				this != scope:sect_exam_candidate_1
+				this != scope:sect_exam_candidate_2
+				is_alive = yes
+				is_adult = yes
+				NOT = { is_ruler = yes }
+				NOT = {
+					OR = {
+						has_trait = good_meridians
+						has_trait = excellent_meridians
+						has_trait = heavenly_meridians
+					}
+				}
+			}
+			save_scope_as = sect_exam_outer_candidate
+		}
+
 		scope:sect_exam_candidate_1 ?= {
 			root = { add_courtier = scope:sect_exam_candidate_1 }
+			if = {
+				limit = { NOT = { has_trait = sect_disciple } }
+				add_trait = sect_disciple
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_trait = weapon_combat_talent_1
+							has_trait = weapon_combat_talent_2
+							has_trait = weapon_combat_talent_3
+							has_trait = weapon_combat_talent_4
+							has_trait = weapon_combat_talent_5
+						}
+					}
+				}
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+			if = {
+				limit = { qualifies_inner_court_acceptance = yes }
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			}
+			else = {
+				add_character_modifier = { modifier = outer_court_disciple days = 3650 }
+			}
 			add_learning_lifestyle_xp = minor_lifestyle_xp
 		}
 
 		scope:sect_exam_candidate_2 ?= {
 			root = { add_courtier = scope:sect_exam_candidate_2 }
+			if = {
+				limit = { NOT = { has_trait = sect_disciple } }
+				add_trait = sect_disciple
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_trait = weapon_combat_talent_1
+							has_trait = weapon_combat_talent_2
+							has_trait = weapon_combat_talent_3
+							has_trait = weapon_combat_talent_4
+							has_trait = weapon_combat_talent_5
+						}
+					}
+				}
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+			if = {
+				limit = { qualifies_inner_court_acceptance = yes }
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			}
+			else = {
+				add_character_modifier = { modifier = outer_court_disciple days = 3650 }
+			}
 			add_learning_lifestyle_xp = minor_lifestyle_xp
+		}
+
+		scope:sect_exam_outer_candidate ?= {
+			root = {
+				add_courtier = scope:sect_exam_outer_candidate
+			}
+			if = {
+				limit = { NOT = { has_trait = sect_disciple } }
+				add_trait = sect_disciple
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_trait = weapon_combat_talent_1
+							has_trait = weapon_combat_talent_2
+							has_trait = weapon_combat_talent_3
+							has_trait = weapon_combat_talent_4
+							has_trait = weapon_combat_talent_5
+						}
+					}
+				}
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+			if = {
+				limit = { qualifies_inner_court_acceptance = yes }
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			}
+			else = {
+				add_character_modifier = { modifier = outer_court_disciple days = 3650 }
+			}
 		}
 
 		if = {
@@ -103,11 +203,20 @@ xianxia_activity.7320 = {
 				save_scope_as = generated_exam_recruit
 				random_traits = no
 			}
-			scope:generated_exam_recruit = {
-				random_list = {
+				scope:generated_exam_recruit = {
+					add_trait = sect_disciple
+					xianxia_apply_weapon_talent_lottery_effect = yes
+					random_list = {
 					65 = { add_trait = good_meridians }
 					27 = { add_trait = excellent_meridians }
 					8 = { add_trait = heavenly_meridians }
+				}
+				if = {
+					limit = { qualifies_inner_court_acceptance = yes }
+					add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+				}
+				else = {
+					add_character_modifier = { modifier = outer_court_disciple days = 3650 }
 				}
 			}
 		}

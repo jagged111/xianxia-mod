@@ -911,6 +911,70 @@ sect_examination_activity_decision = {
     ai_will_do = { base = 24 }
 }
 
+inner_court_promotion_activity_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_study_culture.dds" }
+    decision_group_type = major
+    sort_order = 538
+
+    title = inner_court_promotion_activity_decision
+    desc = inner_court_promotion_activity_decision_desc
+    selection_tooltip = inner_court_promotion_activity_decision_tooltip
+    confirm_text = inner_court_promotion_activity_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_cultivator = yes
+    }
+
+    is_valid = {
+        NOT = { is_activity_type_on_cooldown = activity_inner_court_promotion }
+        can_host_activity = activity_inner_court_promotion
+    }
+
+    effect = {
+        if = {
+            limit = { can_host_activity = activity_inner_court_promotion }
+            ai_attempt_to_host_activity = activity_inner_court_promotion
+        }
+    }
+
+    ai_check_interval = 48
+    ai_will_do = { base = 18 }
+}
+
+elder_promotion_activity_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_adopt_special_succession.dds" }
+    decision_group_type = major
+    sort_order = 539
+
+    title = elder_promotion_activity_decision
+    desc = elder_promotion_activity_decision_desc
+    selection_tooltip = elder_promotion_activity_decision_tooltip
+    confirm_text = elder_promotion_activity_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_cultivator = yes
+    }
+
+    is_valid = {
+        NOT = { is_activity_type_on_cooldown = activity_elder_promotion }
+        can_host_activity = activity_elder_promotion
+    }
+
+    effect = {
+        if = {
+            limit = { can_host_activity = activity_elder_promotion }
+            ai_attempt_to_host_activity = activity_elder_promotion
+        }
+    }
+
+    ai_check_interval = 60
+    ai_will_do = { base = 14 }
+}
+
 
 view_jianghu_strongest_leaderboard_decision = {
     picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_festival.dds" }

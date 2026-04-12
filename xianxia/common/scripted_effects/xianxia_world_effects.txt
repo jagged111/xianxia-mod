@@ -795,3 +795,34 @@ xianxia_create_artifact_chaos_refining_crucible_effect = {
         decaying = no
     }
 }
+
+xianxia_non_cultivator_stat_cap_effect = {
+    if = {
+        limit = { is_cultivator = no }
+
+        while = {
+            limit = { diplomacy > 9 }
+            add_diplomacy_skill = -1
+        }
+        while = {
+            limit = { martial > 9 }
+            add_martial_skill = -1
+        }
+        while = {
+            limit = { stewardship > 9 }
+            add_stewardship_skill = -1
+        }
+        while = {
+            limit = { intrigue > 9 }
+            add_intrigue_skill = -1
+        }
+        while = {
+            limit = { learning > 9 }
+            add_learning_skill = -1
+        }
+        while = {
+            limit = { prowess > 9 }
+            add_prowess_skill = -1
+        }
+    }
+}

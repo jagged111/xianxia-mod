@@ -509,3 +509,134 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 - Added two new state modifiers: `legendary_artifact_finder` (major success boon) and `legendary_artifact_escape_wounds` (severe failed-attempt penalty).
 
 - Expanded magic treasure pool with 30 additional craftable artifacts (total pool now 40) and wired all new artifact creation effects/modifiers/localization into the existing craft decision flow.
+- Expanded pill creation system with multi-formula grand refinement via `refine_grand_spirit_pills_decision` and event `xianxia_world.1830` (Body Tempering, Soul Clarity, Tribulation Guard, Blood Ignition).
+- Added `host_jianghu_artifact_auction_decision` and event `xianxia_world.1820` to run tiered artifact bidding (mortal/profound/heaven) or sell your own treasures for gold/prestige.
+- Added a rare Legendary Breakthrough Pill discovery hook to the legendary artifact/auction chains; when found, it guarantees the holder's next breakthrough attempt (100% success) and is consumed on use.
+- Added `study_magic_treasure_crafting_decision` + `xianxia_world.1840` so Magic Treasure Crafter tiers can be earned in normal gameplay instead of requiring external trait injection.
+- Updated auction sell branch to actually destroy one owned artifact before granting sale payout, restoring real tradeoff economics.
+- Added `invite_path_cultivators_decision` + `xianxia_world.1850` to recruit path-aligned wandering cultivators into court champions, with character generation fallback only when no suitable wanderers exist.
+- Added spirit-stone economy pressure to breakthrough decisions: attempts now require minimum gold and apply longer resource cooldowns at low reserves, slowing both player and AI progression when poor.
+- Added non-cultivator stat cap enforcement effect (`xianxia_non_cultivator_stat_cap_effect`) that clamps diplomacy/martial/stewardship/intrigue/learning/prowess to 9 for non-cultivators during world maintenance pulses.
+- Added a disciple-assignment activity-style chain (`disciple_assignment_activity_decision` -> `xianxia_world.1860`) that assigns talented non-adult disciples to cultivator mentors, generating a mentor only when none exist.
+- Revamped jianghu gathering into a staged activity-style event chain (`jianghu_grand_gathering_activity_decision` -> `xianxia_world.1870/1871/1872`) with tournament-like phased outcomes and hosting momentum rewards.
+- Added `host_same_path_dao_exchange_activity_decision` with staged events (`xianxia_world.1880/1881`) as a feast-like same-path sect meeting that concludes with lifestyle speed buffs from Dao exchange for host and participants.
+- Fixed magic treasure forge eligibility to enforce tier-specific gold thresholds (T1=100, T2=225, T3=350) in both decision validity and forge event option trigger, preventing underfunded high-tier crafters from entering debt.
+- Added main-mod `events/health_events.txt` (`xianxia_health.0001`) and wired it into on_action pulses so cultivator health behavior follows xianxia lore (high-realm mortal-affliction purge, mid-realm accelerated recovery, early-realm partial resilience).
+
+
+### 48) Jianghu strongest leaderboard system (2026-04-11)
+- Added persistent tournament/gathering win tracking variables (`jianghu_tourney_wins_total` + per-path counters) to the jianghu event finals (`xianxia_world.1120` and `xianxia_world.1872`).
+- Added hidden monthly leaderboard maintenance event `xianxia_world.1890` that assigns rank modifiers for global top 3 and per-path champions (orthodox/unorthodox/demonic/vagrant).
+- Added player decision `view_jianghu_strongest_leaderboard_decision` and event `xianxia_world.1891` so players can check the current jianghu strongest board in-game.
+- Added new leaderboard modifiers + localization strings for rank titles and path champion labels.
+- Tightened `disciple_assignment_activity_decision` validity: it now requires at least one eligible non-adult talented disciple, preventing no-op prestige farming when only adult cultivator courtiers are present.
+
+### 49) Sect internal conflict framework v1 + county sect influence v1 (2026-04-11)
+- Added new modular sect-politics framework files:
+  - `events/xianxia_sect_conflict_events.txt`
+  - `common/scripted_effects/xianxia_sect_conflict_effects.txt`
+  - `common/scripted_triggers/xianxia_sect_conflict_triggers.txt`
+- Added ruler-facing authority variable maintenance (`sect_authority_score`) with high/low authority states, elder-faction pressure, lineage-backed heir rotation, and schism/purge pressure loops.
+- Added challenger gameplay loop via `challenge_sect_leader_decision` with visible success/failure outcomes, trait/personality-based AI weighting, and persistent political modifiers.
+- Added ruler control tools via `purge_dissenting_elders_decision` and multi-outcome elder-faction confrontation events (appease/purge/schism paths).
+- Added first county/territorial influence layer via `consecrate_sacred_mountain_decision` and new county modifiers (`sacred_mountain_consecrated`, `spirit_vein_secured`, `spirit_vein_contested`, `corrupted_spirit_vein`) tied into monthly sect authority pulses.
+- Added opinion modifier definitions for sect politics outcomes and full English localization for decisions/events/modifiers/opinion text.
+- Hooked sect conflict maintenance event `xianxia_sect_conflict.0001` into game-start and monthly pulse orchestration.
+
+### 50) County contestation + high-realm submission pressure pass (2026-04-11)
+- Expanded County Sect Influence v1 with:
+  - `establish_sect_branch_hall_decision` for domain-level branch expansion and spirit-vein securing.
+  - `corrupt_spirit_vein_decision` for demonic/unorthodox territorial corruption tradeoffs.
+  - New county contest event `xianxia_sect_conflict.0300` tied to low authority and spiritual-capital pressure.
+- Added High-Realm Dominance pressure pass:
+  - `enforce_high_realm_submission_decision` for Nascent Soul+ rulers.
+  - New high-realm presence/deference/suppression modifiers and opinion fallout.
+  - Monthly sect conflict maintenance now projects suppression pressure from high-realm rulers onto weaker vassals.
+- Added localization/opinion plumbing for these new county and hierarchy systems.
+
+- Fixed sect leadership persistence: `xianxia_world.1700` now respects `sect_leader_deposed_from_challenge`, preventing automatic trait restoration after challenge defeat.
+- Fixed breakthrough resource economy: all breakthrough attempt decisions now deduct gold (`add_gold = -50`) before applying cooldown tiers.
+
+### 51) Sect succession consequences + CB scaffolding + state report (2026-04-11)
+- Added new succession framework modules:
+  - `events/xianxia_sect_succession_events.txt`
+  - `common/scripted_effects/xianxia_sect_succession_effects.txt`
+- Hooked `xianxia_sect_succession.0001` into `on_character_death` to force instability/conflict on sect leader transitions rather than passive handoff.
+- Added succession outcomes including elder coup, schism, claimant pressure, and failed-heir exile style states with authority/county/vassal consequences.
+- Integrated challenge-deposition transitions with succession instability by triggering `xianxia_sect_succession.0100` from challenge victory resolution.
+- Added a player-readable status decision/event (`view_xianxia_state_status_decision` -> `xianxia_sect_succession.0900`) for authority/wins/state tracking.
+- Added initial xianxia war scaffolding file `common/casus_belli_types/xianxia_cb_types.txt` with sect-territory themed CB definitions (spirit vein seizure, foundation destruction, sect submission, demonic purge, sacred mountain capture, sect insult retaliation).
+
+
+### 52) Parser stability and broken-system recovery pass (2026-04-11)
+- Rebuilt `common/casus_belli_types/xianxia_cb_types.txt` with CK3-style CB block structure (`allowed_for_character`, `allowed_against_character`, `on_victory/on_defeat/on_white_peace`, and invalidation/result description hooks).
+- Added war-name and war-result localization keys for all six xianxia CBs to fix broken war-name UI behavior.
+- Reworked malformed county decision syntax by replacing invalid domain/county scoping keys and invalid county control effect keys with CK3-safe counterparts.
+- Normalized decision gold-cost syntax by replacing invalid negative `add_gold` usage with `gold = { add = -X }` in major decision files.
+- Fixed malformed localization formats in fox dynasty names (`:0` entries) and repaired `xianxia_world_l_english.yml` multiline status-report formatting.
+- Fixed dynasty legacy track definition placement by moving the `legacy_tracks` block into `common/dynasty_perks/cultivation_dynasty_perks.txt` and removing invalid `common/dynasty_legacies` file usage.
+- Fixed invalid trait modifier key `artifact_maa_maintenance_mult` -> `men_at_arms_maintenance_mult`.
+- Cleaned invalid modifier keys in `common/modifiers/cultivation_modifiers.txt` (`scheme_power` -> `hostile_scheme_power_add`; removed unsupported `hidden` lines; normalized resistance key usage).
+- Added spirit-vein baseline initialization so every landed sect ruler receives a persistent capital spirit-vein state at startup/monthly maintenance if none exists.
+
+
+### 53) Dead-feature repair pass: leaderboard/activity/auction/secret-realm fixes (2026-04-11)
+- Leaderboard decision now forces a maintenance refresh (`xianxia_world.1890`) before opening the board event (`xianxia_world.1891`) so rankings/modifiers appear immediately.
+- Reworked `establish_sect_branch_hall_decision` county targeting to county-tier demesne titles only, avoiding malformed/invalid scope behavior.
+- Hardened auction sell branch (`xianxia_world.1820.d`) so payout only happens when a valid owned artifact scope is found; otherwise the branch now fails with stress/resentment instead of free gold.
+- Added real danger to secret realm exploration (`xianxia_world.1520`) including setback and death outcomes in addition to positive/neutral branches.
+- Fixed `cultivation_ai.2261` missing theme and corrected malformed dynasty scoping token in `cultivation_ai_events.txt`.
+
+
+### 54) Activity-flow dead-action safeguards (2026-04-11)
+- `xianxia_world.1870` cancel branch now removes the gathering cooldown flag, preventing a full long cooldown on immediate cancellation.
+- `xianxia_world.1881` now checks for same-faith cultivator participation; if none exist, it clears Dao-exchange cooldown and applies only minor prestige loss instead of silently granting/consuming a dead action.
+
+### 55) Jianghu leaderboard decade-hegemon nickname (2026-04-11)
+- Added new nickname definition `nick_the_jianghu_hegemon`.
+- Added localization for the new nickname and description in `cultivation_sect_nicknames_l_english.yml`.
+- Extended leaderboard maintenance (`xianxia_world.1890`) to track continuous top-rank time with `jianghu_top_spot_continuous_months`.
+- Characters who keep `jianghu_rank_overall_1` for 120 consecutive monthly pulses (10 continuous years) now receive `nick_the_jianghu_hegemon` once.
+
+### 56) Succession fallback scope fix (2026-04-11)
+- Fixed `xianxia_sect_succession.0001` weak-heir fallback scope so event `xianxia_sect_succession.0015` now fires on the heir/successor scope directly instead of incorrectly targeting the heir's liege.
+- This ensures emergency succession instability and successor-picking effects apply to the intended sect realm even when the heir is independent.
+
+### 57) Sect commander archetype battlefield layer (2026-04-11)
+- Added sect-archetype commander modifiers in `common/modifiers/xianxia_commander_sect_modifiers.txt` with differentiated battlefield roles instead of flat global advantage stacking.
+- Added trigger library `common/scripted_triggers/xianxia_commander_sect_triggers.txt` for archetype eligibility (imperial marshal, formation warden, demonic reaper, orthodox guardian, sword duelist, spear vanguard, vagrant skirmisher).
+- Added application effect `xianxia_apply_commander_sect_archetype_effect` in `common/scripted_effects/xianxia_commander_sect_effects.txt` with strict single-archetype priority and cleanup to prevent stacking.
+- Wired commander-archetype refresh into world maintenance (`xianxia_world.1000`) for rulers, courtiers, and vassals so bonuses stay synchronized with sect traits/path identity.
+- Added localization keys for all new commander archetype modifiers and descriptions.
+
+### 58) Sect control-key and challenger role cleanup (2026-04-11)
+- Fixed sect authority/succession character modifiers to use valid county-control keys:
+  - `control_growth_factor` -> `monthly_county_control_growth_factor`
+  - `monthly_control_growth_add` -> `monthly_county_control_growth_add`
+- Updated challenge-victory trait cleanup to remove `sect_inner_hall_elder` before assigning `sect_leader`, preventing conflicting sect office traits on successful challengers.
+
+### 59) Cultivator champion battle layer v1 (2026-04-11)
+- Added new combat-state modifiers in `common/modifiers/xianxia_cultivator_battle_modifiers.txt`:
+  - `xianxia_cultivator_champion_protection`
+  - `xianxia_cultivator_champion_collapse`
+  - `xianxia_cultivator_champion_routed`
+- Added designated-champion and active-champion scripted triggers in `common/scripted_triggers/xianxia_cultivator_battle_triggers.txt` so the system targets cultivator champions (sect leadership/elder/heir roles) instead of generic knights.
+- Added battle-state scripted effects in `common/scripted_effects/xianxia_cultivator_battle_effects.txt` for champion activation, defeat/collapse, rout handling, and cleanup.
+- Added hidden duel-chain events (`events/xianxia_cultivator_battle_events.txt`) that resolve champion-vs-champion combat outcomes (kill/capture/wound/rout) and can loop into follow-up exchanges while both champions remain active.
+- Added appended combat on_actions (`common/on_action/zzzz_xianxia_cultivator_battle_on_actions.txt`) to:
+  - activate champion protection on combat start/join,
+  - trigger duel chain when both sides have active champions,
+  - clear temporary champion battle state on combat end.
+
+### 60) Initialization and parser-stability recovery pass (2026-04-11)
+- Added a yearly hard-fallback initialization call path by triggering `cultivation_character_initialization.0002`–`.0006` for rulers/courtiers/vassals in `xianxia_world.1000`, ensuring meridians/realm assignment/sect seeding re-run even if birth/start hooks were missed.
+- Reworked `establish_sect_branch_hall_decision` county selectors from `any_demesne_title` / `random_demesne_title` to `any_held_title` / `random_held_title` for broader CK3 parser compatibility in character decision scope.
+- Removed/normalized questionable hostile-scheme modifier keys in xianxia modifier files to avoid parser rejection cascades (`hostile_scheme_power_add` -> `hostile_scheme_resistance_add` usage cleanup).
+
+### 61) Dynasty legacy track structure recovery (2026-04-12)
+- Restored a proper CK3-style legacy track definition in `common/dynasty_legacies/cultivation_legacies.txt` (`cultivation_legacy_track = { legacy_1..legacy_5 }`).
+- Removed the invalid `legacy_tracks = { ... }` wrapper block from `common/dynasty_perks/cultivation_dynasty_perks.txt` so perk entries now reference a real legacy track object.
+
+### 62) Leaderboard exploit and hidden-sect UI leak fix (2026-04-12)
+- Removed `xianxia_world.1890` from `view_jianghu_strongest_leaderboard_decision` so opening the board no longer mutates monthly hegemon progression counters.
+- Preserved sect/path backend modifier invisibility by applying sect signature modifiers with `hidden = yes` at application time inside `cultivation_refresh_sect_signature_effect`.

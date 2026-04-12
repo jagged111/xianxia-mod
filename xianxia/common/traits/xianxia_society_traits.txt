@@ -265,7 +265,7 @@ magic_treasure_crafter_2 = {
     learning = 2
     stewardship = 2
     monthly_lifestyle_xp_gain_mult = 0.02
-    artifact_maa_maintenance_mult = -0.05
+    men_at_arms_maintenance_mult = -0.05
 }
 
 magic_treasure_crafter_3 = {
@@ -277,5 +277,5 @@ magic_treasure_crafter_3 = {
     learning = 3
     stewardship = 3
     monthly_lifestyle_xp_gain_mult = 0.03
-    artifact_maa_maintenance_mult = -0.1
+    men_at_arms_maintenance_mult = -0.1
 }

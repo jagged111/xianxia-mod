@@ -991,23 +991,23 @@ cultivation_refresh_sect_signature_effect = {
 
     if = {
         limit = { faith = faith:heavenly_mandate_bureau }
-        add_character_modifier = { modifier = sect_signature_imperial_guard_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_imperial_guard_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = orthodox_cultivation } }
-        add_character_modifier = { modifier = sect_signature_orthodox_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_orthodox_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
-        add_character_modifier = { modifier = sect_signature_demonic_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_demonic_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
-        add_character_modifier = { modifier = sect_signature_unorthodox_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_unorthodox_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
-        add_character_modifier = { modifier = sect_signature_vagrant_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_vagrant_hidden hidden = yes days = -1 }
     }
 }
 
@@ -1085,4 +1085,85 @@ cultivation_set_path_longevity_effect = {
     remove_character_modifier = path_longevity_cultivation_hidden
     add_character_flag = path_longevity_cultivation
     add_character_modifier = { modifier = path_longevity_cultivation_hidden days = -1 }
+}
+
+cultivation_legendary_breakthrough_guaranteed_effect = {
+    remove_character_flag = legendary_breakthrough_pill_owned
+    remove_character_modifier = legendary_breakthrough_pill_ready
+
+    if = {
+        limit = { is_mortal = yes }
+        add_trait = cultivation_qi_gathering
+        remove_character_flag = can_attempt_qi_gathering_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_qi_gathering }
+        remove_trait = cultivation_qi_gathering
+        add_trait = cultivation_qi_refining
+        remove_character_flag = can_attempt_qi_refining_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_qi_refining }
+        remove_trait = cultivation_qi_refining
+        add_trait = cultivation_qi_building
+        remove_character_flag = can_attempt_qi_building_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_qi_building }
+        remove_trait = cultivation_qi_building
+        add_trait = cultivation_core_formation
+        remove_character_flag = can_attempt_core_formation_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_core_formation }
+        remove_trait = cultivation_core_formation
+        add_trait = cultivation_nascent_soul
+        remove_character_flag = can_attempt_nascent_soul_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_nascent_soul }
+        remove_trait = cultivation_nascent_soul
+        add_trait = cultivation_heavenly_being
+        remove_character_flag = can_attempt_heavenly_being_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_heavenly_being }
+        remove_trait = cultivation_heavenly_being
+        add_trait = cultivation_four_axis
+        remove_character_flag = can_attempt_four_axis_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_four_axis }
+        remove_trait = cultivation_four_axis
+        add_trait = cultivation_integration
+        remove_character_flag = can_attempt_integration_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_integration }
+        remove_trait = cultivation_integration
+        add_trait = cultivation_star_shattering
+        remove_character_flag = can_attempt_star_shattering_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_star_shattering }
+        remove_trait = cultivation_star_shattering
+        add_trait = cultivation_sacred_vessel
+        remove_character_flag = can_attempt_sacred_vessel_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_sacred_vessel }
+        remove_trait = cultivation_sacred_vessel
+        add_trait = cultivation_entering_nirvana
+        remove_character_flag = can_attempt_entering_nirvana_breakthrough
+    }
+    else_if = {
+        limit = { has_trait = cultivation_entering_nirvana }
+        remove_trait = cultivation_entering_nirvana
+        add_trait = cultivation_true_immortal
+        remove_character_flag = can_attempt_true_immortal_breakthrough
+    }
+
+    add_prestige = 800
+    add_piety = 400
+    trigger_event = cultivation_breakthrough.9000
 }

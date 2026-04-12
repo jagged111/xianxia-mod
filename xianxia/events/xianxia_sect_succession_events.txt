@@ -1,0 +1,167 @@
+﻿namespace = xianxia_sect_succession
+
+# Triggered from on_character_death: enforce instability on sect leadership transitions.
+xianxia_sect_succession.0001 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        if = {
+            limit = {
+                has_trait = sect_leader
+                has_cultivation_sect_faith = yes
+                is_landed = yes
+            }
+
+            primary_heir = {
+                if = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_cultivator = yes
+                    }
+                    trigger_event = xianxia_sect_succession.0010
+                }
+                else = {
+                    trigger_event = xianxia_sect_succession.0015
+                }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Heir-facing succession conflict fork.
+xianxia_sect_succession.0010 = {
+    type = character_event
+    title = xianxia_sect_succession.0010.t
+    desc = xianxia_sect_succession.0010.desc
+
+    option = {
+        name = xianxia_sect_succession.0010.a
+        xianxia_apply_sect_succession_instability_effect = yes
+        random_list = {
+            35 = { trigger_event = xianxia_sect_succession.0020 }
+            35 = { trigger_event = xianxia_sect_succession.0030 }
+            30 = { trigger_event = xianxia_sect_succession.0040 }
+        }
+    }
+}
+
+# Fallback if heir is weak/missing.
+xianxia_sect_succession.0015 = {
+    type = character_event
+    title = xianxia_sect_succession.0015.t
+    desc = xianxia_sect_succession.0015.desc
+
+    option = {
+        name = xianxia_sect_succession.0015.a
+        xianxia_apply_sect_succession_instability_effect = yes
+        xianxia_pick_sect_successor_effect = yes
+    }
+}
+
+# Elder coup outcome.
+xianxia_sect_succession.0020 = {
+    type = character_event
+    title = xianxia_sect_succession.0020.t
+    desc = xianxia_sect_succession.0020.desc
+
+    option = {
+        name = xianxia_sect_succession.0020.a
+        add_character_modifier = { modifier = sect_succession_crisis days = 3650 }
+        add_character_modifier = { modifier = sect_lineage_betrayal days = 3650 }
+        change_variable = { name = sect_authority_score add = -10 }
+
+        random_courtier = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+                OR = {
+                    has_trait = sect_inner_hall_elder
+                    has_trait = sect_outer_hall_elder
+                    has_trait = sect_enforcement_elder
+                }
+            }
+            remove_trait = sect_inner_hall_elder
+            remove_trait = sect_outer_hall_elder
+            remove_trait = sect_enforcement_elder
+            add_trait = sect_leader
+            add_character_modifier = { modifier = sect_coup_victor days = 3650 }
+        }
+
+        add_character_modifier = { modifier = sect_failed_heir_exile days = 3650 }
+        add_character_flag = { flag = sect_forced_wanderer days = 3650 }
+        capital_county = { add_county_modifier = { modifier = spirit_vein_contested days = 1460 } }
+    }
+}
+
+# Sect schism outcome.
+xianxia_sect_succession.0030 = {
+    type = character_event
+    title = xianxia_sect_succession.0030.t
+    desc = xianxia_sect_succession.0030.desc
+
+    option = {
+        name = xianxia_sect_succession.0030.a
+        add_character_modifier = { modifier = sect_schism_recent days = 3650 }
+        add_character_modifier = { modifier = sect_succession_crisis days = 3650 }
+        change_variable = { name = sect_authority_score add = -14 }
+        every_vassal = {
+            limit = { is_alive = yes faith = root.faith }
+            add_opinion = { target = root modifier = opinion_sect_schism_allowed years = 25 }
+            add_character_modifier = { modifier = sect_claimant_faction_pressure days = 1825 }
+        }
+        capital_county = {
+            add_county_modifier = { modifier = spirit_vein_contested days = 1825 }
+            change_county_control = -20
+        }
+    }
+}
+
+# Civil claimant conflict outcome.
+xianxia_sect_succession.0040 = {
+    type = character_event
+    title = xianxia_sect_succession.0040.t
+    desc = xianxia_sect_succession.0040.desc
+
+    option = {
+        name = xianxia_sect_succession.0040.a
+        add_character_modifier = { modifier = sect_succession_crisis days = 3650 }
+        change_variable = { name = sect_authority_score add = -8 }
+        random_vassal = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+                faith = root.faith
+            }
+            add_character_modifier = { modifier = sect_claimant_faction_pressure days = 3650 }
+            add_opinion = { target = root modifier = opinion_sect_challenger_usurped_leadership years = 20 }
+        }
+    }
+}
+
+# Triggered when leadership changes by challenge/deposition.
+xianxia_sect_succession.0100 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        xianxia_apply_sect_succession_instability_effect = yes
+    }
+
+    option = { name = OK }
+}
+
+# Player-readable state panel.
+xianxia_sect_succession.0900 = {
+    type = character_event
+    title = xianxia_sect_succession.0900.t
+    desc = xianxia_sect_succession.0900.desc
+
+    option = { name = xianxia_sect_succession.0900.a }
+}

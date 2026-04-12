@@ -1,0 +1,19 @@
+xianxia_cultivator_champion_protection = {
+    advantage = 6
+    army_toughness_mult = 0.22
+    knight_effectiveness_mult = 0.12
+    enemy_hard_casualty_modifier = 0.08
+}
+
+xianxia_cultivator_champion_collapse = {
+    advantage = -12
+    army_toughness_mult = -0.35
+    knight_effectiveness_mult = -0.2
+    army_siege_value_mult = -0.25
+}
+
+xianxia_cultivator_champion_routed = {
+    advantage = -6
+    army_toughness_mult = -0.15
+    monthly_prestige = -0.1
+}

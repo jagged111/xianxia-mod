@@ -1,9 +1,7 @@
-﻿legacy_tracks = {
-	cultivation_legacy_track = {
-		legacy_1 = cultivation_legacy_1
-		legacy_2 = cultivation_legacy_2
-		legacy_3 = cultivation_legacy_3
-		legacy_4 = cultivation_legacy_4
-		legacy_5 = cultivation_legacy_5
-	}
+﻿cultivation_legacy_track = {
+	legacy_1 = cultivation_legacy_1
+	legacy_2 = cultivation_legacy_2
+	legacy_3 = cultivation_legacy_3
+	legacy_4 = cultivation_legacy_4
+	legacy_5 = cultivation_legacy_5
 }

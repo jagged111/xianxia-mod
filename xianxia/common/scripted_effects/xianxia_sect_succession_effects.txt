@@ -1,0 +1,48 @@
+﻿xianxia_apply_sect_succession_instability_effect = {
+    add_character_modifier = { modifier = sect_succession_crisis days = 1825 }
+    add_character_flag = { flag = sect_succession_recent days = 1825 }
+
+    if = {
+        limit = { exists = var:sect_authority_score }
+        change_variable = { name = sect_authority_score add = -6 }
+    }
+
+    if = {
+        limit = { exists = capital_county }
+        capital_county = {
+            add_county_modifier = { modifier = spirit_vein_contested days = 1095 }
+            change_county_control = -10
+        }
+    }
+
+    every_vassal = {
+        limit = {
+            is_alive = yes
+            faith = root.faith
+        }
+        add_character_modifier = { modifier = sect_claimant_faction_pressure days = 1095 }
+    }
+}
+
+xianxia_pick_sect_successor_effect = {
+    random_courtier = {
+        limit = {
+            is_alive = yes
+            is_adult = yes
+            is_cultivator = yes
+            faith = root.faith
+            OR = {
+                has_trait = sect_inner_hall_elder
+                has_trait = sect_outer_hall_elder
+                has_trait = sect_enforcement_elder
+                has_trait = sect_disciple
+            }
+        }
+        remove_trait = sect_inner_hall_elder
+        remove_trait = sect_outer_hall_elder
+        remove_trait = sect_enforcement_elder
+        remove_trait = sect_disciple
+        add_trait = sect_leader
+        add_character_modifier = { modifier = sect_emergency_regent days = 1825 }
+    }
+}

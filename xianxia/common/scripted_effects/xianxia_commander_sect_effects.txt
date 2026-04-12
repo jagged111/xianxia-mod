@@ -1,0 +1,42 @@
+xianxia_clear_commander_archetype_modifiers_effect = {
+    remove_character_modifier = xianxia_commander_orthodox_guardian
+    remove_character_modifier = xianxia_commander_demonic_reaper
+    remove_character_modifier = xianxia_commander_formation_warden
+    remove_character_modifier = xianxia_commander_sword_duelist
+    remove_character_modifier = xianxia_commander_spear_vanguard
+    remove_character_modifier = xianxia_commander_vagrant_skirmisher
+    remove_character_modifier = xianxia_commander_imperial_marshal
+}
+
+xianxia_apply_commander_sect_archetype_effect = {
+    xianxia_clear_commander_archetype_modifiers_effect = yes
+
+    if = {
+        limit = { xianxia_commander_is_imperial_marshal_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_imperial_marshal days = 45 }
+    }
+    else_if = {
+        limit = { xianxia_commander_is_formation_warden_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_formation_warden days = 45 }
+    }
+    else_if = {
+        limit = { xianxia_commander_is_demonic_reaper_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_demonic_reaper days = 45 }
+    }
+    else_if = {
+        limit = { xianxia_commander_is_orthodox_guardian_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_orthodox_guardian days = 45 }
+    }
+    else_if = {
+        limit = { xianxia_commander_is_sword_duelist_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_sword_duelist days = 45 }
+    }
+    else_if = {
+        limit = { xianxia_commander_is_spear_vanguard_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_spear_vanguard days = 45 }
+    }
+    else_if = {
+        limit = { xianxia_commander_is_vagrant_skirmisher_trigger = yes }
+        add_character_modifier = { modifier = xianxia_commander_vagrant_skirmisher days = 45 }
+    }
+}

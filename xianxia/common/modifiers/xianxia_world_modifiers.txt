@@ -152,6 +152,23 @@ lineage_marked_disciple = {
     monthly_piety = 0.1
 }
 
+outer_court_disciple = {
+    monthly_lifestyle_xp_gain_mult = 0.04
+    monthly_prestige = 0.05
+}
+
+inner_court_disciple = {
+    monthly_lifestyle_xp_gain_mult = 0.12
+    learning = 1
+    monthly_piety = 0.15
+}
+
+promoted_sect_elder = {
+    monthly_prestige = 0.2
+    monthly_piety = 0.2
+    learning = 1
+}
+
 alchemy_furnace_masterwork = {
     learning = 3
     prowess = 2

@@ -1,4 +1,4 @@
-activity_sect_examination = {
+activity_inner_court_promotion = {
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -6,7 +6,7 @@ activity_sect_examination = {
 	}
 
 	can_start_showing_failures_only = {
-		NOT = { is_activity_type_on_cooldown = activity_sect_examination }
+		NOT = { is_activity_type_on_cooldown = activity_inner_court_promotion }
 		is_available_adult = yes
 		is_landed = yes
 		is_cultivator = yes
@@ -19,6 +19,16 @@ activity_sect_examination = {
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes
+			any_courtier = {
+				is_alive = yes
+				is_adult = yes
+				has_trait = sect_disciple
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
 		}
 	}
 
@@ -32,44 +42,44 @@ activity_sect_examination = {
 	max_province_icons = 1
 	allow_zero_guest_invites = yes
 	open_invite = no
-	cooldown = { years = 4 }
+	cooldown = { years = 8 }
 
 	can_be_activity_guest = {
 		is_alive = yes
 		is_adult = yes
-		NOT = { is_ruler = yes }
+		is_cultivator = yes
 	}
 
 	phases = {
-		sect_examination_phase_arrival = {
+		inner_court_promotion_phase_review = {
 			is_predefined = yes
 			location_source = pickable
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7300
+					trigger_event = xianxia_activity.7400
 					scope:activity = { progress_activity_phase_after = { days = 10 } }
 				}
 			}
 		}
 
-		sect_examination_phase_assessment = {
+		inner_court_promotion_phase_trials = {
 			is_predefined = yes
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7310
+					trigger_event = xianxia_activity.7410
 					scope:activity = { progress_activity_phase_after = { days = 8 } }
 				}
 			}
 		}
 
-		sect_examination_phase_recruitment = {
+		inner_court_promotion_phase_investiture = {
 			is_predefined = yes
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7320
+					trigger_event = xianxia_activity.7420
 				}
 			}
 		}

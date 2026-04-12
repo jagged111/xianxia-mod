@@ -1,0 +1,74 @@
+namespace = xianxia_activity
+
+xianxia_activity.7500 = {
+	type = activity_event
+	title = xianxia_activity.7500.t
+	desc = xianxia_activity.7500.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7500.a
+		add_prestige = 100
+	}
+}
+
+xianxia_activity.7510 = {
+	type = activity_event
+	title = xianxia_activity.7510.t
+	desc = xianxia_activity.7510.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7510.a
+		add_learning_lifestyle_xp = medium_lifestyle_xp
+		add_piety = 50
+	}
+}
+
+xianxia_activity.7520 = {
+	type = activity_event
+	title = xianxia_activity.7520.t
+	desc = xianxia_activity.7520.desc
+	theme = feast_activity
+
+	option = {
+		name = xianxia_activity.7520.a
+		add_prestige = 180
+
+		random_courtier = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				OR = {
+					has_character_modifier = inner_court_disciple
+					has_trait = sect_disciple
+				}
+				NOT = { has_trait = sect_elder }
+			}
+			save_scope_as = elder_nominee
+		}
+
+		scope:elder_nominee ?= {
+			add_trait = sect_elder
+			remove_character_modifier = outer_court_disciple
+			remove_character_modifier = inner_court_disciple
+			add_character_modifier = { modifier = promoted_sect_elder days = 7300 }
+			if = {
+				limit = { has_trait = heavenly_meridians }
+				add_trait = sect_inner_hall_elder
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_trait = good_meridians
+						has_trait = excellent_meridians
+					}
+				}
+				add_trait = sect_outer_hall_elder
+			}
+			else = {
+				add_trait = sect_enforcement_elder
+			}
+		}
+	}
+}

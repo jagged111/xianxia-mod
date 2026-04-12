@@ -77,6 +77,25 @@ xianxia_activity.7320 = {
 			save_scope_as = sect_exam_candidate_2
 		}
 
+		random_attending_character = {
+			limit = {
+				this != scope:host
+				this != scope:sect_exam_candidate_1
+				this != scope:sect_exam_candidate_2
+				is_alive = yes
+				is_adult = yes
+				NOT = { is_ruler = yes }
+				NOT = {
+					OR = {
+						has_trait = good_meridians
+						has_trait = excellent_meridians
+						has_trait = heavenly_meridians
+					}
+				}
+			}
+			save_scope_as = sect_exam_outer_candidate
+		}
+
 		scope:sect_exam_candidate_1 ?= {
 			root = { add_courtier = scope:sect_exam_candidate_1 }
 			add_learning_lifestyle_xp = minor_lifestyle_xp
@@ -85,6 +104,17 @@ xianxia_activity.7320 = {
 		scope:sect_exam_candidate_2 ?= {
 			root = { add_courtier = scope:sect_exam_candidate_2 }
 			add_learning_lifestyle_xp = minor_lifestyle_xp
+		}
+
+		scope:sect_exam_outer_candidate ?= {
+			root = {
+				add_courtier = scope:sect_exam_outer_candidate
+			}
+			if = {
+				limit = { NOT = { has_trait = sect_disciple } }
+				add_trait = sect_disciple
+			}
+			add_character_modifier = { modifier = outer_court_disciple days = 3650 }
 		}
 
 		if = {

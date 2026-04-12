@@ -1688,21 +1688,55 @@ cultivation_ai.2270 = {
                 }
             }
 
-            random_ruler = {
+            if = {
                 limit = {
-                    is_alive = yes
-                    is_adult = yes
-                    is_landed = yes
-                    has_trait = ambitious
-                    OR = {
-                        highest_held_title_tier = tier_county
-                        highest_held_title_tier = tier_duchy
-                        highest_held_title_tier = tier_kingdom
-                        highest_held_title_tier = tier_empire
+                    any_ruler = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_landed = yes
+                        has_trait = ambitious
+                        OR = {
+                            highest_held_title_tier = tier_county
+                            highest_held_title_tier = tier_duchy
+                            highest_held_title_tier = tier_kingdom
+                            highest_held_title_tier = tier_empire
+                        }
+                        NOT = { has_trait = incapable }
                     }
-                    NOT = { has_trait = incapable }
                 }
-                save_scope_as = cultivation_reincarnation_candidate
+                random_ruler = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_landed = yes
+                        has_trait = ambitious
+                        OR = {
+                            highest_held_title_tier = tier_county
+                            highest_held_title_tier = tier_duchy
+                            highest_held_title_tier = tier_kingdom
+                            highest_held_title_tier = tier_empire
+                        }
+                        NOT = { has_trait = incapable }
+                    }
+                    save_scope_as = cultivation_reincarnation_candidate
+                }
+            }
+            else = {
+                random_ruler = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_landed = yes
+                        OR = {
+                            highest_held_title_tier = tier_county
+                            highest_held_title_tier = tier_duchy
+                            highest_held_title_tier = tier_kingdom
+                            highest_held_title_tier = tier_empire
+                        }
+                        NOT = { has_trait = incapable }
+                    }
+                    save_scope_as = cultivation_reincarnation_candidate
+                }
             }
 
             if = {

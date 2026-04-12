@@ -188,8 +188,22 @@ xianxia_world.1700 = {
                 limit = {
                     NOT = { has_trait = sect_leader }
                     NOT = { has_character_flag = sect_leader_deposed_from_challenge }
+                    OR = {
+                        highest_held_title_tier = tier_county
+                        highest_held_title_tier = tier_duchy
+                    }
                 }
                 add_trait = sect_leader
+            }
+            else_if = {
+                limit = {
+                    has_trait = sect_leader
+                    OR = {
+                        highest_held_title_tier = tier_kingdom
+                        highest_held_title_tier = tier_empire
+                    }
+                }
+                remove_trait = sect_leader
             }
 
             every_courtier = {
@@ -593,6 +607,9 @@ xianxia_world.1330 = {
         add_character_flag = has_herb_stock
         add_character_flag = has_ore_stock
         add_gold = { add = 25 multiply = -1 }
+        add_character_modifier = { modifier = alchemy_herb_stockpile days = 365 }
+        add_character_modifier = { modifier = alchemy_ore_stockpile days = 365 }
+        add_prestige = 40
     }
 
     option = {
@@ -600,6 +617,8 @@ xianxia_world.1330 = {
         add_character_flag = has_core_stock
         add_gold = { add = 45 multiply = -1 }
         add_stress = 20
+        add_character_modifier = { modifier = alchemy_core_stockpile days = 365 }
+        add_piety = 60
     }
 }
 
@@ -814,13 +833,20 @@ xianxia_world.1820 = {
         }
     }
 
-    option = {
-        name = xianxia_world.1820.d
-        trigger = {
-            any_artifact = { always = yes }
-        }
+            option = {
+                name = xianxia_world.1820.d
+                trigger = {
+            any_artifact = {
+                has_owner = yes
+                owner = root
+            }
+                }
 
         random_character_artifact = {
+            limit = {
+                has_owner = yes
+                owner = root
+            }
             save_scope_as = sold_auction_artifact
         }
 
@@ -1342,24 +1368,29 @@ xianxia_world.1890 = {
             if = {
                 limit = {
                     is_cultivator = yes
-                    exists = var:jianghu_tourney_wins_total
-                    var:jianghu_tourney_wins_total >= 20
+                    prowess >= 45
+                    NOT = {
+                        any_living_character = {
+                            is_alive = yes
+                            is_adult = yes
+                            is_cultivator = yes
+                            prowess > root.prowess
+                        }
+                    }
                 }
                 add_character_modifier = { modifier = jianghu_rank_overall_1 days = 45 }
             }
             else_if = {
                 limit = {
                     is_cultivator = yes
-                    exists = var:jianghu_tourney_wins_total
-                    var:jianghu_tourney_wins_total >= 12
+                    prowess >= 35
                 }
                 add_character_modifier = { modifier = jianghu_rank_overall_2 days = 45 }
             }
             else_if = {
                 limit = {
                     is_cultivator = yes
-                    exists = var:jianghu_tourney_wins_total
-                    var:jianghu_tourney_wins_total >= 6
+                    prowess >= 25
                 }
                 add_character_modifier = { modifier = jianghu_rank_overall_3 days = 45 }
             }
@@ -1388,8 +1419,15 @@ xianxia_world.1890 = {
                 limit = {
                     is_cultivator = yes
                     faith = { has_doctrine_parameter = orthodox_cultivation }
-                    exists = var:jianghu_tourney_wins_orthodox
-                    var:jianghu_tourney_wins_orthodox >= 8
+                    NOT = {
+                        any_living_character = {
+                            is_alive = yes
+                            is_adult = yes
+                            is_cultivator = yes
+                            faith = { has_doctrine_parameter = orthodox_cultivation }
+                            prowess > root.prowess
+                        }
+                    }
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_orthodox_1 days = 45 }
             }
@@ -1397,8 +1435,15 @@ xianxia_world.1890 = {
                 limit = {
                     is_cultivator = yes
                     faith = { has_doctrine_parameter = unorthodox_cultivation }
-                    exists = var:jianghu_tourney_wins_unorthodox
-                    var:jianghu_tourney_wins_unorthodox >= 8
+                    NOT = {
+                        any_living_character = {
+                            is_alive = yes
+                            is_adult = yes
+                            is_cultivator = yes
+                            faith = { has_doctrine_parameter = unorthodox_cultivation }
+                            prowess > root.prowess
+                        }
+                    }
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_unorthodox_1 days = 45 }
             }
@@ -1406,8 +1451,15 @@ xianxia_world.1890 = {
                 limit = {
                     is_cultivator = yes
                     faith = { has_doctrine_parameter = demonic_cultivation }
-                    exists = var:jianghu_tourney_wins_demonic
-                    var:jianghu_tourney_wins_demonic >= 8
+                    NOT = {
+                        any_living_character = {
+                            is_alive = yes
+                            is_adult = yes
+                            is_cultivator = yes
+                            faith = { has_doctrine_parameter = demonic_cultivation }
+                            prowess > root.prowess
+                        }
+                    }
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_demonic_1 days = 45 }
             }
@@ -1415,8 +1467,15 @@ xianxia_world.1890 = {
                 limit = {
                     is_cultivator = yes
                     faith = { has_doctrine_parameter = vagrant_cultivation }
-                    exists = var:jianghu_tourney_wins_vagrant
-                    var:jianghu_tourney_wins_vagrant >= 8
+                    NOT = {
+                        any_living_character = {
+                            is_alive = yes
+                            is_adult = yes
+                            is_cultivator = yes
+                            faith = { has_doctrine_parameter = vagrant_cultivation }
+                            prowess > root.prowess
+                        }
+                    }
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_vagrant_1 days = 45 }
             }

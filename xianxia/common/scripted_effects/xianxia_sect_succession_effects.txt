@@ -44,5 +44,15 @@ xianxia_pick_sect_successor_effect = {
         remove_trait = sect_disciple
         add_trait = sect_leader
         add_character_modifier = { modifier = sect_emergency_regent days = 1825 }
+        if = {
+            limit = {
+                OR = {
+                    highest_held_title_tier = tier_kingdom
+                    highest_held_title_tier = tier_empire
+                }
+            }
+            remove_trait = sect_leader
+            add_trait = sect_inner_hall_elder
+        }
     }
 }

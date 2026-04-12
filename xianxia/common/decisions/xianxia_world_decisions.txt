@@ -897,6 +897,7 @@ disciple_assignment_activity_decision = {
 
     is_valid = {
         NOT = { has_character_flag = disciple_assignment_activity_cooldown }
+        can_host_activity = activity_feast
         any_courtier = {
             is_alive = yes
             is_adult = no
@@ -907,6 +908,7 @@ disciple_assignment_activity_decision = {
 
     effect = {
         add_character_flag = { flag = disciple_assignment_activity_cooldown days = 1095 }
+        ai_attempt_to_host_activity = activity_feast
         trigger_event = xianxia_world.1860
     }
 
@@ -932,15 +934,13 @@ jianghu_grand_gathering_activity_decision = {
 
     is_valid = {
         NOT = { has_character_flag = jianghu_grand_gathering_activity_cooldown }
+        can_host_activity = activity_tournament
     }
 
     effect = {
         add_character_flag = { flag = jianghu_grand_gathering_activity_cooldown days = 1825 }
+        ai_attempt_to_host_activity = activity_tournament
         trigger_event = xianxia_world.1870
-        if = {
-            limit = { can_host_activity = activity_tournament }
-            ai_attempt_to_host_activity = activity_tournament
-        }
     }
 
     ai_check_interval = 36
@@ -965,15 +965,13 @@ host_same_path_dao_exchange_activity_decision = {
 
     is_valid = {
         NOT = { has_character_flag = same_path_dao_exchange_activity_cooldown }
+        can_host_activity = activity_feast
     }
 
     effect = {
         add_character_flag = { flag = same_path_dao_exchange_activity_cooldown days = 1095 }
+        ai_attempt_to_host_activity = activity_feast
         trigger_event = xianxia_world.1880
-        if = {
-            limit = { can_host_activity = activity_feast }
-            ai_attempt_to_host_activity = activity_feast
-        }
     }
 
     ai_check_interval = 30

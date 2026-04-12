@@ -28,3 +28,8 @@
 #      * disciple_assignment_activity_decision -> xianxia_world.1860 (talented non-adult disciple assignment pass)
 #      * jianghu_grand_gathering_activity_decision -> xianxia_world.1870/1871/1872 (staged jianghu gathering flow)
 #      * host_same_path_dao_exchange_activity_decision -> xianxia_world.1880/1881 (feast-like same-path sect meeting with Dao exchange lifestyle-speed rewards)
+# - Activity gating hardening (2026-04-12)
+#   -> /common/decisions/xianxia_world_decisions.txt
+#      * disciple_assignment_activity_decision now requires hostable `activity_feast` and always attempts to launch that activity before event follow-up.
+#      * jianghu_grand_gathering_activity_decision now requires hostable `activity_tournament` and always attempts to launch tournament activity before staged event flow.
+#      * host_same_path_dao_exchange_activity_decision now requires hostable `activity_feast` and always attempts to launch feast activity before Dao exchange follow-up.

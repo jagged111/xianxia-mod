@@ -90,6 +90,16 @@ xianxia_sect_succession.0020 = {
             remove_trait = sect_outer_hall_elder
             remove_trait = sect_enforcement_elder
             add_trait = sect_leader
+            if = {
+                limit = {
+                    OR = {
+                        highest_held_title_tier = tier_kingdom
+                        highest_held_title_tier = tier_empire
+                    }
+                }
+                remove_trait = sect_leader
+                add_trait = sect_inner_hall_elder
+            }
             add_character_modifier = { modifier = sect_coup_victor days = 3650 }
         }
 

@@ -296,3 +296,23 @@ legendary_artifact_escape_wounds = {
     prowess = -4
     monthly_lifestyle_xp_gain_mult = -0.08
 }
+
+commander_knight_prowess_advantage_1 = {
+    advantage = 10
+}
+
+commander_knight_prowess_advantage_2 = {
+    advantage = 20
+}
+
+commander_knight_prowess_advantage_3 = {
+    advantage = 30
+}
+
+commander_knight_prowess_advantage_4 = {
+    advantage = 40
+}
+
+commander_knight_prowess_advantage_5 = {
+    advantage = 50
+}

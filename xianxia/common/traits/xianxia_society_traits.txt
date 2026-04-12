@@ -55,6 +55,7 @@ weapon_path_sword = {
     group = commander
     prowess = 3
     martial = 1
+    advantage = 3
 }
 
 weapon_path_saber = {
@@ -64,6 +65,7 @@ weapon_path_saber = {
     group = commander
     prowess = 3
     martial = 1
+    advantage = 3
 }
 
 weapon_path_spear = {
@@ -73,6 +75,7 @@ weapon_path_spear = {
     group = commander
     prowess = 2
     martial = 2
+    advantage = 2
 }
 
 weapon_path_fist = {
@@ -81,6 +84,7 @@ weapon_path_fist = {
     desc = trait_weapon_path_fist_desc
     group = physical
     prowess = 4
+    advantage = 4
 }
 
 sect_inner_hall_elder = {

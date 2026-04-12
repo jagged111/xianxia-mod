@@ -4,8 +4,8 @@
 
 ### Systems that EXIST but are NOT COMPLETE
 
-* Jianghu Grand Gathering → currently a decision + event chain (NOT a real activity)
-* Dao Exchange → same issue (decision wrapper, not activity system)
+* Jianghu Grand Gathering → rebuilt as native activity_jianghu_grand_gathering with framework events in xianxia/common/activities/jianghu_grand_gathering_activity/
+* Dao Exchange → rebuilt as native activity_same_path_dao_exchange with framework events in xianxia/common/activities/dao_exchange_activity/
 * Jianghu leaderboard → based on win counters, NOT actual prowess
 * Sect succession/conflict → exists but too weak in gameplay impact
 * Spirit vein / sacred mountain → implemented but shallow economy impact
@@ -44,6 +44,40 @@
 
 ---
 
+
+### 2026-04 Integration Updates
+
+* Merged all files from `xianxia/fox demon spirits compatch/` into main `xianxia/` content roots (common/events/localization/gfx) to eliminate split architecture and keep a single runtime source.
+* Relocated Jianghu Grand Gathering activity definition to `xianxia/common/activities/jianghu_grand_gathering_activity/activity_type.txt`.
+* Relocated Dao Exchange activity definition to `xianxia/common/activities/dao_exchange_activity/activity_type.txt`.
+* Relocated activity event runtime files to `xianxia/events/activities/` (reference folder content removed).
+* Removed outdated major decisions that directly launched Jianghu Grand Gathering and Dao Exchange from `xianxia/common/decisions/xianxia_world_decisions.txt`.
+* Added Sect Examination as a native activity at `xianxia/common/activities/sect_examination_activity/activity_type.txt` with runtime events in `xianxia/events/activities/sect_examination_activity_events.txt`.
+* Added `sect_examination_activity_decision` as a planner launcher only for `activity_sect_examination` so recruitment gameplay flow is activity-driven.
+* Added fallback localization stubs for missing legacy KS activity event keys in `xianxia/localization/english/ks_activity_missing_loc_l_english.yml` to eliminate unresolved event title/desc/option keys.
+* Added new sect expansion casus belli types for unorthodox and demonic paths in `xianxia/common/casus_belli_types/xianxia_cb_types.txt` with matching war-name/description localization.
+* Updated `xianxia_force_recruit_talented_meridians_cb` to imprison a talented unlanded courtier from the target ruler's court instead of imprisoning the defending ruler directly.
+* Expanded sect examination outcomes so untalented candidates can be absorbed as `outer_court_disciple` recruits while talented candidates continue entering higher disciple tracks.
+* Added long-cooldown progression activities for sect hierarchy advancement:
+  * `activity_inner_court_promotion` (`xianxia/common/activities/inner_court_promotion_activity/activity_type.txt`)
+  * `activity_elder_promotion` (`xianxia/common/activities/elder_promotion_activity/activity_type.txt`)
+  with runtime events under `xianxia/events/activities/*_promotion_activity_events.txt`.
+
+### Completed Repairs Checklist (Verified)
+
+* ✅ Native activity conversion completed for:
+  * Jianghu Grand Gathering
+  * Same-Path Dao Exchange
+  * Sect Examination
+  * Inner Court Promotion
+  * Elder Promotion
+* ✅ Old decision-only Jianghu/Dao launcher flow removed; decisions now act as planner launchers only where needed.
+* ✅ `xianxia_force_recruit_talented_meridians_cb` corrected to target an eligible unlanded courtier in defender court.
+* ✅ Path expansion CB coverage added for unorthodox and demonic sects.
+* ✅ Localization coverage added for new activity/CB keys, plus fallback legacy KS activity stubs.
+
+---
+
 # MAJOR FIXES (IN ORDER)
 
 ---
@@ -66,7 +100,7 @@ Convert into FULL ACTIVITY system:
 CREATE:
 
 ```
-common/activities/jianghu_grand_gathering_activity.txt
+common/activities/jianghu_grand_gathering_activity/activity_type.txt
 ```
 
 Must include:

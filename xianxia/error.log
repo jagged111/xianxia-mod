@@ -44,6 +44,23 @@
 
 ---
 
+### 2026-04 Integration Updates
+
+* Merged `xianxia/fox demon spirits compatch/` into main `xianxia/` content roots.
+* Activity runtime now uses `xianxia/common/activities/*/activity_type.txt` + `xianxia/events/activities/*_events.txt`.
+* Removed dependency on `xianxia/activities/activities/` for custom runtime activity files (kept as reference only).
+* Deleted outdated launcher decisions for Jianghu Grand Gathering and Same-Path Dao Exchange so these are no longer represented as decision-owned flows.
+* Added `activity_sect_examination` (`xianxia/common/activities/sect_examination_activity/activity_type.txt`) with phase events in `xianxia/events/activities/sect_examination_activity_events.txt`.
+* Replaced disciple assignment wrapper with `sect_examination_activity_decision`, which now launches the activity planner instead of direct event execution.
+* Added `xianxia/localization/english/ks_activity_missing_loc_l_english.yml` fallback entries for unresolved `ks_bed_games.*` and `ks_cultivation.*` activity base keys (`.t`, `.desc`, `.a`) detected by semantic localization checks.
+* Added `xianxia_unorthodox_sect_expansion_cb` and `xianxia_demonic_sect_expansion_cb` for path-specific expansion wars, with full localization and war-name keys.
+* Corrected `xianxia_force_recruit_talented_meridians_cb` victory behavior to imprison an existing unlanded meridian-talented courtier from the defender's court, not the defending ruler.
+* Updated sect examination recruitment to also intake untalented applicants as outer-court disciples (`outer_court_disciple`) so sect manpower pipelines match xianxia outer-hall norms.
+* Added `activity_inner_court_promotion` (8-year cooldown) and `activity_elder_promotion` (12-year cooldown) with dedicated phase events and promotion effects/modifiers to prevent spam and preserve long-cycle sect progression pacing.
+* Audited `xianxia/common/activities/00_xianxia_activity_map.txt` to include a verified completed-repairs checklist covering all implemented activity/CB/recruitment/localization repairs.
+
+---
+
 # MAJOR FIXES (IN ORDER)
 
 ---
@@ -66,7 +83,7 @@ Convert into FULL ACTIVITY system:
 CREATE:
 
 ```
-common/activities/jianghu_grand_gathering_activity.txt
+common/activities/jianghu_grand_gathering_activity/activity_type.txt
 ```
 
 Must include:

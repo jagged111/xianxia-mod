@@ -1786,3 +1786,52 @@ cultivation_sect_visit.4152 = {
         }
     }
 }
+
+# Heavenly Mandate Bureau - Visit Event 1200
+cultivation_sect_visit.1200 = {
+    type = character_event
+    title = cultivation_sect_visit.1200.t
+    desc = cultivation_sect_visit.1200.desc
+    theme = stewardship
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:heavenly_mandate_bureau
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.1200 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}

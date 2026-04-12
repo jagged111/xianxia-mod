@@ -12,7 +12,8 @@
 	on_defeat_desc = xianxia_seize_spirit_vein_defeat_desc
 	on_white_peace_desc = xianxia_seize_spirit_vein_white_peace_desc
 	on_victory = {
-		scope:attacker = { add_prestige = 180 change_variable = { name = sect_authority_score add = 6 } }
+		scope:attacker = { add_prestige = 180 change_variable = { name = sect_authority_score add = 6 } add_character_modifier = { modifier = sect_resource_stockpile days = 1825 } }
+		scope:defender = { add_character_modifier = { modifier = sect_resource_obligations days = 1825 } }
 		scope:defender.capital_county = { add_county_modifier = { modifier = spirit_vein_contested days = 1825 } }
 		add_truce_attacker_victory_effect = yes
 	}
@@ -125,6 +126,41 @@ xianxia_avenge_sect_insult_cb = {
 	on_victory = {
 		scope:attacker = { add_prestige = 180 }
 		scope:defender = { add_character_modifier = { modifier = sect_forced_abdication_shame days = 1825 } change_variable = { name = sect_authority_score add = -6 } }
+		add_truce_attacker_victory_effect = yes
+	}
+	on_defeat = { scope:attacker = { add_prestige = -100 } add_truce_attacker_defeat_effect = yes }
+	on_white_peace = { add_truce_white_peace_effect = yes }
+}
+
+
+xianxia_force_recruit_talented_meridians_cb = {
+	icon = de_jure_cb
+	group = de_jure
+	war_name = XIANXIA_FORCE_RECRUIT_TALENTED_MERIDIANS_WAR_NAME
+	war_name_base = XIANXIA_FORCE_RECRUIT_TALENTED_MERIDIANS_WAR_NAME_BASE
+	allowed_for_character = { scope:attacker = { is_landed = yes is_cultivator = yes } }
+	allowed_against_character = {
+		scope:defender = {
+			is_landed = yes
+			is_adult = yes
+			is_cultivator = yes
+			OR = {
+				has_trait = good_meridians
+				has_trait = excellent_meridians
+				has_trait = heavenly_meridians
+			}
+		}
+	}
+	ai_only_against_neighbors = yes
+	should_invalidate = { scope:defender = { is_landed = no } }
+	on_invalidated_desc = xianxia_cb_invalidated_desc
+	on_victory_desc = xianxia_force_recruit_talented_meridians_victory_desc
+	on_defeat_desc = xianxia_force_recruit_talented_meridians_defeat_desc
+	on_white_peace_desc = xianxia_force_recruit_talented_meridians_white_peace_desc
+	on_victory = {
+		scope:attacker = { add_prestige = 120 }
+		scope:attacker = { imprison = scope:defender add_prestige = 80 }
+		scope:defender = { add_opinion = { target = scope:attacker modifier = imprisoned_me years = 20 } }
 		add_truce_attacker_victory_effect = yes
 	}
 	on_defeat = { scope:attacker = { add_prestige = -100 } add_truce_attacker_defeat_effect = yes }

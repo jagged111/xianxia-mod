@@ -475,12 +475,14 @@ sacred_mountain_consecrated = {
     county_opinion_add = 8
     monthly_development_growth = 0.1
     levy_size = 0.08
+    county_modifier_tax_mult = 0.2
 }
 
 spirit_vein_secured = {
     local_county_control_growth = 0.25
     levy_reinforcement_rate = 0.08
     monthly_development_growth = 0.08
+    county_modifier_tax_mult = 0.15
 }
 
 spirit_vein_contested = {
@@ -488,6 +490,7 @@ spirit_vein_contested = {
     levy_size = -0.12
     county_conversion_speed = -0.15
     monthly_development_growth = -0.08
+    county_modifier_tax_mult = -0.25
 }
 
 corrupted_spirit_vein = {
@@ -517,9 +520,11 @@ high_realm_court_deference = {
 }
 
 sect_succession_crisis = {
-    vassal_opinion = -12
-    monthly_prestige = -0.2
-    monthly_county_control_growth_factor = -0.2
+    vassal_opinion = -35
+    monthly_prestige = -0.4
+    monthly_county_control_growth_factor = -0.35
+    short_reign_opinion_mult = 0.2
+    popular_opinion = -20
 }
 
 sect_claimant_faction_pressure = {

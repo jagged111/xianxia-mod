@@ -1836,10 +1836,21 @@ cultivation_ai.2270 = {
                     add_trait = conqueror
                 }
                 add_character_flag = cultivation_reincarnation_holder
+                trigger_event = { id = cultivation_ai.2271 days = 1 }
                 }
             }
         }
     }
 
     option = { name = OK }
+}
+
+cultivation_ai.2271 = {
+    type = character_event
+    title = cultivation_ai.2271.t
+    desc = cultivation_ai.2271.desc
+
+    option = {
+        name = cultivation_ai.2271.a
+    }
 }

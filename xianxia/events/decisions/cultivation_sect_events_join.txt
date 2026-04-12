@@ -1501,3 +1501,43 @@ cultivation_sect_join.4152 = {
         name = sect_join_cancel
     }
 }
+
+# Heavenly Mandate Bureau - Join Event 1200
+cultivation_sect_join.1200 = {
+    type = character_event
+    title = cultivation_sect_join.1200.t
+    desc = cultivation_sect_join.1200.desc
+    theme = diplomacy
+
+    left_portrait = { character = ROOT animation = ecstasy }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        custom_tooltip = sect_join_is_cultivator_desc
+        trigger = {
+            custom_tooltip = {
+                text = sect_join_isnt_cultivator_desc
+                is_cultivator = yes
+            }
+        }
+        show_as_unavailable = { always = yes }
+        set_character_faith = faith:heavenly_mandate_bureau
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_donate
+        trigger = { short_term_gold >= 200 }
+        show_as_unavailable = { short_term_gold < 200 }
+        remove_short_term_gold = 200
+        set_character_faith = faith:heavenly_mandate_bureau
+        cultivation_convert_direct_domain_faith_effect = yes
+        add_character_flag = sect_join_success
+    }
+
+    option = {
+        name = sect_join_cancel
+    }
+}

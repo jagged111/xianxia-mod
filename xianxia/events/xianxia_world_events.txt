@@ -1181,10 +1181,22 @@ xianxia_world.1871 = {
 
     option = {
         name = xianxia_world.1871.a
-        random_list = {
-            45 = { add_character_modifier = { modifier = sect_resource_surplus days = 730 } }
-            35 = { add_character_modifier = { modifier = jianghu_activity_host_momentum days = 730 } add_piety = 120 }
-            20 = { add_character_modifier = { modifier = sect_internal_dispute days = 365 } add_stress = 45 }
+        if = {
+            limit = { prowess >= 22 }
+            add_character_modifier = { modifier = sect_resource_surplus days = 1095 }
+            add_character_modifier = { modifier = jianghu_activity_host_momentum days = 1095 }
+            add_prestige = 120
+            add_piety = 80
+        }
+        else_if = {
+            limit = { prowess >= 14 }
+            add_character_modifier = { modifier = jianghu_activity_host_momentum days = 730 }
+            add_prestige = 70
+        }
+        else = {
+            add_character_modifier = { modifier = sect_internal_dispute days = 540 }
+            add_stress = 30
+            add_prestige = -40
         }
         trigger_event = { id = xianxia_world.1872 days = 20 }
     }
@@ -1342,24 +1354,29 @@ xianxia_world.1890 = {
             if = {
                 limit = {
                     is_cultivator = yes
-                    exists = var:jianghu_tourney_wins_total
-                    var:jianghu_tourney_wins_total >= 20
+                    prowess >= 30
+                    NOT = {
+                        any_living_character = {
+                            is_alive = yes
+                            is_adult = yes
+                            is_cultivator = yes
+                            prowess > root.prowess
+                        }
+                    }
                 }
                 add_character_modifier = { modifier = jianghu_rank_overall_1 days = 45 }
             }
             else_if = {
                 limit = {
                     is_cultivator = yes
-                    exists = var:jianghu_tourney_wins_total
-                    var:jianghu_tourney_wins_total >= 12
+                    prowess >= 24
                 }
                 add_character_modifier = { modifier = jianghu_rank_overall_2 days = 45 }
             }
             else_if = {
                 limit = {
                     is_cultivator = yes
-                    exists = var:jianghu_tourney_wins_total
-                    var:jianghu_tourney_wins_total >= 6
+                    prowess >= 18
                 }
                 add_character_modifier = { modifier = jianghu_rank_overall_3 days = 45 }
             }
@@ -1387,36 +1404,32 @@ xianxia_world.1890 = {
             if = {
                 limit = {
                     is_cultivator = yes
+                    prowess >= 18
                     faith = { has_doctrine_parameter = orthodox_cultivation }
-                    exists = var:jianghu_tourney_wins_orthodox
-                    var:jianghu_tourney_wins_orthodox >= 8
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_orthodox_1 days = 45 }
             }
             if = {
                 limit = {
                     is_cultivator = yes
+                    prowess >= 18
                     faith = { has_doctrine_parameter = unorthodox_cultivation }
-                    exists = var:jianghu_tourney_wins_unorthodox
-                    var:jianghu_tourney_wins_unorthodox >= 8
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_unorthodox_1 days = 45 }
             }
             if = {
                 limit = {
                     is_cultivator = yes
+                    prowess >= 18
                     faith = { has_doctrine_parameter = demonic_cultivation }
-                    exists = var:jianghu_tourney_wins_demonic
-                    var:jianghu_tourney_wins_demonic >= 8
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_demonic_1 days = 45 }
             }
             if = {
                 limit = {
                     is_cultivator = yes
+                    prowess >= 18
                     faith = { has_doctrine_parameter = vagrant_cultivation }
-                    exists = var:jianghu_tourney_wins_vagrant
-                    var:jianghu_tourney_wins_vagrant >= 8
                 }
                 add_character_modifier = { modifier = jianghu_rank_path_vagrant_1 days = 45 }
             }

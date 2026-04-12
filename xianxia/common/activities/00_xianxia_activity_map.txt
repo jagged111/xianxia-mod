@@ -54,6 +54,7 @@
 * Removed outdated major decisions that directly launched Jianghu Grand Gathering and Dao Exchange from `xianxia/common/decisions/xianxia_world_decisions.txt`.
 * Added Sect Examination as a native activity at `xianxia/common/activities/sect_examination_activity/activity_type.txt` with runtime events in `xianxia/events/activities/sect_examination_activity_events.txt`.
 * Added `sect_examination_activity_decision` as a planner launcher only for `activity_sect_examination` so recruitment gameplay flow is activity-driven.
+* Added fallback localization stubs for missing legacy KS activity event keys in `xianxia/localization/english/ks_activity_missing_loc_l_english.yml` to eliminate unresolved event title/desc/option keys.
 
 ---
 

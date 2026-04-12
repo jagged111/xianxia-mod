@@ -1001,7 +1001,6 @@ view_jianghu_strongest_leaderboard_decision = {
     }
 
     effect = {
-        trigger_event = xianxia_world.1890
         trigger_event = xianxia_world.1891
     }
 

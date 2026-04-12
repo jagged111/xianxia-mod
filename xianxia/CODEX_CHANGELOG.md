@@ -636,3 +636,7 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 ### 61) Dynasty legacy track structure recovery (2026-04-12)
 - Restored a proper CK3-style legacy track definition in `common/dynasty_legacies/cultivation_legacies.txt` (`cultivation_legacy_track = { legacy_1..legacy_5 }`).
 - Removed the invalid `legacy_tracks = { ... }` wrapper block from `common/dynasty_perks/cultivation_dynasty_perks.txt` so perk entries now reference a real legacy track object.
+
+### 62) Leaderboard exploit and hidden-sect UI leak fix (2026-04-12)
+- Removed `xianxia_world.1890` from `view_jianghu_strongest_leaderboard_decision` so opening the board no longer mutates monthly hegemon progression counters.
+- Preserved sect/path backend modifier invisibility by applying sect signature modifiers with `hidden = yes` at application time inside `cultivation_refresh_sect_signature_effect`.

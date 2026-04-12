@@ -991,23 +991,23 @@ cultivation_refresh_sect_signature_effect = {
 
     if = {
         limit = { faith = faith:heavenly_mandate_bureau }
-        add_character_modifier = { modifier = sect_signature_imperial_guard_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_imperial_guard_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = orthodox_cultivation } }
-        add_character_modifier = { modifier = sect_signature_orthodox_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_orthodox_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
-        add_character_modifier = { modifier = sect_signature_demonic_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_demonic_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
-        add_character_modifier = { modifier = sect_signature_unorthodox_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_unorthodox_hidden hidden = yes days = -1 }
     }
     else_if = {
         limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
-        add_character_modifier = { modifier = sect_signature_vagrant_hidden days = -1 }
+        add_character_modifier = { modifier = sect_signature_vagrant_hidden hidden = yes days = -1 }
     }
 }
 

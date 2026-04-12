@@ -591,15 +591,11 @@ xianxia_world.2261.a:0 "Let fear feed my path."
 
  invited_path_guardian:0 "Invited Path Guardian"
  invited_path_guardian_desc:0 "This cultivator answered a path-aligned summons and now serves as an elite court champion."
- disciple_assignment_activity_decision:0 "Disciple Assignment Activity"
- disciple_assignment_activity_decision_desc:0 "Hold a structured sect assignment cycle where talented non-adult disciples are matched to suitable cultivator mentors."
- disciple_assignment_activity_decision_tooltip:0 "Assigns talented non-adult disciples to available cultivators; generates a mentor only if none exist."
- disciple_assignment_activity_decision_confirm:0 "Begin disciple assignments."
+ sect_examination_activity_decision:0 "Host Sect Examination"
+ sect_examination_activity_decision_desc:0 "Convene a formal sect examination activity to assess meridian talent and recruit the best candidates into your court as disciples."
+ sect_examination_activity_decision_tooltip:0 "Opens the CK3 activity planner for a multi-phase sect examination that recruits talented meridian candidates."
+ sect_examination_activity_decision_confirm:0 "Open the examination grounds."
 
- jianghu_grand_gathering_activity_decision:0 "Jianghu Grand Gathering Activity"
- jianghu_grand_gathering_activity_decision_desc:0 "Run a full jianghu gathering as a staged activity with opening, mid-event outcomes, and a final prestige phase similar to tournament flow."
- jianghu_grand_gathering_activity_decision_tooltip:0 "Activity-style jianghu gathering chain with multi-stage events and tournament-compatible hosting behavior."
- jianghu_grand_gathering_activity_decision_confirm:0 "Open the grand gathering."
 
  xianxia_world.1860.t:0 "Sect Disciple Assignment"
  xianxia_world.1860.desc:0 "Elders present lists of talented non-adult disciples. You can formalize mentor assignments so future prodigies are raised under established cultivators."
@@ -621,11 +617,6 @@ xianxia_world.2261.a:0 "Let fear feed my path."
 
  jianghu_activity_host_momentum:0 "Jianghu Activity Momentum"
  jianghu_activity_host_momentum_desc:0 "Successful staged hosting of a jianghu gathering increases prestige and social momentum among path-aligned sect circles."
- host_same_path_dao_exchange_activity_decision:0 "Host Same-Path Dao Exchange"
- host_same_path_dao_exchange_activity_decision_desc:0 "Convene same-path cultivators in a feast-style gathering to exchange manuals, discuss bottlenecks, and accelerate each other's Dao insight."
- host_same_path_dao_exchange_activity_decision_tooltip:0 "Feast-like same-path sect meeting that ends in lifestyle speed increases through Dao exchange."
- host_same_path_dao_exchange_activity_decision_confirm:0 "Open the Dao exchange banquet."
-
  xianxia_world.1880.t:0 "Same-Path Dao Exchange Banquet"
  xianxia_world.1880.desc:0 "Pavilions are prepared like a grand feast, but this gathering is for same-path cultivators to debate scripture meaning, breakthrough methods, and combat insights."
  xianxia_world.1880.a:0 "Begin the first exchange rounds."
@@ -639,6 +630,65 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  dao_exchange_participant:0 "Dao Exchange Participant"
  dao_exchange_participant_desc:0 "Recent same-path Dao exchanges improved this cultivator's study tempo and practical understanding."
 
+
+ activity_jianghu_grand_gathering:0 "Jianghu Grand Gathering"
+ activity_jianghu_grand_gathering_desc:0 "Gather cultivators, rivals, and sect delegates in a multi-phase jianghu summit of honor and prowess."
+ jianghu_gathering_phase_arrival:0 "Arrival"
+ jianghu_gathering_phase_sparring:0 "Sparring and Duels"
+ jianghu_gathering_phase_exchange:0 "Dao Exchanges"
+ jianghu_gathering_phase_climax:0 "Climax"
+
+ activity_same_path_dao_exchange:0 "Same-Path Dao Exchange"
+ activity_same_path_dao_exchange_desc:0 "A doctrine-aligned exchange where cultivators debate manuals, align philosophy, and refine breakthroughs."
+ dao_exchange_phase_arrival:0 "Arrival"
+ dao_exchange_phase_discourse:0 "Scripture Discourse"
+ dao_exchange_phase_integration:0 "Integration"
+
+ activity_sect_examination:0 "Sect Examination"
+ activity_sect_examination_desc:0 "Invite meridian-talented aspirants and elders for a structured assessment that can recruit standout candidates into your court."
+ sect_examination_phase_arrival:0 "Candidate Arrival"
+ sect_examination_phase_assessment:0 "Meridian Assessment"
+ sect_examination_phase_recruitment:0 "Recruitment Rites"
+
+ xianxia_activity.7300.t:0 "Sect Examination: Arrival"
+ xianxia_activity.7300.desc:0 "Aspirants, elders, and examiners gather at your grounds as registration talismans and meridian records are reviewed."
+ xianxia_activity.7300.a:0 "Open the examination pavilion."
+
+ xianxia_activity.7310.t:0 "Sect Examination: Assessment"
+ xianxia_activity.7310.desc:0 "Candidates demonstrate control, meridian flow, and comprehension of basic cultivation law before assembled elders."
+ xianxia_activity.7310.a:0 "Evaluate every contender fairly."
+
+ xianxia_activity.7320.t:0 "Sect Examination: Recruitment"
+ xianxia_activity.7320.desc:0 "After final rankings, the most talented meridian candidates are offered disciple contracts and court positions."
+ xianxia_activity.7320.a:0 "Recruit the strongest prospects."
+
+ xianxia_activity.7100.t:0 "Grand Gathering: Arrival"
+ xianxia_activity.7100.desc:0 "Sect elders, wandering cultivators, and rivals gather under one banner as the Jianghu Grand Gathering formally opens."
+ xianxia_activity.7100.a:0 "Welcome the gathered paths."
+
+ xianxia_activity.7110.t:0 "Grand Gathering: Sparring Phase"
+ xianxia_activity.7110.desc:0 "Duel rings and challenge platforms decide who commands respect. Your prowess and composure define the tone of the gathering."
+ xianxia_activity.7110.a:0 "Let the matches begin."
+
+ xianxia_activity.7120.t:0 "Grand Gathering: Exchange Phase"
+ xianxia_activity.7120.desc:0 "With blades sheathed, elders and disciples exchange techniques, doctrine insights, and sect commitments."
+ xianxia_activity.7120.a:0 "Consolidate these alliances."
+
+ xianxia_activity.7130.t:0 "Grand Gathering: Climax"
+ xianxia_activity.7130.desc:0 "The final demonstrations settle reputation across the jianghu. The host's standing and legacy are now written."
+ xianxia_activity.7130.a:0 "Seal the gathering's outcome."
+
+ xianxia_activity.7200.t:0 "Dao Exchange: Arrival"
+ xianxia_activity.7200.desc:0 "Cultivators of the same path arrive to compare manuals, bottlenecks, and practical breakthroughs."
+ xianxia_activity.7200.a:0 "Open the exchange hall."
+
+ xianxia_activity.7210.t:0 "Dao Exchange: Discourse"
+ xianxia_activity.7210.desc:0 "Scripture interpretations and cultivation theory are tested in respectful but intense debate."
+ xianxia_activity.7210.a:0 "Refine our path together."
+
+ xianxia_activity.7220.t:0 "Dao Exchange: Integration"
+ xianxia_activity.7220.desc:0 "Participants depart with clarified doctrine and stronger momentum in learning and cultivation."
+ xianxia_activity.7220.a:0 "Carry these insights forward."
 
  view_jianghu_strongest_leaderboard_decision:0 "View Jianghu Strongest Leaderboard"
  view_jianghu_strongest_leaderboard_decision_desc:0 "Check the current jianghu strength tiers generated from gathering and tournament victories, including path-specific ranks."

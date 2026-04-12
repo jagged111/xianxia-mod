@@ -17,3 +17,15 @@ xianxia_cultivator_champion_routed = {
     army_toughness_mult = -0.15
     monthly_prestige = -0.1
 }
+
+xianxia_cultivator_retinue_prowess_low = {
+    advantage = 2
+}
+
+xianxia_cultivator_retinue_prowess_medium = {
+    advantage = 4
+}
+
+xianxia_cultivator_retinue_prowess_high = {
+    advantage = 6
+}

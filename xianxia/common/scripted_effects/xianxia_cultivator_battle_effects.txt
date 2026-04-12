@@ -2,8 +2,15 @@ xianxia_clear_cultivator_battle_state_effect = {
     remove_character_modifier = xianxia_cultivator_champion_protection
     remove_character_modifier = xianxia_cultivator_champion_collapse
     remove_character_modifier = xianxia_cultivator_champion_routed
+    remove_character_modifier = xianxia_cultivator_retinue_prowess_low
+    remove_character_modifier = xianxia_cultivator_retinue_prowess_medium
+    remove_character_modifier = xianxia_cultivator_retinue_prowess_high
     remove_character_flag = xianxia_cultivator_champion_active
     remove_character_flag = xianxia_cultivator_champion_defeated
+    if = {
+        limit = { exists = var:xianxia_cultivator_retinue_prowess_total }
+        set_variable = { name = xianxia_cultivator_retinue_prowess_total value = 0 }
+    }
 }
 
 xianxia_activate_cultivator_champion_effect = {
@@ -13,6 +20,56 @@ xianxia_activate_cultivator_champion_effect = {
         limit = { xianxia_is_designated_cultivator_champion_trigger = yes }
         add_character_flag = xianxia_cultivator_champion_active
         add_character_modifier = { modifier = xianxia_cultivator_champion_protection days = 30 }
+    }
+}
+
+# Root scope: combat side.
+xianxia_apply_side_cultivator_retinue_advantage_effect = {
+    if = {
+        limit = {
+            exists = side_commander
+            side_commander = {
+                xianxia_is_designated_cultivator_champion_trigger = yes
+            }
+        }
+
+        side_commander = {
+            remove_character_modifier = xianxia_cultivator_retinue_prowess_low
+            remove_character_modifier = xianxia_cultivator_retinue_prowess_medium
+            remove_character_modifier = xianxia_cultivator_retinue_prowess_high
+            set_variable = {
+                name = xianxia_cultivator_retinue_prowess_total
+                value = prowess
+            }
+        }
+
+        every_side_knight = {
+            limit = {
+                is_alive = yes
+                is_cultivator = yes
+            }
+            side_commander = {
+                change_variable = {
+                    name = xianxia_cultivator_retinue_prowess_total
+                    add = root.prowess
+                }
+            }
+        }
+
+        side_commander = {
+            if = {
+                limit = { var:xianxia_cultivator_retinue_prowess_total >= 180 }
+                add_character_modifier = { modifier = xianxia_cultivator_retinue_prowess_high days = 30 }
+            }
+            else_if = {
+                limit = { var:xianxia_cultivator_retinue_prowess_total >= 110 }
+                add_character_modifier = { modifier = xianxia_cultivator_retinue_prowess_medium days = 30 }
+            }
+            else_if = {
+                limit = { var:xianxia_cultivator_retinue_prowess_total >= 60 }
+                add_character_modifier = { modifier = xianxia_cultivator_retinue_prowess_low days = 30 }
+            }
+        }
     }
 }
 

@@ -1835,3 +1835,403 @@ cultivation_sect_visit.1200 = {
         }
     }
 }
+
+
+# beggar_sect - Visit Event 4250
+cultivation_sect_visit.4250 = {
+    type = character_event
+    title = cultivation_sect_visit.4250.t
+    desc = cultivation_sect_visit.4250.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:beggar_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4250 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# tang_clan - Visit Event 4251
+cultivation_sect_visit.4251 = {
+    type = character_event
+    title = cultivation_sect_visit.4251.t
+    desc = cultivation_sect_visit.4251.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:tang_clan
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4251 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# emei_sword_sect - Visit Event 4252
+cultivation_sect_visit.4252 = {
+    type = character_event
+    title = cultivation_sect_visit.4252.t
+    desc = cultivation_sect_visit.4252.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:emei_sword_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4252 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# qingcheng_sect - Visit Event 4253
+cultivation_sect_visit.4253 = {
+    type = character_event
+    title = cultivation_sect_visit.4253.t
+    desc = cultivation_sect_visit.4253.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:qingcheng_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4253 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# kunlun_sect - Visit Event 4254
+cultivation_sect_visit.4254 = {
+    type = character_event
+    title = cultivation_sect_visit.4254.t
+    desc = cultivation_sect_visit.4254.desc
+    theme = martial
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:kunlun_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4254 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# kongtong_sect - Visit Event 4255
+cultivation_sect_visit.4255 = {
+    type = character_event
+    title = cultivation_sect_visit.4255.t
+    desc = cultivation_sect_visit.4255.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:kongtong_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4255 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# diancang_sect - Visit Event 4256
+cultivation_sect_visit.4256 = {
+    type = character_event
+    title = cultivation_sect_visit.4256.t
+    desc = cultivation_sect_visit.4256.desc
+    theme = learning
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:diancang_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4256 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}
+
+
+# yin_yang_harmony_sect - Visit Event 4257
+cultivation_sect_visit.4257 = {
+    type = character_event
+    title = cultivation_sect_visit.4257.t
+    desc = cultivation_sect_visit.4257.desc
+    theme = intrigue
+
+    immediate = {
+        create_character = {
+            location = root.location
+            culture = root.culture
+            faith = faith:yin_yang_harmony_sect
+            age = 40
+            dynasty = none
+            gender = male
+            save_scope_as = sect_elder
+        }
+        scope:sect_elder = { add_trait = cultivation_core_formation }
+        root = { set_variable = { name = visiting_sect_elder value = scope:sect_elder } }
+    }
+
+    left_portrait = { character = ROOT animation = personality_rational }
+    right_portrait = { character = scope:sect_elder animation = personality_bold }
+
+    option = {
+        name = sect_join
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        trigger_event = { id = cultivation_sect_join.4257 }
+    }
+
+    option = {
+        name = sect_spar
+        hidden_effect = { root = { set_variable = { name = sect_elder_save value = yes } } }
+        open_interaction_window = {
+            interaction = sect_spar_interaction
+            actor = root
+            recipient = scope:sect_elder
+        }
+    }
+
+    option = {
+        name = sect_visit_cancel
+        hidden_effect = {
+            scope:sect_elder = { death = { death_reason = death_vanished } }
+            root = { remove_variable = visiting_sect_elder }
+        }
+    }
+}

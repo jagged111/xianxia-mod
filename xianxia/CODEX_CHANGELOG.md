@@ -640,3 +640,27 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 ### 62) Leaderboard exploit and hidden-sect UI leak fix (2026-04-12)
 - Removed `xianxia_world.1890` from `view_jianghu_strongest_leaderboard_decision` so opening the board no longer mutates monthly hegemon progression counters.
 - Preserved sect/path backend modifier invisibility by applying sect signature modifiers with `hidden = yes` at application time inside `cultivation_refresh_sect_signature_effect`.
+
+### 63) Cultivator commander + cultivator knight combined prowess battle advantage (2026-04-12)
+- Extended cultivator battle on_action flow so each side recomputes a dedicated retinue prowess bonus on combat start and on unit joins (`zzzz_xianxia_cultivator_battle_on_actions.txt`).
+- Added scripted effect `xianxia_apply_side_cultivator_retinue_advantage_effect` that sums the side commander's prowess with all alive cultivator side-knight prowess and applies tiered battle advantage modifiers.
+- Scope restriction is intentional: this bonus only applies when the side commander is a designated cultivator champion, and only cultivator knights are counted in the total.
+- Added three new battle modifiers (`xianxia_cultivator_retinue_prowess_low|medium|high`) and English localization strings for clear in-game tooltip messaging.
+
+### 64) Sect governance/leaderboard/reincarnation/CB follow-up fix pass (2026-04-12)
+- Repaired reincarnation lottery candidate selection in `cultivation_ai.2270` by preferring ambitious rulers when available and falling back to any valid landed ruler otherwise, preventing dead lotteries when no ambitious candidate exists.
+- Restricted sect leader assignment to county/duchy rulers in ongoing world governance maintenance, and added cleanup that strips `sect_leader` from kingdom/empire-tier rulers during the same monthly pass.
+- Tightened additional sect-leader assignment pathways (world hierarchy effect, succession replacement, and challenge victory) so king/emperor characters no longer retain sect leadership outcomes.
+- Reworked Jianghu leaderboard maintenance to prioritize cultivator prowess, awarding top board slots and path #1 markers based on highest cultivator prowess checks instead of accumulated tournament-win variables.
+- Hardened artifact-auction selling so only artifacts owned by the acting character can be sold/destroyed for payout, blocking free-sale exploits.
+- Improved “Gather Alchemy Inputs” by granting immediate stockpile modifiers (herb/ore/core) and small prestige/piety feedback in addition to stock flags.
+- Upgraded cultivation CB outcomes:
+  - `xianxia_force_sect_submission_cb` now establishes tributary status on victory and scales reward/penalty economics by defeated ruler tier.
+  - `xianxia_capture_sacred_mountain_cb` now applies sacred-mountain bonuses to a random county in the defeated realm, grants spirit-stone-equivalent gold, and scales consequences by defender rank.
+- Marked `sacred_mountain_consecrated` as stackable so repeated sacred-mountain captures can accumulate the county effect.
+
+### 65) Sacred mountain nearest-land seizure + activity-host hardening (2026-04-12)
+- Reworked `xianxia_capture_sacred_mountain_cb` victory logic so the attacker now seizes a defender county title on win.
+- County target selection now prioritizes defender counties that border the attacker realm (weighted toward attacker-capital adjacency), with fallback to any defender county when no adjacent county exists.
+- Captured county transfer now uses a formal `create_title_and_vassal_change` + `change_title_holder` flow and then applies sacred-mountain county modifiers on the seized county.
+- Hardened `disciple_assignment_activity_decision`, `jianghu_grand_gathering_activity_decision`, and `host_same_path_dao_exchange_activity_decision` to require hostable vanilla activities (`activity_feast` / `activity_tournament`) in `is_valid`, and to always launch the corresponding activity attempt in effect before event flavor follow-up.

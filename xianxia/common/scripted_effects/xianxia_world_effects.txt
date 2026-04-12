@@ -4,6 +4,10 @@
             is_landed = yes
             is_independent_ruler = yes
             NOT = { has_trait = sect_leader }
+            OR = {
+                highest_held_title_tier = tier_county
+                highest_held_title_tier = tier_duchy
+            }
         }
         add_trait = sect_leader
         remove_trait = sect_disciple

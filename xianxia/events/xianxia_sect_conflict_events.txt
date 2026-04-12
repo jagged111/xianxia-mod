@@ -302,7 +302,18 @@ xianxia_sect_conflict.0220 = {
         remove_trait = sect_inner_hall_elder
         remove_trait = sect_outer_hall_elder
         remove_trait = sect_enforcement_elder
-        add_trait = sect_leader
+        if = {
+            limit = {
+                OR = {
+                    highest_held_title_tier = tier_county
+                    highest_held_title_tier = tier_duchy
+                }
+            }
+            add_trait = sect_leader
+        }
+        else = {
+            add_trait = sect_inner_hall_elder
+        }
 
         if = {
             limit = { exists = scope:sect_leader_target }

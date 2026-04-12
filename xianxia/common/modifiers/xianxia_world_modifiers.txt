@@ -470,6 +470,7 @@ sect_exiled_elder = {
 }
 
 sacred_mountain_consecrated = {
+    stacking = yes
     local_county_control_growth = 0.35
     county_conversion_speed = 0.2
     county_opinion_add = 8

@@ -640,3 +640,9 @@ It summarizes *what has been changed recently*, *why*, and *what constraints to 
 ### 62) Leaderboard exploit and hidden-sect UI leak fix (2026-04-12)
 - Removed `xianxia_world.1890` from `view_jianghu_strongest_leaderboard_decision` so opening the board no longer mutates monthly hegemon progression counters.
 - Preserved sect/path backend modifier invisibility by applying sect signature modifiers with `hidden = yes` at application time inside `cultivation_refresh_sect_signature_effect`.
+
+### 63) Cultivator commander + cultivator knight combined prowess battle advantage (2026-04-12)
+- Extended cultivator battle on_action flow so each side recomputes a dedicated retinue prowess bonus on combat start and on unit joins (`zzzz_xianxia_cultivator_battle_on_actions.txt`).
+- Added scripted effect `xianxia_apply_side_cultivator_retinue_advantage_effect` that sums the side commander's prowess with all alive cultivator side-knight prowess and applies tiered battle advantage modifiers.
+- Scope restriction is intentional: this bonus only applies when the side commander is a designated cultivator champion, and only cultivator knights are counted in the total.
+- Added three new battle modifiers (`xianxia_cultivator_retinue_prowess_low|medium|high`) and English localization strings for clear in-game tooltip messaging.

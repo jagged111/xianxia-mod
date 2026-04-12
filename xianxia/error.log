@@ -1,130 +1,386 @@
-Codex, audit and rebuild these systems as one connected pass. Do not just tweak numbers. The current architecture is still decision-led and event-led, not activity-led.
+# XIANXIA MOD — CORRECTED CODEX CHANGELOG
 
-1. Rebuild Jianghu Grand Gathering as a real CK3-style activity, not a decision wrapper
+## CURRENT STATE (TRUTH, NOT CLAIMS)
 
-* Right now the live mod layer documents Jianghu Grand Gathering as:
+### Systems that EXIST but are NOT COMPLETE
 
-  * `jianghu_grand_gathering_activity_decision -> xianxia_world.1870/1871/1872`
-* The current decision implementation in `common/decisions/xianxia_world_decisions.txt` only:
+* Jianghu Grand Gathering → currently a decision + event chain (NOT a real activity)
+* Dao Exchange → same issue (decision wrapper, not activity system)
+* Jianghu leaderboard → based on win counters, NOT actual prowess
+* Sect succession/conflict → exists but too weak in gameplay impact
+* Spirit vein / sacred mountain → implemented but shallow economy impact
+* Initialization → partially correct but relies on maintenance loops to fix gaps
+* Fox spirits → fully integrated in runtime, but architecture still messy (core + compatch overlap)
 
-  * adds cooldown
-  * triggers `xianxia_world.1870`
-  * lets AI attempt vanilla `activity_tournament`
-* That is why the feature feels like a few event popups with rewards instead of a hosted gathering of characters.
-* Stop treating the decision as the gameplay body.
-* Keep a decision only if needed as the launch button, but move the actual system into the proper activity framework modeled after vanilla tournament/feast structure.
-* Use the reference activity files under `/xianxia/activities/` as pattern references, but create real live mod definitions in the engine-loaded layer for:
+### Systems that are STABLE (keep and expand)
 
-  * custom Jianghu activity type
-  * activity phases / stage progression
-  * invitation and attendance handling
-  * participant pools
-  * rivalry / alliance / sect interactions during the activity
-  * rewards and consequences based on attendance, duels, reputation, sect politics, and outcomes
-* The host should not just get one event and some modifiers. Characters should actually gather, be iterated as attendees, and drive outcomes.
+* Magic treasure crafting backend
+* Artifact pool and scaling system
+* Modifier library (sect, alchemy, jianghu, etc.)
+* Disciple / path recruitment framework
+* Core AI cultivation loop (but needs optimization, not replacement)
 
-2. Remove the fallback “decision -> event chain -> maybe AI hosts vanilla tournament” architecture
+---
 
-* Replace the current bridge pattern described in:
+# CORE DESIGN RULES (MANDATORY)
 
-  * `common/activities/00_xianxia_activity_map.txt`
-  * `common/activities/jianghu_tournament_activity_bridge.txt`
-* Do not keep Jianghu Grand Gathering as a staged pseudo-activity.
-* Build it as a true hosted activity with real attendees and phase logic.
+1. STOP building systems as:
+   decision → event → reward
 
-3. Reincarnation lottery: repair script stability before retuning
+2. START building systems as:
 
-* The on_action wiring is already there:
+   * activities
+   * interactions
+   * persistent world states
 
-  * `on_game_start_after_lobby` calls `cultivation_ai.2270`
-  * `on_monthly_pulse` also calls `cultivation_ai.2270`
-* So the problem is not just “missing startup hook.”
-* The error log still reports `events/cultivation_ai_events.txt` has malformed syntax, so fix parser/runtime stability in that file first.
-* Then verify the reincarnation system end-to-end:
+3. Runtime > documentation
 
-  * one living ambitious ruler is selected at start
-  * selection respects living/landed/ambitious filters
-  * reincarnator traits/flags/modifiers are applied
-  * the popup actually fires
-  * it does not silently fail due to invalid scope syntax
-* Do not ship until start-date testing confirms a reincarnator appears reliably.
+   * If code and changelog conflict → CODE is correct
 
-4. Leaderboard: make “strongest” actually mean prowess
+4. No duplicate systems across:
 
-* Audit the hidden monthly leaderboard maintenance pass tied to `xianxia_world.1890`.
-* The current strongest logic appears to be tied to Jianghu/tournament win tracking rather than actual prowess.
-* Rebuild strongest leaderboard sorting to use actual live prowess first.
-* If you want a separate fame leaderboard, keep that separate from strongest.
-* Strongest should not be a tournament-wins proxy.
+   * core mod
+   * fox compatch
 
-5. Grand Gathering outcomes: make it social and systemic, not random popup rewards
+---
 
-* Remove the current shallow host-only flow where rewards/stress come from a couple of event windows.
-* The activity should:
+# MAJOR FIXES (IN ORDER)
 
-  * gather characters
-  * invite sect leaders, elders, notable cultivators, rivals, disciples, wanderers
-  * generate sect reputation shifts, rivalry escalation, alliance opportunities, duel chains, recognition of strongest attendees, disciple recruiting chances, artifact/trade/social incidents
-* Stress and rewards should come from activity choices and interactions, not arbitrary random target punishment.
+---
 
-6. Sect succession crisis: make it materially dangerous
+## 1. REBUILD JIANGHU GRAND GATHERING (CRITICAL)
 
-* Increase the crisis modifier severity so it actually destabilizes rule.
-* It should sharply lower opinion of the ruler, especially among sect elites / same-sect stakeholders / vassals tied to sect structures.
-* Add real rebellion pressure through valid CK3 levers rather than flavor-only text.
-* Add a capital-level crisis penalty:
+### Problem
 
-  * contested spiritual center / disrupted spirit vein / capital spirit turbulence
-  * reduce spirit stone income (gold) in the capital while crisis persists
-* Ensure the succession crisis event chain is stable before tuning intensity.
+* Currently:
 
-7. Spirit stone economy: rebuild using valid supported effects/modifiers
+  * decision
+  * triggers events (1870–1872)
+  * gives random rewards/stress
+* No real gathering of characters
 
-* The logs show multiple invalid modifier keys and invalid negative gold usages.
-* Rebuild these systems only with valid CK3-supported modifier/effect syntax:
+### Required Fix
 
-  * `contested_spirit_vein`
-  * `secured_spirit_vein`
-  * `consecrated_spiritual_mountain`
-  * succession-crisis capital penalties
-* Required gameplay results:
+Convert into FULL ACTIVITY system:
 
-  * contested spirit vein lowers spirit stone income for loser
-  * winner gets a stackable spirit stone gain modifier
-  * consecrated spiritual mountain provides spirit stone income
-  * secured spirit vein provides spirit stone income
-* Do not use invalid negative `add_gold` patterns where CK3 rejects them. Use valid economic effects or timed modifiers instead.
+CREATE:
 
-8. Visit a cultivation sect: include all added sects
+```
+common/activities/jianghu_grand_gathering_activity.txt
+```
 
-* Audit the full join/visit sect content path, not just localization.
-* The player-facing visit/join decision must include Heavenly Mandate Sect and every sect you added that should be joinable.
-* Check:
+Must include:
 
-  * scripted lists
-  * decision potential/allow
-  * option generation
-  * event option population
-  * loc for sect names/options
-* Do not leave newly added sects unregistered in the visit/join flow.
+* activity type
+* invited participants (cultivators, sect members, rivals)
+* phases:
 
-9. Parser cleanup before feature polish
-   Fix these blockers before balance work:
+  * arrival
+  * sparring / duels
+  * exchanges
+  * climax event
+* outcomes tied to:
 
-* malformed event syntax in `events/cultivation_ai_events.txt`
-* broken event/effect syntax in gathering/conflict/world files
-* broken localization files / missing language headers / malformed loc
-* invalid modifier tokens
-* invalid negative gold usage
-* decision code using invalid value-scope event target links
+  * prowess
+  * traits
+  * sect affiliation
 
-10. Acceptance tests before finalizing
-    Do not stop after code edits. Test all of this in-game:
+REMOVE:
 
-* start date: reincarnator chosen and popup shown
-* Jianghu Grand Gathering opens as a real activity and gathers characters
-* attendee pool includes meaningful cultivators and sect figures
-* strongest leaderboard shows actual highest prowess characters
-* succession crisis produces real ruler instability and capital income pain
-* spirit vein / sacred mountain systems change spirit stone income correctly
-* visit cultivation sect includes Heavenly Mandate Sect and other added sects
+* reliance on event-only chain as primary system
+
+KEEP:
+
+* event chain only as flavor inside activity
+
+---
+
+## 2. REBUILD DAO EXCHANGE AS ACTIVITY
+
+### Problem
+
+* Currently identical flaw as gathering
+* Uses feast logic + event wrapper
+
+### Required Fix
+
+* Create dedicated Dao Exchange activity
+* Focus on:
+
+  * learning
+  * philosophy alignment
+  * sect influence
+  * relationship shifts
+
+---
+
+## 3. FIX JIANGHU LEADERBOARD
+
+### Problem
+
+* Uses:
+
+  * `jianghu_tourney_wins_total`
+* NOT actual strength
+
+### Required Fix
+
+SPLIT INTO TWO SYSTEMS:
+
+### A. Strength Ranking (NEW)
+
+* Based on:
+
+  * prowess (primary)
+  * cultivation traits (secondary weight)
+
+### B. Fame Ranking (KEEP)
+
+* Based on:
+
+  * tournaments
+  * gatherings
+  * achievements
+
+UPDATE:
+
+```
+xianxia_world.1890
+```
+
+REMOVE:
+
+* win-only ranking as "strongest"
+
+---
+
+## 4. CLEAN INITIALIZATION SYSTEM
+
+### Problem
+
+* Initialization uses:
+
+  * `every_ruler`
+* Then patched by maintenance loops
+
+### Required Fix
+
+* Proper startup pass:
+
+  * assign cultivation
+  * assign sect roles
+  * assign fox states
+
+REDUCE:
+
+* reliance on monthly/yearly fixes
+
+---
+
+## 5. REDUCE PULSE OVERUSE (PERFORMANCE + STABILITY)
+
+### Problem
+
+Too many:
+
+* `every_living_character` loops
+* monthly heavy passes
+
+### Required Fix
+
+MOVE LOGIC TO:
+
+* on_game_start
+* on_character_death
+* on_title_change
+* on_activity_complete
+
+KEEP monthly ONLY for:
+
+* dynamic systems (e.g. rankings)
+
+---
+
+## 6. SPIRIT VEIN / SACRED MOUNTAIN REWORK
+
+### Current State
+
+* Modifiers exist
+* Effects are generic
+
+### Required Fix
+
+MAKE THEM FEEL LIKE:
+
+* cultivation economy (spirit stones)
+
+### Add:
+
+* clear gold identity = spirit stones
+* winner/loser system:
+
+  * winner gains stacking income
+  * loser gets reduced income
+
+### Improve:
+
+* capital impact
+* sect territorial identity
+
+---
+
+## 7. SECT SUCCESSION CRISIS (MAKE IT REAL)
+
+### Current State
+
+* Modifiers exist
+* Impact too weak
+
+### Required Fix
+
+CRISIS SHOULD:
+
+* heavily reduce opinion
+* increase faction pressure
+* risk rebellion
+* disrupt capital economy
+
+ADD:
+
+* stronger negative modifiers
+* chain escalation events
+
+---
+
+## 8. FOX SPIRITS — CORE SYSTEM CONSOLIDATION
+
+### Decision: FOX IS CORE
+
+### Required Fix
+
+REMOVE split logic between:
+
+* main mod
+* compatch
+
+### Core mod must contain:
+
+* awakening
+* possession
+* lineage inheritance
+* AI behavior
+* social reaction system
+
+### Compatch should ONLY contain:
+
+* compatibility tweaks
+* optional flavor
+* visual/asset support
+
+### Additional Improvements
+
+* strengthen:
+
+  * possession gameplay
+  * social consequences
+  * sect reactions
+* ensure:
+
+  * fox systems integrate with:
+
+    * sects
+    * rankings
+    * activities
+
+---
+
+## 9. DECISION SYSTEM CLEANUP
+
+### Problem
+
+Too many shallow decisions
+
+### Required Fix
+
+For EACH decision:
+
+* classify:
+
+  * keep simple
+  * expand chain
+  * convert to interaction
+  * convert to activity
+
+DO NOT:
+
+* leave systems as one-click reward generators
+
+---
+
+## 10. MAGIC TREASURE SYSTEM (EXPAND, DON'T REBUILD)
+
+### Status
+
+* One of the strongest systems
+
+### Keep:
+
+* crafting effect system
+* artifact pool
+* tier scaling
+
+### Improve:
+
+* acquisition sources
+* world integration
+* rivalries over artifacts
+
+---
+
+## 11. DOCUMENTATION + STRUCTURE FIX
+
+### Problem
+
+* changelog contains:
+
+  * duplicate sections
+  * false “completed” systems
+  * mirror confusion
+
+### Required Fix
+
+* Runtime is source of truth
+* Update mirrors AFTER runtime fixes
+* Remove misleading completion notes
+
+---
+
+# FINAL PRIORITY ORDER
+
+1. Grand Gathering → real activity
+2. Dao Exchange → real activity
+3. Leaderboard split (prowess vs fame)
+4. Initialization cleanup
+5. Reduce pulse overuse
+6. Spirit vein economy pass
+7. Sect crisis strengthening
+8. Fox system consolidation
+9. Decision system cleanup
+10. Documentation correction
+
+---
+
+# DESIGN TARGET
+
+The mod should feel like:
+
+* a living cultivation world
+* not a menu of decisions
+
+If a system does not:
+
+* involve other characters
+* create persistent state
+* affect the world
+
+→ it is not finished

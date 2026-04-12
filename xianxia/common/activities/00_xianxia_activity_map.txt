@@ -4,8 +4,8 @@
 
 ### Systems that EXIST but are NOT COMPLETE
 
-* Jianghu Grand Gathering → rebuilt as native activity_jianghu_grand_gathering with phase progression
-* Dao Exchange → rebuilt as native activity_same_path_dao_exchange with phase progression
+* Jianghu Grand Gathering → rebuilt as native activity_jianghu_grand_gathering with framework events in xianxia/common/activities/jianghu_grand_gathering_activity/
+* Dao Exchange → rebuilt as native activity_same_path_dao_exchange with framework events in xianxia/common/activities/dao_exchange_activity/
 * Jianghu leaderboard → based on win counters, NOT actual prowess
 * Sect succession/conflict → exists but too weak in gameplay impact
 * Spirit vein / sacred mountain → implemented but shallow economy impact

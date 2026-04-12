@@ -55,3 +55,4 @@ nick_the_red_cinnabar = {}
 nick_the_ghost_lantern = {}
 nick_the_swamp_viper = { is_bad = yes }
 nick_the_reincarnator = {}
+nick_the_jianghu_hegemon = {}

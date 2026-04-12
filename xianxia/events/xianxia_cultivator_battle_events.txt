@@ -1,0 +1,94 @@
+namespace = xianxia_cultivator_battle
+
+# Root = designated champion commander. Duel target stored in var:xianxia_duel_target.
+xianxia_cultivator_battle.0001 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        if = {
+            limit = {
+                xianxia_is_active_cultivator_champion_trigger = yes
+                exists = var:xianxia_duel_target
+                var:xianxia_duel_target = { xianxia_is_active_cultivator_champion_trigger = yes }
+            }
+
+            random_list = {
+                32 = { trigger_event = xianxia_cultivator_battle.0002 }
+                32 = { trigger_event = xianxia_cultivator_battle.0003 }
+                36 = { trigger_event = xianxia_cultivator_battle.0004 }
+            }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Root wins duel exchange.
+xianxia_cultivator_battle.0002 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        if = {
+            limit = { exists = var:xianxia_duel_target }
+            var:xianxia_duel_target = {
+                random_list = {
+                    30 = { death = { killer = root death_reason = death_battle } }
+                    25 = {
+                        if = {
+                            limit = { exists = root.liege }
+                            root.liege = { imprison = prev }
+                        }
+                        else = { add_trait = wounded_2 }
+                    }
+                    25 = { add_trait = wounded_2 }
+                    20 = { xianxia_apply_cultivator_champion_rout_effect = yes }
+                }
+                xianxia_mark_cultivator_champion_defeated_effect = yes
+            }
+            add_prestige = 120
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Root loses duel exchange.
+xianxia_cultivator_battle.0003 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        random_list = {
+            25 = { death = { death_reason = death_battle } }
+            25 = { add_trait = wounded_2 }
+            50 = { xianxia_apply_cultivator_champion_rout_effect = yes }
+        }
+        xianxia_mark_cultivator_champion_defeated_effect = yes
+        add_prestige = -80
+    }
+
+    option = { name = OK }
+}
+
+# Stalemate exchange; loop once if both remain active.
+xianxia_cultivator_battle.0004 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        add_stress = 20
+        if = {
+            limit = {
+                exists = var:xianxia_duel_target
+                var:xianxia_duel_target = { add_stress = 20 }
+                xianxia_is_active_cultivator_champion_trigger = yes
+                var:xianxia_duel_target = { xianxia_is_active_cultivator_champion_trigger = yes }
+            }
+            trigger_event = { id = xianxia_cultivator_battle.0001 days = 5 }
+        }
+    }
+
+    option = { name = OK }
+}

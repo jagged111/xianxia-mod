@@ -457,16 +457,14 @@ fox_spirit_disowned_child = {
 
 # Hidden sect identity modifiers (CK3-safe backend identity layer).
 sect_signature_orthodox_hidden = {
-    hidden = yes
-    stress_loss_mult = 0.08
+        stress_loss_mult = 0.08
     learning = 1
     monthly_lifestyle_xp_gain_mult = 0.04
     monthly_prestige = -0.05
 }
 
 sect_signature_demonic_hidden = {
-    hidden = yes
-    prowess = 2
+        prowess = 2
     dread_gain_mult = 0.15
     monthly_lifestyle_xp_gain_mult = 0.05
     stress_gain_mult = 0.08
@@ -474,24 +472,20 @@ sect_signature_demonic_hidden = {
 }
 
 sect_signature_unorthodox_hidden = {
-    hidden = yes
-    intrigue = 1
-    scheme_power = 0.08
-    hostile_scheme_resistance_add = 6
+        intrigue = 1
+    hostile_scheme_resistance_add = -6
     health = -0.1
 }
 
 sect_signature_vagrant_hidden = {
-    hidden = yes
-    travel_speed_mult = 0.1
+        travel_speed_mult = 0.1
     monthly_lifestyle_xp_gain_mult = 0.05
     stress_loss_mult = 0.04
     vassal_opinion = -4
 }
 
 sect_signature_imperial_guard_hidden = {
-    hidden = yes
-    dread_baseline_add = 6
+        dread_baseline_add = 6
     tyranny_gain_mult = -0.05
     monthly_prestige = 0.2
     monthly_lifestyle_xp_gain_mult = 0.03
@@ -500,37 +494,37 @@ sect_signature_imperial_guard_hidden = {
 
 # Hidden cultivation-path identity modifiers assigned by branch perks.
 path_internal_cultivation_hidden = {
-    hidden = yes
-    health = 0.15
+        health = 0.15
     stress_loss_mult = 0.05
     prowess = -1
 }
 
 path_external_cultivation_hidden = {
-    hidden = yes
-    prowess = 2
+        prowess = 2
     advantage = 4
     health = -0.1
 }
 
 path_balanced_cultivation_hidden = {
-    hidden = yes
-    learning = 1
+        learning = 1
     martial = 1
     monthly_lifestyle_xp_gain_mult = 0.03
 }
 
 path_tyrannical_cultivation_hidden = {
-    hidden = yes
-    dread_gain_mult = 0.12
+        dread_gain_mult = 0.12
     prowess = 1
     stress_gain_mult = 0.08
     same_faith_opinion = -3
 }
 
 path_longevity_cultivation_hidden = {
-    hidden = yes
-    health = 0.25
+        health = 0.25
     fertility = -0.05
     prowess = -1
+}
+
+legendary_breakthrough_pill_ready = {
+    monthly_lifestyle_xp_gain_mult = 0.08
+    health = 0.1
 }

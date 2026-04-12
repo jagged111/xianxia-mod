@@ -1,0 +1,80 @@
+# Cultivator champion battle layer: champion protection/collapse + duel chain.
+# Root scopes follow vanilla combat on_action conventions.
+
+on_combat_start = {
+    effect = {
+        if = {
+            limit = {
+                exists = side_commander
+            }
+            side_commander = { xianxia_activate_cultivator_champion_effect = yes }
+        }
+
+        if = {
+            limit = {
+                enemy_side = { exists = side_commander }
+            }
+            enemy_side.side_commander = { xianxia_activate_cultivator_champion_effect = yes }
+        }
+
+        if = {
+            limit = {
+                exists = side_commander
+                enemy_side = { exists = side_commander }
+                side_commander = { xianxia_is_active_cultivator_champion_trigger = yes }
+                enemy_side.side_commander = { xianxia_is_active_cultivator_champion_trigger = yes }
+            }
+
+            side_commander = {
+                set_variable = { name = xianxia_duel_target value = root.enemy_side.side_commander }
+                trigger_event = xianxia_cultivator_battle.0001
+            }
+        }
+    }
+}
+
+on_combat_unit_join_side = {
+    effect = {
+        if = {
+            limit = {
+                exists = side_commander
+                side_commander = { xianxia_is_designated_cultivator_champion_trigger = yes }
+            }
+            side_commander = { xianxia_activate_cultivator_champion_effect = yes }
+        }
+
+        if = {
+            limit = {
+                enemy_side = { exists = side_commander }
+                enemy_side.side_commander = { xianxia_is_designated_cultivator_champion_trigger = yes }
+            }
+            enemy_side.side_commander = { xianxia_activate_cultivator_champion_effect = yes }
+        }
+    }
+}
+
+on_combat_end_winner = {
+    effect = {
+        if = {
+            limit = { exists = side_commander }
+            side_commander = { xianxia_clear_cultivator_battle_state_effect = yes }
+        }
+        if = {
+            limit = { enemy_side = { exists = side_commander } }
+            enemy_side.side_commander = { xianxia_clear_cultivator_battle_state_effect = yes }
+        }
+    }
+}
+
+on_combat_end_loser = {
+    effect = {
+        if = {
+            limit = { exists = side_commander }
+            side_commander = { xianxia_clear_cultivator_battle_state_effect = yes }
+        }
+        if = {
+            limit = { enemy_side = { exists = side_commander } }
+            enemy_side.side_commander = { xianxia_clear_cultivator_battle_state_effect = yes }
+        }
+    }
+}

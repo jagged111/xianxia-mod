@@ -1,0 +1,59 @@
+xianxia_commander_archetype_eligible_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_cultivator = yes
+}
+
+xianxia_commander_is_imperial_marshal_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    OR = {
+        has_character_modifier = sect_signature_imperial_guard_hidden
+        has_character_modifier = imperial_patron_sect
+    }
+}
+
+xianxia_commander_is_formation_warden_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    OR = {
+        has_trait = formation_master_tier_2
+        has_trait = formation_master_tier_3
+        has_trait = formation_body_tier_3
+    }
+}
+
+xianxia_commander_is_demonic_reaper_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    OR = {
+        has_trait = jianghu_demonic
+        faith = { has_doctrine_parameter = demonic_cultivation }
+    }
+}
+
+xianxia_commander_is_orthodox_guardian_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    OR = {
+        has_trait = jianghu_righteous
+        faith = { has_doctrine_parameter = orthodox_cultivation }
+    }
+}
+
+xianxia_commander_is_sword_duelist_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    OR = {
+        has_trait = weapon_path_sword
+        has_trait = weapon_path_saber
+    }
+}
+
+xianxia_commander_is_spear_vanguard_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    has_trait = weapon_path_spear
+}
+
+xianxia_commander_is_vagrant_skirmisher_trigger = {
+    xianxia_commander_archetype_eligible_trigger = yes
+    OR = {
+        faith = { has_doctrine_parameter = vagrant_cultivation }
+        has_trait = weapon_path_fist
+    }
+}

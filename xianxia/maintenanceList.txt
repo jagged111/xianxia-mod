@@ -29,7 +29,7 @@
 
 2. START building systems as:
 
-   * activities
+   * xianxia-mod/xianxia/common/activities
    * interactions
    * persistent world states
 

@@ -51,7 +51,7 @@
 	# Lowborn from the local populace
 	dynasty = none
 	faith = faith:zhengyi#root.capital_province.faith
-	culture = culture:huxian
+	culture = root.culture
 
 	# Some chance of non-dominant gender, but small
 	gender_female_chance = 80
@@ -112,7 +112,7 @@ ks_cultivation_teacher_template= {
 	# Lowborn from the local populace
 	dynasty = none
 	faith = root.capital_province.faith
-	culture = culture:huxian
+	culture = root.culture
 
 	# Some chance of non-dominant gender, but small
 	gender_female_chance = 50
@@ -174,7 +174,7 @@ ks_cultivation_student_template= {
 	
 	dynasty = none
 	faith = root.capital_province.faith
-	culture = culture:huxian
+	culture = root.culture
 
 	# Some chance of non-dominant gender, but small
 	gender_female_chance = 50

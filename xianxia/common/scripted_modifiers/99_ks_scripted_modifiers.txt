@@ -5,7 +5,7 @@ ks_bg_play_move_type_effect_extraneous_advantages_self_modifier = {
 	#文化优势
 	modifier = {
 		add = 10
-		culture = { has_cultural_tradition=tradition_ks_huxian }
+		has_trait = huxian_blood
 	}
 	# 修炼后更强
 	modifier = {
@@ -18,7 +18,7 @@ ks_bg_play_move_type_effect_extraneous_advantages_opponent_modifier = {
 	#文化优势
 	modifier = {
 		add = 10
-		culture = { has_cultural_tradition=tradition_ks_huxian }
+		has_trait = huxian_blood
 	}
 	# 修炼后更强
 	modifier = {

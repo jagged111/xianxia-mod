@@ -433,3 +433,8 @@ This section records what was actually corrected in code so maintenance and QA c
 - Activity definitions remain in `xianxia/common/activities/activity_types/`.
 - Event files remain in `xianxia/events/activities/` when activity-driven.
 - No new activity systems should be introduced as decisions.
+
+### HOTFIX: huxian culture reference removal
+- Removed script-side usage of `culture:huxian` and `has_cultural_tradition = tradition_ks_huxian` from activity/decision/interaction/scripted files.
+- Replaced those checks with trait-based fox-spirit gates (`huxian_blood` / `huxian_cultivation`) where needed.
+- Disabled culture-conversion pathway from setting a huxian culture and removed the unused huxian tradition definition body.

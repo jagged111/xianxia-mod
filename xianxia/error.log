@@ -1,407 +1,82 @@
-# XIANXIA MOD — CORRECTED CODEX CHANGELOG
+[19:03:23][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'ks_bed_games.0001.t' is defined in both 'localization/english/ks_activity_missing_loc_l_english.yml' and 'localization/english/activities/ks_mod_bedgame_l_english.yml'.
+[19:03:23][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'ks_cultivation.0009.t' is defined in both 'localization/english/ks_activity_missing_loc_l_english.yml' and 'localization/english/activities/ks_mod_cultivation_l_english.yml'.
+[19:03:23][E][localization_reader.cpp:581]: Unexpected localization token ')' at line 18 and column 61 in localization/english/dynasties/ks_dynasty_names_l_english.yml
+[19:03:23][E][localization_reader.cpp:581]: Unexpected localization token 'in' at line 24 and column 58 in localization/english/dynasties/ks_dynasty_names_l_english.yml
+[19:03:24][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'scheme_physique_good_1' is defined in both 'localization/english/gui/schem_l_english.yml' and 'localization/english/gui/schemewindow_l_english.yml'.
+[19:03:24][E][pdx_localize.cpp:933]: Trying to import a localization key outside of a language: Xian
 
-## CURRENT STATE (TRUTH, NOT CLAIMS)
+[19:04:54][E][pdx_data_statementparser.cpp:237]: Unexpected characters found at end of Statement 'EqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)9'))': ')' 
 
-### Systems that EXIST but are NOT COMPLETE
+[19:22:55][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: legacy_1, near line: 1 (expanded from file: common/dynasty_legacies/cultivation_legacies.txt line: 2)" in file: "common/dynasty_legacies/cultivation_legacies.txt" near line: 1
 
-* Jianghu Grand Gathering → currently a decision + event chain (NOT a real activity)
-* Dao Exchange → same issue (decision wrapper, not activity system)
-* Jianghu leaderboard → based on win counters, NOT actual prowess
-* Sect succession/conflict → exists but too weak in gameplay impact
-* Spirit vein / sacred mountain → implemented but shallow economy impact
-* Initialization → partially correct but relies on maintenance loops to fix gaps
-* Fox spirits → fully integrated in runtime, but architecture still messy (core + compatch overlap)
+[19:23:09][E][lexer.cpp:306]: File 'common/scripted_triggers/xianxia_commander_sect_triggers.txt' should be in utf8-bom encoding (will try to use it anyways)
 
-### Systems that are STABLE (keep and expand)
+[19:23:29][E][dnamodifier.cpp:324]: could not find template [ccp5_bishop_mitre]. file: gfx/portraits/portrait_modifiers/04_headgear_armor.txt line: 2178 (headgear_armor)
 
-* Magic treasure crafting backend
-* Artifact pool and scaling system
-* Modifier library (sect, alchemy, jianghu, etc.)
-* Disciple / path recruitment framework
-* Core AI cultivation loop (but needs optimization, not replacement)
+[19:23:48][E][pdx_persistent_reader.cpp:216]: Error: "Malformed token: scope:root, near line: 249" in file: "events/cultivation_ai_events.txt" near line: 251
+[19:23:48][E][event.cpp:366]: Theme missing in event 'cultivation_ai.2271'
 
----
+[19:24:01][E][jomini_script_system.cpp:303]: Script system error!
+  Error: imprison effect [ Expected opening bracket ]
+  Script location: file: common/casus_belli_types/xianxia_cb_types.txt line: 241 (xianxia_force_recruit_talented_meridians_cb:on_victory)
 
-# CORE DESIGN RULES (MANDATORY)
+[19:24:02][E][jomini_eventtarget.cpp:325]: Scope type 'value' can not be used in event target links, link compare_value infile: common/decisions/cultivation_breakthrough_decisions.txt line: 39 (attempt_qi_gathering_breakthrough_decision:effect)
 
-1. STOP building systems as:
-   decision → event → reward
+[19:24:31][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: guardian, near line: 81" in file: "common/scripted_modifiers/00_marriage_scripted_modifiers.txt" near line: 84
 
-2. START building systems as:
+[19:24:53][E][trait.cpp:346]: Trait crippled_meridians has a group (active_meridians) but no level set. Unsetting group
+[19:24:54][E][pdx_locstring.cpp:93]: Key is missing localization: trait_education
+[19:24:54][E][jomini_dynamicdescription.cpp:66]: Unrecognized loc key trait_jianghu_righteous. jianghu_righteous
 
-   * activities
-   * interactions
-   * persistent world states
+[19:24:54][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: men_at_arms_maintenance_mult, near line: 307 (expanded from file: common/traits/xianxia_society_traits.txt line: 308)" in file: "common/traits/xianxia_society_traits.txt" near line: 307
 
-3. Runtime > documentation
+[19:25:10][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: hostile_scheme_resistance_add, near line: 475 (expanded from file: common/modifiers/cultivation_modifiers.txt line: 476)" in file: "common/modifiers/cultivation_modifiers.txt" near line: 475
 
-   * If code and changelog conflict → CODE is correct
+[19:25:21][E][jomini_script_system.cpp:303]: Script system error!
+  Error: imprison effect [ Expected opening bracket ]
+  Script location: file: events/xianxia_cultivator_battle_events.txt line: 41 (xianxia_cultivator_battle.0002:immediate)
 
-4. No duplicate systems across:
+[19:25:21][E][jomini_script_system.cpp:303]: Script system error!
+  Error: add_gold effect [ Negative value in: {}. {} ]
+  Script location: file: events/xianxia_sect_conflict_events.txt line: 133 (xianxia_sect_conflict.0100:option)
 
-   * core mod
-   * fox compatch
+[19:25:21][E][event.cpp:366]: Theme missing in event 'xianxia_sect_conflict.0100'
 
----
+[19:25:21][E][jomini_effect.cpp:783]: Inconsistent effect scopes (character vs. dynasty) infile: events/xianxia_sect_conflict_events.txt line: 297 (xianxia_sect_conflict.0220:option)
 
-### 2026-04 Integration Updates
+[19:25:21][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: random, near line: 423" in file: "events/xianxia_world_events.txt" near line: 424
 
-* Merged `xianxia/fox demon spirits compatch/` into main `xianxia/` content roots.
-* Activity runtime now uses `xianxia/common/activities/*/activity_type.txt` + `xianxia/events/activities/*_events.txt`.
-* Removed dependency on `xianxia/activities/activities/` for custom runtime activity files (kept as reference only).
-* Deleted outdated launcher decisions for Jianghu Grand Gathering and Same-Path Dao Exchange so these are no longer represented as decision-owned flows.
-* Added `activity_sect_examination` (`xianxia/common/activities/sect_examination_activity/activity_type.txt`) with phase events in `xianxia/events/activities/sect_examination_activity_events.txt`.
-* Replaced disciple assignment wrapper with `sect_examination_activity_decision`, which now launches the activity planner instead of direct event execution.
-* Added `xianxia/localization/english/ks_activity_missing_loc_l_english.yml` fallback entries for unresolved `ks_bed_games.*` and `ks_cultivation.*` activity base keys (`.t`, `.desc`, `.a`) detected by semantic localization checks.
-* Added `xianxia_unorthodox_sect_expansion_cb` and `xianxia_demonic_sect_expansion_cb` for path-specific expansion wars, with full localization and war-name keys.
-* Corrected `xianxia_force_recruit_talented_meridians_cb` victory behavior to imprison an existing unlanded meridian-talented courtier from the defender's court, not the defending ruler.
-* Updated sect examination recruitment to also intake untalented applicants as outer-court disciples (`outer_court_disciple`) so sect manpower pipelines match xianxia outer-hall norms.
-* Added `activity_inner_court_promotion` (8-year cooldown) and `activity_elder_promotion` (12-year cooldown) with dedicated phase events and promotion effects/modifiers to prevent spam and preserve long-cycle sect progression pacing.
-* Audited `xianxia/common/activities/00_xianxia_activity_map.txt` to include a verified completed-repairs checklist covering all implemented activity/CB/recruitment/localization repairs.
-* Added tier-based disciple acceptance thresholds in sect examination (meridian quality + bloodline/body tier + realm) so immediate inner-court entry requires enough positive weighting.
-* Enforced elder appointment realm gating (Core Formation or higher) in elder promotion validation and nominee selection.
-* Added weapon combat-talent lottery tiers (`weapon_combat_talent_1`..`weapon_combat_talent_5`) with +5 prowess per tier and integrated high-tier results as additional inner-court acceptance bonuses.
-* Updated weapon-talent lottery distribution to account for xianxia/xuanhuan fighter-like personalities (brave/wrathful/ambitious/diligent/stubborn) so high-tier combat talent rolls are more frequent for archetypal combatants.
+[19:25:21][E][jomini_effect.cpp:1000]: else/else_if not following an if or else_if at file: events/xianxia_world_events.txt line: 965 (xianxia_world.1850:option)
 
----
+[19:25:21][E][pdx_persistent_reader.cpp:216]: Error: "Unknown effect: random_character, near line: 951" in file: "events/xianxia_world_events.txt" near line: 1048
 
-# MAJOR FIXES (IN ORDER)
+[19:25:21][E][jomini_effect.cpp:783]: Inconsistent effect scopes (character vs. activity) infile: events/activities/dao_exchange_activity_events.txt line: 37 (xianxia_activity.7220:option)
 
----
+[19:25:30][E][jomini_eventmanager.cpp:118]: 'health.7000' does not have a valid namespace
+[19:25:30][E][jomini_onaction.cpp:217]: OnAction yearly_health_pulse is trying to add unknown random event with ID [health.7000] at: file: common/on_action/health_on_actions.txt line: 27 (yearly_health_pulse)
 
-## 1. REBUILD JIANGHU GRAND GATHERING (CRITICAL)
+[19:25:34][E][jomini_onaction.cpp:329]: Invalid event id xianxia_world.1890 At: file: common/on_action/zzzz_cultivation_ai_pulse.txt line: 34 (on_monthly_pulse)
 
-### Problem
+[19:25:34][E][jomini_onaction.cpp:161]: There is more than one 'effect' defined using most recent:file: common/on_action/zzzz_xianxia_cultivator_battle_on_actions.txt line: 57 (on_combat_end_winner)
 
-* Currently:
+[19:25:39][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: opinion, near line: 3 (expanded from file: common/on_action/opinion_modifiers/00_activity_feast_opinions.txt line: 4)" in file: "common/on_action/opinion_modifiers/00_activity_feast_opinions.txt" near line: 3
 
-  * decision
-  * triggers events (1870–1872)
-  * gives random rewards/stress
-* No real gathering of characters
+[20:18:31][E][jomini_script_system.cpp:303]: Script system error!
+  Error: change_variable effect [ Variable not of the 'value' scope type. Type: empty ]
+  Script location: file: events/xianxia_world_events.txt line: 331 (xianxia_world.1120:option)
 
-### Required Fix
+[20:18:31][E][jomini_script_system.cpp:303]: Script system error!
+  Error: add_gold effect [ Trying to add add_gold with negative value to ... ]
+  Script location: file: events/xianxia_world_events.txt line: 595 (xianxia_world.1330:option)
 
-Convert into FULL ACTIVITY system:
+[20:18:31][E][jomini_script_system.cpp:303]: Script system error!
+  Error: Failed to fetch a valid culture 'huxian'
+  Script location: file: common/decisions/99_ksmod_decision.txt line: 170 (ks_mod_gain_huxian_blood_decision:is_shown)
 
-CREATE:
+[20:18:32][E][jomini_script_system.cpp:303]: Script system error!
+  Error: enemy_side trigger [ Wrong scope for trigger: combat, expected combat_side ]
+  Script location: file: common/on_action/zzzz_xianxia_cultivator_battle_on_actions.txt line: 15 (on_combat_start)
 
-```
-common/activities/jianghu_grand_gathering_activity/activity_type.txt
-```
-
-Must include:
-
-* activity type
-* invited participants (cultivators, sect members, rivals)
-* phases:
-
-  * arrival
-  * sparring / duels
-  * exchanges
-  * climax event
-* outcomes tied to:
-
-  * prowess
-  * traits
-  * sect affiliation
-
-REMOVE:
-
-* reliance on event-only chain as primary system
-
-KEEP:
-
-* event chain only as flavor inside activity
-
----
-
-## 2. REBUILD DAO EXCHANGE AS ACTIVITY
-
-### Problem
-
-* Currently identical flaw as gathering
-* Uses feast logic + event wrapper
-
-### Required Fix
-
-* Create dedicated Dao Exchange activity
-* Focus on:
-
-  * learning
-  * philosophy alignment
-  * sect influence
-  * relationship shifts
-
----
-
-## 3. FIX JIANGHU LEADERBOARD
-
-### Problem
-
-* Uses:
-
-  * `jianghu_tourney_wins_total`
-* NOT actual strength
-
-### Required Fix
-
-SPLIT INTO TWO SYSTEMS:
-
-### A. Strength Ranking (NEW)
-
-* Based on:
-
-  * prowess (primary)
-  * cultivation traits (secondary weight)
-
-### B. Fame Ranking (KEEP)
-
-* Based on:
-
-  * tournaments
-  * gatherings
-  * achievements
-
-UPDATE:
-
-```
-xianxia_world.1890
-```
-
-REMOVE:
-
-* win-only ranking as "strongest"
-
----
-
-## 4. CLEAN INITIALIZATION SYSTEM
-
-### Problem
-
-* Initialization uses:
-
-  * `every_ruler`
-* Then patched by maintenance loops
-
-### Required Fix
-
-* Proper startup pass:
-
-  * assign cultivation
-  * assign sect roles
-  * assign fox states
-
-REDUCE:
-
-* reliance on monthly/yearly fixes
-
----
-
-## 5. REDUCE PULSE OVERUSE (PERFORMANCE + STABILITY)
-
-### Problem
-
-Too many:
-
-* `every_living_character` loops
-* monthly heavy passes
-
-### Required Fix
-
-MOVE LOGIC TO:
-
-* on_game_start
-* on_character_death
-* on_title_change
-* on_activity_complete
-
-KEEP monthly ONLY for:
-
-* dynamic systems (e.g. rankings)
-
----
-
-## 6. SPIRIT VEIN / SACRED MOUNTAIN REWORK
-
-### Current State
-
-* Modifiers exist
-* Effects are generic
-
-### Required Fix
-
-MAKE THEM FEEL LIKE:
-
-* cultivation economy (spirit stones)
-
-### Add:
-
-* clear gold identity = spirit stones
-* winner/loser system:
-
-  * winner gains stacking income
-  * loser gets reduced income
-
-### Improve:
-
-* capital impact
-* sect territorial identity
-
----
-
-## 7. SECT SUCCESSION CRISIS (MAKE IT REAL)
-
-### Current State
-
-* Modifiers exist
-* Impact too weak
-
-### Required Fix
-
-CRISIS SHOULD:
-
-* heavily reduce opinion
-* increase faction pressure
-* risk rebellion
-* disrupt capital economy
-
-ADD:
-
-* stronger negative modifiers
-* chain escalation events
-
----
-
-## 8. FOX SPIRITS — CORE SYSTEM CONSOLIDATION
-
-### Decision: FOX IS CORE
-
-### Required Fix
-
-REMOVE split logic between:
-
-* main mod
-* compatch
-
-### Core mod must contain:
-
-* awakening
-* possession
-* lineage inheritance
-* AI behavior
-* social reaction system
-
-### Compatch should ONLY contain:
-
-* compatibility tweaks
-* optional flavor
-* visual/asset support
-
-### Additional Improvements
-
-* strengthen:
-
-  * possession gameplay
-  * social consequences
-  * sect reactions
-* ensure:
-
-  * fox systems integrate with:
-
-    * sects
-    * rankings
-    * activities
-
----
-
-## 9. DECISION SYSTEM CLEANUP
-
-### Problem
-
-Too many shallow decisions
-
-### Required Fix
-
-For EACH decision:
-
-* classify:
-
-  * keep simple
-  * expand chain
-  * convert to interaction
-  * convert to activity
-
-DO NOT:
-
-* leave systems as one-click reward generators
-
----
-
-## 10. MAGIC TREASURE SYSTEM (EXPAND, DON'T REBUILD)
-
-### Status
-
-* One of the strongest systems
-
-### Keep:
-
-* crafting effect system
-* artifact pool
-* tier scaling
-
-### Improve:
-
-* acquisition sources
-* world integration
-* rivalries over artifacts
-
----
-
-## 11. DOCUMENTATION + STRUCTURE FIX
-
-### Problem
-
-* changelog contains:
-
-  * duplicate sections
-  * false “completed” systems
-  * mirror confusion
-
-### Required Fix
-
-* Runtime is source of truth
-* Update mirrors AFTER runtime fixes
-* Remove misleading completion notes
-
----
-
-# FINAL PRIORITY ORDER
-
-1. Grand Gathering → real activity
-2. Dao Exchange → real activity
-3. Leaderboard split (prowess vs fame)
-4. Initialization cleanup
-5. Reduce pulse overuse
-6. Spirit vein economy pass
-7. Sect crisis strengthening
-8. Fox system consolidation
-9. Decision system cleanup
-10. Documentation correction
-
----
-
-# DESIGN TARGET
-
-The mod should feel like:
-
-* a living cultivation world
-* not a menu of decisions
-
-If a system does not:
-
-* involve other characters
-* create persistent state
-* affect the world
-
-→ it is not finished
+[20:18:32][E][jomini_script_system.cpp:303]: Script system error!
+  Error: remove_manual_participant effect [ Scoped object is not valid. Type: (no situation) weak (Situation - 4294967295)! ]
+  Script location: file: common/on_action/title_on_actions.txt line: 3582 (on_title_lost)

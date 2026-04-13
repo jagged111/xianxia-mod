@@ -16,6 +16,7 @@
 		scope:host = {
 			is_alive = yes
 			is_capable_adult = yes
+			NOT = { is_incapable = yes }
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes

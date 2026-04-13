@@ -1,4 +1,4 @@
-namespace = xianxia_cultivator_battle
+﻿namespace = xianxia_cultivator_battle
 
 # Root = designated champion commander. Duel target stored in var:xianxia_duel_target.
 xianxia_cultivator_battle.0001 = {
@@ -38,7 +38,7 @@ xianxia_cultivator_battle.0002 = {
                     25 = {
                         if = {
                             limit = { exists = root.liege }
-                            root.liege = { imprison = prev }
+                            root.liege = { imprison = { target = prev } }
                         }
                         else = { add_trait = wounded_2 }
                     }

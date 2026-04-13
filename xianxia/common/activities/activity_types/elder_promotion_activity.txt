@@ -1,4 +1,4 @@
-activity_sect_examination = {
+﻿activity_elder_promotion = {
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -6,7 +6,7 @@ activity_sect_examination = {
 	}
 
 	can_start_showing_failures_only = {
-		NOT = { is_activity_type_on_cooldown = activity_sect_examination }
+		NOT = { is_activity_type_on_cooldown = activity_elder_promotion }
 		is_available_adult = yes
 		is_landed = yes
 		is_cultivator = yes
@@ -19,8 +19,18 @@ activity_sect_examination = {
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes
+				any_courtier = {
+					is_alive = yes
+					is_adult = yes
+					OR = {
+						has_character_modifier = inner_court_disciple
+						has_trait = sect_disciple
+					}
+					has_elder_eligible_realm = yes
+					NOT = { has_trait = sect_elder }
+				}
+			}
 		}
-	}
 
 	on_invalidated = {
 		invalidation_imprisoned_effect = yes
@@ -32,44 +42,44 @@ activity_sect_examination = {
 	max_province_icons = 1
 	allow_zero_guest_invites = yes
 	open_invite = no
-	cooldown = { years = 4 }
+	cooldown = { years = 12 }
 
 	can_be_activity_guest = {
 		is_alive = yes
 		is_adult = yes
-		NOT = { is_ruler = yes }
+		is_cultivator = yes
 	}
 
 	phases = {
-		sect_examination_phase_arrival = {
+		elder_promotion_phase_nominations = {
 			is_predefined = yes
 			location_source = pickable
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7300
+					trigger_event = xianxia_activity.7500
+					scope:activity = { progress_activity_phase_after = { days = 12 } }
+				}
+			}
+		}
+
+		elder_promotion_phase_assessment = {
+			is_predefined = yes
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = xianxia_activity.7510
 					scope:activity = { progress_activity_phase_after = { days = 10 } }
 				}
 			}
 		}
 
-		sect_examination_phase_assessment = {
+		elder_promotion_phase_enthronement = {
 			is_predefined = yes
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7310
-					scope:activity = { progress_activity_phase_after = { days = 8 } }
-				}
-			}
-		}
-
-		sect_examination_phase_recruitment = {
-			is_predefined = yes
-			on_phase_active = {
-				if = {
-					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7320
+					trigger_event = xianxia_activity.7520
 				}
 			}
 		}

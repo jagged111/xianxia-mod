@@ -57,7 +57,11 @@ xianxia_force_sect_submission_cb = {
 	on_defeat_desc = xianxia_force_sect_submission_defeat_desc
 	on_white_peace_desc = xianxia_force_sect_submission_white_peace_desc
 	on_victory = {
-		scope:defender = { add_character_modifier = { modifier = high_realm_suppressed_vassal days = 3650 } add_opinion = { target = scope:attacker modifier = opinion_high_realm_submission years = 20 } }
+		scope:defender = {
+			add_character_modifier = { modifier = high_realm_suppressed_vassal days = 3650 }
+			add_opinion = { target = scope:attacker modifier = opinion_high_realm_submission years = 20 }
+			becomes_tributary = scope:attacker
+		}
 		scope:attacker = { add_character_modifier = { modifier = high_realm_mandate_presence days = 1825 } add_prestige = 180 }
 		add_truce_attacker_victory_effect = yes
 	}
@@ -238,7 +242,7 @@ xianxia_force_recruit_talented_meridians_cb = {
 		}
 		if = {
 			limit = { exists = scope:force_recruit_meridian_target }
-			scope:attacker = { imprison = scope:force_recruit_meridian_target add_prestige = 80 }
+			scope:attacker = { imprison = { target = scope:force_recruit_meridian_target } add_prestige = 80 }
 			scope:force_recruit_meridian_target = {
 				add_opinion = { target = scope:attacker modifier = imprisoned_me years = 20 }
 			}

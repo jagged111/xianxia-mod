@@ -473,7 +473,7 @@ sect_signature_demonic_hidden = {
 
 sect_signature_unorthodox_hidden = {
         intrigue = 1
-    hostile_scheme_resistance_add = -6
+    hostile_scheme_resistance = -6
     health = -0.1
 }
 

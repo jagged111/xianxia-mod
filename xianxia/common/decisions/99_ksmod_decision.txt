@@ -167,10 +167,7 @@ ks_mod_gain_huxian_blood_decision = {
 	is_shown = {
 		#is_playable_character = yes
 		is_physically_able_adult = yes
-		OR = {
-		culture = culture:huxian
-		culture = {has_cultural_tradition=tradition_ks_huxian}
-		}
+		culture = { has_cultural_tradition = tradition_ks_huxian }
 		NOT = { has_trait = huxian_blood }
 		NOT = {
 			has_character_flag = gained_huxian_blood_this_lifetime

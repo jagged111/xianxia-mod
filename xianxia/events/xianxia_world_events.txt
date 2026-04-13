@@ -1444,6 +1444,24 @@ xianxia_world.1891 = {
     title = xianxia_world.1891.t
     desc = xianxia_world.1891.desc
 
+    immediate = {
+        if = {
+            limit = {
+                any_living_character = {
+                    is_alive = yes
+                    highest_prowess = yes
+                }
+            }
+            random_living_character = {
+                limit = {
+                    is_alive = yes
+                    highest_prowess = yes
+                }
+                save_scope_as = jianghu_strongest_living_character
+            }
+        }
+    }
+
     option = {
         name = xianxia_world.1891.a
     }

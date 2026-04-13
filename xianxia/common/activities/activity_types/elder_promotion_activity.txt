@@ -1,4 +1,4 @@
-activity_elder_promotion = {
+﻿activity_elder_promotion = {
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -16,21 +16,22 @@ activity_elder_promotion = {
 		scope:host = {
 			is_alive = yes
 			is_capable_adult = yes
+			NOT = { is_incapable = yes }
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes
-				any_courtier = {
-					is_alive = yes
-					is_adult = yes
-					OR = {
-						has_character_modifier = inner_court_disciple
-						has_trait = sect_disciple
-					}
-					has_elder_eligible_realm = yes
-					NOT = { has_trait = sect_elder }
-				}
-			}
 		}
+		any_courtier = {
+			is_alive = yes
+			is_adult = yes
+			OR = {
+				has_character_modifier = inner_court_disciple
+				has_trait = sect_disciple
+			}
+			has_elder_eligible_realm = yes
+			NOT = { has_trait = sect_elder }
+		}
+	}
 
 	on_invalidated = {
 		invalidation_imprisoned_effect = yes

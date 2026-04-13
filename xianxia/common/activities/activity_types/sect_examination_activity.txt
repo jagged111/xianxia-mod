@@ -1,4 +1,4 @@
-activity_sect_examination = {
+﻿activity_sect_examination = {
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -16,6 +16,7 @@ activity_sect_examination = {
 		scope:host = {
 			is_alive = yes
 			is_capable_adult = yes
+			NOT = { is_incapable = yes }
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes

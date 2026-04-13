@@ -1,4 +1,4 @@
-activity_inner_court_promotion = {
+﻿activity_inner_court_promotion = {
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -16,18 +16,19 @@ activity_inner_court_promotion = {
 		scope:host = {
 			is_alive = yes
 			is_capable_adult = yes
+			NOT = { is_incapable = yes }
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes
-			any_courtier = {
-				is_alive = yes
-				is_adult = yes
-				has_trait = sect_disciple
-				OR = {
-					has_trait = good_meridians
-					has_trait = excellent_meridians
-					has_trait = heavenly_meridians
-				}
+		}
+		any_courtier = {
+			is_alive = yes
+			is_adult = yes
+			has_trait = sect_disciple
+			OR = {
+				has_trait = good_meridians
+				has_trait = excellent_meridians
+				has_trait = heavenly_meridians
 			}
 		}
 	}

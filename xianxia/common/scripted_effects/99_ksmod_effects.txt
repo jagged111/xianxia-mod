@@ -255,9 +255,7 @@ ks_challenge_to_2p_bed_interaction_game_type_effect = {
 		if = {
 			limit = {
 				OR={
-					culture = culture:huxian
-					culture = { has_cultural_tradition=tradition_ks_huxian }
-					has_trait=huxian_blood
+					has_trait = huxian_blood
 					has_trait=huxian_cultivation
 				}
 			}
@@ -880,8 +878,6 @@ ks_perk_interaction_0122_apply_effects_effect = {
 			if = {
 				limit = { 
 					OR={ #如果单纯是人永远得不到奖励
-						culture = culture:huxian
-						culture = { has_cultural_tradition=tradition_ks_huxian }
 						has_trait = huxian_blood
 						has_trait = huxian_cultivation
 					}
@@ -918,8 +914,6 @@ ks_perk_interaction_0122_apply_effects_effect = {
 			if = {
 				limit = { 
 					OR={
-						culture = culture:huxian
-						culture = { has_cultural_tradition=tradition_ks_huxian }
 						has_trait = huxian_blood
 						has_trait = huxian_cultivation
 					}
@@ -960,4 +954,3 @@ ks_perk_interaction_0122_apply_effects_effect = {
 		}
 	}
 }
-

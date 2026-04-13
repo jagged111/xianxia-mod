@@ -4,8 +4,6 @@
 		highest_held_title_tier > tier_barony
 		is_playable_character = yes
 		OR={
-			culture = culture:huxian
-			culture = { has_cultural_tradition=tradition_ks_huxian }
 			has_trait = huxian_blood
 			has_trait = huxian_cultivation
 		}
@@ -15,7 +13,7 @@
 			}
 			is_adult = yes
 			is_at_war = no
-			gold >= 1000#funeral_activity_cost
+			gold >= 500
 			#They should not always do this
 			NOT = { has_variable = conqueror }
 			trigger_if = { # Throttle Counts
@@ -39,14 +37,13 @@
 	can_start_showing_failures_only = {
 		NOT = { is_activity_type_on_cooldown = activity_ks_cultivation }
 		is_available_adult = yes
-		custom_tooltip = {
-			text = REASON_NOT_A_REAL_HUXIAN
-			OR={
-					culture = { has_cultural_tradition=tradition_ks_huxian }
-					culture = culture:huxian
+			custom_tooltip = {
+				text = REASON_NOT_A_REAL_HUXIAN
+				OR={
+					has_trait = huxian_blood
 					has_trait = huxian_cultivation
+				}
 			}
-		}
 		#trigger_if = {
 		#	limit = {
 		#		is_ai = no
@@ -54,9 +51,8 @@
 		#	custom_tooltip = {
 		#		text = REASON_NOT_A_REAL_HUXIAN
 		#		NOR={
-		#			culture = { has_cultural_tradition=tradition_ks_huxian }
-		#			culture = culture:huxian
-		#			has_trait = huxian_cultivation
+		#			has_trait = huxian_blood
+		#					#			has_trait = huxian_cultivation
 		#		}
 		#	}
 		#}
@@ -64,12 +60,11 @@
 	}
 
 	is_valid = {
-		scope:host = {
-			OR={
-				culture = { has_cultural_tradition=tradition_ks_huxian }
-				culture = culture:huxian
-				has_trait = huxian_cultivation
-			}
+			scope:host = {
+				OR={
+					has_trait = huxian_blood
+					has_trait = huxian_cultivation
+				}
 			#Getting imprisoned will invalidate
 			is_imprisoned = no
 			#Getting unlanded will invalidate
@@ -331,13 +326,13 @@
 	cost = {
 		gold = {
 			add = {
-				value = funeral_activity_cost
+				value = 500
 				desc = ks_cultivation_base_cost
 			}
 			add = {
-				value = funeral_activity_cost
+				value = 500
 				multiply = activity_cost_scale_by_era
-				subtract = funeral_activity_cost
+				subtract = 500
 				desc = activity_cost_scale_by_era_desc
 			}
 		}
@@ -346,7 +341,7 @@
 	ui_predicted_cost = {
 		gold = {
 			add = { # Base Cost, scaled by era
-				value = funeral_activity_cost
+				value = 500
 				multiply = activity_cost_scale_by_era
 			}
 			
@@ -860,7 +855,7 @@
 	background = { #forest snowy
 		trigger = {
 			scope:host.location != scope:activity.activity_location
-			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
+			scope:host.location = { graphical_wilderness_forest_trigger = yes }
 		}
 		texture = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
 		environment = "environment_hunt_snowy_forest"

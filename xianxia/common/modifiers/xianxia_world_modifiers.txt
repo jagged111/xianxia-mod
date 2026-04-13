@@ -281,6 +281,13 @@ demonic_alliance_leader = {
     monthly_lifestyle_xp_gain_mult = 0.12
 }
 
+unorthodox_alliance_leader = {
+    same_faith_opinion = 20
+    monthly_prestige = 0.5
+    intrigue = 2
+    monthly_lifestyle_xp_gain_mult = 0.12
+}
+
 martial_alliance_leader = {
     monthly_prestige = 0.4
     diplomacy = 3
@@ -305,7 +312,7 @@ legendary_artifact_finder = {
     monthly_prestige = 0.4
     monthly_piety = 0.3
     monthly_lifestyle_xp_gain_mult = 0.1
-    hostile_scheme_resistance_add = 12
+    hostile_scheme_resistance = 12
 }
 
 legendary_artifact_escape_wounds = {
@@ -325,7 +332,7 @@ alchemy_soul_clarity_pill = {
 }
 
 alchemy_tribulation_guard_pill = {
-    hostile_scheme_resistance_add = 10
+    hostile_scheme_resistance = 10
     health = 0.1
     monthly_piety = 0.2
 }
@@ -350,7 +357,7 @@ auction_profound_tier_find = {
 auction_heaven_tier_find = {
     monthly_prestige = 0.35
     monthly_piety = 0.2
-    hostile_scheme_resistance_add = 8
+    hostile_scheme_resistance = 8
 }
 
 auction_rival_resentment = {
@@ -439,7 +446,7 @@ sect_authority_low = {
 
 sect_elder_faction_pressure = {
     monthly_stress_gain_mult = 0.12
-    hostile_scheme_resistance_add = -10
+    hostile_scheme_resistance = -10
     tyranny_gain_mult = 0.1
 }
 
@@ -512,7 +519,7 @@ spirit_vein_contested = {
 
 corrupted_spirit_vein = {
     local_county_control_growth = -0.15
-    hostile_scheme_resistance_add = -8
+    hostile_scheme_resistance = -8
     county_opinion_add = -8
     monthly_development_growth = -0.06
 }
@@ -520,14 +527,14 @@ corrupted_spirit_vein = {
 high_realm_mandate_presence = {
     monthly_prestige = 0.3
     dread_gain_mult = 0.2
-    hostile_scheme_resistance_add = 12
+    hostile_scheme_resistance = 12
 }
 
 high_realm_suppressed_vassal = {
     martial = -1
     intrigue = -1
     monthly_stress_gain_mult = 0.1
-    hostile_scheme_resistance_add = -10
+    hostile_scheme_resistance = -10
 }
 
 high_realm_court_deference = {
@@ -545,7 +552,7 @@ sect_succession_crisis = {
 }
 
 sect_claimant_faction_pressure = {
-    hostile_scheme_resistance_add = -8
+    hostile_scheme_resistance = -8
     monthly_stress_gain_mult = 0.1
     levy_size = -0.05
 }

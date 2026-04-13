@@ -3,7 +3,12 @@
         limit = {
             is_landed = yes
             is_independent_ruler = yes
+            OR = {
+                highest_held_title_tier = tier_county
+                highest_held_title_tier = tier_duchy
+            }
             NOT = { has_trait = sect_leader }
+            NOT = { has_trait = sect_disciple }
         }
         add_trait = sect_leader
         remove_trait = sect_disciple

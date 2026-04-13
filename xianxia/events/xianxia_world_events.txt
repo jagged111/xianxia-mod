@@ -187,6 +187,7 @@ xianxia_world.1700 = {
             if = {
                 limit = {
                     NOT = { has_trait = sect_leader }
+                    NOT = { has_trait = sect_disciple }
                     NOT = { has_character_flag = sect_leader_deposed_from_challenge }
                 }
                 add_trait = sect_leader
@@ -1443,6 +1444,24 @@ xianxia_world.1891 = {
     type = character_event
     title = xianxia_world.1891.t
     desc = xianxia_world.1891.desc
+
+    immediate = {
+        if = {
+            limit = {
+                any_living_character = {
+                    is_alive = yes
+                    highest_prowess = yes
+                }
+            }
+            random_living_character = {
+                limit = {
+                    is_alive = yes
+                    highest_prowess = yes
+                }
+                save_scope_as = jianghu_strongest_living_character
+            }
+        }
+    }
 
     option = {
         name = xianxia_world.1891.a

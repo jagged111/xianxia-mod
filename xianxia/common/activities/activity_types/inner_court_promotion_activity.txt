@@ -1,4 +1,4 @@
-activity_elder_promotion = {
+﻿activity_inner_court_promotion = {
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -6,7 +6,7 @@ activity_elder_promotion = {
 	}
 
 	can_start_showing_failures_only = {
-		NOT = { is_activity_type_on_cooldown = activity_elder_promotion }
+		NOT = { is_activity_type_on_cooldown = activity_inner_court_promotion }
 		is_available_adult = yes
 		is_landed = yes
 		is_cultivator = yes
@@ -16,21 +16,22 @@ activity_elder_promotion = {
 		scope:host = {
 			is_alive = yes
 			is_capable_adult = yes
+			NOT = { is_incapable = yes }
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes
-				any_courtier = {
-					is_alive = yes
-					is_adult = yes
-					OR = {
-						has_character_modifier = inner_court_disciple
-						has_trait = sect_disciple
-					}
-					has_elder_eligible_realm = yes
-					NOT = { has_trait = sect_elder }
+			any_courtier = {
+				is_alive = yes
+				is_adult = yes
+				has_trait = sect_disciple
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
 				}
 			}
 		}
+	}
 
 	on_invalidated = {
 		invalidation_imprisoned_effect = yes
@@ -42,7 +43,7 @@ activity_elder_promotion = {
 	max_province_icons = 1
 	allow_zero_guest_invites = yes
 	open_invite = no
-	cooldown = { years = 12 }
+	cooldown = { years = 8 }
 
 	can_be_activity_guest = {
 		is_alive = yes
@@ -51,35 +52,35 @@ activity_elder_promotion = {
 	}
 
 	phases = {
-		elder_promotion_phase_nominations = {
+		inner_court_promotion_phase_review = {
 			is_predefined = yes
 			location_source = pickable
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7500
-					scope:activity = { progress_activity_phase_after = { days = 12 } }
-				}
-			}
-		}
-
-		elder_promotion_phase_assessment = {
-			is_predefined = yes
-			on_phase_active = {
-				if = {
-					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7510
+					trigger_event = xianxia_activity.7400
 					scope:activity = { progress_activity_phase_after = { days = 10 } }
 				}
 			}
 		}
 
-		elder_promotion_phase_enthronement = {
+		inner_court_promotion_phase_trials = {
 			is_predefined = yes
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = xianxia_activity.7520
+					trigger_event = xianxia_activity.7410
+					scope:activity = { progress_activity_phase_after = { days = 8 } }
+				}
+			}
+		}
+
+		inner_court_promotion_phase_investiture = {
+			is_predefined = yes
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = xianxia_activity.7420
 				}
 			}
 		}

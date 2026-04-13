@@ -1640,38 +1640,33 @@ cultivation_ai.2270 = {
     hidden = yes
 
     immediate = {
-        # If no eligible reincarnation holder remains, start global cooldown.
+        # Start the 200-year delay only after a previous reincarnator has died.
         if = {
             limit = {
-                any_living_character = {
-                    is_alive = yes
-                    has_character_flag = cultivation_reincarnation_holder
+                NOT = {
+                    any_living_character = {
+                        is_alive = yes
+                        has_character_flag = cultivation_reincarnation_holder
+                    }
+                }
+                any_character = {
+                    has_nickname = nick_the_reincarnator
                 }
                 NOT = {
                     any_living_character = {
                         is_alive = yes
-                        is_landed = yes
-                        has_character_flag = cultivation_reincarnation_holder
-                        OR = {
-                            highest_held_title_tier = tier_county
-                            highest_held_title_tier = tier_duchy
-                            highest_held_title_tier = tier_kingdom
-                            highest_held_title_tier = tier_empire
-                        }
+                        has_character_flag = cultivation_reincarnation_waiting_started
                     }
                 }
             }
             random_living_character = {
                 limit = { is_alive = yes }
+                add_character_flag = cultivation_reincarnation_waiting_started
                 add_character_flag = { flag = cultivation_reincarnation_cooldown_anchor days = 73000 }
-            }
-            every_living_character = {
-                limit = { has_character_flag = cultivation_reincarnation_holder }
-                remove_character_flag = cultivation_reincarnation_holder
             }
         }
 
-        # If no active holder and cooldown is over, roll a new reincarnated monster.
+        # Create one holder if none exists yet, or when the 200-year delay has fully elapsed.
         if = {
             limit = {
                 NOT = {
@@ -1680,10 +1675,23 @@ cultivation_ai.2270 = {
                         has_character_flag = cultivation_reincarnation_holder
                     }
                 }
-                NOT = {
-                    any_living_character = {
-                        is_alive = yes
-                        has_character_flag = cultivation_reincarnation_cooldown_anchor
+                OR = {
+                    NOT = {
+                        any_character = {
+                            has_nickname = nick_the_reincarnator
+                        }
+                    }
+                    AND = {
+                        any_living_character = {
+                            is_alive = yes
+                            has_character_flag = cultivation_reincarnation_waiting_started
+                        }
+                        NOT = {
+                            any_living_character = {
+                                is_alive = yes
+                                has_character_flag = cultivation_reincarnation_cooldown_anchor
+                            }
+                        }
                     }
                 }
             }
@@ -1703,6 +1711,25 @@ cultivation_ai.2270 = {
                     NOT = { has_trait = incapable }
                 }
                 save_scope_as = cultivation_reincarnation_candidate
+            }
+
+            if = {
+                limit = { NOT = { exists = scope:cultivation_reincarnation_candidate } }
+                random_ruler = {
+                    limit = {
+                        is_alive = yes
+                        is_adult = yes
+                        is_landed = yes
+                        OR = {
+                            highest_held_title_tier = tier_county
+                            highest_held_title_tier = tier_duchy
+                            highest_held_title_tier = tier_kingdom
+                            highest_held_title_tier = tier_empire
+                        }
+                        NOT = { has_trait = incapable }
+                    }
+                    save_scope_as = cultivation_reincarnation_candidate
+                }
             }
 
             if = {
@@ -1837,6 +1864,17 @@ cultivation_ai.2270 = {
                 }
                 add_character_flag = cultivation_reincarnation_holder
                 trigger_event = { id = cultivation_ai.2271 days = 1 }
+                }
+
+                every_living_character = {
+                    limit = {
+                        OR = {
+                            has_character_flag = cultivation_reincarnation_waiting_started
+                            has_character_flag = cultivation_reincarnation_cooldown_anchor
+                        }
+                    }
+                    remove_character_flag = cultivation_reincarnation_waiting_started
+                    remove_character_flag = cultivation_reincarnation_cooldown_anchor
                 }
             }
         }

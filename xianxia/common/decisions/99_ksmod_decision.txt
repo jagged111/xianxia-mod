@@ -81,17 +81,7 @@ convert_to_ks_huxian_culture_decision={
 	selection_tooltip = convert_to_ks_huxian_culture_decision_tooltip
 	
 	is_shown = {
-		is_playable_character = yes
-		NOT = { culture = culture:huxian }
-		NOT = { culture = { has_cultural_tradition=tradition_ks_huxian } }
-		has_trait=huxian_blood
-		NAND = {
-			is_ai = yes
-			OR = {
-				has_character_flag = converted_culture_this_lifetime
-				has_character_flag = converted_culture_this_lifetime_ai
-			}
-		}
+		always = no
 	}
 	
 	is_valid_showing_failures_only = {
@@ -135,10 +125,9 @@ convert_to_ks_huxian_culture_decision={
 			add_stress = major_stress_gain
 		}
 		
-		set_culture = culture:huxian
 		add_character_flag = {
-					flag = converted_culture_this_lifetime
-				}
+			flag = converted_culture_this_lifetime
+		}
 		hidden_effect = {
 			add_piety_level = -1
 		}
@@ -167,10 +156,6 @@ ks_mod_gain_huxian_blood_decision = {
 	is_shown = {
 		#is_playable_character = yes
 		is_physically_able_adult = yes
-		OR = {
-		culture = culture:huxian
-		culture = {has_cultural_tradition=tradition_ks_huxian}
-		}
 		NOT = { has_trait = huxian_blood }
 		NOT = {
 			has_character_flag = gained_huxian_blood_this_lifetime
@@ -214,8 +199,6 @@ ks_mod_weaken_effect_of_huxian_blood_decision = {
 		#is_playable_character = yes
 		is_physically_able_adult = yes
 		OR = {
-			culture = culture:huxian
-			culture = {has_cultural_tradition=tradition_ks_huxian}
 			has_trait = huxian_blood
 		}
 	}
@@ -227,8 +210,7 @@ ks_mod_weaken_effect_of_huxian_blood_decision = {
 			text = ks_must_be_human_like_fox_tt
 			OR = { 
 				NOR={ #你不是狐仙才可以，神职人员不会招待狐仙
-					culture = culture:huxian
-					culture = {has_cultural_tradition=tradition_ks_huxian}
+					has_trait = huxian_blood
 				}		
 				#你装得像人类，也行
 				has_character_flag = ks_human_like_fox

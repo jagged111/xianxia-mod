@@ -11,8 +11,7 @@ ks_challenge_to_2p_bed_interaction = {
 				trigger = {
 					scope:recipient={
 						OR={
-							culture = { has_cultural_tradition=tradition_ks_huxian }
-							has_trait=huxian_blood
+							has_trait = huxian_blood
 							has_trait=huxian_cultivation
 						}
 					}
@@ -24,8 +23,7 @@ ks_challenge_to_2p_bed_interaction = {
 				trigger = {
 					scope:recipient={
 						NOR={
-							culture = { has_cultural_tradition=tradition_ks_huxian }
-							has_trait=huxian_blood
+							has_trait = huxian_blood
 							has_trait=huxian_cultivation
 						}
 					}
@@ -396,7 +394,7 @@ ks_challenge_to_2p_bed_interaction = {
 		}
 		modifier = {
 			add = 20
-			scope:recipient = { culture = { has_cultural_tradition=tradition_ks_huxian } }
+			scope:recipient = { has_trait = huxian_blood }
 			always = scope:bedgame_friendly
 			desc = KS_BG_OPINION_FRIENDLY_HUXIANCULTURE
 		}
@@ -470,7 +468,7 @@ ks_challenge_to_2p_bed_interaction = {
 	}
 	## Performance-enhancement	
 	ai_potential = {
-		culture = { has_cultural_tradition=tradition_ks_huxian }
+		has_trait = huxian_blood
 		is_imprisoned = no
 	}
 	ai_target_quick_trigger = { adult = yes } # AI will only challenge adults
@@ -503,7 +501,7 @@ ks_challenge_to_2p_bed_interaction = {
 		opinion_modifier = {
 			opinion_target = scope:recipient
 			trigger = {
-				NOT = {	culture = { has_cultural_tradition=tradition_ks_huxian }	}
+				NOT = {	has_trait = huxian_blood	}
 			}
 		}
 
@@ -511,7 +509,7 @@ ks_challenge_to_2p_bed_interaction = {
 		opinion_modifier = {
 			opinion_target = scope:recipient
 			trigger = { 
-				culture = { has_cultural_tradition=tradition_ks_huxian }
+				has_trait = huxian_blood
 				opinion = {
 					target = scope:recipient
 					value < 0
@@ -525,7 +523,7 @@ ks_challenge_to_2p_bed_interaction = {
 		opinion_modifier = {
 			opinion_target = scope:recipient
 			trigger = {
-				culture = { has_cultural_tradition=tradition_ks_huxian }
+				has_trait = huxian_blood
 				opinion = {
 					target = scope:recipient
 					value > 0
@@ -538,7 +536,7 @@ ks_challenge_to_2p_bed_interaction = {
 			add = 50
 			scope:actor = {
 				has_relation_rival = scope:recipient
-				culture = { has_cultural_tradition=tradition_ks_huxian }
+				has_trait = huxian_blood
 			}
 		}
 
@@ -576,4 +574,3 @@ ks_challenge_to_2p_bed_interaction = {
 		}
 	}
 }
-

@@ -384,3 +384,57 @@ If a system does not:
 * affect the world
 
 → it is not finished
+
+---
+
+## IMPLEMENTED CORRECTIONS LOG (APRIL 2026)
+
+This section records what was actually corrected in code so maintenance and QA can verify quickly.
+
+### Activity architecture corrections
+- Removed wrongly-created activity decisions and kept these systems as proper activities:
+  - `sect_examination_activity`
+  - `inner_court_promotion_activity`
+  - `elder_promotion_activity`
+- Activity type definitions are now under:
+  - `xianxia/common/activities/activity_types/sect_examination_activity.txt`
+  - `xianxia/common/activities/activity_types/inner_court_promotion_activity.txt`
+  - `xianxia/common/activities/activity_types/elder_promotion_activity.txt`
+- Validation fixes applied:
+  - Added/standardized incapable host checks.
+  - Corrected `is_valid` scope usage by keeping host checks under `scope:host` and moving candidate `any_courtier` checks to valid scope positions.
+
+### Decision and world-system corrections
+- `view_jianghu_strongest_leaderboard_decision` path corrected to resolve a **living** strongest character target (`highest_prowess = yes`) for display/event flow.
+- `purge_dissenting_elders_decision` and `enforce_high_realm_submission_decision` were strengthened to reduce realm faction pressure for longer durations (rebellion delay intent).
+- Removed activity-style content from decision layer where applicable to enforce activity-first architecture.
+
+### Lottery / reincarnator corrections
+- Lottery logic flow updated so exactly one valid ruler can be selected and granted:
+  - `true_immortal` trait
+  - reincarnator nickname
+- Selection path now requires valid ruler scope before applying outcomes.
+
+### Casus belli and battle-script corrections
+- `xianxia_force_sect_submission_cb` victory flow restored to tributary result (`becomes_tributary = scope:attacker`).
+- Fixed invalid `imprison` effect syntax in:
+  - `xianxia/common/casus_belli_types/xianxia_cb_types.txt`
+  - `xianxia/events/xianxia_cultivator_battle_events.txt`
+
+### Script-compatibility and parser-error corrections
+- Replaced deprecated modifier key usage:
+  - `hostile_scheme_resistance_add` -> `hostile_scheme_resistance`
+- Cleaned invalid direct huxian culture references causing parser/runtime spam.
+- In `ks_cultivation`:
+  - replaced undefined `funeral_activity_cost` references with concrete values,
+  - removed/adjusted problematic trigger references that could fail in parser/runtime.
+
+### File placement and maintenance policy reinforcement
+- Activity definitions remain in `xianxia/common/activities/activity_types/`.
+- Event files remain in `xianxia/events/activities/` when activity-driven.
+- No new activity systems should be introduced as decisions.
+
+### HOTFIX: huxian culture reference removal
+- Removed script-side usage of `culture:huxian` and `has_cultural_tradition = tradition_ks_huxian` from activity/decision/interaction/scripted files.
+- Replaced those checks with trait-based fox-spirit gates (`huxian_blood` / `huxian_cultivation`) where needed.
+- Disabled culture-conversion pathway from setting a huxian culture and removed the unused huxian tradition definition body.

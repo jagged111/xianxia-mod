@@ -298,11 +298,13 @@ xianxia_sect_conflict.0220 = {
         add_dynasty_prestige = 150
         trigger_event = xianxia_sect_succession.0100
 
-        remove_trait = sect_disciple
         remove_trait = sect_inner_hall_elder
         remove_trait = sect_outer_hall_elder
         remove_trait = sect_enforcement_elder
-        add_trait = sect_leader
+        if = {
+            limit = { NOT = { has_trait = sect_disciple } }
+            add_trait = sect_leader
+        }
 
         if = {
             limit = { exists = scope:sect_leader_target }

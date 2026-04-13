@@ -35,13 +35,11 @@ xianxia_pick_sect_successor_effect = {
                 has_trait = sect_inner_hall_elder
                 has_trait = sect_outer_hall_elder
                 has_trait = sect_enforcement_elder
-                has_trait = sect_disciple
             }
         }
         remove_trait = sect_inner_hall_elder
         remove_trait = sect_outer_hall_elder
         remove_trait = sect_enforcement_elder
-        remove_trait = sect_disciple
         add_trait = sect_leader
         add_character_modifier = { modifier = sect_emergency_regent days = 1825 }
     }

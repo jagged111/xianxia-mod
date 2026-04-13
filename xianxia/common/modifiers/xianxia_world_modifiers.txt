@@ -281,6 +281,13 @@ demonic_alliance_leader = {
     monthly_lifestyle_xp_gain_mult = 0.12
 }
 
+unorthodox_alliance_leader = {
+    same_faith_opinion = 20
+    monthly_prestige = 0.5
+    intrigue = 2
+    monthly_lifestyle_xp_gain_mult = 0.12
+}
+
 martial_alliance_leader = {
     monthly_prestige = 0.4
     diplomacy = 3

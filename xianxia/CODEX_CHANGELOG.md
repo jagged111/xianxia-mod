@@ -433,3 +433,19 @@ This section records what was actually corrected in code so maintenance and QA c
 - Activity definitions remain in `xianxia/common/activities/activity_types/`.
 - Event files remain in `xianxia/events/activities/` when activity-driven.
 - No new activity systems should be introduced as decisions.
+
+### HOTFIX: huxian culture reference removal
+- Removed script-side usage of `culture:huxian` and `has_cultural_tradition = tradition_ks_huxian` from activity/decision/interaction/scripted files.
+- Replaced those checks with trait-based fox-spirit gates (`huxian_blood` / `huxian_cultivation`) where needed.
+- Disabled culture-conversion pathway from setting a huxian culture and removed the unused huxian tradition definition body.
+
+### HOTFIX: sect tier gating + reincarnator succession timer
+- `xianxia_assign_sect_hierarchy_effect` now only assigns sect hierarchy to independent rulers at county/duchy tier.
+- Reincarnator lottery now enforces one living holder at a time and starts a 200-year wait only after the previous reincarnator has died.
+- New reincarnator selection prefers ambitious landed rulers; if none exist, it falls back to any landed ruler.
+
+### HOTFIX: sect-leader gating + real confederation decisions
+- Sect governance decisions now require `sect_leader` for landed rulers (including council/hegemon/alliance decisions).
+- Added real confederation formation (`create_confederation = yes`) for martial/orthodox/demonic alliances.
+- Added `proclaim_unorthodox_alliance_leader_decision` with matching confederation behavior and leader modifier.
+- Sect-leader assignment paths now block promotion when the character currently has `sect_disciple`.

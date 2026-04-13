@@ -189,11 +189,13 @@ convene_sect_council_decision = {
     is_shown = {
         is_adult = yes
         is_landed = yes
+        has_trait = sect_leader
         is_cultivator = yes
         has_cultivation_sect_faith = yes
     }
 
     is_valid = {
+        has_trait = sect_leader
         NOT = { has_character_flag = sect_council_cooldown }
     }
 
@@ -472,10 +474,12 @@ proclaim_great_sect_hegemon_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        has_trait = sect_leader
         has_cultivation_sect_faith = yes
     }
 
     is_valid = {
+        has_trait = sect_leader
         realm_size >= 40
         NOT = { has_character_modifier = sect_hegemon_mandate }
     }
@@ -504,18 +508,24 @@ found_martial_confederation_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        has_trait = sect_leader
         has_cultivation_sect_faith = yes
+        NOT = { highest_held_title_tier = tier_empire }
     }
 
     is_valid = {
+        has_trait = sect_leader
         realm_size >= 35
         NOT = { has_character_modifier = martial_confederation_founder }
+        NOT = { has_character_flag = martial_confederation_organizer_cooldown }
+        NOT = { has_character_flag = martial_confederation_member_cooldown }
     }
 
     effect = {
+        create_confederation = yes
         add_character_modifier = { modifier = martial_confederation_founder days = -1 }
-        cultivation_form_path_confederation_pacts_effect = yes
         add_character_flag = { flag = martial_confederation_organizer_cooldown days = 1825 }
+        add_character_flag = { flag = martial_confederation_member_cooldown days = 1825 }
         add_prestige = 600
     }
 
@@ -538,17 +548,22 @@ proclaim_orthodox_alliance_leader_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        has_trait = sect_leader
+        NOT = { highest_held_title_tier = tier_empire }
         faith = { has_doctrine_parameter = orthodox_cultivation }
     }
 
     is_valid = {
+        has_trait = sect_leader
         realm_size >= 55
         NOT = { has_character_modifier = orthodox_alliance_leader }
+        NOT = { has_character_flag = orthodox_alliance_leader_cooldown }
     }
 
     effect = {
+        create_confederation = yes
         add_character_modifier = { modifier = orthodox_alliance_leader days = -1 }
-        cultivation_form_path_confederation_pacts_effect = yes
+        add_character_flag = { flag = orthodox_alliance_leader_cooldown days = 3650 }
         add_prestige = 1000
     }
 
@@ -570,19 +585,61 @@ proclaim_demonic_alliance_leader_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        has_trait = sect_leader
+        NOT = { highest_held_title_tier = tier_empire }
         faith = { has_doctrine_parameter = demonic_cultivation }
     }
 
     is_valid = {
+        has_trait = sect_leader
         realm_size >= 55
         NOT = { has_character_modifier = demonic_alliance_leader }
+        NOT = { has_character_flag = demonic_alliance_leader_cooldown }
     }
 
     effect = {
+        create_confederation = yes
         add_character_modifier = { modifier = demonic_alliance_leader days = -1 }
-        cultivation_form_path_confederation_pacts_effect = yes
+        add_character_flag = { flag = demonic_alliance_leader_cooldown days = 3650 }
         add_prestige = 1000
         add_dread = 20
+    }
+
+    ai_check_interval = 36
+    ai_will_do = { base = 16 }
+}
+
+proclaim_unorthodox_alliance_leader_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_torture_prisoner.dds" }
+    decision_group_type = major
+    sort_order = 535
+
+    title = proclaim_unorthodox_alliance_leader_decision
+    desc = proclaim_unorthodox_alliance_leader_decision_desc
+    selection_tooltip = proclaim_unorthodox_alliance_leader_decision_tooltip
+    confirm_text = proclaim_unorthodox_alliance_leader_decision_confirm
+
+    is_shown = {
+        is_adult = yes
+        is_landed = yes
+        is_independent_ruler = yes
+        has_trait = sect_leader
+        NOT = { highest_held_title_tier = tier_empire }
+        faith = { has_doctrine_parameter = unorthodox_cultivation }
+    }
+
+    is_valid = {
+        has_trait = sect_leader
+        realm_size >= 55
+        NOT = { has_character_modifier = unorthodox_alliance_leader }
+        NOT = { has_character_flag = unorthodox_alliance_leader_cooldown }
+    }
+
+    effect = {
+        create_confederation = yes
+        add_character_modifier = { modifier = unorthodox_alliance_leader days = -1 }
+        add_character_flag = { flag = unorthodox_alliance_leader_cooldown days = 3650 }
+        add_prestige = 1000
     }
 
     ai_check_interval = 36
@@ -603,10 +660,12 @@ convene_martial_alliance_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        has_trait = sect_leader
         has_cultivation_sect_faith = yes
     }
 
     is_valid = {
+        has_trait = sect_leader
         realm_size >= 45
         NOT = { has_character_modifier = martial_alliance_leader }
     }

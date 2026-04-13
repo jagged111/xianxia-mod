@@ -4,7 +4,6 @@
 		highest_held_title_tier > tier_barony
 		is_playable_character = yes
 		OR={
-						culture = { has_cultural_tradition = tradition_ks_huxian }
 			has_trait = huxian_blood
 			has_trait = huxian_cultivation
 		}
@@ -41,7 +40,6 @@
 			custom_tooltip = {
 				text = REASON_NOT_A_REAL_HUXIAN
 				OR={
-						culture = { has_cultural_tradition = tradition_ks_huxian }
 					has_trait = huxian_blood
 					has_trait = huxian_cultivation
 				}
@@ -53,7 +51,7 @@
 		#	custom_tooltip = {
 		#		text = REASON_NOT_A_REAL_HUXIAN
 		#		NOR={
-		#			culture = { has_cultural_tradition = tradition_ks_huxian }
+		#			has_trait = huxian_blood
 		#					#			has_trait = huxian_cultivation
 		#		}
 		#	}
@@ -64,7 +62,6 @@
 	is_valid = {
 			scope:host = {
 				OR={
-					culture = { has_cultural_tradition = tradition_ks_huxian }
 					has_trait = huxian_blood
 					has_trait = huxian_cultivation
 				}

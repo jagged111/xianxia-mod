@@ -187,6 +187,7 @@ xianxia_world.1700 = {
             if = {
                 limit = {
                     NOT = { has_trait = sect_leader }
+                    NOT = { has_trait = sect_disciple }
                     NOT = { has_character_flag = sect_leader_deposed_from_challenge }
                 }
                 add_trait = sect_leader

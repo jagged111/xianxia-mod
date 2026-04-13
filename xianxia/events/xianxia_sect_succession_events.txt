@@ -79,6 +79,7 @@ xianxia_sect_succession.0020 = {
                 is_alive = yes
                 is_adult = yes
                 is_cultivator = yes
+                NOT = { has_trait = sect_disciple }
                 faith = root.faith
                 OR = {
                     has_trait = sect_inner_hall_elder

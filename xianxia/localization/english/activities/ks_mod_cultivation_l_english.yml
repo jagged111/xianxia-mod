@@ -2,7 +2,7 @@
  activity_ks_cultivation: "Fox Spirit Cultivation"
  activity_ks_cultivation_success: "Cultivation Experience"
  activity_ks_cultivation_cooldown: "You must wait at least 8 years before starting cultivation again!"
- REASON_NOT_A_REAL_HUXIAN: "You are not part of the Fox Spirit culture and are not qualified for cultivation!"
+ REASON_NOT_A_REAL_HUXIAN: "Only those with Fox Spirit bloodline resonance can enter this cultivation."
  activity_ks_cultivation_temple: "#P +Temple#!\n"
  activity_ks_cultivation_holy_site: "#P ++Holy Site#!\n"
  activity_ks_cultivation_desc_terrain_good: "#P +Mountains and Dense Forest#!\n"

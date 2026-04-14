@@ -1,4 +1,5 @@
 ﻿activity_sect_examination = {
+	name = "activity_sect_examination"
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -49,7 +50,9 @@
 				if = {
 					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7300
-					scope:activity = { progress_activity_phase_after = { days = 10 } }
+					scope:activity = {
+						progress_activity_phase_after = { days = 10 }
+					}
 				}
 			}
 		}
@@ -60,7 +63,9 @@
 				if = {
 					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7310
-					scope:activity = { progress_activity_phase_after = { days = 8 } }
+					scope:activity = {
+						progress_activity_phase_after = { days = 8 }
+					}
 				}
 			}
 		}

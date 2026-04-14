@@ -1,4 +1,5 @@
 ﻿activity_inner_court_promotion = {
+	name = "activity_inner_court_promotion"
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
@@ -59,7 +60,9 @@
 				if = {
 					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7400
-					scope:activity = { progress_activity_phase_after = { days = 10 } }
+					scope:activity = {
+						progress_activity_phase_after = { days = 10 }
+					}
 				}
 			}
 		}
@@ -70,7 +73,9 @@
 				if = {
 					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7410
-					scope:activity = { progress_activity_phase_after = { days = 8 } }
+					scope:activity = {
+						progress_activity_phase_after = { days = 8 }
+					}
 				}
 			}
 		}

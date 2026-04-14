@@ -145,47 +145,6 @@ convert_to_ks_huxian_culture_decision={
 
 }
 
-ks_mod_gain_huxian_blood_decision = {
-	
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-	}
-	desc = ks_mod_gain_huxian_blood_decision_desc
-	selection_tooltip = ks_mod_gain_huxian_blood_decision_tooltip
-
-	is_shown = {
-		#is_playable_character = yes
-		is_physically_able_adult = yes
-		NOT = { has_trait = huxian_blood }
-		NOT = {
-			has_character_flag = gained_huxian_blood_this_lifetime
-		}
-	}
-
-	cost = {
-		piety = 100
-	}
-
-	effect = {
-		add_trait = huxian_blood
-		add_prestige = 100
-		add_character_flag = gained_huxian_blood_this_lifetime
-
-		custom_tooltip = ks_mod_gain_huxian_blood_decision_tt
-	}
-
-	ai_check_interval = 12
-
-	ai_potential = {
-		always = yes
-	}
-	
-	ai_will_do = {
-		base = 100		
-	}	
-	
-}
-
 ks_mod_weaken_effect_of_huxian_blood_decision = {
 	ai_check_interval = 0
 	sort_order = 1

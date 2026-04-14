@@ -1041,3 +1041,50 @@ xianxia_world.2261.a:0 "Let fear feed my path."
  xianxia_force_recruit_talented_meridians_white_peace_desc:0 "[GetCurrentWar.GetName] ends without forcing recruitment."
  XIANXIA_FORCE_RECRUIT_TALENTED_MERIDIANS_WAR_NAME:0 "Force Recruitment of Talented Meridian"
  XIANXIA_FORCE_RECRUIT_TALENTED_MERIDIANS_WAR_NAME_BASE:0 "Talented Meridian Recruitment War"
+
+ sect_examination_decision:0 "Hold Sect Examination"
+ sect_examination_decision_desc:0 "Open your mountain gates and examine promising youths for sect induction."
+ sect_examination_decision_tooltip:0 "Triggers the sect examination event chain without relying on the activity system."
+ sect_examination_decision_confirm:0 "Begin the examination."
+
+ elder_promotion_decision:0 "Promote a Sect Elder"
+ elder_promotion_decision_desc:0 "Evaluate meritorious inner and outer court disciples, then raise one to elder rank."
+ elder_promotion_decision_tooltip:0 "Triggers elder promotion proceedings through event logic."
+ elder_promotion_decision_confirm:0 "Name the new elder."
+
+ inner_court_promotion_decision:0 "Promote Inner Court Disciples"
+ inner_court_promotion_decision_desc:0 "Select worthy disciples with strong meridians and elevate them into the inner court."
+ inner_court_promotion_decision_tooltip:0 "Triggers inner court promotions through event logic."
+ inner_court_promotion_decision_confirm:0 "Elevate the disciples."
+
+
+ ks_cultivation_decision:0 "Enter Closed-Door Cultivation"
+ ks_cultivation_decision_desc:0 "Withdraw from worldly affairs for intense cultivation and possible enlightenment."
+ ks_cultivation_decision_tooltip:0 "Starts a simplified cultivation event chain replacing the broken activity flow."
+ ks_cultivation_decision_confirm:0 "Close the gates and cultivate."
+
+ reincarnator_lottery_decision:0 "Invoke the Reincarnator Lottery"
+ reincarnator_lottery_decision_desc:0 "Let Heaven choose one ruler in the world as the new Reincarnator."
+ reincarnator_lottery_decision_tooltip:0 "Selects exactly one living ruler and grants True Immortal power and the Reincarnator title."
+ reincarnator_lottery_decision_confirm:0 "Let Heaven cast the lot."
+
+ xianxia_world.9601.t:0 "The Reincarnator Descends"
+ xianxia_world.9601.desc:0 "A heavenly mandate falls upon [ROOT.Char.GetNameNoTooltip], awakening ancient memories and immortal potential."
+ xianxia_world.9601.a:0 "Heaven has chosen."
+
+ xianxia_world.9650.t:0 "Closed-Door Cultivation"
+ xianxia_world.9650.desc:0 "You seal yourself away from worldly noise and focus your spirit on a single path."
+ xianxia_world.9650.a:0 "Circulate the qi."
+
+ xianxia_world.9651.t:0 "Moment of Enlightenment"
+ xianxia_world.9651.desc:0 "Your insight deepens, and the flow of qi through your meridians becomes clearer than ever."
+ xianxia_world.9651.a:0 "My path brightens."
+
+ xianxia_world.9652.t:0 "Steady Progress"
+ xianxia_world.9652.desc:0 "Your cultivation is stable and your will remains unbroken."
+ xianxia_world.9652.a:0 "Continue refining."
+
+ xianxia_world.9653.t:0 "Deviation at the Edge"
+ xianxia_world.9653.desc:0 "A burst of unstable qi shakes your mind, but you cling to your discipline."
+ xianxia_world.9653.a:0 "I endure."
+

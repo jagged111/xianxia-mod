@@ -1,82 +1,80 @@
-[19:03:23][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'ks_bed_games.0001.t' is defined in both 'localization/english/ks_activity_missing_loc_l_english.yml' and 'localization/english/activities/ks_mod_bedgame_l_english.yml'.
-[19:03:23][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'ks_cultivation.0009.t' is defined in both 'localization/english/ks_activity_missing_loc_l_english.yml' and 'localization/english/activities/ks_mod_cultivation_l_english.yml'.
-[19:03:23][E][localization_reader.cpp:581]: Unexpected localization token ')' at line 18 and column 61 in localization/english/dynasties/ks_dynasty_names_l_english.yml
-[19:03:23][E][localization_reader.cpp:581]: Unexpected localization token 'in' at line 24 and column 58 in localization/english/dynasties/ks_dynasty_names_l_english.yml
-[19:03:24][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'scheme_physique_good_1' is defined in both 'localization/english/gui/schem_l_english.yml' and 'localization/english/gui/schemewindow_l_english.yml'.
-[19:03:24][E][pdx_localize.cpp:933]: Trying to import a localization key outside of a language: Xian
+[07:08:43][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'ks_bed_games.0001.t' is defined in both 'localization/english/ks_activity_missing_loc_l_english.yml' and 'localization/english/activities/ks_mod_bedgame_l_english.yml'.
+[07:08:43][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'ks_cultivation.0009.t' is defined in both 'localization/english/ks_activity_missing_loc_l_english.yml' and 'localization/english/activities/ks_mod_cultivation_l_english.yml'.
+[07:08:43][E][localization_reader.cpp:581]: Unexpected localization token ')' at line 18 and column 61 in localization/english/dynasties/ks_dynasty_names_l_english.yml
+[07:08:43][E][localization_reader.cpp:581]: Unexpected localization token 'in' at line 24 and column 58 in localization/english/dynasties/ks_dynasty_names_l_english.yml
+[07:08:43][E][pdx_localize.cpp:279]: Duplicate localization key. Key 'scheme_physique_good_1' is defined in both 'localization/english/gui/schem_l_english.yml' and 'localization/english/gui/schemewindow_l_english.yml'.
+[07:08:44][E][pdx_localize.cpp:933]: Trying to import a localization key outside of a language: Xian
 
-[19:04:54][E][pdx_data_statementparser.cpp:237]: Unexpected characters found at end of Statement 'EqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)9'))': ')' 
+[07:11:36][E][pdx_data_statementparser.cpp:237]: Unexpected characters found at end of Statement 'EqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)9'))': ')' 
 
-[19:22:55][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: legacy_1, near line: 1 (expanded from file: common/dynasty_legacies/cultivation_legacies.txt line: 2)" in file: "common/dynasty_legacies/cultivation_legacies.txt" near line: 1
+[07:33:16][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: legacy_1, near line: 1 (expanded from file: common/dynasty_legacies/cultivation_legacies.txt line: 2)" in file: "common/dynasty_legacies/cultivation_legacies.txt" near line: 1
 
-[19:23:09][E][lexer.cpp:306]: File 'common/scripted_triggers/xianxia_commander_sect_triggers.txt' should be in utf8-bom encoding (will try to use it anyways)
+[07:33:32][E][lexer.cpp:306]: File 'common/scripted_triggers/xianxia_commander_sect_triggers.txt' should be in utf8-bom encoding (will try to use it anyways)
 
-[19:23:29][E][dnamodifier.cpp:324]: could not find template [ccp5_bishop_mitre]. file: gfx/portraits/portrait_modifiers/04_headgear_armor.txt line: 2178 (headgear_armor)
+[07:33:51][E][dnamodifier.cpp:324]: could not find template [ccp5_bishop_mitre]. file: gfx/portraits/portrait_modifiers/04_headgear_armor.txt line: 2178 (headgear_armor)
 
-[19:23:48][E][pdx_persistent_reader.cpp:216]: Error: "Malformed token: scope:root, near line: 249" in file: "events/cultivation_ai_events.txt" near line: 251
-[19:23:48][E][event.cpp:366]: Theme missing in event 'cultivation_ai.2271'
+[07:34:09][E][pdx_persistent_reader.cpp:216]: Error: "Malformed token: scope:root, near line: 249" in file: "events/cultivation_ai_events.txt" near line: 251
+[07:34:09][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: any_character, near line: 1652" in file: "events/cultivation_ai_events.txt" near line: 1659
+[07:34:09][E][event.cpp:366]: Theme missing in event 'cultivation_ai.2271'
 
-[19:24:01][E][jomini_script_system.cpp:303]: Script system error!
-  Error: imprison effect [ Expected opening bracket ]
-  Script location: file: common/casus_belli_types/xianxia_cb_types.txt line: 241 (xianxia_force_recruit_talented_meridians_cb:on_victory)
+[07:34:21][E][pdx_persistent_reader.cpp:216]: Error: "Unknown effect: becomes_tributary, near line: 62 (expanded from file: common/casus_belli_types/xianxia_cb_types.txt line: 63)" in file: "common/casus_belli_types/xianxia_cb_types.txt" near line: 64
 
-[19:24:02][E][jomini_eventtarget.cpp:325]: Scope type 'value' can not be used in event target links, link compare_value infile: common/decisions/cultivation_breakthrough_decisions.txt line: 39 (attempt_qi_gathering_breakthrough_decision:effect)
+[07:34:24][E][jomini_eventtarget.cpp:325]: Scope type 'value' can not be used in event target links, link compare_value infile: common/decisions/cultivation_breakthrough_decisions.txt line: 39 (attempt_qi_gathering_breakthrough_decision:effect)
 
-[19:24:31][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: guardian, near line: 81" in file: "common/scripted_modifiers/00_marriage_scripted_modifiers.txt" near line: 84
+[07:34:25][E][jomini_script_system.cpp:303]: Script system error!
+  Error: create_confederation effect [ Expected opening bracket ]
+  Script location: file: common/decisions/xianxia_world_decisions.txt line: 524 (found_martial_confederation_decision:effect)
 
-[19:24:53][E][trait.cpp:346]: Trait crippled_meridians has a group (active_meridians) but no level set. Unsetting group
-[19:24:54][E][pdx_locstring.cpp:93]: Key is missing localization: trait_education
-[19:24:54][E][jomini_dynamicdescription.cpp:66]: Unrecognized loc key trait_jianghu_righteous. jianghu_righteous
+[07:34:56][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: guardian, near line: 81" in file: "common/scripted_modifiers/00_marriage_scripted_modifiers.txt" near line: 84
 
-[19:24:54][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: men_at_arms_maintenance_mult, near line: 307 (expanded from file: common/traits/xianxia_society_traits.txt line: 308)" in file: "common/traits/xianxia_society_traits.txt" near line: 307
+[07:35:31][E][trait.cpp:346]: Trait crippled_meridians has a group (active_meridians) but no level set. Unsetting group
+[07:35:31][E][pdx_locstring.cpp:93]: Key is missing localization: trait_education
+[07:35:31][E][jomini_dynamicdescription.cpp:66]: Unrecognized loc key trait_jianghu_righteous. jianghu_righteous
 
-[19:25:10][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: hostile_scheme_resistance_add, near line: 475 (expanded from file: common/modifiers/cultivation_modifiers.txt line: 476)" in file: "common/modifiers/cultivation_modifiers.txt" near line: 475
+[07:35:31][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: men_at_arms_maintenance_mult, near line: 307 (expanded from file: common/traits/xianxia_society_traits.txt line: 308)" in file: "common/traits/xianxia_society_traits.txt" near line: 307
 
-[19:25:21][E][jomini_script_system.cpp:303]: Script system error!
-  Error: imprison effect [ Expected opening bracket ]
-  Script location: file: events/xianxia_cultivator_battle_events.txt line: 41 (xianxia_cultivator_battle.0002:immediate)
+[07:35:49][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: hostile_scheme_resistance, near line: 475 (expanded from file: common/modifiers/cultivation_modifiers.txt line: 476)" in file: "common/modifiers/cultivation_modifiers.txt" near line: 475
 
-[19:25:21][E][jomini_script_system.cpp:303]: Script system error!
+[07:36:04][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: add_stress, near line: 85" in file: "events/xianxia_cultivator_battle_events.txt" near line: 85
+[07:36:04][E][jomini_script_system.cpp:303]: Script system error!
   Error: add_gold effect [ Negative value in: {}. {} ]
   Script location: file: events/xianxia_sect_conflict_events.txt line: 133 (xianxia_sect_conflict.0100:option)
 
-[19:25:21][E][event.cpp:366]: Theme missing in event 'xianxia_sect_conflict.0100'
+[07:36:04][E][event.cpp:366]: Theme missing in event 'xianxia_sect_conflict.0100'
+[07:36:04][E][jomini_effect.cpp:783]: Inconsistent effect scopes (character vs. dynasty) infile: events/xianxia_sect_conflict_events.txt line: 297 (xianxia_sect_conflict.0220:option)
 
-[19:25:21][E][jomini_effect.cpp:783]: Inconsistent effect scopes (character vs. dynasty) infile: events/xianxia_sect_conflict_events.txt line: 297 (xianxia_sect_conflict.0220:option)
+[07:36:04][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: random, near line: 424" in file: "events/xianxia_world_events.txt" near line: 425
+[07:36:04][E][jomini_effect.cpp:1000]: else/else_if not following an if or else_if at file: events/xianxia_world_events.txt line: 966 (xianxia_world.1850:option)
 
-[19:25:21][E][pdx_persistent_reader.cpp:216]: Error: "Unknown trigger: random, near line: 423" in file: "events/xianxia_world_events.txt" near line: 424
+[07:36:04][E][jomini_effect.cpp:783]: Inconsistent effect scopes (character vs. activity) infile: events/activities/dao_exchange_activity_events.txt line: 37 (xianxia_activity.7220:option)
 
-[19:25:21][E][jomini_effect.cpp:1000]: else/else_if not following an if or else_if at file: events/xianxia_world_events.txt line: 965 (xianxia_world.1850:option)
+[07:36:12][E][jomini_eventmanager.cpp:118]: 'health.7000' does not have a valid namespace
+[07:36:12][E][jomini_onaction.cpp:329]: Invalid event id health.6001 At: file: common/on_action/health_on_actions.txt line: 173 (commit_suicide)
 
-[19:25:21][E][pdx_persistent_reader.cpp:216]: Error: "Unknown effect: random_character, near line: 951" in file: "events/xianxia_world_events.txt" near line: 1048
+[07:36:14][E][jomini_onaction.cpp:329]: Invalid event id xianxia_world.1890 At: file: common/on_action/zzzz_cultivation_ai_pulse.txt line: 34 (on_monthly_pulse)
 
-[19:25:21][E][jomini_effect.cpp:783]: Inconsistent effect scopes (character vs. activity) infile: events/activities/dao_exchange_activity_events.txt line: 37 (xianxia_activity.7220:option)
+[07:36:18][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: opinion, near line: 3 (expanded from file: common/on_action/opinion_modifiers/00_activity_feast_opinions.txt line: 4)" in file: "common/on_action/opinion_modifiers/00_activity_feast_opinions.txt" near line: 3
 
-[19:25:30][E][jomini_eventmanager.cpp:118]: 'health.7000' does not have a valid namespace
-[19:25:30][E][jomini_onaction.cpp:217]: OnAction yearly_health_pulse is trying to add unknown random event with ID [health.7000] at: file: common/on_action/health_on_actions.txt line: 27 (yearly_health_pulse)
+[08:25:23][E][jomini_script_system.cpp:303]: Script system error!
+  Error: trigger_event effect [ trigger_event missing event/on_action ]
+  Script location: file: common/scripted_effects/20_health_effects.txt line: 658 (contract_disease_notify_effect[args#1123640778])
 
-[19:25:34][E][jomini_onaction.cpp:329]: Invalid event id xianxia_world.1890 At: file: common/on_action/zzzz_cultivation_ai_pulse.txt line: 34 (on_monthly_pulse)
-
-[19:25:34][E][jomini_onaction.cpp:161]: There is more than one 'effect' defined using most recent:file: common/on_action/zzzz_xianxia_cultivator_battle_on_actions.txt line: 57 (on_combat_end_winner)
-
-[19:25:39][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: opinion, near line: 3 (expanded from file: common/on_action/opinion_modifiers/00_activity_feast_opinions.txt line: 4)" in file: "common/on_action/opinion_modifiers/00_activity_feast_opinions.txt" near line: 3
-
-[20:18:31][E][jomini_script_system.cpp:303]: Script system error!
-  Error: change_variable effect [ Variable not of the 'value' scope type. Type: empty ]
-  Script location: file: events/xianxia_world_events.txt line: 331 (xianxia_world.1120:option)
-
-[20:18:31][E][jomini_script_system.cpp:303]: Script system error!
+[08:25:24][E][jomini_script_system.cpp:303]: Script system error!
   Error: add_gold effect [ Trying to add add_gold with negative value to ... ]
-  Script location: file: events/xianxia_world_events.txt line: 595 (xianxia_world.1330:option)
+  Script location: file: events/xianxia_world_events.txt line: 596 (xianxia_world.1330:option)
 
-[20:18:31][E][jomini_script_system.cpp:303]: Script system error!
-  Error: Failed to fetch a valid culture 'huxian'
-  Script location: file: common/decisions/99_ksmod_decision.txt line: 170 (ks_mod_gain_huxian_blood_decision:is_shown)
-
-[20:18:32][E][jomini_script_system.cpp:303]: Script system error!
+[08:25:24][E][jomini_script_system.cpp:303]: Script system error!
   Error: enemy_side trigger [ Wrong scope for trigger: combat, expected combat_side ]
   Script location: file: common/on_action/zzzz_xianxia_cultivator_battle_on_actions.txt line: 15 (on_combat_start)
 
-[20:18:32][E][jomini_script_system.cpp:303]: Script system error!
-  Error: remove_manual_participant effect [ Scoped object is not valid. Type: (no situation) weak (Situation - 4294967295)! ]
-  Script location: file: common/on_action/title_on_actions.txt line: 3582 (on_title_lost)
+[08:25:27][E][jomini_script_system.cpp:303]: Script system error!
+  Error: change_variable effect [ Variable not of the 'value' scope type. Type: empty ]
+  Script location: file: events/xianxia_world_events.txt line: 418 (xianxia_world.1320:option)
+
+[08:25:31][E][jomini_script_system.cpp:303]: Script system error!
+  Error: add_perk effect [ scope character is dead during effect execution ]
+  Script location: file: events/cultivation_character_initialization_events.txt line: 169 (cultivation_character_initialization.0003:immediate)
+
+[08:25:34][E][jomini_script_system.cpp:303]: Script system error!
+  Error: change_variable effect [ Variable not of the 'value' scope type. Type: empty ]
+  Script location: file: common/decisions/xianxia_world_decisions.txt line: 1254 (corrupt_spirit_vein_decision:effect)

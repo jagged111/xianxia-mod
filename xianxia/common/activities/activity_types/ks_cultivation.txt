@@ -1,12 +1,9 @@
 ﻿activity_ks_cultivation = {
+	name = "activity_ks_cultivation"
 	is_shown = {
 		#has_bp2_dlc_trigger = yes
 		highest_held_title_tier > tier_barony
 		is_playable_character = yes
-		OR={
-			has_trait = huxian_blood
-			has_trait = huxian_cultivation
-		}
 		trigger_if = {
 			limit = {
 				is_ai = yes
@@ -37,37 +34,20 @@
 	can_start_showing_failures_only = {
 		NOT = { is_activity_type_on_cooldown = activity_ks_cultivation }
 		is_available_adult = yes
-			custom_tooltip = {
-				text = REASON_NOT_A_REAL_HUXIAN
-				OR={
-					has_trait = huxian_blood
-					has_trait = huxian_cultivation
-				}
+		custom_tooltip = {
+			text = REASON_NOT_A_REAL_HUXIAN
+			OR = {
+				has_trait = huxian_blood
+				has_trait = huxian_cultivation
 			}
-		#trigger_if = {
-		#	limit = {
-		#		is_ai = no
-		#	}
-		#	custom_tooltip = {
-		#		text = REASON_NOT_A_REAL_HUXIAN
-		#		NOR={
-		#			has_trait = huxian_blood
-		#					#			has_trait = huxian_cultivation
-		#		}
-		#	}
-		#}
-
+		}
 	}
 
 	is_valid = {
 			scope:host = {
-				OR={
-					has_trait = huxian_blood
-					has_trait = huxian_cultivation
-				}
-			#Getting imprisoned will invalidate
-			is_imprisoned = no
-			#Getting unlanded will invalidate
+				#Getting imprisoned will invalidate
+				is_imprisoned = no
+				#Getting unlanded will invalidate
 			is_playable_character = yes 
 			#Becoming incapable will invalidate
 			NOT = { is_incapable = yes }
@@ -262,12 +242,6 @@
 	# desc is only shown in debug AI watch window
 	ai_will_do = {
 		value = 50
-		if = {
-			limit = {
-				has_trait = huxian_blood
-			}
-			add = 25
-		}
 		if = {
 			limit = {
 				has_trait = huxian_cultivation
@@ -542,15 +516,14 @@
 
 			#This is when you arrive at the cultivation spot
 			on_phase_active = {
-				if = {
-					limit = { this = scope:host }
-					scope:activity = {
-						#Phase progression
-						progress_activity_phase_after = { months = 3 }
-						#Loc
-						activity_location = { save_scope_as = location }
-					}
+				scope:activity = {
+					#Phase progression
+					progress_activity_phase_after = { months = 3 }
+					#Loc
+					activity_location = { save_scope_as = location }
+				}
 
+				scope:host = {
 					#Set up recurring characters: teachers
 					ks_cultivation_teacher_setup = yes
 					#Set up recurring characters: students
@@ -563,20 +536,18 @@
 
 			#Events that happen while we're on site
 			on_weekly_pulse = {
-				if = {
-					limit = { this = scope:host }
+				scope:host = {
 					# Let's check that we still have the required teachers and students, and if not let's create them again
 					#Set up recurring characters: teachers
 					ks_cultivation_teacher_setup = yes
 					#Set up recurring characters: students
 					ks_cultivation_student_setup = yes
-					trigger_event = { on_action = ks_cultivation_destination_events }				
-				}
+					trigger_event = { on_action = ks_cultivation_destination_events }
+				}				
 			}
 
 			on_end = {
-				if = {
-					limit = { this = scope:host }
+				scope:host = {
 					#create_character_memory = {
 					#	type = completed_ks_cultivation	#这里有BUG，未定义
 					#}
@@ -590,8 +561,8 @@
 					#Resolve how how successful we were so we can bake that into the total reward
 					resolve_ks_cultivation_success_reward_effect = yes 
 					#Conclusion event
-					trigger_event = ks_cultivation.0009		
-				}
+					trigger_event = ks_cultivation.0009
+				}		
 			}
 		}
 	}

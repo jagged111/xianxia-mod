@@ -3,7 +3,6 @@
  # Keep these until bespoke text is authored for each event chain.
  ks_bed_games.0001.a:0 "Continue"
  ks_bed_games.0001.desc:0 "This event is using temporary fallback localization."
- ks_bed_games.0001.t:0 "Ks Bed Games 0001"
  ks_bed_games.0011.a:0 "Continue"
  ks_bed_games.0011.desc:0 "This event is using temporary fallback localization."
  ks_bed_games.0011.t:0 "Ks Bed Games 0011"
@@ -18,7 +17,6 @@
  ks_bed_games.0041.t:0 "Ks Bed Games 0041"
  ks_cultivation.0009.a:0 "Continue"
  ks_cultivation.0009.desc:0 "This event is using temporary fallback localization."
- ks_cultivation.0009.t:0 "Ks Cultivation 0009"
  ks_cultivation.0010.a:0 "Continue"
  ks_cultivation.0010.desc:0 "This event is using temporary fallback localization."
  ks_cultivation.0010.t:0 "Ks Cultivation 0010"

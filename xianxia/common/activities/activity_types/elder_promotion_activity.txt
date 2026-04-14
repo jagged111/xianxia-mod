@@ -21,16 +21,16 @@
 			is_imprisoned = no
 			is_landed = yes
 			is_cultivator = yes
-		}
-		any_courtier = {
-			is_alive = yes
-			is_adult = yes
-			OR = {
-				has_character_modifier = inner_court_disciple
-				has_trait = sect_disciple
+			any_courtier = {
+				is_alive = yes
+				is_adult = yes
+				OR = {
+					has_character_modifier = inner_court_disciple
+					has_trait = sect_disciple
+				}
+				has_elder_eligible_realm = yes
+				NOT = { has_trait = sect_elder }
 			}
-			has_elder_eligible_realm = yes
-			NOT = { has_trait = sect_elder }
 		}
 	}
 
@@ -57,11 +57,12 @@
 			is_predefined = yes
 			location_source = pickable
 			on_phase_active = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7500
-				}
-				scope:activity = {
-					progress_activity_phase_after = { days = 12 }
+					scope:activity = {
+						progress_activity_phase_after = { days = 12 }
+					}
 				}
 			}
 		}
@@ -69,11 +70,12 @@
 		elder_promotion_phase_assessment = {
 			is_predefined = yes
 			on_phase_active = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7510
-				}
-				scope:activity = {
-					progress_activity_phase_after = { days = 10 }
+					scope:activity = {
+						progress_activity_phase_after = { days = 10 }
+					}
 				}
 			}
 		}
@@ -81,7 +83,8 @@
 		elder_promotion_phase_enthronement = {
 			is_predefined = yes
 			on_phase_active = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7520
 				}
 			}

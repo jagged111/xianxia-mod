@@ -47,11 +47,12 @@
 			is_predefined = yes
 			location_source = pickable
 			on_phase_active = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7300
-				}
-				scope:activity = {
-					progress_activity_phase_after = { days = 10 }
+					scope:activity = {
+						progress_activity_phase_after = { days = 10 }
+					}
 				}
 			}
 		}
@@ -59,11 +60,12 @@
 		sect_examination_phase_assessment = {
 			is_predefined = yes
 			on_phase_active = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7310
-				}
-				scope:activity = {
-					progress_activity_phase_after = { days = 8 }
+					scope:activity = {
+						progress_activity_phase_after = { days = 8 }
+					}
 				}
 			}
 		}
@@ -71,7 +73,8 @@
 		sect_examination_phase_recruitment = {
 			is_predefined = yes
 			on_phase_active = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					trigger_event = xianxia_activity.7320
 				}
 			}

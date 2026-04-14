@@ -516,14 +516,15 @@
 
 			#This is when you arrive at the cultivation spot
 			on_phase_active = {
-				scope:activity = {
-					#Phase progression
-					progress_activity_phase_after = { months = 3 }
-					#Loc
-					activity_location = { save_scope_as = location }
-				}
+				if = {
+					limit = { this = scope:host }
+					scope:activity = {
+						#Phase progression
+						progress_activity_phase_after = { months = 3 }
+						#Loc
+						activity_location = { save_scope_as = location }
+					}
 
-				scope:host = {
 					#Set up recurring characters: teachers
 					ks_cultivation_teacher_setup = yes
 					#Set up recurring characters: students
@@ -536,18 +537,20 @@
 
 			#Events that happen while we're on site
 			on_weekly_pulse = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					# Let's check that we still have the required teachers and students, and if not let's create them again
 					#Set up recurring characters: teachers
 					ks_cultivation_teacher_setup = yes
 					#Set up recurring characters: students
 					ks_cultivation_student_setup = yes
 					trigger_event = { on_action = ks_cultivation_destination_events }
-				}				
+				}
 			}
 
 			on_end = {
-				scope:host = {
+				if = {
+					limit = { this = scope:host }
 					#create_character_memory = {
 					#	type = completed_ks_cultivation	#这里有BUG，未定义
 					#}
@@ -562,7 +565,7 @@
 					resolve_ks_cultivation_success_reward_effect = yes 
 					#Conclusion event
 					trigger_event = ks_cultivation.0009
-				}		
+				}
 			}
 		}
 	}

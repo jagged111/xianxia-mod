@@ -543,7 +543,7 @@
 					#Set up recurring characters: students
 					ks_cultivation_student_setup = yes
 					trigger_event = { on_action = ks_cultivation_destination_events }
-				}				
+				}
 			}
 
 			on_end = {
@@ -562,7 +562,7 @@
 					resolve_ks_cultivation_success_reward_effect = yes 
 					#Conclusion event
 					trigger_event = ks_cultivation.0009
-				}		
+				}
 			}
 		}
 	}

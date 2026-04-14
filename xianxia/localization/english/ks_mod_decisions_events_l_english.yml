@@ -24,11 +24,6 @@
  convert_to_ks_huxian_culture_decision_tt: "You embrace the Fox Spirit identity."
  convert_to_ks_huxian_culture_decision_confirm: "I Will No Longer Be Human"
  ks_can_only_change_culture_once_tt: "You can only change culture once."
- ks_mod_gain_huxian_blood_decision: "Awaken Fox Spirit Bloodline"
- ks_mod_gain_huxian_blood_decision_desc: "The powers of the Fox Spirit dwell within its blood. Most awaken at birth, but a few do so suddenly in adulthood."
- ks_mod_gain_huxian_blood_decision_tooltip: "You will gain the Fox Spirit Bloodline trait, bringing powerful benefits and altering how others see you. Even if you later abandon the Fox Spirit identity, this trait will remain in your bloodline forever."
- ks_mod_gain_huxian_blood_decision_tt: "Your Fox Spirit blood awakens."
- ks_mod_gain_huxian_blood_decision_confirm: "Accept the Blood of the Fox Spirit"
  ks_mod_weaken_effect_of_huxian_blood_decision: "Attempt to Suppress Fox Spirit Blood"
  ks_mod_weaken_effect_of_huxian_blood_decision_desc: "Your blood has caused others to resent you, leaving you distressed. Perhaps a priest may help."
  ks_must_be_human_like_fox_tt: "As a Fox Spirit, priests dislike you. You cannot seek help unless you can disguise yourself as human."
@@ -49,4 +44,3 @@
  ks_mod_events.0003.a.tt: "You begin the path of Fox Spirit cultivation."
  ks_mod_events.0003.b: "No! Never!"
  ks_mod_events.0003.b.tt: "You run away—just as you flee from your own heritage."
-

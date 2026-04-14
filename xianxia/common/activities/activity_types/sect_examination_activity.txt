@@ -49,9 +49,9 @@
 			on_phase_active = {
 				scope:host = {
 					trigger_event = xianxia_activity.7300
-				}
-				scope:activity = {
-					progress_activity_phase_after = { days = 10 }
+					scope:activity = {
+						progress_activity_phase_after = { days = 10 }
+					}
 				}
 			}
 		}
@@ -61,9 +61,9 @@
 			on_phase_active = {
 				scope:host = {
 					trigger_event = xianxia_activity.7310
-				}
-				scope:activity = {
-					progress_activity_phase_after = { days = 8 }
+					scope:activity = {
+						progress_activity_phase_after = { days = 8 }
+					}
 				}
 			}
 		}

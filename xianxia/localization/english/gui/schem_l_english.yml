@@ -27,7 +27,6 @@
  scheme_tall_good_3:1 "[GetTrait('tall_3').GetName( owner.Self )]: $VALUE|+0=$"
  scheme_tall_good_4:1 "[GetTrait('tall_4').GetName( owner.Self )]: $VALUE|+0=$"
  scheme_tall_good_5:1 "[GetTrait('tall_5').GetName( owner.Self )]: $VALUE|+0=$"
- scheme_physique_good_1:1 "[GetTrait('physique_good_1').GetName( owner.Self )]: $VALUE|+0=$"
  scheme_physique_good_2:1 "[GetTrait('physique_good_2').GetName( owner.Self )]: $VALUE|+0=$"
  scheme_physique_good_3:1 "[GetTrait('physique_good_3').GetName( owner.Self )]: $VALUE|+0=$"
  scheme_beauty_bad_1:1 "[GetTrait('beauty_bad_1').GetName( owner.Self )]: $VALUE|+0=$"

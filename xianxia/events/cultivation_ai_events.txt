@@ -160,7 +160,7 @@ cultivation_ai.2220 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = scope:root }
+                        NOT = { this = root }
                         is_allied_to = root
                         NOT = { has_relation_friend = root }
                         NOT = { has_relation_best_friend = root }
@@ -201,7 +201,7 @@ cultivation_ai.2230 = {
                         is_alive = yes
                         is_adult = yes
                         is_cultivator = yes
-                        NOT = { this = scope:root }
+                        NOT = { this = root }
                         is_at_war_with = root
                         NOT = { has_relation_nemesis = root }
                         NOT = { has_relation_rival = root }
@@ -246,8 +246,8 @@ cultivation_ai.2280 = {
                     is_adult = yes
                     is_cultivator = yes
                     has_cultivation_sect_faith = yes
-                    NOT = { this = scope:root }
-                    is_within_diplo_range = scope:root
+                    NOT = { this = root }
+                    is_within_diplo_range = root
                 }
 
                 # Clear stale path-opinion state before applying current relationship.
@@ -1189,7 +1189,7 @@ cultivation_ai.2250 = {
                         limit = {
                             is_alive = yes
                             is_adult = yes
-                            NOT = { this = scope:root }
+                            NOT = { this = root }
                         }
 
                         if = {
@@ -1649,7 +1649,7 @@ cultivation_ai.2270 = {
                         has_character_flag = cultivation_reincarnation_holder
                     }
                 }
-                any_character = {
+                any_living_character = {
                     has_nickname = nick_the_reincarnator
                 }
                 NOT = {
@@ -1677,7 +1677,7 @@ cultivation_ai.2270 = {
                 }
                 OR = {
                     NOT = {
-                        any_character = {
+                        any_living_character = {
                             has_nickname = nick_the_reincarnator
                         }
                     }

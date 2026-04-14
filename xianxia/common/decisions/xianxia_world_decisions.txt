@@ -508,24 +508,27 @@ found_martial_confederation_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
         has_cultivation_sect_faith = yes
-        NOT = { highest_held_title_tier = tier_empire }
+        realm_size >= 35
     }
 
     is_valid = {
+        is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
         realm_size >= 35
         NOT = { has_character_modifier = martial_confederation_founder }
-        NOT = { has_character_flag = martial_confederation_organizer_cooldown }
-        NOT = { has_character_flag = martial_confederation_member_cooldown }
+        NOT = { has_character_flag = path_confederation_cooldown }
     }
 
     effect = {
-        create_confederation = yes
+        create_confederation = { }
         add_character_modifier = { modifier = martial_confederation_founder days = -1 }
-        add_character_flag = { flag = martial_confederation_organizer_cooldown days = 1825 }
-        add_character_flag = { flag = martial_confederation_member_cooldown days = 1825 }
+        add_character_flag = { flag = path_confederation_cooldown days = 1825 }
         add_prestige = 600
     }
 
@@ -548,22 +551,27 @@ proclaim_orthodox_alliance_leader_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
-        NOT = { highest_held_title_tier = tier_empire }
+        realm_size >= 55
         faith = { has_doctrine_parameter = orthodox_cultivation }
     }
 
     is_valid = {
+        is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
         realm_size >= 55
         NOT = { has_character_modifier = orthodox_alliance_leader }
-        NOT = { has_character_flag = orthodox_alliance_leader_cooldown }
+        NOT = { has_character_flag = path_confederation_cooldown }
     }
 
     effect = {
-        create_confederation = yes
+        create_confederation = { }
         add_character_modifier = { modifier = orthodox_alliance_leader days = -1 }
-        add_character_flag = { flag = orthodox_alliance_leader_cooldown days = 3650 }
+        add_character_flag = { flag = path_confederation_cooldown days = 3650 }
         add_prestige = 1000
     }
 
@@ -585,22 +593,27 @@ proclaim_demonic_alliance_leader_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
-        NOT = { highest_held_title_tier = tier_empire }
+        realm_size >= 55
         faith = { has_doctrine_parameter = demonic_cultivation }
     }
 
     is_valid = {
+        is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
         realm_size >= 55
         NOT = { has_character_modifier = demonic_alliance_leader }
-        NOT = { has_character_flag = demonic_alliance_leader_cooldown }
+        NOT = { has_character_flag = path_confederation_cooldown }
     }
 
     effect = {
-        create_confederation = yes
+        create_confederation = { }
         add_character_modifier = { modifier = demonic_alliance_leader days = -1 }
-        add_character_flag = { flag = demonic_alliance_leader_cooldown days = 3650 }
+        add_character_flag = { flag = path_confederation_cooldown days = 3650 }
         add_prestige = 1000
         add_dread = 20
     }
@@ -623,22 +636,27 @@ proclaim_unorthodox_alliance_leader_decision = {
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
-        NOT = { highest_held_title_tier = tier_empire }
+        realm_size >= 55
         faith = { has_doctrine_parameter = unorthodox_cultivation }
     }
 
     is_valid = {
+        is_independent_ruler = yes
+        highest_held_title_tier <= tier_king
+        NOT = { is_emperor = yes }
         has_trait = sect_leader
         realm_size >= 55
         NOT = { has_character_modifier = unorthodox_alliance_leader }
-        NOT = { has_character_flag = unorthodox_alliance_leader_cooldown }
+        NOT = { has_character_flag = path_confederation_cooldown }
     }
 
     effect = {
-        create_confederation = yes
+        create_confederation = { }
         add_character_modifier = { modifier = unorthodox_alliance_leader days = -1 }
-        add_character_flag = { flag = unorthodox_alliance_leader_cooldown days = 3650 }
+        add_character_flag = { flag = path_confederation_cooldown days = 3650 }
         add_prestige = 1000
     }
 

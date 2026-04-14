@@ -1,7 +1,7 @@
-namespace = xianxia_activity
+﻿namespace = xianxia_activity
 
 xianxia_activity.7400 = {
-	type = activity_event
+	type = character_event
 	title = xianxia_activity.7400.t
 	desc = xianxia_activity.7400.desc
 	theme = feast_activity
@@ -9,6 +9,78 @@ xianxia_activity.7400 = {
 	option = {
 		name = xianxia_activity.7400.a
 		add_prestige = 80
+
+			random_courtier = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					faith = root.faith
+					has_trait = sect_disciple
+				NOT = { has_character_modifier = inner_court_disciple }
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			save_scope_as = promoted_inner_disciple
+		}
+
+		scope:promoted_inner_disciple ?= {
+			remove_character_modifier = outer_court_disciple
+			add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			add_learning_lifestyle_xp = medium_lifestyle_xp
+		}
+
+		if = {
+			limit = { NOT = { exists = scope:promoted_inner_disciple } }
+			random_character = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					faith = root.faith
+					is_ruler = no
+					is_courtier = no
+					OR = {
+						has_trait = good_meridians
+						has_trait = excellent_meridians
+						has_trait = heavenly_meridians
+					}
+				}
+				save_scope_as = promoted_inner_wanderer
+			}
+
+			scope:promoted_inner_wanderer ?= {
+				root = { add_courtier = scope:promoted_inner_wanderer }
+				if = { limit = { NOT = { has_trait = sect_disciple } } add_trait = sect_disciple }
+				remove_character_modifier = outer_court_disciple
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = scope:promoted_inner_disciple }
+				NOT = { exists = scope:promoted_inner_wanderer }
+			}
+			create_character = {
+				age = { 16 26 }
+				gender_female_chance = 40
+				employer = root
+				faith = root.faith
+				culture = root.culture
+				dynasty = none
+				random_traits = no
+				trait = cultivation_qi_gathering
+				trait = sect_disciple
+				trait = good_meridians
+				save_scope_as = promoted_inner_created
+			}
+			scope:promoted_inner_created = {
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+		}
 	}
 }
 

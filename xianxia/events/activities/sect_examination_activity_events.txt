@@ -1,7 +1,7 @@
-namespace = xianxia_activity
+﻿namespace = xianxia_activity
 
 xianxia_activity.7300 = {
-	type = activity_event
+	type = character_event
 	title = xianxia_activity.7300.t
 	desc = xianxia_activity.7300.desc
 	theme = feast_activity
@@ -9,6 +9,186 @@ xianxia_activity.7300 = {
 	option = {
 		name = xianxia_activity.7300.a
 		add_prestige = 60
+
+		# First attempt: recruit talented disciples from within the ruler's realm/court.
+			random_courtier = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					faith = root.faith
+					NOT = { is_ruler = yes }
+					NOT = { has_trait = sect_elder }
+				OR = {
+					has_trait = good_meridians
+					has_trait = excellent_meridians
+					has_trait = heavenly_meridians
+				}
+			}
+			save_scope_as = sect_exam_inner_recruit
+		}
+
+		scope:sect_exam_inner_recruit ?= {
+			if = { limit = { NOT = { has_trait = sect_disciple } } add_trait = sect_disciple }
+			remove_character_modifier = outer_court_disciple
+			add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_trait = weapon_combat_talent_1
+							has_trait = weapon_combat_talent_2
+							has_trait = weapon_combat_talent_3
+							has_trait = weapon_combat_talent_4
+							has_trait = weapon_combat_talent_5
+						}
+					}
+				}
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+		}
+
+		# If no fitting inner-court recruit exists in realm/court, recruit a talented wanderer.
+		if = {
+			limit = { NOT = { exists = scope:sect_exam_inner_recruit } }
+			random_character = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					faith = root.faith
+					is_ruler = no
+					is_courtier = no
+					OR = {
+						has_trait = good_meridians
+						has_trait = excellent_meridians
+						has_trait = heavenly_meridians
+					}
+				}
+				save_scope_as = sect_exam_inner_wanderer
+			}
+
+			scope:sect_exam_inner_wanderer ?= {
+				root = { add_courtier = scope:sect_exam_inner_wanderer }
+				if = { limit = { NOT = { has_trait = sect_disciple } } add_trait = sect_disciple }
+				remove_character_modifier = outer_court_disciple
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								has_trait = weapon_combat_talent_1
+								has_trait = weapon_combat_talent_2
+								has_trait = weapon_combat_talent_3
+								has_trait = weapon_combat_talent_4
+								has_trait = weapon_combat_talent_5
+							}
+						}
+					}
+					xianxia_apply_weapon_talent_lottery_effect = yes
+				}
+			}
+		}
+
+		# Last fallback: create a new recruit directly.
+		if = {
+			limit = {
+				NOT = { exists = scope:sect_exam_inner_recruit }
+				NOT = { exists = scope:sect_exam_inner_wanderer }
+			}
+			create_character = {
+				age = { 16 25 }
+				gender_female_chance = 35
+				employer = root
+				faith = root.faith
+				culture = root.culture
+				dynasty = none
+				random_traits = no
+				trait = cultivation_qi_gathering
+				trait = sect_disciple
+				trait = good_meridians
+				save_scope_as = sect_exam_inner_created
+			}
+			scope:sect_exam_inner_created = {
+				add_character_modifier = { modifier = inner_court_disciple days = 5475 }
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+		}
+
+		# Outer-court disciple recruitment from realm/court.
+			random_courtier = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					faith = root.faith
+					NOT = { is_ruler = yes }
+					NOT = { has_trait = sect_elder }
+				NOT = { has_character_modifier = inner_court_disciple }
+				NOT = { has_character_modifier = outer_court_disciple }
+			}
+			save_scope_as = sect_exam_outer_recruit
+		}
+
+		scope:sect_exam_outer_recruit ?= {
+			if = { limit = { NOT = { has_trait = sect_disciple } } add_trait = sect_disciple }
+			add_character_modifier = { modifier = outer_court_disciple days = 3650 }
+		}
+
+		# Fallback to wandering disciple for outer court.
+		if = {
+			limit = { NOT = { exists = scope:sect_exam_outer_recruit } }
+			random_character = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					faith = root.faith
+					is_ruler = no
+					is_courtier = no
+				}
+				save_scope_as = sect_exam_outer_wanderer
+			}
+			scope:sect_exam_outer_wanderer ?= {
+				root = { add_courtier = scope:sect_exam_outer_wanderer }
+				if = { limit = { NOT = { has_trait = sect_disciple } } add_trait = sect_disciple }
+				add_character_modifier = { modifier = outer_court_disciple days = 3650 }
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								has_trait = weapon_combat_talent_1
+								has_trait = weapon_combat_talent_2
+								has_trait = weapon_combat_talent_3
+								has_trait = weapon_combat_talent_4
+								has_trait = weapon_combat_talent_5
+							}
+						}
+					}
+					xianxia_apply_weapon_talent_lottery_effect = yes
+				}
+			}
+		}
+
+		# Final fallback for outer-court disciple.
+		if = {
+			limit = {
+				NOT = { exists = scope:sect_exam_outer_recruit }
+				NOT = { exists = scope:sect_exam_outer_wanderer }
+			}
+			create_character = {
+				age = { 16 30 }
+				gender_female_chance = 45
+				employer = root
+				faith = root.faith
+				culture = root.culture
+				dynasty = none
+				random_traits = no
+				trait = cultivation_qi_gathering
+				trait = sect_disciple
+				save_scope_as = sect_exam_outer_created
+			}
+			scope:sect_exam_outer_created = {
+				add_character_modifier = { modifier = outer_court_disciple days = 3650 }
+				xianxia_apply_weapon_talent_lottery_effect = yes
+			}
+		}
 	}
 }
 

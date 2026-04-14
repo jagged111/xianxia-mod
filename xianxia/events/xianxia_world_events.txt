@@ -1467,3 +1467,155 @@ xianxia_world.1891 = {
         name = xianxia_world.1891.a
     }
 }
+
+# Simple cultivation decision replacement chain (activity fallback)
+xianxia_world.9650 = {
+    type = character_event
+    title = xianxia_world.9650.t
+    desc = xianxia_world.9650.desc
+    theme = lifestyle
+
+    option = {
+        name = xianxia_world.9650.a
+        add_learning_lifestyle_xp = medium_lifestyle_xp
+        random_list = {
+            55 = {
+                add_character_modifier = { modifier = manual_comprehension days = 730 }
+                trigger_event = xianxia_world.9651
+            }
+            30 = {
+                add_prestige = 100
+                trigger_event = xianxia_world.9652
+            }
+            15 = {
+                add_stress = 40
+                trigger_event = xianxia_world.9653
+            }
+        }
+    }
+}
+
+xianxia_world.9651 = {
+    type = character_event
+    title = xianxia_world.9651.t
+    desc = xianxia_world.9651.desc
+    theme = lifestyle
+
+    option = {
+        name = xianxia_world.9651.a
+        add_piety = 75
+    }
+}
+
+xianxia_world.9652 = {
+    type = character_event
+    title = xianxia_world.9652.t
+    desc = xianxia_world.9652.desc
+    theme = lifestyle
+
+    option = {
+        name = xianxia_world.9652.a
+        add_character_modifier = { modifier = tribulation_survivor days = 365 }
+    }
+}
+
+xianxia_world.9653 = {
+    type = character_event
+    title = xianxia_world.9653.t
+    desc = xianxia_world.9653.desc
+    theme = stress
+
+    option = {
+        name = xianxia_world.9653.a
+        add_learning_lifestyle_xp = minor_lifestyle_xp
+    }
+}
+
+# Reincarnator world lottery
+xianxia_world.9600 = {
+    type = character_event
+    hidden = yes
+
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    any_living_character = {
+                        has_character_flag = xianxia_reincarnator_chosen
+                    }
+                }
+            }
+            set_global_variable = { name = xianxia_reincarnator_lottery_locked value = 1 }
+            random_ruler = {
+                limit = {
+                    is_alive = yes
+                    is_adult = yes
+                    is_landed = yes
+                }
+                save_scope_as = reincarnator_target
+            }
+
+            scope:reincarnator_target ?= {
+                trigger_event = xianxia_world.9601
+            }
+
+            remove_global_variable = xianxia_reincarnator_lottery_locked
+        }
+    }
+
+    option = { name = OK }
+}
+
+xianxia_world.9601 = {
+    type = character_event
+    title = xianxia_world.9601.t
+    desc = xianxia_world.9601.desc
+    theme = realm
+
+    immediate = {
+        add_character_flag = xianxia_reincarnator_chosen
+        add_trait = cultivation_true_immortal
+        give_nickname = nick_the_reincarnator
+    }
+
+    option = {
+        name = xianxia_world.9601.a
+    }
+}
+
+xianxia_world.9602 = {
+    type = character_event
+    scope = none
+    hidden = yes
+
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    any_living_character = {
+                        has_character_flag = xianxia_reincarnator_chosen
+                    }
+                }
+                NOT = { has_global_variable = xianxia_reincarnator_lottery_locked }
+            }
+            trigger_event = xianxia_world.9600
+        }
+    }
+
+    option = { name = OK }
+}
+
+xianxia_world.9605 = {
+    type = character_event
+    hidden = yes
+
+    trigger = {
+        has_character_flag = xianxia_reincarnator_chosen
+    }
+
+    immediate = {
+        trigger_event = { id = xianxia_world.9602 days = 73000 }
+    }
+
+    option = { name = OK }
+}

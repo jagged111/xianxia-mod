@@ -78,18 +78,156 @@
 	}
 }
 
-recruit_disciple_interaction = {
+request_disciple_under_master_interaction = {
 	category = interaction_category_friendly
-	interface_priority = 110
-	icon = icon_court
-	desc = recruit_disciple_interaction_desc
+	interface_priority = 109
+	icon = icon_lifestyle_learning
+	desc = request_disciple_under_master_interaction_desc
 	use_diplomatic_range = yes
 
 	is_shown = {
-		scope:actor = { is_cultivator = yes is_adult = yes }
+		scope:actor = {
+			is_adult = yes
+			is_cultivator = yes
+			NOT = { has_character_flag = requested_master_once }
+			NOT = { has_trait = sect_elder }
+		}
 		scope:recipient = {
 			is_adult = yes
-			is_courtier_of = scope:actor
+			is_alive = yes
+			is_cultivator = yes
+			faith = scope:actor.faith
+			NOT = { has_relation_disciple = scope:actor }
+			OR = {
+				has_trait = sect_elder
+				has_trait = sect_inner_hall_elder
+				has_trait = sect_outer_hall_elder
+				has_trait = sect_enforcement_elder
+				has_trait = sect_leader
+				has_trait = cultivation_true_immortal
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			NOT = { has_character_flag = requested_master_once }
+			gold >= 100
+			prestige >= 100
+		}
+		scope:recipient = {
+			is_adult = yes
+			is_alive = yes
+			faith = scope:actor.faith
+		}
+	}
+
+	on_send = {
+		scope:actor = {
+			add_gold = -100
+			add_prestige = -100
+			add_character_flag = requested_master_once
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_trait = sect_disciple
+			add_character_modifier = { modifier = lineage_marked_disciple days = 3650 }
+			add_character_flag = disciple_of_current_mentor
+			add_character_flag = has_lineage_mentor
+			add_learning_lifestyle_xp = medium_lifestyle_xp
+			add_martial_lifestyle_xp = minor_lifestyle_xp
+			add_opinion = { target = scope:recipient modifier = mentor_guidance_opinion years = 20 }
+		}
+		scope:recipient = {
+			add_opinion = { target = scope:actor modifier = cultivation_invests_in_my_talent_opinion years = 20 }
+			add_character_modifier = { modifier = lineage_prestige_mentor days = 730 }
+		}
+	}
+
+	on_decline = {
+		scope:actor = {
+			add_stress = 35
+		}
+	}
+
+	ai_accept = {
+		base = -70
+		modifier = {
+			add = 160
+			scope:actor = { is_close_family_of = scope:recipient }
+		}
+		modifier = {
+			add = 140
+			scope:recipient = { opinion = { target = scope:actor value >= 85 } }
+		}
+		modifier = {
+			add = 80
+			scope:actor = { has_trait = heavenly_meridians }
+		}
+		modifier = {
+			add = 40
+			scope:actor = { has_trait = excellent_meridians }
+		}
+		modifier = {
+			add = 20
+			scope:actor = { has_trait = good_meridians }
+		}
+		modifier = {
+			add = -10
+			scope:actor = { has_trait = normal_meridians }
+		}
+		modifier = {
+			add = -20
+			scope:actor = { has_trait = poor_meridians }
+		}
+		modifier = {
+			add = -180
+			scope:recipient = { opinion = { target = scope:actor value < -10 } }
+		}
+		modifier = {
+			add = -220
+			scope:recipient = { opinion = { target = scope:actor value < -40 } }
+		}
+	}
+
+	ai_will_do = {
+		base = 2
+		modifier = {
+			factor = 8
+			scope:actor = { has_trait = heavenly_meridians }
+		}
+		modifier = {
+			factor = 4
+			scope:actor = { has_trait = excellent_meridians }
+		}
+	}
+}
+
+take_disciple_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 110
+	icon = icon_court
+	desc = take_disciple_interaction_desc
+	use_diplomatic_range = yes
+
+	is_shown = {
+		scope:actor = {
+			is_cultivator = yes
+			is_adult = yes
+			OR = {
+				has_trait = sect_leader
+				has_trait = sect_elder
+				has_trait = sect_inner_hall_elder
+				has_trait = sect_outer_hall_elder
+				has_trait = sect_enforcement_elder
+			}
+		}
+		scope:recipient = {
+			is_adult = yes
+			is_alive = yes
+			faith = scope:actor.faith
 			NOT = { has_trait = sect_disciple }
 			NOT = { has_trait = sect_inner_hall_elder }
 			NOT = { has_trait = sect_outer_hall_elder }
@@ -98,12 +236,18 @@ recruit_disciple_interaction = {
 		}
 	}
 
-	auto_accept = yes
-	ai_will_do = {
-		base = 5
-		modifier = { factor = 20 scope:recipient = { has_trait = heavenly_meridians } }
-		modifier = { factor = 3 scope:recipient = { has_trait = excellent_meridians } }
-		modifier = { factor = 0 scope:recipient = { has_trait = poor_meridians } }
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			gold >= 50
+			prestige >= 75
+		}
+	}
+
+	on_send = {
+		scope:actor = {
+			add_gold = -50
+			add_prestige = -75
+		}
 	}
 
 	on_accept = {
@@ -113,6 +257,7 @@ recruit_disciple_interaction = {
 			add_character_modifier = { modifier = lineage_marked_disciple days = 1825 }
 			add_character_flag = disciple_of_current_mentor
 			add_character_flag = has_lineage_mentor
+			add_learning_lifestyle_xp = minor_lifestyle_xp
 			add_opinion = { target = scope:actor modifier = mentor_guidance_opinion years = 15 }
 			set_variable = { name = lineage_generation value = 1 }
 		}
@@ -121,7 +266,31 @@ recruit_disciple_interaction = {
 			add_character_modifier = { modifier = sect_lineage_favor days = 1095 }
 			add_dynasty_prestige = 150
 			change_variable = { name = disciples_recruited add = 1 }
+			add_opinion = { target = scope:recipient modifier = cultivation_invests_in_my_talent_opinion years = 10 }
 		}
+	}
+
+	ai_accept = {
+		base = 30
+		modifier = {
+			add = 30
+			scope:recipient = { opinion = { target = scope:actor value >= 40 } }
+		}
+		modifier = {
+			add = 45
+			scope:recipient = { is_close_family_of = scope:actor }
+		}
+		modifier = {
+			add = -45
+			scope:recipient = { opinion = { target = scope:actor value < 0 } }
+		}
+	}
+
+	ai_will_do = {
+		base = 5
+		modifier = { factor = 20 scope:recipient = { has_trait = heavenly_meridians } }
+		modifier = { factor = 3 scope:recipient = { has_trait = excellent_meridians } }
+		modifier = { factor = 0 scope:recipient = { has_trait = poor_meridians } }
 	}
 }
 

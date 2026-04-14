@@ -6,8 +6,10 @@
 
  cripple_cultivator_interaction:0 "Shatter Cultivation"
  cripple_cultivator_interaction_desc:0 "Cripple [recipient.GetShortUINameNoTooltip]'s meridians, stripping all cultivation realms and perks and leaving them a powerless mortal."
- recruit_disciple_interaction:0 "Recruit as Disciple"
- recruit_disciple_interaction_desc:0 "Formally recruit [recipient.GetShortUINameNoTooltip] into your sect lineage as a personal disciple."
+ request_disciple_under_master_interaction:0 "Request Master's Guidance"
+ request_disciple_under_master_interaction_desc:0 "Petition [recipient.GetShortUINameNoTooltip] to accept you as a disciple. This can only be attempted once in a lifetime."
+ take_disciple_interaction:0 "Take as Disciple"
+ take_disciple_interaction_desc:0 "Invite [recipient.GetShortUINameNoTooltip] into your personal lineage as a disciple."
  teach_technique_interaction:0 "Teach Technique"
  teach_technique_interaction_desc:0 "Pass one of your cultivated techniques to [recipient.GetShortUINameNoTooltip], accelerating their growth."
  inherit_manuals_interaction:0 "Pass Down Manuals"

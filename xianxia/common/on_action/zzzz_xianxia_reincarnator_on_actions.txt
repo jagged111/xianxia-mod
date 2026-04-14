@@ -1,0 +1,5 @@
+on_character_death = {
+    events = {
+        xianxia_world.9605
+    }
+}

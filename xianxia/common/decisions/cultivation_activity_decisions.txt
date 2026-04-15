@@ -9,6 +9,7 @@ sect_examination_decision = {
     confirm_text = sect_examination_decision_confirm
 
     is_shown = {
+        is_ai = yes
         is_adult = yes
         is_landed = yes
         is_cultivator = yes
@@ -49,6 +50,7 @@ elder_promotion_decision = {
     confirm_text = elder_promotion_decision_confirm
 
     is_shown = {
+        is_ai = yes
         is_adult = yes
         is_landed = yes
         is_cultivator = yes
@@ -185,6 +187,7 @@ reincarnator_lottery_decision = {
     confirm_text = reincarnator_lottery_decision_confirm
 
     is_shown = {
+        is_ai = yes
         is_adult = yes
         is_landed = yes
         is_independent_ruler = yes

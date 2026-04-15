@@ -1,4 +1,4 @@
-﻿spawn_celestial_governance_contract_effect = {
+spawn_celestial_governance_contract_effect = {
 	save_scope_as = governor
 	# Select the Contract Tier (somewhat randomized, based on your experience as a governor)
 	random_list = {
@@ -2149,8 +2149,11 @@ destroy_held_ministry_titles_effect = {
 			}
 		}
 
-		situation:dynastic_cycle = {
-			remove_manual_participant = prev
+		if = {
+			limit = { exists = situation:dynastic_cycle }
+			situation:dynastic_cycle = {
+				remove_manual_participant = prev
+			}
 		}
 	}
 }

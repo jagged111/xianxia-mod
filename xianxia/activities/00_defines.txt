@@ -1,4 +1,4 @@
-﻿NGame = {
+NGame = {
 	END_DATE = "1453.1.1"
 	GAME_SPEED_TICKS = {	# how many seconds should a day take in every game speed
 		2
@@ -78,12 +78,12 @@ NJominiMap = {
 }
 
 NSkills = {
-	MAX_DIPLOMACY = 100		# Maximum possible diplomacy skill points per character
-	MAX_MARTIAL = 100		# Maximum possible martial skill points per character
-	MAX_STEWARDSHIP = 100	# Maximum possible stewardship skill points per character
-	MAX_INTRIGUE = 100		# Maximum possible intrigue skill points per character
-	MAX_LEARNING = 100		# Maximum possible learning skill points per character
-	MAX_PROWESS = 100		# Maximum possible prowess skill points per character
+	MAX_DIPLOMACY = 99999		# Maximum possible diplomacy skill points per character
+	MAX_MARTIAL = 99999		# Maximum possible martial skill points per character
+	MAX_STEWARDSHIP = 99999	# Maximum possible stewardship skill points per character
+	MAX_INTRIGUE = 99999		# Maximum possible intrigue skill points per character
+	MAX_LEARNING = 99999		# Maximum possible learning skill points per character
+	MAX_PROWESS = 99999		# Maximum possible prowess skill points per character
 }
 
 NCharacter = {
@@ -96,17 +96,17 @@ NCharacter = {
 	RANDOM_PERSONALITY_TRAITS_BASE = 3
 	RANDOM_PERSONALITY_TRAITS_SPAN = 0
 	RANDOM_CHARACTER_DIPLOMACY_MIN = 0
-	RANDOM_CHARACTER_DIPLOMACY_MAX = 10
+	RANDOM_CHARACTER_DIPLOMACY_MAX = 9
 	RANDOM_CHARACTER_MARTIAL_MIN = 0
-	RANDOM_CHARACTER_MARTIAL_MAX = 10
+	RANDOM_CHARACTER_MARTIAL_MAX = 9
 	RANDOM_CHARACTER_STEWARDSHIP_MIN = 0
-	RANDOM_CHARACTER_STEWARDSHIP_MAX = 10
+	RANDOM_CHARACTER_STEWARDSHIP_MAX = 9
 	RANDOM_CHARACTER_INTRIGUE_MIN = 0
-	RANDOM_CHARACTER_INTRIGUE_MAX = 10
+	RANDOM_CHARACTER_INTRIGUE_MAX = 9
 	RANDOM_CHARACTER_LEARNING_MIN = 0
-	RANDOM_CHARACTER_LEARNING_MAX = 10
+	RANDOM_CHARACTER_LEARNING_MAX = 9
 	RANDOM_CHARACTER_PROWESS_MIN = 0
-	RANDOM_CHARACTER_PROWESS_MAX = 10
+	RANDOM_CHARACTER_PROWESS_MAX = 9
 	RANDOM_CHARACTER_MIN_FERTILITY = 0.5
 	RANDOM_CHARACTER_MAX_FERTILITY = 0.6
 

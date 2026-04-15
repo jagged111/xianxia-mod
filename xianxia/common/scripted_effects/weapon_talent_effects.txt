@@ -51,3 +51,69 @@ xianxia_apply_weapon_talent_lottery_effect = {
 		}
 	}
 }
+
+
+xianxia_assign_missing_weapon_talent_effect = {
+    if = {
+        limit = {
+            is_cultivator = yes
+            NOT = {
+                OR = {
+                    has_trait = weapon_combat_talent_1
+                    has_trait = weapon_combat_talent_2
+                    has_trait = weapon_combat_talent_3
+                    has_trait = weapon_combat_talent_4
+                    has_trait = weapon_combat_talent_5
+                }
+            }
+        }
+
+        if = {
+            limit = {
+                OR = {
+                    has_trait = brave
+                    has_trait = wrathful
+                    has_trait = ambitious
+                    has_trait = diligent
+                    has_trait = stubborn
+                    has_trait = genius
+                    has_trait = berserker
+                }
+            }
+            random_list = {
+                12 = { add_trait = weapon_combat_talent_1 }
+                18 = { add_trait = weapon_combat_talent_2 }
+                30 = { add_trait = weapon_combat_talent_3 }
+                24 = { add_trait = weapon_combat_talent_4 }
+                16 = { add_trait = weapon_combat_talent_5 }
+            }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_trait = craven
+                    has_trait = content
+                    has_trait = lazy
+                    has_trait = calm
+                    has_trait = shy
+                }
+            }
+            random_list = {
+                52 = { add_trait = weapon_combat_talent_1 }
+                26 = { add_trait = weapon_combat_talent_2 }
+                14 = { add_trait = weapon_combat_talent_3 }
+                6 = { add_trait = weapon_combat_talent_4 }
+                2 = { add_trait = weapon_combat_talent_5 }
+            }
+        }
+        else = {
+            random_list = {
+                34 = { add_trait = weapon_combat_talent_1 }
+                28 = { add_trait = weapon_combat_talent_2 }
+                20 = { add_trait = weapon_combat_talent_3 }
+                12 = { add_trait = weapon_combat_talent_4 }
+                6 = { add_trait = weapon_combat_talent_5 }
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-﻿on_game_start_after_lobby = {
+on_game_start_after_lobby = {
     events = {
         cultivation_ai.1000
         cultivation_ai.2250
@@ -32,7 +32,6 @@ on_monthly_pulse = {
         xianxia_social.1000
         xianxia_social.1100
         xianxia_health.0001
-        xianxia_world.1890
         xianxia_sect_conflict.0001
     }
 }

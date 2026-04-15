@@ -1,4 +1,4 @@
-﻿xianxia_assign_sect_hierarchy_effect = {
+xianxia_assign_sect_hierarchy_effect = {
     if = {
         limit = {
             is_landed = yes
@@ -108,14 +108,80 @@ xianxia_pick_weapon_path_effect = {
                 }
             }
         }
-        random_list = {
-            35 = { add_trait = weapon_path_sword }
-            25 = { add_trait = weapon_path_saber }
-            20 = { add_trait = weapon_path_spear }
-            20 = { add_trait = weapon_path_fist }
+
+        # Lore-accurate path weighting by cultivation sect tendency, then personality seasoning.
+        if = {
+            limit = { faith = { has_doctrine_parameter = orthodox_cultivation } }
+            if = {
+                limit = { OR = { has_trait = brave has_trait = ambitious has_trait = diligent } }
+                random_list = {
+                    48 = { add_trait = weapon_path_sword }
+                    16 = { add_trait = weapon_path_saber }
+                    26 = { add_trait = weapon_path_spear }
+                    10 = { add_trait = weapon_path_fist }
+                }
+            }
+            else = {
+                random_list = {
+                    44 = { add_trait = weapon_path_sword }
+                    16 = { add_trait = weapon_path_saber }
+                    28 = { add_trait = weapon_path_spear }
+                    12 = { add_trait = weapon_path_fist }
+                }
+            }
+        }
+        else_if = {
+            limit = { faith = { has_doctrine_parameter = demonic_cultivation } }
+            if = {
+                limit = { OR = { has_trait = wrathful has_trait = sadistic has_trait = callous } }
+                random_list = {
+                    12 = { add_trait = weapon_path_sword }
+                    44 = { add_trait = weapon_path_saber }
+                    12 = { add_trait = weapon_path_spear }
+                    32 = { add_trait = weapon_path_fist }
+                }
+            }
+            else = {
+                random_list = {
+                    14 = { add_trait = weapon_path_sword }
+                    40 = { add_trait = weapon_path_saber }
+                    16 = { add_trait = weapon_path_spear }
+                    30 = { add_trait = weapon_path_fist }
+                }
+            }
+        }
+        else_if = {
+            limit = { faith = { has_doctrine_parameter = unorthodox_cultivation } }
+            random_list = {
+                24 = { add_trait = weapon_path_sword }
+                34 = { add_trait = weapon_path_saber }
+                20 = { add_trait = weapon_path_spear }
+                22 = { add_trait = weapon_path_fist }
+            }
+        }
+        else_if = {
+            limit = { faith = { has_doctrine_parameter = vagrant_cultivation } }
+            random_list = {
+                18 = { add_trait = weapon_path_sword }
+                20 = { add_trait = weapon_path_saber }
+                36 = { add_trait = weapon_path_spear }
+                26 = { add_trait = weapon_path_fist }
+            }
+        }
+        else = {
+            random_list = {
+                35 = { add_trait = weapon_path_sword }
+                25 = { add_trait = weapon_path_saber }
+                20 = { add_trait = weapon_path_spear }
+                20 = { add_trait = weapon_path_fist }
+            }
         }
     }
+
+    # Keep player-facing weapon decision behavior aligned with personality-based random talent tier assignment.
+    xianxia_assign_missing_weapon_talent_effect = yes
 }
+
 
 
 xianxia_update_alchemy_lifestyle_trait_effect = {

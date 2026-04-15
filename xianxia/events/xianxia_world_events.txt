@@ -1,4 +1,4 @@
-﻿namespace = xianxia_world
+namespace = xianxia_world
 
 xianxia_world.1000 = {
     type = character_event
@@ -75,6 +75,15 @@ xianxia_world.1000 = {
                     days = 365
                 }
             }
+        }
+
+        every_living_character = {
+            limit = {
+                is_alive = yes
+                is_adult = yes
+                is_cultivator = yes
+            }
+            xianxia_assign_missing_weapon_talent_effect = yes
         }
     }
 

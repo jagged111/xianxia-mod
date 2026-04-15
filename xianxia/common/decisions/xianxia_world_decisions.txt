@@ -1,4 +1,4 @@
-﻿found_sect_domain_decision = {
+found_sect_domain_decision = {
     picture = { reference = "gfx/interface/illustrations/decisions/decision_found_holy_order.dds" }
     decision_group_type = major
     sort_order = 521
@@ -893,25 +893,14 @@ host_jianghu_artifact_auction_decision = {
     selection_tooltip = host_jianghu_artifact_auction_decision_tooltip
     confirm_text = host_jianghu_artifact_auction_decision_confirm
 
-    is_shown = {
-        is_adult = yes
-        is_landed = yes
-        is_cultivator = yes
-    }
+    is_shown = { always = no }
+    is_valid = { always = no }
 
-    is_valid = {
-        gold >= 120
-        NOT = { has_character_flag = jianghu_artifact_auction_cooldown }
-    }
+    effect = { }
 
-    effect = {
-        gold = { add = -120 }
-        add_character_flag = { flag = jianghu_artifact_auction_cooldown days = 730 }
-        trigger_event = xianxia_world.1820
-    }
-
-    ai_check_interval = 30
-    ai_will_do = { base = 18 }
+    ai_check_interval = 0
+    ai_potential = { always = no }
+    ai_will_do = { base = 0 }
 }
 
 study_magic_treasure_crafting_decision = {
@@ -974,37 +963,6 @@ invite_path_cultivators_decision = {
 
     ai_check_interval = 36
     ai_will_do = { base = 20 }
-}
-
-
-
-
-
-view_jianghu_strongest_leaderboard_decision = {
-    picture = { reference = "gfx/interface/illustrations/decisions/decision_hold_festival.dds" }
-    decision_group_type = major
-    sort_order = 540
-
-    title = view_jianghu_strongest_leaderboard_decision
-    desc = view_jianghu_strongest_leaderboard_decision_desc
-    selection_tooltip = view_jianghu_strongest_leaderboard_decision_tooltip
-    confirm_text = view_jianghu_strongest_leaderboard_decision_confirm
-
-    is_shown = {
-        is_adult = yes
-        is_cultivator = yes
-    }
-
-    is_valid = {
-        always = yes
-    }
-
-    effect = {
-        trigger_event = xianxia_world.1891
-    }
-
-    ai_check_interval = 0
-    ai_will_do = { base = 0 }
 }
 
 challenge_sect_leader_decision = {

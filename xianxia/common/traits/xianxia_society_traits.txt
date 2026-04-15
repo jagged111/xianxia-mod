@@ -1,4 +1,4 @@
-﻿sect_disciple = {
+sect_disciple = {
     category = lifestyle
     icon = first_rate.dds
     desc = trait_sect_disciple_desc
@@ -88,6 +88,7 @@ weapon_combat_talent_1 = {
     icon = first_rate.dds
     desc = trait_weapon_combat_talent_1_desc
     group = weapon_combat_talent
+    opposites = { weapon_combat_talent_2 weapon_combat_talent_3 weapon_combat_talent_4 weapon_combat_talent_5 }
     prowess = 5
 }
 
@@ -96,6 +97,7 @@ weapon_combat_talent_2 = {
     icon = second_rate.dds
     desc = trait_weapon_combat_talent_2_desc
     group = weapon_combat_talent
+    opposites = { weapon_combat_talent_1 weapon_combat_talent_3 weapon_combat_talent_4 weapon_combat_talent_5 }
     prowess = 10
 }
 
@@ -104,6 +106,7 @@ weapon_combat_talent_3 = {
     icon = third_rate.dds
     desc = trait_weapon_combat_talent_3_desc
     group = weapon_combat_talent
+    opposites = { weapon_combat_talent_1 weapon_combat_talent_2 weapon_combat_talent_4 weapon_combat_talent_5 }
     prowess = 15
 }
 
@@ -112,6 +115,7 @@ weapon_combat_talent_4 = {
     icon = superior_root.dds
     desc = trait_weapon_combat_talent_4_desc
     group = weapon_combat_talent
+    opposites = { weapon_combat_talent_1 weapon_combat_talent_2 weapon_combat_talent_3 weapon_combat_talent_5 }
     prowess = 20
 }
 
@@ -120,6 +124,7 @@ weapon_combat_talent_5 = {
     icon = heavenly_root.dds
     desc = trait_weapon_combat_talent_5_desc
     group = weapon_combat_talent
+    opposites = { weapon_combat_talent_1 weapon_combat_talent_2 weapon_combat_talent_3 weapon_combat_talent_4 }
     prowess = 25
 }
 
